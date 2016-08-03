@@ -1,0 +1,6 @@
+framework module Pods_18phone {
+  umbrella header "Pods-18phone-umbrella.h"
+
+  export *
+  module * { export * }
+}

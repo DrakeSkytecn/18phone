@@ -7,21 +7,61 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		54E725122F48FE39095D9B2B /* Pods_18phone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C9E57501A3A019EA6A3F46 /* Pods_18phone.framework */; };
 		E114D1C41D4F1F15006AB978 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E114D1C31D4F1F15006AB978 /* AppDelegate.swift */; };
 		E114D1C61D4F1F15006AB978 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E114D1C51D4F1F15006AB978 /* ViewController.swift */; };
-		E114D1C91D4F1F15006AB978 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E114D1C71D4F1F15006AB978 /* Main.storyboard */; };
-		E114D1CB1D4F1F15006AB978 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E114D1CA1D4F1F15006AB978 /* Assets.xcassets */; };
 		E114D1CE1D4F1F15006AB978 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E114D1CC1D4F1F15006AB978 /* LaunchScreen.storyboard */; };
+		E13BACC21D518F5200414ACE /* AppUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACC11D518F5200414ACE /* AppUtil.swift */; };
+		E13BACC71D518FDE00414ACE /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACC61D518FDE00414ACE /* Async.swift */; };
+		E13BACC91D518FE500414ACE /* JSONJoy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACC81D518FE500414ACE /* JSONJoy.swift */; };
+		E13BACCF1D518FF000414ACE /* HTTPSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACCA1D518FF000414ACE /* HTTPSecurity.swift */; };
+		E13BACD01D518FF000414ACE /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACCB1D518FF000414ACE /* Operation.swift */; };
+		E13BACD11D518FF000414ACE /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACCC1D518FF000414ACE /* Request.swift */; };
+		E13BACD21D518FF000414ACE /* StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACCD1D518FF000414ACE /* StatusCode.swift */; };
+		E13BACD31D518FF000414ACE /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACCE1D518FF000414ACE /* Upload.swift */; };
+		E13BACD51D51907600414ACE /* CallLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACD41D51907600414ACE /* CallLog.swift */; };
+		E13BACDA1D51946B00414ACE /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACD61D51946B00414ACE /* RootViewController.swift */; };
+		E13BACDB1D51946B00414ACE /* KTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACD71D51946B00414ACE /* KTabBarController.swift */; };
+		E13BACDC1D51946B00414ACE /* DialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACD81D51946B00414ACE /* DialViewController.swift */; };
+		E13BACDD1D51946B00414ACE /* CallLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACD91D51946B00414ACE /* CallLogViewController.swift */; };
+		E13BACDF1D51948C00414ACE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E13BACDE1D51948C00414ACE /* Main.storyboard */; };
+		E13BACE21D5196EE00414ACE /* DialNumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACE01D5196EE00414ACE /* DialNumberCell.swift */; };
+		E13BACE31D5196EE00414ACE /* DialIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACE11D5196EE00414ACE /* DialIconCell.swift */; };
+		E13BACE51D51974900414ACE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E13BACE41D51974900414ACE /* Assets.xcassets */; };
+		E13BACE71D51977C00414ACE /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACE61D51977C00414ACE /* R.generated.swift */; };
+		E19AAD441D51DF480053D2C3 /* CallConView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E19AAD431D51DF480053D2C3 /* CallConView.xib */; };
+		E19AAD461D51DF6A0053D2C3 /* CallConView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19AAD451D51DF690053D2C3 /* CallConView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F4C9D6D63A9E2803816C5FB /* Pods-18phone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-18phone.release.xcconfig"; path = "Pods/Target Support Files/Pods-18phone/Pods-18phone.release.xcconfig"; sourceTree = "<group>"; };
+		6B3509B0105189F0A85EE715 /* Pods-18phone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-18phone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-18phone/Pods-18phone.debug.xcconfig"; sourceTree = "<group>"; };
 		E114D1C01D4F1F13006AB978 /* 18phone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 18phone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E114D1C31D4F1F15006AB978 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E114D1C51D4F1F15006AB978 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E114D1C81D4F1F15006AB978 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E114D1CA1D4F1F15006AB978 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E114D1CD1D4F1F15006AB978 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E114D1CF1D4F1F15006AB978 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E13BACC11D518F5200414ACE /* AppUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUtil.swift; sourceTree = "<group>"; };
+		E13BACC61D518FDE00414ACE /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
+		E13BACC81D518FE500414ACE /* JSONJoy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONJoy.swift; sourceTree = "<group>"; };
+		E13BACCA1D518FF000414ACE /* HTTPSecurity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPSecurity.swift; sourceTree = "<group>"; };
+		E13BACCB1D518FF000414ACE /* Operation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
+		E13BACCC1D518FF000414ACE /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		E13BACCD1D518FF000414ACE /* StatusCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusCode.swift; sourceTree = "<group>"; };
+		E13BACCE1D518FF000414ACE /* Upload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Upload.swift; sourceTree = "<group>"; };
+		E13BACD41D51907600414ACE /* CallLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallLog.swift; sourceTree = "<group>"; };
+		E13BACD61D51946B00414ACE /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		E13BACD71D51946B00414ACE /* KTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTabBarController.swift; sourceTree = "<group>"; };
+		E13BACD81D51946B00414ACE /* DialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialViewController.swift; sourceTree = "<group>"; };
+		E13BACD91D51946B00414ACE /* CallLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallLogViewController.swift; sourceTree = "<group>"; };
+		E13BACDE1D51948C00414ACE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		E13BACE01D5196EE00414ACE /* DialNumberCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialNumberCell.swift; sourceTree = "<group>"; };
+		E13BACE11D5196EE00414ACE /* DialIconCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialIconCell.swift; sourceTree = "<group>"; };
+		E13BACE41D51974900414ACE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E13BACE61D51977C00414ACE /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		E19AAD431D51DF480053D2C3 /* CallConView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CallConView.xib; sourceTree = "<group>"; };
+		E19AAD451D51DF690053D2C3 /* CallConView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallConView.swift; sourceTree = "<group>"; };
+		F3C9E57501A3A019EA6A3F46 /* Pods_18phone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_18phone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +69,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54E725122F48FE39095D9B2B /* Pods_18phone.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A13A5015FDD7155192CC0662 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F3C9E57501A3A019EA6A3F46 /* Pods_18phone.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B1CE7CAD74344845865A794A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6B3509B0105189F0A85EE715 /* Pods-18phone.debug.xcconfig */,
+				4F4C9D6D63A9E2803816C5FB /* Pods-18phone.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		E114D1B71D4F1F13006AB978 = {
 			isa = PBXGroup;
 			children = (
+				E13BACE61D51977C00414ACE /* R.generated.swift */,
 				E114D1C21D4F1F15006AB978 /* 18phone */,
 				E114D1C11D4F1F13006AB978 /* Products */,
+				B1CE7CAD74344845865A794A /* Pods */,
+				A13A5015FDD7155192CC0662 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +115,87 @@
 		E114D1C21D4F1F15006AB978 /* 18phone */ = {
 			isa = PBXGroup;
 			children = (
+				E13BACC01D518E6900414ACE /* Model */,
+				E13BACBF1D518E6600414ACE /* View */,
+				E13BACBE1D518E6300414ACE /* Controller */,
+				E13BACBD1D518E5F00414ACE /* Util */,
 				E114D1C31D4F1F15006AB978 /* AppDelegate.swift */,
-				E114D1C51D4F1F15006AB978 /* ViewController.swift */,
-				E114D1C71D4F1F15006AB978 /* Main.storyboard */,
-				E114D1CA1D4F1F15006AB978 /* Assets.xcassets */,
+				E13BACDE1D51948C00414ACE /* Main.storyboard */,
 				E114D1CC1D4F1F15006AB978 /* LaunchScreen.storyboard */,
+				E13BACE41D51974900414ACE /* Assets.xcassets */,
 				E114D1CF1D4F1F15006AB978 /* Info.plist */,
 			);
 			path = 18phone;
+			sourceTree = "<group>";
+		};
+		E13BACBD1D518E5F00414ACE /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				E13BACC51D518F9F00414ACE /* Async */,
+				E13BACC41D518F9D00414ACE /* JSONJoy */,
+				E13BACC31D518F9900414ACE /* SwiftHTTP */,
+				E13BACC11D518F5200414ACE /* AppUtil.swift */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
+		E13BACBE1D518E6300414ACE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E13BACD61D51946B00414ACE /* RootViewController.swift */,
+				E13BACD71D51946B00414ACE /* KTabBarController.swift */,
+				E13BACD81D51946B00414ACE /* DialViewController.swift */,
+				E13BACD91D51946B00414ACE /* CallLogViewController.swift */,
+				E114D1C51D4F1F15006AB978 /* ViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		E13BACBF1D518E6600414ACE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E13BACE01D5196EE00414ACE /* DialNumberCell.swift */,
+				E13BACE11D5196EE00414ACE /* DialIconCell.swift */,
+				E19AAD451D51DF690053D2C3 /* CallConView.swift */,
+				E19AAD431D51DF480053D2C3 /* CallConView.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		E13BACC01D518E6900414ACE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E13BACD41D51907600414ACE /* CallLog.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		E13BACC31D518F9900414ACE /* SwiftHTTP */ = {
+			isa = PBXGroup;
+			children = (
+				E13BACCA1D518FF000414ACE /* HTTPSecurity.swift */,
+				E13BACCB1D518FF000414ACE /* Operation.swift */,
+				E13BACCC1D518FF000414ACE /* Request.swift */,
+				E13BACCD1D518FF000414ACE /* StatusCode.swift */,
+				E13BACCE1D518FF000414ACE /* Upload.swift */,
+			);
+			name = SwiftHTTP;
+			sourceTree = "<group>";
+		};
+		E13BACC41D518F9D00414ACE /* JSONJoy */ = {
+			isa = PBXGroup;
+			children = (
+				E13BACC81D518FE500414ACE /* JSONJoy.swift */,
+			);
+			name = JSONJoy;
+			sourceTree = "<group>";
+		};
+		E13BACC51D518F9F00414ACE /* Async */ = {
+			isa = PBXGroup;
+			children = (
+				E13BACC61D518FDE00414ACE /* Async.swift */,
+			);
+			name = Async;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +205,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E114D1D21D4F1F15006AB978 /* Build configuration list for PBXNativeTarget "18phone" */;
 			buildPhases = (
+				D0682A10065A29959173BC39 /* [CP] Check Pods Manifest.lock */,
 				E114D1BC1D4F1F13006AB978 /* Sources */,
 				E114D1BD1D4F1F13006AB978 /* Frameworks */,
 				E114D1BE1D4F1F13006AB978 /* Resources */,
+				E13BACBC1D518DF300414ACE /* ShellScript */,
+				9F3B4F3EB8B5761BC84D3F95 /* [CP] Embed Pods Frameworks */,
+				9D6041D8A192976D0BD79029 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -123,34 +261,105 @@
 			buildActionMask = 2147483647;
 			files = (
 				E114D1CE1D4F1F15006AB978 /* LaunchScreen.storyboard in Resources */,
-				E114D1CB1D4F1F15006AB978 /* Assets.xcassets in Resources */,
-				E114D1C91D4F1F15006AB978 /* Main.storyboard in Resources */,
+				E13BACE51D51974900414ACE /* Assets.xcassets in Resources */,
+				E13BACDF1D51948C00414ACE /* Main.storyboard in Resources */,
+				E19AAD441D51DF480053D2C3 /* CallConView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9D6041D8A192976D0BD79029 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-18phone/Pods-18phone-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9F3B4F3EB8B5761BC84D3F95 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-18phone/Pods-18phone-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D0682A10065A29959173BC39 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E13BACBC1D518DF300414ACE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" \"$SRCROOT\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E114D1BC1D4F1F13006AB978 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E13BACC91D518FE500414ACE /* JSONJoy.swift in Sources */,
+				E13BACDB1D51946B00414ACE /* KTabBarController.swift in Sources */,
+				E13BACE21D5196EE00414ACE /* DialNumberCell.swift in Sources */,
+				E19AAD461D51DF6A0053D2C3 /* CallConView.swift in Sources */,
+				E13BACDC1D51946B00414ACE /* DialViewController.swift in Sources */,
+				E13BACE31D5196EE00414ACE /* DialIconCell.swift in Sources */,
+				E13BACD11D518FF000414ACE /* Request.swift in Sources */,
+				E13BACDA1D51946B00414ACE /* RootViewController.swift in Sources */,
+				E13BACD21D518FF000414ACE /* StatusCode.swift in Sources */,
+				E13BACD01D518FF000414ACE /* Operation.swift in Sources */,
+				E13BACDD1D51946B00414ACE /* CallLogViewController.swift in Sources */,
+				E13BACCF1D518FF000414ACE /* HTTPSecurity.swift in Sources */,
+				E13BACE71D51977C00414ACE /* R.generated.swift in Sources */,
+				E13BACC71D518FDE00414ACE /* Async.swift in Sources */,
+				E13BACD31D518FF000414ACE /* Upload.swift in Sources */,
+				E13BACC21D518F5200414ACE /* AppUtil.swift in Sources */,
 				E114D1C61D4F1F15006AB978 /* ViewController.swift in Sources */,
 				E114D1C41D4F1F15006AB978 /* AppDelegate.swift in Sources */,
+				E13BACD51D51907600414ACE /* CallLog.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E114D1C71D4F1F15006AB978 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E114D1C81D4F1F15006AB978 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E114D1CC1D4F1F15006AB978 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -249,23 +458,29 @@
 		};
 		E114D1D31D4F1F15006AB978 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B3509B0105189F0A85EE715 /* Pods-18phone.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = 18phone/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kratos.-8phone";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kratos.18phone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		E114D1D41D4F1F15006AB978 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F4C9D6D63A9E2803816C5FB /* Pods-18phone.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = 18phone/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.kratos.-8phone";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kratos.18phone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -288,6 +503,7 @@
 				E114D1D41D4F1F15006AB978 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
