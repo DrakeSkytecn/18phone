@@ -50,8 +50,13 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     override func viewWillDisappear(animated: Bool) {
+        print("DialViewController viewWillDisappear")
         isCallConViewShow = false
         callConView?.hidden = true
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        print("DialViewController viewDidDisappear")
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -113,10 +118,12 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 let number = (collectionView.cellForItemAtIndexPath(indexPath) as!DialNumberCell).number.text
                 temp = temp! + number!
                 dialNumber.text = temp
-                if temp?.characters.count == 11 {
+                if PhoneUtil.isMobileNumber(temp) || PhoneUtil.isTelephoneNumber(temp) || temp == "10086" {
                     PhoneUtil.getPhoneAreaInfo(temp!){ phoneAreaInfo in
                         if phoneAreaInfo.errNum == 0 {
-                            self.tempArea = (phoneAreaInfo.retData?.province!)! + (phoneAreaInfo.retData?.city!)!
+                            self.tempArea = (phoneAreaInfo.retData?.province!)! + "-" + (phoneAreaInfo.retData?.city!)!
+                        } else {
+                            self.tempArea = "未知归属地"
                         }
                     }
                 }
@@ -124,9 +131,11 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
             /// 监听粘贴按键的事件
         case 9:
             let paste = UIPasteboard.generalPasteboard()
-            if PhoneUtil.isMobileNumber(paste.string) || PhoneUtil.isTelephoneNumber(paste.string) {
+            if PhoneUtil.isNumber(paste.string) {
                 dialNumber.text = paste.string
                 dialNumberCon.hidden = false
+                callConView?.hidden = false
+                isCallConViewShow = true
             } else {
                 
             }
@@ -140,6 +149,7 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 if length == 1 {
                     dialNumberCon.hidden = true
                     callConView?.hidden = true
+                    isCallConViewShow = false
                 }
             }
         default:
@@ -155,24 +165,21 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBAction func call(sender: UIButton) {
         if PhoneUtil.isMobileNumber(dialNumber.text) || PhoneUtil.isTelephoneNumber(dialNumber.text) {
             UIApplication.sharedApplication().openURL(NSURL(string: "tel://" + dialNumber.text!)!)
-            let callLog = CallLog()
-            callLog.name = "James"
-            callLog.phone = dialNumber.text!
-            callLog.callState = 0
-            callLog.callStartTime = DateUtil.getCurrentDate()
-            if tempArea != nil {
-                callLog.area = tempArea!
-            }
-            let realm = try! Realm()
-            try! realm.write {
-                realm.add(callLog)
-            }
-            let callLogs = realm.objects(CallLog.self).filter("name == 'James'")
-            for callLog in callLogs {
-                print("callLog.callTime:"+callLog.callStartTime.description)
-            }
-        } else if dialNumber.text!.hasSuffix("10086") {
+            
+        } else {
             UIApplication.sharedApplication().openURL(NSURL(string: "tel://" + dialNumber.text!)!)
+        }
+        let callLog = CallLog()
+        callLog.name = "James"
+        callLog.phone = dialNumber.text!
+        callLog.callState = 0
+        callLog.callStartTime = DateUtil.getCurrentDate()
+        if tempArea != nil {
+            callLog.area = tempArea!
+        }
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(callLog)
         }
     }
     

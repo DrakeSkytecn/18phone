@@ -11,6 +11,8 @@
 		E114D1C41D4F1F15006AB978 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E114D1C31D4F1F15006AB978 /* AppDelegate.swift */; };
 		E114D1C61D4F1F15006AB978 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E114D1C51D4F1F15006AB978 /* ViewController.swift */; };
 		E114D1CE1D4F1F15006AB978 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E114D1CC1D4F1F15006AB978 /* LaunchScreen.storyboard */; };
+		E12EBA811D531FF3007B5CBD /* CallLogACell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12EBA801D531FF3007B5CBD /* CallLogACell.swift */; };
+		E12EBA841D532447007B5CBD /* piQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12EBA831D532447007B5CBD /* piQ.swift */; };
 		E13BACC21D518F5200414ACE /* AppUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACC11D518F5200414ACE /* AppUtil.swift */; };
 		E13BACC71D518FDE00414ACE /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACC61D518FDE00414ACE /* Async.swift */; };
 		E13BACC91D518FE500414ACE /* JSONJoy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACC81D518FE500414ACE /* JSONJoy.swift */; };
@@ -41,6 +43,8 @@
 		E114D1C51D4F1F15006AB978 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E114D1CD1D4F1F15006AB978 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E114D1CF1D4F1F15006AB978 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E12EBA801D531FF3007B5CBD /* CallLogACell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallLogACell.swift; sourceTree = "<group>"; };
+		E12EBA831D532447007B5CBD /* piQ.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = piQ.swift; sourceTree = "<group>"; };
 		E13BACC11D518F5200414ACE /* AppUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUtil.swift; sourceTree = "<group>"; };
 		E13BACC61D518FDE00414ACE /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
 		E13BACC81D518FE500414ACE /* JSONJoy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONJoy.swift; sourceTree = "<group>"; };
@@ -128,9 +132,18 @@
 			path = 18phone;
 			sourceTree = "<group>";
 		};
+		E12EBA821D532428007B5CBD /* piQ */ = {
+			isa = PBXGroup;
+			children = (
+				E12EBA831D532447007B5CBD /* piQ.swift */,
+			);
+			name = piQ;
+			sourceTree = "<group>";
+		};
 		E13BACBD1D518E5F00414ACE /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				E12EBA821D532428007B5CBD /* piQ */,
 				E13BACC51D518F9F00414ACE /* Async */,
 				E13BACC41D518F9D00414ACE /* JSONJoy */,
 				E13BACC31D518F9900414ACE /* SwiftHTTP */,
@@ -158,6 +171,7 @@
 				E13BACE11D5196EE00414ACE /* DialIconCell.swift */,
 				E19AAD451D51DF690053D2C3 /* CallConView.swift */,
 				E19AAD431D51DF480053D2C3 /* CallConView.xib */,
+				E12EBA801D531FF3007B5CBD /* CallLogACell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -335,6 +349,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E12EBA811D531FF3007B5CBD /* CallLogACell.swift in Sources */,
 				E13BACC91D518FE500414ACE /* JSONJoy.swift in Sources */,
 				E13BACDB1D51946B00414ACE /* KTabBarController.swift in Sources */,
 				E13BACE21D5196EE00414ACE /* DialNumberCell.swift in Sources */,
@@ -354,6 +369,7 @@
 				E114D1C61D4F1F15006AB978 /* ViewController.swift in Sources */,
 				E114D1C41D4F1F15006AB978 /* AppDelegate.swift in Sources */,
 				E13BACD51D51907600414ACE /* CallLog.swift in Sources */,
+				E12EBA841D532447007B5CBD /* piQ.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

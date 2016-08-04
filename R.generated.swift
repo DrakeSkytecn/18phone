@@ -26,7 +26,7 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 12 images.
+  /// This `R.image` struct is generated, and contains static references to 14 images.
   struct image {
     /// Image `call`.
     static let call = ImageResource(bundle: _R.hostingBundle, name: "call")
@@ -52,6 +52,10 @@ struct R: Rswift.Validatable {
     static let paste = ImageResource(bundle: _R.hostingBundle, name: "paste")
     /// Image `shop`.
     static let shop = ImageResource(bundle: _R.hostingBundle, name: "shop")
+    /// Image `video_call`.
+    static let video_call = ImageResource(bundle: _R.hostingBundle, name: "video_call")
+    /// Image `voice_call`.
+    static let voice_call = ImageResource(bundle: _R.hostingBundle, name: "voice_call")
     
     /// `UIImage(named: "call", bundle: ..., traitCollection: ...)`
     static func call(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
@@ -113,6 +117,16 @@ struct R: Rswift.Validatable {
       return UIImage(resource: R.image.shop, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "video_call", bundle: ..., traitCollection: ...)`
+    static func video_call(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.video_call, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "voice_call", bundle: ..., traitCollection: ...)`
+    static func voice_call(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.voice_call, compatibleWithTraitCollection: traitCollection)
+    }
+    
     private init() {}
   }
   
@@ -137,12 +151,14 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 2 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 3 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `dial_a`.
     static let dial_a: ReuseIdentifier<DialNumberCell> = ReuseIdentifier(identifier: "dial_a")
     /// Reuse identifier `dial_b`.
     static let dial_b: ReuseIdentifier<DialIconCell> = ReuseIdentifier(identifier: "dial_b")
+    /// Reuse identifier `log_a`.
+    static let log_a: ReuseIdentifier<CallLogACell> = ReuseIdentifier(identifier: "log_a")
     
     private init() {}
   }

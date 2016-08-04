@@ -50,11 +50,17 @@ struct DateUtil {
     
     static func getCurrentDate() -> NSDate {
         let date = NSDate()
-        let zone = NSTimeZone.defaultTimeZone()
+        let zone = NSTimeZone.localTimeZone()
         let interval = zone.secondsFromGMTForDate(date)
         let localeDate = date.dateByAddingTimeInterval(NSTimeInterval(interval))
         print("getCurrentDate():" + localeDate.description)
         return localeDate
+    }
+    
+    static func dateToString(date: NSDate) -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "MM-dd HH:mm"
+        return dateFormatter.stringFromDate(date)
     }
 }
 
@@ -94,6 +100,12 @@ struct PhoneUtil {
         let pattern = "^(0[0-9]{2,3})?([2-9][0-9]{6,7})+([0-9]{1,4})$"
         let predicate = NSPredicate(format: "SELF MATCHES %@", pattern)
         return predicate.evaluateWithObject(telephoneNumber)
+    }
+    
+    static func isNumber(number: String?) -> Bool {
+        let pattern = "^\\d{1,12}$"
+        let predicate = NSPredicate(format: "SELF MATCHES %@", pattern)
+        return predicate.evaluateWithObject(number)
     }
 }
 

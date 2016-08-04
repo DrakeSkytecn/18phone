@@ -7,20 +7,19 @@
 //
 
 import UIKit
+import RealmSwift
 
 class CallLogViewController: UITableViewController {
 
+    var callLogs: Results<CallLog>?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        let realm = try! Realm()
+        callLogs = realm.objects(CallLog.self).sorted("callStartTime", ascending: false)
+        tableView.tableFooterView = UIView()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -28,25 +27,44 @@ class CallLogViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return callLogs!.count
     }
 
-    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.log_a)
+        let callLog = callLogs![indexPath.row]
+        cell!.headPhoto.piQ_imageFromUrl(callLog.headPhoto, placeholderImage: R.image.head_photo_default()!)
+        if callLog.callState == 0 {
+            cell!.callState.image = R.image.call_out()
+        }else{
+            cell!.callState.image = R.image.call_in()
+        }
+        
+        if callLog.callType == 0 {
+            cell!.callType.image = R.image.voice_call()
+        } else {
+            cell!.callType.image = R.image.video_call()
+        }
 
-        // Configure the cell...
-
-        return cell
+        if callLog.name.isEmpty {
+            cell!.name.text = callLog.phone
+        } else {
+            cell!.name.text = callLog.name
+            cell!.phone.text = callLog.phone
+        }
+        
+        cell!.area.text = callLog.area
+        
+        cell!.callStartTime.text = DateUtil.dateToString(callLog.callStartTime)
+        
+        return cell!
     }
-    */
+
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
 
     /*
     // Override to support conditional editing of the table view.
