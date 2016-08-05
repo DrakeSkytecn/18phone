@@ -6,4 +6,5 @@ use_frameworks!
 target :"18phone" do
     pod 'R.swift'
     pod 'RealmSwift'
+    pod 'SwiftEventBus'
 end

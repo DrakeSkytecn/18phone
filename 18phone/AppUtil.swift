@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import RealmSwift
 
 /**
  *  app中使用到的URL的定义
@@ -24,6 +25,7 @@ struct App {
     static let application = UIApplication.sharedApplication()
     static let appDelegate = application.delegate as! AppDelegate
     static let APIStoreKey = "1fc3cdcb8b5ec8466b083a04a9b4e1a8"
+    static let realm = try! Realm()
 }
 
 /**

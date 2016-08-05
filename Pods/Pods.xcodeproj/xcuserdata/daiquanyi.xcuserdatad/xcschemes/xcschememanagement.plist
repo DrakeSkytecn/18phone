@@ -24,25 +24,35 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SwiftEventBus.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>57DA8C030071686837222025BE225CE5</key>
+		<key>069CB5174D1396FD4678339CA890C294</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>703EA371A318022C2BAF7E4B60C65FF8</key>
+		<key>33D1F9DDB9F315D75F6D354286403B44</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DCFF935F8947EE566B875954E8C0E8B4</key>
+		<key>871B325CDABD1C0C03E0E33274567260</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E0015BD453B92B9ECCCE2A1D25FB710A</key>
+		<key>A5FA6D2AE7F2CC19499BBA28E58A9BA7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E408E884D2C75BEEADC35A9103FA3BA8</key>
 		<dict>
 			<key>primary</key>
 			<true/>

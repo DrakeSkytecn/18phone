@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import SwiftEventBus
 
 class CallLogViewController: UITableViewController {
 
@@ -15,9 +16,14 @@ class CallLogViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let realm = try! Realm()
-        callLogs = realm.objects(CallLog.self).sorted("callStartTime", ascending: false)
+        callLogs = App.realm.objects(CallLog.self).sorted("callStartTime", ascending: false)
         tableView.tableFooterView = UIView()
+        SwiftEventBus.onMainThread(self, name: "reloadCallLogs") { result in
+            self.reloadCallLogs()
+        }
+        SwiftEventBus.onMainThread(self, name: "deleteAllCallLogs") { result in
+            self.deleteAllCallLogs()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -74,17 +80,18 @@ class CallLogViewController: UITableViewController {
     }
     */
 
-    /*
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
+            let callLog = callLogs![indexPath.row]
+            try! App.realm.write {
+                App.realm.delete(callLog)
+            }
+            callLogs = App.realm.objects(CallLog.self).sorted("callStartTime", ascending: false)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
-    */
 
     /*
     // Override to support rearranging the table view.
@@ -111,4 +118,15 @@ class CallLogViewController: UITableViewController {
     }
     */
 
+    func reloadCallLogs() {
+        callLogs = App.realm.objects(CallLog.self).sorted("callStartTime", ascending: false)
+        tableView.reloadData()
+    }
+    
+    func deleteAllCallLogs() {
+        try! App.realm.write {
+            App.realm.delete(callLogs!)
+        }
+        reloadCallLogs()
+    }
 }

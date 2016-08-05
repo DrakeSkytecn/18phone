@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftEventBus
 
 /// 拨号页面根控制器
 class RootViewController: UIViewController {
@@ -133,6 +134,22 @@ class RootViewController: UIViewController {
             break
         default:
             break
+        }
+    }
+    
+    @IBAction func leftMenu(sender: UIBarButtonItem) {
+        let callLogs = App.realm.objects(CallLog.self)
+        if callLogs.count != 0 {
+            let alertController = UIAlertController(title: "清空通话记录", message: "此操作不可撤回，确认清除所有的通话记录吗？", preferredStyle: .ActionSheet)
+            alertController.addAction(UIAlertAction(title: "确认", style: .Destructive) { action in
+                SwiftEventBus.post("deleteAllCallLogs")
+                SwiftEventBus.post("showCallCon")
+                })
+            alertController.addAction(UIAlertAction(title: "取消", style: .Cancel) { action in
+                SwiftEventBus.post("showCallCon")
+                })
+            SwiftEventBus.post("hideCallCon")
+            presentViewController(alertController, animated: true, completion: nil)
         }
     }
 }

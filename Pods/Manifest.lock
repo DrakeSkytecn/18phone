@@ -7,17 +7,20 @@ PODS:
   - Realm/Headers (1.0.2)
   - RealmSwift (1.0.2):
     - Realm (= 1.0.2)
+  - SwiftEventBus (1.1.0)
 
 DEPENDENCIES:
   - R.swift
   - RealmSwift
+  - SwiftEventBus
 
 SPEC CHECKSUMS:
   R.swift: 0ef9c42dc6c94ac44a3c78a7639c73f855a8e159
   R.swift.Library: 31a487b65381f37a7d203a6f1f935b43c9be35b0
   Realm: 9d5c46a4d7d27958530a8dfc58f63a99e5c2cba3
   RealmSwift: 82f3ac5e24530143dddfde2033acc0d308f27d96
+  SwiftEventBus: d33b51752d4e3e994f0ea7b31873f0beca7eada0
 
-PODFILE CHECKSUM: a26fe077b889b5a7807acb31dd0b3166625bb562
+PODFILE CHECKSUM: 48f2cb4e267b11503d2b16c364d5d52552d14e1f
 
 COCOAPODS: 1.0.1

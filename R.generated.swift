@@ -26,7 +26,7 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 14 images.
+  /// This `R.image` struct is generated, and contains static references to 15 images.
   struct image {
     /// Image `call`.
     static let call = ImageResource(bundle: _R.hostingBundle, name: "call")
@@ -36,6 +36,8 @@ struct R: Rswift.Validatable {
     static let call_out = ImageResource(bundle: _R.hostingBundle, name: "call_out")
     /// Image `delete`.
     static let delete = ImageResource(bundle: _R.hostingBundle, name: "delete")
+    /// Image `delete_all`.
+    static let delete_all = ImageResource(bundle: _R.hostingBundle, name: "delete_all")
     /// Image `dial`.
     static let dial = ImageResource(bundle: _R.hostingBundle, name: "dial")
     /// Image `dial_down`.
@@ -75,6 +77,11 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "delete", bundle: ..., traitCollection: ...)`
     static func delete(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.delete, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "delete_all", bundle: ..., traitCollection: ...)`
+    static func delete_all(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.delete_all, compatibleWithTraitCollection: traitCollection)
     }
     
     /// `UIImage(named: "dial", bundle: ..., traitCollection: ...)`
@@ -245,10 +252,11 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
+        if UIImage(named: "message") == nil { throw ValidationError(description: "[R.swift] Image named 'message' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "shop") == nil { throw ValidationError(description: "[R.swift] Image named 'shop' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "dial_tab") == nil { throw ValidationError(description: "[R.swift] Image named 'dial_tab' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "dial_down") == nil { throw ValidationError(description: "[R.swift] Image named 'dial_down' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIImage(named: "message") == nil { throw ValidationError(description: "[R.swift] Image named 'message' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "delete_all") == nil { throw ValidationError(description: "[R.swift] Image named 'delete_all' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "dial") == nil { throw ValidationError(description: "[R.swift] Image named 'dial' is used in storyboard 'Main', but couldn't be loaded.") }
         if _R.storyboard.main().b() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'b' could not be loaded from storyboard 'Main' as 'UIViewController'.") }
       }

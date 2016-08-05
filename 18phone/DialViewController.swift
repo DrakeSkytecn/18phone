@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import RealmSwift
+import SwiftEventBus
 
 /// 拨号盘控制器
 class DialViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
@@ -30,9 +30,6 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
     /// 用于查询后保存的联系人姓名
     var tempName: String?
     
-    /// 用于判断拨号按钮框是否显示
-    var isCallConViewShow = false
-    
     /// 拨号按钮框
     var callConView: CallConView?
     
@@ -47,11 +44,16 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
         callConView?.frame = CGRectMake((Screen.width - callConViewWidth) / 2, (Screen.height - (callConView?.frame.height)!), callConViewWidth, (callConView?.frame.height)!)
         callConView?.delegate = self
         App.application.keyWindow?.addSubview(callConView!)
+        SwiftEventBus.onMainThread(self, name: "hideCallCon") { result in
+            self.hideCallCon()
+        }
+        SwiftEventBus.onMainThread(self, name: "showCallCon") { result in
+            self.showCallCon()
+        }
     }
     
     override func viewWillDisappear(animated: Bool) {
         print("DialViewController viewWillDisappear")
-        isCallConViewShow = false
         callConView?.hidden = true
     }
     
@@ -61,7 +63,6 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     override func viewDidAppear(animated: Bool) {
         if !dialNumber.text!.isEmpty {
-            isCallConViewShow = true
             callConView?.hidden = false
         }
     }
@@ -135,7 +136,6 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 dialNumber.text = paste.string
                 dialNumberCon.hidden = false
                 callConView?.hidden = false
-                isCallConViewShow = true
             } else {
                 
             }
@@ -149,7 +149,6 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 if length == 1 {
                     dialNumberCon.hidden = true
                     callConView?.hidden = true
-                    isCallConViewShow = false
                 }
             }
         default:
@@ -177,9 +176,8 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
         if tempArea != nil {
             callLog.area = tempArea!
         }
-        let realm = try! Realm()
-        try! realm.write {
-            realm.add(callLog)
+        try! App.realm.write {
+            App.realm.add(callLog)
         }
     }
     
@@ -201,4 +199,13 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
      }
      */
     
+    func hideCallCon() {
+        callConView?.hidden = true
+    }
+    
+    func showCallCon() {
+        if !dialNumber.text!.isEmpty {
+            callConView?.hidden = false
+        }
+    }
 }
