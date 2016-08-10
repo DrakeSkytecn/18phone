@@ -16,6 +16,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        let userAgent = GSUserAgent.sharedAgent()
+        let configuration = GSConfiguration.defaultConfiguration()
+        let accountConfiguration = GSAccountConfiguration.defaultConfiguration()
+        accountConfiguration.address = "chakrit@getonsip.com"
+        accountConfiguration.username = "getonsip_chakrit"
+        accountConfiguration.password = "3WLDiLdLaUQiA5rr"
+        accountConfiguration.domain = "getonsip.com"
+        accountConfiguration.proxyServer = "sip.onsip.com"
+        configuration.account = accountConfiguration
+        configuration.logLevel = 3
+        configuration.consoleLogLevel = 3
+        userAgent.configure(configuration)
+        userAgent.start()
         
         return true
     }
