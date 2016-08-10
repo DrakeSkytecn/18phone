@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "21E33912483FF32F3E08995E8E359A56A41925B1",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "21E33912483FF32F3E08995E8E359A56A41925B1" : 0,
+    "FE258F7756A1CC3EE07D4E469FB73FA4506EED73" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "DE1939F3-E5FD-4769-B4EB-FCB00666F43D",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "21E33912483FF32F3E08995E8E359A56A41925B1" : "18phone\/",
+    "FE258F7756A1CC3EE07D4E469FB73FA4506EED73" : "gossip\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "18phone",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "18phone.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:daiKratos\/18phone.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "21E33912483FF32F3E08995E8E359A56A41925B1"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "git:\/\/github.com\/chakrit\/gossip.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "FE258F7756A1CC3EE07D4E469FB73FA4506EED73"
+    }
+  ]
+}
