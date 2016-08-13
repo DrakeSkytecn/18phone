@@ -11,6 +11,8 @@
 		E114D1C41D4F1F15006AB978 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E114D1C31D4F1F15006AB978 /* AppDelegate.swift */; };
 		E114D1C61D4F1F15006AB978 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E114D1C51D4F1F15006AB978 /* ViewController.swift */; };
 		E114D1CE1D4F1F15006AB978 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E114D1CC1D4F1F15006AB978 /* LaunchScreen.storyboard */; };
+		E11E92921D5EBBAB004D634A /* DialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E11E92911D5EBBAB004D634A /* DialView.xib */; };
+		E11E92941D5F2C9F004D634A /* DialView1Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11E92931D5F2C9F004D634A /* DialView1Controller.swift */; };
 		E12EBA811D531FF3007B5CBD /* CallLogACell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12EBA801D531FF3007B5CBD /* CallLogACell.swift */; };
 		E12EBA841D532447007B5CBD /* piQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12EBA831D532447007B5CBD /* piQ.swift */; };
 		E13BACC21D518F5200414ACE /* AppUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACC11D518F5200414ACE /* AppUtil.swift */; };
@@ -49,6 +51,8 @@
 		E114D1C51D4F1F15006AB978 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E114D1CD1D4F1F15006AB978 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E114D1CF1D4F1F15006AB978 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E11E92911D5EBBAB004D634A /* DialView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DialView.xib; sourceTree = "<group>"; };
+		E11E92931D5F2C9F004D634A /* DialView1Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialView1Controller.swift; sourceTree = "<group>"; };
 		E12EBA801D531FF3007B5CBD /* CallLogACell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallLogACell.swift; sourceTree = "<group>"; };
 		E12EBA831D532447007B5CBD /* piQ.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = piQ.swift; sourceTree = "<group>"; };
 		E13BACC11D518F5200414ACE /* AppUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUtil.swift; sourceTree = "<group>"; };
@@ -186,6 +190,7 @@
 				E13BACD81D51946B00414ACE /* DialViewController.swift */,
 				E13BACD91D51946B00414ACE /* CallLogViewController.swift */,
 				E114D1C51D4F1F15006AB978 /* ViewController.swift */,
+				E11E92931D5F2C9F004D634A /* DialView1Controller.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -198,6 +203,7 @@
 				E19AAD451D51DF690053D2C3 /* CallConView.swift */,
 				E19AAD431D51DF480053D2C3 /* CallConView.xib */,
 				E12EBA801D531FF3007B5CBD /* CallLogACell.swift */,
+				E11E92911D5EBBAB004D634A /* DialView.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -300,6 +306,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E11E92921D5EBBAB004D634A /* DialView.xib in Resources */,
 				E114D1CE1D4F1F15006AB978 /* LaunchScreen.storyboard in Resources */,
 				E13BACE51D51974900414ACE /* Assets.xcassets in Resources */,
 				E13BACDF1D51948C00414ACE /* Main.storyboard in Resources */,
@@ -391,6 +398,7 @@
 				E13BACE71D51977C00414ACE /* R.generated.swift in Sources */,
 				E13BACC71D518FDE00414ACE /* Async.swift in Sources */,
 				E13BACD31D518FF000414ACE /* Upload.swift in Sources */,
+				E11E92941D5F2C9F004D634A /* DialView1Controller.swift in Sources */,
 				E13BACC21D518F5200414ACE /* AppUtil.swift in Sources */,
 				E114D1C61D4F1F15006AB978 /* ViewController.swift in Sources */,
 				E114D1C41D4F1F15006AB978 /* AppDelegate.swift in Sources */,

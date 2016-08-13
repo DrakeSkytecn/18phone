@@ -25,8 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         accountConfiguration.domain = "getonsip.com"
         accountConfiguration.proxyServer = "sip.onsip.com"
         configuration.account = accountConfiguration
-        configuration.logLevel = 3
-        configuration.consoleLogLevel = 3
         userAgent.configure(configuration)
         userAgent.start()
         

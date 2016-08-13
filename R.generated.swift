@@ -145,21 +145,34 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.nib` struct is generated, and contains static references to 1 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 2 nibs.
   struct nib {
     /// Nib `CallConView`.
     static let callConView = _R.nib._CallConView()
+    /// Nib `DialView`.
+    static let dialView = _R.nib._DialView()
     
     /// `UINib(name: "CallConView", bundle: ...)`
     static func callConView(_: Void) -> UINib {
       return UINib(resource: R.nib.callConView)
     }
     
+    /// `UINib(name: "DialView", bundle: ...)`
+    static func dialView(_: Void) -> UINib {
+      return UINib(resource: R.nib.dialView)
+    }
+    
     private init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 3 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 6 reuse identifiers.
   struct reuseIdentifier {
+    /// Reuse identifier `dial_1`.
+    static let dial_1: ReuseIdentifier<DialNumberCell> = ReuseIdentifier(identifier: "dial_1")
+    /// Reuse identifier `dial_2`.
+    static let dial_2: ReuseIdentifier<DialIconCell> = ReuseIdentifier(identifier: "dial_2")
+    /// Reuse identifier `dial_3`.
+    static let dial_3: ReuseIdentifier<DialNumberCell> = ReuseIdentifier(identifier: "dial_3")
     /// Reuse identifier `dial_a`.
     static let dial_a: ReuseIdentifier<DialNumberCell> = ReuseIdentifier(identifier: "dial_a")
     /// Reuse identifier `dial_b`.
@@ -223,6 +236,17 @@ struct _R: Rswift.Validatable {
       private init() {}
     }
     
+    struct _DialView: NibResourceType {
+      let bundle = _R.hostingBundle
+      let name = "DialView"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> UIView? {
+        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? UIView
+      }
+      
+      private init() {}
+    }
+    
     private init() {}
   }
   
@@ -241,7 +265,7 @@ struct _R: Rswift.Validatable {
     }
     
     struct main: StoryboardResourceWithInitialControllerType, Rswift.Validatable {
-      typealias InitialController = KTabBarController
+      typealias InitialController = DialView1Controller
       
       let b = StoryboardViewControllerResource<UIViewController>(identifier: "B")
       let bundle = _R.hostingBundle
