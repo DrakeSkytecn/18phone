@@ -265,24 +265,31 @@ struct _R: Rswift.Validatable {
     }
     
     struct main: StoryboardResourceWithInitialControllerType, Rswift.Validatable {
-      typealias InitialController = DialView1Controller
+      typealias InitialController = KTabBarController
       
       let b = StoryboardViewControllerResource<UIViewController>(identifier: "B")
       let bundle = _R.hostingBundle
+      let dialViewController = StoryboardViewControllerResource<DialView1Controller>(identifier: "DialViewController")
       let name = "Main"
       
       func b(_: Void) -> UIViewController? {
         return UIStoryboard(resource: self).instantiateViewController(b)
       }
       
+      func dialViewController(_: Void) -> DialView1Controller? {
+        return UIStoryboard(resource: self).instantiateViewController(dialViewController)
+      }
+      
       static func validate() throws {
+        if UIImage(named: "call") == nil { throw ValidationError(description: "[R.swift] Image named 'call' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "message") == nil { throw ValidationError(description: "[R.swift] Image named 'message' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "dial") == nil { throw ValidationError(description: "[R.swift] Image named 'dial' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "shop") == nil { throw ValidationError(description: "[R.swift] Image named 'shop' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "dial_tab") == nil { throw ValidationError(description: "[R.swift] Image named 'dial_tab' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "dial_down") == nil { throw ValidationError(description: "[R.swift] Image named 'dial_down' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "delete_all") == nil { throw ValidationError(description: "[R.swift] Image named 'delete_all' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIImage(named: "dial") == nil { throw ValidationError(description: "[R.swift] Image named 'dial' is used in storyboard 'Main', but couldn't be loaded.") }
         if _R.storyboard.main().b() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'b' could not be loaded from storyboard 'Main' as 'UIViewController'.") }
+        if _R.storyboard.main().dialViewController() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'dialViewController' could not be loaded from storyboard 'Main' as 'DialView1Controller'.") }
       }
       
       private init() {}

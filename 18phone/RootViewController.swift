@@ -13,7 +13,7 @@ import SwiftEventBus
 class RootViewController: UIViewController {
 
     /// 用于判断拨号盘是否展开
-    private var isMenuShow: Bool = true
+    private var isMenuShow: Bool = false
     
     /// 用于判断拨号页面是否显示
     private var isViewHidden: Bool = true
@@ -27,32 +27,29 @@ class RootViewController: UIViewController {
     /// 通讯录子页容器
     @IBOutlet weak var bContainer: UIView!
     
+    var dialViewController = R.storyboard.main.dialViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func viewWillAppear(animated: Bool) {
-        print("viewWillAppear")
+        //navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
     override func viewDidAppear(animated: Bool) {
-        print("viewDidAppear")
-        if !isMenuShow {
-            print("isMenuShow")
-            resetMenuY(-menuView.frame.height)
-        }
+//        if !isMenuShow {
+//            resetMenuY(-menuView.frame.height)
+//        }
         isViewHidden = false
     }
     
     override func viewDidDisappear(animated: Bool) {
-        print("viewDidDisappear")
         isViewHidden = true
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        print("didReceiveMemoryWarning")
         // Dispose of any resources that can be recreated.
     }
     
@@ -79,7 +76,7 @@ class RootViewController: UIViewController {
      展开拨号盘
      */
     private func show() {
-        print("show")
+        navigationController?.setNavigationBarHidden(true, animated: true)
         menuTranYAnimation(-menuView.frame.height)
         isMenuShow = true
     }
@@ -88,7 +85,7 @@ class RootViewController: UIViewController {
      收起拨号盘
      */
     private func hide() {
-        print("hide")
+        navigationController?.setNavigationBarHidden(false, animated: true)
         menuTranYAnimation(menuView.frame.height)
         isMenuShow = false
     }
@@ -99,7 +96,6 @@ class RootViewController: UIViewController {
      - parameter height: 移动的距离，默认传入拨号盘的高度
      */
     private func resetMenuY(height: CGFloat) {
-        print("resetMenuY")
         var rect = self.menuView.frame
         rect.origin.y = rect.origin.y + height
         self.menuView.frame = rect

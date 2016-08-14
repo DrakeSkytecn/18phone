@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		54E725122F48FE39095D9B2B /* Pods_18phone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C9E57501A3A019EA6A3F46 /* Pods_18phone.framework */; };
+		3CDEEA757806A094659EB15D /* Pods_18phone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 047EB72D84437E0BA79D1A70 /* Pods_18phone.framework */; };
 		E114D1C41D4F1F15006AB978 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E114D1C31D4F1F15006AB978 /* AppDelegate.swift */; };
 		E114D1C61D4F1F15006AB978 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E114D1C51D4F1F15006AB978 /* ViewController.swift */; };
 		E114D1CE1D4F1F15006AB978 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E114D1CC1D4F1F15006AB978 /* LaunchScreen.storyboard */; };
@@ -44,8 +44,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4F4C9D6D63A9E2803816C5FB /* Pods-18phone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-18phone.release.xcconfig"; path = "Pods/Target Support Files/Pods-18phone/Pods-18phone.release.xcconfig"; sourceTree = "<group>"; };
-		6B3509B0105189F0A85EE715 /* Pods-18phone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-18phone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-18phone/Pods-18phone.debug.xcconfig"; sourceTree = "<group>"; };
+		047EB72D84437E0BA79D1A70 /* Pods_18phone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_18phone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		075A21CADC9C03D40A071C6E /* Pods-18phone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-18phone.release.xcconfig"; path = "Pods/Target Support Files/Pods-18phone/Pods-18phone.release.xcconfig"; sourceTree = "<group>"; };
+		A3792B97A14496699EE5544B /* Pods-18phone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-18phone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-18phone/Pods-18phone.debug.xcconfig"; sourceTree = "<group>"; };
 		E114D1C01D4F1F13006AB978 /* 18phone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 18phone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E114D1C31D4F1F15006AB978 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E114D1C51D4F1F15006AB978 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +74,8 @@
 		E13BACE11D5196EE00414ACE /* DialIconCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialIconCell.swift; sourceTree = "<group>"; };
 		E13BACE41D51974900414ACE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E13BACE61D51977C00414ACE /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		E16CCDF71D601ED2008BEC5D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E16CCDF91D601EF6008BEC5D /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		E19AAD431D51DF480053D2C3 /* CallConView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CallConView.xib; sourceTree = "<group>"; };
 		E19AAD451D51DF690053D2C3 /* CallConView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallConView.swift; sourceTree = "<group>"; };
 		E1DFA1861D5B6ADD001A014F /* libGossip.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGossip.a; path = "../../../Library/Developer/Xcode/DerivedData/18phone-cllinrakwzyripcnpqmigivniskl/Build/Products/Debug-iphonesimulator/libGossip.a"; sourceTree = "<group>"; };
@@ -82,7 +85,6 @@
 		E1DFA18E1D5B6BD5001A014F /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		E1DFA1901D5B6BE1001A014F /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		E1F5E57C1D59E5990010FF2C /* 18phone-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "18phone-Bridging-Header.h"; sourceTree = "<group>"; };
-		F3C9E57501A3A019EA6A3F46 /* Pods_18phone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_18phone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +98,7 @@
 				E1DFA18B1D5B6BA3001A014F /* AVFoundation.framework in Frameworks */,
 				E1DFA1891D5B6B81001A014F /* CoreAudio.framework in Frameworks */,
 				E1DFA1871D5B6ADD001A014F /* libGossip.a in Frameworks */,
-				54E725122F48FE39095D9B2B /* Pods_18phone.framework in Frameworks */,
+				3CDEEA757806A094659EB15D /* Pods_18phone.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,22 +108,24 @@
 		A13A5015FDD7155192CC0662 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E16CCDF91D601EF6008BEC5D /* CoreFoundation.framework */,
+				E16CCDF71D601ED2008BEC5D /* Foundation.framework */,
 				E1DFA1901D5B6BE1001A014F /* CoreVideo.framework */,
 				E1DFA18E1D5B6BD5001A014F /* CoreMedia.framework */,
 				E1DFA18C1D5B6BB7001A014F /* AudioToolbox.framework */,
 				E1DFA18A1D5B6BA3001A014F /* AVFoundation.framework */,
 				E1DFA1881D5B6B81001A014F /* CoreAudio.framework */,
 				E1DFA1861D5B6ADD001A014F /* libGossip.a */,
-				F3C9E57501A3A019EA6A3F46 /* Pods_18phone.framework */,
+				047EB72D84437E0BA79D1A70 /* Pods_18phone.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B1CE7CAD74344845865A794A /* Pods */ = {
+		A9625D3E2C7EEE8EF6AD1B37 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6B3509B0105189F0A85EE715 /* Pods-18phone.debug.xcconfig */,
-				4F4C9D6D63A9E2803816C5FB /* Pods-18phone.release.xcconfig */,
+				A3792B97A14496699EE5544B /* Pods-18phone.debug.xcconfig */,
+				075A21CADC9C03D40A071C6E /* Pods-18phone.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -132,8 +136,8 @@
 				E13BACE61D51977C00414ACE /* R.generated.swift */,
 				E114D1C21D4F1F15006AB978 /* 18phone */,
 				E114D1C11D4F1F13006AB978 /* Products */,
-				B1CE7CAD74344845865A794A /* Pods */,
 				A13A5015FDD7155192CC0662 /* Frameworks */,
+				A9625D3E2C7EEE8EF6AD1B37 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -508,7 +512,7 @@
 		};
 		E114D1D31D4F1F15006AB978 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6B3509B0105189F0A85EE715 /* Pods-18phone.debug.xcconfig */;
+			baseConfigurationReference = A3792B97A14496699EE5544B /* Pods-18phone.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -526,7 +530,7 @@
 		};
 		E114D1D41D4F1F15006AB978 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4F4C9D6D63A9E2803816C5FB /* Pods-18phone.release.xcconfig */;
+			baseConfigurationReference = 075A21CADC9C03D40A071C6E /* Pods-18phone.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

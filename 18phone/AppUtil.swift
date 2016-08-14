@@ -84,7 +84,9 @@ struct PhoneUtil {
                 print(response.text)
                 let phoneAreaInfo = PhoneAreaInfo(JSONDecoder(response.data))
                 if callBack != nil {
-                    callBack!(phoneAreaInfo)
+                    Async.main {
+                        callBack!(phoneAreaInfo)
+                    }
                 }
             }
         } catch {
