@@ -208,7 +208,7 @@
                             <constraint firstItem="Hzm-Es-BCG" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="CKA-Qq-hUc"/>
                             <constraint firstItem="IsE-2j-suj" firstAttribute="leading" secondItem="Hzm-Es-BCG" secondAttribute="leading" id="CsA-87-E27"/>
                             <constraint firstItem="IsE-2j-suj" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="EEk-3c-nXs"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="q3C-RH-bcI" secondAttribute="top" symbolic="YES" id="JXH-mk-Kqp"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="q3C-RH-bcI" secondAttribute="top" id="JXH-mk-Kqp"/>
                             <constraint firstItem="IsE-2j-suj" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="JZD-QD-7qh"/>
                             <constraint firstItem="q3C-RH-bcI" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="KoV-Fb-RA3"/>
                             <constraint firstItem="q3C-RH-bcI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UWh-KT-w5P"/>
@@ -259,7 +259,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z2U-9G-xXa">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z2U-9G-xXa">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="289"/>
                                 <subviews>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jbx-DH-fzS">
@@ -427,7 +427,7 @@
                         <constraints>
                             <constraint firstItem="Z2U-9G-xXa" firstAttribute="centerX" secondItem="O7b-Fg-RYl" secondAttribute="centerX" id="3aC-yw-X4o"/>
                             <constraint firstItem="Z2U-9G-xXa" firstAttribute="width" secondItem="O7b-Fg-RYl" secondAttribute="width" id="QLn-tP-97e"/>
-                            <constraint firstItem="Z2U-9G-xXa" firstAttribute="top" secondItem="J7l-Pt-LGs" secondAttribute="bottom" id="ecs-dv-oXB"/>
+                            <constraint firstItem="Z2U-9G-xXa" firstAttribute="top" secondItem="J7l-Pt-LGs" secondAttribute="bottom" constant="-20" id="ecs-dv-oXB"/>
                         </constraints>
                     </view>
                     <connections>
@@ -723,14 +723,8 @@
                             <constraint firstItem="vg4-LX-Bhu" firstAttribute="leading" secondItem="l2Y-lf-zMZ" secondAttribute="leading" id="XwZ-Ze-GRK"/>
                             <constraint firstAttribute="trailing" secondItem="vg4-LX-Bhu" secondAttribute="trailing" id="ZW8-KL-qqm"/>
                             <constraint firstItem="vg4-LX-Bhu" firstAttribute="top" secondItem="B5u-gh-gF7" secondAttribute="bottom" id="lx3-TZ-C9K"/>
-                            <constraint firstItem="Iyz-5V-ugS" firstAttribute="top" secondItem="vg4-LX-Bhu" secondAttribute="bottom" constant="8" id="rNW-IR-ea6"/>
                             <constraint firstItem="1f5-Lh-9TK" firstAttribute="top" secondItem="Iyz-5V-ugS" secondAttribute="bottom" constant="8" id="vZm-Uq-6Oo"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="rNW-IR-ea6"/>
-                            </mask>
-                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="13Z-Uy-mki"/>
                     <navigationItem key="navigationItem" id="HUR-gB-fnV"/>

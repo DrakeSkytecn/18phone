@@ -34,7 +34,7 @@ class RootViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        //navigationController?.setNavigationBarHidden(true, animated: false)
+        
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -96,10 +96,9 @@ class RootViewController: UIViewController {
      - parameter height: 移动的距离，默认传入拨号盘的高度
      */
     private func resetMenuY(height: CGFloat) {
-        var rect = self.menuView.frame
+        var rect = menuView.frame
         rect.origin.y = rect.origin.y + height
-        self.menuView.frame = rect
-        isMenuShow = true
+        menuView.frame = rect
     }
     
     /**
@@ -144,7 +143,7 @@ class RootViewController: UIViewController {
             alertController.addAction(UIAlertAction(title: "取消", style: .Cancel) { action in
                 SwiftEventBus.post("showCallCon")
                 })
-            SwiftEventBus.post("hideCallCon")
+            //SwiftEventBus.post("hideCallCon")
             presentViewController(alertController, animated: true, completion: nil)
         }
     }
