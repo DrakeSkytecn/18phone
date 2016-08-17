@@ -26,8 +26,10 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 15 images.
+  /// This `R.image` struct is generated, and contains static references to 17 images.
   struct image {
+    /// Image `answer`.
+    static let answer = ImageResource(bundle: _R.hostingBundle, name: "answer")
     /// Image `call`.
     static let call = ImageResource(bundle: _R.hostingBundle, name: "call")
     /// Image `call_in`.
@@ -46,6 +48,8 @@ struct R: Rswift.Validatable {
     static let dial_tab = ImageResource(bundle: _R.hostingBundle, name: "dial_tab")
     /// Image `dial_up`.
     static let dial_up = ImageResource(bundle: _R.hostingBundle, name: "dial_up")
+    /// Image `hang_up`.
+    static let hang_up = ImageResource(bundle: _R.hostingBundle, name: "hang_up")
     /// Image `head_photo_default`.
     static let head_photo_default = ImageResource(bundle: _R.hostingBundle, name: "head_photo_default")
     /// Image `message`.
@@ -58,6 +62,11 @@ struct R: Rswift.Validatable {
     static let video_call = ImageResource(bundle: _R.hostingBundle, name: "video_call")
     /// Image `voice_call`.
     static let voice_call = ImageResource(bundle: _R.hostingBundle, name: "voice_call")
+    
+    /// `UIImage(named: "answer", bundle: ..., traitCollection: ...)`
+    static func answer(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.answer, compatibleWithTraitCollection: traitCollection)
+    }
     
     /// `UIImage(named: "call", bundle: ..., traitCollection: ...)`
     static func call(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
@@ -102,6 +111,11 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "dial_up", bundle: ..., traitCollection: ...)`
     static func dial_up(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.dial_up, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "hang_up", bundle: ..., traitCollection: ...)`
+    static func hang_up(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.hang_up, compatibleWithTraitCollection: traitCollection)
     }
     
     /// `UIImage(named: "head_photo_default", bundle: ..., traitCollection: ...)`
@@ -270,7 +284,9 @@ struct _R: Rswift.Validatable {
       let b = StoryboardViewControllerResource<UIViewController>(identifier: "B")
       let bundle = _R.hostingBundle
       let dialViewController = StoryboardViewControllerResource<DialView1Controller>(identifier: "DialViewController")
+      let incomingCallViewController = StoryboardViewControllerResource<IncomingCallViewController>(identifier: "IncomingCallViewController")
       let name = "Main"
+      let outgoingCallViewController = StoryboardViewControllerResource<OutgoingCallViewController>(identifier: "OutgoingCallViewController")
       
       func b(_: Void) -> UIViewController? {
         return UIStoryboard(resource: self).instantiateViewController(b)
@@ -280,16 +296,28 @@ struct _R: Rswift.Validatable {
         return UIStoryboard(resource: self).instantiateViewController(dialViewController)
       }
       
+      func incomingCallViewController(_: Void) -> IncomingCallViewController? {
+        return UIStoryboard(resource: self).instantiateViewController(incomingCallViewController)
+      }
+      
+      func outgoingCallViewController(_: Void) -> OutgoingCallViewController? {
+        return UIStoryboard(resource: self).instantiateViewController(outgoingCallViewController)
+      }
+      
       static func validate() throws {
         if UIImage(named: "call") == nil { throw ValidationError(description: "[R.swift] Image named 'call' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "message") == nil { throw ValidationError(description: "[R.swift] Image named 'message' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "dial") == nil { throw ValidationError(description: "[R.swift] Image named 'dial' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "answer") == nil { throw ValidationError(description: "[R.swift] Image named 'answer' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "hang_up") == nil { throw ValidationError(description: "[R.swift] Image named 'hang_up' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "shop") == nil { throw ValidationError(description: "[R.swift] Image named 'shop' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "dial_tab") == nil { throw ValidationError(description: "[R.swift] Image named 'dial_tab' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIImage(named: "dial_down") == nil { throw ValidationError(description: "[R.swift] Image named 'dial_down' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "dial_up") == nil { throw ValidationError(description: "[R.swift] Image named 'dial_up' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "delete_all") == nil { throw ValidationError(description: "[R.swift] Image named 'delete_all' is used in storyboard 'Main', but couldn't be loaded.") }
         if _R.storyboard.main().b() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'b' could not be loaded from storyboard 'Main' as 'UIViewController'.") }
         if _R.storyboard.main().dialViewController() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'dialViewController' could not be loaded from storyboard 'Main' as 'DialView1Controller'.") }
+        if _R.storyboard.main().outgoingCallViewController() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'outgoingCallViewController' could not be loaded from storyboard 'Main' as 'OutgoingCallViewController'.") }
+        if _R.storyboard.main().incomingCallViewController() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'incomingCallViewController' could not be loaded from storyboard 'Main' as 'IncomingCallViewController'.") }
       }
       
       private init() {}

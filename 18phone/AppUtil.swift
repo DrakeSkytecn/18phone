@@ -16,6 +16,9 @@ import RealmSwift
 struct URL {
     /// 百度提供的查询号码归属地api
     static let phoneAreaUrl = "http://apis.baidu.com/apistore/mobilenumber/mobilenumber"
+    
+    /// 比一比SIP服务器地址
+    static let BEYEBE_SIP_SERVER = "192.168.10.129"
 }
 
 /**
@@ -26,6 +29,21 @@ struct App {
     static let appDelegate = application.delegate as! AppDelegate
     static let APIStoreKey = "1fc3cdcb8b5ec8466b083a04a9b4e1a8"
     static let realm = try! Realm()
+    static let userAgent = GSUserAgent.sharedAgent()
+    static let userAgentAccount = GSUserAgent.sharedAgent().account
+    static func initUserAgent(username: String, password: String) {
+        let userAgent = GSUserAgent.sharedAgent()
+        let configuration = GSConfiguration.defaultConfiguration()
+        let accountConfiguration = GSAccountConfiguration.defaultConfiguration()
+        accountConfiguration.address = username + "@" + URL.BEYEBE_SIP_SERVER
+        accountConfiguration.username = username
+        accountConfiguration.password = password
+        accountConfiguration.domain = URL.BEYEBE_SIP_SERVER
+        accountConfiguration.proxyServer = URL.BEYEBE_SIP_SERVER
+        configuration.account = accountConfiguration
+        userAgent.configure(configuration)
+        userAgent.start()
+    }
 }
 
 /**

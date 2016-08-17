@@ -10,13 +10,15 @@ import UIKit
 import SwiftEventBus
 
 /// 拨号页面根控制器
-class RootViewController: UIViewController {
+class RootViewController: UIViewController, GSAccountDelegate {
 
+    @IBOutlet weak var menuConstraint: NSLayoutConstraint!
+    
     /// 用于判断拨号盘是否展开
     private var isMenuShow: Bool = false
     
     /// 用于判断拨号页面是否显示
-    private var isViewHidden: Bool = true
+    private var isViewHidden: Bool = false
     
     /// 拨号盘
     @IBOutlet weak var menuView: UIView!
@@ -27,10 +29,12 @@ class RootViewController: UIViewController {
     /// 通讯录子页容器
     @IBOutlet weak var bContainer: UIView!
     
-    var dialViewController = R.storyboard.main.dialViewController()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        menuConstraint.constant = Screen.height - 49
+        App.userAgentAccount.delegate = self
+        App.userAgentAccount.addObserver(self, forKeyPath: "status", options: .Initial, context: nil)
+        App.userAgentAccount.connect()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -38,9 +42,6 @@ class RootViewController: UIViewController {
     }
 
     override func viewDidAppear(animated: Bool) {
-//        if !isMenuShow {
-//            resetMenuY(-menuView.frame.height)
-//        }
         isViewHidden = false
     }
     
@@ -65,6 +66,7 @@ class RootViewController: UIViewController {
                 item.selectedImage = R.image.dial_up()
                 item.title = "展开"
             } else {
+                print("收起")
                 show()
                 item.selectedImage = R.image.dial_down()
                 item.title = "收起"
@@ -145,6 +147,35 @@ class RootViewController: UIViewController {
                 })
             //SwiftEventBus.post("hideCallCon")
             presentViewController(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    func statusDidChange() {
+        switch App.userAgentAccount.status {
+        case GSAccountStatusOffline:
+            print("Offline")
+            break
+        case GSAccountStatusConnecting:
+            print("Connecting")
+            break
+        case GSAccountStatusConnected:
+            print("Connected")
+            break
+        case GSAccountStatusDisconnecting:
+            print("Disconnecting")
+            break
+        default:
+            break
+        }
+    }
+    
+    func account(account: GSAccount!, didReceiveIncomingCall call: GSCall!) {
+        print("didReceiveIncomingCall")
+    }
+    
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        if keyPath == "status" {
+            statusDidChange()
         }
     }
 }

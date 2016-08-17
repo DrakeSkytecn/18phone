@@ -26,10 +26,7 @@ class KTabBarController: UITabBarController {
     override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
         switch item.tag {
         case 1:
-            item.selectedImage = R.image.dial_down()
-            item.title = "收起"
             (viewControllers![1].childViewControllers[0] as! RootViewController).changeMenuState(item)
-            
         default:
             tabBar.items![1].title = "拨打"
             break

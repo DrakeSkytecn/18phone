@@ -150,31 +150,19 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
      */
     @IBAction func call(sender: UIButton) {
         if PhoneUtil.isMobileNumber(numberText.text) || PhoneUtil.isTelephoneNumber(numberText.text) {
-            UIApplication.sharedApplication().openURL(NSURL(string: "tel://" + numberText.text!)!)
+
+            
+//            UIApplication.sharedApplication().openURL(NSURL(string: "tel://" + numberText.text!)!)
             
         } else {
-            UIApplication.sharedApplication().openURL(NSURL(string: "tel://" + numberText.text!)!)
+//            UIApplication.sharedApplication().openURL(NSURL(string: "tel://" + numberText.text!)!)
         }
-        let callLog = CallLog()
-        callLog.name = "James"
-        callLog.phone = numberText.text!
-        callLog.callState = 0
-        callLog.callStartTime = DateUtil.getCurrentDate()
-        if tempArea != nil {
-            callLog.area = tempArea!
-        }
-        try! App.realm.write {
-            App.realm.add(callLog)
-        }
+        
+        let outgoingCallViewController = R.storyboard.main.outgoingCallViewController()
+        outgoingCallViewController?.toNumber = numberText.text
+        outgoingCallViewController?.contactName = "James"
+        outgoingCallViewController?.phoneArea = tempArea
+        presentViewController(outgoingCallViewController!, animated: true, completion: nil)
+        
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

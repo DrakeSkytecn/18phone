@@ -15,6 +15,8 @@
 		E11E92941D5F2C9F004D634A /* DialView1Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11E92931D5F2C9F004D634A /* DialView1Controller.swift */; };
 		E12EBA811D531FF3007B5CBD /* CallLogACell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12EBA801D531FF3007B5CBD /* CallLogACell.swift */; };
 		E12EBA841D532447007B5CBD /* piQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12EBA831D532447007B5CBD /* piQ.swift */; };
+		E138D0771D6301EA0091AF4A /* OutgoingCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E138D0761D6301EA0091AF4A /* OutgoingCallViewController.swift */; };
+		E138D0791D630B7A0091AF4A /* IncomingCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E138D0781D630B7A0091AF4A /* IncomingCallViewController.swift */; };
 		E13BACC21D518F5200414ACE /* AppUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACC11D518F5200414ACE /* AppUtil.swift */; };
 		E13BACC71D518FDE00414ACE /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACC61D518FDE00414ACE /* Async.swift */; };
 		E13BACC91D518FE500414ACE /* JSONJoy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACC81D518FE500414ACE /* JSONJoy.swift */; };
@@ -56,6 +58,8 @@
 		E11E92931D5F2C9F004D634A /* DialView1Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialView1Controller.swift; sourceTree = "<group>"; };
 		E12EBA801D531FF3007B5CBD /* CallLogACell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallLogACell.swift; sourceTree = "<group>"; };
 		E12EBA831D532447007B5CBD /* piQ.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = piQ.swift; sourceTree = "<group>"; };
+		E138D0761D6301EA0091AF4A /* OutgoingCallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutgoingCallViewController.swift; sourceTree = "<group>"; };
+		E138D0781D630B7A0091AF4A /* IncomingCallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomingCallViewController.swift; sourceTree = "<group>"; };
 		E13BACC11D518F5200414ACE /* AppUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUtil.swift; sourceTree = "<group>"; };
 		E13BACC61D518FDE00414ACE /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
 		E13BACC81D518FE500414ACE /* JSONJoy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONJoy.swift; sourceTree = "<group>"; };
@@ -195,6 +199,8 @@
 				E13BACD91D51946B00414ACE /* CallLogViewController.swift */,
 				E114D1C51D4F1F15006AB978 /* ViewController.swift */,
 				E11E92931D5F2C9F004D634A /* DialView1Controller.swift */,
+				E138D0761D6301EA0091AF4A /* OutgoingCallViewController.swift */,
+				E138D0781D630B7A0091AF4A /* IncomingCallViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -391,6 +397,7 @@
 				E13BACC91D518FE500414ACE /* JSONJoy.swift in Sources */,
 				E13BACDB1D51946B00414ACE /* KTabBarController.swift in Sources */,
 				E13BACE21D5196EE00414ACE /* DialNumberCell.swift in Sources */,
+				E138D0791D630B7A0091AF4A /* IncomingCallViewController.swift in Sources */,
 				E19AAD461D51DF6A0053D2C3 /* CallConView.swift in Sources */,
 				E13BACDC1D51946B00414ACE /* DialViewController.swift in Sources */,
 				E13BACE31D5196EE00414ACE /* DialIconCell.swift in Sources */,
@@ -401,6 +408,7 @@
 				E13BACDD1D51946B00414ACE /* CallLogViewController.swift in Sources */,
 				E13BACCF1D518FF000414ACE /* HTTPSecurity.swift in Sources */,
 				E13BACE71D51977C00414ACE /* R.generated.swift in Sources */,
+				E138D0771D6301EA0091AF4A /* OutgoingCallViewController.swift in Sources */,
 				E13BACC71D518FDE00414ACE /* Async.swift in Sources */,
 				E13BACD31D518FF000414ACE /* Upload.swift in Sources */,
 				E11E92941D5F2C9F004D634A /* DialView1Controller.swift in Sources */,
