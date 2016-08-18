@@ -95,6 +95,7 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
             if PhoneUtil.isNumber(paste.string) {
                 numberText.text = paste.string
                 addContactBtn.hidden = false
+                checkNumberArea(paste.string)
             } else {
                 
             }
@@ -150,19 +151,14 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
      */
     @IBAction func call(sender: UIButton) {
         if PhoneUtil.isMobileNumber(numberText.text) || PhoneUtil.isTelephoneNumber(numberText.text) {
-
             
-//            UIApplication.sharedApplication().openURL(NSURL(string: "tel://" + numberText.text!)!)
-            
+            let outgoingCallViewController = R.storyboard.main.outgoingCallViewController()
+            outgoingCallViewController?.toNumber = numberText.text
+            outgoingCallViewController?.contactName = "James"
+            outgoingCallViewController?.phoneArea = tempArea
+            presentViewController(outgoingCallViewController!, animated: true, completion: nil)
         } else {
-//            UIApplication.sharedApplication().openURL(NSURL(string: "tel://" + numberText.text!)!)
+            UIApplication.sharedApplication().openURL(NSURL(string: "tel://" + numberText.text!)!)
         }
-        
-        let outgoingCallViewController = R.storyboard.main.outgoingCallViewController()
-        outgoingCallViewController?.toNumber = numberText.text
-        outgoingCallViewController?.contactName = "James"
-        outgoingCallViewController?.phoneArea = tempArea
-        presentViewController(outgoingCallViewController!, animated: true, completion: nil)
-        
     }
 }

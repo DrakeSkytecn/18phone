@@ -13,12 +13,13 @@ class OutgoingCallViewController: UIViewController {
     var toNumber: String?
     var contactName: String?
     var phoneArea: String?
+    var outCall:GSCall?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let account = GSUserAgent.sharedAgent().account
-        let call = GSCall.outgoingCallToUri(toNumber! + "@" + URL.BEYEBE_SIP_SERVER, fromAccount: account)
+        outCall = GSCall.outgoingCallToUri(toNumber! + "@" + URL.BEYEBE_SIP_DOMAIN, fromAccount: account)
+        outCall?.addObserver(self, forKeyPath: "status", options: .Initial, context: nil)
         let callLog = CallLog()
         callLog.name = "James"
         callLog.phone = toNumber!
@@ -31,9 +32,8 @@ class OutgoingCallViewController: UIViewController {
             App.realm.add(callLog)
         }
         Async.main(after: 1) {
-            call.begin()
+            self.outCall?.begin()
         }
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,17 +42,46 @@ class OutgoingCallViewController: UIViewController {
     }
     
     @IBAction func hangup(sender: UIButton) {
+        outCall?.end()
         dismissViewControllerAnimated(true, completion: nil)
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func callStatusDidChange() {
+        switch outCall!.status {
+        case GSCallStatusReady:
+            print("OutgoingCallViewController Ready.")
+            break
+            
+        case GSCallStatusConnecting:
+            print("OutgoingCallViewController Connecting...")
+            break
+            
+        case GSCallStatusCalling:
+            print("OutgoingCallViewController Calling...")
+            break
+            
+        case GSCallStatusConnected:
+            print("OutgoingCallViewController Connected.")
+            break
+            
+        case GSCallStatusDisconnected:
+            print("OutgoingCallViewController Disconnected.")
+            dismissViewControllerAnimated(true, completion: nil)
+            break
+            
+        default:
+            break
+        }
     }
-    */
-
+    
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        if keyPath == "status" {
+            callStatusDidChange()
+        }
+    }
+    
+    deinit {
+        outCall?.removeObserver(self, forKeyPath: "status")
+        print("OutgoingCallViewController deinit")
+    }
 }

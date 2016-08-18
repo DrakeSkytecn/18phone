@@ -823,7 +823,6 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="hangup:" destination="Mw7-jX-l0b" eventType="touchUpInside" id="ICT-Sv-aVq"/>
                                             <action selector="hangup:" destination="LJ3-W9-bqD" eventType="touchUpInside" id="aVo-1R-TgZ"/>
                                         </connections>
                                     </button>
@@ -847,6 +846,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <action selector="answer:" destination="LJ3-W9-bqD" eventType="touchUpInside" id="Hyv-E9-X4j"/>
                                             <action selector="hangup:" destination="Mw7-jX-l0b" eventType="touchUpInside" id="Ltd-Xz-NEU"/>
                                         </connections>
                                     </button>
@@ -880,7 +880,6 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="hangup:" destination="Mw7-jX-l0b" eventType="touchUpInside" id="kXT-EB-XHU"/>
                                             <action selector="hangup:" destination="LJ3-W9-bqD" eventType="touchUpInside" id="yOg-jV-aev"/>
                                         </connections>
                                     </button>

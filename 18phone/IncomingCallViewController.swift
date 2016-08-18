@@ -10,9 +10,13 @@ import UIKit
 
 class IncomingCallViewController: UIViewController {
 
+    var inCall: GSCall?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        inCall?.addObserver(self, forKeyPath: "status", options: .Initial, context: nil)
+        
         // Do any additional setup after loading the view.
     }
 
@@ -22,17 +26,51 @@ class IncomingCallViewController: UIViewController {
     }
     
     @IBAction func hangup(sender: UIButton) {
+        inCall?.end()
         dismissViewControllerAnimated(true, completion: nil)
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func answer(sender: UIButton) {
+        self.inCall?.begin()
     }
-    */
+    
+    func callStatusDidChange() {
+        switch inCall!.status {
+        case GSCallStatusReady:
+            print("IncomingCallViewController Ready.")
+            break
+            
+        case GSCallStatusConnecting:
+            print("IncomingCallViewController Connecting...")
+            break
+            
+        case GSCallStatusCalling:
+            print("IncomingCallViewController Calling...")
+            break
+            
+        case GSCallStatusConnected:
+            print("IncomingCallViewController Connected.")
+            break
+            
+        case GSCallStatusDisconnected:
+            print("IncomingCallViewController Disconnected.")
+            dismissViewControllerAnimated(true, completion: nil)
+            break
+            
+        default:
+            break
+        }
+    }
+    
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        if keyPath == "status" {
+            callStatusDidChange()
+        }
+    }
+    
+    deinit {
+        inCall?.removeObserver(self, forKeyPath: "status")
+        print("OutgoingCallViewController deinit")
+    }
 
 }

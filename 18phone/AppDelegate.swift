@@ -15,9 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
         window?.backgroundColor = UIColor.whiteColor()
-        App.initUserAgent("100", password: "100")
+        App.initUserAgent("18603001016", password: "123")
         
         return true
     }
