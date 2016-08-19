@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftEventBus
 
 class OutgoingCallViewController: UIViewController {
 
@@ -20,17 +21,6 @@ class OutgoingCallViewController: UIViewController {
         let account = GSUserAgent.sharedAgent().account
         outCall = GSCall.outgoingCallToUri(toNumber! + "@" + URL.BEYEBE_SIP_DOMAIN, fromAccount: account)
         outCall?.addObserver(self, forKeyPath: "status", options: .Initial, context: nil)
-        let callLog = CallLog()
-        callLog.name = "James"
-        callLog.phone = toNumber!
-        callLog.callState = 0
-        callLog.callStartTime = DateUtil.getCurrentDate()
-        if phoneArea != nil {
-            callLog.area = phoneArea!
-        }
-        try! App.realm.write {
-            App.realm.add(callLog)
-        }
         Async.main(after: 1) {
             self.outCall?.begin()
         }
@@ -66,7 +56,20 @@ class OutgoingCallViewController: UIViewController {
             
         case GSCallStatusDisconnected:
             print("OutgoingCallViewController Disconnected.")
-            dismissViewControllerAnimated(true, completion: nil)
+            let callLog = CallLog()
+            callLog.name = "James"
+            callLog.phone = toNumber!
+            callLog.callState = 0
+            callLog.callType = 0
+            callLog.callStartTime = DateUtil.getCurrentDate()
+            if phoneArea != nil {
+                callLog.area = phoneArea!
+            }
+            try! App.realm.write {
+                App.realm.add(callLog)
+            }
+            SwiftEventBus.post("reloadCallLogs")
+            
             break
             
         default:

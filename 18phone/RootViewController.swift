@@ -170,6 +170,8 @@ class RootViewController: UIViewController, GSAccountDelegate {
     }
     
     func account(account: GSAccount!, didReceiveIncomingCall call: GSCall!) {
+        print(account.configuration().address)
+        print(call.account.configuration().address)
         let incomingCallViewController = R.storyboard.main.incomingCallViewController()
         incomingCallViewController?.inCall = call
         presentViewController(incomingCallViewController!, animated: true, completion: nil)

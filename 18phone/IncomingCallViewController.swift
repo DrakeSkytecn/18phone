@@ -16,7 +16,6 @@ class IncomingCallViewController: UIViewController {
         super.viewDidLoad()
         
         inCall?.addObserver(self, forKeyPath: "status", options: .Initial, context: nil)
-        
         // Do any additional setup after loading the view.
     }
 
@@ -54,6 +53,18 @@ class IncomingCallViewController: UIViewController {
             
         case GSCallStatusDisconnected:
             print("IncomingCallViewController Disconnected.")
+//            let callLog = CallLog()
+//            callLog.name = "James"
+//            callLog.phone = toNumber!
+//            callLog.callState = 0
+//            callLog.callType = 0
+//            callLog.callStartTime = DateUtil.getCurrentDate()
+//            if phoneArea != nil {
+//                callLog.area = phoneArea!
+//            }
+//            try! App.realm.write {
+//                App.realm.add(callLog)
+//            }
             dismissViewControllerAnimated(true, completion: nil)
             break
             
