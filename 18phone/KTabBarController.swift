@@ -15,7 +15,6 @@ class KTabBarController: UITabBarController {
         super.viewDidLoad()
         //tabBar.tintColor = UIColor(red: 0, green: 128, blue: 0, alpha: 1)
         selectedIndex = 1
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

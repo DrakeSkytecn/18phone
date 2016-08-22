@@ -18,6 +18,7 @@ class OutgoingCallViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("OutgoingCallViewController viewDidLoad")
         let account = GSUserAgent.sharedAgent().account
         outCall = GSCall.outgoingCallToUri(toNumber! + "@" + URL.BEYEBE_SIP_DOMAIN, fromAccount: account)
         outCall?.addObserver(self, forKeyPath: "status", options: .Initial, context: nil)
@@ -33,7 +34,6 @@ class OutgoingCallViewController: UIViewController {
     
     @IBAction func hangup(sender: UIButton) {
         outCall?.end()
-        dismissViewControllerAnimated(true, completion: nil)
     }
 
     func callStatusDidChange() {
@@ -69,6 +69,8 @@ class OutgoingCallViewController: UIViewController {
                 App.realm.add(callLog)
             }
             SwiftEventBus.post("reloadCallLogs")
+            
+            dismissViewControllerAnimated(true, completion: nil)
             
             break
             

@@ -35,6 +35,12 @@
 		E13BACE31D5196EE00414ACE /* DialIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACE11D5196EE00414ACE /* DialIconCell.swift */; };
 		E13BACE51D51974900414ACE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E13BACE41D51974900414ACE /* Assets.xcassets */; };
 		E13BACE71D51977C00414ACE /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACE61D51977C00414ACE /* R.generated.swift */; };
+		E16453EA1D6AA3150036B53F /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16453E91D6AA3150036B53F /* Contact.swift */; };
+		E16453F41D6AF2E70036B53F /* libopenh264.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E16453F11D6AF2E70036B53F /* libopenh264.a */; };
+		E16453F51D6AF2E70036B53F /* libyuv_neon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E16453F21D6AF2E70036B53F /* libyuv_neon.a */; };
+		E16453F61D6AF2E70036B53F /* libyuv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E16453F31D6AF2E70036B53F /* libyuv.a */; };
+		E16453F91D6AFEC30036B53F /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E16453F71D6AFEC30036B53F /* libcrypto.a */; };
+		E16453FA1D6AFEC30036B53F /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E16453F81D6AFEC30036B53F /* libssl.a */; };
 		E19AAD441D51DF480053D2C3 /* CallConView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E19AAD431D51DF480053D2C3 /* CallConView.xib */; };
 		E19AAD461D51DF6A0053D2C3 /* CallConView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19AAD451D51DF690053D2C3 /* CallConView.swift */; };
 		E1DFA1871D5B6ADD001A014F /* libGossip.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1DFA1861D5B6ADD001A014F /* libGossip.a */; };
@@ -78,6 +84,15 @@
 		E13BACE11D5196EE00414ACE /* DialIconCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialIconCell.swift; sourceTree = "<group>"; };
 		E13BACE41D51974900414ACE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E13BACE61D51977C00414ACE /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		E16453E91D6AA3150036B53F /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		E16453EB1D6AEE890036B53F /* libopenh264.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopenh264.a; path = ../../../../../usr/local/lib/libopenh264.a; sourceTree = "<group>"; };
+		E16453ED1D6AF24E0036B53F /* libyuv_neon.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libyuv_neon.a; path = gossip/pjsip/lib/libyuv_neon.a; sourceTree = "<group>"; };
+		E16453EE1D6AF24E0036B53F /* libyuv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libyuv.a; path = gossip/pjsip/lib/libyuv.a; sourceTree = "<group>"; };
+		E16453F11D6AF2E70036B53F /* libopenh264.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopenh264.a; path = lib/libopenh264.a; sourceTree = "<group>"; };
+		E16453F21D6AF2E70036B53F /* libyuv_neon.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libyuv_neon.a; path = lib/libyuv_neon.a; sourceTree = "<group>"; };
+		E16453F31D6AF2E70036B53F /* libyuv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libyuv.a; path = lib/libyuv.a; sourceTree = "<group>"; };
+		E16453F71D6AFEC30036B53F /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = lib/libcrypto.a; sourceTree = "<group>"; };
+		E16453F81D6AFEC30036B53F /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = lib/libssl.a; sourceTree = "<group>"; };
 		E16CCDF71D601ED2008BEC5D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E16CCDF91D601EF6008BEC5D /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		E19AAD431D51DF480053D2C3 /* CallConView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CallConView.xib; sourceTree = "<group>"; };
@@ -96,6 +111,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E16453F91D6AFEC30036B53F /* libcrypto.a in Frameworks */,
+				E16453FA1D6AFEC30036B53F /* libssl.a in Frameworks */,
+				E16453F41D6AF2E70036B53F /* libopenh264.a in Frameworks */,
+				E16453F51D6AF2E70036B53F /* libyuv_neon.a in Frameworks */,
+				E16453F61D6AF2E70036B53F /* libyuv.a in Frameworks */,
 				E1DFA1911D5B6BE1001A014F /* CoreVideo.framework in Frameworks */,
 				E1DFA18F1D5B6BD5001A014F /* CoreMedia.framework in Frameworks */,
 				E1DFA18D1D5B6BB7001A014F /* AudioToolbox.framework in Frameworks */,
@@ -112,6 +132,14 @@
 		A13A5015FDD7155192CC0662 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E16453F71D6AFEC30036B53F /* libcrypto.a */,
+				E16453F81D6AFEC30036B53F /* libssl.a */,
+				E16453F11D6AF2E70036B53F /* libopenh264.a */,
+				E16453F21D6AF2E70036B53F /* libyuv_neon.a */,
+				E16453F31D6AF2E70036B53F /* libyuv.a */,
+				E16453ED1D6AF24E0036B53F /* libyuv_neon.a */,
+				E16453EE1D6AF24E0036B53F /* libyuv.a */,
+				E16453EB1D6AEE890036B53F /* libopenh264.a */,
 				E16CCDF91D601EF6008BEC5D /* CoreFoundation.framework */,
 				E16CCDF71D601ED2008BEC5D /* Foundation.framework */,
 				E1DFA1901D5B6BE1001A014F /* CoreVideo.framework */,
@@ -222,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				E13BACD41D51907600414ACE /* CallLog.swift */,
+				E16453E91D6AA3150036B53F /* Contact.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -395,6 +424,7 @@
 			files = (
 				E12EBA811D531FF3007B5CBD /* CallLogACell.swift in Sources */,
 				E13BACC91D518FE500414ACE /* JSONJoy.swift in Sources */,
+				E16453EA1D6AA3150036B53F /* Contact.swift in Sources */,
 				E13BACDB1D51946B00414ACE /* KTabBarController.swift in Sources */,
 				E13BACE21D5196EE00414ACE /* DialNumberCell.swift in Sources */,
 				E138D0791D630B7A0091AF4A /* IncomingCallViewController.swift in Sources */,
@@ -531,6 +561,11 @@
 				INFOPLIST_FILE = 18phone/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/gossip/pjsip/lib",
+					"$(PROJECT_DIR)/lib",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kratos.18phone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -552,6 +587,11 @@
 				INFOPLIST_FILE = 18phone/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/gossip/pjsip/lib",
+					"$(PROJECT_DIR)/lib",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kratos.18phone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

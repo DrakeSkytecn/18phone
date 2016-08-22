@@ -12,11 +12,13 @@ class IncomingCallViewController: UIViewController {
 
     var inCall: GSCall?
     
+    /// 接通前显示来电信息，接通后显示通话时间
+    @IBOutlet weak var infoText: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        infoText.text = inCall?.incomingCallInfo()
         inCall?.addObserver(self, forKeyPath: "status", options: .Initial, context: nil)
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
