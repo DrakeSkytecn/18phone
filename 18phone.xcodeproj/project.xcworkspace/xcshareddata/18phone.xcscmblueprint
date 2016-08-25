@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "21E33912483FF32F3E08995E8E359A56A41925B1",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "21E33912483FF32F3E08995E8E359A56A41925B1" : 0,
+    "E6D66735CE6FC1586FFE099FD28E4FCADA1AAB68" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "93CBF90E-500C-4AA2-8021-016790130616",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "21E33912483FF32F3E08995E8E359A56A41925B1" : "18phone\/",
+    "E6D66735CE6FC1586FFE099FD28E4FCADA1AAB68" : "18phone\/R.swift.Library\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "18phone",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "18phone.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:daiKratos\/18phone.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "21E33912483FF32F3E08995E8E359A56A41925B1"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/mac-cain13\/R.swift.Library.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E6D66735CE6FC1586FFE099FD28E4FCADA1AAB68"
+    }
+  ]
+}

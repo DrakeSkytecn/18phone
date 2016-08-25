@@ -8,7 +8,6 @@
 
 import UIKit
 import RealmSwift
-import SwiftEventBus
 
 class CallLogViewController: UITableViewController {
 
@@ -70,11 +69,14 @@ class CallLogViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let callLog = callLogs![indexPath.row]
-        let outgoingCallViewController = R.storyboard.main.outgoingCallViewController()
-        outgoingCallViewController?.toNumber = callLog.phone
-        outgoingCallViewController?.contactName = "James"
-        outgoingCallViewController?.phoneArea = callLog.area
-        presentViewController(outgoingCallViewController!, animated: true, completion: nil)
+//        let outgoingCallViewController = R.storyboard.main.outgoingCallViewController()
+//        outgoingCallViewController?.toNumber = callLog.phone
+//        outgoingCallViewController?.contactName = "James"
+//        outgoingCallViewController?.phoneArea = callLog.area
+//        presentViewController(outgoingCallViewController!, animated: true, completion: nil)
+        let outgoingVideoViewController = OutgoingVideoViewController()
+        outgoingVideoViewController.toNumber = callLog.phone
+        presentViewController(outgoingVideoViewController, animated: true, completion: nil)
     }
 
     /*

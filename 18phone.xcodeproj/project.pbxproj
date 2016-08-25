@@ -11,6 +11,9 @@
 		E114D1C41D4F1F15006AB978 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E114D1C31D4F1F15006AB978 /* AppDelegate.swift */; };
 		E114D1C61D4F1F15006AB978 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E114D1C51D4F1F15006AB978 /* ViewController.swift */; };
 		E114D1CE1D4F1F15006AB978 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E114D1CC1D4F1F15006AB978 /* LaunchScreen.storyboard */; };
+		E115A0441D6D762C005FCB8F /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = E1159FDF1D6D762C005FCB8F /* LICENSE */; };
+		E115A0451D6D762C005FCB8F /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = E1159FE01D6D762C005FCB8F /* README.md */; };
+		E115A0461D6D762C005FCB8F /* SwiftEventBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1159FE21D6D762C005FCB8F /* SwiftEventBus.swift */; };
 		E11E92921D5EBBAB004D634A /* DialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E11E92911D5EBBAB004D634A /* DialView.xib */; };
 		E11E92941D5F2C9F004D634A /* DialView1Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11E92931D5F2C9F004D634A /* DialView1Controller.swift */; };
 		E12EBA811D531FF3007B5CBD /* CallLogACell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12EBA801D531FF3007B5CBD /* CallLogACell.swift */; };
@@ -35,21 +38,69 @@
 		E13BACE31D5196EE00414ACE /* DialIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACE11D5196EE00414ACE /* DialIconCell.swift */; };
 		E13BACE51D51974900414ACE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E13BACE41D51974900414ACE /* Assets.xcassets */; };
 		E13BACE71D51977C00414ACE /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACE61D51977C00414ACE /* R.generated.swift */; };
+		E13D21411D6EC78000C6EA98 /* libpj-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E13D21401D6EC78000C6EA98 /* libpj-arm-apple-darwin9.a */; };
+		E13D21431D6EC78500C6EA98 /* libpjlib-util-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E13D21421D6EC78500C6EA98 /* libpjlib-util-arm-apple-darwin9.a */; };
+		E13D21491D6EC78E00C6EA98 /* libpjmedia-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E13D21441D6EC78E00C6EA98 /* libpjmedia-arm-apple-darwin9.a */; };
+		E13D214A1D6EC78E00C6EA98 /* libpjmedia-audiodev-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E13D21451D6EC78E00C6EA98 /* libpjmedia-audiodev-arm-apple-darwin9.a */; };
+		E13D214B1D6EC78E00C6EA98 /* libpjmedia-codec-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E13D21461D6EC78E00C6EA98 /* libpjmedia-codec-arm-apple-darwin9.a */; };
+		E13D214C1D6EC78E00C6EA98 /* libpjmedia-videodev-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E13D21471D6EC78E00C6EA98 /* libpjmedia-videodev-arm-apple-darwin9.a */; };
+		E13D214D1D6EC78E00C6EA98 /* libpjsdp-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E13D21481D6EC78E00C6EA98 /* libpjsdp-arm-apple-darwin9.a */; };
+		E13D214F1D6EC79900C6EA98 /* libpjnath-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E13D214E1D6EC79900C6EA98 /* libpjnath-arm-apple-darwin9.a */; };
+		E13D21551D6EC7A200C6EA98 /* libpjsip-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E13D21501D6EC7A200C6EA98 /* libpjsip-arm-apple-darwin9.a */; };
+		E13D21561D6EC7A200C6EA98 /* libpjsip-simple-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E13D21511D6EC7A200C6EA98 /* libpjsip-simple-arm-apple-darwin9.a */; };
+		E13D21571D6EC7A200C6EA98 /* libpjsip-ua-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E13D21521D6EC7A200C6EA98 /* libpjsip-ua-arm-apple-darwin9.a */; };
+		E13D21581D6EC7A200C6EA98 /* libpjsua-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E13D21531D6EC7A200C6EA98 /* libpjsua-arm-apple-darwin9.a */; };
+		E13D21591D6EC7A200C6EA98 /* libpjsua2-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E13D21541D6EC7A200C6EA98 /* libpjsua2-arm-apple-darwin9.a */; };
+		E13D21601D6EC7AD00C6EA98 /* libg7221codec-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E13D215A1D6EC7AD00C6EA98 /* libg7221codec-arm-apple-darwin9.a */; };
+		E13D21611D6EC7AD00C6EA98 /* libgsmcodec-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E13D215B1D6EC7AD00C6EA98 /* libgsmcodec-arm-apple-darwin9.a */; };
+		E13D21621D6EC7AD00C6EA98 /* libilbccodec-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E13D215C1D6EC7AD00C6EA98 /* libilbccodec-arm-apple-darwin9.a */; };
+		E13D21631D6EC7AD00C6EA98 /* libresample-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E13D215D1D6EC7AD00C6EA98 /* libresample-arm-apple-darwin9.a */; };
+		E13D21641D6EC7AD00C6EA98 /* libspeex-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E13D215E1D6EC7AD00C6EA98 /* libspeex-arm-apple-darwin9.a */; };
+		E13D21651D6EC7AD00C6EA98 /* libsrtp-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E13D215F1D6EC7AD00C6EA98 /* libsrtp-arm-apple-darwin9.a */; };
+		E13D21881D6EC84500C6EA98 /* GSAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = E13D21751D6EC84500C6EA98 /* GSAccount.m */; };
+		E13D21891D6EC84500C6EA98 /* GSCall.m in Sources */ = {isa = PBXBuildFile; fileRef = E13D21761D6EC84500C6EA98 /* GSCall.m */; };
+		E13D218A1D6EC84500C6EA98 /* GSCodecInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E13D21771D6EC84500C6EA98 /* GSCodecInfo.m */; };
+		E13D218B1D6EC84500C6EA98 /* GSDispatch.m in Sources */ = {isa = PBXBuildFile; fileRef = E13D21781D6EC84500C6EA98 /* GSDispatch.m */; };
+		E13D218C1D6EC84500C6EA98 /* GSIncomingCall.m in Sources */ = {isa = PBXBuildFile; fileRef = E13D21791D6EC84500C6EA98 /* GSIncomingCall.m */; };
+		E13D218D1D6EC84500C6EA98 /* GSNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = E13D217A1D6EC84500C6EA98 /* GSNotifications.m */; };
+		E13D218E1D6EC84500C6EA98 /* GSOutgoingCall.m in Sources */ = {isa = PBXBuildFile; fileRef = E13D217B1D6EC84500C6EA98 /* GSOutgoingCall.m */; };
+		E13D218F1D6EC84500C6EA98 /* GSRingback.m in Sources */ = {isa = PBXBuildFile; fileRef = E13D217C1D6EC84500C6EA98 /* GSRingback.m */; };
+		E13D21901D6EC84500C6EA98 /* GSUserAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = E13D217D1D6EC84500C6EA98 /* GSUserAgent.m */; };
+		E13D21911D6EC84500C6EA98 /* GSAccountConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = E13D21801D6EC84500C6EA98 /* GSAccountConfiguration.m */; };
+		E13D21921D6EC84500C6EA98 /* GSConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = E13D21811D6EC84500C6EA98 /* GSConfiguration.m */; };
+		E13D21931D6EC84500C6EA98 /* GSPJUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = E13D21861D6EC84500C6EA98 /* GSPJUtil.m */; };
+		E13D21951D6ECFCA00C6EA98 /* IncomingVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13D21941D6ECFCA00C6EA98 /* IncomingVideoViewController.swift */; };
+		E142FBDF1D6E8767001102AE /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E16CCDF91D601EF6008BEC5D /* CoreFoundation.framework */; };
+		E142FBE11D6E8780001102AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E142FBE01D6E8780001102AE /* CoreGraphics.framework */; };
+		E148E6C31D6C397000BE131E /* OutgoingVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E148E6C21D6C397000BE131E /* OutgoingVideoViewController.swift */; };
 		E16453EA1D6AA3150036B53F /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16453E91D6AA3150036B53F /* Contact.swift */; };
-		E16453F41D6AF2E70036B53F /* libopenh264.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E16453F11D6AF2E70036B53F /* libopenh264.a */; };
-		E16453F51D6AF2E70036B53F /* libyuv_neon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E16453F21D6AF2E70036B53F /* libyuv_neon.a */; };
-		E16453F61D6AF2E70036B53F /* libyuv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E16453F31D6AF2E70036B53F /* libyuv.a */; };
-		E16453F91D6AFEC30036B53F /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E16453F71D6AFEC30036B53F /* libcrypto.a */; };
-		E16453FA1D6AFEC30036B53F /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E16453F81D6AFEC30036B53F /* libssl.a */; };
+		E1896CB41D6D8B4A002EF469 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1896CB31D6D8B4A002EF469 /* CFNetwork.framework */; };
+		E1896CB61D6D8B5B002EF469 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1896CB51D6D8B5B002EF469 /* CoreImage.framework */; };
+		E1896CB81D6D8B66002EF469 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1896CB71D6D8B66002EF469 /* OpenGLES.framework */; };
+		E1896CBA1D6D8B76002EF469 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1896CB91D6D8B76002EF469 /* QuartzCore.framework */; };
+		E1896CBB1D6D8BEB002EF469 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E16CCDF71D601ED2008BEC5D /* Foundation.framework */; };
 		E19AAD441D51DF480053D2C3 /* CallConView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E19AAD431D51DF480053D2C3 /* CallConView.xib */; };
 		E19AAD461D51DF6A0053D2C3 /* CallConView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19AAD451D51DF690053D2C3 /* CallConView.swift */; };
-		E1DFA1871D5B6ADD001A014F /* libGossip.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1DFA1861D5B6ADD001A014F /* libGossip.a */; };
-		E1DFA1891D5B6B81001A014F /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1DFA1881D5B6B81001A014F /* CoreAudio.framework */; };
 		E1DFA18B1D5B6BA3001A014F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1DFA18A1D5B6BA3001A014F /* AVFoundation.framework */; };
 		E1DFA18D1D5B6BB7001A014F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1DFA18C1D5B6BB7001A014F /* AudioToolbox.framework */; };
 		E1DFA18F1D5B6BD5001A014F /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1DFA18E1D5B6BD5001A014F /* CoreMedia.framework */; };
 		E1DFA1911D5B6BE1001A014F /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1DFA1901D5B6BE1001A014F /* CoreVideo.framework */; };
+		E1F8F9291D6DA45200C8EBFF /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F8F9281D6DA45200C8EBFF /* libstdc++.tbd */; };
+		E1F8F9991D6DA5DC00C8EBFF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F8F9981D6DA5DC00C8EBFF /* UIKit.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E115A04D1D6D7AAC005FCB8F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		047EB72D84437E0BA79D1A70 /* Pods_18phone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_18phone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,6 +111,9 @@
 		E114D1C51D4F1F15006AB978 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E114D1CD1D4F1F15006AB978 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E114D1CF1D4F1F15006AB978 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1159FDF1D6D762C005FCB8F /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		E1159FE01D6D762C005FCB8F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		E1159FE21D6D762C005FCB8F /* SwiftEventBus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftEventBus.swift; sourceTree = "<group>"; };
 		E11E92911D5EBBAB004D634A /* DialView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DialView.xib; sourceTree = "<group>"; };
 		E11E92931D5F2C9F004D634A /* DialView1Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialView1Controller.swift; sourceTree = "<group>"; };
 		E12EBA801D531FF3007B5CBD /* CallLogACell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallLogACell.swift; sourceTree = "<group>"; };
@@ -84,26 +138,176 @@
 		E13BACE11D5196EE00414ACE /* DialIconCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialIconCell.swift; sourceTree = "<group>"; };
 		E13BACE41D51974900414ACE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E13BACE61D51977C00414ACE /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		E13D21401D6EC78000C6EA98 /* libpj-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpj-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/pjlib/lib/libpj-arm-apple-darwin9.a"; sourceTree = "<group>"; };
+		E13D21421D6EC78500C6EA98 /* libpjlib-util-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjlib-util-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/pjlib-util/lib/libpjlib-util-arm-apple-darwin9.a"; sourceTree = "<group>"; };
+		E13D21441D6EC78E00C6EA98 /* libpjmedia-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjmedia-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/pjmedia/lib/libpjmedia-arm-apple-darwin9.a"; sourceTree = "<group>"; };
+		E13D21451D6EC78E00C6EA98 /* libpjmedia-audiodev-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjmedia-audiodev-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/pjmedia/lib/libpjmedia-audiodev-arm-apple-darwin9.a"; sourceTree = "<group>"; };
+		E13D21461D6EC78E00C6EA98 /* libpjmedia-codec-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjmedia-codec-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/pjmedia/lib/libpjmedia-codec-arm-apple-darwin9.a"; sourceTree = "<group>"; };
+		E13D21471D6EC78E00C6EA98 /* libpjmedia-videodev-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjmedia-videodev-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/pjmedia/lib/libpjmedia-videodev-arm-apple-darwin9.a"; sourceTree = "<group>"; };
+		E13D21481D6EC78E00C6EA98 /* libpjsdp-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsdp-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/pjmedia/lib/libpjsdp-arm-apple-darwin9.a"; sourceTree = "<group>"; };
+		E13D214E1D6EC79900C6EA98 /* libpjnath-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjnath-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/pjnath/lib/libpjnath-arm-apple-darwin9.a"; sourceTree = "<group>"; };
+		E13D21501D6EC7A200C6EA98 /* libpjsip-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsip-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/pjsip/lib/libpjsip-arm-apple-darwin9.a"; sourceTree = "<group>"; };
+		E13D21511D6EC7A200C6EA98 /* libpjsip-simple-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsip-simple-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/pjsip/lib/libpjsip-simple-arm-apple-darwin9.a"; sourceTree = "<group>"; };
+		E13D21521D6EC7A200C6EA98 /* libpjsip-ua-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsip-ua-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/pjsip/lib/libpjsip-ua-arm-apple-darwin9.a"; sourceTree = "<group>"; };
+		E13D21531D6EC7A200C6EA98 /* libpjsua-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsua-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/pjsip/lib/libpjsua-arm-apple-darwin9.a"; sourceTree = "<group>"; };
+		E13D21541D6EC7A200C6EA98 /* libpjsua2-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsua2-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/pjsip/lib/libpjsua2-arm-apple-darwin9.a"; sourceTree = "<group>"; };
+		E13D215A1D6EC7AD00C6EA98 /* libg7221codec-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libg7221codec-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/third_party/lib/libg7221codec-arm-apple-darwin9.a"; sourceTree = "<group>"; };
+		E13D215B1D6EC7AD00C6EA98 /* libgsmcodec-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libgsmcodec-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/third_party/lib/libgsmcodec-arm-apple-darwin9.a"; sourceTree = "<group>"; };
+		E13D215C1D6EC7AD00C6EA98 /* libilbccodec-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libilbccodec-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/third_party/lib/libilbccodec-arm-apple-darwin9.a"; sourceTree = "<group>"; };
+		E13D215D1D6EC7AD00C6EA98 /* libresample-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libresample-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/third_party/lib/libresample-arm-apple-darwin9.a"; sourceTree = "<group>"; };
+		E13D215E1D6EC7AD00C6EA98 /* libspeex-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libspeex-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/third_party/lib/libspeex-arm-apple-darwin9.a"; sourceTree = "<group>"; };
+		E13D215F1D6EC7AD00C6EA98 /* libsrtp-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libsrtp-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/third_party/lib/libsrtp-arm-apple-darwin9.a"; sourceTree = "<group>"; };
+		E13D21671D6EC84500C6EA98 /* Gossip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Gossip.h; path = ../gossip/Gossip/Gossip.h; sourceTree = "<group>"; };
+		E13D21681D6EC84500C6EA98 /* GSAccount+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GSAccount+Private.h"; path = "../gossip/Gossip/GSAccount+Private.h"; sourceTree = "<group>"; };
+		E13D21691D6EC84500C6EA98 /* GSAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSAccount.h; path = ../gossip/Gossip/GSAccount.h; sourceTree = "<group>"; };
+		E13D216A1D6EC84500C6EA98 /* GSCall+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GSCall+Private.h"; path = "../gossip/Gossip/GSCall+Private.h"; sourceTree = "<group>"; };
+		E13D216B1D6EC84500C6EA98 /* GSCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSCall.h; path = ../gossip/Gossip/GSCall.h; sourceTree = "<group>"; };
+		E13D216C1D6EC84500C6EA98 /* GSCodecInfo+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GSCodecInfo+Private.h"; path = "../gossip/Gossip/GSCodecInfo+Private.h"; sourceTree = "<group>"; };
+		E13D216D1D6EC84500C6EA98 /* GSCodecInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSCodecInfo.h; path = ../gossip/Gossip/GSCodecInfo.h; sourceTree = "<group>"; };
+		E13D216E1D6EC84500C6EA98 /* GSDispatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSDispatch.h; path = ../gossip/Gossip/GSDispatch.h; sourceTree = "<group>"; };
+		E13D216F1D6EC84500C6EA98 /* GSIncomingCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSIncomingCall.h; path = ../gossip/Gossip/GSIncomingCall.h; sourceTree = "<group>"; };
+		E13D21701D6EC84500C6EA98 /* GSNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSNotifications.h; path = ../gossip/Gossip/GSNotifications.h; sourceTree = "<group>"; };
+		E13D21711D6EC84500C6EA98 /* GSOutgoingCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSOutgoingCall.h; path = ../gossip/Gossip/GSOutgoingCall.h; sourceTree = "<group>"; };
+		E13D21721D6EC84500C6EA98 /* GSRingback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSRingback.h; path = ../gossip/Gossip/GSRingback.h; sourceTree = "<group>"; };
+		E13D21731D6EC84500C6EA98 /* GSUserAgent+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GSUserAgent+Private.h"; path = "../gossip/Gossip/GSUserAgent+Private.h"; sourceTree = "<group>"; };
+		E13D21741D6EC84500C6EA98 /* GSUserAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSUserAgent.h; path = ../gossip/Gossip/GSUserAgent.h; sourceTree = "<group>"; };
+		E13D21751D6EC84500C6EA98 /* GSAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GSAccount.m; path = ../gossip/Gossip/GSAccount.m; sourceTree = "<group>"; };
+		E13D21761D6EC84500C6EA98 /* GSCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GSCall.m; path = ../gossip/Gossip/GSCall.m; sourceTree = "<group>"; };
+		E13D21771D6EC84500C6EA98 /* GSCodecInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GSCodecInfo.m; path = ../gossip/Gossip/GSCodecInfo.m; sourceTree = "<group>"; };
+		E13D21781D6EC84500C6EA98 /* GSDispatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GSDispatch.m; path = ../gossip/Gossip/GSDispatch.m; sourceTree = "<group>"; };
+		E13D21791D6EC84500C6EA98 /* GSIncomingCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GSIncomingCall.m; path = ../gossip/Gossip/GSIncomingCall.m; sourceTree = "<group>"; };
+		E13D217A1D6EC84500C6EA98 /* GSNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GSNotifications.m; path = ../gossip/Gossip/GSNotifications.m; sourceTree = "<group>"; };
+		E13D217B1D6EC84500C6EA98 /* GSOutgoingCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GSOutgoingCall.m; path = ../gossip/Gossip/GSOutgoingCall.m; sourceTree = "<group>"; };
+		E13D217C1D6EC84500C6EA98 /* GSRingback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GSRingback.m; path = ../gossip/Gossip/GSRingback.m; sourceTree = "<group>"; };
+		E13D217D1D6EC84500C6EA98 /* GSUserAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GSUserAgent.m; path = ../gossip/Gossip/GSUserAgent.m; sourceTree = "<group>"; };
+		E13D217E1D6EC84500C6EA98 /* GSAccountConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSAccountConfiguration.h; sourceTree = "<group>"; };
+		E13D217F1D6EC84500C6EA98 /* GSConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSConfiguration.h; sourceTree = "<group>"; };
+		E13D21801D6EC84500C6EA98 /* GSAccountConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSAccountConfiguration.m; sourceTree = "<group>"; };
+		E13D21811D6EC84500C6EA98 /* GSConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSConfiguration.m; sourceTree = "<group>"; };
+		E13D21831D6EC84500C6EA98 /* GSPJUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSPJUtil.h; sourceTree = "<group>"; };
+		E13D21841D6EC84500C6EA98 /* PJSIP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJSIP.h; sourceTree = "<group>"; };
+		E13D21851D6EC84500C6EA98 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
+		E13D21861D6EC84500C6EA98 /* GSPJUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSPJUtil.m; sourceTree = "<group>"; };
+		E13D21941D6ECFCA00C6EA98 /* IncomingVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomingVideoViewController.swift; sourceTree = "<group>"; };
+		E142FB181D6E86D4001102AE /* libgsmcodec-i386-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libgsmcodec-i386-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libgsmcodec-i386-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB191D6E86D4001102AE /* libilbccodec-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libilbccodec-arm64-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libilbccodec-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB1A1D6E86D4001102AE /* libilbccodec-armv7-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libilbccodec-armv7-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libilbccodec-armv7-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB1B1D6E86D4001102AE /* libilbccodec-armv7s-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libilbccodec-armv7s-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libilbccodec-armv7s-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB1C1D6E86D4001102AE /* libilbccodec-i386-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libilbccodec-i386-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libilbccodec-i386-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB1D1D6E86D4001102AE /* libresample-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libresample-arm64-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libresample-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB1E1D6E86D4001102AE /* libresample-armv7-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libresample-armv7-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libresample-armv7-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB1F1D6E86D4001102AE /* libresample-armv7s-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libresample-armv7s-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libresample-armv7s-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB201D6E86D4001102AE /* libresample-i386-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libresample-i386-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libresample-i386-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB211D6E86D4001102AE /* libspeex-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libspeex-arm64-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libspeex-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB221D6E86D4001102AE /* libspeex-armv7-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libspeex-armv7-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libspeex-armv7-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB231D6E86D4001102AE /* libspeex-armv7s-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libspeex-armv7s-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libspeex-armv7s-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB241D6E86D4001102AE /* libspeex-i386-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libspeex-i386-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libspeex-i386-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB251D6E86D4001102AE /* libsrtp-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libsrtp-arm64-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libsrtp-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB261D6E86D4001102AE /* libsrtp-armv7-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libsrtp-armv7-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libsrtp-armv7-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB271D6E86D4001102AE /* libsrtp-armv7s-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libsrtp-armv7s-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libsrtp-armv7s-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB281D6E86D4001102AE /* libsrtp-i386-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libsrtp-i386-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libsrtp-i386-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB291D6E86D4001102AE /* libyuv-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libyuv-arm64-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libyuv-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB2A1D6E86D4001102AE /* libyuv-armv7-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libyuv-armv7-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libyuv-armv7-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB2B1D6E86D4001102AE /* libyuv-armv7s-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libyuv-armv7s-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libyuv-armv7s-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB2C1D6E86D4001102AE /* libyuv-i386-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libyuv-i386-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libyuv-i386-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB2D1D6E86D4001102AE /* libg7221codec-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libg7221codec-arm64-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libg7221codec-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB2E1D6E86D4001102AE /* libg7221codec-armv7-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libg7221codec-armv7-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libg7221codec-armv7-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB2F1D6E86D4001102AE /* libg7221codec-armv7s-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libg7221codec-armv7s-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libg7221codec-armv7s-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB301D6E86D4001102AE /* libg7221codec-i386-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libg7221codec-i386-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libg7221codec-i386-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB311D6E86D4001102AE /* libg7221codec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libg7221codec.a; path = gossip/pjsip/lib/arm64/libg7221codec.a; sourceTree = "<group>"; };
+		E142FB321D6E86D4001102AE /* libgsmcodec-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libgsmcodec-arm64-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libgsmcodec-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB331D6E86D4001102AE /* libgsmcodec-armv7-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libgsmcodec-armv7-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libgsmcodec-armv7-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB341D6E86D4001102AE /* libgsmcodec-armv7s-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libgsmcodec-armv7s-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libgsmcodec-armv7s-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB351D6E86D4001102AE /* libgsmcodec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgsmcodec.a; path = gossip/pjsip/lib/arm64/libgsmcodec.a; sourceTree = "<group>"; };
+		E142FB361D6E86D4001102AE /* libilbccodec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libilbccodec.a; path = gossip/pjsip/lib/arm64/libilbccodec.a; sourceTree = "<group>"; };
+		E142FB371D6E86D4001102AE /* libpj-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpj-arm64-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpj-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB381D6E86D4001102AE /* libpj-armv7-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpj-armv7-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpj-armv7-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB391D6E86D4001102AE /* libpj-armv7s-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpj-armv7s-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpj-armv7s-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB3A1D6E86D4001102AE /* libpj-i386-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpj-i386-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpj-i386-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB3B1D6E86D4001102AE /* libpj.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpj.a; path = gossip/pjsip/lib/arm64/libpj.a; sourceTree = "<group>"; };
+		E142FB3C1D6E86D4001102AE /* libpjlib-util-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjlib-util-arm64-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjlib-util-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB3D1D6E86D4001102AE /* libpjlib-util-armv7-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjlib-util-armv7-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjlib-util-armv7-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB3E1D6E86D4001102AE /* libpjlib-util-armv7s-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjlib-util-armv7s-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjlib-util-armv7s-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB3F1D6E86D4001102AE /* libpjlib-util-i386-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjlib-util-i386-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjlib-util-i386-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB401D6E86D4001102AE /* libpjlib-util.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjlib-util.a"; path = "gossip/pjsip/lib/arm64/libpjlib-util.a"; sourceTree = "<group>"; };
+		E142FB411D6E86D4001102AE /* libpjmedia-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjmedia-arm64-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjmedia-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB421D6E86D4001102AE /* libpjmedia-armv7-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjmedia-armv7-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjmedia-armv7-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB431D6E86D4001102AE /* libpjmedia-armv7s-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjmedia-armv7s-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjmedia-armv7s-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB441D6E86D4001102AE /* libpjmedia-audiodev-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjmedia-audiodev-arm64-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjmedia-audiodev-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB451D6E86D4001102AE /* libpjmedia-audiodev-armv7-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjmedia-audiodev-armv7-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjmedia-audiodev-armv7-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB461D6E86D4001102AE /* libpjmedia-audiodev-armv7s-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjmedia-audiodev-armv7s-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjmedia-audiodev-armv7s-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB471D6E86D4001102AE /* libpjmedia-audiodev-i386-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjmedia-audiodev-i386-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjmedia-audiodev-i386-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB481D6E86D4001102AE /* libpjmedia-audiodev.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjmedia-audiodev.a"; path = "gossip/pjsip/lib/arm64/libpjmedia-audiodev.a"; sourceTree = "<group>"; };
+		E142FB491D6E86D4001102AE /* libpjmedia-codec-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjmedia-codec-arm64-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjmedia-codec-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB4A1D6E86D4001102AE /* libpjmedia-codec-armv7-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjmedia-codec-armv7-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjmedia-codec-armv7-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB4B1D6E86D4001102AE /* libpjmedia-codec-armv7s-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjmedia-codec-armv7s-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjmedia-codec-armv7s-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB4C1D6E86D4001102AE /* libpjmedia-codec-i386-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjmedia-codec-i386-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjmedia-codec-i386-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB4D1D6E86D4001102AE /* libpjmedia-codec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjmedia-codec.a"; path = "gossip/pjsip/lib/arm64/libpjmedia-codec.a"; sourceTree = "<group>"; };
+		E142FB4E1D6E86D4001102AE /* libpjmedia-i386-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjmedia-i386-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjmedia-i386-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB4F1D6E86D4001102AE /* libpjmedia-videodev-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjmedia-videodev-arm64-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjmedia-videodev-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB501D6E86D4001102AE /* libpjmedia-videodev-armv7-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjmedia-videodev-armv7-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjmedia-videodev-armv7-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB511D6E86D4001102AE /* libpjmedia-videodev-armv7s-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjmedia-videodev-armv7s-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjmedia-videodev-armv7s-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB521D6E86D4001102AE /* libpjmedia-videodev-i386-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjmedia-videodev-i386-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjmedia-videodev-i386-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB531D6E86D4001102AE /* libpjmedia-videodev.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjmedia-videodev.a"; path = "gossip/pjsip/lib/arm64/libpjmedia-videodev.a"; sourceTree = "<group>"; };
+		E142FB541D6E86D4001102AE /* libpjmedia.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpjmedia.a; path = gossip/pjsip/lib/arm64/libpjmedia.a; sourceTree = "<group>"; };
+		E142FB551D6E86D4001102AE /* libpjnath-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjnath-arm64-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjnath-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB561D6E86D4001102AE /* libpjnath-armv7-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjnath-armv7-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjnath-armv7-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB571D6E86D4001102AE /* libpjnath-armv7s-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjnath-armv7s-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjnath-armv7s-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB581D6E86D4001102AE /* libpjnath-i386-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjnath-i386-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjnath-i386-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB591D6E86D4001102AE /* libpjnath.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpjnath.a; path = gossip/pjsip/lib/arm64/libpjnath.a; sourceTree = "<group>"; };
+		E142FB5A1D6E86D4001102AE /* libpjsdp-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsdp-arm64-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjsdp-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB5B1D6E86D4001102AE /* libpjsdp-armv7-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsdp-armv7-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjsdp-armv7-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB5C1D6E86D4001102AE /* libpjsdp-armv7s-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsdp-armv7s-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjsdp-armv7s-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB5D1D6E86D4001102AE /* libpjsdp-i386-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsdp-i386-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjsdp-i386-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB5E1D6E86D4001102AE /* libpjsip-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsip-arm64-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjsip-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB5F1D6E86D4001102AE /* libpjsip-armv7-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsip-armv7-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjsip-armv7-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB601D6E86D4001102AE /* libpjsip-armv7s-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsip-armv7s-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjsip-armv7s-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB611D6E86D4001102AE /* libpjsip-i386-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsip-i386-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjsip-i386-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB621D6E86D4001102AE /* libpjsip-simple-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsip-simple-arm64-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjsip-simple-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB631D6E86D4001102AE /* libpjsip-simple-armv7-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsip-simple-armv7-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjsip-simple-armv7-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB641D6E86D4001102AE /* libpjsip-simple-armv7s-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsip-simple-armv7s-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjsip-simple-armv7s-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB651D6E86D4001102AE /* libpjsip-simple-i386-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsip-simple-i386-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjsip-simple-i386-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB661D6E86D4001102AE /* libpjsip-simple.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsip-simple.a"; path = "gossip/pjsip/lib/arm64/libpjsip-simple.a"; sourceTree = "<group>"; };
+		E142FB671D6E86D4001102AE /* libpjsip-ua-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsip-ua-arm64-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjsip-ua-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB681D6E86D4001102AE /* libpjsip-ua-armv7-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsip-ua-armv7-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjsip-ua-armv7-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB691D6E86D4001102AE /* libpjsip-ua-armv7s-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsip-ua-armv7s-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjsip-ua-armv7s-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB6A1D6E86D4001102AE /* libpjsip-ua-i386-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsip-ua-i386-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjsip-ua-i386-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB6B1D6E86D4001102AE /* libpjsip-ua.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsip-ua.a"; path = "gossip/pjsip/lib/arm64/libpjsip-ua.a"; sourceTree = "<group>"; };
+		E142FB6C1D6E86D4001102AE /* libpjsip.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpjsip.a; path = gossip/pjsip/lib/arm64/libpjsip.a; sourceTree = "<group>"; };
+		E142FB6D1D6E86D4001102AE /* libpjsua-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsua-arm64-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjsua-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB6E1D6E86D4001102AE /* libpjsua-armv7-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsua-armv7-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjsua-armv7-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB6F1D6E86D4001102AE /* libpjsua-armv7s-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsua-armv7s-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjsua-armv7s-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB701D6E86D4001102AE /* libpjsua-i386-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsua-i386-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjsua-i386-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB711D6E86D4001102AE /* libpjsua.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpjsua.a; path = gossip/pjsip/lib/arm64/libpjsua.a; sourceTree = "<group>"; };
+		E142FB721D6E86D4001102AE /* libpjsua2-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsua2-arm64-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjsua2-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB731D6E86D4001102AE /* libpjsua2-armv7-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsua2-armv7-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjsua2-armv7-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB741D6E86D4001102AE /* libpjsua2-armv7s-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsua2-armv7s-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjsua2-armv7s-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB751D6E86D4001102AE /* libpjsua2-i386-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsua2-i386-apple-darwin_ios.a"; path = "gossip/pjsip/lib/arm64/libpjsua2-i386-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E142FB761D6E86D4001102AE /* libpjsua2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpjsua2.a; path = gossip/pjsip/lib/arm64/libpjsua2.a; sourceTree = "<group>"; };
+		E142FB771D6E86D4001102AE /* libresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libresample.a; path = gossip/pjsip/lib/arm64/libresample.a; sourceTree = "<group>"; };
+		E142FB781D6E86D4001102AE /* libspeex.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libspeex.a; path = gossip/pjsip/lib/arm64/libspeex.a; sourceTree = "<group>"; };
+		E142FB791D6E86D4001102AE /* libsrtp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsrtp.a; path = gossip/pjsip/lib/arm64/libsrtp.a; sourceTree = "<group>"; };
+		E142FB7A1D6E86D4001102AE /* libyuv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libyuv.a; path = gossip/pjsip/lib/arm64/libyuv.a; sourceTree = "<group>"; };
+		E142FBE01D6E8780001102AE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E148E6C21D6C397000BE131E /* OutgoingVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutgoingVideoViewController.swift; sourceTree = "<group>"; };
 		E16453E91D6AA3150036B53F /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
-		E16453EB1D6AEE890036B53F /* libopenh264.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopenh264.a; path = ../../../../../usr/local/lib/libopenh264.a; sourceTree = "<group>"; };
-		E16453ED1D6AF24E0036B53F /* libyuv_neon.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libyuv_neon.a; path = gossip/pjsip/lib/libyuv_neon.a; sourceTree = "<group>"; };
-		E16453EE1D6AF24E0036B53F /* libyuv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libyuv.a; path = gossip/pjsip/lib/libyuv.a; sourceTree = "<group>"; };
-		E16453F11D6AF2E70036B53F /* libopenh264.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopenh264.a; path = lib/libopenh264.a; sourceTree = "<group>"; };
-		E16453F21D6AF2E70036B53F /* libyuv_neon.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libyuv_neon.a; path = lib/libyuv_neon.a; sourceTree = "<group>"; };
-		E16453F31D6AF2E70036B53F /* libyuv.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libyuv.a; path = lib/libyuv.a; sourceTree = "<group>"; };
-		E16453F71D6AFEC30036B53F /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = lib/libcrypto.a; sourceTree = "<group>"; };
-		E16453F81D6AFEC30036B53F /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = lib/libssl.a; sourceTree = "<group>"; };
 		E16CCDF71D601ED2008BEC5D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E16CCDF91D601EF6008BEC5D /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		E1896CB31D6D8B4A002EF469 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		E1896CB51D6D8B5B002EF469 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		E1896CB71D6D8B66002EF469 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		E1896CB91D6D8B76002EF469 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E19AAD431D51DF480053D2C3 /* CallConView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CallConView.xib; sourceTree = "<group>"; };
 		E19AAD451D51DF690053D2C3 /* CallConView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallConView.swift; sourceTree = "<group>"; };
-		E1DFA1861D5B6ADD001A014F /* libGossip.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGossip.a; path = "../../../Library/Developer/Xcode/DerivedData/18phone-cllinrakwzyripcnpqmigivniskl/Build/Products/Debug-iphonesimulator/libGossip.a"; sourceTree = "<group>"; };
 		E1DFA1881D5B6B81001A014F /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		E1DFA18A1D5B6BA3001A014F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		E1DFA18C1D5B6BB7001A014F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		E1DFA18E1D5B6BD5001A014F /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		E1DFA1901D5B6BE1001A014F /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		E1F5E57C1D59E5990010FF2C /* 18phone-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "18phone-Bridging-Header.h"; sourceTree = "<group>"; };
+		E1F8F9281D6DA45200C8EBFF /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		E1F8F9981D6DA5DC00C8EBFF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E1F8F9EA1D6DA84300C8EBFF /* libGossip.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGossip.a; path = "../../../Library/Developer/Xcode/DerivedData/18phone-estkfzchxiqnxhcghndswfmhpmxc/Build/Products/Debug-iphoneos/libGossip.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,17 +315,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E16453F91D6AFEC30036B53F /* libcrypto.a in Frameworks */,
-				E16453FA1D6AFEC30036B53F /* libssl.a in Frameworks */,
-				E16453F41D6AF2E70036B53F /* libopenh264.a in Frameworks */,
-				E16453F51D6AF2E70036B53F /* libyuv_neon.a in Frameworks */,
-				E16453F61D6AF2E70036B53F /* libyuv.a in Frameworks */,
+				E13D21601D6EC7AD00C6EA98 /* libg7221codec-arm-apple-darwin9.a in Frameworks */,
+				E13D21611D6EC7AD00C6EA98 /* libgsmcodec-arm-apple-darwin9.a in Frameworks */,
+				E13D21621D6EC7AD00C6EA98 /* libilbccodec-arm-apple-darwin9.a in Frameworks */,
+				E13D21631D6EC7AD00C6EA98 /* libresample-arm-apple-darwin9.a in Frameworks */,
+				E13D21641D6EC7AD00C6EA98 /* libspeex-arm-apple-darwin9.a in Frameworks */,
+				E13D21651D6EC7AD00C6EA98 /* libsrtp-arm-apple-darwin9.a in Frameworks */,
+				E13D21551D6EC7A200C6EA98 /* libpjsip-arm-apple-darwin9.a in Frameworks */,
+				E13D21561D6EC7A200C6EA98 /* libpjsip-simple-arm-apple-darwin9.a in Frameworks */,
+				E13D21571D6EC7A200C6EA98 /* libpjsip-ua-arm-apple-darwin9.a in Frameworks */,
+				E13D21581D6EC7A200C6EA98 /* libpjsua-arm-apple-darwin9.a in Frameworks */,
+				E13D21591D6EC7A200C6EA98 /* libpjsua2-arm-apple-darwin9.a in Frameworks */,
+				E13D214F1D6EC79900C6EA98 /* libpjnath-arm-apple-darwin9.a in Frameworks */,
+				E13D21491D6EC78E00C6EA98 /* libpjmedia-arm-apple-darwin9.a in Frameworks */,
+				E13D214A1D6EC78E00C6EA98 /* libpjmedia-audiodev-arm-apple-darwin9.a in Frameworks */,
+				E13D214B1D6EC78E00C6EA98 /* libpjmedia-codec-arm-apple-darwin9.a in Frameworks */,
+				E13D214C1D6EC78E00C6EA98 /* libpjmedia-videodev-arm-apple-darwin9.a in Frameworks */,
+				E13D214D1D6EC78E00C6EA98 /* libpjsdp-arm-apple-darwin9.a in Frameworks */,
+				E13D21431D6EC78500C6EA98 /* libpjlib-util-arm-apple-darwin9.a in Frameworks */,
+				E13D21411D6EC78000C6EA98 /* libpj-arm-apple-darwin9.a in Frameworks */,
+				E142FBE11D6E8780001102AE /* CoreGraphics.framework in Frameworks */,
+				E142FBDF1D6E8767001102AE /* CoreFoundation.framework in Frameworks */,
+				E1F8F9991D6DA5DC00C8EBFF /* UIKit.framework in Frameworks */,
+				E1F8F9291D6DA45200C8EBFF /* libstdc++.tbd in Frameworks */,
+				E1896CBB1D6D8BEB002EF469 /* Foundation.framework in Frameworks */,
+				E1896CBA1D6D8B76002EF469 /* QuartzCore.framework in Frameworks */,
+				E1896CB81D6D8B66002EF469 /* OpenGLES.framework in Frameworks */,
+				E1896CB61D6D8B5B002EF469 /* CoreImage.framework in Frameworks */,
+				E1896CB41D6D8B4A002EF469 /* CFNetwork.framework in Frameworks */,
 				E1DFA1911D5B6BE1001A014F /* CoreVideo.framework in Frameworks */,
 				E1DFA18F1D5B6BD5001A014F /* CoreMedia.framework in Frameworks */,
 				E1DFA18D1D5B6BB7001A014F /* AudioToolbox.framework in Frameworks */,
 				E1DFA18B1D5B6BA3001A014F /* AVFoundation.framework in Frameworks */,
-				E1DFA1891D5B6B81001A014F /* CoreAudio.framework in Frameworks */,
-				E1DFA1871D5B6ADD001A014F /* libGossip.a in Frameworks */,
 				3CDEEA757806A094659EB15D /* Pods_18phone.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -132,14 +357,132 @@
 		A13A5015FDD7155192CC0662 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E16453F71D6AFEC30036B53F /* libcrypto.a */,
-				E16453F81D6AFEC30036B53F /* libssl.a */,
-				E16453F11D6AF2E70036B53F /* libopenh264.a */,
-				E16453F21D6AF2E70036B53F /* libyuv_neon.a */,
-				E16453F31D6AF2E70036B53F /* libyuv.a */,
-				E16453ED1D6AF24E0036B53F /* libyuv_neon.a */,
-				E16453EE1D6AF24E0036B53F /* libyuv.a */,
-				E16453EB1D6AEE890036B53F /* libopenh264.a */,
+				E13D215A1D6EC7AD00C6EA98 /* libg7221codec-arm-apple-darwin9.a */,
+				E13D215B1D6EC7AD00C6EA98 /* libgsmcodec-arm-apple-darwin9.a */,
+				E13D215C1D6EC7AD00C6EA98 /* libilbccodec-arm-apple-darwin9.a */,
+				E13D215D1D6EC7AD00C6EA98 /* libresample-arm-apple-darwin9.a */,
+				E13D215E1D6EC7AD00C6EA98 /* libspeex-arm-apple-darwin9.a */,
+				E13D215F1D6EC7AD00C6EA98 /* libsrtp-arm-apple-darwin9.a */,
+				E13D21501D6EC7A200C6EA98 /* libpjsip-arm-apple-darwin9.a */,
+				E13D21511D6EC7A200C6EA98 /* libpjsip-simple-arm-apple-darwin9.a */,
+				E13D21521D6EC7A200C6EA98 /* libpjsip-ua-arm-apple-darwin9.a */,
+				E13D21531D6EC7A200C6EA98 /* libpjsua-arm-apple-darwin9.a */,
+				E13D21541D6EC7A200C6EA98 /* libpjsua2-arm-apple-darwin9.a */,
+				E13D214E1D6EC79900C6EA98 /* libpjnath-arm-apple-darwin9.a */,
+				E13D21441D6EC78E00C6EA98 /* libpjmedia-arm-apple-darwin9.a */,
+				E13D21451D6EC78E00C6EA98 /* libpjmedia-audiodev-arm-apple-darwin9.a */,
+				E13D21461D6EC78E00C6EA98 /* libpjmedia-codec-arm-apple-darwin9.a */,
+				E13D21471D6EC78E00C6EA98 /* libpjmedia-videodev-arm-apple-darwin9.a */,
+				E13D21481D6EC78E00C6EA98 /* libpjsdp-arm-apple-darwin9.a */,
+				E13D21421D6EC78500C6EA98 /* libpjlib-util-arm-apple-darwin9.a */,
+				E13D21401D6EC78000C6EA98 /* libpj-arm-apple-darwin9.a */,
+				E142FBE01D6E8780001102AE /* CoreGraphics.framework */,
+				E142FB181D6E86D4001102AE /* libgsmcodec-i386-apple-darwin_ios.a */,
+				E142FB191D6E86D4001102AE /* libilbccodec-arm64-apple-darwin_ios.a */,
+				E142FB1A1D6E86D4001102AE /* libilbccodec-armv7-apple-darwin_ios.a */,
+				E142FB1B1D6E86D4001102AE /* libilbccodec-armv7s-apple-darwin_ios.a */,
+				E142FB1C1D6E86D4001102AE /* libilbccodec-i386-apple-darwin_ios.a */,
+				E142FB1D1D6E86D4001102AE /* libresample-arm64-apple-darwin_ios.a */,
+				E142FB1E1D6E86D4001102AE /* libresample-armv7-apple-darwin_ios.a */,
+				E142FB1F1D6E86D4001102AE /* libresample-armv7s-apple-darwin_ios.a */,
+				E142FB201D6E86D4001102AE /* libresample-i386-apple-darwin_ios.a */,
+				E142FB211D6E86D4001102AE /* libspeex-arm64-apple-darwin_ios.a */,
+				E142FB221D6E86D4001102AE /* libspeex-armv7-apple-darwin_ios.a */,
+				E142FB231D6E86D4001102AE /* libspeex-armv7s-apple-darwin_ios.a */,
+				E142FB241D6E86D4001102AE /* libspeex-i386-apple-darwin_ios.a */,
+				E142FB251D6E86D4001102AE /* libsrtp-arm64-apple-darwin_ios.a */,
+				E142FB261D6E86D4001102AE /* libsrtp-armv7-apple-darwin_ios.a */,
+				E142FB271D6E86D4001102AE /* libsrtp-armv7s-apple-darwin_ios.a */,
+				E142FB281D6E86D4001102AE /* libsrtp-i386-apple-darwin_ios.a */,
+				E142FB291D6E86D4001102AE /* libyuv-arm64-apple-darwin_ios.a */,
+				E142FB2A1D6E86D4001102AE /* libyuv-armv7-apple-darwin_ios.a */,
+				E142FB2B1D6E86D4001102AE /* libyuv-armv7s-apple-darwin_ios.a */,
+				E142FB2C1D6E86D4001102AE /* libyuv-i386-apple-darwin_ios.a */,
+				E142FB2D1D6E86D4001102AE /* libg7221codec-arm64-apple-darwin_ios.a */,
+				E142FB2E1D6E86D4001102AE /* libg7221codec-armv7-apple-darwin_ios.a */,
+				E142FB2F1D6E86D4001102AE /* libg7221codec-armv7s-apple-darwin_ios.a */,
+				E142FB301D6E86D4001102AE /* libg7221codec-i386-apple-darwin_ios.a */,
+				E142FB311D6E86D4001102AE /* libg7221codec.a */,
+				E142FB321D6E86D4001102AE /* libgsmcodec-arm64-apple-darwin_ios.a */,
+				E142FB331D6E86D4001102AE /* libgsmcodec-armv7-apple-darwin_ios.a */,
+				E142FB341D6E86D4001102AE /* libgsmcodec-armv7s-apple-darwin_ios.a */,
+				E142FB351D6E86D4001102AE /* libgsmcodec.a */,
+				E142FB361D6E86D4001102AE /* libilbccodec.a */,
+				E142FB371D6E86D4001102AE /* libpj-arm64-apple-darwin_ios.a */,
+				E142FB381D6E86D4001102AE /* libpj-armv7-apple-darwin_ios.a */,
+				E142FB391D6E86D4001102AE /* libpj-armv7s-apple-darwin_ios.a */,
+				E142FB3A1D6E86D4001102AE /* libpj-i386-apple-darwin_ios.a */,
+				E142FB3B1D6E86D4001102AE /* libpj.a */,
+				E142FB3C1D6E86D4001102AE /* libpjlib-util-arm64-apple-darwin_ios.a */,
+				E142FB3D1D6E86D4001102AE /* libpjlib-util-armv7-apple-darwin_ios.a */,
+				E142FB3E1D6E86D4001102AE /* libpjlib-util-armv7s-apple-darwin_ios.a */,
+				E142FB3F1D6E86D4001102AE /* libpjlib-util-i386-apple-darwin_ios.a */,
+				E142FB401D6E86D4001102AE /* libpjlib-util.a */,
+				E142FB411D6E86D4001102AE /* libpjmedia-arm64-apple-darwin_ios.a */,
+				E142FB421D6E86D4001102AE /* libpjmedia-armv7-apple-darwin_ios.a */,
+				E142FB431D6E86D4001102AE /* libpjmedia-armv7s-apple-darwin_ios.a */,
+				E142FB441D6E86D4001102AE /* libpjmedia-audiodev-arm64-apple-darwin_ios.a */,
+				E142FB451D6E86D4001102AE /* libpjmedia-audiodev-armv7-apple-darwin_ios.a */,
+				E142FB461D6E86D4001102AE /* libpjmedia-audiodev-armv7s-apple-darwin_ios.a */,
+				E142FB471D6E86D4001102AE /* libpjmedia-audiodev-i386-apple-darwin_ios.a */,
+				E142FB481D6E86D4001102AE /* libpjmedia-audiodev.a */,
+				E142FB491D6E86D4001102AE /* libpjmedia-codec-arm64-apple-darwin_ios.a */,
+				E142FB4A1D6E86D4001102AE /* libpjmedia-codec-armv7-apple-darwin_ios.a */,
+				E142FB4B1D6E86D4001102AE /* libpjmedia-codec-armv7s-apple-darwin_ios.a */,
+				E142FB4C1D6E86D4001102AE /* libpjmedia-codec-i386-apple-darwin_ios.a */,
+				E142FB4D1D6E86D4001102AE /* libpjmedia-codec.a */,
+				E142FB4E1D6E86D4001102AE /* libpjmedia-i386-apple-darwin_ios.a */,
+				E142FB4F1D6E86D4001102AE /* libpjmedia-videodev-arm64-apple-darwin_ios.a */,
+				E142FB501D6E86D4001102AE /* libpjmedia-videodev-armv7-apple-darwin_ios.a */,
+				E142FB511D6E86D4001102AE /* libpjmedia-videodev-armv7s-apple-darwin_ios.a */,
+				E142FB521D6E86D4001102AE /* libpjmedia-videodev-i386-apple-darwin_ios.a */,
+				E142FB531D6E86D4001102AE /* libpjmedia-videodev.a */,
+				E142FB541D6E86D4001102AE /* libpjmedia.a */,
+				E142FB551D6E86D4001102AE /* libpjnath-arm64-apple-darwin_ios.a */,
+				E142FB561D6E86D4001102AE /* libpjnath-armv7-apple-darwin_ios.a */,
+				E142FB571D6E86D4001102AE /* libpjnath-armv7s-apple-darwin_ios.a */,
+				E142FB581D6E86D4001102AE /* libpjnath-i386-apple-darwin_ios.a */,
+				E142FB591D6E86D4001102AE /* libpjnath.a */,
+				E142FB5A1D6E86D4001102AE /* libpjsdp-arm64-apple-darwin_ios.a */,
+				E142FB5B1D6E86D4001102AE /* libpjsdp-armv7-apple-darwin_ios.a */,
+				E142FB5C1D6E86D4001102AE /* libpjsdp-armv7s-apple-darwin_ios.a */,
+				E142FB5D1D6E86D4001102AE /* libpjsdp-i386-apple-darwin_ios.a */,
+				E142FB5E1D6E86D4001102AE /* libpjsip-arm64-apple-darwin_ios.a */,
+				E142FB5F1D6E86D4001102AE /* libpjsip-armv7-apple-darwin_ios.a */,
+				E142FB601D6E86D4001102AE /* libpjsip-armv7s-apple-darwin_ios.a */,
+				E142FB611D6E86D4001102AE /* libpjsip-i386-apple-darwin_ios.a */,
+				E142FB621D6E86D4001102AE /* libpjsip-simple-arm64-apple-darwin_ios.a */,
+				E142FB631D6E86D4001102AE /* libpjsip-simple-armv7-apple-darwin_ios.a */,
+				E142FB641D6E86D4001102AE /* libpjsip-simple-armv7s-apple-darwin_ios.a */,
+				E142FB651D6E86D4001102AE /* libpjsip-simple-i386-apple-darwin_ios.a */,
+				E142FB661D6E86D4001102AE /* libpjsip-simple.a */,
+				E142FB671D6E86D4001102AE /* libpjsip-ua-arm64-apple-darwin_ios.a */,
+				E142FB681D6E86D4001102AE /* libpjsip-ua-armv7-apple-darwin_ios.a */,
+				E142FB691D6E86D4001102AE /* libpjsip-ua-armv7s-apple-darwin_ios.a */,
+				E142FB6A1D6E86D4001102AE /* libpjsip-ua-i386-apple-darwin_ios.a */,
+				E142FB6B1D6E86D4001102AE /* libpjsip-ua.a */,
+				E142FB6C1D6E86D4001102AE /* libpjsip.a */,
+				E142FB6D1D6E86D4001102AE /* libpjsua-arm64-apple-darwin_ios.a */,
+				E142FB6E1D6E86D4001102AE /* libpjsua-armv7-apple-darwin_ios.a */,
+				E142FB6F1D6E86D4001102AE /* libpjsua-armv7s-apple-darwin_ios.a */,
+				E142FB701D6E86D4001102AE /* libpjsua-i386-apple-darwin_ios.a */,
+				E142FB711D6E86D4001102AE /* libpjsua.a */,
+				E142FB721D6E86D4001102AE /* libpjsua2-arm64-apple-darwin_ios.a */,
+				E142FB731D6E86D4001102AE /* libpjsua2-armv7-apple-darwin_ios.a */,
+				E142FB741D6E86D4001102AE /* libpjsua2-armv7s-apple-darwin_ios.a */,
+				E142FB751D6E86D4001102AE /* libpjsua2-i386-apple-darwin_ios.a */,
+				E142FB761D6E86D4001102AE /* libpjsua2.a */,
+				E142FB771D6E86D4001102AE /* libresample.a */,
+				E142FB781D6E86D4001102AE /* libspeex.a */,
+				E142FB791D6E86D4001102AE /* libsrtp.a */,
+				E142FB7A1D6E86D4001102AE /* libyuv.a */,
+				E1F8F9EA1D6DA84300C8EBFF /* libGossip.a */,
+				E1F8F9981D6DA5DC00C8EBFF /* UIKit.framework */,
+				E1F8F9281D6DA45200C8EBFF /* libstdc++.tbd */,
+				E1896CB91D6D8B76002EF469 /* QuartzCore.framework */,
+				E1896CB71D6D8B66002EF469 /* OpenGLES.framework */,
+				E1896CB51D6D8B5B002EF469 /* CoreImage.framework */,
+				E1896CB31D6D8B4A002EF469 /* CFNetwork.framework */,
 				E16CCDF91D601EF6008BEC5D /* CoreFoundation.framework */,
 				E16CCDF71D601ED2008BEC5D /* Foundation.framework */,
 				E1DFA1901D5B6BE1001A014F /* CoreVideo.framework */,
@@ -147,7 +490,6 @@
 				E1DFA18C1D5B6BB7001A014F /* AudioToolbox.framework */,
 				E1DFA18A1D5B6BA3001A014F /* AVFoundation.framework */,
 				E1DFA1881D5B6B81001A014F /* CoreAudio.framework */,
-				E1DFA1861D5B6ADD001A014F /* libGossip.a */,
 				047EB72D84437E0BA79D1A70 /* Pods_18phone.framework */,
 			);
 			name = Frameworks;
@@ -198,6 +540,24 @@
 			path = 18phone;
 			sourceTree = "<group>";
 		};
+		E1159FDE1D6D762C005FCB8F /* SwiftEventBus */ = {
+			isa = PBXGroup;
+			children = (
+				E1159FDF1D6D762C005FCB8F /* LICENSE */,
+				E1159FE01D6D762C005FCB8F /* README.md */,
+				E1159FE11D6D762C005FCB8F /* SwiftEventBus */,
+			);
+			path = SwiftEventBus;
+			sourceTree = "<group>";
+		};
+		E1159FE11D6D762C005FCB8F /* SwiftEventBus */ = {
+			isa = PBXGroup;
+			children = (
+				E1159FE21D6D762C005FCB8F /* SwiftEventBus.swift */,
+			);
+			path = SwiftEventBus;
+			sourceTree = "<group>";
+		};
 		E12EBA821D532428007B5CBD /* piQ */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +569,8 @@
 		E13BACBD1D518E5F00414ACE /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				E13D21661D6EC82D00C6EA98 /* Gossip */,
+				E1159FDE1D6D762C005FCB8F /* SwiftEventBus */,
 				E12EBA821D532428007B5CBD /* piQ */,
 				E13BACC51D518F9F00414ACE /* Async */,
 				E13BACC41D518F9D00414ACE /* JSONJoy */,
@@ -229,6 +591,8 @@
 				E11E92931D5F2C9F004D634A /* DialView1Controller.swift */,
 				E138D0761D6301EA0091AF4A /* OutgoingCallViewController.swift */,
 				E138D0781D630B7A0091AF4A /* IncomingCallViewController.swift */,
+				E148E6C21D6C397000BE131E /* OutgoingVideoViewController.swift */,
+				E13D21941D6ECFCA00C6EA98 /* IncomingVideoViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -283,6 +647,62 @@
 			name = Async;
 			sourceTree = "<group>";
 		};
+		E13D21661D6EC82D00C6EA98 /* Gossip */ = {
+			isa = PBXGroup;
+			children = (
+				E13D21671D6EC84500C6EA98 /* Gossip.h */,
+				E13D21681D6EC84500C6EA98 /* GSAccount+Private.h */,
+				E13D21691D6EC84500C6EA98 /* GSAccount.h */,
+				E13D216A1D6EC84500C6EA98 /* GSCall+Private.h */,
+				E13D216B1D6EC84500C6EA98 /* GSCall.h */,
+				E13D216C1D6EC84500C6EA98 /* GSCodecInfo+Private.h */,
+				E13D216D1D6EC84500C6EA98 /* GSCodecInfo.h */,
+				E13D216E1D6EC84500C6EA98 /* GSDispatch.h */,
+				E13D216F1D6EC84500C6EA98 /* GSIncomingCall.h */,
+				E13D21701D6EC84500C6EA98 /* GSNotifications.h */,
+				E13D21711D6EC84500C6EA98 /* GSOutgoingCall.h */,
+				E13D21721D6EC84500C6EA98 /* GSRingback.h */,
+				E13D21731D6EC84500C6EA98 /* GSUserAgent+Private.h */,
+				E13D21741D6EC84500C6EA98 /* GSUserAgent.h */,
+				E13D21751D6EC84500C6EA98 /* GSAccount.m */,
+				E13D21761D6EC84500C6EA98 /* GSCall.m */,
+				E13D21771D6EC84500C6EA98 /* GSCodecInfo.m */,
+				E13D21781D6EC84500C6EA98 /* GSDispatch.m */,
+				E13D21791D6EC84500C6EA98 /* GSIncomingCall.m */,
+				E13D217A1D6EC84500C6EA98 /* GSNotifications.m */,
+				E13D217B1D6EC84500C6EA98 /* GSOutgoingCall.m */,
+				E13D217C1D6EC84500C6EA98 /* GSRingback.m */,
+				E13D217D1D6EC84500C6EA98 /* GSUserAgent.m */,
+				E13D21821D6EC84500C6EA98 /* Configuration */,
+				E13D21871D6EC84500C6EA98 /* Util */,
+			);
+			name = Gossip;
+			sourceTree = "<group>";
+		};
+		E13D21821D6EC84500C6EA98 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				E13D217E1D6EC84500C6EA98 /* GSAccountConfiguration.h */,
+				E13D217F1D6EC84500C6EA98 /* GSConfiguration.h */,
+				E13D21801D6EC84500C6EA98 /* GSAccountConfiguration.m */,
+				E13D21811D6EC84500C6EA98 /* GSConfiguration.m */,
+			);
+			name = Configuration;
+			path = ../gossip/Gossip;
+			sourceTree = "<group>";
+		};
+		E13D21871D6EC84500C6EA98 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				E13D21831D6EC84500C6EA98 /* GSPJUtil.h */,
+				E13D21841D6EC84500C6EA98 /* PJSIP.h */,
+				E13D21851D6EC84500C6EA98 /* Util.h */,
+				E13D21861D6EC84500C6EA98 /* GSPJUtil.m */,
+			);
+			name = Util;
+			path = ../gossip/Gossip;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -290,13 +710,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E114D1D21D4F1F15006AB978 /* Build configuration list for PBXNativeTarget "18phone" */;
 			buildPhases = (
-				D0682A10065A29959173BC39 /* [CP] Check Pods Manifest.lock */,
+				2462392B20667A1D83701DB6 /* [CP] Check Pods Manifest.lock */,
 				E114D1BC1D4F1F13006AB978 /* Sources */,
 				E114D1BD1D4F1F13006AB978 /* Frameworks */,
 				E114D1BE1D4F1F13006AB978 /* Resources */,
 				E13BACBC1D518DF300414ACE /* ShellScript */,
-				9F3B4F3EB8B5761BC84D3F95 /* [CP] Embed Pods Frameworks */,
-				9D6041D8A192976D0BD79029 /* [CP] Copy Pods Resources */,
+				E115A04D1D6D7AAC005FCB8F /* Embed Frameworks */,
+				9140EB4D9A2F3953193D3955 /* [CP] Embed Pods Frameworks */,
+				CE6F70B2D8646A593F473A1B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -320,6 +741,11 @@
 					E114D1BF1D4F1F13006AB978 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 4937KKX7AX;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -346,6 +772,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E115A0441D6D762C005FCB8F /* LICENSE in Resources */,
 				E11E92921D5EBBAB004D634A /* DialView.xib in Resources */,
 				E114D1CE1D4F1F15006AB978 /* LaunchScreen.storyboard in Resources */,
 				E13BACE51D51974900414ACE /* Assets.xcassets in Resources */,
@@ -357,22 +784,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		9D6041D8A192976D0BD79029 /* [CP] Copy Pods Resources */ = {
+		2462392B20667A1D83701DB6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-18phone/Pods-18phone-resources.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		9F3B4F3EB8B5761BC84D3F95 /* [CP] Embed Pods Frameworks */ = {
+		9140EB4D9A2F3953193D3955 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -387,19 +814,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-18phone/Pods-18phone-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D0682A10065A29959173BC39 /* [CP] Check Pods Manifest.lock */ = {
+		CE6F70B2D8646A593F473A1B /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-18phone/Pods-18phone-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E13BACBC1D518DF300414ACE /* ShellScript */ = {
@@ -424,24 +851,40 @@
 			files = (
 				E12EBA811D531FF3007B5CBD /* CallLogACell.swift in Sources */,
 				E13BACC91D518FE500414ACE /* JSONJoy.swift in Sources */,
+				E13D21921D6EC84500C6EA98 /* GSConfiguration.m in Sources */,
 				E16453EA1D6AA3150036B53F /* Contact.swift in Sources */,
 				E13BACDB1D51946B00414ACE /* KTabBarController.swift in Sources */,
 				E13BACE21D5196EE00414ACE /* DialNumberCell.swift in Sources */,
 				E138D0791D630B7A0091AF4A /* IncomingCallViewController.swift in Sources */,
+				E13D21931D6EC84500C6EA98 /* GSPJUtil.m in Sources */,
 				E19AAD461D51DF6A0053D2C3 /* CallConView.swift in Sources */,
+				E13D21881D6EC84500C6EA98 /* GSAccount.m in Sources */,
 				E13BACDC1D51946B00414ACE /* DialViewController.swift in Sources */,
 				E13BACE31D5196EE00414ACE /* DialIconCell.swift in Sources */,
 				E13BACD11D518FF000414ACE /* Request.swift in Sources */,
+				E148E6C31D6C397000BE131E /* OutgoingVideoViewController.swift in Sources */,
+				E13D218E1D6EC84500C6EA98 /* GSOutgoingCall.m in Sources */,
 				E13BACDA1D51946B00414ACE /* RootViewController.swift in Sources */,
+				E13D21951D6ECFCA00C6EA98 /* IncomingVideoViewController.swift in Sources */,
+				E115A0461D6D762C005FCB8F /* SwiftEventBus.swift in Sources */,
+				E115A0451D6D762C005FCB8F /* README.md in Sources */,
 				E13BACD21D518FF000414ACE /* StatusCode.swift in Sources */,
+				E13D218A1D6EC84500C6EA98 /* GSCodecInfo.m in Sources */,
+				E13D218B1D6EC84500C6EA98 /* GSDispatch.m in Sources */,
+				E13D218C1D6EC84500C6EA98 /* GSIncomingCall.m in Sources */,
 				E13BACD01D518FF000414ACE /* Operation.swift in Sources */,
+				E13D218D1D6EC84500C6EA98 /* GSNotifications.m in Sources */,
 				E13BACDD1D51946B00414ACE /* CallLogViewController.swift in Sources */,
+				E13D21901D6EC84500C6EA98 /* GSUserAgent.m in Sources */,
 				E13BACCF1D518FF000414ACE /* HTTPSecurity.swift in Sources */,
 				E13BACE71D51977C00414ACE /* R.generated.swift in Sources */,
 				E138D0771D6301EA0091AF4A /* OutgoingCallViewController.swift in Sources */,
 				E13BACC71D518FDE00414ACE /* Async.swift in Sources */,
 				E13BACD31D518FF000414ACE /* Upload.swift in Sources */,
+				E13D21891D6EC84500C6EA98 /* GSCall.m in Sources */,
 				E11E92941D5F2C9F004D634A /* DialView1Controller.swift in Sources */,
+				E13D218F1D6EC84500C6EA98 /* GSRingback.m in Sources */,
+				E13D21911D6EC84500C6EA98 /* GSAccountConfiguration.m in Sources */,
 				E13BACC21D518F5200414ACE /* AppUtil.swift in Sources */,
 				E114D1C61D4F1F15006AB978 /* ViewController.swift in Sources */,
 				E114D1C41D4F1F15006AB978 /* AppDelegate.swift in Sources */,
@@ -557,7 +1000,13 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				INFOPLIST_FILE = 18phone/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -565,13 +1014,30 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/gossip/pjsip/lib",
 					"$(PROJECT_DIR)/lib",
+					"$(PROJECT_DIR)/Pods/Realm/core",
+					"$(PROJECT_DIR)/18phone/Realm/core",
+					"$(PROJECT_DIR)/gossip/pjsip/src/third_party/lib",
+					"$(PROJECT_DIR)/gossip/pjsip/src/pjlib/lib",
+					"$(PROJECT_DIR)/gossip/pjsip/src/pjlib-util/lib",
+					"$(PROJECT_DIR)/gossip/pjsip/src/pjmedia/lib",
+					"$(PROJECT_DIR)/gossip/pjsip/src/pjnath/lib",
+					"$(PROJECT_DIR)/gossip/pjsip/src/pjsip/lib",
+					"$(PROJECT_DIR)/gossip/pjsip/lib/arm64",
+					"$(PROJECT_DIR)/Pods/pjsip/build/pjproject/src/pjlib/lib",
+					"$(PROJECT_DIR)/Pods/pjsip/build/pjproject/src/pjlib-util/lib",
+					"$(PROJECT_DIR)/Pods/pjsip/build/pjproject/src/pjmedia/lib",
+					"$(PROJECT_DIR)/Pods/pjsip/build/pjproject/src/pjnath/lib",
+					"$(PROJECT_DIR)/Pods/pjsip/build/pjproject/src/pjsip/lib",
+					"$(PROJECT_DIR)/Pods/pjsip/build/pjproject/src/third_party/lib",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kratos.18phone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "18phone/18phone-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "arm64 armv7s armv7";
 			};
 			name = Debug;
 		};
@@ -583,7 +1049,12 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = 18phone/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -591,12 +1062,29 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/gossip/pjsip/lib",
 					"$(PROJECT_DIR)/lib",
+					"$(PROJECT_DIR)/Pods/Realm/core",
+					"$(PROJECT_DIR)/18phone/Realm/core",
+					"$(PROJECT_DIR)/gossip/pjsip/src/third_party/lib",
+					"$(PROJECT_DIR)/gossip/pjsip/src/pjlib/lib",
+					"$(PROJECT_DIR)/gossip/pjsip/src/pjlib-util/lib",
+					"$(PROJECT_DIR)/gossip/pjsip/src/pjmedia/lib",
+					"$(PROJECT_DIR)/gossip/pjsip/src/pjnath/lib",
+					"$(PROJECT_DIR)/gossip/pjsip/src/pjsip/lib",
+					"$(PROJECT_DIR)/gossip/pjsip/lib/arm64",
+					"$(PROJECT_DIR)/Pods/pjsip/build/pjproject/src/pjlib/lib",
+					"$(PROJECT_DIR)/Pods/pjsip/build/pjproject/src/pjlib-util/lib",
+					"$(PROJECT_DIR)/Pods/pjsip/build/pjproject/src/pjmedia/lib",
+					"$(PROJECT_DIR)/Pods/pjsip/build/pjproject/src/pjnath/lib",
+					"$(PROJECT_DIR)/Pods/pjsip/build/pjproject/src/pjsip/lib",
+					"$(PROJECT_DIR)/Pods/pjsip/build/pjproject/src/third_party/lib",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kratos.18phone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "18phone/18phone-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "arm64 armv7s armv7";
 			};
 			name = Release;
 		};

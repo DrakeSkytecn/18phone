@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftEventBus
 
 /// 拨号盘控制器
 class DialViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {

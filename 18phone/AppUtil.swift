@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UIKit
 import RealmSwift
 
 /**
@@ -44,6 +43,7 @@ struct App {
         accountConfiguration.domain = URL.BEYEBE_SIP_DOMAIN
         accountConfiguration.proxyServer = URL.BEYEBE_SIP_SERVER
         configuration.account = accountConfiguration
+        configuration.logLevel = 4
         userAgent.configure(configuration)
         userAgent.start()
     }

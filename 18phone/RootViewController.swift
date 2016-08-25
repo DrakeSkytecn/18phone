@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftEventBus
 
 /// 拨号页面根控制器
 class RootViewController: UIViewController, GSAccountDelegate {
@@ -160,6 +159,7 @@ class RootViewController: UIViewController, GSAccountDelegate {
             break
         case GSAccountStatusConnected:
             print("Connected")
+            print("accountId:" + String(App.userAgentAccount.accountId))
             break
         case GSAccountStatusDisconnecting:
             print("Disconnecting")
@@ -170,11 +170,13 @@ class RootViewController: UIViewController, GSAccountDelegate {
     }
     
     func account(account: GSAccount!, didReceiveIncomingCall call: GSCall!) {
-        print(account.configuration().address)
-        print(call.account.configuration().address)
-        let incomingCallViewController = R.storyboard.main.incomingCallViewController()
-        incomingCallViewController?.inCall = call
-        presentViewController(incomingCallViewController!, animated: true, completion: nil)
+        print("didReceiveIncomingCall")
+//        let incomingCallViewController = R.storyboard.main.incomingCallViewController()
+//        incomingCallViewController?.inCall = call
+//        presentViewController(incomingCallViewController!, animated: true, completion: nil)
+        let incomingVideoViewController = IncomingVideoViewController()
+        incomingVideoViewController.inCall = call
+        presentViewController(incomingVideoViewController, animated: true, completion: nil)
     }
     
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {

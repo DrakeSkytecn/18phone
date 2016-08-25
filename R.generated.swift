@@ -16,8 +16,17 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.file` struct is generated, and contains static references to 0 files.
+  /// This `R.file` struct is generated, and contains static references to 1 files.
   struct file {
+    /// Resource file `LICENSE`.
+    static let lICENSE = FileResource(bundle: _R.hostingBundle, name: "LICENSE", pathExtension: "")
+    
+    /// `bundle.URLForResource("LICENSE", withExtension: "")`
+    static func lICENSE(_: Void) -> NSURL? {
+      let fileResource = R.file.lICENSE
+      return fileResource.bundle.URLForResource(fileResource)
+    }
+    
     private init() {}
   }
   

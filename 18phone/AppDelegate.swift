@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftEventBus
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
