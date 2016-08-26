@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         window?.backgroundColor = UIColor.whiteColor()
-        App.initUserAgent("18823754172", password: "123")
+        App.initUserAgent("15016721385", password: "123")
         
         return true
     }
