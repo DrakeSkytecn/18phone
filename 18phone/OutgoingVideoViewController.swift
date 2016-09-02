@@ -17,14 +17,13 @@ class OutgoingVideoViewController: UIViewController {
         super.viewDidLoad()
         let account = GSUserAgent.sharedAgent().account
         outCall = GSCall.outgoingCallToUri(toNumber! + "@" + URL.BEYEBE_SIP_DOMAIN, fromAccount: account)
-        self.outCall?.begin()
         let previewWindow = self.outCall?.createPreviewWindow()
         previewWindow?.frame = self.view.frame
         self.view.addSubview(previewWindow!)
         
-        //outCall?.addObserver(self, forKeyPath: "status", options: .Initial, context: nil)
+        outCall?.addObserver(self, forKeyPath: "status", options: .Initial, context: nil)
         
-        
+        self.outCall?.begin()
         // Do any additional setup after loading the view.
     }
     
@@ -37,14 +36,46 @@ class OutgoingVideoViewController: UIViewController {
     @IBAction func hangup(sender: UIButton) {
         dismissViewControllerAnimated(true, completion: nil)
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
+    func callStatusDidChange() {
+        switch outCall!.status {
+        case GSCallStatusReady:
+            print("OutgoingCallViewController Ready.")
+            break
+            
+        case GSCallStatusConnecting:
+            print("OutgoingCallViewController Connecting...")
+            break
+            
+        case GSCallStatusCalling:
+            print("OutgoingCallViewController Calling...")
+            break
+            
+        case GSCallStatusConnected:
+            print("OutgoingCallViewController Connected.")
+            
+            break
+            
+        case GSCallStatusDisconnected:
+            print("OutgoingCallViewController Disconnected.")
+            
+            
+            dismissViewControllerAnimated(true, completion: nil)
+            
+            break
+            
+        default:
+            break
+        }
+    }
+    
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        if keyPath == "status" {
+            callStatusDidChange()
+        }
+    }
+    
+    deinit {
+        outCall?.removeObserver(self, forKeyPath: "status")
+    }
 }

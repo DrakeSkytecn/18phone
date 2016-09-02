@@ -294,6 +294,7 @@ struct _R: Rswift.Validatable {
       let bundle = _R.hostingBundle
       let dialViewController = StoryboardViewControllerResource<DialView1Controller>(identifier: "DialViewController")
       let incomingCallViewController = StoryboardViewControllerResource<IncomingCallViewController>(identifier: "IncomingCallViewController")
+      let incomingVideoViewController = StoryboardViewControllerResource<IncomingVideoViewController>(identifier: "IncomingVideoViewController")
       let name = "Main"
       let outgoingCallViewController = StoryboardViewControllerResource<OutgoingCallViewController>(identifier: "OutgoingCallViewController")
       
@@ -307,6 +308,10 @@ struct _R: Rswift.Validatable {
       
       func incomingCallViewController(_: Void) -> IncomingCallViewController? {
         return UIStoryboard(resource: self).instantiateViewController(incomingCallViewController)
+      }
+      
+      func incomingVideoViewController(_: Void) -> IncomingVideoViewController? {
+        return UIStoryboard(resource: self).instantiateViewController(incomingVideoViewController)
       }
       
       func outgoingCallViewController(_: Void) -> OutgoingCallViewController? {
@@ -327,6 +332,7 @@ struct _R: Rswift.Validatable {
         if _R.storyboard.main().dialViewController() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'dialViewController' could not be loaded from storyboard 'Main' as 'DialView1Controller'.") }
         if _R.storyboard.main().outgoingCallViewController() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'outgoingCallViewController' could not be loaded from storyboard 'Main' as 'OutgoingCallViewController'.") }
         if _R.storyboard.main().incomingCallViewController() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'incomingCallViewController' could not be loaded from storyboard 'Main' as 'IncomingCallViewController'.") }
+        if _R.storyboard.main().incomingVideoViewController() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'incomingVideoViewController' could not be loaded from storyboard 'Main' as 'IncomingVideoViewController'.") }
       }
       
       private init() {}
