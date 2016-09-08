@@ -12,9 +12,11 @@ class OutgoingVideoViewController: UIViewController {
     
     var toNumber: String?
     var outCall:GSCall?
+    var isConnected: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let account = GSUserAgent.sharedAgent().account
         outCall = GSCall.outgoingCallToUri(toNumber! + "@" + URL.BEYEBE_SIP_DOMAIN, fromAccount: account)
         let previewWindow = self.outCall?.createPreviewWindow()
@@ -32,9 +34,20 @@ class OutgoingVideoViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
     @IBAction func hangup(sender: UIButton) {
         dismissViewControllerAnimated(true, completion: nil)
+        //            let callLog = CallLog()
+        //            callLog.name = "James"
+        //            callLog.phone = toNumber!
+        //            callLog.callState = 0
+        //            callLog.callType = 0
+        //            callLog.callStartTime = DateUtil.getCurrentDate()
+        //            if phoneArea != nil {
+        //                callLog.area = phoneArea!
+        //            }
+        //            try! App.realm.write {
+        //                App.realm.add(callLog)
+        //            }
     }
     
     func callStatusDidChange() {
@@ -45,15 +58,18 @@ class OutgoingVideoViewController: UIViewController {
             
         case GSCallStatusConnecting:
             print("OutgoingCallViewController Connecting...")
+            
             break
             
         case GSCallStatusCalling:
             print("OutgoingCallViewController Calling...")
+            
             break
             
         case GSCallStatusConnected:
             print("OutgoingCallViewController Connected.")
-            
+            isConnected = true
+            outCall?.setOutgoingVideoStream()
             break
             
         case GSCallStatusDisconnected:

@@ -13,6 +13,7 @@ import RealmSwift
  *  app中使用到的URL的定义
  */
 struct URL {
+    
     /// 百度提供的查询号码归属地api
     static let phoneAreaUrl = "http://apis.baidu.com/apistore/mobilenumber/mobilenumber"
     
@@ -131,6 +132,21 @@ struct PhoneUtil {
         let pattern = "^\\d{1,12}$"
         let predicate = NSPredicate(format: "SELF MATCHES %@", pattern)
         return predicate.evaluateWithObject(number)
+    }
+}
+
+struct StringUtil {
+    static func HanToPin(string: String) -> NSString? {
+        let temp = NSMutableString(UTF8String: string)
+        if CFStringTransform(temp, nil, kCFStringTransformMandarinLatin, false) {
+            if CFStringTransform(temp, nil, kCFStringTransformStripDiacritics, false) {
+                return temp! as NSString
+            } else {
+                return ""
+            }
+        } else {
+            return ""
+        }
     }
 }
 

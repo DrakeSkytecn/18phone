@@ -9,8 +9,32 @@
 import Foundation
 import RealmSwift
 
+/**
+ 通话记录类型
+ 
+ - InUnConnected:  拨入未接通
+ - InConnected:    拨入已接通
+ - OutUnConnected: 拨出未接通
+ - OutConnected:   拨出已接通
+ */
+enum CallState: Int {
+    
+    /// 拨入未接通
+    case InUnConnected
+    
+    /// 拨入已接通
+    case InConnected
+    
+    /// 拨出未接通
+    case OutUnConnected
+    
+    /// 拨出已接通
+    case OutConnected
+}
+
 /// 通话记录数据对象
 class CallLog: Object {
+    
     /// 联系人头像
     dynamic var headPhoto = ""
     
@@ -21,7 +45,7 @@ class CallLog: Object {
     dynamic var phone = ""
     
     /// 通话记录类型
-    dynamic var callState = 0
+    dynamic var callState = CallState.InUnConnected.rawValue
     
     /// 通话方式
     dynamic var callType = 0

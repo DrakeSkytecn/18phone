@@ -170,7 +170,7 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let callLog = CallLog()
         callLog.name = "James"
         callLog.phone = dialNumber.text!
-        callLog.callState = 0
+        //callLog.callState = CallState.In.rawValue
         callLog.callStartTime = DateUtil.getCurrentDate()
         if tempArea != nil {
             callLog.area = tempArea!

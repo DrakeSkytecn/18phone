@@ -8,8 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		3CDEEA757806A094659EB15D /* Pods_18phone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 047EB72D84437E0BA79D1A70 /* Pods_18phone.framework */; };
+		E10953E81D7FBC00001E7060 /* GSAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = E10953D21D7FBC00001E7060 /* GSAccount.m */; };
+		E10953E91D7FBC00001E7060 /* GSCall.m in Sources */ = {isa = PBXBuildFile; fileRef = E10953D31D7FBC00001E7060 /* GSCall.m */; };
+		E10953EA1D7FBC00001E7060 /* GSCodecInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E10953D41D7FBC00001E7060 /* GSCodecInfo.m */; };
+		E10953EB1D7FBC00001E7060 /* GSDispatch.m in Sources */ = {isa = PBXBuildFile; fileRef = E10953D51D7FBC00001E7060 /* GSDispatch.m */; };
+		E10953EC1D7FBC00001E7060 /* GSIncomingCall.m in Sources */ = {isa = PBXBuildFile; fileRef = E10953D61D7FBC00001E7060 /* GSIncomingCall.m */; };
+		E10953ED1D7FBC00001E7060 /* GSNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = E10953D71D7FBC00001E7060 /* GSNotifications.m */; };
+		E10953EE1D7FBC00001E7060 /* GSOutgoingCall.m in Sources */ = {isa = PBXBuildFile; fileRef = E10953D81D7FBC00001E7060 /* GSOutgoingCall.m */; };
+		E10953EF1D7FBC00001E7060 /* GSRingback.m in Sources */ = {isa = PBXBuildFile; fileRef = E10953D91D7FBC00001E7060 /* GSRingback.m */; };
+		E10953F01D7FBC00001E7060 /* GSUserAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = E10953DA1D7FBC00001E7060 /* GSUserAgent.m */; };
+		E10953F11D7FBC00001E7060 /* GSAccountConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = E10953DD1D7FBC00001E7060 /* GSAccountConfiguration.m */; };
+		E10953F21D7FBC00001E7060 /* GSConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = E10953DE1D7FBC00001E7060 /* GSConfiguration.m */; };
+		E10953F31D7FBC00001E7060 /* darwin_dev.m in Sources */ = {isa = PBXBuildFile; fileRef = E10953E11D7FBC00001E7060 /* darwin_dev.m */; };
+		E10953F41D7FBC00001E7060 /* GSPJUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = E10953E51D7FBC00001E7060 /* GSPJUtil.m */; };
 		E114D1C41D4F1F15006AB978 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E114D1C31D4F1F15006AB978 /* AppDelegate.swift */; };
-		E114D1C61D4F1F15006AB978 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E114D1C51D4F1F15006AB978 /* ViewController.swift */; };
+		E114D1C61D4F1F15006AB978 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E114D1C51D4F1F15006AB978 /* ContactViewController.swift */; };
 		E114D1CE1D4F1F15006AB978 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E114D1CC1D4F1F15006AB978 /* LaunchScreen.storyboard */; };
 		E115A0441D6D762C005FCB8F /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = E1159FDF1D6D762C005FCB8F /* LICENSE */; };
 		E115A0451D6D762C005FCB8F /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = E1159FE01D6D762C005FCB8F /* README.md */; };
@@ -60,23 +73,12 @@
 		E14237321D76DD6E00C94677 /* libspeex-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E142371E1D76DD6E00C94677 /* libspeex-arm-apple-darwin9.a */; };
 		E14237331D76DD6E00C94677 /* libsrtp-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E142371F1D76DD6E00C94677 /* libsrtp-arm-apple-darwin9.a */; };
 		E148E6C31D6C397000BE131E /* OutgoingVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E148E6C21D6C397000BE131E /* OutgoingVideoViewController.swift */; };
+		E15C42121D7D094000124257 /* ringtone.wav in Resources */ = {isa = PBXBuildFile; fileRef = E15C42111D7D094000124257 /* ringtone.wav */; };
+		E15D759E1D7D45220069499C /* libyuv-arm64-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E15D759D1D7D45220069499C /* libyuv-arm64-apple-darwin_ios.a */; };
 		E161A6771D78069C00A1F3C4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E161A6761D78069C00A1F3C4 /* AVFoundation.framework */; };
 		E16453EA1D6AA3150036B53F /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16453E91D6AA3150036B53F /* Contact.swift */; };
 		E19AAD441D51DF480053D2C3 /* CallConView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E19AAD431D51DF480053D2C3 /* CallConView.xib */; };
 		E19AAD461D51DF6A0053D2C3 /* CallConView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19AAD451D51DF690053D2C3 /* CallConView.swift */; };
-		E1DFE1EA1D79702900206AB4 /* darwin_dev.m in Sources */ = {isa = PBXBuildFile; fileRef = E1DFE1CA1D79702900206AB4 /* darwin_dev.m */; };
-		E1DFE1EB1D79702900206AB4 /* GSAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = E1DFE1CE1D79702900206AB4 /* GSAccount.m */; };
-		E1DFE1EC1D79702900206AB4 /* GSAccountConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = E1DFE1D01D79702900206AB4 /* GSAccountConfiguration.m */; };
-		E1DFE1ED1D79702900206AB4 /* GSCall.m in Sources */ = {isa = PBXBuildFile; fileRef = E1DFE1D31D79702900206AB4 /* GSCall.m */; };
-		E1DFE1EE1D79702900206AB4 /* GSCodecInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E1DFE1D61D79702900206AB4 /* GSCodecInfo.m */; };
-		E1DFE1EF1D79702900206AB4 /* GSConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = E1DFE1D81D79702900206AB4 /* GSConfiguration.m */; };
-		E1DFE1F01D79702900206AB4 /* GSDispatch.m in Sources */ = {isa = PBXBuildFile; fileRef = E1DFE1DA1D79702900206AB4 /* GSDispatch.m */; };
-		E1DFE1F11D79702900206AB4 /* GSIncomingCall.m in Sources */ = {isa = PBXBuildFile; fileRef = E1DFE1DC1D79702900206AB4 /* GSIncomingCall.m */; };
-		E1DFE1F21D79702900206AB4 /* GSNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = E1DFE1DE1D79702900206AB4 /* GSNotifications.m */; };
-		E1DFE1F31D79702900206AB4 /* GSOutgoingCall.m in Sources */ = {isa = PBXBuildFile; fileRef = E1DFE1E01D79702900206AB4 /* GSOutgoingCall.m */; };
-		E1DFE1F41D79702900206AB4 /* GSPJUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = E1DFE1E21D79702900206AB4 /* GSPJUtil.m */; };
-		E1DFE1F51D79702900206AB4 /* GSRingback.m in Sources */ = {isa = PBXBuildFile; fileRef = E1DFE1E41D79702900206AB4 /* GSRingback.m */; };
-		E1DFE1F61D79702900206AB4 /* GSUserAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = E1DFE1E71D79702900206AB4 /* GSUserAgent.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -96,9 +98,42 @@
 		047EB72D84437E0BA79D1A70 /* Pods_18phone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_18phone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		075A21CADC9C03D40A071C6E /* Pods-18phone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-18phone.release.xcconfig"; path = "Pods/Target Support Files/Pods-18phone/Pods-18phone.release.xcconfig"; sourceTree = "<group>"; };
 		A3792B97A14496699EE5544B /* Pods-18phone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-18phone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-18phone/Pods-18phone.debug.xcconfig"; sourceTree = "<group>"; };
+		E10953C41D7FBC00001E7060 /* Gossip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gossip.h; sourceTree = "<group>"; };
+		E10953C51D7FBC00001E7060 /* GSAccount+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GSAccount+Private.h"; sourceTree = "<group>"; };
+		E10953C61D7FBC00001E7060 /* GSAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSAccount.h; sourceTree = "<group>"; };
+		E10953C71D7FBC00001E7060 /* GSCall+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GSCall+Private.h"; sourceTree = "<group>"; };
+		E10953C81D7FBC00001E7060 /* GSCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSCall.h; sourceTree = "<group>"; };
+		E10953C91D7FBC00001E7060 /* GSCodecInfo+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GSCodecInfo+Private.h"; sourceTree = "<group>"; };
+		E10953CA1D7FBC00001E7060 /* GSCodecInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSCodecInfo.h; sourceTree = "<group>"; };
+		E10953CB1D7FBC00001E7060 /* GSDispatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSDispatch.h; sourceTree = "<group>"; };
+		E10953CC1D7FBC00001E7060 /* GSIncomingCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSIncomingCall.h; sourceTree = "<group>"; };
+		E10953CD1D7FBC00001E7060 /* GSNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSNotifications.h; sourceTree = "<group>"; };
+		E10953CE1D7FBC00001E7060 /* GSOutgoingCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSOutgoingCall.h; sourceTree = "<group>"; };
+		E10953CF1D7FBC00001E7060 /* GSRingback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSRingback.h; sourceTree = "<group>"; };
+		E10953D01D7FBC00001E7060 /* GSUserAgent+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GSUserAgent+Private.h"; sourceTree = "<group>"; };
+		E10953D11D7FBC00001E7060 /* GSUserAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSUserAgent.h; sourceTree = "<group>"; };
+		E10953D21D7FBC00001E7060 /* GSAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSAccount.m; sourceTree = "<group>"; };
+		E10953D31D7FBC00001E7060 /* GSCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSCall.m; sourceTree = "<group>"; };
+		E10953D41D7FBC00001E7060 /* GSCodecInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSCodecInfo.m; sourceTree = "<group>"; };
+		E10953D51D7FBC00001E7060 /* GSDispatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSDispatch.m; sourceTree = "<group>"; };
+		E10953D61D7FBC00001E7060 /* GSIncomingCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSIncomingCall.m; sourceTree = "<group>"; };
+		E10953D71D7FBC00001E7060 /* GSNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSNotifications.m; sourceTree = "<group>"; };
+		E10953D81D7FBC00001E7060 /* GSOutgoingCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSOutgoingCall.m; sourceTree = "<group>"; };
+		E10953D91D7FBC00001E7060 /* GSRingback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSRingback.m; sourceTree = "<group>"; };
+		E10953DA1D7FBC00001E7060 /* GSUserAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSUserAgent.m; sourceTree = "<group>"; };
+		E10953DB1D7FBC00001E7060 /* GSAccountConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSAccountConfiguration.h; sourceTree = "<group>"; };
+		E10953DC1D7FBC00001E7060 /* GSConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSConfiguration.h; sourceTree = "<group>"; };
+		E10953DD1D7FBC00001E7060 /* GSAccountConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSAccountConfiguration.m; sourceTree = "<group>"; };
+		E10953DE1D7FBC00001E7060 /* GSConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSConfiguration.m; sourceTree = "<group>"; };
+		E10953E01D7FBC00001E7060 /* darwin_dev.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = darwin_dev.h; sourceTree = "<group>"; };
+		E10953E11D7FBC00001E7060 /* darwin_dev.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = darwin_dev.m; sourceTree = "<group>"; };
+		E10953E21D7FBC00001E7060 /* GSPJUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSPJUtil.h; sourceTree = "<group>"; };
+		E10953E31D7FBC00001E7060 /* PJSIP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJSIP.h; sourceTree = "<group>"; };
+		E10953E41D7FBC00001E7060 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
+		E10953E51D7FBC00001E7060 /* GSPJUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSPJUtil.m; sourceTree = "<group>"; };
 		E114D1C01D4F1F13006AB978 /* 18phone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 18phone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E114D1C31D4F1F15006AB978 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E114D1C51D4F1F15006AB978 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E114D1C51D4F1F15006AB978 /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		E114D1CD1D4F1F15006AB978 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E114D1CF1D4F1F15006AB978 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1159FDF1D6D762C005FCB8F /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -150,43 +185,14 @@
 		E142371E1D76DD6E00C94677 /* libspeex-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libspeex-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/third_party/lib/libspeex-arm-apple-darwin9.a"; sourceTree = "<group>"; };
 		E142371F1D76DD6E00C94677 /* libsrtp-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libsrtp-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/third_party/lib/libsrtp-arm-apple-darwin9.a"; sourceTree = "<group>"; };
 		E148E6C21D6C397000BE131E /* OutgoingVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutgoingVideoViewController.swift; sourceTree = "<group>"; };
+		E1534A0A1D7E668A007FE351 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		E1534A0C1D7E6692007FE351 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		E15C42111D7D094000124257 /* ringtone.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ringtone.wav; sourceTree = "<group>"; };
+		E15D759D1D7D45220069499C /* libyuv-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libyuv-arm64-apple-darwin_ios.a"; path = "gossip/pjsip/src/third_party/lib/libyuv-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
 		E161A6761D78069C00A1F3C4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		E16453E91D6AA3150036B53F /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		E19AAD431D51DF480053D2C3 /* CallConView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CallConView.xib; sourceTree = "<group>"; };
 		E19AAD451D51DF690053D2C3 /* CallConView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallConView.swift; sourceTree = "<group>"; };
-		E1DFE1C91D79702900206AB4 /* darwin_dev.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = darwin_dev.h; sourceTree = "<group>"; };
-		E1DFE1CA1D79702900206AB4 /* darwin_dev.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = darwin_dev.m; sourceTree = "<group>"; };
-		E1DFE1CB1D79702900206AB4 /* Gossip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gossip.h; sourceTree = "<group>"; };
-		E1DFE1CC1D79702900206AB4 /* GSAccount+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GSAccount+Private.h"; sourceTree = "<group>"; };
-		E1DFE1CD1D79702900206AB4 /* GSAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSAccount.h; sourceTree = "<group>"; };
-		E1DFE1CE1D79702900206AB4 /* GSAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSAccount.m; sourceTree = "<group>"; };
-		E1DFE1CF1D79702900206AB4 /* GSAccountConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSAccountConfiguration.h; sourceTree = "<group>"; };
-		E1DFE1D01D79702900206AB4 /* GSAccountConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSAccountConfiguration.m; sourceTree = "<group>"; };
-		E1DFE1D11D79702900206AB4 /* GSCall+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GSCall+Private.h"; sourceTree = "<group>"; };
-		E1DFE1D21D79702900206AB4 /* GSCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSCall.h; sourceTree = "<group>"; };
-		E1DFE1D31D79702900206AB4 /* GSCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSCall.m; sourceTree = "<group>"; };
-		E1DFE1D41D79702900206AB4 /* GSCodecInfo+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GSCodecInfo+Private.h"; sourceTree = "<group>"; };
-		E1DFE1D51D79702900206AB4 /* GSCodecInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSCodecInfo.h; sourceTree = "<group>"; };
-		E1DFE1D61D79702900206AB4 /* GSCodecInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSCodecInfo.m; sourceTree = "<group>"; };
-		E1DFE1D71D79702900206AB4 /* GSConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSConfiguration.h; sourceTree = "<group>"; };
-		E1DFE1D81D79702900206AB4 /* GSConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSConfiguration.m; sourceTree = "<group>"; };
-		E1DFE1D91D79702900206AB4 /* GSDispatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSDispatch.h; sourceTree = "<group>"; };
-		E1DFE1DA1D79702900206AB4 /* GSDispatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSDispatch.m; sourceTree = "<group>"; };
-		E1DFE1DB1D79702900206AB4 /* GSIncomingCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSIncomingCall.h; sourceTree = "<group>"; };
-		E1DFE1DC1D79702900206AB4 /* GSIncomingCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSIncomingCall.m; sourceTree = "<group>"; };
-		E1DFE1DD1D79702900206AB4 /* GSNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSNotifications.h; sourceTree = "<group>"; };
-		E1DFE1DE1D79702900206AB4 /* GSNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSNotifications.m; sourceTree = "<group>"; };
-		E1DFE1DF1D79702900206AB4 /* GSOutgoingCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSOutgoingCall.h; sourceTree = "<group>"; };
-		E1DFE1E01D79702900206AB4 /* GSOutgoingCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSOutgoingCall.m; sourceTree = "<group>"; };
-		E1DFE1E11D79702900206AB4 /* GSPJUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSPJUtil.h; sourceTree = "<group>"; };
-		E1DFE1E21D79702900206AB4 /* GSPJUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSPJUtil.m; sourceTree = "<group>"; };
-		E1DFE1E31D79702900206AB4 /* GSRingback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSRingback.h; sourceTree = "<group>"; };
-		E1DFE1E41D79702900206AB4 /* GSRingback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSRingback.m; sourceTree = "<group>"; };
-		E1DFE1E51D79702900206AB4 /* GSUserAgent+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GSUserAgent+Private.h"; sourceTree = "<group>"; };
-		E1DFE1E61D79702900206AB4 /* GSUserAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSUserAgent.h; sourceTree = "<group>"; };
-		E1DFE1E71D79702900206AB4 /* GSUserAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSUserAgent.m; sourceTree = "<group>"; };
-		E1DFE1E81D79702900206AB4 /* PJSIP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJSIP.h; sourceTree = "<group>"; };
-		E1DFE1E91D79702900206AB4 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		E1F5E57C1D59E5990010FF2C /* 18phone-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "18phone-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -195,6 +201,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E15D759E1D7D45220069499C /* libyuv-arm64-apple-darwin_ios.a in Frameworks */,
 				E161A6771D78069C00A1F3C4 /* AVFoundation.framework in Frameworks */,
 				E14237221D76DD6E00C94677 /* libilbccodec-arm-apple-darwin9.a in Frameworks */,
 				E14237261D76DD6E00C94677 /* libpjmedia-arm-apple-darwin9.a in Frameworks */,
@@ -226,6 +233,9 @@
 		A13A5015FDD7155192CC0662 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E1534A0C1D7E6692007FE351 /* AddressBookUI.framework */,
+				E1534A0A1D7E668A007FE351 /* AddressBook.framework */,
+				E15D759D1D7D45220069499C /* libyuv-arm64-apple-darwin_ios.a */,
 				E161A6761D78069C00A1F3C4 /* AVFoundation.framework */,
 				E142370C1D76DD6E00C94677 /* libg7221codec-arm-apple-darwin9.a */,
 				E142370D1D76DD6E00C94677 /* libgsmcodec-arm-apple-darwin9.a */,
@@ -261,6 +271,63 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		E10953DF1D7FBC00001E7060 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				E10953DB1D7FBC00001E7060 /* GSAccountConfiguration.h */,
+				E10953DC1D7FBC00001E7060 /* GSConfiguration.h */,
+				E10953DD1D7FBC00001E7060 /* GSAccountConfiguration.m */,
+				E10953DE1D7FBC00001E7060 /* GSConfiguration.m */,
+			);
+			name = Configuration;
+			sourceTree = "<group>";
+		};
+		E10953E61D7FBC00001E7060 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				E10953E01D7FBC00001E7060 /* darwin_dev.h */,
+				E10953E11D7FBC00001E7060 /* darwin_dev.m */,
+				E10953E21D7FBC00001E7060 /* GSPJUtil.h */,
+				E10953E31D7FBC00001E7060 /* PJSIP.h */,
+				E10953E41D7FBC00001E7060 /* Util.h */,
+				E10953E51D7FBC00001E7060 /* GSPJUtil.m */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
+		E10953E71D7FBC00001E7060 /* Gossip */ = {
+			isa = PBXGroup;
+			children = (
+				E10953C41D7FBC00001E7060 /* Gossip.h */,
+				E10953C51D7FBC00001E7060 /* GSAccount+Private.h */,
+				E10953C61D7FBC00001E7060 /* GSAccount.h */,
+				E10953C71D7FBC00001E7060 /* GSCall+Private.h */,
+				E10953C81D7FBC00001E7060 /* GSCall.h */,
+				E10953C91D7FBC00001E7060 /* GSCodecInfo+Private.h */,
+				E10953CA1D7FBC00001E7060 /* GSCodecInfo.h */,
+				E10953CB1D7FBC00001E7060 /* GSDispatch.h */,
+				E10953CC1D7FBC00001E7060 /* GSIncomingCall.h */,
+				E10953CD1D7FBC00001E7060 /* GSNotifications.h */,
+				E10953CE1D7FBC00001E7060 /* GSOutgoingCall.h */,
+				E10953CF1D7FBC00001E7060 /* GSRingback.h */,
+				E10953D01D7FBC00001E7060 /* GSUserAgent+Private.h */,
+				E10953D11D7FBC00001E7060 /* GSUserAgent.h */,
+				E10953D21D7FBC00001E7060 /* GSAccount.m */,
+				E10953D31D7FBC00001E7060 /* GSCall.m */,
+				E10953D41D7FBC00001E7060 /* GSCodecInfo.m */,
+				E10953D51D7FBC00001E7060 /* GSDispatch.m */,
+				E10953D61D7FBC00001E7060 /* GSIncomingCall.m */,
+				E10953D71D7FBC00001E7060 /* GSNotifications.m */,
+				E10953D81D7FBC00001E7060 /* GSOutgoingCall.m */,
+				E10953D91D7FBC00001E7060 /* GSRingback.m */,
+				E10953DA1D7FBC00001E7060 /* GSUserAgent.m */,
+				E10953DF1D7FBC00001E7060 /* Configuration */,
+				E10953E61D7FBC00001E7060 /* Util */,
+			);
+			name = Gossip;
+			path = ../gossip/Gossip;
+			sourceTree = "<group>";
+		};
 		E114D1B71D4F1F13006AB978 = {
 			isa = PBXGroup;
 			children = (
@@ -283,6 +350,7 @@
 		E114D1C21D4F1F15006AB978 /* 18phone */ = {
 			isa = PBXGroup;
 			children = (
+				E15C42101D7D091100124257 /* Resource */,
 				E13BACC01D518E6900414ACE /* Model */,
 				E13BACBF1D518E6600414ACE /* View */,
 				E13BACBE1D518E6300414ACE /* Controller */,
@@ -326,7 +394,7 @@
 		E13BACBD1D518E5F00414ACE /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				E1DFE1C81D79702900206AB4 /* Gossip */,
+				E10953E71D7FBC00001E7060 /* Gossip */,
 				E1159FDE1D6D762C005FCB8F /* SwiftEventBus */,
 				E12EBA821D532428007B5CBD /* piQ */,
 				E13BACC51D518F9F00414ACE /* Async */,
@@ -344,7 +412,7 @@
 				E13BACD71D51946B00414ACE /* KTabBarController.swift */,
 				E13BACD81D51946B00414ACE /* DialViewController.swift */,
 				E13BACD91D51946B00414ACE /* CallLogViewController.swift */,
-				E114D1C51D4F1F15006AB978 /* ViewController.swift */,
+				E114D1C51D4F1F15006AB978 /* ContactViewController.swift */,
 				E11E92931D5F2C9F004D634A /* DialView1Controller.swift */,
 				E138D0761D6301EA0091AF4A /* OutgoingCallViewController.swift */,
 				E138D0781D630B7A0091AF4A /* IncomingCallViewController.swift */,
@@ -404,60 +472,12 @@
 			name = Async;
 			sourceTree = "<group>";
 		};
-		E1DFE1C81D79702900206AB4 /* Gossip */ = {
+		E15C42101D7D091100124257 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				E1DFE1F81D79704D00206AB4 /* Configuration */,
-				E1DFE1F71D79704A00206AB4 /* Util */,
-				E1DFE1CB1D79702900206AB4 /* Gossip.h */,
-				E1DFE1CC1D79702900206AB4 /* GSAccount+Private.h */,
-				E1DFE1CD1D79702900206AB4 /* GSAccount.h */,
-				E1DFE1CE1D79702900206AB4 /* GSAccount.m */,
-				E1DFE1D11D79702900206AB4 /* GSCall+Private.h */,
-				E1DFE1D21D79702900206AB4 /* GSCall.h */,
-				E1DFE1D31D79702900206AB4 /* GSCall.m */,
-				E1DFE1D41D79702900206AB4 /* GSCodecInfo+Private.h */,
-				E1DFE1D51D79702900206AB4 /* GSCodecInfo.h */,
-				E1DFE1D61D79702900206AB4 /* GSCodecInfo.m */,
-				E1DFE1D91D79702900206AB4 /* GSDispatch.h */,
-				E1DFE1DA1D79702900206AB4 /* GSDispatch.m */,
-				E1DFE1DB1D79702900206AB4 /* GSIncomingCall.h */,
-				E1DFE1DC1D79702900206AB4 /* GSIncomingCall.m */,
-				E1DFE1DD1D79702900206AB4 /* GSNotifications.h */,
-				E1DFE1DE1D79702900206AB4 /* GSNotifications.m */,
-				E1DFE1DF1D79702900206AB4 /* GSOutgoingCall.h */,
-				E1DFE1E01D79702900206AB4 /* GSOutgoingCall.m */,
-				E1DFE1E31D79702900206AB4 /* GSRingback.h */,
-				E1DFE1E41D79702900206AB4 /* GSRingback.m */,
-				E1DFE1E51D79702900206AB4 /* GSUserAgent+Private.h */,
-				E1DFE1E61D79702900206AB4 /* GSUserAgent.h */,
-				E1DFE1E71D79702900206AB4 /* GSUserAgent.m */,
+				E15C42111D7D094000124257 /* ringtone.wav */,
 			);
-			path = Gossip;
-			sourceTree = "<group>";
-		};
-		E1DFE1F71D79704A00206AB4 /* Util */ = {
-			isa = PBXGroup;
-			children = (
-				E1DFE1C91D79702900206AB4 /* darwin_dev.h */,
-				E1DFE1CA1D79702900206AB4 /* darwin_dev.m */,
-				E1DFE1E11D79702900206AB4 /* GSPJUtil.h */,
-				E1DFE1E21D79702900206AB4 /* GSPJUtil.m */,
-				E1DFE1E81D79702900206AB4 /* PJSIP.h */,
-				E1DFE1E91D79702900206AB4 /* Util.h */,
-			);
-			name = Util;
-			sourceTree = "<group>";
-		};
-		E1DFE1F81D79704D00206AB4 /* Configuration */ = {
-			isa = PBXGroup;
-			children = (
-				E1DFE1CF1D79702900206AB4 /* GSAccountConfiguration.h */,
-				E1DFE1D01D79702900206AB4 /* GSAccountConfiguration.m */,
-				E1DFE1D71D79702900206AB4 /* GSConfiguration.h */,
-				E1DFE1D81D79702900206AB4 /* GSConfiguration.m */,
-			);
-			name = Configuration;
+			name = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -530,6 +550,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E115A0441D6D762C005FCB8F /* LICENSE in Resources */,
+				E15C42121D7D094000124257 /* ringtone.wav in Resources */,
 				E11E92921D5EBBAB004D634A /* DialView.xib in Resources */,
 				E114D1CE1D4F1F15006AB978 /* LaunchScreen.storyboard in Resources */,
 				E13BACE51D51974900414ACE /* Assets.xcassets in Resources */,
@@ -607,47 +628,47 @@
 			buildActionMask = 2147483647;
 			files = (
 				E12EBA811D531FF3007B5CBD /* CallLogACell.swift in Sources */,
+				E10953EE1D7FBC00001E7060 /* GSOutgoingCall.m in Sources */,
 				E13BACC91D518FE500414ACE /* JSONJoy.swift in Sources */,
 				E16453EA1D6AA3150036B53F /* Contact.swift in Sources */,
 				E13BACDB1D51946B00414ACE /* KTabBarController.swift in Sources */,
 				E13BACE21D5196EE00414ACE /* DialNumberCell.swift in Sources */,
 				E138D0791D630B7A0091AF4A /* IncomingCallViewController.swift in Sources */,
+				E10953F11D7FBC00001E7060 /* GSAccountConfiguration.m in Sources */,
+				E10953EF1D7FBC00001E7060 /* GSRingback.m in Sources */,
 				E19AAD461D51DF6A0053D2C3 /* CallConView.swift in Sources */,
-				E1DFE1F41D79702900206AB4 /* GSPJUtil.m in Sources */,
 				E13BACDC1D51946B00414ACE /* DialViewController.swift in Sources */,
+				E10953E91D7FBC00001E7060 /* GSCall.m in Sources */,
 				E13BACE31D5196EE00414ACE /* DialIconCell.swift in Sources */,
 				E13BACD11D518FF000414ACE /* Request.swift in Sources */,
+				E10953F21D7FBC00001E7060 /* GSConfiguration.m in Sources */,
+				E10953F41D7FBC00001E7060 /* GSPJUtil.m in Sources */,
 				E148E6C31D6C397000BE131E /* OutgoingVideoViewController.swift in Sources */,
+				E10953EA1D7FBC00001E7060 /* GSCodecInfo.m in Sources */,
 				E13BACDA1D51946B00414ACE /* RootViewController.swift in Sources */,
-				E1DFE1EB1D79702900206AB4 /* GSAccount.m in Sources */,
-				E1DFE1EA1D79702900206AB4 /* darwin_dev.m in Sources */,
-				E1DFE1EF1D79702900206AB4 /* GSConfiguration.m in Sources */,
 				E13D21951D6ECFCA00C6EA98 /* IncomingVideoViewController.swift in Sources */,
-				E1DFE1F31D79702900206AB4 /* GSOutgoingCall.m in Sources */,
 				E115A0461D6D762C005FCB8F /* SwiftEventBus.swift in Sources */,
 				E115A0451D6D762C005FCB8F /* README.md in Sources */,
 				E13BACD21D518FF000414ACE /* StatusCode.swift in Sources */,
-				E1DFE1EC1D79702900206AB4 /* GSAccountConfiguration.m in Sources */,
 				E13BACD01D518FF000414ACE /* Operation.swift in Sources */,
-				E1DFE1F51D79702900206AB4 /* GSRingback.m in Sources */,
-				E1DFE1ED1D79702900206AB4 /* GSCall.m in Sources */,
+				E10953EB1D7FBC00001E7060 /* GSDispatch.m in Sources */,
 				E13BACDD1D51946B00414ACE /* CallLogViewController.swift in Sources */,
-				E1DFE1F61D79702900206AB4 /* GSUserAgent.m in Sources */,
 				E13BACCF1D518FF000414ACE /* HTTPSecurity.swift in Sources */,
 				E13BACE71D51977C00414ACE /* R.generated.swift in Sources */,
-				E1DFE1F01D79702900206AB4 /* GSDispatch.m in Sources */,
+				E10953F31D7FBC00001E7060 /* darwin_dev.m in Sources */,
 				E138D0771D6301EA0091AF4A /* OutgoingCallViewController.swift in Sources */,
+				E10953ED1D7FBC00001E7060 /* GSNotifications.m in Sources */,
 				E13BACC71D518FDE00414ACE /* Async.swift in Sources */,
-				E1DFE1F11D79702900206AB4 /* GSIncomingCall.m in Sources */,
+				E10953F01D7FBC00001E7060 /* GSUserAgent.m in Sources */,
 				E13BACD31D518FF000414ACE /* Upload.swift in Sources */,
 				E11E92941D5F2C9F004D634A /* DialView1Controller.swift in Sources */,
-				E1DFE1EE1D79702900206AB4 /* GSCodecInfo.m in Sources */,
-				E1DFE1F21D79702900206AB4 /* GSNotifications.m in Sources */,
 				E13BACC21D518F5200414ACE /* AppUtil.swift in Sources */,
-				E114D1C61D4F1F15006AB978 /* ViewController.swift in Sources */,
+				E114D1C61D4F1F15006AB978 /* ContactViewController.swift in Sources */,
 				E114D1C41D4F1F15006AB978 /* AppDelegate.swift in Sources */,
+				E10953E81D7FBC00001E7060 /* GSAccount.m in Sources */,
 				E13BACD51D51907600414ACE /* CallLog.swift in Sources */,
 				E12EBA841D532447007B5CBD /* piQ.swift in Sources */,
+				E10953EC1D7FBC00001E7060 /* GSIncomingCall.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -766,7 +787,7 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				INFOPLIST_FILE = 18phone/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -815,7 +836,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = 18phone/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

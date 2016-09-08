@@ -28,7 +28,6 @@ class IncomingVideoViewController: UIViewController {
         inCall?.end()
     }
     
-    
     @IBAction func answer(sender: UIButton) {
         inCall?.begin()
     }
@@ -37,11 +36,11 @@ class IncomingVideoViewController: UIViewController {
         switch inCall!.status {
         case GSCallStatusReady:
             print("IncomingCallViewController Ready.")
-            
             break
             
         case GSCallStatusConnecting:
             print("IncomingCallViewController Connecting...")
+            
             break
             
         case GSCallStatusCalling:
@@ -50,9 +49,15 @@ class IncomingVideoViewController: UIViewController {
             
         case GSCallStatusConnected:
             print("IncomingCallViewController Connected.")
-            let videoView = self.inCall?.createVideoWindow()
-            videoView?.frame = self.view.frame
-            self.view.addSubview(videoView!)
+            inCall?.setIncomingVideoStream()
+            Async.main(after: 8) {
+                let videoView = self.inCall?.createVideoWindow()
+                videoView?.frame = self.view.frame
+                self.view.addSubview(videoView!)
+            }
+            
+            
+            
             
             break
             
@@ -82,6 +87,10 @@ class IncomingVideoViewController: UIViewController {
         if keyPath == "status" {
             callStatusDidChange()
         }
+    }
+    
+    deinit {
+        inCall?.removeObserver(self, forKeyPath: "status")
     }
     
     /*

@@ -14,6 +14,7 @@ class OutgoingCallViewController: UIViewController {
     var contactName: String?
     var phoneArea: String?
     var outCall:GSCall?
+    var isConnected: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +52,7 @@ class OutgoingCallViewController: UIViewController {
             
         case GSCallStatusConnected:
             print("OutgoingCallViewController Connected.")
+            isConnected = true
             break
             
         case GSCallStatusDisconnected:
@@ -58,7 +60,11 @@ class OutgoingCallViewController: UIViewController {
             let callLog = CallLog()
             callLog.name = "James"
             callLog.phone = toNumber!
-            callLog.callState = 0
+            if isConnected {
+                callLog.callState = CallState.OutConnected.rawValue
+            } else {
+                callLog.callState = CallState.OutUnConnected.rawValue
+            }
             callLog.callType = 0
             callLog.callStartTime = DateUtil.getCurrentDate()
             if phoneArea != nil {

@@ -11,6 +11,7 @@ import UIKit
 class IncomingCallViewController: UIViewController {
 
     var inCall: GSCall?
+    var isConnected: Bool = false
     
     /// 接通前显示来电信息，接通后显示通话时间
     @IBOutlet weak var infoText: UILabel!
@@ -51,6 +52,7 @@ class IncomingCallViewController: UIViewController {
             
         case GSCallStatusConnected:
             print("IncomingCallViewController Connected.")
+            isConnected = true
             break
             
         case GSCallStatusDisconnected:

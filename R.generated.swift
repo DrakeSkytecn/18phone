@@ -16,14 +16,22 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.file` struct is generated, and contains static references to 1 files.
+  /// This `R.file` struct is generated, and contains static references to 2 files.
   struct file {
     /// Resource file `LICENSE`.
     static let lICENSE = FileResource(bundle: _R.hostingBundle, name: "LICENSE", pathExtension: "")
+    /// Resource file `ringtone.wav`.
+    static let ringtoneWav = FileResource(bundle: _R.hostingBundle, name: "ringtone", pathExtension: "wav")
     
     /// `bundle.URLForResource("LICENSE", withExtension: "")`
     static func lICENSE(_: Void) -> NSURL? {
       let fileResource = R.file.lICENSE
+      return fileResource.bundle.URLForResource(fileResource)
+    }
+    
+    /// `bundle.URLForResource("ringtone", withExtension: "wav")`
+    static func ringtoneWav(_: Void) -> NSURL? {
+      let fileResource = R.file.ringtoneWav
       return fileResource.bundle.URLForResource(fileResource)
     }
     
@@ -188,8 +196,10 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 6 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 7 reuse identifiers.
   struct reuseIdentifier {
+    /// Reuse identifier `contact`.
+    static let contact: ReuseIdentifier<UITableViewCell> = ReuseIdentifier(identifier: "contact")
     /// Reuse identifier `dial_1`.
     static let dial_1: ReuseIdentifier<DialNumberCell> = ReuseIdentifier(identifier: "dial_1")
     /// Reuse identifier `dial_2`.
@@ -290,17 +300,12 @@ struct _R: Rswift.Validatable {
     struct main: StoryboardResourceWithInitialControllerType, Rswift.Validatable {
       typealias InitialController = KTabBarController
       
-      let b = StoryboardViewControllerResource<UIViewController>(identifier: "B")
       let bundle = _R.hostingBundle
       let dialViewController = StoryboardViewControllerResource<DialView1Controller>(identifier: "DialViewController")
       let incomingCallViewController = StoryboardViewControllerResource<IncomingCallViewController>(identifier: "IncomingCallViewController")
       let incomingVideoViewController = StoryboardViewControllerResource<IncomingVideoViewController>(identifier: "IncomingVideoViewController")
       let name = "Main"
       let outgoingCallViewController = StoryboardViewControllerResource<OutgoingCallViewController>(identifier: "OutgoingCallViewController")
-      
-      func b(_: Void) -> UIViewController? {
-        return UIStoryboard(resource: self).instantiateViewController(b)
-      }
       
       func dialViewController(_: Void) -> DialView1Controller? {
         return UIStoryboard(resource: self).instantiateViewController(dialViewController)
@@ -328,7 +333,6 @@ struct _R: Rswift.Validatable {
         if UIImage(named: "dial_tab") == nil { throw ValidationError(description: "[R.swift] Image named 'dial_tab' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "dial_up") == nil { throw ValidationError(description: "[R.swift] Image named 'dial_up' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "delete_all") == nil { throw ValidationError(description: "[R.swift] Image named 'delete_all' is used in storyboard 'Main', but couldn't be loaded.") }
-        if _R.storyboard.main().b() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'b' could not be loaded from storyboard 'Main' as 'UIViewController'.") }
         if _R.storyboard.main().dialViewController() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'dialViewController' could not be loaded from storyboard 'Main' as 'DialView1Controller'.") }
         if _R.storyboard.main().outgoingCallViewController() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'outgoingCallViewController' could not be loaded from storyboard 'Main' as 'OutgoingCallViewController'.") }
         if _R.storyboard.main().incomingCallViewController() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'incomingCallViewController' could not be loaded from storyboard 'Main' as 'IncomingCallViewController'.") }
