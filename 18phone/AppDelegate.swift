@@ -17,8 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.backgroundColor = UIColor.whiteColor()
 //        App.initUserAgent("18603001016", password: "123")
-        App.initUserAgent("15016721385", password: "123")
-//        App.initUserAgent("18823754172", password: "123")
+//        App.initUserAgent("15016721385", password: "123")
+        App.initUserAgent("18823754172", password: "123")
         
         return true
     }

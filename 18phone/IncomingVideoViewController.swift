@@ -12,10 +12,13 @@ class IncomingVideoViewController: UIViewController {
     
     var inCall: GSCall?
     
+    @IBOutlet weak var videoCon: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         inCall?.addObserver(self, forKeyPath: "status", options: .Initial, context: nil)
+        
         // Do any additional setup after loading the view.
     }
     
@@ -49,16 +52,11 @@ class IncomingVideoViewController: UIViewController {
             
         case GSCallStatusConnected:
             print("IncomingCallViewController Connected.")
-            inCall?.setIncomingVideoStream()
-            Async.main(after: 8) {
-                let videoView = self.inCall?.createVideoWindow()
-                videoView?.frame = self.view.frame
-                self.view.addSubview(videoView!)
-            }
-            
-            
-            
-            
+            //inCall?.setIncomingVideoStream()
+            let videoView = self.inCall?.createVideoWindow()
+            videoView?.frame = self.view.frame
+            videoCon.addSubview(videoView!)
+
             break
             
         case GSCallStatusDisconnected:

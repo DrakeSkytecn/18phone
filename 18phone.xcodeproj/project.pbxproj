@@ -8,19 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3CDEEA757806A094659EB15D /* Pods_18phone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 047EB72D84437E0BA79D1A70 /* Pods_18phone.framework */; };
-		E10953E81D7FBC00001E7060 /* GSAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = E10953D21D7FBC00001E7060 /* GSAccount.m */; };
-		E10953E91D7FBC00001E7060 /* GSCall.m in Sources */ = {isa = PBXBuildFile; fileRef = E10953D31D7FBC00001E7060 /* GSCall.m */; };
-		E10953EA1D7FBC00001E7060 /* GSCodecInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E10953D41D7FBC00001E7060 /* GSCodecInfo.m */; };
-		E10953EB1D7FBC00001E7060 /* GSDispatch.m in Sources */ = {isa = PBXBuildFile; fileRef = E10953D51D7FBC00001E7060 /* GSDispatch.m */; };
-		E10953EC1D7FBC00001E7060 /* GSIncomingCall.m in Sources */ = {isa = PBXBuildFile; fileRef = E10953D61D7FBC00001E7060 /* GSIncomingCall.m */; };
-		E10953ED1D7FBC00001E7060 /* GSNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = E10953D71D7FBC00001E7060 /* GSNotifications.m */; };
-		E10953EE1D7FBC00001E7060 /* GSOutgoingCall.m in Sources */ = {isa = PBXBuildFile; fileRef = E10953D81D7FBC00001E7060 /* GSOutgoingCall.m */; };
-		E10953EF1D7FBC00001E7060 /* GSRingback.m in Sources */ = {isa = PBXBuildFile; fileRef = E10953D91D7FBC00001E7060 /* GSRingback.m */; };
-		E10953F01D7FBC00001E7060 /* GSUserAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = E10953DA1D7FBC00001E7060 /* GSUserAgent.m */; };
-		E10953F11D7FBC00001E7060 /* GSAccountConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = E10953DD1D7FBC00001E7060 /* GSAccountConfiguration.m */; };
-		E10953F21D7FBC00001E7060 /* GSConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = E10953DE1D7FBC00001E7060 /* GSConfiguration.m */; };
-		E10953F31D7FBC00001E7060 /* darwin_dev.m in Sources */ = {isa = PBXBuildFile; fileRef = E10953E11D7FBC00001E7060 /* darwin_dev.m */; };
-		E10953F41D7FBC00001E7060 /* GSPJUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = E10953E51D7FBC00001E7060 /* GSPJUtil.m */; };
 		E114D1C41D4F1F15006AB978 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E114D1C31D4F1F15006AB978 /* AppDelegate.swift */; };
 		E114D1C61D4F1F15006AB978 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E114D1C51D4F1F15006AB978 /* ContactViewController.swift */; };
 		E114D1CE1D4F1F15006AB978 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E114D1CC1D4F1F15006AB978 /* LaunchScreen.storyboard */; };
@@ -52,33 +39,54 @@
 		E13BACE51D51974900414ACE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E13BACE41D51974900414ACE /* Assets.xcassets */; };
 		E13BACE71D51977C00414ACE /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACE61D51977C00414ACE /* R.generated.swift */; };
 		E13D21951D6ECFCA00C6EA98 /* IncomingVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13D21941D6ECFCA00C6EA98 /* IncomingVideoViewController.swift */; };
-		E14237201D76DD6E00C94677 /* libg7221codec-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E142370C1D76DD6E00C94677 /* libg7221codec-arm-apple-darwin9.a */; };
-		E14237211D76DD6E00C94677 /* libgsmcodec-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E142370D1D76DD6E00C94677 /* libgsmcodec-arm-apple-darwin9.a */; };
-		E14237221D76DD6E00C94677 /* libilbccodec-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E142370E1D76DD6E00C94677 /* libilbccodec-arm-apple-darwin9.a */; };
-		E14237231D76DD6E00C94677 /* libopenh264.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E142370F1D76DD6E00C94677 /* libopenh264.a */; };
-		E14237241D76DD6E00C94677 /* libpj-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E14237101D76DD6E00C94677 /* libpj-arm-apple-darwin9.a */; };
-		E14237251D76DD6E00C94677 /* libpjlib-util-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E14237111D76DD6E00C94677 /* libpjlib-util-arm-apple-darwin9.a */; };
-		E14237261D76DD6E00C94677 /* libpjmedia-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E14237121D76DD6E00C94677 /* libpjmedia-arm-apple-darwin9.a */; };
-		E14237271D76DD6E00C94677 /* libpjmedia-audiodev-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E14237131D76DD6E00C94677 /* libpjmedia-audiodev-arm-apple-darwin9.a */; };
-		E14237281D76DD6E00C94677 /* libpjmedia-codec-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E14237141D76DD6E00C94677 /* libpjmedia-codec-arm-apple-darwin9.a */; };
-		E14237291D76DD6E00C94677 /* libpjmedia-videodev-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E14237151D76DD6E00C94677 /* libpjmedia-videodev-arm-apple-darwin9.a */; };
-		E142372A1D76DD6E00C94677 /* libpjnath-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E14237161D76DD6E00C94677 /* libpjnath-arm-apple-darwin9.a */; };
-		E142372B1D76DD6E00C94677 /* libpjsdp-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E14237171D76DD6E00C94677 /* libpjsdp-arm-apple-darwin9.a */; };
-		E142372C1D76DD6E00C94677 /* libpjsip-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E14237181D76DD6E00C94677 /* libpjsip-arm-apple-darwin9.a */; };
-		E142372D1D76DD6E00C94677 /* libpjsip-simple-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E14237191D76DD6E00C94677 /* libpjsip-simple-arm-apple-darwin9.a */; };
-		E142372E1D76DD6E00C94677 /* libpjsip-ua-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E142371A1D76DD6E00C94677 /* libpjsip-ua-arm-apple-darwin9.a */; };
-		E142372F1D76DD6E00C94677 /* libpjsua-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E142371B1D76DD6E00C94677 /* libpjsua-arm-apple-darwin9.a */; };
-		E14237301D76DD6E00C94677 /* libpjsua2-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E142371C1D76DD6E00C94677 /* libpjsua2-arm-apple-darwin9.a */; };
-		E14237311D76DD6E00C94677 /* libresample-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E142371D1D76DD6E00C94677 /* libresample-arm-apple-darwin9.a */; };
-		E14237321D76DD6E00C94677 /* libspeex-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E142371E1D76DD6E00C94677 /* libspeex-arm-apple-darwin9.a */; };
-		E14237331D76DD6E00C94677 /* libsrtp-arm-apple-darwin9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E142371F1D76DD6E00C94677 /* libsrtp-arm-apple-darwin9.a */; };
 		E148E6C31D6C397000BE131E /* OutgoingVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E148E6C21D6C397000BE131E /* OutgoingVideoViewController.swift */; };
 		E15C42121D7D094000124257 /* ringtone.wav in Resources */ = {isa = PBXBuildFile; fileRef = E15C42111D7D094000124257 /* ringtone.wav */; };
-		E15D759E1D7D45220069499C /* libyuv-arm64-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E15D759D1D7D45220069499C /* libyuv-arm64-apple-darwin_ios.a */; };
 		E161A6771D78069C00A1F3C4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E161A6761D78069C00A1F3C4 /* AVFoundation.framework */; };
 		E16453EA1D6AA3150036B53F /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16453E91D6AA3150036B53F /* Contact.swift */; };
 		E19AAD441D51DF480053D2C3 /* CallConView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E19AAD431D51DF480053D2C3 /* CallConView.xib */; };
 		E19AAD461D51DF6A0053D2C3 /* CallConView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19AAD451D51DF690053D2C3 /* CallConView.swift */; };
+		E1C048661D867F650009DF6B /* GSAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C048491D867F650009DF6B /* GSAccount.m */; };
+		E1C048671D867F650009DF6B /* GSAccountConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C0484C1D867F650009DF6B /* GSAccountConfiguration.m */; };
+		E1C048681D867F650009DF6B /* GSCall.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C0484E1D867F650009DF6B /* GSCall.m */; };
+		E1C048691D867F650009DF6B /* GSCodecInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C048511D867F650009DF6B /* GSCodecInfo.m */; };
+		E1C0486A1D867F650009DF6B /* GSConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C048541D867F650009DF6B /* GSConfiguration.m */; };
+		E1C0486B1D867F650009DF6B /* GSDispatch.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C048561D867F650009DF6B /* GSDispatch.m */; };
+		E1C0486C1D867F650009DF6B /* GSIncomingCall.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C048581D867F650009DF6B /* GSIncomingCall.m */; };
+		E1C0486D1D867F650009DF6B /* GSNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C0485A1D867F650009DF6B /* GSNotifications.m */; };
+		E1C0486E1D867F650009DF6B /* GSOutgoingCall.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C0485C1D867F650009DF6B /* GSOutgoingCall.m */; };
+		E1C0486F1D867F650009DF6B /* GSPJUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C0485E1D867F650009DF6B /* GSPJUtil.m */; };
+		E1C048701D867F650009DF6B /* GSRingback.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C048601D867F650009DF6B /* GSRingback.m */; };
+		E1C048711D867F650009DF6B /* GSUserAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C048621D867F650009DF6B /* GSUserAgent.m */; };
+		E1C0489A1D8691C50009DF6B /* libg7221codec-arm64-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C048981D8691AE0009DF6B /* libg7221codec-arm64-apple-darwin_ios.a */; };
+		E1C048A11D8691C60009DF6B /* libgsmcodec-arm64-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C0489B1D8691C60009DF6B /* libgsmcodec-arm64-apple-darwin_ios.a */; };
+		E1C048A21D8691C60009DF6B /* libilbccodec-arm64-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C0489C1D8691C60009DF6B /* libilbccodec-arm64-apple-darwin_ios.a */; };
+		E1C048A31D8691C60009DF6B /* libresample-arm64-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C0489D1D8691C60009DF6B /* libresample-arm64-apple-darwin_ios.a */; };
+		E1C048A41D8691C60009DF6B /* libspeex-arm64-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C0489E1D8691C60009DF6B /* libspeex-arm64-apple-darwin_ios.a */; };
+		E1C048A51D8691C60009DF6B /* libsrtp-arm64-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C0489F1D8691C60009DF6B /* libsrtp-arm64-apple-darwin_ios.a */; };
+		E1C048A61D8691C60009DF6B /* libyuv-arm64-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C048A01D8691C60009DF6B /* libyuv-arm64-apple-darwin_ios.a */; };
+		E1C048A81D8691DA0009DF6B /* libopenh264.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C048A71D8691DA0009DF6B /* libopenh264.a */; };
+		E1C048AA1D8691ED0009DF6B /* libpj-arm64-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C048A91D8691ED0009DF6B /* libpj-arm64-apple-darwin_ios.a */; };
+		E1C048AC1D8692020009DF6B /* libpjlib-util-arm64-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C048AB1D8692020009DF6B /* libpjlib-util-arm64-apple-darwin_ios.a */; };
+		E1C048B21D8692280009DF6B /* libpjmedia-arm64-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C048AD1D8692280009DF6B /* libpjmedia-arm64-apple-darwin_ios.a */; };
+		E1C048B31D8692280009DF6B /* libpjmedia-audiodev-arm64-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C048AE1D8692280009DF6B /* libpjmedia-audiodev-arm64-apple-darwin_ios.a */; };
+		E1C048B41D8692280009DF6B /* libpjmedia-codec-arm64-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C048AF1D8692280009DF6B /* libpjmedia-codec-arm64-apple-darwin_ios.a */; };
+		E1C048B51D8692280009DF6B /* libpjmedia-videodev-arm64-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C048B01D8692280009DF6B /* libpjmedia-videodev-arm64-apple-darwin_ios.a */; };
+		E1C048B61D8692280009DF6B /* libpjsdp-arm64-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C048B11D8692280009DF6B /* libpjsdp-arm64-apple-darwin_ios.a */; };
+		E1C048B81D86922F0009DF6B /* libpjnath-arm64-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C048B71D86922F0009DF6B /* libpjnath-arm64-apple-darwin_ios.a */; };
+		E1C048BE1D86923B0009DF6B /* libpjsip-arm64-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C048B91D86923B0009DF6B /* libpjsip-arm64-apple-darwin_ios.a */; };
+		E1C048BF1D86923B0009DF6B /* libpjsip-simple-arm64-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C048BA1D86923B0009DF6B /* libpjsip-simple-arm64-apple-darwin_ios.a */; };
+		E1C048C01D86923B0009DF6B /* libpjsip-ua-arm64-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C048BB1D86923B0009DF6B /* libpjsip-ua-arm64-apple-darwin_ios.a */; };
+		E1C048C11D86923B0009DF6B /* libpjsua-arm64-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C048BC1D86923B0009DF6B /* libpjsua-arm64-apple-darwin_ios.a */; };
+		E1C048C21D86923B0009DF6B /* libpjsua2-arm64-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C048BD1D86923B0009DF6B /* libpjsua2-arm64-apple-darwin_ios.a */; };
+		E1C048C41D86933E0009DF6B /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C048C31D86933E0009DF6B /* CoreAudio.framework */; };
+		E1C048C61D8693E80009DF6B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C048C51D8693E80009DF6B /* AudioToolbox.framework */; };
+		E1C048C81D8694880009DF6B /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C048C71D8694880009DF6B /* OpenGLES.framework */; };
+		E1C048CA1D8694990009DF6B /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C048C91D8694990009DF6B /* CoreVideo.framework */; };
+		E1C048CC1D8694AD0009DF6B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C048CB1D8694AD0009DF6B /* QuartzCore.framework */; };
+		E1C048CE1D8694BD0009DF6B /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C048CD1D8694BD0009DF6B /* CoreMedia.framework */; };
+		E1C048D01D8694D30009DF6B /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C048CF1D8694D30009DF6B /* CoreFoundation.framework */; };
+		E1C048D21D8697690009DF6B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C048D11D8697690009DF6B /* CFNetwork.framework */; };
+		E1C048D41D8697770009DF6B /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C048D31D8697770009DF6B /* libstdc++.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -98,39 +106,6 @@
 		047EB72D84437E0BA79D1A70 /* Pods_18phone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_18phone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		075A21CADC9C03D40A071C6E /* Pods-18phone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-18phone.release.xcconfig"; path = "Pods/Target Support Files/Pods-18phone/Pods-18phone.release.xcconfig"; sourceTree = "<group>"; };
 		A3792B97A14496699EE5544B /* Pods-18phone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-18phone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-18phone/Pods-18phone.debug.xcconfig"; sourceTree = "<group>"; };
-		E10953C41D7FBC00001E7060 /* Gossip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gossip.h; sourceTree = "<group>"; };
-		E10953C51D7FBC00001E7060 /* GSAccount+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GSAccount+Private.h"; sourceTree = "<group>"; };
-		E10953C61D7FBC00001E7060 /* GSAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSAccount.h; sourceTree = "<group>"; };
-		E10953C71D7FBC00001E7060 /* GSCall+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GSCall+Private.h"; sourceTree = "<group>"; };
-		E10953C81D7FBC00001E7060 /* GSCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSCall.h; sourceTree = "<group>"; };
-		E10953C91D7FBC00001E7060 /* GSCodecInfo+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GSCodecInfo+Private.h"; sourceTree = "<group>"; };
-		E10953CA1D7FBC00001E7060 /* GSCodecInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSCodecInfo.h; sourceTree = "<group>"; };
-		E10953CB1D7FBC00001E7060 /* GSDispatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSDispatch.h; sourceTree = "<group>"; };
-		E10953CC1D7FBC00001E7060 /* GSIncomingCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSIncomingCall.h; sourceTree = "<group>"; };
-		E10953CD1D7FBC00001E7060 /* GSNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSNotifications.h; sourceTree = "<group>"; };
-		E10953CE1D7FBC00001E7060 /* GSOutgoingCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSOutgoingCall.h; sourceTree = "<group>"; };
-		E10953CF1D7FBC00001E7060 /* GSRingback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSRingback.h; sourceTree = "<group>"; };
-		E10953D01D7FBC00001E7060 /* GSUserAgent+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GSUserAgent+Private.h"; sourceTree = "<group>"; };
-		E10953D11D7FBC00001E7060 /* GSUserAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSUserAgent.h; sourceTree = "<group>"; };
-		E10953D21D7FBC00001E7060 /* GSAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSAccount.m; sourceTree = "<group>"; };
-		E10953D31D7FBC00001E7060 /* GSCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSCall.m; sourceTree = "<group>"; };
-		E10953D41D7FBC00001E7060 /* GSCodecInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSCodecInfo.m; sourceTree = "<group>"; };
-		E10953D51D7FBC00001E7060 /* GSDispatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSDispatch.m; sourceTree = "<group>"; };
-		E10953D61D7FBC00001E7060 /* GSIncomingCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSIncomingCall.m; sourceTree = "<group>"; };
-		E10953D71D7FBC00001E7060 /* GSNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSNotifications.m; sourceTree = "<group>"; };
-		E10953D81D7FBC00001E7060 /* GSOutgoingCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSOutgoingCall.m; sourceTree = "<group>"; };
-		E10953D91D7FBC00001E7060 /* GSRingback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSRingback.m; sourceTree = "<group>"; };
-		E10953DA1D7FBC00001E7060 /* GSUserAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSUserAgent.m; sourceTree = "<group>"; };
-		E10953DB1D7FBC00001E7060 /* GSAccountConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSAccountConfiguration.h; sourceTree = "<group>"; };
-		E10953DC1D7FBC00001E7060 /* GSConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSConfiguration.h; sourceTree = "<group>"; };
-		E10953DD1D7FBC00001E7060 /* GSAccountConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSAccountConfiguration.m; sourceTree = "<group>"; };
-		E10953DE1D7FBC00001E7060 /* GSConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSConfiguration.m; sourceTree = "<group>"; };
-		E10953E01D7FBC00001E7060 /* darwin_dev.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = darwin_dev.h; sourceTree = "<group>"; };
-		E10953E11D7FBC00001E7060 /* darwin_dev.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = darwin_dev.m; sourceTree = "<group>"; };
-		E10953E21D7FBC00001E7060 /* GSPJUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSPJUtil.h; sourceTree = "<group>"; };
-		E10953E31D7FBC00001E7060 /* PJSIP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJSIP.h; sourceTree = "<group>"; };
-		E10953E41D7FBC00001E7060 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
-		E10953E51D7FBC00001E7060 /* GSPJUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSPJUtil.m; sourceTree = "<group>"; };
 		E114D1C01D4F1F13006AB978 /* 18phone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 18phone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E114D1C31D4F1F15006AB978 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E114D1C51D4F1F15006AB978 /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
@@ -164,35 +139,75 @@
 		E13BACE41D51974900414ACE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E13BACE61D51977C00414ACE /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		E13D21941D6ECFCA00C6EA98 /* IncomingVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomingVideoViewController.swift; sourceTree = "<group>"; };
-		E142370C1D76DD6E00C94677 /* libg7221codec-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libg7221codec-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/third_party/lib/libg7221codec-arm-apple-darwin9.a"; sourceTree = "<group>"; };
-		E142370D1D76DD6E00C94677 /* libgsmcodec-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libgsmcodec-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/third_party/lib/libgsmcodec-arm-apple-darwin9.a"; sourceTree = "<group>"; };
-		E142370E1D76DD6E00C94677 /* libilbccodec-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libilbccodec-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/third_party/lib/libilbccodec-arm-apple-darwin9.a"; sourceTree = "<group>"; };
-		E142370F1D76DD6E00C94677 /* libopenh264.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopenh264.a; path = Pods/pjsip/build/openh264/lib/libopenh264.a; sourceTree = "<group>"; };
-		E14237101D76DD6E00C94677 /* libpj-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpj-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/pjlib/lib/libpj-arm-apple-darwin9.a"; sourceTree = "<group>"; };
-		E14237111D76DD6E00C94677 /* libpjlib-util-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjlib-util-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/pjlib-util/lib/libpjlib-util-arm-apple-darwin9.a"; sourceTree = "<group>"; };
-		E14237121D76DD6E00C94677 /* libpjmedia-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjmedia-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/pjmedia/lib/libpjmedia-arm-apple-darwin9.a"; sourceTree = "<group>"; };
-		E14237131D76DD6E00C94677 /* libpjmedia-audiodev-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjmedia-audiodev-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/pjmedia/lib/libpjmedia-audiodev-arm-apple-darwin9.a"; sourceTree = "<group>"; };
-		E14237141D76DD6E00C94677 /* libpjmedia-codec-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjmedia-codec-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/pjmedia/lib/libpjmedia-codec-arm-apple-darwin9.a"; sourceTree = "<group>"; };
-		E14237151D76DD6E00C94677 /* libpjmedia-videodev-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjmedia-videodev-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/pjmedia/lib/libpjmedia-videodev-arm-apple-darwin9.a"; sourceTree = "<group>"; };
-		E14237161D76DD6E00C94677 /* libpjnath-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjnath-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/pjnath/lib/libpjnath-arm-apple-darwin9.a"; sourceTree = "<group>"; };
-		E14237171D76DD6E00C94677 /* libpjsdp-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsdp-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/pjmedia/lib/libpjsdp-arm-apple-darwin9.a"; sourceTree = "<group>"; };
-		E14237181D76DD6E00C94677 /* libpjsip-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsip-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/pjsip/lib/libpjsip-arm-apple-darwin9.a"; sourceTree = "<group>"; };
-		E14237191D76DD6E00C94677 /* libpjsip-simple-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsip-simple-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/pjsip/lib/libpjsip-simple-arm-apple-darwin9.a"; sourceTree = "<group>"; };
-		E142371A1D76DD6E00C94677 /* libpjsip-ua-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsip-ua-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/pjsip/lib/libpjsip-ua-arm-apple-darwin9.a"; sourceTree = "<group>"; };
-		E142371B1D76DD6E00C94677 /* libpjsua-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsua-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/pjsip/lib/libpjsua-arm-apple-darwin9.a"; sourceTree = "<group>"; };
-		E142371C1D76DD6E00C94677 /* libpjsua2-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsua2-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/pjsip/lib/libpjsua2-arm-apple-darwin9.a"; sourceTree = "<group>"; };
-		E142371D1D76DD6E00C94677 /* libresample-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libresample-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/third_party/lib/libresample-arm-apple-darwin9.a"; sourceTree = "<group>"; };
-		E142371E1D76DD6E00C94677 /* libspeex-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libspeex-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/third_party/lib/libspeex-arm-apple-darwin9.a"; sourceTree = "<group>"; };
-		E142371F1D76DD6E00C94677 /* libsrtp-arm-apple-darwin9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libsrtp-arm-apple-darwin9.a"; path = "Pods/pjsip/build/pjproject/src/third_party/lib/libsrtp-arm-apple-darwin9.a"; sourceTree = "<group>"; };
 		E148E6C21D6C397000BE131E /* OutgoingVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutgoingVideoViewController.swift; sourceTree = "<group>"; };
 		E1534A0A1D7E668A007FE351 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		E1534A0C1D7E6692007FE351 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		E15C42111D7D094000124257 /* ringtone.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ringtone.wav; sourceTree = "<group>"; };
-		E15D759D1D7D45220069499C /* libyuv-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libyuv-arm64-apple-darwin_ios.a"; path = "gossip/pjsip/src/third_party/lib/libyuv-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
 		E161A6761D78069C00A1F3C4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		E16453E91D6AA3150036B53F /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		E19AAD431D51DF480053D2C3 /* CallConView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CallConView.xib; sourceTree = "<group>"; };
 		E19AAD451D51DF690053D2C3 /* CallConView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallConView.swift; sourceTree = "<group>"; };
+		E1C048471D867F650009DF6B /* Gossip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Gossip.h; path = 18phone/Gossip/Gossip.h; sourceTree = SOURCE_ROOT; };
+		E1C048481D867F650009DF6B /* GSAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSAccount.h; path = 18phone/Gossip/GSAccount.h; sourceTree = SOURCE_ROOT; };
+		E1C048491D867F650009DF6B /* GSAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GSAccount.m; path = 18phone/Gossip/GSAccount.m; sourceTree = SOURCE_ROOT; };
+		E1C0484A1D867F650009DF6B /* GSAccount+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GSAccount+Private.h"; path = "18phone/Gossip/GSAccount+Private.h"; sourceTree = SOURCE_ROOT; };
+		E1C0484B1D867F650009DF6B /* GSAccountConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSAccountConfiguration.h; path = 18phone/Gossip/GSAccountConfiguration.h; sourceTree = SOURCE_ROOT; };
+		E1C0484C1D867F650009DF6B /* GSAccountConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GSAccountConfiguration.m; path = 18phone/Gossip/GSAccountConfiguration.m; sourceTree = SOURCE_ROOT; };
+		E1C0484D1D867F650009DF6B /* GSCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSCall.h; path = 18phone/Gossip/GSCall.h; sourceTree = SOURCE_ROOT; };
+		E1C0484E1D867F650009DF6B /* GSCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GSCall.m; path = 18phone/Gossip/GSCall.m; sourceTree = SOURCE_ROOT; };
+		E1C0484F1D867F650009DF6B /* GSCall+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GSCall+Private.h"; path = "18phone/Gossip/GSCall+Private.h"; sourceTree = SOURCE_ROOT; };
+		E1C048501D867F650009DF6B /* GSCodecInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSCodecInfo.h; path = 18phone/Gossip/GSCodecInfo.h; sourceTree = SOURCE_ROOT; };
+		E1C048511D867F650009DF6B /* GSCodecInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GSCodecInfo.m; path = 18phone/Gossip/GSCodecInfo.m; sourceTree = SOURCE_ROOT; };
+		E1C048521D867F650009DF6B /* GSCodecInfo+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GSCodecInfo+Private.h"; path = "18phone/Gossip/GSCodecInfo+Private.h"; sourceTree = SOURCE_ROOT; };
+		E1C048531D867F650009DF6B /* GSConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSConfiguration.h; path = 18phone/Gossip/GSConfiguration.h; sourceTree = SOURCE_ROOT; };
+		E1C048541D867F650009DF6B /* GSConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GSConfiguration.m; path = 18phone/Gossip/GSConfiguration.m; sourceTree = SOURCE_ROOT; };
+		E1C048551D867F650009DF6B /* GSDispatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSDispatch.h; path = 18phone/Gossip/GSDispatch.h; sourceTree = SOURCE_ROOT; };
+		E1C048561D867F650009DF6B /* GSDispatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GSDispatch.m; path = 18phone/Gossip/GSDispatch.m; sourceTree = SOURCE_ROOT; };
+		E1C048571D867F650009DF6B /* GSIncomingCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSIncomingCall.h; path = 18phone/Gossip/GSIncomingCall.h; sourceTree = SOURCE_ROOT; };
+		E1C048581D867F650009DF6B /* GSIncomingCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GSIncomingCall.m; path = 18phone/Gossip/GSIncomingCall.m; sourceTree = SOURCE_ROOT; };
+		E1C048591D867F650009DF6B /* GSNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSNotifications.h; path = 18phone/Gossip/GSNotifications.h; sourceTree = SOURCE_ROOT; };
+		E1C0485A1D867F650009DF6B /* GSNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GSNotifications.m; path = 18phone/Gossip/GSNotifications.m; sourceTree = SOURCE_ROOT; };
+		E1C0485B1D867F650009DF6B /* GSOutgoingCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSOutgoingCall.h; path = 18phone/Gossip/GSOutgoingCall.h; sourceTree = SOURCE_ROOT; };
+		E1C0485C1D867F650009DF6B /* GSOutgoingCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GSOutgoingCall.m; path = 18phone/Gossip/GSOutgoingCall.m; sourceTree = SOURCE_ROOT; };
+		E1C0485D1D867F650009DF6B /* GSPJUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSPJUtil.h; path = 18phone/Gossip/GSPJUtil.h; sourceTree = SOURCE_ROOT; };
+		E1C0485E1D867F650009DF6B /* GSPJUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GSPJUtil.m; path = 18phone/Gossip/GSPJUtil.m; sourceTree = SOURCE_ROOT; };
+		E1C0485F1D867F650009DF6B /* GSRingback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSRingback.h; path = 18phone/Gossip/GSRingback.h; sourceTree = SOURCE_ROOT; };
+		E1C048601D867F650009DF6B /* GSRingback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GSRingback.m; path = 18phone/Gossip/GSRingback.m; sourceTree = SOURCE_ROOT; };
+		E1C048611D867F650009DF6B /* GSUserAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSUserAgent.h; path = 18phone/Gossip/GSUserAgent.h; sourceTree = SOURCE_ROOT; };
+		E1C048621D867F650009DF6B /* GSUserAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GSUserAgent.m; path = 18phone/Gossip/GSUserAgent.m; sourceTree = SOURCE_ROOT; };
+		E1C048631D867F650009DF6B /* GSUserAgent+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GSUserAgent+Private.h"; path = "18phone/Gossip/GSUserAgent+Private.h"; sourceTree = SOURCE_ROOT; };
+		E1C048641D867F650009DF6B /* PJSIP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PJSIP.h; path = 18phone/Gossip/PJSIP.h; sourceTree = SOURCE_ROOT; };
+		E1C048651D867F650009DF6B /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Util.h; path = 18phone/Gossip/Util.h; sourceTree = SOURCE_ROOT; };
+		E1C048981D8691AE0009DF6B /* libg7221codec-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libg7221codec-arm64-apple-darwin_ios.a"; path = "pjproject-2.5.5/third_party/lib/libg7221codec-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E1C0489B1D8691C60009DF6B /* libgsmcodec-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libgsmcodec-arm64-apple-darwin_ios.a"; path = "pjproject-2.5.5/third_party/lib/libgsmcodec-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E1C0489C1D8691C60009DF6B /* libilbccodec-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libilbccodec-arm64-apple-darwin_ios.a"; path = "pjproject-2.5.5/third_party/lib/libilbccodec-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E1C0489D1D8691C60009DF6B /* libresample-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libresample-arm64-apple-darwin_ios.a"; path = "pjproject-2.5.5/third_party/lib/libresample-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E1C0489E1D8691C60009DF6B /* libspeex-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libspeex-arm64-apple-darwin_ios.a"; path = "pjproject-2.5.5/third_party/lib/libspeex-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E1C0489F1D8691C60009DF6B /* libsrtp-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libsrtp-arm64-apple-darwin_ios.a"; path = "pjproject-2.5.5/third_party/lib/libsrtp-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E1C048A01D8691C60009DF6B /* libyuv-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libyuv-arm64-apple-darwin_ios.a"; path = "pjproject-2.5.5/third_party/lib/libyuv-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E1C048A71D8691DA0009DF6B /* libopenh264.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopenh264.a; path = "pjproject-2.5.5/third_party/openh264/lib/libopenh264.a"; sourceTree = "<group>"; };
+		E1C048A91D8691ED0009DF6B /* libpj-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpj-arm64-apple-darwin_ios.a"; path = "pjproject-2.5.5/pjlib/lib/libpj-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E1C048AB1D8692020009DF6B /* libpjlib-util-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjlib-util-arm64-apple-darwin_ios.a"; path = "pjproject-2.5.5/pjlib-util/lib/libpjlib-util-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E1C048AD1D8692280009DF6B /* libpjmedia-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjmedia-arm64-apple-darwin_ios.a"; path = "pjproject-2.5.5/pjmedia/lib/libpjmedia-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E1C048AE1D8692280009DF6B /* libpjmedia-audiodev-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjmedia-audiodev-arm64-apple-darwin_ios.a"; path = "pjproject-2.5.5/pjmedia/lib/libpjmedia-audiodev-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E1C048AF1D8692280009DF6B /* libpjmedia-codec-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjmedia-codec-arm64-apple-darwin_ios.a"; path = "pjproject-2.5.5/pjmedia/lib/libpjmedia-codec-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E1C048B01D8692280009DF6B /* libpjmedia-videodev-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjmedia-videodev-arm64-apple-darwin_ios.a"; path = "pjproject-2.5.5/pjmedia/lib/libpjmedia-videodev-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E1C048B11D8692280009DF6B /* libpjsdp-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsdp-arm64-apple-darwin_ios.a"; path = "pjproject-2.5.5/pjmedia/lib/libpjsdp-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E1C048B71D86922F0009DF6B /* libpjnath-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjnath-arm64-apple-darwin_ios.a"; path = "pjproject-2.5.5/pjnath/lib/libpjnath-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E1C048B91D86923B0009DF6B /* libpjsip-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsip-arm64-apple-darwin_ios.a"; path = "pjproject-2.5.5/pjsip/lib/libpjsip-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E1C048BA1D86923B0009DF6B /* libpjsip-simple-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsip-simple-arm64-apple-darwin_ios.a"; path = "pjproject-2.5.5/pjsip/lib/libpjsip-simple-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E1C048BB1D86923B0009DF6B /* libpjsip-ua-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsip-ua-arm64-apple-darwin_ios.a"; path = "pjproject-2.5.5/pjsip/lib/libpjsip-ua-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E1C048BC1D86923B0009DF6B /* libpjsua-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsua-arm64-apple-darwin_ios.a"; path = "pjproject-2.5.5/pjsip/lib/libpjsua-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E1C048BD1D86923B0009DF6B /* libpjsua2-arm64-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjsua2-arm64-apple-darwin_ios.a"; path = "pjproject-2.5.5/pjsip/lib/libpjsua2-arm64-apple-darwin_ios.a"; sourceTree = "<group>"; };
+		E1C048C31D86933E0009DF6B /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		E1C048C51D8693E80009DF6B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		E1C048C71D8694880009DF6B /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		E1C048C91D8694990009DF6B /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		E1C048CB1D8694AD0009DF6B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E1C048CD1D8694BD0009DF6B /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		E1C048CF1D8694D30009DF6B /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		E1C048D11D8697690009DF6B /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		E1C048D31D8697770009DF6B /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		E1F5E57C1D59E5990010FF2C /* 18phone-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "18phone-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -201,29 +216,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E15D759E1D7D45220069499C /* libyuv-arm64-apple-darwin_ios.a in Frameworks */,
+				E1C048D41D8697770009DF6B /* libstdc++.tbd in Frameworks */,
+				E1C048BE1D86923B0009DF6B /* libpjsip-arm64-apple-darwin_ios.a in Frameworks */,
+				E1C048BF1D86923B0009DF6B /* libpjsip-simple-arm64-apple-darwin_ios.a in Frameworks */,
+				E1C048C01D86923B0009DF6B /* libpjsip-ua-arm64-apple-darwin_ios.a in Frameworks */,
+				E1C048C11D86923B0009DF6B /* libpjsua-arm64-apple-darwin_ios.a in Frameworks */,
+				E1C048C21D86923B0009DF6B /* libpjsua2-arm64-apple-darwin_ios.a in Frameworks */,
+				E1C048B81D86922F0009DF6B /* libpjnath-arm64-apple-darwin_ios.a in Frameworks */,
+				E1C048B21D8692280009DF6B /* libpjmedia-arm64-apple-darwin_ios.a in Frameworks */,
+				E1C048B31D8692280009DF6B /* libpjmedia-audiodev-arm64-apple-darwin_ios.a in Frameworks */,
+				E1C048B41D8692280009DF6B /* libpjmedia-codec-arm64-apple-darwin_ios.a in Frameworks */,
+				E1C048B51D8692280009DF6B /* libpjmedia-videodev-arm64-apple-darwin_ios.a in Frameworks */,
+				E1C048B61D8692280009DF6B /* libpjsdp-arm64-apple-darwin_ios.a in Frameworks */,
+				E1C048AC1D8692020009DF6B /* libpjlib-util-arm64-apple-darwin_ios.a in Frameworks */,
+				E1C048AA1D8691ED0009DF6B /* libpj-arm64-apple-darwin_ios.a in Frameworks */,
+				E1C048A11D8691C60009DF6B /* libgsmcodec-arm64-apple-darwin_ios.a in Frameworks */,
+				E1C048A21D8691C60009DF6B /* libilbccodec-arm64-apple-darwin_ios.a in Frameworks */,
+				E1C048A31D8691C60009DF6B /* libresample-arm64-apple-darwin_ios.a in Frameworks */,
+				E1C048A41D8691C60009DF6B /* libspeex-arm64-apple-darwin_ios.a in Frameworks */,
+				E1C048A51D8691C60009DF6B /* libsrtp-arm64-apple-darwin_ios.a in Frameworks */,
+				E1C048A61D8691C60009DF6B /* libyuv-arm64-apple-darwin_ios.a in Frameworks */,
+				E1C0489A1D8691C50009DF6B /* libg7221codec-arm64-apple-darwin_ios.a in Frameworks */,
+				E1C048A81D8691DA0009DF6B /* libopenh264.a in Frameworks */,
+				E1C048D21D8697690009DF6B /* CFNetwork.framework in Frameworks */,
+				E1C048D01D8694D30009DF6B /* CoreFoundation.framework in Frameworks */,
+				E1C048CE1D8694BD0009DF6B /* CoreMedia.framework in Frameworks */,
+				E1C048CC1D8694AD0009DF6B /* QuartzCore.framework in Frameworks */,
+				E1C048CA1D8694990009DF6B /* CoreVideo.framework in Frameworks */,
+				E1C048C81D8694880009DF6B /* OpenGLES.framework in Frameworks */,
+				E1C048C61D8693E80009DF6B /* AudioToolbox.framework in Frameworks */,
 				E161A6771D78069C00A1F3C4 /* AVFoundation.framework in Frameworks */,
-				E14237221D76DD6E00C94677 /* libilbccodec-arm-apple-darwin9.a in Frameworks */,
-				E14237261D76DD6E00C94677 /* libpjmedia-arm-apple-darwin9.a in Frameworks */,
-				E142372A1D76DD6E00C94677 /* libpjnath-arm-apple-darwin9.a in Frameworks */,
-				E14237241D76DD6E00C94677 /* libpj-arm-apple-darwin9.a in Frameworks */,
-				E14237211D76DD6E00C94677 /* libgsmcodec-arm-apple-darwin9.a in Frameworks */,
-				E142372C1D76DD6E00C94677 /* libpjsip-arm-apple-darwin9.a in Frameworks */,
-				E14237231D76DD6E00C94677 /* libopenh264.a in Frameworks */,
-				E14237291D76DD6E00C94677 /* libpjmedia-videodev-arm-apple-darwin9.a in Frameworks */,
-				E14237281D76DD6E00C94677 /* libpjmedia-codec-arm-apple-darwin9.a in Frameworks */,
-				E14237331D76DD6E00C94677 /* libsrtp-arm-apple-darwin9.a in Frameworks */,
-				E142372E1D76DD6E00C94677 /* libpjsip-ua-arm-apple-darwin9.a in Frameworks */,
-				E142372D1D76DD6E00C94677 /* libpjsip-simple-arm-apple-darwin9.a in Frameworks */,
-				E14237201D76DD6E00C94677 /* libg7221codec-arm-apple-darwin9.a in Frameworks */,
-				E142372F1D76DD6E00C94677 /* libpjsua-arm-apple-darwin9.a in Frameworks */,
-				E142372B1D76DD6E00C94677 /* libpjsdp-arm-apple-darwin9.a in Frameworks */,
-				E14237251D76DD6E00C94677 /* libpjlib-util-arm-apple-darwin9.a in Frameworks */,
-				E14237321D76DD6E00C94677 /* libspeex-arm-apple-darwin9.a in Frameworks */,
-				E14237311D76DD6E00C94677 /* libresample-arm-apple-darwin9.a in Frameworks */,
-				E14237271D76DD6E00C94677 /* libpjmedia-audiodev-arm-apple-darwin9.a in Frameworks */,
+				E1C048C41D86933E0009DF6B /* CoreAudio.framework in Frameworks */,
 				3CDEEA757806A094659EB15D /* Pods_18phone.framework in Frameworks */,
-				E14237301D76DD6E00C94677 /* libpjsua2-arm-apple-darwin9.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,30 +257,39 @@
 		A13A5015FDD7155192CC0662 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E1C048D31D8697770009DF6B /* libstdc++.tbd */,
+				E1C048D11D8697690009DF6B /* CFNetwork.framework */,
+				E1C048CF1D8694D30009DF6B /* CoreFoundation.framework */,
+				E1C048CD1D8694BD0009DF6B /* CoreMedia.framework */,
+				E1C048CB1D8694AD0009DF6B /* QuartzCore.framework */,
+				E1C048C91D8694990009DF6B /* CoreVideo.framework */,
+				E1C048C71D8694880009DF6B /* OpenGLES.framework */,
+				E1C048C51D8693E80009DF6B /* AudioToolbox.framework */,
+				E1C048C31D86933E0009DF6B /* CoreAudio.framework */,
+				E1C048B91D86923B0009DF6B /* libpjsip-arm64-apple-darwin_ios.a */,
+				E1C048BA1D86923B0009DF6B /* libpjsip-simple-arm64-apple-darwin_ios.a */,
+				E1C048BB1D86923B0009DF6B /* libpjsip-ua-arm64-apple-darwin_ios.a */,
+				E1C048BC1D86923B0009DF6B /* libpjsua-arm64-apple-darwin_ios.a */,
+				E1C048BD1D86923B0009DF6B /* libpjsua2-arm64-apple-darwin_ios.a */,
+				E1C048B71D86922F0009DF6B /* libpjnath-arm64-apple-darwin_ios.a */,
+				E1C048AD1D8692280009DF6B /* libpjmedia-arm64-apple-darwin_ios.a */,
+				E1C048AE1D8692280009DF6B /* libpjmedia-audiodev-arm64-apple-darwin_ios.a */,
+				E1C048AF1D8692280009DF6B /* libpjmedia-codec-arm64-apple-darwin_ios.a */,
+				E1C048B01D8692280009DF6B /* libpjmedia-videodev-arm64-apple-darwin_ios.a */,
+				E1C048B11D8692280009DF6B /* libpjsdp-arm64-apple-darwin_ios.a */,
+				E1C048AB1D8692020009DF6B /* libpjlib-util-arm64-apple-darwin_ios.a */,
+				E1C048A91D8691ED0009DF6B /* libpj-arm64-apple-darwin_ios.a */,
+				E1C048A71D8691DA0009DF6B /* libopenh264.a */,
+				E1C0489B1D8691C60009DF6B /* libgsmcodec-arm64-apple-darwin_ios.a */,
+				E1C0489C1D8691C60009DF6B /* libilbccodec-arm64-apple-darwin_ios.a */,
+				E1C0489D1D8691C60009DF6B /* libresample-arm64-apple-darwin_ios.a */,
+				E1C0489E1D8691C60009DF6B /* libspeex-arm64-apple-darwin_ios.a */,
+				E1C0489F1D8691C60009DF6B /* libsrtp-arm64-apple-darwin_ios.a */,
+				E1C048A01D8691C60009DF6B /* libyuv-arm64-apple-darwin_ios.a */,
+				E1C048981D8691AE0009DF6B /* libg7221codec-arm64-apple-darwin_ios.a */,
 				E1534A0C1D7E6692007FE351 /* AddressBookUI.framework */,
 				E1534A0A1D7E668A007FE351 /* AddressBook.framework */,
-				E15D759D1D7D45220069499C /* libyuv-arm64-apple-darwin_ios.a */,
 				E161A6761D78069C00A1F3C4 /* AVFoundation.framework */,
-				E142370C1D76DD6E00C94677 /* libg7221codec-arm-apple-darwin9.a */,
-				E142370D1D76DD6E00C94677 /* libgsmcodec-arm-apple-darwin9.a */,
-				E142370E1D76DD6E00C94677 /* libilbccodec-arm-apple-darwin9.a */,
-				E142370F1D76DD6E00C94677 /* libopenh264.a */,
-				E14237101D76DD6E00C94677 /* libpj-arm-apple-darwin9.a */,
-				E14237111D76DD6E00C94677 /* libpjlib-util-arm-apple-darwin9.a */,
-				E14237121D76DD6E00C94677 /* libpjmedia-arm-apple-darwin9.a */,
-				E14237131D76DD6E00C94677 /* libpjmedia-audiodev-arm-apple-darwin9.a */,
-				E14237141D76DD6E00C94677 /* libpjmedia-codec-arm-apple-darwin9.a */,
-				E14237151D76DD6E00C94677 /* libpjmedia-videodev-arm-apple-darwin9.a */,
-				E14237161D76DD6E00C94677 /* libpjnath-arm-apple-darwin9.a */,
-				E14237171D76DD6E00C94677 /* libpjsdp-arm-apple-darwin9.a */,
-				E14237181D76DD6E00C94677 /* libpjsip-arm-apple-darwin9.a */,
-				E14237191D76DD6E00C94677 /* libpjsip-simple-arm-apple-darwin9.a */,
-				E142371A1D76DD6E00C94677 /* libpjsip-ua-arm-apple-darwin9.a */,
-				E142371B1D76DD6E00C94677 /* libpjsua-arm-apple-darwin9.a */,
-				E142371C1D76DD6E00C94677 /* libpjsua2-arm-apple-darwin9.a */,
-				E142371D1D76DD6E00C94677 /* libresample-arm-apple-darwin9.a */,
-				E142371E1D76DD6E00C94677 /* libspeex-arm-apple-darwin9.a */,
-				E142371F1D76DD6E00C94677 /* libsrtp-arm-apple-darwin9.a */,
 				047EB72D84437E0BA79D1A70 /* Pods_18phone.framework */,
 			);
 			name = Frameworks;
@@ -274,10 +307,10 @@
 		E10953DF1D7FBC00001E7060 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				E10953DB1D7FBC00001E7060 /* GSAccountConfiguration.h */,
-				E10953DC1D7FBC00001E7060 /* GSConfiguration.h */,
-				E10953DD1D7FBC00001E7060 /* GSAccountConfiguration.m */,
-				E10953DE1D7FBC00001E7060 /* GSConfiguration.m */,
+				E1C0484B1D867F650009DF6B /* GSAccountConfiguration.h */,
+				E1C0484C1D867F650009DF6B /* GSAccountConfiguration.m */,
+				E1C048531D867F650009DF6B /* GSConfiguration.h */,
+				E1C048541D867F650009DF6B /* GSConfiguration.m */,
 			);
 			name = Configuration;
 			sourceTree = "<group>";
@@ -285,12 +318,10 @@
 		E10953E61D7FBC00001E7060 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				E10953E01D7FBC00001E7060 /* darwin_dev.h */,
-				E10953E11D7FBC00001E7060 /* darwin_dev.m */,
-				E10953E21D7FBC00001E7060 /* GSPJUtil.h */,
-				E10953E31D7FBC00001E7060 /* PJSIP.h */,
-				E10953E41D7FBC00001E7060 /* Util.h */,
-				E10953E51D7FBC00001E7060 /* GSPJUtil.m */,
+				E1C0485D1D867F650009DF6B /* GSPJUtil.h */,
+				E1C0485E1D867F650009DF6B /* GSPJUtil.m */,
+				E1C048641D867F650009DF6B /* PJSIP.h */,
+				E1C048651D867F650009DF6B /* Util.h */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -298,29 +329,29 @@
 		E10953E71D7FBC00001E7060 /* Gossip */ = {
 			isa = PBXGroup;
 			children = (
-				E10953C41D7FBC00001E7060 /* Gossip.h */,
-				E10953C51D7FBC00001E7060 /* GSAccount+Private.h */,
-				E10953C61D7FBC00001E7060 /* GSAccount.h */,
-				E10953C71D7FBC00001E7060 /* GSCall+Private.h */,
-				E10953C81D7FBC00001E7060 /* GSCall.h */,
-				E10953C91D7FBC00001E7060 /* GSCodecInfo+Private.h */,
-				E10953CA1D7FBC00001E7060 /* GSCodecInfo.h */,
-				E10953CB1D7FBC00001E7060 /* GSDispatch.h */,
-				E10953CC1D7FBC00001E7060 /* GSIncomingCall.h */,
-				E10953CD1D7FBC00001E7060 /* GSNotifications.h */,
-				E10953CE1D7FBC00001E7060 /* GSOutgoingCall.h */,
-				E10953CF1D7FBC00001E7060 /* GSRingback.h */,
-				E10953D01D7FBC00001E7060 /* GSUserAgent+Private.h */,
-				E10953D11D7FBC00001E7060 /* GSUserAgent.h */,
-				E10953D21D7FBC00001E7060 /* GSAccount.m */,
-				E10953D31D7FBC00001E7060 /* GSCall.m */,
-				E10953D41D7FBC00001E7060 /* GSCodecInfo.m */,
-				E10953D51D7FBC00001E7060 /* GSDispatch.m */,
-				E10953D61D7FBC00001E7060 /* GSIncomingCall.m */,
-				E10953D71D7FBC00001E7060 /* GSNotifications.m */,
-				E10953D81D7FBC00001E7060 /* GSOutgoingCall.m */,
-				E10953D91D7FBC00001E7060 /* GSRingback.m */,
-				E10953DA1D7FBC00001E7060 /* GSUserAgent.m */,
+				E1C048471D867F650009DF6B /* Gossip.h */,
+				E1C048481D867F650009DF6B /* GSAccount.h */,
+				E1C048491D867F650009DF6B /* GSAccount.m */,
+				E1C0484A1D867F650009DF6B /* GSAccount+Private.h */,
+				E1C0484D1D867F650009DF6B /* GSCall.h */,
+				E1C0484E1D867F650009DF6B /* GSCall.m */,
+				E1C0484F1D867F650009DF6B /* GSCall+Private.h */,
+				E1C048501D867F650009DF6B /* GSCodecInfo.h */,
+				E1C048511D867F650009DF6B /* GSCodecInfo.m */,
+				E1C048521D867F650009DF6B /* GSCodecInfo+Private.h */,
+				E1C048551D867F650009DF6B /* GSDispatch.h */,
+				E1C048561D867F650009DF6B /* GSDispatch.m */,
+				E1C048571D867F650009DF6B /* GSIncomingCall.h */,
+				E1C048581D867F650009DF6B /* GSIncomingCall.m */,
+				E1C048591D867F650009DF6B /* GSNotifications.h */,
+				E1C0485A1D867F650009DF6B /* GSNotifications.m */,
+				E1C0485B1D867F650009DF6B /* GSOutgoingCall.h */,
+				E1C0485C1D867F650009DF6B /* GSOutgoingCall.m */,
+				E1C0485F1D867F650009DF6B /* GSRingback.h */,
+				E1C048601D867F650009DF6B /* GSRingback.m */,
+				E1C048611D867F650009DF6B /* GSUserAgent.h */,
+				E1C048621D867F650009DF6B /* GSUserAgent.m */,
+				E1C048631D867F650009DF6B /* GSUserAgent+Private.h */,
 				E10953DF1D7FBC00001E7060 /* Configuration */,
 				E10953E61D7FBC00001E7060 /* Util */,
 			);
@@ -628,47 +659,46 @@
 			buildActionMask = 2147483647;
 			files = (
 				E12EBA811D531FF3007B5CBD /* CallLogACell.swift in Sources */,
-				E10953EE1D7FBC00001E7060 /* GSOutgoingCall.m in Sources */,
 				E13BACC91D518FE500414ACE /* JSONJoy.swift in Sources */,
+				E1C0486A1D867F650009DF6B /* GSConfiguration.m in Sources */,
 				E16453EA1D6AA3150036B53F /* Contact.swift in Sources */,
 				E13BACDB1D51946B00414ACE /* KTabBarController.swift in Sources */,
 				E13BACE21D5196EE00414ACE /* DialNumberCell.swift in Sources */,
 				E138D0791D630B7A0091AF4A /* IncomingCallViewController.swift in Sources */,
-				E10953F11D7FBC00001E7060 /* GSAccountConfiguration.m in Sources */,
-				E10953EF1D7FBC00001E7060 /* GSRingback.m in Sources */,
+				E1C0486E1D867F650009DF6B /* GSOutgoingCall.m in Sources */,
 				E19AAD461D51DF6A0053D2C3 /* CallConView.swift in Sources */,
+				E1C0486F1D867F650009DF6B /* GSPJUtil.m in Sources */,
 				E13BACDC1D51946B00414ACE /* DialViewController.swift in Sources */,
-				E10953E91D7FBC00001E7060 /* GSCall.m in Sources */,
+				E1C0486C1D867F650009DF6B /* GSIncomingCall.m in Sources */,
 				E13BACE31D5196EE00414ACE /* DialIconCell.swift in Sources */,
 				E13BACD11D518FF000414ACE /* Request.swift in Sources */,
-				E10953F21D7FBC00001E7060 /* GSConfiguration.m in Sources */,
-				E10953F41D7FBC00001E7060 /* GSPJUtil.m in Sources */,
 				E148E6C31D6C397000BE131E /* OutgoingVideoViewController.swift in Sources */,
-				E10953EA1D7FBC00001E7060 /* GSCodecInfo.m in Sources */,
+				E1C048711D867F650009DF6B /* GSUserAgent.m in Sources */,
 				E13BACDA1D51946B00414ACE /* RootViewController.swift in Sources */,
 				E13D21951D6ECFCA00C6EA98 /* IncomingVideoViewController.swift in Sources */,
 				E115A0461D6D762C005FCB8F /* SwiftEventBus.swift in Sources */,
+				E1C0486D1D867F650009DF6B /* GSNotifications.m in Sources */,
 				E115A0451D6D762C005FCB8F /* README.md in Sources */,
 				E13BACD21D518FF000414ACE /* StatusCode.swift in Sources */,
 				E13BACD01D518FF000414ACE /* Operation.swift in Sources */,
-				E10953EB1D7FBC00001E7060 /* GSDispatch.m in Sources */,
+				E1C048691D867F650009DF6B /* GSCodecInfo.m in Sources */,
 				E13BACDD1D51946B00414ACE /* CallLogViewController.swift in Sources */,
+				E1C0486B1D867F650009DF6B /* GSDispatch.m in Sources */,
 				E13BACCF1D518FF000414ACE /* HTTPSecurity.swift in Sources */,
 				E13BACE71D51977C00414ACE /* R.generated.swift in Sources */,
-				E10953F31D7FBC00001E7060 /* darwin_dev.m in Sources */,
 				E138D0771D6301EA0091AF4A /* OutgoingCallViewController.swift in Sources */,
-				E10953ED1D7FBC00001E7060 /* GSNotifications.m in Sources */,
 				E13BACC71D518FDE00414ACE /* Async.swift in Sources */,
-				E10953F01D7FBC00001E7060 /* GSUserAgent.m in Sources */,
 				E13BACD31D518FF000414ACE /* Upload.swift in Sources */,
 				E11E92941D5F2C9F004D634A /* DialView1Controller.swift in Sources */,
 				E13BACC21D518F5200414ACE /* AppUtil.swift in Sources */,
+				E1C048681D867F650009DF6B /* GSCall.m in Sources */,
 				E114D1C61D4F1F15006AB978 /* ContactViewController.swift in Sources */,
+				E1C048701D867F650009DF6B /* GSRingback.m in Sources */,
 				E114D1C41D4F1F15006AB978 /* AppDelegate.swift in Sources */,
-				E10953E81D7FBC00001E7060 /* GSAccount.m in Sources */,
+				E1C048661D867F650009DF6B /* GSAccount.m in Sources */,
+				E1C048671D867F650009DF6B /* GSAccountConfiguration.m in Sources */,
 				E13BACD51D51907600414ACE /* CallLog.swift in Sources */,
 				E12EBA841D532447007B5CBD /* piQ.swift in Sources */,
-				E10953EC1D7FBC00001E7060 /* GSIncomingCall.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -776,6 +806,7 @@
 			baseConfigurationReference = A3792B97A14496699EE5544B /* Pods-18phone.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -786,29 +817,36 @@
 					"$(PROJECT_DIR)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/R.swift\"",
+					"pjproject-2.5.5/pjlib/include",
+					"pjproject-2.5.5/pjlib-util/include",
+					"pjproject-2.5.5/pjmedia/include",
+					"pjproject-2.5.5/pjnath/include",
+					"pjproject-2.5.5/pjsip/include",
+					"pjproject-2.5.5/third_party/resample/include",
+					"pjproject-2.5.5/third_party/speex/include",
+					"pjproject-2.5.5/third_party/srtp/crypto/include",
+					"pjproject-2.5.5/third_party/srtp/include",
+					"pjproject-2.5.5/third_party/openh264/include",
+				);
 				INFOPLIST_FILE = 18phone/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/gossip/pjsip/lib",
-					"$(PROJECT_DIR)/lib",
+					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Pods/Realm/core",
 					"$(PROJECT_DIR)/18phone/Realm/core",
-					"$(PROJECT_DIR)/gossip/pjsip/src/third_party/lib",
-					"$(PROJECT_DIR)/gossip/pjsip/src/pjlib/lib",
-					"$(PROJECT_DIR)/gossip/pjsip/src/pjlib-util/lib",
-					"$(PROJECT_DIR)/gossip/pjsip/src/pjmedia/lib",
-					"$(PROJECT_DIR)/gossip/pjsip/src/pjnath/lib",
-					"$(PROJECT_DIR)/gossip/pjsip/src/pjsip/lib",
-					"$(PROJECT_DIR)/gossip/pjsip/lib/arm64",
-					"$(PROJECT_DIR)/Pods/pjsip/build/pjproject/src/pjlib/lib",
-					"$(PROJECT_DIR)/Pods/pjsip/build/pjproject/src/pjlib-util/lib",
-					"$(PROJECT_DIR)/Pods/pjsip/build/pjproject/src/pjmedia/lib",
-					"$(PROJECT_DIR)/Pods/pjsip/build/pjproject/src/pjnath/lib",
-					"$(PROJECT_DIR)/Pods/pjsip/build/pjproject/src/pjsip/lib",
-					"$(PROJECT_DIR)/Pods/pjsip/build/pjproject/src/third_party/lib",
-					"$(PROJECT_DIR)/Pods/pjsip/build/openh264/lib",
+					"$(PROJECT_DIR)/pjproject-2.5.5/pjlib/lib",
+					"$(PROJECT_DIR)/pjproject-2.5.5/pjlib-util/lib",
+					"$(PROJECT_DIR)/pjproject-2.5.5/pjmedia/lib",
+					"$(PROJECT_DIR)/pjproject-2.5.5/pjnath/lib",
+					"$(PROJECT_DIR)/pjproject-2.5.5/pjsip/lib",
+					"$(PROJECT_DIR)/pjproject-2.5.5/third_party/lib",
+					"$(PROJECT_DIR)/pjproject-2.5.5/third_party/openh264/lib",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kratos.18phone;
@@ -817,7 +855,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "18phone/18phone-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = "arm64 armv7s armv7";
+				VALID_ARCHS = arm64;
 			};
 			name = Debug;
 		};
@@ -826,6 +864,7 @@
 			baseConfigurationReference = 075A21CADC9C03D40A071C6E /* Pods-18phone.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -835,29 +874,36 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/R.swift\"",
+					"pjproject-2.5.5/pjlib/include",
+					"pjproject-2.5.5/pjlib-util/include",
+					"pjproject-2.5.5/pjmedia/include",
+					"pjproject-2.5.5/pjnath/include",
+					"pjproject-2.5.5/pjsip/include",
+					"pjproject-2.5.5/third_party/resample/include",
+					"pjproject-2.5.5/third_party/speex/include",
+					"pjproject-2.5.5/third_party/srtp/crypto/include",
+					"pjproject-2.5.5/third_party/srtp/include",
+					"pjproject-2.5.5/third_party/openh264/include",
+				);
 				INFOPLIST_FILE = 18phone/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/gossip/pjsip/lib",
-					"$(PROJECT_DIR)/lib",
+					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Pods/Realm/core",
 					"$(PROJECT_DIR)/18phone/Realm/core",
-					"$(PROJECT_DIR)/gossip/pjsip/src/third_party/lib",
-					"$(PROJECT_DIR)/gossip/pjsip/src/pjlib/lib",
-					"$(PROJECT_DIR)/gossip/pjsip/src/pjlib-util/lib",
-					"$(PROJECT_DIR)/gossip/pjsip/src/pjmedia/lib",
-					"$(PROJECT_DIR)/gossip/pjsip/src/pjnath/lib",
-					"$(PROJECT_DIR)/gossip/pjsip/src/pjsip/lib",
-					"$(PROJECT_DIR)/gossip/pjsip/lib/arm64",
-					"$(PROJECT_DIR)/Pods/pjsip/build/pjproject/src/pjlib/lib",
-					"$(PROJECT_DIR)/Pods/pjsip/build/pjproject/src/pjlib-util/lib",
-					"$(PROJECT_DIR)/Pods/pjsip/build/pjproject/src/pjmedia/lib",
-					"$(PROJECT_DIR)/Pods/pjsip/build/pjproject/src/pjnath/lib",
-					"$(PROJECT_DIR)/Pods/pjsip/build/pjproject/src/pjsip/lib",
-					"$(PROJECT_DIR)/Pods/pjsip/build/pjproject/src/third_party/lib",
-					"$(PROJECT_DIR)/Pods/pjsip/build/openh264/lib",
+					"$(PROJECT_DIR)/pjproject-2.5.5/pjlib/lib",
+					"$(PROJECT_DIR)/pjproject-2.5.5/pjlib-util/lib",
+					"$(PROJECT_DIR)/pjproject-2.5.5/pjmedia/lib",
+					"$(PROJECT_DIR)/pjproject-2.5.5/pjnath/lib",
+					"$(PROJECT_DIR)/pjproject-2.5.5/pjsip/lib",
+					"$(PROJECT_DIR)/pjproject-2.5.5/third_party/lib",
+					"$(PROJECT_DIR)/pjproject-2.5.5/third_party/openh264/lib",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kratos.18phone;
@@ -865,7 +911,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "18phone/18phone-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = "arm64 armv7s armv7";
+				VALID_ARCHS = arm64;
 			};
 			name = Release;
 		};

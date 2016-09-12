@@ -10,7 +10,7 @@ import UIKit
 
 /// 拨号页面根控制器
 class RootViewController: UIViewController, GSAccountDelegate {
-
+    
     @IBOutlet weak var menuConstraint: NSLayoutConstraint!
     
     /// 用于判断拨号盘是否展开
@@ -28,6 +28,12 @@ class RootViewController: UIViewController, GSAccountDelegate {
     /// 通讯录子页容器
     @IBOutlet weak var bContainer: UIView!
     
+    /// 通话记录控制器实例
+    var callLogViewController: CallLogViewController?
+    
+    /// 通讯录控制器实例
+    var contactViewController: ContactViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         menuConstraint.constant = Screen.height - 49
@@ -39,7 +45,7 @@ class RootViewController: UIViewController, GSAccountDelegate {
     override func viewWillAppear(animated: Bool) {
         
     }
-
+    
     override func viewDidAppear(animated: Bool) {
         isViewHidden = false
     }
@@ -112,7 +118,7 @@ class RootViewController: UIViewController, GSAccountDelegate {
             self.resetMenuY(height)
             }, completion: nil)
     }
-
+    
     /**
      顶部分页导航监听事件
      
@@ -123,10 +129,16 @@ class RootViewController: UIViewController, GSAccountDelegate {
         case 0:
             aContainer.hidden = false
             bContainer.hidden = true
+            callLogViewController?.scrollsToTopEnable(true)
+            contactViewController?.scrollsToTopEnable(false)
+            navigationItem.leftBarButtonItem?.image = R.image.delete_all()
             break
         case 1:
             aContainer.hidden = true
             bContainer.hidden = false
+            callLogViewController?.scrollsToTopEnable(false)
+            contactViewController?.scrollsToTopEnable(true)
+            navigationItem.leftBarButtonItem?.image = R.image.backup()
             break
         default:
             break
@@ -134,18 +146,22 @@ class RootViewController: UIViewController, GSAccountDelegate {
     }
     
     @IBAction func leftMenu(sender: UIBarButtonItem) {
-        let callLogs = App.realm.objects(CallLog.self)
-        if callLogs.count != 0 {
-            let alertController = UIAlertController(title: "清空通话记录", message: "此操作不可撤回，确认清除所有的通话记录吗？", preferredStyle: .ActionSheet)
-            alertController.addAction(UIAlertAction(title: "确认", style: .Destructive) { action in
-                SwiftEventBus.post("deleteAllCallLogs")
-                SwiftEventBus.post("showCallCon")
-                })
-            alertController.addAction(UIAlertAction(title: "取消", style: .Cancel) { action in
-                SwiftEventBus.post("showCallCon")
-                })
-            //SwiftEventBus.post("hideCallCon")
-            presentViewController(alertController, animated: true, completion: nil)
+        if navigationItem.leftBarButtonItem?.image == R.image.delete_all() {
+            let callLogs = App.realm.objects(CallLog.self)
+            if callLogs.count != 0 {
+                let alertController = UIAlertController(title: "清空通话记录", message: "此操作不可撤回，确认清除所有的通话记录吗？", preferredStyle: .ActionSheet)
+                alertController.addAction(UIAlertAction(title: "确认", style: .Destructive) { action in
+                    SwiftEventBus.post("deleteAllCallLogs")
+                    SwiftEventBus.post("showCallCon")
+                    })
+                alertController.addAction(UIAlertAction(title: "取消", style: .Cancel) { action in
+                    SwiftEventBus.post("showCallCon")
+                    })
+                //SwiftEventBus.post("hideCallCon")
+                presentViewController(alertController, animated: true, completion: nil)
+            }
+        } else {
+            
         }
     }
     
@@ -171,18 +187,34 @@ class RootViewController: UIViewController, GSAccountDelegate {
     
     func account(account: GSAccount!, didReceiveIncomingCall call: GSCall!) {
         print("didReceiveIncomingCall")
-        let incomingCallViewController = R.storyboard.main.incomingCallViewController()
-        incomingCallViewController?.inCall = call
-        presentViewController(incomingCallViewController!, animated: true, completion: nil)
-//        let incomingVideoViewController = R.storyboard.main.incomingVideoViewController()
-//        incomingVideoViewController!.inCall = call
-//        presentViewController(incomingVideoViewController!, animated: true, completion: nil)
+//        let incomingCallViewController = R.storyboard.main.incomingCallViewController()
+//        incomingCallViewController?.inCall = call
+//        presentViewController(incomingCallViewController!, animated: true, completion: nil)
+                let incomingVideoViewController = R.storyboard.main.incomingVideoViewController()
+                incomingVideoViewController!.inCall = call
+                presentViewController(incomingVideoViewController!, animated: true, completion: nil)
     }
     
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         if keyPath == "status" {
             statusDidChange()
         }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let identifier =  segue.identifier {
+            switch identifier {
+            case R.segue.rootViewController.callLogViewController.identifier:
+                callLogViewController = segue.destinationViewController as? CallLogViewController
+                break
+            case R.segue.rootViewController.contactViewController.identifier:
+                contactViewController = segue.destinationViewController as? ContactViewController
+                break
+            default:
+                break
+            }
+        }
+        
     }
 }
 

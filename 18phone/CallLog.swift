@@ -36,7 +36,7 @@ enum CallState: Int {
 class CallLog: Object {
     
     /// 联系人头像
-    dynamic var headPhoto = ""
+    dynamic var headPhoto: NSData? = nil
     
     /// 联系人姓名
     dynamic var name = ""

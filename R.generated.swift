@@ -43,10 +43,14 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 17 images.
+  /// This `R.image` struct is generated, and contains static references to 24 images.
   struct image {
     /// Image `answer`.
     static let answer = ImageResource(bundle: _R.hostingBundle, name: "answer")
+    /// Image `backup`.
+    static let backup = ImageResource(bundle: _R.hostingBundle, name: "backup")
+    /// Image `Brand Assets`.
+    static let brandAssets = ImageResource(bundle: _R.hostingBundle, name: "Brand Assets")
     /// Image `call`.
     static let call = ImageResource(bundle: _R.hostingBundle, name: "call")
     /// Image `call_in`.
@@ -63,6 +67,8 @@ struct R: Rswift.Validatable {
     static let dial_down = ImageResource(bundle: _R.hostingBundle, name: "dial_down")
     /// Image `dial_tab`.
     static let dial_tab = ImageResource(bundle: _R.hostingBundle, name: "dial_tab")
+    /// Image `dial_tab_selected`.
+    static let dial_tab_selected = ImageResource(bundle: _R.hostingBundle, name: "dial_tab_selected")
     /// Image `dial_up`.
     static let dial_up = ImageResource(bundle: _R.hostingBundle, name: "dial_up")
     /// Image `hang_up`.
@@ -71,10 +77,18 @@ struct R: Rswift.Validatable {
     static let head_photo_default = ImageResource(bundle: _R.hostingBundle, name: "head_photo_default")
     /// Image `message`.
     static let message = ImageResource(bundle: _R.hostingBundle, name: "message")
+    /// Image `message_selected`.
+    static let message_selected = ImageResource(bundle: _R.hostingBundle, name: "message_selected")
     /// Image `paste`.
     static let paste = ImageResource(bundle: _R.hostingBundle, name: "paste")
+    /// Image `qrcode`.
+    static let qrcode = ImageResource(bundle: _R.hostingBundle, name: "qrcode")
     /// Image `shop`.
     static let shop = ImageResource(bundle: _R.hostingBundle, name: "shop")
+    /// Image `shop_selected`.
+    static let shop_selected = ImageResource(bundle: _R.hostingBundle, name: "shop_selected")
+    /// Image `user`.
+    static let user = ImageResource(bundle: _R.hostingBundle, name: "user")
     /// Image `video_call`.
     static let video_call = ImageResource(bundle: _R.hostingBundle, name: "video_call")
     /// Image `voice_call`.
@@ -83,6 +97,16 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "answer", bundle: ..., traitCollection: ...)`
     static func answer(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.answer, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "backup", bundle: ..., traitCollection: ...)`
+    static func backup(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.backup, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "Brand Assets", bundle: ..., traitCollection: ...)`
+    static func brandAssets(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.brandAssets, compatibleWithTraitCollection: traitCollection)
     }
     
     /// `UIImage(named: "call", bundle: ..., traitCollection: ...)`
@@ -125,6 +149,11 @@ struct R: Rswift.Validatable {
       return UIImage(resource: R.image.dial_tab, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "dial_tab_selected", bundle: ..., traitCollection: ...)`
+    static func dial_tab_selected(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.dial_tab_selected, compatibleWithTraitCollection: traitCollection)
+    }
+    
     /// `UIImage(named: "dial_up", bundle: ..., traitCollection: ...)`
     static func dial_up(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.dial_up, compatibleWithTraitCollection: traitCollection)
@@ -145,14 +174,34 @@ struct R: Rswift.Validatable {
       return UIImage(resource: R.image.message, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "message_selected", bundle: ..., traitCollection: ...)`
+    static func message_selected(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.message_selected, compatibleWithTraitCollection: traitCollection)
+    }
+    
     /// `UIImage(named: "paste", bundle: ..., traitCollection: ...)`
     static func paste(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.paste, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "qrcode", bundle: ..., traitCollection: ...)`
+    static func qrcode(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.qrcode, compatibleWithTraitCollection: traitCollection)
+    }
+    
     /// `UIImage(named: "shop", bundle: ..., traitCollection: ...)`
     static func shop(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.shop, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "shop_selected", bundle: ..., traitCollection: ...)`
+    static func shop_selected(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.shop_selected, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "user", bundle: ..., traitCollection: ...)`
+    static func user(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.user, compatibleWithTraitCollection: traitCollection)
     }
     
     /// `UIImage(named: "video_call", bundle: ..., traitCollection: ...)`
@@ -216,8 +265,32 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.segue` struct is generated, and contains static references to 0 view controllers.
+  /// This `R.segue` struct is generated, and contains static references to 1 view controllers.
   struct segue {
+    /// This struct is generated for `RootViewController`, and contains static references to 2 segues.
+    struct rootViewController {
+      /// Segue identifier `callLogViewController`.
+      static let callLogViewController: StoryboardSegueIdentifier<UIStoryboardSegue, RootViewController, CallLogViewController> = StoryboardSegueIdentifier(identifier: "callLogViewController")
+      /// Segue identifier `contactViewController`.
+      static let contactViewController: StoryboardSegueIdentifier<UIStoryboardSegue, RootViewController, ContactViewController> = StoryboardSegueIdentifier(identifier: "contactViewController")
+      
+      /// Optionally returns a typed version of segue `callLogViewController`.
+      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
+      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
+      static func callLogViewController(segue segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, RootViewController, CallLogViewController>? {
+        return TypedStoryboardSegueInfo(segueIdentifier: R.segue.rootViewController.callLogViewController, segue: segue)
+      }
+      
+      /// Optionally returns a typed version of segue `contactViewController`.
+      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
+      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
+      static func contactViewController(segue segue: UIStoryboardSegue) -> TypedStoryboardSegueInfo<UIStoryboardSegue, RootViewController, ContactViewController>? {
+        return TypedStoryboardSegueInfo(segueIdentifier: R.segue.rootViewController.contactViewController, segue: segue)
+      }
+      
+      private init() {}
+    }
+    
     private init() {}
   }
   
@@ -324,14 +397,18 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
+        if UIImage(named: "dial_tab_selected") == nil { throw ValidationError(description: "[R.swift] Image named 'dial_tab_selected' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "call") == nil { throw ValidationError(description: "[R.swift] Image named 'call' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIImage(named: "message") == nil { throw ValidationError(description: "[R.swift] Image named 'message' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "dial") == nil { throw ValidationError(description: "[R.swift] Image named 'dial' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "answer") == nil { throw ValidationError(description: "[R.swift] Image named 'answer' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIImage(named: "hang_up") == nil { throw ValidationError(description: "[R.swift] Image named 'hang_up' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "shop") == nil { throw ValidationError(description: "[R.swift] Image named 'shop' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "dial_tab") == nil { throw ValidationError(description: "[R.swift] Image named 'dial_tab' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIImage(named: "dial_up") == nil { throw ValidationError(description: "[R.swift] Image named 'dial_up' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "message") == nil { throw ValidationError(description: "[R.swift] Image named 'message' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "hang_up") == nil { throw ValidationError(description: "[R.swift] Image named 'hang_up' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "user") == nil { throw ValidationError(description: "[R.swift] Image named 'user' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "shop_selected") == nil { throw ValidationError(description: "[R.swift] Image named 'shop_selected' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "message_selected") == nil { throw ValidationError(description: "[R.swift] Image named 'message_selected' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "qrcode") == nil { throw ValidationError(description: "[R.swift] Image named 'qrcode' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "delete_all") == nil { throw ValidationError(description: "[R.swift] Image named 'delete_all' is used in storyboard 'Main', but couldn't be loaded.") }
         if _R.storyboard.main().dialViewController() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'dialViewController' could not be loaded from storyboard 'Main' as 'DialView1Controller'.") }
         if _R.storyboard.main().outgoingCallViewController() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'outgoingCallViewController' could not be loaded from storyboard 'Main' as 'OutgoingCallViewController'.") }

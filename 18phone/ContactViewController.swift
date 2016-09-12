@@ -11,40 +11,32 @@ import Contacts
 
 class ContactViewController: UITableViewController {
 
-    var contacts = [CNContact]()
-    var groupKey = [String]()
-    var groupsValue = [String: Array<LocalContactInfo>?]()
+    var groupTitles = [String]()
+    var commonGroups = [String: Array<LocalContactInfo>?]()
+    var registerGroups = [String: Array<LocalContactInfo>?]()
+    var groupValues = [String: Array<LocalContactInfo>?]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        scrollsToTopEnable(false)
         tableView.tableFooterView?.hidden = true
         tableView.sectionIndexBackgroundColor = UIColor.clearColor()
         loadContacts()
-        for i in 0...26 {
-            let key = String(UnicodeScalar(Int(UnicodeScalar("A").value) + i))
-            if i != 26 {
-                if groupsValue[key] != nil {
-                    groupKey.append(key)
-                }
-            }else {
-                if groupsValue["#"] != nil {
-                    groupKey.append("#")
-                }
-            }
-        }
-        print(groupKey)
-        if let localContactInfos = groupsValue["Y"] {
-            for localContactInfo in localContactInfos! {
-                print("localContactInfo.name:" + localContactInfo.name!)
-            }
-        }
-//        print("groups.count:\(groups.count)")
-//        print("groups:\(groupsValue)")
+        initGroup()
+        
 //        Async.background {
 //            
 //        }.main {
 //            
 //        }
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        print("ContactViewController viewDidDisappear")
+    }
+    
+    func scrollsToTopEnable(enable: Bool) {
+        tableView.scrollsToTop = enable
     }
     
     func loadContacts() {
@@ -82,21 +74,25 @@ class ContactViewController: UITableViewController {
                     phone.number = (number.value as! CNPhoneNumber).stringValue
                     localContactInfo.phones?.append(phone)
                 }
-                
-                if var localContactInfos = self.groupsValue[initial] {
+                if var localContactInfos = self.groupValues[initial] {
                     localContactInfos?.append(localContactInfo)
-                    self.groupsValue[initial] = localContactInfos
+                    self.groupValues[initial] = localContactInfos
                 } else {
                     var localContactInfos = [LocalContactInfo]()
                     localContactInfos.append(localContactInfo)
-                    self.groupsValue[initial] = localContactInfos
+                    self.groupValues[initial] = localContactInfos
                 }
-                if App.realm.objects(AppContactInfo.self).filter("identifier == '\(contact.identifier)'").first == nil {
-                    let appContactInfo = AppContactInfo()
-                    appContactInfo.identifier = contact.identifier
+                
+                var appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contact.identifier)'").first
+                if  appContactInfo == nil {
+                    appContactInfo = AppContactInfo()
+                    appContactInfo!.identifier = contact.identifier
                     try! App.realm.write {
-                        App.realm.add(appContactInfo)
+                        App.realm.add(appContactInfo!)
                     }
+                } else {
+                    //check is register
+                    
                 }
             })
         }
@@ -105,22 +101,36 @@ class ContactViewController: UITableViewController {
         }
     }
     
+    func initGroup() {
+        for i in 0...26 {
+            let key = String(UnicodeScalar(Int(UnicodeScalar("A").value) + i))
+            if i != 26 {
+                if groupValues[key] != nil {
+                    groupTitles.append(key)
+                }
+            }else {
+                if groupValues["#"] != nil {
+                    groupTitles.append("#")
+                }
+            }
+        }
+    }
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return groupKey.count
+        return groupTitles.count
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("groupKey:\(groupKey[section])")
-        return groupsValue[groupKey[section]]!!.count
+        return groupValues[groupTitles[section]]!!.count
     }
     
     override func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
-        return groupKey
+        return groupTitles
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.contact)
-        let localContactInfo = groupsValue[groupKey[indexPath.section]]!![indexPath.row]
+        let localContactInfo = groupValues[groupTitles[indexPath.section]]!![indexPath.row]
         cell?.textLabel?.text = localContactInfo.name
         if localContactInfo.headPhoto == nil {
             cell?.imageView?.image = R.image.head_photo_default()
@@ -142,7 +152,7 @@ class ContactViewController: UITableViewController {
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView(frame: CGRectMake(0.0, 0.0, Screen.width, 20.0))
         let label = UILabel(frame: CGRectMake(8.0, 0.0, 15.0, 20.0))
-        label.text = groupKey[section]
+        label.text = groupTitles[section]
         label.font = UIFont.systemFontOfSize(14.0)
         label.textColor = UIColor.grayColor()
         view.addSubview(label)

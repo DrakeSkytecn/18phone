@@ -3,6 +3,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -144,11 +145,11 @@
         <!--Contact View Controller-->
         <scene sceneID="rLj-J1-NYU">
             <objects>
-                <tableViewController id="acs-L6-tVu" customClass="ContactViewController" customModule="_8phone" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController extendedLayoutIncludesOpaqueBars="YES" id="acs-L6-tVu" customClass="ContactViewController" customModule="_8phone" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="60" sectionHeaderHeight="10" sectionFooterHeight="1" id="aMn-Ln-dpY">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="contact" id="RpA-2r-6JR">
                                 <rect key="frame" x="0.0" y="50" width="600" height="60"/>
@@ -156,6 +157,19 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RpA-2r-6JR" id="nZV-HF-VDC">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3ME-cy-OmS">
+                                            <rect key="frame" x="566" y="22" width="16" height="16"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="16" id="AH4-gh-2lg"/>
+                                                <constraint firstAttribute="height" constant="16" id="qhh-DD-FEr"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="3ME-cy-OmS" secondAttribute="trailing" constant="10" id="Jty-2r-Ubz"/>
+                                        <constraint firstItem="3ME-cy-OmS" firstAttribute="centerY" secondItem="nZV-HF-VDC" secondAttribute="centerY" id="xun-1B-u6A"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -184,13 +198,13 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hzm-Es-BCG">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                                 <connections>
-                                    <segue destination="uWx-Wl-RiO" kind="embed" id="tEB-oX-UVV"/>
+                                    <segue destination="uWx-Wl-RiO" kind="embed" identifier="callLogViewController" id="tEB-oX-UVV"/>
                                 </connections>
                             </containerView>
                             <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IsE-2j-suj">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                                 <connections>
-                                    <segue destination="acs-L6-tVu" kind="embed" id="gBv-5V-cNH"/>
+                                    <segue destination="acs-L6-tVu" kind="embed" identifier="contactViewController" id="gBv-5V-cNH"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Xz-WT-qRM">
@@ -237,7 +251,12 @@
                                 <action selector="topMenuNav:" destination="BYZ-38-t0r" eventType="valueChanged" id="UqP-b7-eNY"/>
                             </connections>
                         </segmentedControl>
+                        <rightBarButtonItems>
+                            <barButtonItem image="user" id="7cs-0e-G97"/>
+                            <barButtonItem image="qrcode" id="s8l-jU-a7R"/>
+                        </rightBarButtonItems>
                     </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
                         <outlet property="aContainer" destination="Hzm-Es-BCG" id="1Jn-Ue-TNf"/>
                         <outlet property="bContainer" destination="IsE-2j-suj" id="VKK-R3-5EV"/>
@@ -470,7 +489,7 @@
         <scene sceneID="fVU-Na-T3q">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="H5M-hG-ozh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="1" title="展开" image="dial_tab" selectedImage="dial_up" id="BEr-LU-Ili"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="展开" image="dial_tab" selectedImage="dial_tab_selected" id="BEr-LU-Ili"/>
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
@@ -510,7 +529,7 @@
         <scene sceneID="W0C-ht-t79">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TUQ-xa-oWu" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="2" title="商城" image="shop" id="cR2-bi-tWk"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="商城" image="shop" selectedImage="shop_selected" id="cR2-bi-tWk"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="thP-Y5-G2r">
@@ -594,6 +613,7 @@
                                 <rect key="frame" x="175" y="91" width="250" height="310"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="NkQ-Et-sMY"/>
                                     <constraint firstAttribute="width" constant="250" id="b0I-Do-6dz"/>
                                     <constraint firstAttribute="height" constant="310" id="kiH-nK-Lkj"/>
                                 </constraints>
@@ -746,6 +766,7 @@
                     <connections>
                         <outlet property="addContactBtn" destination="HxG-cb-N5I" id="Jev-bS-SZ9"/>
                         <outlet property="areaText" destination="6a3-lg-khR" id="tVM-wG-Xa4"/>
+                        <outlet property="dialCollectionView" destination="Iyz-5V-ugS" id="tgT-QF-vj4"/>
                         <outlet property="numberText" destination="8Km-pi-xhB" id="sGc-Ka-h6N"/>
                     </connections>
                 </viewController>
@@ -1052,6 +1073,9 @@
                             <constraint firstItem="rEk-ES-BjT" firstAttribute="centerX" secondItem="cOP-9y-6Bz" secondAttribute="centerX" id="pEQ-0P-IDV"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="videoCon" destination="rEk-ES-BjT" id="L6S-ZM-Ygo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qTb-ow-RCx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1061,7 +1085,7 @@
         <scene sceneID="bPQ-D5-5D5">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Tmw-Qi-5er" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="消息" image="message" id="62b-F3-qSl"/>
+                    <tabBarItem key="tabBarItem" title="消息" image="message" selectedImage="message_selected" id="62b-F3-qSl"/>
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
@@ -1082,13 +1106,17 @@
     <resources>
         <image name="answer" width="32" height="32"/>
         <image name="call" width="24" height="24"/>
-        <image name="delete_all" width="22" height="22"/>
+        <image name="delete_all" width="17" height="22"/>
         <image name="dial" width="32" height="32"/>
-        <image name="dial_tab" width="32" height="32"/>
-        <image name="dial_up" width="32" height="32"/>
+        <image name="dial_tab" width="22" height="22"/>
+        <image name="dial_tab_selected" width="22" height="22"/>
         <image name="hang_up" width="32" height="32"/>
-        <image name="message" width="32" height="32"/>
-        <image name="shop" width="32" height="32"/>
+        <image name="message" width="22" height="14"/>
+        <image name="message_selected" width="22" height="14"/>
+        <image name="qrcode" width="19" height="19"/>
+        <image name="shop" width="20" height="16"/>
+        <image name="shop_selected" width="20" height="16"/>
+        <image name="user" width="19" height="21"/>
     </resources>
     <color key="tintColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>

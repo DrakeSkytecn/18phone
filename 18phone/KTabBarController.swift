@@ -14,6 +14,11 @@ class KTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //tabBar.tintColor = UIColor(red: 0, green: 128, blue: 0, alpha: 1)
+//        for item in tabBar.items! {
+//            print("KTabBarController item")
+//            item.image?.imageWithRenderingMode(.AlwaysOriginal)
+//            item.selectedImage?.imageWithRenderingMode(.AlwaysOriginal)
+//        }
         selectedIndex = 1
     }
 

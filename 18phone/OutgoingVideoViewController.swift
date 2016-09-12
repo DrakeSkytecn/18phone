@@ -69,12 +69,11 @@ class OutgoingVideoViewController: UIViewController {
         case GSCallStatusConnected:
             print("OutgoingCallViewController Connected.")
             isConnected = true
-            outCall?.setOutgoingVideoStream()
+            //outCall?.setOutgoingVideoStream()
             break
             
         case GSCallStatusDisconnected:
             print("OutgoingCallViewController Disconnected.")
-            
             
             dismissViewControllerAnimated(true, completion: nil)
             

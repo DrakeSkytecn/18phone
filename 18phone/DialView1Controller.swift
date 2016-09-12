@@ -10,6 +10,8 @@ import UIKit
 
 class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
+    @IBOutlet weak var dialCollectionView: UICollectionView!
+    
     /// 新增联系人按钮
     @IBOutlet weak var addContactBtn: UIButton!
     
@@ -30,7 +32,7 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        dialCollectionView.scrollsToTop = false
         // Do any additional setup after loading the view.
     }
 
