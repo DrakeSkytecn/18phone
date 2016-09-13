@@ -50,20 +50,20 @@ class CallLogViewController: UITableViewController {
         }
         print("callLog.callState:\(callLog.callState)")
         switch callLog.callState {
-            case CallState.InUnConnected.rawValue:
-                cell!.callState.image = R.image.call_in()
-                break
-            case CallState.InConnected.rawValue:
-                cell!.callState.image = R.image.call_in()
-                break
-            case CallState.OutUnConnected.rawValue:
-                cell!.callState.image = R.image.call_out()
-                break
-            case CallState.OutConnected.rawValue:
-                cell!.callState.image = R.image.call_out()
-                break
-            default:
-                break
+        case CallState.InUnConnected.rawValue:
+            cell!.callState.image = R.image.call_in_unconnected()
+            break
+        case CallState.InConnected.rawValue:
+            cell!.callState.image = R.image.call_in_connected()
+            break
+        case CallState.OutUnConnected.rawValue:
+            cell!.callState.image = R.image.call_out_unconnected()
+            break
+        case CallState.OutConnected.rawValue:
+            cell!.callState.image = R.image.call_out_connected()
+            break
+        default:
+            break
         }
         
         if callLog.callType == 0 {
@@ -89,14 +89,14 @@ class CallLogViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let callLog = callLogs![indexPath.row]
-//        let outgoingCallViewController = R.storyboard.main.outgoingCallViewController()
-//        outgoingCallViewController?.toNumber = callLog.phone
-//        outgoingCallViewController?.contactName = "James"
-//        outgoingCallViewController?.phoneArea = callLog.area
-//        presentViewController(outgoingCallViewController!, animated: true, completion: nil)
-                let outgoingVideoViewController = OutgoingVideoViewController()
-                outgoingVideoViewController.toNumber = callLog.phone
-                presentViewController(outgoingVideoViewController, animated: true, completion: nil)
+        let outgoingCallViewController = R.storyboard.main.outgoingCallViewController()
+        outgoingCallViewController?.toNumber = callLog.phone
+        outgoingCallViewController?.contactName = "James"
+        outgoingCallViewController?.phoneArea = callLog.area
+        presentViewController(outgoingCallViewController!, animated: true, completion: nil)
+//        let outgoingVideoViewController = OutgoingVideoViewController()
+//        outgoingVideoViewController.toNumber = callLog.phone
+//        presentViewController(outgoingVideoViewController, animated: true, completion: nil)
     }
     
     /*

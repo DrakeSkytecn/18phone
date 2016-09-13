@@ -42,8 +42,9 @@
 - (NSString *)incomingCallInfo {
     pjsua_call_info callInfo;
     pjsua_call_get_info(_callId, &callInfo);
-    NSString *remote_contact = [NSString stringWithUTF8String:callInfo.remote_contact.ptr];
-    NSString *contactId = [remote_contact substringWithRange:NSMakeRange(1, 11)];
+    NSString *remote_contact = [NSString stringWithUTF8String:callInfo.remote_info.ptr];
+    NSLog(@"remote_contact:%@", remote_contact);
+    NSString *contactId = [remote_contact substringWithRange:NSMakeRange(5, 11)];
     
     return contactId;
 }
@@ -116,7 +117,6 @@
     _status = status;
     //[self didChangeValueForKey:@"status"];
 }
-
 
 - (float)volume {
     return _volume;

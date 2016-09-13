@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Contacts
 
 /// 拨号盘控制器
 class DialViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
@@ -125,6 +126,7 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
                         } else {
                             self.tempArea = "未知归属地"
                         }
+                        
                     }
                 }
             }
@@ -171,7 +173,7 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
         callLog.name = "James"
         callLog.phone = dialNumber.text!
         //callLog.callState = CallState.In.rawValue
-        callLog.callStartTime = DateUtil.getCurrentDate()
+        callLog.callStartTime = NSDate()
         if tempArea != nil {
             callLog.area = tempArea!
         }

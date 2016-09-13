@@ -132,7 +132,6 @@
     return [_account configure:_config.account];
 }
 
-
 - (BOOL)start {
     GSReturnNoIfFails(pjsua_start());
     [self setStatus:GSUserAgentStateStarted];
@@ -152,6 +151,21 @@
     return YES;
 }
 
+- (void)keepAlive {
+    /* Register this thread if not yet */
+    if (!pj_thread_is_registered()) {
+        static pj_thread_desc   thread_desc;
+        static pj_thread_t     *thread;
+        pj_thread_register("mainthread", thread_desc, &thread);
+    }
+    
+    /* Simply sleep for 5s, give the time for library to send transport
+     * keepalive packet, and wait for server response if any. Don't sleep
+     * too short, to avoid too many wakeups, because when there is any
+     * response from server, app will be woken up again (see also #1482).
+     */
+    pj_thread_sleep(5000);
+}
 
 - (NSArray *)arrayOfAvailableCodecs {
     GSAssert(!!_config, @"Gossip: User agent not configured.");

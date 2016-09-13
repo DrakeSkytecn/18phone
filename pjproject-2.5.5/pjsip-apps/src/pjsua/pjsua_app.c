@@ -1935,11 +1935,15 @@ pj_status_t pjsua_app_run(pj_bool_t wait_telnet_cli)
 
     app_running = PJ_TRUE;
 
+    PJ_LOG(3,(THIS_FILE, "pjsua_app_run1"));
+    
     if (app_config.use_cli)
 	cli_main(wait_telnet_cli);	
     else
 	legacy_main();
-
+    
+    PJ_LOG(3,(THIS_FILE, "pjsua_app_run2"));
+    
     status = PJ_SUCCESS;
 
 on_return:

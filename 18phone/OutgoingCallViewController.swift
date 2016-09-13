@@ -66,7 +66,7 @@ class OutgoingCallViewController: UIViewController {
                 callLog.callState = CallState.OutUnConnected.rawValue
             }
             callLog.callType = 0
-            callLog.callStartTime = DateUtil.getCurrentDate()
+            callLog.callStartTime = NSDate()
             if phoneArea != nil {
                 callLog.area = phoneArea!
             }

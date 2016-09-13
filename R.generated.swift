@@ -43,7 +43,7 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 24 images.
+  /// This `R.image` struct is generated, and contains static references to 26 images.
   struct image {
     /// Image `answer`.
     static let answer = ImageResource(bundle: _R.hostingBundle, name: "answer")
@@ -53,10 +53,14 @@ struct R: Rswift.Validatable {
     static let brandAssets = ImageResource(bundle: _R.hostingBundle, name: "Brand Assets")
     /// Image `call`.
     static let call = ImageResource(bundle: _R.hostingBundle, name: "call")
-    /// Image `call_in`.
-    static let call_in = ImageResource(bundle: _R.hostingBundle, name: "call_in")
-    /// Image `call_out`.
-    static let call_out = ImageResource(bundle: _R.hostingBundle, name: "call_out")
+    /// Image `call_in_connected`.
+    static let call_in_connected = ImageResource(bundle: _R.hostingBundle, name: "call_in_connected")
+    /// Image `call_in_unconnected`.
+    static let call_in_unconnected = ImageResource(bundle: _R.hostingBundle, name: "call_in_unconnected")
+    /// Image `call_out_connected`.
+    static let call_out_connected = ImageResource(bundle: _R.hostingBundle, name: "call_out_connected")
+    /// Image `call_out_unconnected`.
+    static let call_out_unconnected = ImageResource(bundle: _R.hostingBundle, name: "call_out_unconnected")
     /// Image `delete`.
     static let delete = ImageResource(bundle: _R.hostingBundle, name: "delete")
     /// Image `delete_all`.
@@ -114,14 +118,24 @@ struct R: Rswift.Validatable {
       return UIImage(resource: R.image.call, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "call_in", bundle: ..., traitCollection: ...)`
-    static func call_in(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.call_in, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "call_in_connected", bundle: ..., traitCollection: ...)`
+    static func call_in_connected(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.call_in_connected, compatibleWithTraitCollection: traitCollection)
     }
     
-    /// `UIImage(named: "call_out", bundle: ..., traitCollection: ...)`
-    static func call_out(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
-      return UIImage(resource: R.image.call_out, compatibleWithTraitCollection: traitCollection)
+    /// `UIImage(named: "call_in_unconnected", bundle: ..., traitCollection: ...)`
+    static func call_in_unconnected(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.call_in_unconnected, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "call_out_connected", bundle: ..., traitCollection: ...)`
+    static func call_out_connected(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.call_out_connected, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "call_out_unconnected", bundle: ..., traitCollection: ...)`
+    static func call_out_unconnected(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.call_out_unconnected, compatibleWithTraitCollection: traitCollection)
     }
     
     /// `UIImage(named: "delete", bundle: ..., traitCollection: ...)`

@@ -187,12 +187,12 @@ class RootViewController: UIViewController, GSAccountDelegate {
     
     func account(account: GSAccount!, didReceiveIncomingCall call: GSCall!) {
         print("didReceiveIncomingCall")
-//        let incomingCallViewController = R.storyboard.main.incomingCallViewController()
-//        incomingCallViewController?.inCall = call
-//        presentViewController(incomingCallViewController!, animated: true, completion: nil)
-                let incomingVideoViewController = R.storyboard.main.incomingVideoViewController()
-                incomingVideoViewController!.inCall = call
-                presentViewController(incomingVideoViewController!, animated: true, completion: nil)
+        let incomingCallViewController = R.storyboard.main.incomingCallViewController()
+        incomingCallViewController?.inCall = call
+        presentViewController(incomingCallViewController!, animated: true, completion: nil)
+//                let incomingVideoViewController = R.storyboard.main.incomingVideoViewController()
+//                incomingVideoViewController!.inCall = call
+//                presentViewController(incomingVideoViewController!, animated: true, completion: nil)
     }
     
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {

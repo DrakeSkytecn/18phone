@@ -57,6 +57,8 @@ typedef enum {
  */
 - (BOOL)reset;
 
+- (void)keepAlive;
+
 /// Gets an array of GSCodecInfo for codecs loaded by PJSIP.
 - (NSArray *)arrayOfAvailableCodecs;
 

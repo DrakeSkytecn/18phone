@@ -74,11 +74,11 @@ struct DateUtil {
     
     static func getCurrentDate() -> NSDate {
         let date = NSDate()
-        let zone = NSTimeZone.localTimeZone()
+        let zone = NSTimeZone.systemTimeZone()
         let interval = zone.secondsFromGMTForDate(date)
         let localeDate = date.dateByAddingTimeInterval(NSTimeInterval(interval))
         print("getCurrentDate():" + localeDate.description)
-        return localeDate
+        return date
     }
     
     static func dateToString(date: NSDate) -> String {
