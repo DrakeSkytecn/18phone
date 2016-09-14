@@ -43,7 +43,7 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 26 images.
+  /// This `R.image` struct is generated, and contains static references to 27 images.
   struct image {
     /// Image `answer`.
     static let answer = ImageResource(bundle: _R.hostingBundle, name: "answer")
@@ -79,6 +79,8 @@ struct R: Rswift.Validatable {
     static let hang_up = ImageResource(bundle: _R.hostingBundle, name: "hang_up")
     /// Image `head_photo_default`.
     static let head_photo_default = ImageResource(bundle: _R.hostingBundle, name: "head_photo_default")
+    /// Image `is_register`.
+    static let is_register = ImageResource(bundle: _R.hostingBundle, name: "is_register")
     /// Image `message`.
     static let message = ImageResource(bundle: _R.hostingBundle, name: "message")
     /// Image `message_selected`.
@@ -183,6 +185,11 @@ struct R: Rswift.Validatable {
       return UIImage(resource: R.image.head_photo_default, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "is_register", bundle: ..., traitCollection: ...)`
+    static func is_register(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.is_register, compatibleWithTraitCollection: traitCollection)
+    }
+    
     /// `UIImage(named: "message", bundle: ..., traitCollection: ...)`
     static func message(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.message, compatibleWithTraitCollection: traitCollection)
@@ -259,10 +266,10 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 7 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 8 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `contact`.
-    static let contact: ReuseIdentifier<UITableViewCell> = ReuseIdentifier(identifier: "contact")
+    static let contact: ReuseIdentifier<ContactCell> = ReuseIdentifier(identifier: "contact")
     /// Reuse identifier `dial_1`.
     static let dial_1: ReuseIdentifier<DialNumberCell> = ReuseIdentifier(identifier: "dial_1")
     /// Reuse identifier `dial_2`.
@@ -275,6 +282,8 @@ struct R: Rswift.Validatable {
     static let dial_b: ReuseIdentifier<DialIconCell> = ReuseIdentifier(identifier: "dial_b")
     /// Reuse identifier `log_a`.
     static let log_a: ReuseIdentifier<CallLogACell> = ReuseIdentifier(identifier: "log_a")
+    /// Reuse identifier `log_b`.
+    static let log_b: ReuseIdentifier<CallLogACell> = ReuseIdentifier(identifier: "log_b")
     
     private init() {}
   }

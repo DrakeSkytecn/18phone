@@ -32,6 +32,15 @@ enum CallState: Int {
     case OutConnected
 }
 
+enum CallType: Int {
+    
+    /// 语音通话
+    case Voice
+    
+    /// 视频通话
+    case Video
+}
+
 /// 通话记录数据对象
 class CallLog: Object {
     
@@ -48,7 +57,7 @@ class CallLog: Object {
     dynamic var callState = CallState.InUnConnected.rawValue
     
     /// 通话方式
-    dynamic var callType = 0
+    dynamic var callType = CallType.Voice.rawValue
     
     /// 号码归属地
     dynamic var area = ""

@@ -127,6 +127,7 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
                             self.tempArea = "未知归属地"
                         }
                         
+                        
                     }
                 }
             }

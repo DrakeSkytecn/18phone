@@ -41,8 +41,18 @@ class CallLogViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.log_a)
+        var cell: CallLogACell?
         let callLog = callLogs![indexPath.row]
+        
+        if callLog.name.isEmpty {
+            cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.log_b)
+            cell!.phone.text = callLog.phone
+        } else {
+            cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.log_a)
+            cell!.name.text = callLog.name
+            cell!.phone.text = callLog.phone
+        }
+        
         if callLog.headPhoto == nil {
             cell!.headPhoto.image = R.image.head_photo_default()!
         } else {
@@ -66,17 +76,10 @@ class CallLogViewController: UITableViewController {
             break
         }
         
-        if callLog.callType == 0 {
+        if callLog.callType == CallType.Voice.rawValue {
             cell!.callType.image = R.image.voice_call()
         } else {
             cell!.callType.image = R.image.video_call()
-        }
-        
-        if callLog.name.isEmpty {
-            cell!.name.text = callLog.phone
-        } else {
-            cell!.name.text = callLog.name
-            cell!.phone.text = callLog.phone
         }
         
         cell!.area.text = callLog.area
@@ -88,15 +91,27 @@ class CallLogViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let callLog = callLogs![indexPath.row]
-        let outgoingCallViewController = R.storyboard.main.outgoingCallViewController()
-        outgoingCallViewController?.toNumber = callLog.phone
-        outgoingCallViewController?.contactName = "James"
-        outgoingCallViewController?.phoneArea = callLog.area
-        presentViewController(outgoingCallViewController!, animated: true, completion: nil)
-//        let outgoingVideoViewController = OutgoingVideoViewController()
-//        outgoingVideoViewController.toNumber = callLog.phone
-//        presentViewController(outgoingVideoViewController, animated: true, completion: nil)
+        let callLog = self.callLogs![indexPath.row]
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        alertController.addAction(UIAlertAction(title: "语音通话", style: .Default) { action in
+            let outgoingCallViewController = R.storyboard.main.outgoingCallViewController()
+            outgoingCallViewController?.toNumber = callLog.phone
+            outgoingCallViewController?.contactName = callLog.name
+            outgoingCallViewController?.phoneArea = callLog.area
+            self.presentViewController(outgoingCallViewController!, animated: true, completion: nil)
+            })
+        alertController.addAction(UIAlertAction(title: "视频通话", style: .Default) { action in
+            let outgoingVideoViewController = OutgoingVideoViewController()
+            outgoingVideoViewController.toNumber = callLog.phone
+            self.presentViewController(outgoingVideoViewController, animated: true, completion: nil)
+            })
+        alertController.addAction(UIAlertAction(title: "举报", style: .Destructive) { action in
+            
+            })
+        alertController.addAction(UIAlertAction(title: "取消", style: .Cancel) { action in
+            
+            })
+        presentViewController(alertController, animated: true, completion: nil)
     }
     
     /*

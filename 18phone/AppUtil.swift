@@ -20,7 +20,7 @@ struct URL {
     /// 比一比SIP服务器地址
     static let BEYEBE_SIP_SERVER = "211.149.172.109:5060"
     
-    /// 比一比SIP域名服务器
+    /// 比一比SIP服务器域名
     static let BEYEBE_SIP_DOMAIN = "18phone.beyebe"
 }
 
@@ -132,6 +132,10 @@ struct PhoneUtil {
         let pattern = "^\\d{1,12}$"
         let predicate = NSPredicate(format: "SELF MATCHES %@", pattern)
         return predicate.evaluateWithObject(number)
+    }
+    
+    static func callSystemPhone(number: String) {
+        UIApplication.sharedApplication().openURL(NSURL(string: "tel://" + number)!)
     }
 }
 

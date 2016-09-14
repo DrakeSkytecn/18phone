@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Contacts
 
 class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
@@ -21,6 +22,9 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
     /// 显示号码归属地
     @IBOutlet weak var areaText: UILabel!
     
+    /// 显示姓名
+    @IBOutlet weak var nameText: UILabel!
+    
     /// 用于查询后保存的号码归属地
     var tempArea: String?
     
@@ -29,6 +33,8 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
     
     /// 拨号盘数字按键上的字母
     let characters = ["ABC", "DEF", "GHI", "JKL", "MNO", "PQRS", "TUV", "WXYZ"]
+    
+    var appContactInfo: AppContactInfo?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,7 +90,7 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
         case 0...8, 10:
             
             if temp?.characters.count < 12 {
-                addContactBtn.hidden = false
+                //addContactBtn.hidden = false
                 let number = (collectionView.cellForItemAtIndexPath(indexPath) as!DialNumberCell).number.text
                 temp = temp! + number!
                 numberText.text = temp
@@ -96,7 +102,7 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
             let paste = UIPasteboard.generalPasteboard()
             if PhoneUtil.isNumber(paste.string) {
                 numberText.text = paste.string
-                addContactBtn.hidden = false
+                //addContactBtn.hidden = false
                 checkNumberArea(paste.string)
             } else {
                 
@@ -109,7 +115,7 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
                 temp = temp?.substringToIndex(temp!.startIndex.advancedBy(length! - 1))
                 numberText.text = temp
                 if length == 1 {
-                    addContactBtn.hidden = true
+                    //addContactBtn.hidden = true
                 }
                 checkNumberArea(temp)
             }
@@ -122,16 +128,38 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
         if PhoneUtil.isMobileNumber(temp) || PhoneUtil.isTelephoneNumber(temp) || temp == "10086" {
             PhoneUtil.getPhoneAreaInfo(temp!){ phoneAreaInfo in
                 if phoneAreaInfo.errNum == 0 {
-                    self.tempArea = (phoneAreaInfo.retData?.province!)! + "-" + (phoneAreaInfo.retData?.city!)!
+                    self.tempArea = (phoneAreaInfo.retData?.province!)! + (phoneAreaInfo.retData?.city!)!
                     self.areaText.text = self.tempArea
                 } else {
                     self.tempArea = "未知归属地"
                 }
+                
+                let store = CNContactStore()
+                let keysToFetch = [CNContactFormatter.descriptorForRequiredKeysForStyle(.FullName),
+                                   CNContactGivenNameKey,
+                                   CNContactFamilyNameKey,
+                                   CNContactPhoneNumbersKey]
+                let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch)
+                
+                try! store.enumerateContactsWithFetchRequest(fetchRequest) { (let contact, let stop) -> Void in
+                    for number in contact.phoneNumbers {
+                        let phoneNumber = (number.value as! CNPhoneNumber).stringValue
+                        if phoneNumber == temp {
+                            self.tempName = contact.familyName + contact.givenName
+                            self.nameText.text = self.tempName
+                            self.appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contact.identifier)'").first
+                            return
+                        }
+                    }
+                }
             }
         } else {
             tempArea = "未知归属地"
+            tempName = nil
             areaText.text = nil
+            appContactInfo = nil
         }
+        print("checkNumberArea end")
     }
     
     func collectionView(collectionView: UICollectionView, didHighlightItemAtIndexPath indexPath: NSIndexPath) {
@@ -153,14 +181,37 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
      */
     @IBAction func call(sender: UIButton) {
         if PhoneUtil.isMobileNumber(numberText.text) || PhoneUtil.isTelephoneNumber(numberText.text) {
-            
-            let outgoingCallViewController = R.storyboard.main.outgoingCallViewController()
-            outgoingCallViewController?.toNumber = numberText.text
-            outgoingCallViewController?.contactName = "James"
-            outgoingCallViewController?.phoneArea = tempArea
-            presentViewController(outgoingCallViewController!, animated: true, completion: nil)
+            if self.appContactInfo != nil {
+                if self.appContactInfo!.isRegister {
+                    let outgoingCallViewController = R.storyboard.main.outgoingCallViewController()
+                    outgoingCallViewController?.toNumber = numberText.text
+                    outgoingCallViewController?.contactName = tempName
+                    outgoingCallViewController?.phoneArea = tempArea
+                    presentViewController(outgoingCallViewController!, animated: true, completion: nil)
+                } else {
+                    PhoneUtil.callSystemPhone(numberText.text!)
+                    let callLog = CallLog()
+                    if tempName != nil {
+                        callLog.name = tempName!
+                    }
+                    callLog.phone = numberText.text!
+                    if true {
+                        callLog.callState = CallState.OutConnected.rawValue
+                    } else {
+                        callLog.callState = CallState.OutUnConnected.rawValue
+                    }
+                    callLog.callType = CallType.Voice.rawValue
+                    callLog.callStartTime = NSDate()
+                    if tempArea != nil {
+                        callLog.area = tempArea!
+                    }
+                    try! App.realm.write {
+                        App.realm.add(callLog)
+                    }
+                }
+            }
         } else {
-            UIApplication.sharedApplication().openURL(NSURL(string: "tel://" + numberText.text!)!)
+            
         }
     }
 }

@@ -41,6 +41,8 @@ struct LocalContactInfo {
     /// 联系人电话
     var phones: List<Phone>?
     
+    var isRegister = false
+    
     init () {
         identifier = nil
         headPhoto = nil

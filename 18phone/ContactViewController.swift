@@ -41,7 +41,6 @@ class ContactViewController: UITableViewController {
     
     func loadContacts() {
         let store = CNContactStore()
-        CNLabelPhoneNumberMobile
         let keysToFetch = [CNContactFormatter.descriptorForRequiredKeysForStyle(.FullName),
                            CNContactImageDataKey,
                            CNContactThumbnailImageDataKey,
@@ -53,9 +52,20 @@ class ContactViewController: UITableViewController {
         let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch)
         
         do {
-            try store.enumerateContactsWithFetchRequest(fetchRequest, usingBlock: { (let contact, let stop) -> Void in
+            try store.enumerateContactsWithFetchRequest(fetchRequest) { (let contact, let stop) -> Void in
                 var localContactInfo = LocalContactInfo()
                 localContactInfo.identifier = contact.identifier
+                var appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contact.identifier)'").first
+                if  appContactInfo == nil {
+                    appContactInfo = AppContactInfo()
+                    appContactInfo!.identifier = contact.identifier
+                    try! App.realm.write {
+                        App.realm.add(appContactInfo!)
+                    }
+                } else {
+                    //check is register
+                    
+                }
                 localContactInfo.headPhoto = contact.thumbnailImageData
                 localContactInfo.name = contact.familyName + contact.givenName
                 var initial = ""
@@ -82,19 +92,7 @@ class ContactViewController: UITableViewController {
                     localContactInfos.append(localContactInfo)
                     self.groupValues[initial] = localContactInfos
                 }
-                
-                var appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contact.identifier)'").first
-                if  appContactInfo == nil {
-                    appContactInfo = AppContactInfo()
-                    appContactInfo!.identifier = contact.identifier
-                    try! App.realm.write {
-                        App.realm.add(appContactInfo!)
-                    }
-                } else {
-                    //check is register
-                    
-                }
-            })
+            }
         }
         catch let error as NSError {
             print(error.localizedDescription)
@@ -116,6 +114,8 @@ class ContactViewController: UITableViewController {
         }
     }
     
+    // MARK: - Table view data source
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return groupTitles.count
     }
@@ -131,11 +131,14 @@ class ContactViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.contact)
         let localContactInfo = groupValues[groupTitles[indexPath.section]]!![indexPath.row]
-        cell?.textLabel?.text = localContactInfo.name
-        if localContactInfo.headPhoto == nil {
-            cell?.imageView?.image = R.image.head_photo_default()
+        cell!.name.text = localContactInfo.name
+        if localContactInfo.headPhoto != nil {
+            cell?.headPhoto.image = UIImage(data: localContactInfo.headPhoto!)
         } else {
-            cell?.imageView?.image = UIImage(data: localContactInfo.headPhoto!)
+            cell?.headPhoto.image = R.image.head_photo_default()
+        }
+        if localContactInfo.isRegister {
+            cell?.registerIcon.image = R.image.is_register()
         }
         
         return cell!

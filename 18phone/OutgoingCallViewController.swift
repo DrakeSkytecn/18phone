@@ -34,6 +34,24 @@ class OutgoingCallViewController: UIViewController {
     
     @IBAction func hangup(sender: UIButton) {
         outCall?.end()
+        let callLog = CallLog()
+        callLog.name = contactName!
+        callLog.phone = toNumber!
+        if isConnected {
+            callLog.callState = CallState.OutConnected.rawValue
+        } else {
+            callLog.callState = CallState.OutUnConnected.rawValue
+        }
+        callLog.callType = CallType.Voice.rawValue
+        callLog.callStartTime = NSDate()
+        if phoneArea != nil {
+            callLog.area = phoneArea!
+        }
+        try! App.realm.write {
+            App.realm.add(callLog)
+        }
+        SwiftEventBus.post("reloadCallLogs")
+        dismissViewControllerAnimated(true, completion: nil)
     }
 
     func callStatusDidChange() {
@@ -57,25 +75,8 @@ class OutgoingCallViewController: UIViewController {
             
         case GSCallStatusDisconnected:
             print("OutgoingCallViewController Disconnected.")
-            let callLog = CallLog()
-            callLog.name = "James"
-            callLog.phone = toNumber!
-            if isConnected {
-                callLog.callState = CallState.OutConnected.rawValue
-            } else {
-                callLog.callState = CallState.OutUnConnected.rawValue
-            }
-            callLog.callType = 0
-            callLog.callStartTime = NSDate()
-            if phoneArea != nil {
-                callLog.area = phoneArea!
-            }
-            try! App.realm.write {
-                App.realm.add(callLog)
-            }
-            SwiftEventBus.post("reloadCallLogs")
             
-            dismissViewControllerAnimated(true, completion: nil)
+            
             
             break
             

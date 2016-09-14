@@ -157,7 +157,6 @@ class RootViewController: UIViewController, GSAccountDelegate {
                 alertController.addAction(UIAlertAction(title: "取消", style: .Cancel) { action in
                     SwiftEventBus.post("showCallCon")
                     })
-                //SwiftEventBus.post("hideCallCon")
                 presentViewController(alertController, animated: true, completion: nil)
             }
         } else {
@@ -172,10 +171,10 @@ class RootViewController: UIViewController, GSAccountDelegate {
             break
         case GSAccountStatusConnecting:
             print("Connecting")
+            
             break
         case GSAccountStatusConnected:
             print("Connected")
-            print("accountId:" + String(App.userAgentAccount.accountId))
             break
         case GSAccountStatusDisconnecting:
             print("Disconnecting")

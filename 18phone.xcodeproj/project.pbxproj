@@ -87,6 +87,8 @@
 		E1C048D01D8694D30009DF6B /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C048CF1D8694D30009DF6B /* CoreFoundation.framework */; };
 		E1C048D21D8697690009DF6B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C048D11D8697690009DF6B /* CFNetwork.framework */; };
 		E1C048D41D8697770009DF6B /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C048D31D8697770009DF6B /* libstdc++.tbd */; };
+		E1DE61831D88F1E900321B47 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DE61821D88F1E900321B47 /* ContactCell.swift */; };
+		E1DE61851D894E3F00321B47 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1DE61841D894E3F00321B47 /* CoreTelephony.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -208,6 +210,8 @@
 		E1C048CF1D8694D30009DF6B /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		E1C048D11D8697690009DF6B /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		E1C048D31D8697770009DF6B /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		E1DE61821D88F1E900321B47 /* ContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
+		E1DE61841D894E3F00321B47 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		E1F5E57C1D59E5990010FF2C /* 18phone-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "18phone-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -238,6 +242,7 @@
 				E1C048A61D8691C60009DF6B /* libyuv-arm64-apple-darwin_ios.a in Frameworks */,
 				E1C0489A1D8691C50009DF6B /* libg7221codec-arm64-apple-darwin_ios.a in Frameworks */,
 				E1C048A81D8691DA0009DF6B /* libopenh264.a in Frameworks */,
+				E1DE61851D894E3F00321B47 /* CoreTelephony.framework in Frameworks */,
 				E1C048D21D8697690009DF6B /* CFNetwork.framework in Frameworks */,
 				E1C048D01D8694D30009DF6B /* CoreFoundation.framework in Frameworks */,
 				E1C048CE1D8694BD0009DF6B /* CoreMedia.framework in Frameworks */,
@@ -257,6 +262,7 @@
 		A13A5015FDD7155192CC0662 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E1DE61841D894E3F00321B47 /* CoreTelephony.framework */,
 				E1C048D31D8697770009DF6B /* libstdc++.tbd */,
 				E1C048D11D8697690009DF6B /* CFNetwork.framework */,
 				E1C048CF1D8694D30009DF6B /* CoreFoundation.framework */,
@@ -462,6 +468,7 @@
 				E19AAD431D51DF480053D2C3 /* CallConView.xib */,
 				E12EBA801D531FF3007B5CBD /* CallLogACell.swift */,
 				E11E92911D5EBBAB004D634A /* DialView.xib */,
+				E1DE61821D88F1E900321B47 /* ContactCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -670,6 +677,7 @@
 				E1C0486F1D867F650009DF6B /* GSPJUtil.m in Sources */,
 				E13BACDC1D51946B00414ACE /* DialViewController.swift in Sources */,
 				E1C0486C1D867F650009DF6B /* GSIncomingCall.m in Sources */,
+				E1DE61831D88F1E900321B47 /* ContactCell.swift in Sources */,
 				E13BACE31D5196EE00414ACE /* DialIconCell.swift in Sources */,
 				E13BACD11D518FF000414ACE /* Request.swift in Sources */,
 				E148E6C31D6C397000BE131E /* OutgoingVideoViewController.swift in Sources */,
