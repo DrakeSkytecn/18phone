@@ -11,7 +11,9 @@ import UIKit
 /// 拨号页面根控制器
 class RootViewController: UIViewController, GSAccountDelegate {
     
-    @IBOutlet weak var menuConstraint: NSLayoutConstraint!
+    @IBOutlet weak var menuHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var menuY: NSLayoutConstraint!
     
     /// 用于判断拨号盘是否展开
     private var isMenuShow: Bool = false
@@ -36,7 +38,8 @@ class RootViewController: UIViewController, GSAccountDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        menuConstraint.constant = Screen.height - 49
+        menuHeight.constant = Screen.height - 49
+        menuY.constant = menuHeight.constant - 20
         App.userAgentAccount.delegate = self
         App.userAgentAccount.addObserver(self, forKeyPath: "status", options: .Initial, context: nil)
         App.userAgentAccount.connect()
@@ -66,6 +69,7 @@ class RootViewController: UIViewController, GSAccountDelegate {
      - parameter item: 选中的底部子菜单项
      */
     func changeMenuState(item: UITabBarItem) {
+        print("changeMenuState")
         if !isViewHidden {
             if isMenuShow {
                 hide()
@@ -107,6 +111,7 @@ class RootViewController: UIViewController, GSAccountDelegate {
         var rect = menuView.frame
         rect.origin.y = rect.origin.y + height
         menuView.frame = rect
+        menuY.constant = menuY.constant + height
     }
     
     /**

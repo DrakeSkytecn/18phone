@@ -166,7 +166,6 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
             appContactInfo = nil
             isRegister = false
         }
-        print("checkNumberArea end")
     }
     
     func collectionView(collectionView: UICollectionView, didHighlightItemAtIndexPath indexPath: NSIndexPath) {
@@ -196,27 +195,32 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
                     presentViewController(outgoingCallViewController!, animated: true, completion: nil)
                 } else {
                     PhoneUtil.callSystemPhone(numberText.text!)
-                    let callLog = CallLog()
-                    if tempName != nil {
-                        callLog.name = tempName!
-                    }
-                    callLog.phone = numberText.text!
-                    if true {
-                        callLog.callState = CallState.OutConnected.rawValue
-                    } else {
-                        callLog.callState = CallState.OutUnConnected.rawValue
-                    }
-                    callLog.callType = CallType.Voice.rawValue
-                    callLog.callStartTime = NSDate()
-                    if tempArea != nil {
-                        callLog.area = tempArea!
-                    }
-                    try! App.realm.write {
-                        App.realm.add(callLog)
-                    }
+                    addCallLog(numberText.text!)
                 }
         } else {
-            
+            PhoneUtil.callSystemPhone(numberText.text!)
+            addCallLog(numberText.text!)
+        }
+    }
+    
+    func addCallLog(number: String) {
+        let callLog = CallLog()
+        if tempName != nil {
+            callLog.name = tempName!
+        }
+        callLog.phone = numberText.text!
+        if true {
+            callLog.callState = CallState.OutConnected.rawValue
+        } else {
+            callLog.callState = CallState.OutUnConnected.rawValue
+        }
+        callLog.callType = CallType.Voice.rawValue
+        callLog.callStartTime = NSDate()
+        if tempArea != nil {
+            callLog.area = tempArea!
+        }
+        try! App.realm.write {
+            App.realm.add(callLog)
         }
     }
 }

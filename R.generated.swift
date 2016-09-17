@@ -280,7 +280,7 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 8 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 7 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `contact`.
     static let contact: ReuseIdentifier<ContactCell> = ReuseIdentifier(identifier: "contact")
@@ -296,8 +296,6 @@ struct R: Rswift.Validatable {
     static let dial_b: ReuseIdentifier<DialIconCell> = ReuseIdentifier(identifier: "dial_b")
     /// Reuse identifier `log_a`.
     static let log_a: ReuseIdentifier<CallLogACell> = ReuseIdentifier(identifier: "log_a")
-    /// Reuse identifier `log_b`.
-    static let log_b: ReuseIdentifier<CallLogACell> = ReuseIdentifier(identifier: "log_b")
     
     private init() {}
   }

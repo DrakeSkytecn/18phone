@@ -41,14 +41,15 @@ class CallLogViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell: CallLogACell?
+        let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.log_a)
         let callLog = callLogs![indexPath.row]
         
         if callLog.name.isEmpty {
-            cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.log_b)
-            cell!.phone.text = callLog.phone
+            cell!.phoneName.text = callLog.phone
+            cell!.name.text = nil
+            cell!.phone.text = nil
         } else {
-            cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.log_a)
+            cell!.phoneName.text = nil
             cell!.name.text = callLog.name
             cell!.phone.text = callLog.phone
         }

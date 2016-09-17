@@ -25,7 +25,6 @@
 }
 
 + (GSCall *)outgoingCallToUri:(NSString *)remoteUri fromAccount:(GSAccount *)account {
-    
     GSOutgoingCall *call = [GSOutgoingCall alloc];
     call = [call initWithRemoteUri:remoteUri fromAccount:account];
     

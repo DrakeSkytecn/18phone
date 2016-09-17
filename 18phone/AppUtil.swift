@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+import SwiftDate
 
 /**
  *  app中使用到的URL的定义
@@ -43,6 +44,7 @@ struct App {
         accountConfiguration.password = password
         accountConfiguration.domain = URL.BEYEBE_SIP_DOMAIN
         accountConfiguration.proxyServer = URL.BEYEBE_SIP_SERVER
+        accountConfiguration.enableRingback = true
         configuration.account = accountConfiguration
         configuration.logLevel = 4
         userAgent.configure(configuration)
@@ -82,9 +84,27 @@ struct DateUtil {
     }
     
     static func dateToString(date: NSDate) -> String {
+        
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "MM-dd HH:mm"
-        return dateFormatter.stringFromDate(date)
+        dateFormatter.dateFormat = "HH:mm"
+        let secondsPerDay: NSTimeInterval = 24 * 60 * 60
+        let today = NSDate()
+        let yesterday = today.dateByAddingTimeInterval(-secondsPerDay)
+        
+        if date.year == today.year {
+            switch date.day {
+            case today.day:
+                return "今天 " + dateFormatter.stringFromDate(date)
+            case yesterday.day:
+                return "昨天 " + dateFormatter.stringFromDate(date)
+            default:
+                dateFormatter.dateFormat = "MM/dd HH:mm"
+                return date.description
+            }
+        } else {
+            dateFormatter.dateFormat = "yyyy MM/dd"
+            return dateFormatter.stringFromDate(date)
+        }
     }
 }
 
