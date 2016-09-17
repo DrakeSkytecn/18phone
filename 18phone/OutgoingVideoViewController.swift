@@ -35,6 +35,7 @@ class OutgoingVideoViewController: UIViewController {
     }
     
     @IBAction func hangup(sender: UIButton) {
+        self.outCall?.end()
         dismissViewControllerAnimated(true, completion: nil)
         //            let callLog = CallLog()
         //            callLog.name = "James"
@@ -74,8 +75,6 @@ class OutgoingVideoViewController: UIViewController {
             
         case GSCallStatusDisconnected:
             print("OutgoingCallViewController Disconnected.")
-            
-            dismissViewControllerAnimated(true, completion: nil)
             
             break
             

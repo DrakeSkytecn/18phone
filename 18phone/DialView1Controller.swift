@@ -34,6 +34,8 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
     /// 拨号盘数字按键上的字母
     let characters = ["ABC", "DEF", "GHI", "JKL", "MNO", "PQRS", "TUV", "WXYZ"]
     
+    var isRegister = false
+    
     var appContactInfo: AppContactInfo?
     
     override func viewDidLoad() {
@@ -148,6 +150,9 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
                             self.tempName = contact.familyName + contact.givenName
                             self.nameText.text = self.tempName
                             self.appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contact.identifier)'").first
+                            if self.appContactInfo != nil {
+                                self.isRegister = self.appContactInfo!.isRegister
+                            }
                             return
                         }
                     }
@@ -157,7 +162,9 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
             tempArea = "未知归属地"
             tempName = nil
             areaText.text = nil
+            nameText.text = nil
             appContactInfo = nil
+            isRegister = false
         }
         print("checkNumberArea end")
     }
@@ -181,8 +188,7 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
      */
     @IBAction func call(sender: UIButton) {
         if PhoneUtil.isMobileNumber(numberText.text) || PhoneUtil.isTelephoneNumber(numberText.text) {
-            if self.appContactInfo != nil {
-                if self.appContactInfo!.isRegister {
+                if isRegister {
                     let outgoingCallViewController = R.storyboard.main.outgoingCallViewController()
                     outgoingCallViewController?.toNumber = numberText.text
                     outgoingCallViewController?.contactName = tempName
@@ -209,7 +215,6 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
                         App.realm.add(callLog)
                     }
                 }
-            }
         } else {
             
         }

@@ -16,15 +16,30 @@ class OutgoingCallViewController: UIViewController {
     var outCall:GSCall?
     var isConnected: Bool = false
     
+    /// 拨号盘按钮容器
+    @IBOutlet weak var dialPlateCon: UIView!
+    
+    /// 扬声器按钮容器
+    @IBOutlet weak var speakerCon: UIView!
+    
+    /// 拨号盘按钮
+    @IBOutlet weak var dialPlateBtn: UIButton!
+    
+    /// 扬声器按钮
+    @IBOutlet weak var speakerBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("OutgoingCallViewController viewDidLoad")
+        /**
+         storyboard目前不支持设置CGColor
+         */
+        dialPlateBtn.layer.borderColor = UIColor.whiteColor().CGColor
+        speakerBtn.layer.borderColor = UIColor.whiteColor().CGColor
         let account = GSUserAgent.sharedAgent().account
         outCall = GSCall.outgoingCallToUri(toNumber! + "@" + URL.BEYEBE_SIP_DOMAIN, fromAccount: account)
         outCall?.addObserver(self, forKeyPath: "status", options: .Initial, context: nil)
-        Async.main(after: 1) {
-            self.outCall?.begin()
-        }
+        self.outCall?.begin()
     }
 
     override func didReceiveMemoryWarning() {
@@ -71,12 +86,12 @@ class OutgoingCallViewController: UIViewController {
         case GSCallStatusConnected:
             print("OutgoingCallViewController Connected.")
             isConnected = true
+            dialPlateCon.hidden = false
+            speakerCon.hidden = false
             break
             
         case GSCallStatusDisconnected:
             print("OutgoingCallViewController Disconnected.")
-            
-            
             
             break
             
