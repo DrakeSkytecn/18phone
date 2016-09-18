@@ -408,12 +408,17 @@ struct _R: Rswift.Validatable {
     struct main: StoryboardResourceWithInitialControllerType, Rswift.Validatable {
       typealias InitialController = KTabBarController
       
+      let backupViewController = StoryboardViewControllerResource<BackupViewController>(identifier: "BackupViewController")
       let bundle = _R.hostingBundle
       let dialViewController = StoryboardViewControllerResource<DialView1Controller>(identifier: "DialViewController")
       let incomingCallViewController = StoryboardViewControllerResource<IncomingCallViewController>(identifier: "IncomingCallViewController")
       let incomingVideoViewController = StoryboardViewControllerResource<IncomingVideoViewController>(identifier: "IncomingVideoViewController")
       let name = "Main"
       let outgoingCallViewController = StoryboardViewControllerResource<OutgoingCallViewController>(identifier: "OutgoingCallViewController")
+      
+      func backupViewController(_: Void) -> BackupViewController? {
+        return UIStoryboard(resource: self).instantiateViewController(backupViewController)
+      }
       
       func dialViewController(_: Void) -> DialView1Controller? {
         return UIStoryboard(resource: self).instantiateViewController(dialViewController)
@@ -447,6 +452,7 @@ struct _R: Rswift.Validatable {
         if UIImage(named: "message_selected") == nil { throw ValidationError(description: "[R.swift] Image named 'message_selected' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "qrcode") == nil { throw ValidationError(description: "[R.swift] Image named 'qrcode' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "delete_all") == nil { throw ValidationError(description: "[R.swift] Image named 'delete_all' is used in storyboard 'Main', but couldn't be loaded.") }
+        if _R.storyboard.main().backupViewController() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'backupViewController' could not be loaded from storyboard 'Main' as 'BackupViewController'.") }
         if _R.storyboard.main().dialViewController() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'dialViewController' could not be loaded from storyboard 'Main' as 'DialView1Controller'.") }
         if _R.storyboard.main().outgoingCallViewController() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'outgoingCallViewController' could not be loaded from storyboard 'Main' as 'OutgoingCallViewController'.") }
         if _R.storyboard.main().incomingCallViewController() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'incomingCallViewController' could not be loaded from storyboard 'Main' as 'IncomingCallViewController'.") }

@@ -28,7 +28,7 @@
  */
 
 /* Canonical OS name */
-#define PJ_OS_NAME "arm64-apple-darwin_ios"
+#define PJ_OS_NAME "armv7-apple-darwin_ios"
 
 /* Legacy macros */
 /* #undef PJ_WIN32 */
@@ -170,7 +170,7 @@
 #define PJ_NATIVE_STRING_IS_UNICODE 0
 
 /* Pool alignment in bytes */
-#define PJ_POOL_ALIGNMENT 8
+#define PJ_POOL_ALIGNMENT 4
 
 /* The type of atomic variable value: */
 #define PJ_ATOMIC_VALUE_TYPE long

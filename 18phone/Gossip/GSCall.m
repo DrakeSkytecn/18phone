@@ -112,9 +112,9 @@
 }
 
 - (void)setStatus:(GSCallStatus)status {
-    //[self willChangeValueForKey:@"status"];
+//    [self willChangeValueForKey:@"status"];
     _status = status;
-    //[self didChangeValueForKey:@"status"];
+//    [self didChangeValueForKey:@"status"];
 }
 
 - (float)volume {
@@ -228,7 +228,6 @@
     pjsua_vid_preview_param_default(&preview_param);
     preview_param.wnd_flags = PJMEDIA_VID_DEV_WND_BORDER |
     PJMEDIA_VID_DEV_WND_RESIZABLE;
-    //preview_param.rend_id = PJMEDIA_VID_DEFAULT_CAPTURE_DEV;
     pjsua_vid_preview_start(PJMEDIA_VID_DEFAULT_CAPTURE_DEV, &preview_param);
     
     wid = pjsua_vid_preview_get_win(PJMEDIA_VID_DEFAULT_CAPTURE_DEV);
@@ -258,11 +257,11 @@
     return true;
 }
 
-
 - (void)startRingback {
     if (!_ringback || _ringback.isPlaying)
+    {
         return;
-
+    }
     [_ringback play];
 }
 
@@ -274,30 +273,38 @@
 }
 
 - (void)callStateDidChange:(NSNotification *)notif {
-    NSLog(@"callStateDidChange");
-    pjsua_call_id callId = GSNotifGetInt(notif, GSSIPCallIdKey);
-    pjsua_acc_id accountId = GSNotifGetInt(notif, GSSIPAccountIdKey);
-    if (callId != _callId || accountId != _account.accountId)
-        return;
+    //NSLog(@"callStateDidChange");
+//    pjsua_call_id callId = GSNotifGetInt(notif, GSSIPCallIdKey);
+//    pjsua_acc_id accountId = GSNotifGetInt(notif, GSSIPAccountIdKey);
+//    if (callId != _callId || accountId != _account.accountId)
+//        NSLog(@"callStateDidChange return");
+//        return;
+//    
+//    pjsua_call_info callInfo;
+//    pjsua_call_get_info(_callId, &callInfo);
     
+    pjsua_call_id callId = GSNotifGetInt(notif, GSSIPCallIdKey);
     pjsua_call_info callInfo;
-    pjsua_call_get_info(_callId, &callInfo);
+    pjsua_call_get_info(callId, &callInfo);
+    
+    
     
     GSCallStatus callStatus;
     switch (callInfo.state) {
+            
         case PJSIP_INV_STATE_NULL: {
             callStatus = GSCallStatusReady;
-            
         } break;
             
         case PJSIP_INV_STATE_CALLING:
         case PJSIP_INV_STATE_INCOMING: {
+            [self startRingback];
             callStatus = GSCallStatusCalling;
         } break;
             
         case PJSIP_INV_STATE_EARLY:
         case PJSIP_INV_STATE_CONNECTING: {
-            [self startRingback];
+            
             callStatus = GSCallStatusConnecting;
         } break;
             

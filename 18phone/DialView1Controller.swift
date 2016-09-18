@@ -11,6 +11,8 @@ import Contacts
 
 class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
+    @IBOutlet weak var showNumberCon: UIView!
+    
     @IBOutlet weak var dialCollectionView: UICollectionView!
     
     /// 新增联系人按钮
@@ -101,14 +103,8 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
         /// 监听粘贴按键的事件
         case 9:
             
-            let paste = UIPasteboard.generalPasteboard()
-            if PhoneUtil.isNumber(paste.string) {
-                numberText.text = paste.string
-                //addContactBtn.hidden = false
-                checkNumberArea(paste.string)
-            } else {
-                
-            }
+            break
+            
         /// 监听删除按键的事件
         case 11:
             
@@ -223,4 +219,26 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
             App.realm.add(callLog)
         }
     }
+    
+    func pasteToShowNumber(menu :UIMenuController)
+    {
+        let paste = UIPasteboard.generalPasteboard()
+        if PhoneUtil.isNumber(paste.string) {
+            numberText.text = paste.string
+            checkNumberArea(paste.string)
+        }
+    }
+    
+    @IBAction func longPressShowNumberCon(sender: UILongPressGestureRecognizer) {
+        if sender.state == .Began {
+            showNumberCon.becomeFirstResponder()
+            let menu = UIMenuController.sharedMenuController()
+            menu.menuItems = [UIMenuItem(title: "粘贴", action:#selector(pasteToShowNumber(_:)))]
+            menu.arrowDirection = .Up
+            let rect = CGRectMake((Screen.width - 50) / 2, showNumberCon.frame.height, 50, 25)
+            menu.setTargetRect(rect, inView: showNumberCon)
+            menu.setMenuVisible(true, animated: true)
+        }
+    }
+    
 }

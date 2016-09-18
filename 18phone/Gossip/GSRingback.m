@@ -25,7 +25,6 @@
     return [[self alloc] initWithSoundNamed:filename];
 }
 
-
 - (id)initWithSoundNamed:(NSString *)filename {
     if (self = [super init]) {
         NSBundle *bundle = [NSBundle mainBundle];
@@ -59,7 +58,6 @@
     }
 }
 
-
 - (BOOL)setVolume:(float)volume {
     GSAssert(0.0 <= volume && volume <= 1.0, @"Volume value must be between 0.0 and 1.0");
 
@@ -71,10 +69,8 @@
     return YES;
 }
 
-
 - (BOOL)play {
     GSAssert(!_isPlaying, @"Already connected to a call.");
-
     GSReturnNoIfFails(pjsua_conf_connect(_confPort, 0));
     _isPlaying = YES;
     return YES;

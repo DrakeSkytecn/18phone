@@ -8,8 +8,6 @@
 /** /file
  *  /brief Convenience import for application developer.
  */
-
-
 #import "GSConfiguration.h"
 #import "GSAccountConfiguration.h"
 #import "GSUserAgent.h"

@@ -312,9 +312,9 @@ output/pjmedia-codec-arm64-apple-darwin_ios/openh264.o: ../src/pjmedia-codec/ope
   ../include/pjmedia/vid_codec_util.h ../include/pjmedia/sdp_neg.h \
   ../include/pjmedia/sdp.h ../include/pjmedia/errno.h \
   ../../pjlib/include/pj/log.h \
-  /Users/daiquanyi/Documents/pjproject-2.5.5/third_party/openh264/include/wels/codec_api.h \
-  /Users/daiquanyi/Documents/pjproject-2.5.5/third_party/openh264/include/wels/codec_app_def.h \
-  /Users/daiquanyi/Documents/pjproject-2.5.5/third_party/openh264/include/wels/codec_def.h
+  /Users/daiquanyi/Documents/ioscode/18phone/pjproject-2.5.5/third_party/openh264/include/wels/codec_api.h \
+  /Users/daiquanyi/Documents/ioscode/18phone/pjproject-2.5.5/third_party/openh264/include/wels/codec_app_def.h \
+  /Users/daiquanyi/Documents/ioscode/18phone/pjproject-2.5.5/third_party/openh264/include/wels/codec_def.h
 output/pjmedia-codec-arm64-apple-darwin_ios/h263_packetizer.o: ../src/pjmedia-codec/h263_packetizer.c \
   ../include/pjmedia-codec/h263_packetizer.h \
   ../../pjlib/include/pj/pool.h ../../pjlib/include/pj/list.h \
@@ -1114,9 +1114,9 @@ output/pjmedia-codec-arm64-apple-darwin_ios/speex_codec.o: ../src/pjmedia-codec/
   ../include/pjmedia-audiodev/audiodev.h ../include/pjmedia/audiodev.h \
   ../include/pjmedia-audiodev/config.h \
   ../include/pjmedia-audiodev/errno.h \
-  /Users/daiquanyi/Documents/pjproject-2.5.5/third_party/speex/include/speex/speex.h \
-  /Users/daiquanyi/Documents/pjproject-2.5.5/third_party/speex/include/speex/speex_bits.h \
-  /Users/daiquanyi/Documents/pjproject-2.5.5/third_party/speex/include/speex/speex_types.h \
+  /Users/daiquanyi/Documents/ioscode/18phone/pjproject-2.5.5/third_party/speex/include/speex/speex.h \
+  /Users/daiquanyi/Documents/ioscode/18phone/pjproject-2.5.5/third_party/speex/include/speex/speex_bits.h \
+  /Users/daiquanyi/Documents/ioscode/18phone/pjproject-2.5.5/third_party/speex/include/speex/speex_types.h \
   /Applications/XCode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/include/sys/types.h \
   /Applications/XCode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/include/sys/_types/_blkcnt_t.h \
   /Applications/XCode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/include/sys/_types/_blksize_t.h \

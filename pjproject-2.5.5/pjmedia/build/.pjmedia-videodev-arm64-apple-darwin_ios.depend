@@ -2271,21 +2271,21 @@ output/pjmedia-videodev-arm64-apple-darwin_ios/util.o: ../src/pjmedia-videodev/u
   ../../pjlib/include/pj/errno.h ../../pjlib/include/pj/compat/errno.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.3.0/include/stdarg.h \
   ../../pjlib/include/pj/log.h \
-  /Users/daiquanyi/Documents/pjproject-2.5.5/third_party/yuv/include/libyuv.h \
-  /Users/daiquanyi/Documents/pjproject-2.5.5/third_party/yuv/include/libyuv/basic_types.h \
-  /Users/daiquanyi/Documents/pjproject-2.5.5/third_party/yuv/include/libyuv/compare.h \
-  /Users/daiquanyi/Documents/pjproject-2.5.5/third_party/yuv/include/libyuv/convert.h \
-  /Users/daiquanyi/Documents/pjproject-2.5.5/third_party/yuv/include/libyuv/rotate.h \
-  /Users/daiquanyi/Documents/pjproject-2.5.5/third_party/yuv/include/libyuv/convert_argb.h \
-  /Users/daiquanyi/Documents/pjproject-2.5.5/third_party/yuv/include/libyuv/convert_from.h \
-  /Users/daiquanyi/Documents/pjproject-2.5.5/third_party/yuv/include/libyuv/convert_from_argb.h \
-  /Users/daiquanyi/Documents/pjproject-2.5.5/third_party/yuv/include/libyuv/cpu_id.h \
-  /Users/daiquanyi/Documents/pjproject-2.5.5/third_party/yuv/include/libyuv/mjpeg_decoder.h \
-  /Users/daiquanyi/Documents/pjproject-2.5.5/third_party/yuv/include/libyuv/planar_functions.h \
-  /Users/daiquanyi/Documents/pjproject-2.5.5/third_party/yuv/include/libyuv/rotate_argb.h \
-  /Users/daiquanyi/Documents/pjproject-2.5.5/third_party/yuv/include/libyuv/row.h \
-  /Users/daiquanyi/Documents/pjproject-2.5.5/third_party/yuv/include/libyuv/scale.h \
-  /Users/daiquanyi/Documents/pjproject-2.5.5/third_party/yuv/include/libyuv/scale_argb.h \
-  /Users/daiquanyi/Documents/pjproject-2.5.5/third_party/yuv/include/libyuv/scale_row.h \
-  /Users/daiquanyi/Documents/pjproject-2.5.5/third_party/yuv/include/libyuv/version.h \
-  /Users/daiquanyi/Documents/pjproject-2.5.5/third_party/yuv/include/libyuv/video_common.h
+  /Users/daiquanyi/Documents/ioscode/18phone/pjproject-2.5.5/third_party/yuv/include/libyuv.h \
+  /Users/daiquanyi/Documents/ioscode/18phone/pjproject-2.5.5/third_party/yuv/include/libyuv/basic_types.h \
+  /Users/daiquanyi/Documents/ioscode/18phone/pjproject-2.5.5/third_party/yuv/include/libyuv/compare.h \
+  /Users/daiquanyi/Documents/ioscode/18phone/pjproject-2.5.5/third_party/yuv/include/libyuv/convert.h \
+  /Users/daiquanyi/Documents/ioscode/18phone/pjproject-2.5.5/third_party/yuv/include/libyuv/rotate.h \
+  /Users/daiquanyi/Documents/ioscode/18phone/pjproject-2.5.5/third_party/yuv/include/libyuv/convert_argb.h \
+  /Users/daiquanyi/Documents/ioscode/18phone/pjproject-2.5.5/third_party/yuv/include/libyuv/convert_from.h \
+  /Users/daiquanyi/Documents/ioscode/18phone/pjproject-2.5.5/third_party/yuv/include/libyuv/convert_from_argb.h \
+  /Users/daiquanyi/Documents/ioscode/18phone/pjproject-2.5.5/third_party/yuv/include/libyuv/cpu_id.h \
+  /Users/daiquanyi/Documents/ioscode/18phone/pjproject-2.5.5/third_party/yuv/include/libyuv/mjpeg_decoder.h \
+  /Users/daiquanyi/Documents/ioscode/18phone/pjproject-2.5.5/third_party/yuv/include/libyuv/planar_functions.h \
+  /Users/daiquanyi/Documents/ioscode/18phone/pjproject-2.5.5/third_party/yuv/include/libyuv/rotate_argb.h \
+  /Users/daiquanyi/Documents/ioscode/18phone/pjproject-2.5.5/third_party/yuv/include/libyuv/row.h \
+  /Users/daiquanyi/Documents/ioscode/18phone/pjproject-2.5.5/third_party/yuv/include/libyuv/scale.h \
+  /Users/daiquanyi/Documents/ioscode/18phone/pjproject-2.5.5/third_party/yuv/include/libyuv/scale_argb.h \
+  /Users/daiquanyi/Documents/ioscode/18phone/pjproject-2.5.5/third_party/yuv/include/libyuv/scale_row.h \
+  /Users/daiquanyi/Documents/ioscode/18phone/pjproject-2.5.5/third_party/yuv/include/libyuv/version.h \
+  /Users/daiquanyi/Documents/ioscode/18phone/pjproject-2.5.5/third_party/yuv/include/libyuv/video_common.h

@@ -166,7 +166,7 @@ class RootViewController: UIViewController, GSAccountDelegate {
                 presentViewController(alertController, animated: true, completion: nil)
             }
         } else {
-            
+            navigationController?.pushViewController(R.storyboard.main.backupViewController()!, animated: true)
         }
     }
     

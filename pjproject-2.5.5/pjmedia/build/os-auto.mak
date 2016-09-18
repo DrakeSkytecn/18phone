@@ -29,8 +29,8 @@ DARWIN_CFLAGS = -DPJMEDIA_VIDEO_DEV_HAS_DARWIN=1 -DPJMEDIA_VIDEO_DEV_HAS_IOS_OPE
 ANDROID_CFLAGS = 
 
 # openh264
-OPENH264_CFLAGS = -DPJMEDIA_HAS_OPENH264_CODEC=1 -I/Users/daiquanyi/Documents/pjproject-2.5.5/third_party/openh264/include
-OPENH264_LDFLAGS = -L/Users/daiquanyi/Documents/pjproject-2.5.5/third_party/openh264/lib -lopenh264 -lstdc++
+OPENH264_CFLAGS = -DPJMEDIA_HAS_OPENH264_CODEC=1 -I/Users/daiquanyi/Documents/ioscode/18phone/pjproject-2.5.5/third_party/openh264/include
+OPENH264_LDFLAGS = -L/Users/daiquanyi/Documents/ioscode/18phone/pjproject-2.5.5/third_party/openh264/lib -lopenh264 -lstdc++
 
 # WebRtc
 WEBRTC_CFLAGS = 
