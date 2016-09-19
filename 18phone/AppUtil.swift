@@ -35,6 +35,7 @@ struct App {
     static let realm = try! Realm()
     static let userAgent = GSUserAgent.sharedAgent()
     static let userAgentAccount = GSUserAgent.sharedAgent().account
+    
     static func initUserAgent(username: String, password: String) {
         let userAgent = GSUserAgent.sharedAgent()
         let configuration = GSConfiguration.defaultConfiguration()
@@ -49,6 +50,19 @@ struct App {
         configuration.logLevel = 4
         userAgent.configure(configuration)
         userAgent.start()
+    }
+    
+    static func autoLogin(username: String, password: String) {
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        if let saveUsername = userDefaults.stringForKey("username") {
+            let savePassword = userDefaults.stringForKey("password")
+            initUserAgent(saveUsername, password: savePassword!)
+        } else {
+            userDefaults.setObject(username, forKey: "username")
+            userDefaults.setObject(password, forKey: "password")
+            print(userDefaults.synchronize())
+            initUserAgent(username, password: password)
+        }
     }
 }
 
@@ -99,7 +113,7 @@ struct DateUtil {
                 return "昨天 " + dateFormatter.stringFromDate(date)
             default:
                 dateFormatter.dateFormat = "MM/dd HH:mm"
-                return date.description
+                return dateFormatter.stringFromDate(date)
             }
         } else {
             dateFormatter.dateFormat = "yyyy MM/dd"

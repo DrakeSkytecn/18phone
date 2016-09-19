@@ -13,8 +13,14 @@ class OutgoingCallViewController: UIViewController {
     var toNumber: String?
     var contactName: String?
     var phoneArea: String?
-    var outCall:GSCall?
+    var outCall: GSCall?
     var isConnected: Bool = false
+    
+    /// 显示姓名或号码
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    /// 显示号码归属地
+    @IBOutlet weak var areaLabel: UILabel!
     
     /// 拨号盘按钮容器
     @IBOutlet weak var dialPlateCon: UIView!
@@ -36,6 +42,13 @@ class OutgoingCallViewController: UIViewController {
          */
         dialPlateBtn.layer.borderColor = UIColor.whiteColor().CGColor
         speakerBtn.layer.borderColor = UIColor.whiteColor().CGColor
+        if !contactName!.isEmpty {
+            nameLabel.text = contactName
+        } else {
+            nameLabel.text = toNumber
+            areaLabel.text = phoneArea
+        }
+        
         let account = GSUserAgent.sharedAgent().account
         outCall = GSCall.outgoingCallToUri(toNumber! + "@" + URL.BEYEBE_SIP_DOMAIN, fromAccount: account)
         outCall?.addObserver(self, forKeyPath: "status", options: .Initial, context: nil)

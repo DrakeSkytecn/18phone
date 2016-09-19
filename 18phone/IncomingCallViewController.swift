@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Contacts
 
 class IncomingCallViewController: UIViewController {
 
@@ -14,11 +15,62 @@ class IncomingCallViewController: UIViewController {
     var isConnected: Bool = false
     
     /// 接通前显示来电信息，接通后显示通话时间
-    @IBOutlet weak var infoText: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    /// 接通前显示来电信息，接通后显示通话时间
+    @IBOutlet weak var areaLabel: UILabel!
+    
+    /// 接通前按钮容器
+    @IBOutlet weak var connectingCon: UIView!
+    
+    /// 挂断按钮容器
+    @IBOutlet weak var hangupCon: UIView!
+    
+    /// 拨号盘按钮容器
+    @IBOutlet weak var dialPlateCon: UIView!
+    
+    /// 扬声器按钮容器
+    @IBOutlet weak var speakerCon: UIView!
+    
+    /// 拨号盘按钮
+    @IBOutlet weak var dialPlateBtn: UIButton!
+    
+    /// 扬声器按钮
+    @IBOutlet weak var speakerBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        infoText.text = inCall?.incomingCallInfo()
+        /**
+         storyboard目前不支持设置CGColor
+         */
+        dialPlateBtn.layer.borderColor = UIColor.whiteColor().CGColor
+        speakerBtn.layer.borderColor = UIColor.whiteColor().CGColor
+        let phoneNumber = inCall?.incomingCallInfo()
+        PhoneUtil.getPhoneAreaInfo(phoneNumber!) { phoneAreaInfo in
+            if phoneAreaInfo.errNum == 0 {
+                let tempArea = (phoneAreaInfo.retData?.province!)! + (phoneAreaInfo.retData?.city!)!
+                self.areaLabel.text = tempArea
+            } else {
+                self.areaLabel.text = "未知归属地"
+            }
+            let store = CNContactStore()
+            let keysToFetch = [CNContactFormatter.descriptorForRequiredKeysForStyle(.FullName),
+                               CNContactGivenNameKey,
+                               CNContactFamilyNameKey,
+                               CNContactPhoneNumbersKey]
+            let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch)
+            
+            try! store.enumerateContactsWithFetchRequest(fetchRequest) { (let contact, let stop) -> Void in
+                for number in contact.phoneNumbers {
+                    let tempNumber = (number.value as! CNPhoneNumber).stringValue
+                    if tempNumber == phoneNumber {
+                        self.nameLabel.text = contact.familyName + contact.givenName
+                        return
+                    }
+                }
+            }
+            
+        }
         inCall?.addObserver(self, forKeyPath: "status", options: .Initial, context: nil)
     }
 
@@ -53,6 +105,10 @@ class IncomingCallViewController: UIViewController {
         case GSCallStatusConnected:
             print("IncomingCallViewController Connected.")
             isConnected = true
+            connectingCon.hidden = true
+            hangupCon.hidden = false
+            dialPlateCon.hidden = false
+            speakerCon.hidden = false
             break
             
         case GSCallStatusDisconnected:

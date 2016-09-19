@@ -17,9 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         window?.backgroundColor = UIColor.whiteColor()
-//        App.initUserAgent("18603001016", password: "123")
-//        App.initUserAgent("15016721385", password: "123")
-        App.initUserAgent("18823754172", password: "123")
+
+//        App.autoLogin("18823754172", password: "123")
+        App.autoLogin("15016721385", password: "123")
+//        App.autoLogin("18603001016", password: "123")
         
         return true
     }
