@@ -46,6 +46,7 @@ class IncomingCallViewController: UIViewController {
         dialPlateBtn.layer.borderColor = UIColor.whiteColor().CGColor
         speakerBtn.layer.borderColor = UIColor.whiteColor().CGColor
         let phoneNumber = inCall?.incomingCallInfo()
+        self.nameLabel.text = phoneNumber
         PhoneUtil.getPhoneAreaInfo(phoneNumber!) { phoneAreaInfo in
             if phoneAreaInfo.errNum == 0 {
                 let tempArea = (phoneAreaInfo.retData?.province!)! + (phoneAreaInfo.retData?.city!)!
@@ -59,7 +60,6 @@ class IncomingCallViewController: UIViewController {
                                CNContactFamilyNameKey,
                                CNContactPhoneNumbersKey]
             let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch)
-            
             try! store.enumerateContactsWithFetchRequest(fetchRequest) { (let contact, let stop) -> Void in
                 for number in contact.phoneNumbers {
                     let tempNumber = (number.value as! CNPhoneNumber).stringValue

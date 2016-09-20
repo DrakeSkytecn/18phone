@@ -15,6 +15,8 @@ class ContactViewController: UITableViewController {
     var commonGroups = [String: Array<LocalContactInfo>?]()
     var registerGroups = [String: Array<LocalContactInfo>?]()
     var groupValues = [String: Array<LocalContactInfo>?]()
+    var contactId: String?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -164,6 +166,9 @@ class ContactViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        let localContactInfo = groupValues[groupTitles[indexPath.section]]!![indexPath.row]
+        contactId = localContactInfo.identifier!
+        performSegueWithIdentifier(R.segue.contactViewController.contactDetailViewController.identifier, sender: contactId)
     }
     
     override func didReceiveMemoryWarning() {
@@ -171,6 +176,11 @@ class ContactViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == R.segue.contactViewController.contactDetailViewController.identifier {
+            let contactDetailViewController = segue.destinationViewController as? ContactDetailViewController
+            contactDetailViewController?.contactId = sender as? String
+        }
+    }
 }
 

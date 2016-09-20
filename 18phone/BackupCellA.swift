@@ -9,10 +9,6 @@
 import UIKit
 
 class BackupCellA: UITableViewCell {
-
-    @IBOutlet weak var titleLabel: UILabel!
-    
-    @IBOutlet weak var infoLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

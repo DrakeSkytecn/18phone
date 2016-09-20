@@ -70,6 +70,9 @@ class AppContactInfo: Object {
     
     /// 联系人地区
     dynamic var area = ""
+    
+    /// 联系人个性签名
+    dynamic var signature = ""
 }
 
 

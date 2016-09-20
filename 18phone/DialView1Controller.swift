@@ -127,11 +127,10 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
             PhoneUtil.getPhoneAreaInfo(temp!){ phoneAreaInfo in
                 if phoneAreaInfo.errNum == 0 {
                     self.tempArea = (phoneAreaInfo.retData?.province!)! + (phoneAreaInfo.retData?.city!)!
-                    self.areaText.text = self.tempArea
                 } else {
                     self.tempArea = "未知归属地"
                 }
-                
+                self.areaText.text = self.tempArea
                 let store = CNContactStore()
                 let keysToFetch = [CNContactFormatter.descriptorForRequiredKeysForStyle(.FullName),
                                    CNContactGivenNameKey,
@@ -141,9 +140,11 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
                 
                 try! store.enumerateContactsWithFetchRequest(fetchRequest) { (let contact, let stop) -> Void in
                     for number in contact.phoneNumbers {
-                        let phoneNumber = (number.value as! CNPhoneNumber).stringValue
+                        let phoneNumber = (number.value as! CNPhoneNumber).stringValue.stringByReplacingOccurrencesOfString("^\\+8[56][2]*|\\W+|\\s/g", withString: "", options: .RegularExpressionSearch, range: nil)
                         if phoneNumber == temp {
+                            print("phoneNumber:\(phoneNumber)")
                             self.tempName = contact.familyName + contact.givenName
+                            print("self.tempName:\(self.tempName)")
                             self.nameText.text = self.tempName
                             self.appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contact.identifier)'").first
                             if self.appContactInfo != nil {
@@ -182,7 +183,8 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
      - parameter sender: 拨打按钮
      */
     @IBAction func call(sender: UIButton) {
-        if PhoneUtil.isMobileNumber(numberText.text) || PhoneUtil.isTelephoneNumber(numberText.text) {
+        if !numberText.text!.isEmpty {
+            if PhoneUtil.isMobileNumber(numberText.text) || PhoneUtil.isTelephoneNumber(numberText.text) {
                 if isRegister {
                     let outgoingCallViewController = R.storyboard.main.outgoingCallViewController()
                     outgoingCallViewController?.toNumber = numberText.text
@@ -193,9 +195,10 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
                     PhoneUtil.callSystemPhone(numberText.text!)
                     addCallLog(numberText.text!)
                 }
-        } else {
-            PhoneUtil.callSystemPhone(numberText.text!)
-            addCallLog(numberText.text!)
+            } else {
+                PhoneUtil.callSystemPhone(numberText.text!)
+                addCallLog(numberText.text!)
+            }
         }
     }
     

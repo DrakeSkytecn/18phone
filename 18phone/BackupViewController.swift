@@ -10,7 +10,7 @@ import UIKit
 import Contacts
 
 class BackupViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     var contactCount = 0
@@ -19,6 +19,7 @@ class BackupViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableFooterView = UIView()
         tableView.delegate = self
         tableView.dataSource = self
         let store = CNContactStore()
@@ -31,7 +32,7 @@ class BackupViewController: UIViewController, UITableViewDataSource, UITableView
         
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -42,40 +43,48 @@ class BackupViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-
-        if indexPath.row != 4 {
-            let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.backup_cell_a)
-            cell!.titleLabel.text = titles[indexPath.row]
-            switch indexPath.row {
-            case 0:
-                cell?.infoLabel.text = "\(contactCount)人"
-                break
-            case 1:
-                cell?.infoLabel.text = "\(contactCount)人"
-                break
-            case 2:
-                cell?.infoLabel.text = "上次同步2016/09/15"
-                break
-            default:
-                break
-            }
-            
-            return cell!
-            
-        } else {
-            let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.backup_cell_b)
-            cell!.titleLabel.text = titles[indexPath.row]
-            return cell!
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.backup_cell_a)
+        cell!.textLabel!.text = titles[indexPath.row]
+        
+        switch indexPath.row {
+        case 0:
+            cell!.detailTextLabel!.text = "\(contactCount)人"
+            break
+        case 1:
+            cell!.detailTextLabel!.text = "\(contactCount)人"
+            break
+        case 2:
+            cell!.detailTextLabel!.text = "上次同步2016/09/15"
+            break
+        case 4:
+            cell?.accessoryView = UISwitch(frame: CGRectMake(0, 0, 51, 31))
+            break
+        default:
+            break
         }
+        return cell!
+    }
+    
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.1
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.001
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

@@ -65,6 +65,8 @@
 		E15C42121D7D094000124257 /* ringtone.wav in Resources */ = {isa = PBXBuildFile; fileRef = E15C42111D7D094000124257 /* ringtone.wav */; };
 		E161A6771D78069C00A1F3C4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E161A6761D78069C00A1F3C4 /* AVFoundation.framework */; };
 		E16453EA1D6AA3150036B53F /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16453E91D6AA3150036B53F /* Contact.swift */; };
+		E1721F301D90E27500A67C5B /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1721F2F1D90E27500A67C5B /* QRCodeViewController.swift */; };
+		E1721F321D910D4D00A67C5B /* ContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1721F311D910D4D00A67C5B /* ContactDetailViewController.swift */; };
 		E1838A101D8F959A0043F0A8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1838A0F1D8F959A0043F0A8 /* CoreLocation.framework */; };
 		E1838A141D8FDACC0043F0A8 /* BackupCellB.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1838A131D8FDACC0043F0A8 /* BackupCellB.swift */; };
 		E1838A161D8FDBA40043F0A8 /* BackupCellA.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1838A151D8FDBA40043F0A8 /* BackupCellA.swift */; };
@@ -194,6 +196,8 @@
 		E15C42111D7D094000124257 /* ringtone.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ringtone.wav; sourceTree = "<group>"; };
 		E161A6761D78069C00A1F3C4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		E16453E91D6AA3150036B53F /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		E1721F2F1D90E27500A67C5B /* QRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
+		E1721F311D910D4D00A67C5B /* ContactDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactDetailViewController.swift; sourceTree = "<group>"; };
 		E1838A0F1D8F959A0043F0A8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E1838A131D8FDACC0043F0A8 /* BackupCellB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackupCellB.swift; sourceTree = "<group>"; };
 		E1838A151D8FDBA40043F0A8 /* BackupCellA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackupCellA.swift; sourceTree = "<group>"; };
@@ -547,7 +551,9 @@
 				E138D0781D630B7A0091AF4A /* IncomingCallViewController.swift */,
 				E148E6C21D6C397000BE131E /* OutgoingVideoViewController.swift */,
 				E13D21941D6ECFCA00C6EA98 /* IncomingVideoViewController.swift */,
+				E1721F2F1D90E27500A67C5B /* QRCodeViewController.swift */,
 				E111AEFE1D8E9A140045E2E2 /* BackupViewController.swift */,
+				E1721F311D910D4D00A67C5B /* ContactDetailViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -766,6 +772,7 @@
 				E1C0486A1D867F650009DF6B /* GSConfiguration.m in Sources */,
 				E16453EA1D6AA3150036B53F /* Contact.swift in Sources */,
 				E13BACDB1D51946B00414ACE /* KTabBarController.swift in Sources */,
+				E1721F301D90E27500A67C5B /* QRCodeViewController.swift in Sources */,
 				E13BACE21D5196EE00414ACE /* DialNumberCell.swift in Sources */,
 				E138D0791D630B7A0091AF4A /* IncomingCallViewController.swift in Sources */,
 				E1C0486E1D867F650009DF6B /* GSOutgoingCall.m in Sources */,
@@ -806,6 +813,7 @@
 				E1C048661D867F650009DF6B /* GSAccount.m in Sources */,
 				E1C048671D867F650009DF6B /* GSAccountConfiguration.m in Sources */,
 				E13BACD51D51907600414ACE /* CallLog.swift in Sources */,
+				E1721F321D910D4D00A67C5B /* ContactDetailViewController.swift in Sources */,
 				E12EBA841D532447007B5CBD /* piQ.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

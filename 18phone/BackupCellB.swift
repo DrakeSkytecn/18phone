@@ -9,8 +9,10 @@
 import UIKit
 
 class BackupCellB: UITableViewCell {
-
-    @IBOutlet weak var titleLabel: UILabel!
+    
+    @IBAction func autoSwitch(sender: UISwitch) {
+        
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
