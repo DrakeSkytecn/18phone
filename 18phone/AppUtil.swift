@@ -35,6 +35,8 @@ struct App {
     static let realm = try! Realm()
     static let userAgent = GSUserAgent.sharedAgent()
     static let userAgentAccount = GSUserAgent.sharedAgent().account
+    static let statusBarHeight = application.statusBarFrame.height
+    static let navigationBarHeight: CGFloat = 44.0
     
     static func initUserAgent(username: String, password: String) {
         let userAgent = GSUserAgent.sharedAgent()
@@ -148,6 +150,10 @@ struct PhoneUtil {
         } catch {
             print("got an error creating the request: \(error)")
         }
+    }
+    
+    static func formatPhoneNumber(phoneNumber: String) -> String {
+        return phoneNumber.stringByReplacingOccurrencesOfString("^\\+8[56][2]*|\\W+|\\s/g", withString: "", options: .RegularExpressionSearch, range: nil)
     }
     
     static func isMobileNumber(phoneNumber: String?) -> Bool {

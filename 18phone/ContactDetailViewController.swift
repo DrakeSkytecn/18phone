@@ -8,6 +8,7 @@
 
 import UIKit
 import Contacts
+import PageMenu
 
 class ContactDetailViewController: UIViewController {
 
@@ -25,9 +26,25 @@ class ContactDetailViewController: UIViewController {
     
     @IBOutlet weak var ageLabel: UILabel!
     
+    @IBOutlet weak var detailCon: UIView!
+    
+    @IBOutlet weak var pageMenuCon: UIView!
+    
+    var pageMenu : CAPSPageMenu?
+    
+    var phones = [String]()
+    
+    var detailMenuViewController = R.storyboard.main.detailMenuViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print(contactId)
+        initContactInfo()
+        initPageMenu()
+        // Do any additional setup after loading the view.
+    }
+    
+    func initContactInfo() {
         let store = CNContactStore()
         let keysToFetch = [CNContactFormatter.descriptorForRequiredKeysForStyle(.FullName),
                            CNContactImageDataKey,
@@ -63,7 +80,30 @@ class ContactDetailViewController: UIViewController {
         if appContactInfo?.age != -1 {
             ageLabel.text = "\(appContactInfo?.age)"
         }
-        // Do any additional setup after loading the view.
+        phones.removeAll()
+        for number in contact.phoneNumbers {
+            let phoneNumber = (number.value as! CNPhoneNumber).stringValue
+            phones.append(phoneNumber)
+        }
+        detailMenuViewController?.phones = phones
+    }
+    
+    func initPageMenu() {
+        let controllerArray : [UIViewController] = [detailMenuViewController!]
+        let parameters: [CAPSPageMenuOption] = [
+            .ScrollMenuBackgroundColor(UIColor.whiteColor()),
+            .ViewBackgroundColor(UIColor.whiteColor()),
+            .SelectionIndicatorColor(UIColor(red: 38.0/255.0, green: 173.0/255.0, blue: 86.0/255.0, alpha: 1.0)),
+            .SelectedMenuItemLabelColor(UIColor(red: 38.0/255.0, green: 173.0/255.0, blue: 86.0/255.0, alpha: 1.0)),
+            .UnselectedMenuItemLabelColor(UIColor.blackColor()),
+            .BottomMenuHairlineColor(UIColor(red: 70.0/255.0, green: 70.0/255.0, blue: 80.0/255.0, alpha: 1.0)),
+            .CenterMenuItems(true)
+        ]
+        
+        pageMenu = CAPSPageMenu(viewControllers: controllerArray, frame: CGRectMake(0, detailCon.frame.height, Screen.width, view.frame.height - detailCon.frame.height), pageMenuOptions: parameters)
+        addChildViewController(pageMenu!)
+        view.addSubview(pageMenu!.view)
+        pageMenu!.didMoveToParentViewController(self)
     }
 
     override func didReceiveMemoryWarning() {

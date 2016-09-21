@@ -43,7 +43,7 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 32 images.
+  /// This `R.image` struct is generated, and contains static references to 34 images.
   struct image {
     /// Image `answer`.
     static let answer = ImageResource(bundle: _R.hostingBundle, name: "answer")
@@ -105,8 +105,12 @@ struct R: Rswift.Validatable {
     static let user = ImageResource(bundle: _R.hostingBundle, name: "user")
     /// Image `video_call`.
     static let video_call = ImageResource(bundle: _R.hostingBundle, name: "video_call")
+    /// Image `video_icon`.
+    static let video_icon = ImageResource(bundle: _R.hostingBundle, name: "video_icon")
     /// Image `voice_call`.
     static let voice_call = ImageResource(bundle: _R.hostingBundle, name: "voice_call")
+    /// Image `voice_icon`.
+    static let voice_icon = ImageResource(bundle: _R.hostingBundle, name: "voice_icon")
     /// Image `yellowlight`.
     static let yellowlight = ImageResource(bundle: _R.hostingBundle, name: "yellowlight")
     
@@ -260,9 +264,19 @@ struct R: Rswift.Validatable {
       return UIImage(resource: R.image.video_call, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "video_icon", bundle: ..., traitCollection: ...)`
+    static func video_icon(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.video_icon, compatibleWithTraitCollection: traitCollection)
+    }
+    
     /// `UIImage(named: "voice_call", bundle: ..., traitCollection: ...)`
     static func voice_call(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.voice_call, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "voice_icon", bundle: ..., traitCollection: ...)`
+    static func voice_icon(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.voice_icon, compatibleWithTraitCollection: traitCollection)
     }
     
     /// `UIImage(named: "yellowlight", bundle: ..., traitCollection: ...)`
@@ -301,12 +315,14 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 8 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 9 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `backup_cell_a`.
-    static let backup_cell_a: ReuseIdentifier<BackupCellA> = ReuseIdentifier(identifier: "backup_cell_a")
+    static let backup_cell_a: ReuseIdentifier<UITableViewCell> = ReuseIdentifier(identifier: "backup_cell_a")
     /// Reuse identifier `contact`.
     static let contact: ReuseIdentifier<ContactCell> = ReuseIdentifier(identifier: "contact")
+    /// Reuse identifier `detail_phone_cell`.
+    static let detail_phone_cell: ReuseIdentifier<UITableViewCell> = ReuseIdentifier(identifier: "detail_phone_cell")
     /// Reuse identifier `dial_1`.
     static let dial_1: ReuseIdentifier<DialNumberCell> = ReuseIdentifier(identifier: "dial_1")
     /// Reuse identifier `dial_2`.
@@ -448,6 +464,7 @@ struct _R: Rswift.Validatable {
       
       let backupViewController = StoryboardViewControllerResource<BackupViewController>(identifier: "BackupViewController")
       let bundle = _R.hostingBundle
+      let detailMenuViewController = StoryboardViewControllerResource<DetailMenuViewController>(identifier: "DetailMenuViewController")
       let dialViewController = StoryboardViewControllerResource<DialView1Controller>(identifier: "DialViewController")
       let incomingCallViewController = StoryboardViewControllerResource<IncomingCallViewController>(identifier: "IncomingCallViewController")
       let incomingVideoViewController = StoryboardViewControllerResource<IncomingVideoViewController>(identifier: "IncomingVideoViewController")
@@ -456,6 +473,10 @@ struct _R: Rswift.Validatable {
       
       func backupViewController(_: Void) -> BackupViewController? {
         return UIStoryboard(resource: self).instantiateViewController(backupViewController)
+      }
+      
+      func detailMenuViewController(_: Void) -> DetailMenuViewController? {
+        return UIStoryboard(resource: self).instantiateViewController(detailMenuViewController)
       }
       
       func dialViewController(_: Void) -> DialView1Controller? {
@@ -482,8 +503,10 @@ struct _R: Rswift.Validatable {
         if UIImage(named: "dial_plate") == nil { throw ValidationError(description: "[R.swift] Image named 'dial_plate' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "shop") == nil { throw ValidationError(description: "[R.swift] Image named 'shop' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "dial_tab") == nil { throw ValidationError(description: "[R.swift] Image named 'dial_tab' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "video_icon") == nil { throw ValidationError(description: "[R.swift] Image named 'video_icon' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "more") == nil { throw ValidationError(description: "[R.swift] Image named 'more' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "message") == nil { throw ValidationError(description: "[R.swift] Image named 'message' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIImage(named: "voice_icon") == nil { throw ValidationError(description: "[R.swift] Image named 'voice_icon' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "hang_up") == nil { throw ValidationError(description: "[R.swift] Image named 'hang_up' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "speaker") == nil { throw ValidationError(description: "[R.swift] Image named 'speaker' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "shop_selected") == nil { throw ValidationError(description: "[R.swift] Image named 'shop_selected' is used in storyboard 'Main', but couldn't be loaded.") }
@@ -491,6 +514,7 @@ struct _R: Rswift.Validatable {
         if UIImage(named: "message_selected") == nil { throw ValidationError(description: "[R.swift] Image named 'message_selected' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "qrcode") == nil { throw ValidationError(description: "[R.swift] Image named 'qrcode' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "delete_all") == nil { throw ValidationError(description: "[R.swift] Image named 'delete_all' is used in storyboard 'Main', but couldn't be loaded.") }
+        if _R.storyboard.main().detailMenuViewController() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'detailMenuViewController' could not be loaded from storyboard 'Main' as 'DetailMenuViewController'.") }
         if _R.storyboard.main().backupViewController() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'backupViewController' could not be loaded from storyboard 'Main' as 'BackupViewController'.") }
         if _R.storyboard.main().dialViewController() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'dialViewController' could not be loaded from storyboard 'Main' as 'DialView1Controller'.") }
         if _R.storyboard.main().outgoingCallViewController() == nil { throw ValidationError(description:"[R.swift] ViewController with identifier 'outgoingCallViewController' could not be loaded from storyboard 'Main' as 'OutgoingCallViewController'.") }

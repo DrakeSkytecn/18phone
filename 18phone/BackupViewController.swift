@@ -20,8 +20,8 @@ class BackupViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
-        tableView.delegate = self
         tableView.dataSource = self
+        tableView.delegate = self
         let store = CNContactStore()
         let keysToFetch = [CNContactFormatter.descriptorForRequiredKeysForStyle(.FullName)]
         let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch)

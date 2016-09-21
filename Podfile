@@ -8,4 +8,5 @@ target :"18phone" do
     pod 'RealmSwift'
     pod 'SwiftEventBus'
     pod 'SwiftDate'
+    pod 'PageMenu'
 end

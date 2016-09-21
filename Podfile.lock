@@ -1,4 +1,5 @@
 PODS:
+  - PageMenu (1.2.9)
   - R.swift (2.4.0):
     - R.swift.Library (~> 2.2.0)
   - R.swift.Library (2.2.0)
@@ -11,12 +12,14 @@ PODS:
   - SwiftEventBus (1.1.0)
 
 DEPENDENCIES:
+  - PageMenu
   - R.swift
   - RealmSwift
   - SwiftDate
   - SwiftEventBus
 
 SPEC CHECKSUMS:
+  PageMenu: ba19ff267f7a19e444e93c20a7847b78954a7011
   R.swift: 0ef9c42dc6c94ac44a3c78a7639c73f855a8e159
   R.swift.Library: 31a487b65381f37a7d203a6f1f935b43c9be35b0
   Realm: 9d5c46a4d7d27958530a8dfc58f63a99e5c2cba3
@@ -24,6 +27,6 @@ SPEC CHECKSUMS:
   SwiftDate: 971f8b9394f664f2226b9c3ab64e801a7291c612
   SwiftEventBus: d33b51752d4e3e994f0ea7b31873f0beca7eada0
 
-PODFILE CHECKSUM: 479c4ef471f4044b0f30fac627b3d295518aafc5
+PODFILE CHECKSUM: 604be3a45c059eae279ad986ecb33080d1bad102
 
 COCOAPODS: 1.0.1
