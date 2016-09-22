@@ -13,6 +13,7 @@ class OutgoingCallViewController: UIViewController {
     var toNumber: String?
     var contactName: String?
     var phoneArea: String?
+    var contactId: String?
     var outCall: GSCall?
     var isConnected: Bool = false
     
@@ -63,6 +64,7 @@ class OutgoingCallViewController: UIViewController {
     @IBAction func hangup(sender: UIButton) {
         outCall?.end()
         let callLog = CallLog()
+        callLog.identifier = contactId!
         callLog.name = contactName!
         callLog.phone = toNumber!
         if isConnected {

@@ -9,10 +9,10 @@
 import UIKit
 
 class DetailMenuViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
-    @IBOutlet weak var tableView: UITableView!
     
     var phones: [String]?
+    
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -14,6 +14,8 @@ class ContactDetailViewController: UIViewController {
 
     var contactId: String?
     
+    var phones = [String]()
+    
     @IBOutlet weak var headPhoto: UIImageView!
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -32,9 +34,9 @@ class ContactDetailViewController: UIViewController {
     
     var pageMenu : CAPSPageMenu?
     
-    var phones = [String]()
-    
     var detailMenuViewController = R.storyboard.main.detailMenuViewController()
+    
+    var callLogMenuViewController = R.storyboard.main.callLogMenuViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,10 +88,11 @@ class ContactDetailViewController: UIViewController {
             phones.append(phoneNumber)
         }
         detailMenuViewController?.phones = phones
+        callLogMenuViewController?.contactId = contactId
     }
     
     func initPageMenu() {
-        let controllerArray : [UIViewController] = [detailMenuViewController!]
+        let controllerArray : [UIViewController] = [detailMenuViewController!, callLogMenuViewController!]
         let parameters: [CAPSPageMenuOption] = [
             .ScrollMenuBackgroundColor(UIColor.whiteColor()),
             .ViewBackgroundColor(UIColor.whiteColor()),

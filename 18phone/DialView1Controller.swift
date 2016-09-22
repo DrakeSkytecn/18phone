@@ -137,10 +137,12 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
                                    CNContactFamilyNameKey,
                                    CNContactPhoneNumbersKey]
                 let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch)
-                
+                self.isRegister = false
+                self.appContactInfo = nil
                 try! store.enumerateContactsWithFetchRequest(fetchRequest) { (let contact, let stop) -> Void in
                     for number in contact.phoneNumbers {
-                        let phoneNumber = (number.value as! CNPhoneNumber).stringValue.stringByReplacingOccurrencesOfString("^\\+8[56][2]*|\\W+|\\s/g", withString: "", options: .RegularExpressionSearch, range: nil)
+                        
+                        let phoneNumber = PhoneUtil.formatPhoneNumber((number.value as! CNPhoneNumber).stringValue)
                         if phoneNumber == temp {
                             print("phoneNumber:\(phoneNumber)")
                             self.tempName = contact.familyName + contact.givenName
@@ -187,6 +189,7 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
             if PhoneUtil.isMobileNumber(numberText.text) || PhoneUtil.isTelephoneNumber(numberText.text) {
                 if isRegister {
                     let outgoingCallViewController = R.storyboard.main.outgoingCallViewController()
+                    outgoingCallViewController?.contactId = appContactInfo?.identifier
                     outgoingCallViewController?.toNumber = numberText.text
                     outgoingCallViewController?.contactName = tempName
                     outgoingCallViewController?.phoneArea = tempArea
@@ -204,6 +207,9 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
     
     func addCallLog(number: String) {
         let callLog = CallLog()
+        if appContactInfo != nil {
+            callLog.identifier = appContactInfo!.identifier
+        }
         if tempName != nil {
             callLog.name = tempName!
         }

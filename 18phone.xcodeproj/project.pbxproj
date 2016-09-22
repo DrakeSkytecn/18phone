@@ -65,6 +65,9 @@
 		E148E6C31D6C397000BE131E /* OutgoingVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E148E6C21D6C397000BE131E /* OutgoingVideoViewController.swift */; };
 		E15C42121D7D094000124257 /* ringtone.wav in Resources */ = {isa = PBXBuildFile; fileRef = E15C42111D7D094000124257 /* ringtone.wav */; };
 		E161A6771D78069C00A1F3C4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E161A6761D78069C00A1F3C4 /* AVFoundation.framework */; };
+		E1626D551D937F7B00C3422C /* CallLogMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1626D541D937F7B00C3422C /* CallLogMenuViewController.swift */; };
+		E1626D571D93AFC600C3422C /* test in Resources */ = {isa = PBXBuildFile; fileRef = E1626D561D93AFC600C3422C /* test */; };
+		E1626D591D93BA7100C3422C /* DetailLogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1626D581D93BA7100C3422C /* DetailLogCell.swift */; };
 		E16453EA1D6AA3150036B53F /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16453E91D6AA3150036B53F /* Contact.swift */; };
 		E1721F301D90E27500A67C5B /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1721F2F1D90E27500A67C5B /* QRCodeViewController.swift */; };
 		E1721F321D910D4D00A67C5B /* ContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1721F311D910D4D00A67C5B /* ContactDetailViewController.swift */; };
@@ -195,6 +198,9 @@
 		E1534A0C1D7E6692007FE351 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		E15C42111D7D094000124257 /* ringtone.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ringtone.wav; sourceTree = "<group>"; };
 		E161A6761D78069C00A1F3C4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		E1626D541D937F7B00C3422C /* CallLogMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallLogMenuViewController.swift; sourceTree = "<group>"; };
+		E1626D561D93AFC600C3422C /* test */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test; sourceTree = "<group>"; };
+		E1626D581D93BA7100C3422C /* DetailLogCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailLogCell.swift; sourceTree = "<group>"; };
 		E16453E91D6AA3150036B53F /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		E1721F2F1D90E27500A67C5B /* QRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
 		E1721F311D910D4D00A67C5B /* ContactDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactDetailViewController.swift; sourceTree = "<group>"; };
@@ -492,6 +498,7 @@
 				E13BACE41D51974900414ACE /* Assets.xcassets */,
 				E114D1CF1D4F1F15006AB978 /* Info.plist */,
 				E1F5E57C1D59E5990010FF2C /* 18phone-Bridging-Header.h */,
+				E1626D561D93AFC600C3422C /* test */,
 			);
 			path = 18phone;
 			sourceTree = "<group>";
@@ -553,6 +560,7 @@
 				E111AEFE1D8E9A140045E2E2 /* BackupViewController.swift */,
 				E1721F311D910D4D00A67C5B /* ContactDetailViewController.swift */,
 				E1330E261D92378400996D2A /* DetailMenuViewController.swift */,
+				E1626D541D937F7B00C3422C /* CallLogMenuViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -568,6 +576,7 @@
 				E11E92911D5EBBAB004D634A /* DialView.xib */,
 				E1DE61821D88F1E900321B47 /* ContactCell.swift */,
 				E140B1861D8E36FA00178D74 /* ShowNumberCon.swift */,
+				E1626D581D93BA7100C3422C /* DetailLogCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -690,6 +699,7 @@
 				E15C42121D7D094000124257 /* ringtone.wav in Resources */,
 				E11E92921D5EBBAB004D634A /* DialView.xib in Resources */,
 				E114D1CE1D4F1F15006AB978 /* LaunchScreen.storyboard in Resources */,
+				E1626D571D93AFC600C3422C /* test in Resources */,
 				E13BACE51D51974900414ACE /* Assets.xcassets in Resources */,
 				E13BACDF1D51948C00414ACE /* Main.storyboard in Resources */,
 				E19AAD441D51DF480053D2C3 /* CallConView.xib in Resources */,
@@ -765,6 +775,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E12EBA811D531FF3007B5CBD /* CallLogACell.swift in Sources */,
+				E1626D591D93BA7100C3422C /* DetailLogCell.swift in Sources */,
 				E13BACC91D518FE500414ACE /* JSONJoy.swift in Sources */,
 				E1C0486A1D867F650009DF6B /* GSConfiguration.m in Sources */,
 				E16453EA1D6AA3150036B53F /* Contact.swift in Sources */,
@@ -792,6 +803,7 @@
 				E13BACD01D518FF000414ACE /* Operation.swift in Sources */,
 				E1C048691D867F650009DF6B /* GSCodecInfo.m in Sources */,
 				E13BACDD1D51946B00414ACE /* CallLogViewController.swift in Sources */,
+				E1626D551D937F7B00C3422C /* CallLogMenuViewController.swift in Sources */,
 				E1C0486B1D867F650009DF6B /* GSDispatch.m in Sources */,
 				E1330E271D92378400996D2A /* DetailMenuViewController.swift in Sources */,
 				E13BACCF1D518FF000414ACE /* HTTPSecurity.swift in Sources */,

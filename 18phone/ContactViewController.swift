@@ -17,7 +17,6 @@ class ContactViewController: UITableViewController {
     var groupValues = [String: Array<LocalContactInfo>?]()
     var contactId: String?
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollsToTopEnable(false)

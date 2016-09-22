@@ -96,6 +96,7 @@ class CallLogViewController: UITableViewController {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         alertController.addAction(UIAlertAction(title: "语音通话", style: .Default) { action in
             let outgoingCallViewController = R.storyboard.main.outgoingCallViewController()
+            outgoingCallViewController?.contactId = callLog.identifier
             outgoingCallViewController?.toNumber = callLog.phone
             outgoingCallViewController?.contactName = callLog.name
             outgoingCallViewController?.phoneArea = callLog.area
