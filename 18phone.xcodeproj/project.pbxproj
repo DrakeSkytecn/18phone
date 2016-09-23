@@ -35,6 +35,8 @@
 		E115A0441D6D762C005FCB8F /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = E1159FDF1D6D762C005FCB8F /* LICENSE */; };
 		E115A0451D6D762C005FCB8F /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = E1159FE01D6D762C005FCB8F /* README.md */; };
 		E115A0461D6D762C005FCB8F /* SwiftEventBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1159FE21D6D762C005FCB8F /* SwiftEventBus.swift */; };
+		E11E37E61D94C619004B566D /* UserDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11E37E51D94C619004B566D /* UserDetailCell.swift */; };
+		E11E37E81D94CCC6004B566D /* UserCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11E37E71D94CCC6004B566D /* UserCenterViewController.swift */; };
 		E11E92921D5EBBAB004D634A /* DialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E11E92911D5EBBAB004D634A /* DialView.xib */; };
 		E11E92941D5F2C9F004D634A /* DialView1Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11E92931D5F2C9F004D634A /* DialView1Controller.swift */; };
 		E12EBA811D531FF3007B5CBD /* CallLogACell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12EBA801D531FF3007B5CBD /* CallLogACell.swift */; };
@@ -166,6 +168,8 @@
 		E1159FDF1D6D762C005FCB8F /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		E1159FE01D6D762C005FCB8F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E1159FE21D6D762C005FCB8F /* SwiftEventBus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftEventBus.swift; sourceTree = "<group>"; };
+		E11E37E51D94C619004B566D /* UserDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailCell.swift; sourceTree = "<group>"; };
+		E11E37E71D94CCC6004B566D /* UserCenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCenterViewController.swift; sourceTree = "<group>"; };
 		E11E92911D5EBBAB004D634A /* DialView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DialView.xib; sourceTree = "<group>"; };
 		E11E92931D5F2C9F004D634A /* DialView1Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialView1Controller.swift; sourceTree = "<group>"; };
 		E12EBA801D531FF3007B5CBD /* CallLogACell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallLogACell.swift; sourceTree = "<group>"; };
@@ -561,6 +565,7 @@
 				E1721F311D910D4D00A67C5B /* ContactDetailViewController.swift */,
 				E1330E261D92378400996D2A /* DetailMenuViewController.swift */,
 				E1626D541D937F7B00C3422C /* CallLogMenuViewController.swift */,
+				E11E37E71D94CCC6004B566D /* UserCenterViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -577,6 +582,7 @@
 				E1DE61821D88F1E900321B47 /* ContactCell.swift */,
 				E140B1861D8E36FA00178D74 /* ShowNumberCon.swift */,
 				E1626D581D93BA7100C3422C /* DetailLogCell.swift */,
+				E11E37E51D94C619004B566D /* UserDetailCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -805,6 +811,7 @@
 				E13BACDD1D51946B00414ACE /* CallLogViewController.swift in Sources */,
 				E1626D551D937F7B00C3422C /* CallLogMenuViewController.swift in Sources */,
 				E1C0486B1D867F650009DF6B /* GSDispatch.m in Sources */,
+				E11E37E61D94C619004B566D /* UserDetailCell.swift in Sources */,
 				E1330E271D92378400996D2A /* DetailMenuViewController.swift in Sources */,
 				E13BACCF1D518FF000414ACE /* HTTPSecurity.swift in Sources */,
 				E140B1871D8E36FA00178D74 /* ShowNumberCon.swift in Sources */,
@@ -823,6 +830,7 @@
 				E13BACD51D51907600414ACE /* CallLog.swift in Sources */,
 				E1721F321D910D4D00A67C5B /* ContactDetailViewController.swift in Sources */,
 				E12EBA841D532447007B5CBD /* piQ.swift in Sources */,
+				E11E37E81D94CCC6004B566D /* UserCenterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
