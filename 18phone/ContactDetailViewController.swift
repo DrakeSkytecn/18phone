@@ -71,7 +71,7 @@ class ContactDetailViewController: UIViewController {
             sexImage.image = R.image.male()
             break
         case Sex.Female.rawValue:
-            sexImage.image = R.image.male()
+            sexImage.image = R.image.female()
             break
         default:
             break

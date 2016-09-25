@@ -6,25 +6,6 @@
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="ueY-0i-iWz">
-            <objects>
-                <viewController id="IW5-3U-yEE" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="0fM-Zf-Yjo"/>
-                        <viewControllerLayoutGuide type="bottom" id="Akq-7O-aEY"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="NLM-00-8AB">
-                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="5XU-6G-nEa"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MAr-C7-fgt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2921" y="-320"/>
-        </scene>
         <!--Call Log View Controller-->
         <scene sceneID="et1-WP-GCV">
             <objects>
@@ -257,8 +238,8 @@
         <!--个人中心-->
         <scene sceneID="3Vf-tg-mxJ">
             <objects>
-                <tableViewController title="个人中心" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="6wg-zH-900" customClass="UserCenterViewController" customModule="_8phone" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="10" id="r0F-AU-zY9">
+                <tableViewController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="6wg-zH-900" customClass="UserCenterViewController" customModule="_8phone" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="10" id="r0F-AU-zY9">
                         <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -384,10 +365,13 @@
                             <outlet property="delegate" destination="6wg-zH-900" id="gdm-B0-k34"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="个人中心" id="jpV-s5-yRb">
+                        <barButtonItem key="backBarButtonItem" title=" " id="kW7-ra-IZU"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w9P-OE-PDS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4968" y="353"/>
+            <point key="canvasLocation" x="5780" y="353"/>
         </scene>
         <!--联系人详情-->
         <scene sceneID="QiM-Mm-JDz">
@@ -747,8 +731,8 @@
         <!--编辑个人资料-->
         <scene sceneID="A6L-BG-cNX">
             <objects>
-                <tableViewController id="oxZ-MI-j1H" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" id="IFG-ag-Lgi">
+                <tableViewController id="oxZ-MI-j1H" customClass="EditUserViewController" customModule="_8phone" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="static" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" id="IFG-ag-Lgi">
                         <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -833,6 +817,12 @@
                                                         <constraint firstAttribute="width" constant="35" id="1kh-gr-5lY"/>
                                                         <constraint firstAttribute="height" constant="21" id="uxk-ot-4fk"/>
                                                     </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a2q-9v-jDV">
+                                                    <rect key="frame" x="279" y="19" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -966,12 +956,20 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="编辑个人资料" id="INt-hJ-odk">
                         <barButtonItem key="backBarButtonItem" title=" " id="0ZY-Ue-pdC"/>
-                        <barButtonItem key="rightBarButtonItem" title="保存" id="47e-iM-aO7"/>
+                        <barButtonItem key="rightBarButtonItem" title="保存" id="47e-iM-aO7">
+                            <connections>
+                                <action selector="save:" destination="oxZ-MI-j1H" id="SZf-wQ-bmu"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="headPhoto" destination="vRK-pH-TGg" id="LSI-YV-INM"/>
+                        <outlet property="nameField" destination="LvN-A4-52M" id="9Hl-50-s97"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nxs-Pp-Aqd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5731" y="353"/>
+            <point key="canvasLocation" x="6543" y="353"/>
         </scene>
         <!--通讯录云备份-->
         <scene sceneID="Vu6-gd-gh0">
@@ -985,7 +983,7 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="60" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="0ra-dn-jdT">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="60" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="0ra-dn-jdT">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -1055,7 +1053,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SYU-cD-A9x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7405" y="-258"/>
+            <point key="canvasLocation" x="8217" y="-258"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -1130,7 +1128,7 @@
                             <barButtonItem image="user" id="7cs-0e-G97">
                                 <connections>
                                     <action selector="toUserCenter:" destination="BYZ-38-t0r" id="2jz-JY-T2Q"/>
-                                    <segue destination="6wg-zH-900" kind="show" id="Bos-vW-qsA"/>
+                                    <segue destination="6wg-zH-900" kind="show" id="RqM-DD-jxQ"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="qrcode" id="s8l-jU-a7R">
@@ -1522,6 +1520,21 @@
                                             <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8LY-YD-oWB" customClass="ZFRippleButton" customModule="_8phone" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="rippleOverBounds" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="rippleBackgroundColor">
+                                                            <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="touchUpAnimationTime">
+                                                            <real key="value" value="0.40000000000000002"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="ripplePercent">
+                                                            <real key="value" value="1.7"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LXU-jp-A9M">
                                                     <rect key="frame" x="14" y="15" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="26"/>
@@ -1543,14 +1556,15 @@
                                                 <integer key="value" value="35"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                <real key="value" value="1.5"/>
+                                                <real key="value" value="0.20000000000000001"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
-                                                <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="value" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="character" destination="Q6g-jQ-Hzv" id="pTW-hd-APO"/>
+                                            <outlet property="effect" destination="8LY-YD-oWB" id="ba1-t5-fl9"/>
                                             <outlet property="number" destination="LXU-jp-A9M" id="fgx-rM-snC"/>
                                         </connections>
                                     </collectionViewCell>
@@ -1561,6 +1575,21 @@
                                             <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wOv-ox-1pX" customClass="ZFRippleButton" customModule="_8phone" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="rippleOverBounds" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="rippleBackgroundColor">
+                                                            <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="touchUpAnimationTime">
+                                                            <real key="value" value="0.40000000000000002"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="ripplePercent">
+                                                            <real key="value" value="1.7"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6VI-Yu-Wk2">
                                                     <rect key="frame" x="22" y="22" width="26" height="26"/>
                                                 </imageView>
@@ -1573,13 +1602,14 @@
                                                 <integer key="value" value="35"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                <real key="value" value="1.5"/>
+                                                <real key="value" value="0.20000000000000001"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
-                                                <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="value" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <outlet property="effect" destination="wOv-ox-1pX" id="qnt-Pn-Gd1"/>
                                             <outlet property="icon" destination="6VI-Yu-Wk2" id="ZZC-EE-dT8"/>
                                         </connections>
                                     </collectionViewCell>
@@ -1590,6 +1620,21 @@
                                             <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L0I-xx-t4C" customClass="ZFRippleButton" customModule="_8phone" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="rippleOverBounds" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="rippleBackgroundColor">
+                                                            <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="touchUpAnimationTime">
+                                                            <real key="value" value="0.40000000000000002"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="ripplePercent">
+                                                            <real key="value" value="1.7"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FkI-g9-CHa">
                                                     <rect key="frame" x="14" y="25" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="26"/>
@@ -1605,13 +1650,14 @@
                                                 <integer key="value" value="35"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                <real key="value" value="1.5"/>
+                                                <real key="value" value="0.20000000000000001"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
-                                                <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="value" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <outlet property="effect" destination="L0I-xx-t4C" id="6vz-t9-tdm"/>
                                             <outlet property="number" destination="FkI-g9-CHa" id="Sx9-cd-jB4"/>
                                         </connections>
                                     </collectionViewCell>
@@ -2183,12 +2229,57 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="IW5-3U-yEE" kind="relationship" relationship="rootViewController" id="fxa-l5-cTJ"/>
+                        <segue destination="H6C-xE-0Wc" kind="relationship" relationship="rootViewController" id="omG-Tp-p5Y"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MzD-1u-4z6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2109" y="-320"/>
+            <point key="canvasLocation" x="1969" y="-934"/>
+        </scene>
+        <!--消息-->
+        <scene sceneID="Vh6-Tq-cvC">
+            <objects>
+                <tableViewController id="H6C-xE-0Wc" customClass="MessageViewController" customModule="_8phone" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="MMV-m1-pUM">
+                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="message_cell" textLabel="jtG-qw-Yua" detailTextLabel="tDT-so-pY2" style="IBUITableViewCellStyleSubtitle" id="fau-LP-Ps6">
+                                <rect key="frame" x="0.0" y="28" width="600" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fau-LP-Ps6" id="XSn-Oh-jNu">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="系统维护" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jtG-qw-Yua">
+                                            <rect key="frame" x="15" y="23" width="64" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="例行维护，为你带来的不便深表歉意" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tDT-so-pY2">
+                                            <rect key="frame" x="15" y="43" width="176" height="14"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="H6C-xE-0Wc" id="tqi-Pn-a0Z"/>
+                            <outlet property="delegate" destination="H6C-xE-0Wc" id="F7f-2e-khP"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="消息" id="CHz-rg-KIu"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kUd-R3-2fa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2837" y="-942"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="amq-CI-C8U">
@@ -2208,6 +2299,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZQD-dK-Nbc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4968" y="-314.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ndz-eW-Qf5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jLP-Iu-MTB" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="VqJ-cc-LaA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="6wg-zH-900" kind="relationship" relationship="rootViewController" id="ErF-t5-ki7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wBU-RM-7iV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4968" y="353"/>
         </scene>
     </scenes>
     <resources>
@@ -2235,6 +2345,7 @@
         <image name="voice_icon" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="RqM-DD-jxQ"/>
         <segue reference="1k9-75-hHh"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.14901960784313725" green="0.67843137254901964" blue="0.33725490196078434" alpha="1" colorSpace="calibratedRGB"/>

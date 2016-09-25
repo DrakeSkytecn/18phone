@@ -14,4 +14,5 @@ class DialNumberCell: UICollectionViewCell {
     
     @IBOutlet weak var character: UILabel!
     
+    @IBOutlet weak var effect: ZFRippleButton!
 }

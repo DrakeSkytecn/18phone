@@ -67,19 +67,27 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
                 cell.number.text = "\(indexPath.row + 1)"
                 cell.character.text = characters[indexPath.row - 1]
             }
+            cell.effect.tag = indexPath.row + 1
+            cell.effect.addTarget(self, action: #selector(clickDialButton(_:)), forControlEvents: .TouchUpInside)
             return cell
         case 10:
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(R.reuseIdentifier.dial_3.identifier, forIndexPath: indexPath) as! DialNumberCell
             cell.number.text = "0"
+            cell.effect.tag = 0
+            cell.effect.addTarget(self, action: #selector(clickDialButton(_:)), forControlEvents: .TouchUpInside)
             return cell
+            
         /// 粘贴和删除按键要展示的布局
-        case 9, 11:
+        case 9:
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(R.reuseIdentifier.dial_2.identifier, forIndexPath: indexPath) as! DialIconCell
-            if indexPath.row == 9 {
-                cell.icon.image = R.image.paste()
-            }else{
-                cell.icon.image = R.image.delete()
-            }
+            cell.icon.image = R.image.paste()
+            //cell.effect.addTarget(self, action: #selector(clickDialButton(_:)), forControlEvents: .TouchUpInside)
+            
+            return cell
+        case 11:
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(R.reuseIdentifier.dial_2.identifier, forIndexPath: indexPath) as! DialIconCell
+            cell.icon.image = R.image.delete()
+            cell.effect.addTarget(self, action: #selector(backSpace(_:)), forControlEvents: .TouchUpInside)
             
             return cell
         default:
@@ -167,12 +175,27 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
         }
     }
     
-    func collectionView(collectionView: UICollectionView, didHighlightItemAtIndexPath indexPath: NSIndexPath) {
-        collectionView.cellForItemAtIndexPath(indexPath)?.backgroundColor = UIColor.groupTableViewBackgroundColor()
+    func clickDialButton(sender:UIButton) {
+        var temp = numberText.text
+        if temp?.characters.count < 12 {
+            let number = String(sender.tag)
+            temp = temp! + number
+            numberText.text = temp
+            checkNumberArea(temp)
+        }
     }
     
-    func collectionView(collectionView: UICollectionView, didUnhighlightItemAtIndexPath indexPath: NSIndexPath) {
-        collectionView.cellForItemAtIndexPath(indexPath)?.backgroundColor = UIColor.clearColor()
+    func backSpace(sender:UIButton) {
+        var temp = numberText.text
+        let length = temp?.characters.count
+        if length > 0 {
+            temp = temp?.substringToIndex(temp!.startIndex.advancedBy(length! - 1))
+            numberText.text = temp
+            if length == 1 {
+                //addContactBtn.hidden = true
+            }
+            checkNumberArea(temp)
+        }
     }
     
     @IBAction func addContact(sender: UIButton) {

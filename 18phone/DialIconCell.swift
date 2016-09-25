@@ -12,4 +12,5 @@ class DialIconCell: UICollectionViewCell {
     
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var hint: UILabel!
+    @IBOutlet weak var effect: ZFRippleButton!
 }

@@ -51,7 +51,7 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 38 images.
+  /// This `R.image` struct is generated, and contains static references to 40 images.
   struct image {
     /// Image `about`.
     static let about = ImageResource(bundle: _R.hostingBundle, name: "about")
@@ -89,6 +89,8 @@ struct R: Rswift.Validatable {
     static let dial_tab_selected = ImageResource(bundle: _R.hostingBundle, name: "dial_tab_selected")
     /// Image `dial_up`.
     static let dial_up = ImageResource(bundle: _R.hostingBundle, name: "dial_up")
+    /// Image `female`.
+    static let female = ImageResource(bundle: _R.hostingBundle, name: "female")
     /// Image `hang_up`.
     static let hang_up = ImageResource(bundle: _R.hostingBundle, name: "hang_up")
     /// Image `head_photo_default`.
@@ -115,6 +117,8 @@ struct R: Rswift.Validatable {
     static let shop_selected = ImageResource(bundle: _R.hostingBundle, name: "shop_selected")
     /// Image `speaker`.
     static let speaker = ImageResource(bundle: _R.hostingBundle, name: "speaker")
+    /// Image `system_message`.
+    static let system_message = ImageResource(bundle: _R.hostingBundle, name: "system_message")
     /// Image `user`.
     static let user = ImageResource(bundle: _R.hostingBundle, name: "user")
     /// Image `video_call`.
@@ -220,6 +224,11 @@ struct R: Rswift.Validatable {
       return UIImage(resource: R.image.dial_up, compatibleWithTraitCollection: traitCollection)
     }
     
+    /// `UIImage(named: "female", bundle: ..., traitCollection: ...)`
+    static func female(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.female, compatibleWithTraitCollection: traitCollection)
+    }
+    
     /// `UIImage(named: "hang_up", bundle: ..., traitCollection: ...)`
     static func hang_up(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.hang_up, compatibleWithTraitCollection: traitCollection)
@@ -283,6 +292,11 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "speaker", bundle: ..., traitCollection: ...)`
     static func speaker(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.speaker, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "system_message", bundle: ..., traitCollection: ...)`
+    static func system_message(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.system_message, compatibleWithTraitCollection: traitCollection)
     }
     
     /// `UIImage(named: "user", bundle: ..., traitCollection: ...)`
@@ -351,7 +365,7 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 12 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 13 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `backup_cell_a`.
     static let backup_cell_a: ReuseIdentifier<UITableViewCell> = ReuseIdentifier(identifier: "backup_cell_a")
@@ -373,6 +387,8 @@ struct R: Rswift.Validatable {
     static let dial_b: ReuseIdentifier<DialIconCell> = ReuseIdentifier(identifier: "dial_b")
     /// Reuse identifier `log_a`.
     static let log_a: ReuseIdentifier<CallLogACell> = ReuseIdentifier(identifier: "log_a")
+    /// Reuse identifier `message_cell`.
+    static let message_cell: ReuseIdentifier<UITableViewCell> = ReuseIdentifier(identifier: "message_cell")
     /// Reuse identifier `setting_cell`.
     static let setting_cell: ReuseIdentifier<UITableViewCell> = ReuseIdentifier(identifier: "setting_cell")
     /// Reuse identifier `user_detail_cell`.

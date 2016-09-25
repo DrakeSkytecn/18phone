@@ -66,6 +66,8 @@
 		E140B1871D8E36FA00178D74 /* ShowNumberCon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E140B1861D8E36FA00178D74 /* ShowNumberCon.swift */; };
 		E148E6C31D6C397000BE131E /* OutgoingVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E148E6C21D6C397000BE131E /* OutgoingVideoViewController.swift */; };
 		E15C42121D7D094000124257 /* ringtone.wav in Resources */ = {isa = PBXBuildFile; fileRef = E15C42111D7D094000124257 /* ringtone.wav */; };
+		E15C4C3A1D965DA700688086 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15C4C391D965DA700688086 /* MessageViewController.swift */; };
+		E15C4C3C1D96689300688086 /* ZFRippleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15C4C3B1D96689300688086 /* ZFRippleButton.swift */; };
 		E161A6771D78069C00A1F3C4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E161A6761D78069C00A1F3C4 /* AVFoundation.framework */; };
 		E1626D551D937F7B00C3422C /* CallLogMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1626D541D937F7B00C3422C /* CallLogMenuViewController.swift */; };
 		E1626D571D93AFC600C3422C /* test in Resources */ = {isa = PBXBuildFile; fileRef = E1626D561D93AFC600C3422C /* test */; };
@@ -74,6 +76,7 @@
 		E1721F301D90E27500A67C5B /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1721F2F1D90E27500A67C5B /* QRCodeViewController.swift */; };
 		E1721F321D910D4D00A67C5B /* ContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1721F311D910D4D00A67C5B /* ContactDetailViewController.swift */; };
 		E1838A101D8F959A0043F0A8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1838A0F1D8F959A0043F0A8 /* CoreLocation.framework */; };
+		E199E03F1D97FBE7001237AD /* EditUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E199E03E1D97FBE7001237AD /* EditUserViewController.swift */; };
 		E19AAD441D51DF480053D2C3 /* CallConView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E19AAD431D51DF480053D2C3 /* CallConView.xib */; };
 		E19AAD461D51DF6A0053D2C3 /* CallConView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19AAD451D51DF690053D2C3 /* CallConView.swift */; };
 		E1C048661D867F650009DF6B /* GSAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C048491D867F650009DF6B /* GSAccount.m */; };
@@ -201,6 +204,8 @@
 		E1534A0A1D7E668A007FE351 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		E1534A0C1D7E6692007FE351 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		E15C42111D7D094000124257 /* ringtone.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ringtone.wav; sourceTree = "<group>"; };
+		E15C4C391D965DA700688086 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		E15C4C3B1D96689300688086 /* ZFRippleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZFRippleButton.swift; sourceTree = "<group>"; };
 		E161A6761D78069C00A1F3C4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		E1626D541D937F7B00C3422C /* CallLogMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallLogMenuViewController.swift; sourceTree = "<group>"; };
 		E1626D561D93AFC600C3422C /* test */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test; sourceTree = "<group>"; };
@@ -209,6 +214,7 @@
 		E1721F2F1D90E27500A67C5B /* QRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
 		E1721F311D910D4D00A67C5B /* ContactDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactDetailViewController.swift; sourceTree = "<group>"; };
 		E1838A0F1D8F959A0043F0A8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		E199E03E1D97FBE7001237AD /* EditUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditUserViewController.swift; sourceTree = "<group>"; };
 		E19AAD431D51DF480053D2C3 /* CallConView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CallConView.xib; sourceTree = "<group>"; };
 		E19AAD451D51DF690053D2C3 /* CallConView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallConView.swift; sourceTree = "<group>"; };
 		E1C048471D867F650009DF6B /* Gossip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Gossip.h; path = 18phone/Gossip/Gossip.h; sourceTree = SOURCE_ROOT; };
@@ -566,6 +572,8 @@
 				E1330E261D92378400996D2A /* DetailMenuViewController.swift */,
 				E1626D541D937F7B00C3422C /* CallLogMenuViewController.swift */,
 				E11E37E71D94CCC6004B566D /* UserCenterViewController.swift */,
+				E15C4C391D965DA700688086 /* MessageViewController.swift */,
+				E199E03E1D97FBE7001237AD /* EditUserViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -573,6 +581,7 @@
 		E13BACBF1D518E6600414ACE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E15C4C3B1D96689300688086 /* ZFRippleButton.swift */,
 				E13BACE01D5196EE00414ACE /* DialNumberCell.swift */,
 				E13BACE11D5196EE00414ACE /* DialIconCell.swift */,
 				E19AAD451D51DF690053D2C3 /* CallConView.swift */,
@@ -794,6 +803,7 @@
 				E1C0486F1D867F650009DF6B /* GSPJUtil.m in Sources */,
 				E111AEFF1D8E9A140045E2E2 /* BackupViewController.swift in Sources */,
 				E13BACDC1D51946B00414ACE /* DialViewController.swift in Sources */,
+				E15C4C3A1D965DA700688086 /* MessageViewController.swift in Sources */,
 				E1C0486C1D867F650009DF6B /* GSIncomingCall.m in Sources */,
 				E1DE61831D88F1E900321B47 /* ContactCell.swift in Sources */,
 				E13BACE31D5196EE00414ACE /* DialIconCell.swift in Sources */,
@@ -812,6 +822,7 @@
 				E1626D551D937F7B00C3422C /* CallLogMenuViewController.swift in Sources */,
 				E1C0486B1D867F650009DF6B /* GSDispatch.m in Sources */,
 				E11E37E61D94C619004B566D /* UserDetailCell.swift in Sources */,
+				E199E03F1D97FBE7001237AD /* EditUserViewController.swift in Sources */,
 				E1330E271D92378400996D2A /* DetailMenuViewController.swift in Sources */,
 				E13BACCF1D518FF000414ACE /* HTTPSecurity.swift in Sources */,
 				E140B1871D8E36FA00178D74 /* ShowNumberCon.swift in Sources */,
@@ -825,6 +836,7 @@
 				E114D1C61D4F1F15006AB978 /* ContactViewController.swift in Sources */,
 				E1C048701D867F650009DF6B /* GSRingback.m in Sources */,
 				E114D1C41D4F1F15006AB978 /* AppDelegate.swift in Sources */,
+				E15C4C3C1D96689300688086 /* ZFRippleButton.swift in Sources */,
 				E1C048661D867F650009DF6B /* GSAccount.m in Sources */,
 				E1C048671D867F650009DF6B /* GSAccountConfiguration.m in Sources */,
 				E13BACD51D51907600414ACE /* CallLog.swift in Sources */,
