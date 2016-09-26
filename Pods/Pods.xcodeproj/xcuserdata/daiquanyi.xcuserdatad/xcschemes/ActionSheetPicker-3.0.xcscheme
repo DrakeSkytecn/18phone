@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CDC8AAE1779443F6EBC61F02D7A29032"
-               BuildableName = "Pods_18phone.framework"
-               BlueprintName = "Pods-18phone"
+               BlueprintIdentifier = "053617A05C5A952CF2888B88D119FE01"
+               BuildableName = "ActionSheetPicker_3_0.framework"
+               BlueprintName = "ActionSheetPicker-3.0"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CDC8AAE1779443F6EBC61F02D7A29032"
-            BuildableName = "Pods_18phone.framework"
-            BlueprintName = "Pods-18phone"
+            BlueprintIdentifier = "053617A05C5A952CF2888B88D119FE01"
+            BuildableName = "ActionSheetPicker_3_0.framework"
+            BlueprintName = "ActionSheetPicker-3.0"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

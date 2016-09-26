@@ -7,15 +7,33 @@
 //
 
 import UIKit
+import ActionSheetPicker_3_0
 
-class EditUserViewController: UITableViewController {
+class EditUserViewController: UITableViewController, UITextFieldDelegate {
 
+    var lastScrollOffset: CGFloat = 0.0
+    
     @IBOutlet weak var headPhoto: UIImageView!
+    
     @IBOutlet weak var nameField: UITextField!
+    
+    @IBOutlet weak var sexLabel: UILabel!
+    
+    @IBOutlet weak var ageLabel: UILabel!
+    
+    @IBOutlet weak var areaLabel: UILabel!
+    
+    @IBOutlet weak var signField: UITextField!
+    
+    @IBOutlet weak var addressField: UILabel!
+    
+    let sexChoices = ["男", "女"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
+        nameField.delegate = self
+        signField.delegate = self
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -33,10 +51,60 @@ class EditUserViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 7
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        hideKeyBoard()
+        switch indexPath.row {
+        case 2:
+            ActionSheetStringPicker.showPickerWithTitle("", rows: sexChoices, initialSelection: 0, doneBlock: { picker, selectedIndex, selectedValue in
+                self.sexLabel.text = self.sexChoices[selectedIndex]
+                }, cancelBlock: { _ in
+                    
+                }, origin: cell)
+            break
+        case 3:
+            ActionSheetDatePicker.showPickerWithTitle("生日", datePickerMode: .Date, selectedDate: NSDate(), doneBlock: { picker, selectedValue, selectedIndex in
+                let birthday = selectedValue as! NSDate
+                self.ageLabel.text = DateUtil.getAgeFromBirthday((birthday)) + "岁"
+                }, cancelBlock: { _ in
+                
+                }, origin: cell)
+            break
+        default:
+            break
+        }
+    }
+    
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        if scrollView == tableView {
+            let y = scrollView.contentOffset.y
+            if y < lastScrollOffset {
+                hideKeyBoard()
+            }
+            lastScrollOffset = y
+        }
+    }
 
     @IBAction func save(sender: UIBarButtonItem) {
-        print(nameField.text!)
+        navigationController?.popViewControllerAnimated(true)
     }
+    
+    func hideKeyBoard() {
+        if nameField.isFirstResponder() {
+            nameField.resignFirstResponder()
+        }
+        if signField.isFirstResponder() {
+            signField.resignFirstResponder()
+        }
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)

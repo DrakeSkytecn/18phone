@@ -115,7 +115,6 @@
     // TODO: Make separate class? since things like public_addr might be useful to some.
     pjsua_transport_config transportConfig;
     pjsua_transport_config_default(&transportConfig);
-    
     pjsip_transport_type_e transportType = 0;
     switch (_config.transportType) {
         case GSUDPTransportType: transportType = PJSIP_TRANSPORT_UDP; break;

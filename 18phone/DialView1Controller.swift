@@ -80,7 +80,7 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
         /// 粘贴和删除按键要展示的布局
         case 9:
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(R.reuseIdentifier.dial_2.identifier, forIndexPath: indexPath) as! DialIconCell
-            cell.icon.image = R.image.paste()
+            cell.icon.image = R.image.add_contact()
             //cell.effect.addTarget(self, action: #selector(clickDialButton(_:)), forControlEvents: .TouchUpInside)
             
             return cell

@@ -51,10 +51,12 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 40 images.
+  /// This `R.image` struct is generated, and contains static references to 41 images.
   struct image {
     /// Image `about`.
     static let about = ImageResource(bundle: _R.hostingBundle, name: "about")
+    /// Image `add_contact`.
+    static let add_contact = ImageResource(bundle: _R.hostingBundle, name: "add_contact")
     /// Image `answer`.
     static let answer = ImageResource(bundle: _R.hostingBundle, name: "answer")
     /// Image `backup`.
@@ -137,6 +139,11 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "about", bundle: ..., traitCollection: ...)`
     static func about(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
       return UIImage(resource: R.image.about, compatibleWithTraitCollection: traitCollection)
+    }
+    
+    /// `UIImage(named: "add_contact", bundle: ..., traitCollection: ...)`
+    static func add_contact(compatibleWithTraitCollection traitCollection: UITraitCollection? = nil) -> UIImage? {
+      return UIImage(resource: R.image.add_contact, compatibleWithTraitCollection: traitCollection)
     }
     
     /// `UIImage(named: "answer", bundle: ..., traitCollection: ...)`
@@ -563,7 +570,6 @@ struct _R: Rswift.Validatable {
         if UIImage(named: "user") == nil { throw ValidationError(description: "[R.swift] Image named 'user' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "head_photo_default") == nil { throw ValidationError(description: "[R.swift] Image named 'head_photo_default' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "voice_call") == nil { throw ValidationError(description: "[R.swift] Image named 'voice_call' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIImage(named: "call") == nil { throw ValidationError(description: "[R.swift] Image named 'call' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "dial") == nil { throw ValidationError(description: "[R.swift] Image named 'dial' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "answer") == nil { throw ValidationError(description: "[R.swift] Image named 'answer' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIImage(named: "call_in_connected") == nil { throw ValidationError(description: "[R.swift] Image named 'call_in_connected' is used in storyboard 'Main', but couldn't be loaded.") }

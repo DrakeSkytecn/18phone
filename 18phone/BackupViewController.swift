@@ -46,16 +46,21 @@ class BackupViewController: UIViewController, UITableViewDataSource, UITableView
         
         let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.backup_cell_a)
         cell!.textLabel!.text = titles[indexPath.row]
+        cell?.selectionStyle = .None
         
         switch indexPath.row {
         case 0:
             cell!.detailTextLabel!.text = "\(contactCount)人"
+            
             break
         case 1:
             cell!.detailTextLabel!.text = "\(contactCount)人"
             break
         case 2:
             cell!.detailTextLabel!.text = "上次同步2016/09/15"
+            break
+        case 3:
+            cell?.selectionStyle = .Default
             break
         case 4:
             cell?.accessoryView = UISwitch(frame: CGRectMake(0, 0, 51, 31))

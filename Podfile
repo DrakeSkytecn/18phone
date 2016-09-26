@@ -9,4 +9,5 @@ target :"18phone" do
     pod 'SwiftEventBus'
     pod 'SwiftDate'
     pod 'PageMenu'
+    pod 'ActionSheetPicker-3.0'
 end

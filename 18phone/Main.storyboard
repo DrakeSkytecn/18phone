@@ -351,11 +351,11 @@
                                     <segue destination="oxZ-MI-j1H" kind="show" id="i6l-GO-vva"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="setting_cell" rowHeight="60" id="fVc-jc-BBv">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="setting_cell" rowHeight="60" id="fVc-jc-BBv">
                                 <rect key="frame" x="0.0" y="150" width="600" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fVc-jc-BBv" id="v03-b8-SuU">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -740,7 +740,7 @@
                         <sections>
                             <tableViewSection id="kLA-aS-sHz">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="VkO-u8-fMV">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="100" id="VkO-u8-fMV">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VkO-u8-fMV" id="aSd-b0-D1i">
@@ -768,7 +768,7 @@
                                         </tableViewCellContentView>
                                         <edgeInsets key="layoutMargins" top="8" left="0.0" bottom="8" right="8"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="sXR-F1-uBh">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="60" id="sXR-F1-uBh">
                                         <rect key="frame" x="0.0" y="100" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sXR-F1-uBh" id="4ae-UU-Pde">
@@ -786,12 +786,12 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LvN-A4-52M">
-                                                    <rect key="frame" x="59" y="15" width="525" height="30"/>
+                                                    <rect key="frame" x="59" y="0.0" width="525" height="59"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="8TA-MX-Oer"/>
+                                                        <constraint firstAttribute="height" constant="59" id="8TA-MX-Oer"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -804,7 +804,7 @@
                                         </tableViewCellContentView>
                                         <edgeInsets key="layoutMargins" top="8" left="0.0" bottom="8" right="8"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="lWk-Ws-HvA">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="60" id="lWk-Ws-HvA">
                                         <rect key="frame" x="0.0" y="160" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lWk-Ws-HvA" id="Flq-5y-9rO">
@@ -821,21 +821,27 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a2q-9v-jDV">
-                                                    <rect key="frame" x="279" y="19" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a2q-9v-jDV">
+                                                    <rect key="frame" x="67" y="19" width="517" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="IZI-5e-pEE"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="a2q-9v-jDV" firstAttribute="leading" secondItem="tX6-sV-tTd" secondAttribute="trailing" constant="16" id="497-Ul-4i9"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="a2q-9v-jDV" secondAttribute="trailing" constant="8" id="7TS-gX-USh"/>
+                                                <constraint firstItem="a2q-9v-jDV" firstAttribute="centerY" secondItem="Flq-5y-9rO" secondAttribute="centerY" id="NZQ-4u-1DN"/>
                                                 <constraint firstItem="tX6-sV-tTd" firstAttribute="centerY" secondItem="Flq-5y-9rO" secondAttribute="centerY" id="iu0-Yu-ljv"/>
                                                 <constraint firstItem="tX6-sV-tTd" firstAttribute="leading" secondItem="Flq-5y-9rO" secondAttribute="leadingMargin" constant="8" id="w9b-Mv-Ndy"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <edgeInsets key="layoutMargins" top="8" left="0.0" bottom="8" right="8"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="fKP-Xo-sox">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="60" id="fKP-Xo-sox">
                                         <rect key="frame" x="0.0" y="220" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fKP-Xo-sox" id="0CB-3O-OVC">
@@ -852,15 +858,27 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LTs-b1-S8X">
+                                                    <rect key="frame" x="67" y="19" width="517" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="Fm3-AR-1HQ"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="LTs-b1-S8X" firstAttribute="leading" secondItem="P4q-Bt-EHc" secondAttribute="trailing" constant="16" id="LhC-3k-L2H"/>
                                                 <constraint firstItem="P4q-Bt-EHc" firstAttribute="centerY" secondItem="0CB-3O-OVC" secondAttribute="centerY" id="Tar-KT-SkN"/>
                                                 <constraint firstItem="P4q-Bt-EHc" firstAttribute="leading" secondItem="0CB-3O-OVC" secondAttribute="leadingMargin" constant="8" id="XkV-VC-LnJ"/>
+                                                <constraint firstItem="LTs-b1-S8X" firstAttribute="centerY" secondItem="0CB-3O-OVC" secondAttribute="centerY" id="woP-fF-2to"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="LTs-b1-S8X" secondAttribute="trailing" constant="8" id="x50-uw-CTN"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <edgeInsets key="layoutMargins" top="8" left="0.0" bottom="8" right="8"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="Usc-fw-qae">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="60" id="Usc-fw-qae">
                                         <rect key="frame" x="0.0" y="280" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Usc-fw-qae" id="Ild-Jh-hMa">
@@ -877,15 +895,27 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3i-7h-jvx">
+                                                    <rect key="frame" x="67" y="19" width="517" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="MwS-bY-deJ"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="I3i-7h-jvx" secondAttribute="trailing" constant="8" id="171-aT-pyG"/>
                                                 <constraint firstItem="Ljc-nV-cJA" firstAttribute="centerY" secondItem="Ild-Jh-hMa" secondAttribute="centerY" id="42p-0O-rup"/>
+                                                <constraint firstItem="I3i-7h-jvx" firstAttribute="centerY" secondItem="Ild-Jh-hMa" secondAttribute="centerY" id="Y49-g9-0Sd"/>
+                                                <constraint firstItem="I3i-7h-jvx" firstAttribute="leading" secondItem="Ljc-nV-cJA" secondAttribute="trailing" constant="16" id="cG0-lJ-tJZ"/>
                                                 <constraint firstItem="Ljc-nV-cJA" firstAttribute="leading" secondItem="Ild-Jh-hMa" secondAttribute="leadingMargin" constant="8" id="fvR-UX-OAg"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <edgeInsets key="layoutMargins" top="8" left="0.0" bottom="8" right="8"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="Mme-8p-pml">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="60" id="Mme-8p-pml">
                                         <rect key="frame" x="0.0" y="340" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mme-8p-pml" id="jCc-2g-Hns">
@@ -903,16 +933,16 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mjM-CR-DDY">
-                                                    <rect key="frame" x="94" y="15" width="490" height="30"/>
+                                                    <rect key="frame" x="102" y="0.0" width="482" height="59"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="MAo-Pn-0Ih"/>
+                                                        <constraint firstAttribute="height" constant="59" id="MAo-Pn-0Ih"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="mjM-CR-DDY" firstAttribute="leading" secondItem="poW-0t-a4M" secondAttribute="trailing" constant="8" symbolic="YES" id="CDe-Se-gGN"/>
+                                                <constraint firstItem="mjM-CR-DDY" firstAttribute="leading" secondItem="poW-0t-a4M" secondAttribute="trailing" constant="16" id="CDe-Se-gGN"/>
                                                 <constraint firstItem="poW-0t-a4M" firstAttribute="leading" secondItem="jCc-2g-Hns" secondAttribute="leadingMargin" constant="8" id="RVW-WW-ziC"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="mjM-CR-DDY" secondAttribute="trailing" constant="8" id="VIW-Ev-Xok"/>
                                                 <constraint firstItem="mjM-CR-DDY" firstAttribute="centerY" secondItem="poW-0t-a4M" secondAttribute="centerY" id="b1U-EI-X8O"/>
@@ -938,8 +968,20 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4P-me-qPg">
+                                                    <rect key="frame" x="102" y="19" width="457" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="gHu-Oe-BF7"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="e4P-me-qPg" firstAttribute="leading" secondItem="Lew-cH-Bqq" secondAttribute="trailing" constant="16" id="9V6-nX-tPT"/>
+                                                <constraint firstItem="e4P-me-qPg" firstAttribute="trailing" secondItem="w6q-HB-YOs" secondAttribute="trailingMargin" id="A7U-zV-FoI"/>
+                                                <constraint firstItem="e4P-me-qPg" firstAttribute="centerY" secondItem="w6q-HB-YOs" secondAttribute="centerY" id="JDb-Ul-Uoe"/>
                                                 <constraint firstItem="Lew-cH-Bqq" firstAttribute="centerY" secondItem="w6q-HB-YOs" secondAttribute="centerY" id="Vcm-lm-Sat"/>
                                                 <constraint firstItem="Lew-cH-Bqq" firstAttribute="leading" secondItem="w6q-HB-YOs" secondAttribute="leadingMargin" constant="8" id="u7f-RZ-4lC"/>
                                             </constraints>
@@ -963,8 +1005,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addressField" destination="e4P-me-qPg" id="0DM-PP-dZz"/>
+                        <outlet property="ageLabel" destination="LTs-b1-S8X" id="eh4-0z-cvm"/>
+                        <outlet property="areaLabel" destination="I3i-7h-jvx" id="ERd-c7-wyN"/>
                         <outlet property="headPhoto" destination="vRK-pH-TGg" id="LSI-YV-INM"/>
                         <outlet property="nameField" destination="LvN-A4-52M" id="9Hl-50-s97"/>
+                        <outlet property="sexLabel" destination="a2q-9v-jDV" id="es4-0d-nGL"/>
+                        <outlet property="signField" destination="mjM-CR-DDY" id="o0n-gv-SOI"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nxs-Pp-Aqd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1523,12 +1570,12 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8LY-YD-oWB" customClass="ZFRippleButton" customModule="_8phone" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
                                                     <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="rippleOverBounds" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="rippleOverBounds" value="NO"/>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="rippleBackgroundColor">
                                                             <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="touchUpAnimationTime">
-                                                            <real key="value" value="0.40000000000000002"/>
+                                                            <real key="value" value="0.29999999999999999"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="ripplePercent">
                                                             <real key="value" value="1.7"/>
@@ -1556,7 +1603,7 @@
                                                 <integer key="value" value="35"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                <real key="value" value="0.20000000000000001"/>
+                                                <real key="value" value="0.10000000000000001"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
                                                 <color key="value" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
@@ -1578,19 +1625,19 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wOv-ox-1pX" customClass="ZFRippleButton" customModule="_8phone" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
                                                     <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="rippleOverBounds" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="rippleOverBounds" value="NO"/>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="rippleBackgroundColor">
                                                             <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="touchUpAnimationTime">
-                                                            <real key="value" value="0.40000000000000002"/>
+                                                            <real key="value" value="0.29999999999999999"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="ripplePercent">
                                                             <real key="value" value="1.7"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6VI-Yu-Wk2">
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6VI-Yu-Wk2">
                                                     <rect key="frame" x="22" y="22" width="26" height="26"/>
                                                 </imageView>
                                             </subviews>
@@ -1602,7 +1649,7 @@
                                                 <integer key="value" value="35"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                <real key="value" value="0.20000000000000001"/>
+                                                <real key="value" value="0.10000000000000001"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
                                                 <color key="value" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
@@ -1623,12 +1670,12 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L0I-xx-t4C" customClass="ZFRippleButton" customModule="_8phone" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
                                                     <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="rippleOverBounds" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="rippleOverBounds" value="NO"/>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="rippleBackgroundColor">
                                                             <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="touchUpAnimationTime">
-                                                            <real key="value" value="0.40000000000000002"/>
+                                                            <real key="value" value="0.29999999999999999"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="ripplePercent">
                                                             <real key="value" value="1.7"/>
@@ -1650,7 +1697,7 @@
                                                 <integer key="value" value="35"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                <real key="value" value="0.20000000000000001"/>
+                                                <real key="value" value="0.10000000000000001"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="layer.borderUIColor">
                                                 <color key="value" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
@@ -1667,19 +1714,27 @@
                                     <outlet property="delegate" destination="LS6-Bl-nv0" id="n6H-mL-aNy"/>
                                 </connections>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1f5-Lh-9TK">
-                                <rect key="frame" x="270" y="411" width="60" height="60"/>
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1f5-Lh-9TK" customClass="ZFRippleButton" customModule="_8phone" customModuleProvider="target">
+                                <rect key="frame" x="267" y="411" width="65" height="65"/>
                                 <color key="backgroundColor" red="0.14901960784313725" green="0.67843137254901964" blue="0.33725490196078434" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="0QL-rl-OCl"/>
-                                    <constraint firstAttribute="width" constant="60" id="XDk-S5-ADk"/>
+                                    <constraint firstAttribute="height" constant="65" id="0QL-rl-OCl"/>
+                                    <constraint firstAttribute="width" constant="65" id="XDk-S5-ADk"/>
                                 </constraints>
                                 <state key="normal" image="dial"/>
-                                <state key="selected" image="dial"/>
-                                <state key="highlighted" image="call"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="30"/>
+                                        <real key="value" value="32.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="rippleOverBounds" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="rippleBackgroundColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="touchUpAnimationTime">
+                                        <real key="value" value="0.29999999999999999"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="ripplePercent">
+                                        <real key="value" value="1.7"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -1689,8 +1744,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="1f5-Lh-9TK" firstAttribute="centerX" secondItem="l2Y-lf-zMZ" secondAttribute="centerX" id="3JD-c1-7AF"/>
-                            <constraint firstItem="xPj-Ic-1iH" firstAttribute="top" secondItem="1f5-Lh-9TK" secondAttribute="bottom" constant="16" id="761-d7-Kc2"/>
+                            <constraint firstItem="1f5-Lh-9TK" firstAttribute="centerX" secondItem="l2Y-lf-zMZ" secondAttribute="centerX" constant="-0.5" id="3JD-c1-7AF"/>
+                            <constraint firstItem="xPj-Ic-1iH" firstAttribute="top" secondItem="1f5-Lh-9TK" secondAttribute="bottom" constant="11" id="761-d7-Kc2"/>
                             <constraint firstItem="Iyz-5V-ugS" firstAttribute="centerX" secondItem="l2Y-lf-zMZ" secondAttribute="centerX" id="KJZ-og-Igd"/>
                             <constraint firstItem="vg4-LX-Bhu" firstAttribute="leading" secondItem="l2Y-lf-zMZ" secondAttribute="leading" id="XwZ-Ze-GRK"/>
                             <constraint firstAttribute="trailing" secondItem="vg4-LX-Bhu" secondAttribute="trailing" id="ZW8-KL-qqm"/>
@@ -2322,7 +2377,6 @@
     </scenes>
     <resources>
         <image name="answer" width="32" height="32"/>
-        <image name="call" width="24" height="24"/>
         <image name="call_in_connected" width="11" height="8"/>
         <image name="delete_all" width="17" height="22"/>
         <image name="dial" width="48" height="48"/>
