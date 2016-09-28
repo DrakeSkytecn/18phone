@@ -29,6 +29,7 @@
 		E111AEFC1D8E6D3C0045E2E2 /* libsrtp-armv7-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E111AEF51D8E6D3C0045E2E2 /* libsrtp-armv7-apple-darwin_ios.a */; };
 		E111AEFD1D8E6D3C0045E2E2 /* libyuv-armv7-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E111AEF61D8E6D3C0045E2E2 /* libyuv-armv7-apple-darwin_ios.a */; };
 		E111AEFF1D8E9A140045E2E2 /* BackupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E111AEFE1D8E9A140045E2E2 /* BackupViewController.swift */; };
+		E11227D01D9B5F3200B08ACD /* LoginCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11227CF1D9B5F3200B08ACD /* LoginCell.swift */; };
 		E114D1C41D4F1F15006AB978 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E114D1C31D4F1F15006AB978 /* AppDelegate.swift */; };
 		E114D1C61D4F1F15006AB978 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E114D1C51D4F1F15006AB978 /* ContactViewController.swift */; };
 		E114D1CE1D4F1F15006AB978 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E114D1CC1D4F1F15006AB978 /* LaunchScreen.storyboard */; };
@@ -76,6 +77,8 @@
 		E1721F301D90E27500A67C5B /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1721F2F1D90E27500A67C5B /* QRCodeViewController.swift */; };
 		E1721F321D910D4D00A67C5B /* ContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1721F311D910D4D00A67C5B /* ContactDetailViewController.swift */; };
 		E1838A101D8F959A0043F0A8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1838A0F1D8F959A0043F0A8 /* CoreLocation.framework */; };
+		E193274D1D9A51BA006BA8B2 /* CheckAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E193274C1D9A51BA006BA8B2 /* CheckAccountViewController.swift */; };
+		E19327511D9A6623006BA8B2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19327501D9A6623006BA8B2 /* LoginViewController.swift */; };
 		E199E03F1D97FBE7001237AD /* EditUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E199E03E1D97FBE7001237AD /* EditUserViewController.swift */; };
 		E19AAD441D51DF480053D2C3 /* CallConView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E19AAD431D51DF480053D2C3 /* CallConView.xib */; };
 		E19AAD461D51DF6A0053D2C3 /* CallConView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19AAD451D51DF690053D2C3 /* CallConView.swift */; };
@@ -163,6 +166,7 @@
 		E111AEF51D8E6D3C0045E2E2 /* libsrtp-armv7-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libsrtp-armv7-apple-darwin_ios.a"; path = "pjproject-2.5.5/third_party/lib/libsrtp-armv7-apple-darwin_ios.a"; sourceTree = "<group>"; };
 		E111AEF61D8E6D3C0045E2E2 /* libyuv-armv7-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libyuv-armv7-apple-darwin_ios.a"; path = "pjproject-2.5.5/third_party/lib/libyuv-armv7-apple-darwin_ios.a"; sourceTree = "<group>"; };
 		E111AEFE1D8E9A140045E2E2 /* BackupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackupViewController.swift; sourceTree = "<group>"; };
+		E11227CF1D9B5F3200B08ACD /* LoginCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginCell.swift; sourceTree = "<group>"; };
 		E114D1C01D4F1F13006AB978 /* 18phone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 18phone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E114D1C31D4F1F15006AB978 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E114D1C51D4F1F15006AB978 /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
@@ -214,6 +218,8 @@
 		E1721F2F1D90E27500A67C5B /* QRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
 		E1721F311D910D4D00A67C5B /* ContactDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactDetailViewController.swift; sourceTree = "<group>"; };
 		E1838A0F1D8F959A0043F0A8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		E193274C1D9A51BA006BA8B2 /* CheckAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckAccountViewController.swift; sourceTree = "<group>"; };
+		E19327501D9A6623006BA8B2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E199E03E1D97FBE7001237AD /* EditUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditUserViewController.swift; sourceTree = "<group>"; };
 		E19AAD431D51DF480053D2C3 /* CallConView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CallConView.xib; sourceTree = "<group>"; };
 		E19AAD451D51DF690053D2C3 /* CallConView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallConView.swift; sourceTree = "<group>"; };
@@ -574,6 +580,8 @@
 				E11E37E71D94CCC6004B566D /* UserCenterViewController.swift */,
 				E15C4C391D965DA700688086 /* MessageViewController.swift */,
 				E199E03E1D97FBE7001237AD /* EditUserViewController.swift */,
+				E193274C1D9A51BA006BA8B2 /* CheckAccountViewController.swift */,
+				E19327501D9A6623006BA8B2 /* LoginViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -592,6 +600,7 @@
 				E140B1861D8E36FA00178D74 /* ShowNumberCon.swift */,
 				E1626D581D93BA7100C3422C /* DetailLogCell.swift */,
 				E11E37E51D94C619004B566D /* UserDetailCell.swift */,
+				E11227CF1D9B5F3200B08ACD /* LoginCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -796,6 +805,7 @@
 				E16453EA1D6AA3150036B53F /* Contact.swift in Sources */,
 				E13BACDB1D51946B00414ACE /* KTabBarController.swift in Sources */,
 				E1721F301D90E27500A67C5B /* QRCodeViewController.swift in Sources */,
+				E193274D1D9A51BA006BA8B2 /* CheckAccountViewController.swift in Sources */,
 				E13BACE21D5196EE00414ACE /* DialNumberCell.swift in Sources */,
 				E138D0791D630B7A0091AF4A /* IncomingCallViewController.swift in Sources */,
 				E1C0486E1D867F650009DF6B /* GSOutgoingCall.m in Sources */,
@@ -816,6 +826,7 @@
 				E1C0486D1D867F650009DF6B /* GSNotifications.m in Sources */,
 				E115A0451D6D762C005FCB8F /* README.md in Sources */,
 				E13BACD21D518FF000414ACE /* StatusCode.swift in Sources */,
+				E19327511D9A6623006BA8B2 /* LoginViewController.swift in Sources */,
 				E13BACD01D518FF000414ACE /* Operation.swift in Sources */,
 				E1C048691D867F650009DF6B /* GSCodecInfo.m in Sources */,
 				E13BACDD1D51946B00414ACE /* CallLogViewController.swift in Sources */,
@@ -843,6 +854,7 @@
 				E1721F321D910D4D00A67C5B /* ContactDetailViewController.swift in Sources */,
 				E12EBA841D532447007B5CBD /* piQ.swift in Sources */,
 				E11E37E81D94CCC6004B566D /* UserCenterViewController.swift in Sources */,
+				E11227D01D9B5F3200B08ACD /* LoginCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

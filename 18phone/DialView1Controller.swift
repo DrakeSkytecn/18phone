@@ -77,11 +77,11 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
             cell.effect.addTarget(self, action: #selector(clickDialButton(_:)), forControlEvents: .TouchUpInside)
             return cell
             
-        /// 粘贴和删除按键要展示的布局
+        /// 添加和删除按键要展示的布局
         case 9:
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(R.reuseIdentifier.dial_2.identifier, forIndexPath: indexPath) as! DialIconCell
             cell.icon.image = R.image.add_contact()
-            //cell.effect.addTarget(self, action: #selector(clickDialButton(_:)), forControlEvents: .TouchUpInside)
+            cell.effect.addTarget(self, action: #selector(addContact(_:)), forControlEvents: .TouchUpInside)
             
             return cell
         case 11:
@@ -102,7 +102,6 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
         case 0...8, 10:
             
             if temp?.characters.count < 12 {
-                //addContactBtn.hidden = false
                 let number = (collectionView.cellForItemAtIndexPath(indexPath) as!DialNumberCell).number.text
                 temp = temp! + number!
                 numberText.text = temp
@@ -121,7 +120,7 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
                 temp = temp?.substringToIndex(temp!.startIndex.advancedBy(length! - 1))
                 numberText.text = temp
                 if length == 1 {
-                    //addContactBtn.hidden = true
+                    
                 }
                 checkNumberArea(temp)
             }
@@ -192,14 +191,26 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
             temp = temp?.substringToIndex(temp!.startIndex.advancedBy(length! - 1))
             numberText.text = temp
             if length == 1 {
-                //addContactBtn.hidden = true
+                
             }
             checkNumberArea(temp)
         }
     }
     
-    @IBAction func addContact(sender: UIButton) {
-        
+    func addContact(sender: UIButton) {
+        if !numberText.text!.isEmpty {
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+            alertController.addAction(UIAlertAction(title: "新增联系人", style: .Default) { action in
+                
+                })
+            alertController.addAction(UIAlertAction(title: "加入到现有的联系人", style: .Default) { action in
+                
+                })
+            alertController.addAction(UIAlertAction(title: "取消", style: .Cancel) { action in
+                
+                })
+            presentViewController(alertController, animated: true, completion: nil)
+        }
     }
     
     /**

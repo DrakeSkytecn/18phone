@@ -32,7 +32,6 @@ class KTabBarController: UITabBarController {
         case 1:
             (viewControllers![1].childViewControllers[0] as! RootViewController).changeMenuState(item)
         default:
-            tabBar.items![1].title = "拨打"
             break
         }
     }

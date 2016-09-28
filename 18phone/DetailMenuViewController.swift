@@ -10,6 +10,8 @@ import UIKit
 
 class DetailMenuViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    var identifier: String?
+    var name: String?
     var phones: [String]?
     
     @IBOutlet weak var tableView: UITableView!
@@ -42,7 +44,7 @@ class DetailMenuViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.detail_phone_cell)
-        let phoneNumber = PhoneUtil.formatPhoneNumber(phones![indexPath.row])
+        let phoneNumber = phones![indexPath.row]
         cell?.textLabel?.text = phoneNumber
         cell?.detailTextLabel?.text = "未知归属地"
         PhoneUtil.getPhoneAreaInfo(phoneNumber) { phoneAreaInfo in
@@ -52,6 +54,30 @@ class DetailMenuViewController: UIViewController, UITableViewDataSource, UITable
         }
 
         return cell!
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        PhoneUtil.callSystemPhone(phones![indexPath.row])
+        addCallLog(phones![indexPath.row], area: tableView.cellForRowAtIndexPath(indexPath)!.detailTextLabel!.text!)
+    }
+    
+    func addCallLog(number: String, area: String) {
+        let callLog = CallLog()
+        callLog.identifier = identifier!
+        callLog.name = name!
+        callLog.phone = number
+        if true {
+            callLog.callState = CallState.OutConnected.rawValue
+        } else {
+            callLog.callState = CallState.OutUnConnected.rawValue
+        }
+        callLog.callType = CallType.Voice.rawValue
+        callLog.callStartTime = NSDate()
+        callLog.area = area
+        try! App.realm.write {
+            App.realm.add(callLog)
+        }
     }
     /*
     // MARK: - Navigation

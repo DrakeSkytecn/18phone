@@ -28,9 +28,6 @@ class BackupViewController: UIViewController, UITableViewDataSource, UITableView
         try! store.enumerateContactsWithFetchRequest(fetchRequest) {(let contact, let stop) -> Void in
             self.contactCount = self.contactCount + 1
         }
-        print("count \(contactCount)")
-        
-        // Do any additional setup after loading the view.
     }
     
     override func didReceiveMemoryWarning() {

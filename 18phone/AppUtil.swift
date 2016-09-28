@@ -19,12 +19,12 @@ struct URL {
     static let phoneAreaUrl = "http://apis.baidu.com/apistore/mobilenumber/mobilenumber"
     
     /// 比一比SIP服务器地址
-    static let BEYEBE_SIP_SERVER = "211.149.172.109:5060"
-//    static let BEYEBE_SIP_SERVER = "192.168.10.92:5060"
+//    static let BEYEBE_SIP_SERVER = "211.149.172.109:5060"
+    static let BEYEBE_SIP_SERVER = "192.168.10.239:5060"
     
     /// 比一比SIP服务器域名
-    static let BEYEBE_SIP_DOMAIN = "18phone.beyebe"
-//    static let BEYEBE_SIP_DOMAIN = "myvoipapp.com"
+//    static let BEYEBE_SIP_DOMAIN = "18phone.beyebe"
+    static let BEYEBE_SIP_DOMAIN = "myvoipapp.com"
 }
 
 /**

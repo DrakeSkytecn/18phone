@@ -73,13 +73,12 @@ class RootViewController: UIViewController, GSAccountDelegate {
         if !isViewHidden {
             if isMenuShow {
                 hide()
-                item.selectedImage = R.image.dial_up()
-                item.title = "展开"
+//                item.selectedImage = R.image.dial_up()
+//                item.title = "展开"
             } else {
-                print("收起")
                 show()
-                item.selectedImage = R.image.dial_down()
-                item.title = "收起"
+//                item.selectedImage = R.image.dial_down()
+//                item.title = "收起"
             }
         }
     }

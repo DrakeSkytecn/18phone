@@ -63,8 +63,8 @@ class ContactDetailViewController: UIViewController {
         } else {
             headPhoto.image = R.image.head_photo_default()
         }
-        
-        nameLabel.text = contact.familyName + contact.givenName
+        let fullName = contact.familyName + contact.givenName
+        nameLabel.text = fullName
         
         switch appContactInfo!.sex {
         case Sex.Male.rawValue:
@@ -85,8 +85,10 @@ class ContactDetailViewController: UIViewController {
         phones.removeAll()
         for number in contact.phoneNumbers {
             let phoneNumber = (number.value as! CNPhoneNumber).stringValue
-            phones.append(phoneNumber)
+            phones.append(PhoneUtil.formatPhoneNumber(phoneNumber))
         }
+        detailMenuViewController?.identifier = contactId
+        detailMenuViewController?.name = fullName
         detailMenuViewController?.phones = phones
         callLogMenuViewController?.contactId = contactId
     }
@@ -100,7 +102,10 @@ class ContactDetailViewController: UIViewController {
             .SelectedMenuItemLabelColor(UIColor(red: 38.0/255.0, green: 173.0/255.0, blue: 86.0/255.0, alpha: 1.0)),
             .UnselectedMenuItemLabelColor(UIColor.blackColor()),
             .BottomMenuHairlineColor(UIColor(red: 70.0/255.0, green: 70.0/255.0, blue: 80.0/255.0, alpha: 1.0)),
-            .CenterMenuItems(true)
+            .CenterMenuItems(true),
+            .MenuItemWidth(Screen.width / 2),
+            .MenuMargin(0.0),
+            
         ]
         
         pageMenu = CAPSPageMenu(viewControllers: controllerArray, frame: CGRectMake(0, detailCon.frame.height, Screen.width, view.frame.height - detailCon.frame.height), pageMenuOptions: parameters)

@@ -17,11 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         window?.backgroundColor = UIColor.whiteColor()
-
-        App.autoLogin("18823754172", password: "123")
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor(red: 38.0 / 255.0, green: 173.0 / 255.0, blue: 86.0 / 255.0, alpha: 1.0)], forState: .Selected)
+        
+//        App.autoLogin("18823754172", password: "123")
 //        App.autoLogin("15016721385", password: "123")
 //        App.autoLogin("18603001016", password: "123")
-//        App.autoLogin("100", password: "100")
+        App.autoLogin("100", password: "100")
         
         return true
     }
