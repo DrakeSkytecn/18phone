@@ -357,7 +357,6 @@
 		A13A5015FDD7155192CC0662 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E1838A0F1D8F959A0043F0A8 /* CoreLocation.framework */,
 				E111AEF01D8E6D3C0045E2E2 /* libg7221codec-armv7-apple-darwin_ios.a */,
 				E111AEF11D8E6D3C0045E2E2 /* libgsmcodec-armv7-apple-darwin_ios.a */,
 				E111AEF21D8E6D3C0045E2E2 /* libilbccodec-armv7-apple-darwin_ios.a */,
@@ -400,6 +399,7 @@
 				E1C048A01D8691C60009DF6B /* libyuv-arm64-apple-darwin_ios.a */,
 				E1C048981D8691AE0009DF6B /* libg7221codec-arm64-apple-darwin_ios.a */,
 				E1C048D31D8697770009DF6B /* libstdc++.tbd */,
+				E1838A0F1D8F959A0043F0A8 /* CoreLocation.framework */,
 				E1DE61841D894E3F00321B47 /* CoreTelephony.framework */,
 				E1C048D11D8697690009DF6B /* CFNetwork.framework */,
 				E1C048CF1D8694D30009DF6B /* CoreFoundation.framework */,

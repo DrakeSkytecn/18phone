@@ -32,7 +32,7 @@ class IncomingVideoViewController: UIViewController {
     }
     
     @IBAction func answer(sender: UIButton) {
-        inCall?.begin()
+        inCall?.beginVideo()
     }
     
     func callStatusDidChange() {
@@ -52,7 +52,6 @@ class IncomingVideoViewController: UIViewController {
             
         case GSCallStatusConnected:
             print("IncomingCallViewController Connected.")
-            //inCall?.setIncomingVideoStream()
             let videoView = self.inCall?.createVideoWindow()
             videoView?.frame = self.view.frame
             videoCon.addSubview(videoView!)

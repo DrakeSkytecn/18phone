@@ -15,6 +15,4 @@
 - (GSOutgoingCall *)initWithRemoteUri:(NSString *)remoteUri
             fromAccount:(GSAccount *)account;
 
-- (BOOL)beginVoice:(NSString *)phoneNumber withArea:(NSString *)area;
-
 @end

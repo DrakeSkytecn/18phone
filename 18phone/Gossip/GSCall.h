@@ -56,13 +56,15 @@ typedef enum {
 - (BOOL)begin; ///< Begins calling for outgoing call or answer incoming call.
 - (BOOL)end; ///< Stop calling and/or hangup call.
 
+- (BOOL)beginVideo;
+
 - (void)setOutgoingVideoStream;
 
 - (void)setIncomingVideoStream;
 
 - (UIView *)createVideoWindow;
 
-- (UIView *)createPreviewWindow;
+- (UIView *)createPreviewWindow:(CGRect)frame;
 
 - (BOOL)sendDTMFDigits:(NSString *)digits; ///< Sends DTMF digits over the call.
 

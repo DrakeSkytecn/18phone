@@ -76,7 +76,6 @@
 - (BOOL)configure:(GSConfiguration *)config {
     GSAssert(!_config, @"Gossip: User agent is already configured.");
     _config = [config copy];
-    
     // create agent
     GSReturnNoIfFails(pjsua_create());
     [self setStatus:GSUserAgentStateCreated];

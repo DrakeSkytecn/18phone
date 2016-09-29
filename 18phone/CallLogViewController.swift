@@ -103,9 +103,9 @@ class CallLogViewController: UITableViewController {
             self.presentViewController(outgoingCallViewController!, animated: true, completion: nil)
             })
         alertController.addAction(UIAlertAction(title: "视频通话", style: .Default) { action in
-            let outgoingVideoViewController = OutgoingVideoViewController()
-            outgoingVideoViewController.toNumber = callLog.phone
-            self.presentViewController(outgoingVideoViewController, animated: true, completion: nil)
+            let outgoingVideoViewController = R.storyboard.main.outgoingVideoViewController()
+            outgoingVideoViewController!.toNumber = callLog.phone
+            self.presentViewController(outgoingVideoViewController!, animated: true, completion: nil)
             })
         alertController.addAction(UIAlertAction(title: "举报", style: .Destructive) { action in
             

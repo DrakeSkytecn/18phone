@@ -72,12 +72,15 @@
     accConfig.reg_uri = [GSPJUtil PJAddressWithString:_config.domain];
     accConfig.register_on_acc_add = PJ_FALSE; // connect manually
     accConfig.publish_enabled = _config.enableStatusPublishing ? PJ_TRUE : PJ_FALSE;
-    pj_str_t pro = pj_str("H263/90000");
+    pj_str_t pro = pj_str("H264");
     pjsua_vid_codec_set_priority(&pro,255);
     accConfig.vid_in_auto_show = PJ_TRUE;
     accConfig.vid_out_auto_transmit = PJ_TRUE;
     accConfig.vid_wnd_flags = PJMEDIA_VID_DEV_WND_BORDER |
     PJMEDIA_VID_DEV_WND_RESIZABLE;
+    accConfig.vid_cap_dev = PJMEDIA_VID_DEFAULT_CAPTURE_DEV;
+    accConfig.vid_rend_dev = PJMEDIA_VID_DEFAULT_RENDER_DEV;
+    
     if (!_config.proxyServer) {
         accConfig.proxy_cnt = 0;
     } else {

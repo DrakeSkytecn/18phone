@@ -141,8 +141,12 @@
     return result;
 }
 
-
 - (BOOL)begin {
+    // for child overrides only
+    return NO;
+}
+
+- (BOOL)beginVideo {
     // for child overrides only
     return NO;
 }
@@ -221,22 +225,27 @@
     return view;
 }
 
-- (UIView *)createPreviewWindow {
-    pjsua_vid_win_id wid = 0;
+- (UIView *)createPreviewWindow:(CGRect)frame {
+    pj_thread_desc desc;
+    pj_thread_t *thread = 0;
+    if(!pj_thread_is_registered())
+    {
+        pj_thread_register(NULL,desc,&thread);
+    }
     pjsua_vid_preview_param preview_param;
-    
     pjsua_vid_preview_param_default(&preview_param);
     preview_param.wnd_flags = PJMEDIA_VID_DEV_WND_BORDER |
     PJMEDIA_VID_DEV_WND_RESIZABLE;
     pjsua_vid_preview_start(PJMEDIA_VID_DEFAULT_CAPTURE_DEV, &preview_param);
     
+    pjsua_vid_win_id wid = 0;
     wid = pjsua_vid_preview_get_win(PJMEDIA_VID_DEFAULT_CAPTURE_DEV);
     pjmedia_coord rect;
-    rect.x = 10;
-    rect.y = 300;
+    rect.x = 0;
+    rect.y = 0;
     pjmedia_rect_size rect_size;
-    rect_size.h = 600;
-    rect_size.w = 250;
+    rect_size.h = frame.size.height;
+    rect_size.w = frame.size.width;
     pjsua_vid_win_set_size(wid,&rect_size);
     pjsua_vid_win_set_pos(wid,&rect);
     
