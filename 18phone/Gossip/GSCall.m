@@ -185,6 +185,12 @@
 }
 
 - (UIView *)createVideoWindow {
+    pj_thread_desc desc;
+    pj_thread_t *thread = 0;
+    if(!pj_thread_is_registered())
+    {
+        pj_thread_register(NULL,desc,&thread);
+    }
     NSLog(@"_callId:%d", _callId);
     // 获取窗口ID
     int vid_idx;
@@ -206,21 +212,21 @@
     NSLog(@"wid:%d", wid);
     //设置窗口位置大小
     pjmedia_coord rect;
-    rect.x = 10;
-    rect.y = 300;
+    rect.x = 0;
+    rect.y = 0;
     pjmedia_rect_size rect_size;
-    rect_size.h = 600;
-    rect_size.w = 250;
-    pjsua_vid_win_set_size(wid,&rect_size);
+//    rect_size.h = 600;
+//    rect_size.w = 250;
+    //pjsua_vid_win_set_size(wid,&rect_size);
     pjsua_vid_win_set_pos(wid,&rect);
     
     pjsua_vid_win_info win_info;
     pjsua_vid_win_get_info(wid, &win_info);
     UIView *view = (__bridge UIView *)win_info.hwnd.info.ios.window;
-    win_info.is_native = PJ_FALSE;
+//    win_info.is_native = PJ_FALSE;
     //显示窗口
-    win_info.show = YES;
-//    pjsua_vid_win_set_show(wid,PJ_TRUE);
+//    win_info.show = YES;
+    pjsua_vid_win_set_show(wid,PJ_TRUE);
     
     return view;
 }
@@ -236,6 +242,7 @@
     pjsua_vid_preview_param_default(&preview_param);
     preview_param.wnd_flags = PJMEDIA_VID_DEV_WND_BORDER |
     PJMEDIA_VID_DEV_WND_RESIZABLE;
+    preview_param.show = PJ_TRUE;
     pjsua_vid_preview_start(PJMEDIA_VID_DEFAULT_CAPTURE_DEV, &preview_param);
     
     pjsua_vid_win_id wid = 0;

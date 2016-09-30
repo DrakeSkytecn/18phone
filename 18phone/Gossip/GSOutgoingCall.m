@@ -62,6 +62,7 @@ pj_status_t rendercb(pjmedia_vid_dev_stream *stream,
     pjsua_call_setting_default(&callSetting);
     callSetting.aud_cnt = 1;
     callSetting.vid_cnt = 1;
+    NSLog(@"callSetting.flag:%d", callSetting.flag);
     pjsua_call_id callId;
 //    NSDictionary *info=[NSDictionary dictionaryWithObjectsAndKeys:phoneNumber,@"phoneNumber",area,@"area", nil];
 //    NSData *data = [NSJSONSerialization dataWithJSONObject:info options:NSJSONWritingPrettyPrinted error:nil];

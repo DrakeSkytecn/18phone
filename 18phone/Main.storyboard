@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="PW8-L3-Heh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0yS-Oz-RnD">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -2368,10 +2368,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="avu-qG-2o1">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7QH-Ld-d2i">
                                 <rect key="frame" x="0.0" y="28" width="600" height="21"/>
                                 <constraints>
@@ -2488,6 +2484,10 @@
                                     <constraint firstAttribute="height" constant="110" id="PeR-f1-Pt4"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="avu-qG-2o1">
+                                <rect key="frame" x="20" y="57" width="50" height="100"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -2496,16 +2496,12 @@
                             <constraint firstItem="7QH-Ld-d2i" firstAttribute="top" secondItem="BM5-I1-UU9" secondAttribute="bottom" constant="8" id="7D6-La-Ccs"/>
                             <constraint firstItem="keE-Ng-bm2" firstAttribute="top" secondItem="0HS-pO-yHV" secondAttribute="bottom" constant="20" id="7mb-lm-qmw"/>
                             <constraint firstItem="fXj-sb-ohp" firstAttribute="centerX" secondItem="taD-sm-7Jk" secondAttribute="centerX" id="Dlg-2R-166"/>
-                            <constraint firstItem="avu-qG-2o1" firstAttribute="width" secondItem="taD-sm-7Jk" secondAttribute="width" id="QXE-tg-SIc"/>
                             <constraint firstItem="qSH-fY-nQv" firstAttribute="top" secondItem="7QH-Ld-d2i" secondAttribute="bottom" constant="8" id="S4p-e2-9VS"/>
                             <constraint firstItem="qSH-fY-nQv" firstAttribute="width" secondItem="taD-sm-7Jk" secondAttribute="width" id="VWr-Da-2iO"/>
                             <constraint firstItem="keE-Ng-bm2" firstAttribute="top" secondItem="fnh-XW-v0P" secondAttribute="bottom" constant="20" id="Xmu-SE-dFj"/>
                             <constraint firstItem="keE-Ng-bm2" firstAttribute="top" secondItem="fXj-sb-ohp" secondAttribute="bottom" constant="20" id="awU-1B-wM2"/>
                             <constraint firstItem="7QH-Ld-d2i" firstAttribute="width" secondItem="taD-sm-7Jk" secondAttribute="width" id="hlj-nd-30c"/>
-                            <constraint firstItem="avu-qG-2o1" firstAttribute="centerX" secondItem="taD-sm-7Jk" secondAttribute="centerX" id="s3f-wB-nfN"/>
                             <constraint firstItem="fXj-sb-ohp" firstAttribute="leading" secondItem="0HS-pO-yHV" secondAttribute="trailing" constant="8" id="szI-Wd-VUq"/>
-                            <constraint firstItem="avu-qG-2o1" firstAttribute="height" secondItem="taD-sm-7Jk" secondAttribute="height" id="w3J-qf-7TO"/>
-                            <constraint firstItem="avu-qG-2o1" firstAttribute="centerY" secondItem="taD-sm-7Jk" secondAttribute="centerY" id="yck-Fb-Owr"/>
                             <constraint firstItem="qSH-fY-nQv" firstAttribute="centerX" secondItem="taD-sm-7Jk" secondAttribute="centerX" id="zb7-g7-DVO"/>
                         </constraints>
                     </view>
@@ -2576,9 +2572,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="answer:" destination="LJ3-W9-bqD" eventType="touchUpInside" id="QmQ-w4-dhF"/>
-                                            <action selector="answer:" destination="bvw-p4-OCM" eventType="touchUpInside" id="cBR-yk-FUB"/>
-                                            <action selector="hangup:" destination="Mw7-jX-l0b" eventType="touchUpInside" id="SZy-vO-tvT"/>
+                                            <action selector="answer:" destination="bvw-p4-OCM" eventType="touchUpInside" id="GoO-FV-2jK"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="接听" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NaV-uU-TcW">

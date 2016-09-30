@@ -18,11 +18,9 @@ class DetailMenuViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("DetailMenuViewController viewDidLoad")
         tableView.tableFooterView = UIView()
         tableView.dataSource = self
         tableView.delegate = self
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

@@ -31,17 +31,10 @@ class OutgoingVideoViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         var previewWindow: UIView? = nil
         Async.background {
-            previewWindow = self.outCall!.createPreviewWindow(CGRectMake(0, 0, Screen.width, Screen.height))
-            previewWindow?.performSelectorOnMainThread(<#T##aSelector: Selector##Selector#>, withObject: <#T##AnyObject?#>, waitUntilDone: <#T##Bool#>)
+            previewWindow = self.outCall!.createPreviewWindow(self.previewCon.frame)
             }.main {
-                
-                previewWindow!.frame = CGRectMake(0, 0, Screen.width, Screen.height)
+                previewWindow!.frame = self.previewCon.frame
                 previewWindow?.backgroundColor = UIColor.blueColor()
-                print(previewWindow?.classForCoder.description())
-                print(previewWindow?.layer.frame.origin.x)
-                print(previewWindow?.layer.frame.origin.y)
-                print(previewWindow?.layer.frame.size.width)
-                print(previewWindow?.layer.frame.size.height)
                 self.previewCon.addSubview(previewWindow!)
         }
     }
@@ -72,6 +65,7 @@ class OutgoingVideoViewController: UIViewController {
         switch outCall!.status {
         case GSCallStatusReady:
             print("OutgoingCallViewController Ready.")
+            
             break
             
         case GSCallStatusConnecting:

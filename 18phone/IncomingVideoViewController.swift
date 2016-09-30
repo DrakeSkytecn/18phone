@@ -16,10 +16,7 @@ class IncomingVideoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         inCall?.addObserver(self, forKeyPath: "status", options: .Initial, context: nil)
-        
-        // Do any additional setup after loading the view.
     }
     
     override func didReceiveMemoryWarning() {
@@ -52,9 +49,16 @@ class IncomingVideoViewController: UIViewController {
             
         case GSCallStatusConnected:
             print("IncomingCallViewController Connected.")
-            let videoView = self.inCall?.createVideoWindow()
-            videoView?.frame = self.view.frame
-            videoCon.addSubview(videoView!)
+            var videoView: UIView?
+            Async.background {
+                videoView = self.inCall!.createVideoWindow()
+                }.main {
+                    videoView!.frame = self.videoCon!.frame
+                    //        videoView?.bounds = videoCon.bounds
+                    //        videoView?.center = view.center
+                    videoView!.backgroundColor = UIColor.blueColor()
+                    self.videoCon.addSubview(videoView!)
+            }
 
             break
             

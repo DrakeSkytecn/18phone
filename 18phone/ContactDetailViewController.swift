@@ -104,8 +104,7 @@ class ContactDetailViewController: UIViewController {
             .BottomMenuHairlineColor(UIColor(red: 70.0/255.0, green: 70.0/255.0, blue: 80.0/255.0, alpha: 1.0)),
             .CenterMenuItems(true),
             .MenuItemWidth(Screen.width / 2),
-            .MenuMargin(0.0),
-            
+            .MenuMargin(0.0)
         ]
         
         pageMenu = CAPSPageMenu(viewControllers: controllerArray, frame: CGRectMake(0, detailCon.frame.height, Screen.width, view.frame.height - detailCon.frame.height), pageMenuOptions: parameters)

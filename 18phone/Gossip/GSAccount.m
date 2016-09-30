@@ -140,15 +140,32 @@
     
     __block GSAccount *self_ = self;
     __block id delegate_ = _delegate;
+    
+    int vid_idx = pjsua_call_get_vid_stream_idx(callId);
+    
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        GSCall *call = [GSCall incomingCallWithId:callId toAccount:self];        
+//        if (![delegate_ respondsToSelector:@selector(account:didReceiveIncomingCall:)])
+//            return; // call is disposed/hungup on dealloc
+//        
+//        [delegate_ performSelector:@selector(account:didReceiveIncomingCall:)
+//                        withObject:self_
+//                        withObject:call];
+//    });
+    
+    
     dispatch_async(dispatch_get_main_queue(), ^{
-        GSCall *call = [GSCall incomingCallWithId:callId toAccount:self];        
-        if (![delegate_ respondsToSelector:@selector(account:didReceiveIncomingCall:)])
+        GSCall *inCall = [GSCall incomingCallWithId:callId toAccount:self];
+        NSDictionary *callData = [NSDictionary dictionaryWithObjectsAndKeys:
+                                  self_, @"account",
+                                  inCall, @"inCall",
+                                  [NSNumber numberWithInt:vid_idx], @"videoId",
+                                  nil];
+        if (![delegate_ respondsToSelector:@selector(didReceiveIncomingCall:)])
             return; // call is disposed/hungup on dealloc
-        
-        [delegate_ performSelector:@selector(account:didReceiveIncomingCall:)
-                        withObject:self_
-                        withObject:call];
+        [delegate_ performSelector:@selector(didReceiveIncomingCall:) withObject:callData];
     });
+    
 }
 
 - (void)registrationDidStart:(NSNotification *)notif {

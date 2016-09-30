@@ -22,8 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        App.autoLogin("18823754172", password: "123")
 //        App.autoLogin("15016721385", password: "123")
 //        App.autoLogin("18603001016", password: "123")
-//        App.autoLogin("100", password: "100")
-        App.autoLogin("102", password: "102")
+        App.autoLogin("100", password: "100")
+//        App.autoLogin("102", password: "102")
         
         return true
     }

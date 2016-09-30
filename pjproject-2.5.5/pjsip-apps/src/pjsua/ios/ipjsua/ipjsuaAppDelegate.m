@@ -294,6 +294,7 @@ void displayWindow(pjsua_vid_win_id wid)
                         [parent addSubview:view];
                     
                     if (!wi.is_native) {
+                        NSLog(@"!wi.is_native");
                         /* Resize it to fit width */
                         view.bounds = CGRectMake(0, 0, parent.bounds.size.width,
                                                  (parent.bounds.size.height *
@@ -303,6 +304,7 @@ void displayWindow(pjsua_vid_win_id wid)
                         view.center = CGPointMake(parent.bounds.size.width/2.0,
                                               view.bounds.size.height/2.0);
                     } else {
+                        NSLog(@"wi.is_native");
                         /* Preview window, move it to the bottom */
                         view.center = CGPointMake(parent.bounds.size.width/2.0,
                                                   parent.bounds.size.height-

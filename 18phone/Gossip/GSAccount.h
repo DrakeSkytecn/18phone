@@ -28,6 +28,8 @@ typedef enum {
  *  This should be done in a timely fashion since we do not support timeouts for incoming call yet. */
 - (void)account:(GSAccount *)account didReceiveIncomingCall:(GSCall *)call;
 
+- (void)didReceiveIncomingCall:(NSDictionary *)callData;
+
 @end
 
 

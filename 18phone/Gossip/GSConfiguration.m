@@ -37,7 +37,7 @@
     _soundClockRate = 0;
     
     // default volume scale to 2.0 so 1.0 is twice as loud as PJSIP would normally emit.
-    _volumeScale = 2.0;
+    _volumeScale = 1.0;
     
     _account = [GSAccountConfiguration defaultConfiguration];
     return self;

@@ -210,6 +210,14 @@ class RootViewController: UIViewController, GSAccountDelegate {
                 presentViewController(incomingVideoViewController!, animated: true, completion: nil)
     }
     
+    func didReceiveIncomingCall(callData: [NSObject : AnyObject]!) {
+        let account = callData["account"]
+        let inCall = callData["inCall"]
+        let videoId = callData["videoId"]
+        
+        print("videoId:\(videoId)")
+    }
+    
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         if keyPath == "status" {
             statusDidChange()
