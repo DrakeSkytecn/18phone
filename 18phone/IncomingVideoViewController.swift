@@ -16,6 +16,7 @@ class IncomingVideoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        inCall?.incomingCallInfo()
         inCall?.addObserver(self, forKeyPath: "status", options: .Initial, context: nil)
     }
     

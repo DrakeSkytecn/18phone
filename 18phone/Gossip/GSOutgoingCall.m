@@ -42,12 +42,12 @@ pj_status_t rendercb(pjmedia_vid_dev_stream *stream,
         _remoteUri = [@"sip:" stringByAppendingString:_remoteUri];
     }
     pj_str_t remoteUri = [GSPJUtil PJStringWithString:_remoteUri];
-    pjsua_call_setting callSetting;
-    pjsua_call_setting_default(&callSetting);
-    callSetting.aud_cnt = 1;
-    callSetting.vid_cnt = 0;
+    pjsua_call_setting call_setting;
+    pjsua_call_setting_default(&call_setting);
+    call_setting.aud_cnt = 1;
+    call_setting.vid_cnt = 0;
     pjsua_call_id callId;
-    GSReturnNoIfFails(pjsua_call_make_call(self.account.accountId, &remoteUri, &callSetting, NULL, NULL, &callId));
+    GSReturnNoIfFails(pjsua_call_make_call(self.account.accountId, &remoteUri, &call_setting, NULL, NULL, &callId));
     [self setCallId:callId];
     
     return YES;
@@ -58,18 +58,17 @@ pj_status_t rendercb(pjmedia_vid_dev_stream *stream,
         _remoteUri = [@"sip:" stringByAppendingString:_remoteUri];
     }
     pj_str_t remoteUri = [GSPJUtil PJStringWithString:_remoteUri];
-    pjsua_call_setting callSetting;
-    pjsua_call_setting_default(&callSetting);
-    callSetting.aud_cnt = 1;
-    callSetting.vid_cnt = 1;
-    NSLog(@"callSetting.flag:%d", callSetting.flag);
+    pjsua_call_setting call_setting;
+    pjsua_call_setting_default(&call_setting);
+    call_setting.aud_cnt = 1;
+    call_setting.vid_cnt = 1;
     pjsua_call_id callId;
 //    NSDictionary *info=[NSDictionary dictionaryWithObjectsAndKeys:phoneNumber,@"phoneNumber",area,@"area", nil];
 //    NSData *data = [NSJSONSerialization dataWithJSONObject:info options:NSJSONWritingPrettyPrinted error:nil];
 //    NSString *strJson = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 //    NSLog(@"strJson: %@", strJson);
 
-    GSReturnNoIfFails(pjsua_call_make_call(self.account.accountId, &remoteUri, &callSetting, NULL, NULL, &callId));
+    GSReturnNoIfFails(pjsua_call_make_call(self.account.accountId, &remoteUri, &call_setting, NULL, NULL, &callId));
     [self setCallId:callId];
     
     return YES;

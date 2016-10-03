@@ -73,12 +73,12 @@ class RootViewController: UIViewController, GSAccountDelegate {
         if !isViewHidden {
             if isMenuShow {
                 hide()
-//                item.selectedImage = R.image.dial_up()
-//                item.title = "展开"
+                //                item.selectedImage = R.image.dial_up()
+                //                item.title = "展开"
             } else {
                 show()
-//                item.selectedImage = R.image.dial_down()
-//                item.title = "收起"
+                //                item.selectedImage = R.image.dial_down()
+                //                item.title = "收起"
             }
         }
     }
@@ -201,21 +201,26 @@ class RootViewController: UIViewController, GSAccountDelegate {
     }
     
     func account(account: GSAccount!, didReceiveIncomingCall call: GSCall!) {
-        print("didReceiveIncomingCall")
-//        let incomingCallViewController = R.storyboard.main.incomingCallViewController()
-//        incomingCallViewController?.inCall = call
-//        presentViewController(incomingCallViewController!, animated: true, completion: nil)
-                let incomingVideoViewController = R.storyboard.main.incomingVideoViewController()
-                incomingVideoViewController!.inCall = call
-                presentViewController(incomingVideoViewController!, animated: true, completion: nil)
+//        print("didReceiveIncomingCall")
+//        
+//        let incomingVideoViewController = R.storyboard.main.incomingVideoViewController()
+//        incomingVideoViewController!.inCall = call
+//        presentViewController(incomingVideoViewController!, animated: true, completion: nil)
     }
     
     func didReceiveIncomingCall(callData: [NSObject : AnyObject]!) {
-        let account = callData["account"]
-        let inCall = callData["inCall"]
-        let videoId = callData["videoId"]
-        
-        print("videoId:\(videoId)")
+        let account = callData["account"] as! GSAccount
+        let inCall = callData["inCall"] as! GSCall
+        let vid_cnt = callData["vid_cnt"] as! Int
+        if vid_cnt == 0 {
+            let incomingCallViewController = R.storyboard.main.incomingCallViewController()
+            incomingCallViewController?.inCall = inCall
+            presentViewController(incomingCallViewController!, animated: true, completion: nil)
+        } else {
+            let incomingVideoViewController = R.storyboard.main.incomingVideoViewController()
+            incomingVideoViewController!.inCall = inCall
+            presentViewController(incomingVideoViewController!, animated: true, completion: nil)
+        }
     }
     
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {

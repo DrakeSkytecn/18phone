@@ -121,14 +121,12 @@
     return YES;
 }
 
-
 - (void)setStatus:(GSAccountStatus)newStatus {
     if (_status == newStatus) // don't send KVO notices unless it really changes.
         return;
     
     _status = newStatus;
 }
-
 
 - (void)didReceiveIncomingCall:(NSNotification *)notif {
     NSLog(@"notif:%@", notif);
@@ -140,8 +138,13 @@
     
     __block GSAccount *self_ = self;
     __block id delegate_ = _delegate;
+    pjsua_call_info callInfo;
     
-    int vid_idx = pjsua_call_get_vid_stream_idx(callId);
+    pjsua_call_get_info(callId, &callInfo);
+    NSLog(@"callInfo.rem_vid_cnt:%d", callInfo.rem_vid_cnt);
+    
+    
+    int vid_cnt = callInfo.rem_vid_cnt;
     
 //    dispatch_async(dispatch_get_main_queue(), ^{
 //        GSCall *call = [GSCall incomingCallWithId:callId toAccount:self];        
@@ -159,7 +162,7 @@
         NSDictionary *callData = [NSDictionary dictionaryWithObjectsAndKeys:
                                   self_, @"account",
                                   inCall, @"inCall",
-                                  [NSNumber numberWithInt:vid_idx], @"videoId",
+                                  [NSNumber numberWithInt:vid_cnt], @"vid_cnt",
                                   nil];
         if (![delegate_ respondsToSelector:@selector(didReceiveIncomingCall:)])
             return; // call is disposed/hungup on dealloc

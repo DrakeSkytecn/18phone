@@ -86,6 +86,8 @@
     pjsua_media_config mediaConfig;
     
     pjsua_config_default(&uaConfig);
+    pj_str_t stun1 = pj_str("stunserver.org");
+    uaConfig.stun_srv[0] = stun1;
     
     [GSDispatch configureCallbacksForAgent:&uaConfig];
     
@@ -96,14 +98,14 @@
     pjsua_media_config_default(&mediaConfig);
     mediaConfig.clock_rate = _config.clockRate;
     mediaConfig.snd_clock_rate = _config.soundClockRate;
-    mediaConfig.ec_tail_len = 0; // not sure what this does (Siphon use this.)
+    mediaConfig.ec_tail_len = 5000; // not sure what this does (Siphon use this.)
     
     GSReturnNoIfFails(pjsua_init(&uaConfig, &logConfig, &mediaConfig));
     
     // Configure the DNS resolvers to also handle SRV records
     pjsip_endpoint* endpoint = pjsua_get_pjsip_endpt();
     pj_dns_resolver* resolver;
-    pj_str_t google_dns = [GSPJUtil PJStringWithString:@"8.8.4.4"];
+    pj_str_t google_dns = [GSPJUtil PJStringWithString:@"119.29.29.29"];
     struct pj_str_t servers[] = { google_dns };
     GSReturnNoIfFails(pjsip_endpt_create_resolver(endpoint, &resolver));
     GSReturnNoIfFails(pj_dns_resolver_set_ns(resolver, 1, servers, nil));

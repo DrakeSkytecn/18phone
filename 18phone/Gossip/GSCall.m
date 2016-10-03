@@ -41,9 +41,14 @@
 - (NSString *)incomingCallInfo {
     pjsua_call_info callInfo;
     pjsua_call_get_info(_callId, &callInfo);
+    NSLog(@"remote_contact vid_cnt:%i", callInfo.setting.vid_cnt);
     NSString *remote_contact = [NSString stringWithUTF8String:callInfo.remote_info.ptr];
     NSLog(@"remote_contact:%@", remote_contact);
-    NSString *contactId = [remote_contact substringWithRange:NSMakeRange(5, 11)];
+    NSRange start = [remote_contact rangeOfString:@":"];
+    NSRange end = [remote_contact rangeOfString:@"@"];
+    NSLog(@"start %lu end %lu", start.location, end.location);
+    NSString *contactId = [remote_contact substringWithRange:NSMakeRange(start.location + 1, end.location - start.location - 1)];
+    NSLog(@"contactId:%@", contactId);
     
     return contactId;
 }
