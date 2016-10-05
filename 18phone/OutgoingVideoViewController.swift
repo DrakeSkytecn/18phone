@@ -26,17 +26,18 @@ class OutgoingVideoViewController: UIViewController {
         outCall = GSCall.outgoingCallToUri(toNumber! + "@" + URL.BEYEBE_SIP_DOMAIN, fromAccount: account)
         outCall?.addObserver(self, forKeyPath: "status", options: .Initial, context: nil)
         outCall?.beginVideo()
+        Async.background {
+            self.outCall?.startPreviewWindow()
+        }.main {
+            let previewWindow = self.outCall!.createPreviewWindow(self.previewCon.frame)
+            previewWindow?.backgroundColor = UIColor.blueColor()
+            self.previewCon.addSubview(previewWindow!)
+            self.outCall?.orientation()
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
-        var previewWindow: UIView? = nil
-        Async.background {
-            previewWindow = self.outCall!.createPreviewWindow(self.previewCon.frame)
-            }.main {
-                previewWindow!.frame = self.previewCon.frame
-                previewWindow?.backgroundColor = UIColor.blueColor()
-                self.previewCon.addSubview(previewWindow!)
-        }
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -45,7 +46,8 @@ class OutgoingVideoViewController: UIViewController {
     }
     
     @IBAction func hangup(sender: UIButton) {
-        self.outCall?.end()
+        outCall?.stopPreviewWindow()
+        outCall?.end()
         dismissViewControllerAnimated(true, completion: nil)
         //            let callLog = CallLog()
         //            callLog.name = "James"
@@ -82,11 +84,12 @@ class OutgoingVideoViewController: UIViewController {
             print("OutgoingCallViewController Connected.")
             isConnected = true
             
+            
             break
             
         case GSCallStatusDisconnected:
             print("OutgoingCallViewController Disconnected.")
-            
+            dismissViewControllerAnimated(true, completion: nil)
             break
             
         default:
@@ -101,6 +104,7 @@ class OutgoingVideoViewController: UIViewController {
     }
     
     deinit {
+        outCall?.stopPreviewWindow()
         outCall?.removeObserver(self, forKeyPath: "status")
     }
 }

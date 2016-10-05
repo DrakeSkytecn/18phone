@@ -62,9 +62,15 @@ typedef enum {
 
 - (void)setIncomingVideoStream;
 
-- (UIView *)createVideoWindow;
+- (UIView *)createVideoWindow:(CGRect)frame;
 
 - (UIView *)createPreviewWindow:(CGRect)frame;
+
+-(void)startPreviewWindow;
+
+- (void)stopPreviewWindow;
+
+-(void)orientation;
 
 - (BOOL)sendDTMFDigits:(NSString *)digits; ///< Sends DTMF digits over the call.
 

@@ -189,13 +189,7 @@
     pjsua_call_set_vid_strm(_callId, PJSUA_CALL_VID_STRM_START_TRANSMIT, &param);
 }
 
-- (UIView *)createVideoWindow {
-    pj_thread_desc desc;
-    pj_thread_t *thread = 0;
-    if(!pj_thread_is_registered())
-    {
-        pj_thread_register(NULL,desc,&thread);
-    }
+- (UIView *)createVideoWindow:(CGRect)frame {
     NSLog(@"_callId:%d", _callId);
     // 获取窗口ID
     int vid_idx;
@@ -220,23 +214,22 @@
     rect.x = 0;
     rect.y = 0;
     pjmedia_rect_size rect_size;
-//    rect_size.h = 600;
-//    rect_size.w = 250;
-    //pjsua_vid_win_set_size(wid,&rect_size);
+    rect_size.h = frame.size.height;
+    rect_size.w = frame.size.width;
+    pjsua_vid_win_set_size(wid,&rect_size);
     pjsua_vid_win_set_pos(wid,&rect);
     
     pjsua_vid_win_info win_info;
     pjsua_vid_win_get_info(wid, &win_info);
+    win_info.is_native = PJ_FALSE;
     UIView *view = (__bridge UIView *)win_info.hwnd.info.ios.window;
-//    win_info.is_native = PJ_FALSE;
-    //显示窗口
-//    win_info.show = YES;
+    view.frame = frame;
     pjsua_vid_win_set_show(wid,PJ_TRUE);
     
     return view;
 }
 
-- (UIView *)createPreviewWindow:(CGRect)frame {
+-(void)startPreviewWindow {
     pj_thread_desc desc;
     pj_thread_t *thread = 0;
     if(!pj_thread_is_registered())
@@ -249,7 +242,9 @@
     PJMEDIA_VID_DEV_WND_RESIZABLE;
     preview_param.show = PJ_TRUE;
     pjsua_vid_preview_start(PJMEDIA_VID_DEFAULT_CAPTURE_DEV, &preview_param);
-    
+}
+
+- (UIView *)createPreviewWindow:(CGRect)frame {
     pjsua_vid_win_id wid = 0;
     wid = pjsua_vid_preview_get_win(PJMEDIA_VID_DEFAULT_CAPTURE_DEV);
     pjmedia_coord rect;
@@ -264,12 +259,35 @@
     pjsua_vid_win_info win_info;
     pjsua_vid_win_get_info(wid, &win_info);
     UIView *view = (__bridge UIView *)win_info.hwnd.info.ios.window;
+    view.frame = frame;
     win_info.is_native = PJ_FALSE;
     //显示窗口
     win_info.show = YES;
     
-    
     return view;
+}
+
+- (void)stopPreviewWindow {
+    pjsua_vid_preview_stop(PJMEDIA_VID_DEFAULT_CAPTURE_DEV);
+}
+
+-(void)orientation {
+    const pjmedia_orient pj_ori[4] =
+    {
+        PJMEDIA_ORIENT_ROTATE_90DEG,  /* UIDeviceOrientationPortrait */
+        PJMEDIA_ORIENT_ROTATE_270DEG, /* UIDeviceOrientationPortraitUpsideDown */
+        PJMEDIA_ORIENT_ROTATE_180DEG, /* UIDeviceOrientationLandscapeLeft,
+                                       home button on the right side */
+        PJMEDIA_ORIENT_NATURAL        /* UIDeviceOrientationLandscapeRight,
+                                       home button on the left side */
+    };
+    UIDeviceOrientation dev_ori = [[UIDevice currentDevice] orientation];
+    NSLog(@"dev_ori:%d", dev_ori);
+    for (int i = pjsua_vid_dev_count()-1; i >= 0; i--) {
+        NSLog(@"pjsua_vid_dev_set_setting");
+        pjsua_vid_dev_set_setting(i, PJMEDIA_VID_DEV_CAP_ORIENTATION,
+                                  &pj_ori[0], PJ_TRUE);
+    }
 }
 
 - (BOOL)sendDTMFDigits:(NSString *)digits {

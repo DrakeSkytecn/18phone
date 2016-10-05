@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "GSAccount.h"
 #import "GSConfiguration.h"
 

@@ -27,6 +27,7 @@ class IncomingVideoViewController: UIViewController {
     
     @IBAction func hangup(sender: UIButton) {
         inCall?.end()
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func answer(sender: UIButton) {
@@ -50,17 +51,10 @@ class IncomingVideoViewController: UIViewController {
             
         case GSCallStatusConnected:
             print("IncomingCallViewController Connected.")
-            var videoView: UIView?
-            Async.background {
-                videoView = self.inCall!.createVideoWindow()
-                }.main {
-                    videoView!.frame = self.videoCon!.frame
-                    //        videoView?.bounds = videoCon.bounds
-                    //        videoView?.center = view.center
-                    videoView!.backgroundColor = UIColor.blueColor()
-                    self.videoCon.addSubview(videoView!)
-            }
-
+            let videoView = inCall!.createVideoWindow(view.frame)
+            videoView!.backgroundColor = UIColor.blueColor()
+            videoCon.addSubview(videoView!)
+            inCall?.orientation()
             break
             
         case GSCallStatusDisconnected:
