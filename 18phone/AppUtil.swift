@@ -64,7 +64,7 @@ struct App {
         } else {
             userDefaults.setObject(username, forKey: "username")
             userDefaults.setObject(password, forKey: "password")
-            print(userDefaults.synchronize())
+            userDefaults.synchronize()
             initUserAgent(username, password: password)
         }
     }

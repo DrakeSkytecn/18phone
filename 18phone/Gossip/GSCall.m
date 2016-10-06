@@ -146,6 +146,17 @@
     return result;
 }
 
+-(void)checkBuddy {
+    pjsua_buddy_id buddy_id;
+    pjsua_buddy_config buddy_cfg;
+    pjsua_buddy_config_default(&buddy_cfg);
+    NSLog(@"%@", ((GSOutgoingCall *)self).remoteUri);
+    pj_str_t remoteUri = [GSPJUtil PJStringWithString:((GSOutgoingCall *)self).remoteUri];
+    buddy_cfg.uri = remoteUri;
+    buddy_cfg.subscribe = PJ_TRUE;
+    GSReturnIfFails(pjsua_buddy_add(&buddy_cfg, &buddy_id));
+}
+
 - (BOOL)begin {
     // for child overrides only
     return NO;
@@ -205,6 +216,7 @@
     if (vid_idx >= 0){
         pjsua_call_info ci;
         pjsua_call_get_info(_callId, &ci);
+        
         wid = ci.media[vid_idx].stream.vid.win_in;
     }
     
@@ -260,6 +272,7 @@
     pjsua_vid_win_get_info(wid, &win_info);
     UIView *view = (__bridge UIView *)win_info.hwnd.info.ios.window;
     view.frame = frame;
+    view.layer.frame = frame;
     win_info.is_native = PJ_FALSE;
     //显示窗口
     win_info.show = YES;

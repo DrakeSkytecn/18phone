@@ -169,12 +169,10 @@ class RootViewController: UIViewController, GSAccountDelegate {
         }
     }
     
-    
     @IBAction func scanQRCode(sender: UIBarButtonItem) {
         let qrCodeViewController = QRCodeViewController()
         navigationController?.pushViewController(qrCodeViewController, animated: true)
     }
-    
     
     @IBAction func toUserCenter(sender: UIBarButtonItem) {
         

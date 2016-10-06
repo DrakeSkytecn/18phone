@@ -72,6 +72,11 @@ class LoginViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
     @IBAction func cancel(sender: UIBarButtonItem) {
         dismissViewControllerAnimated(true, completion: nil)
     }

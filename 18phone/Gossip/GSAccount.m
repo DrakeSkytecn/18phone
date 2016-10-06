@@ -129,8 +129,6 @@
 }
 
 - (void)didReceiveIncomingCall:(NSNotification *)notif {
-    NSLog(@"notif:%@", notif);
-    NSLog(@"notif:%@", notif.userInfo);
     pjsua_acc_id accountId = GSNotifGetInt(notif, GSSIPAccountIdKey);
     pjsua_call_id callId = GSNotifGetInt(notif, GSSIPCallIdKey);
     if (accountId == PJSUA_INVALID_ID || accountId != _accountId)
@@ -139,23 +137,8 @@
     __block GSAccount *self_ = self;
     __block id delegate_ = _delegate;
     pjsua_call_info callInfo;
-    
     pjsua_call_get_info(callId, &callInfo);
-    NSLog(@"callInfo.rem_vid_cnt:%d", callInfo.rem_vid_cnt);
-    
-    
     int vid_cnt = callInfo.rem_vid_cnt;
-    
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        GSCall *call = [GSCall incomingCallWithId:callId toAccount:self];        
-//        if (![delegate_ respondsToSelector:@selector(account:didReceiveIncomingCall:)])
-//            return; // call is disposed/hungup on dealloc
-//        
-//        [delegate_ performSelector:@selector(account:didReceiveIncomingCall:)
-//                        withObject:self_
-//                        withObject:call];
-//    });
-    
     
     dispatch_async(dispatch_get_main_queue(), ^{
         GSCall *inCall = [GSCall incomingCallWithId:callId toAccount:self];

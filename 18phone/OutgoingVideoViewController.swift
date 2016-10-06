@@ -14,6 +14,8 @@ class OutgoingVideoViewController: UIViewController {
     var outCall:GSCall?
     var isConnected: Bool = false
     
+    @IBOutlet weak var renderCon: UIView!
+    
     @IBOutlet weak var previewCon: UIView!
     
     @IBOutlet weak var NameLabel: UILabel!
@@ -26,18 +28,16 @@ class OutgoingVideoViewController: UIViewController {
         outCall = GSCall.outgoingCallToUri(toNumber! + "@" + URL.BEYEBE_SIP_DOMAIN, fromAccount: account)
         outCall?.addObserver(self, forKeyPath: "status", options: .Initial, context: nil)
         outCall?.beginVideo()
-        Async.background {
-            self.outCall?.startPreviewWindow()
-        }.main {
-            let previewWindow = self.outCall!.createPreviewWindow(self.previewCon.frame)
-            previewWindow?.backgroundColor = UIColor.blueColor()
-            self.previewCon.addSubview(previewWindow!)
-            self.outCall?.orientation()
-        }
     }
     
     override func viewDidAppear(animated: Bool) {
-        
+        Async.background {
+            self.outCall?.startPreviewWindow()
+        }.main {
+            let previewWindow = self.outCall!.createPreviewWindow(CGRectMake(0, 0, self.previewCon.frame.width, self.previewCon.frame.height))
+            self.previewCon.addSubview(previewWindow!)
+            self.outCall?.orientation()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -83,7 +83,10 @@ class OutgoingVideoViewController: UIViewController {
         case GSCallStatusConnected:
             print("OutgoingCallViewController Connected.")
             isConnected = true
-            
+            let videoView = outCall!.createVideoWindow(view.frame)
+            videoView!.backgroundColor = UIColor.blueColor()
+            renderCon.addSubview(videoView!)
+            outCall?.orientation()
             
             break
             

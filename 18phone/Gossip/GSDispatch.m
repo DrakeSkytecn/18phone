@@ -6,7 +6,7 @@
 //
 
 #import "GSDispatch.h"
-
+#import "GSPJUtil.h"
 
 void onRegistrationStarted(pjsua_acc_id accountId, pj_bool_t renew);
 void onRegistrationState(pjsua_acc_id accountId);
@@ -14,6 +14,15 @@ void onRegistrationState2(pjsua_acc_id accountId, pjsua_reg_info *info);
 void onIncomingCall(pjsua_acc_id accountId, pjsua_call_id callId, pjsip_rx_data *rdata);
 void onCallMediaState(pjsua_call_id callId);
 void onCallState(pjsua_call_id callId, pjsip_event *e);
+void onBuddyState(pjsua_buddy_id buddy_id);
+void onIncomingSubscribe(pjsua_acc_id acc_id,
+                           pjsua_srv_pres *srv_pres,
+                           pjsua_buddy_id buddy_id,
+                           const pj_str_t *from,
+                           pjsip_rx_data *rdata,
+                           pjsip_status_code *code,
+                           pj_str_t *reason,
+                           pjsua_msg_data *msg_data_);
 
 
 static dispatch_queue_t _queue = NULL;
@@ -32,6 +41,8 @@ static dispatch_queue_t _queue = NULL;
     uaConfig->cb.on_incoming_call = &onIncomingCall;
     uaConfig->cb.on_call_media_state = &onCallMediaState;
     uaConfig->cb.on_call_state = &onCallState;
+    uaConfig->cb.on_buddy_state = &onBuddyState;
+    uaConfig->cb.on_incoming_subscribe = &onIncomingSubscribe;
 }
 
 
@@ -110,6 +121,16 @@ static dispatch_queue_t _queue = NULL;
                         userInfo:info];
 }
 
++ (void)dispatchBuddyState:(pjsua_buddy_id)buddyId {
+    NSLog(@"%i", buddyId);
+    pjsua_buddy_info info;
+    pjsua_buddy_get_info(buddyId, &info);
+    
+    NSString *statusText = [GSPJUtil stringWithPJString:&info.status_text];
+    NSLog(@"%@", statusText);
+    NSLog(@"%i", info.status);
+}
+
 @end
 
 
@@ -130,7 +151,6 @@ static inline void dispatch(dispatch_block_t block) {
         dispatch_sync(_queue, block);
     }
 }
-
 
 void onRegistrationStarted(pjsua_acc_id accountId, pj_bool_t renew) {
     dispatch(^{ [GSDispatch dispatchRegistrationStarted:accountId renew:renew]; });
@@ -154,4 +174,20 @@ void onCallMediaState(pjsua_call_id callId) {
 
 void onCallState(pjsua_call_id callId, pjsip_event *e) {
     dispatch(^{ [GSDispatch dispatchCallState:callId event:e]; });
+}
+
+void onBuddyState(pjsua_buddy_id buddy_id) {
+    dispatch(^{ [GSDispatch dispatchBuddyState:buddy_id]; });
+}
+
+void onIncomingSubscribe(pjsua_acc_id acc_id,
+                         pjsua_srv_pres *srv_pres,
+                         pjsua_buddy_id buddy_id,
+                         const pj_str_t *from,
+                         pjsip_rx_data *rdata,
+                         pjsip_status_code *code,
+                         pj_str_t *reason,
+                         pjsua_msg_data *msg_data_) {
+    NSLog(@"onIncomingSubscribe");
+    pjsua_pres_notify(acc_id, srv_pres, PJSIP_EVSUB_STATE_ACCEPTED, NULL, reason, PJ_FALSE, msg_data_);
 }

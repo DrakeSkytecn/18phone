@@ -52,8 +52,9 @@ class OutgoingCallViewController: UIViewController {
         
         let account = GSUserAgent.sharedAgent().account
         outCall = GSCall.outgoingCallToUri(toNumber! + "@" + URL.BEYEBE_SIP_DOMAIN, fromAccount: account)
+        outCall?.checkBuddy()
         outCall?.addObserver(self, forKeyPath: "status", options: .Initial, context: nil)
-        self.outCall?.begin()
+        //self.outCall?.begin()
     }
 
     override func didReceiveMemoryWarning() {

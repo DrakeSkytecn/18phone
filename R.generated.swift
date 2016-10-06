@@ -539,7 +539,7 @@ struct _R: Rswift.Validatable {
     }
     
     struct main: StoryboardResourceWithInitialControllerType, Rswift.Validatable {
-      typealias InitialController = KTabBarController
+      typealias InitialController = CheckAccountViewController
       
       let backupViewController = StoryboardViewControllerResource<BackupViewController>(identifier: "BackupViewController")
       let bundle = _R.hostingBundle

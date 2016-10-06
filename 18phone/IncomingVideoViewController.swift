@@ -12,12 +12,21 @@ class IncomingVideoViewController: UIViewController {
     
     var inCall: GSCall?
     
-    @IBOutlet weak var videoCon: UIView!
+    @IBOutlet weak var previewCon: UIView!
+    
+    @IBOutlet weak var renderCon: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         inCall?.incomingCallInfo()
         inCall?.addObserver(self, forKeyPath: "status", options: .Initial, context: nil)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        inCall?.startPreviewWindow()
+        let previewWindow = inCall!.createPreviewWindow(CGRectMake(0, 0, previewCon.frame.width, previewCon.frame.height))
+        previewCon.addSubview(previewWindow!)
+        inCall?.orientation()
     }
     
     override func didReceiveMemoryWarning() {
@@ -53,8 +62,9 @@ class IncomingVideoViewController: UIViewController {
             print("IncomingCallViewController Connected.")
             let videoView = inCall!.createVideoWindow(view.frame)
             videoView!.backgroundColor = UIColor.blueColor()
-            videoCon.addSubview(videoView!)
+            renderCon.addSubview(videoView!)
             inCall?.orientation()
+            
             break
             
         case GSCallStatusDisconnected:
@@ -86,6 +96,7 @@ class IncomingVideoViewController: UIViewController {
     }
     
     deinit {
+        inCall?.stopPreviewWindow()
         inCall?.removeObserver(self, forKeyPath: "status")
     }
     

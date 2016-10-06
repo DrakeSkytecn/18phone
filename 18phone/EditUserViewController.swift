@@ -32,13 +32,9 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
+        headPhoto.image = R.image.head_photo_default()
         nameField.delegate = self
         signField.delegate = self
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,6 +53,11 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         hideKeyBoard()
         switch indexPath.row {
+        case 0:
+            Async.main {
+                self.headphotoSheet()
+            }
+            break
         case 2:
             ActionSheetStringPicker.showPickerWithTitle("", rows: sexChoices, initialSelection: 0, doneBlock: { picker, selectedIndex, selectedValue in
                 self.sexLabel.text = self.sexChoices[selectedIndex]
@@ -89,6 +90,25 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate {
 
     @IBAction func save(sender: UIBarButtonItem) {
         navigationController?.popViewControllerAnimated(true)
+    }
+    
+    @IBAction func editHeadphoto(sender: UITapGestureRecognizer) {
+        headphotoSheet()
+    }
+    
+    func headphotoSheet() {
+        print("headphotoSheet")
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        alertController.addAction(UIAlertAction(title: "拍照", style: .Default) { action in
+            
+            })
+        alertController.addAction(UIAlertAction(title: "相册", style: .Default) { action in
+            
+            })
+        alertController.addAction(UIAlertAction(title: "取消", style: .Cancel) { action in
+            
+            })
+        presentViewController(alertController, animated: true, completion: nil)
     }
     
     func hideKeyBoard() {

@@ -60,7 +60,10 @@ class BackupViewController: UIViewController, UITableViewDataSource, UITableView
             cell?.selectionStyle = .Default
             break
         case 4:
-            cell?.accessoryView = UISwitch(frame: CGRectMake(0, 0, 51, 31))
+            let autoSwitch = UISwitch(frame: CGRectMake(0, 0, 51, 31))
+            autoSwitch.on = NSUserDefaults.standardUserDefaults().boolForKey("auto_backup")
+            cell?.accessoryView = autoSwitch
+            autoSwitch.addTarget(self, action: #selector(switchAction(_:)), forControlEvents: .ValueChanged)
             break
         default:
             break
@@ -78,6 +81,12 @@ class BackupViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    func switchAction(sender: UISwitch) {
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        userDefaults.setBool(sender.on, forKey: "auto_backup")
+        userDefaults.synchronize()
     }
     /*
      // MARK: - Navigation

@@ -29,6 +29,9 @@ pj_status_t rendercb(pjmedia_vid_dev_stream *stream,
 - (GSOutgoingCall *)initWithRemoteUri:(NSString *)remoteUri fromAccount:(GSAccount *)account {
     if (self = [super initWithAccount:account]) {
         _remoteUri = [remoteUri copy];
+        if (![_remoteUri hasPrefix:@"sip:"]) {
+            _remoteUri = [@"sip:" stringByAppendingString:_remoteUri];
+        }
     }
     return self;
 }
@@ -38,9 +41,9 @@ pj_status_t rendercb(pjmedia_vid_dev_stream *stream,
 }
 
 - (BOOL)begin {
-    if (![_remoteUri hasPrefix:@"sip:"]) {
-        _remoteUri = [@"sip:" stringByAppendingString:_remoteUri];
-    }
+//    if (![_remoteUri hasPrefix:@"sip:"]) {
+//        _remoteUri = [@"sip:" stringByAppendingString:_remoteUri];
+//    }
     pj_str_t remoteUri = [GSPJUtil PJStringWithString:_remoteUri];
     pjsua_call_setting call_setting;
     pjsua_call_setting_default(&call_setting);
@@ -75,10 +78,11 @@ pj_status_t rendercb(pjmedia_vid_dev_stream *stream,
 }
 
 - (BOOL)end {
-    NSAssert(self.callId != PJSUA_INVALID_ID, @"Call has not begun yet.");
-    GSReturnNoIfFails(pjsua_call_hangup(self.callId, 0, NULL, NULL));
-    [self setStatus:GSCallStatusDisconnected];
-    [self setCallId:PJSUA_INVALID_ID];
+    if (self.callId != PJSUA_INVALID_ID) {
+        GSReturnNoIfFails(pjsua_call_hangup(self.callId, 0, NULL, NULL));
+        [self setStatus:GSCallStatusDisconnected];
+        [self setCallId:PJSUA_INVALID_ID];
+    }
     return YES;
 }
 
