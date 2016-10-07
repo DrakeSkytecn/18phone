@@ -5218,7 +5218,6 @@ typedef struct pjsua_buddy_info
 
 } pjsua_buddy_info;
 
-
 /**
  * Set default values to the buddy config.
  */

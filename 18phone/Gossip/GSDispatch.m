@@ -16,17 +16,16 @@ void onCallMediaState(pjsua_call_id callId);
 void onCallState(pjsua_call_id callId, pjsip_event *e);
 void onBuddyState(pjsua_buddy_id buddy_id);
 void onIncomingSubscribe(pjsua_acc_id acc_id,
-                           pjsua_srv_pres *srv_pres,
-                           pjsua_buddy_id buddy_id,
-                           const pj_str_t *from,
-                           pjsip_rx_data *rdata,
-                           pjsip_status_code *code,
-                           pj_str_t *reason,
-                           pjsua_msg_data *msg_data_);
+                         pjsua_srv_pres *srv_pres,
+                         pjsua_buddy_id buddy_id,
+                         const pj_str_t *from,
+                         pjsip_rx_data *rdata,
+                         pjsip_status_code *code,
+                         pj_str_t *reason,
+                         pjsua_msg_data *msg_data_);
 
 
 static dispatch_queue_t _queue = NULL;
-
 
 @implementation GSDispatch
 
@@ -72,7 +71,7 @@ static dispatch_queue_t _queue = NULL;
     NSDictionary *info = nil;
     info = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:accountId]
                                        forKey:GSSIPAccountIdKey];
-
+    
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center postNotificationName:GSSIPRegistrationStateDidChangeNotification
                           object:self
@@ -109,7 +108,7 @@ static dispatch_queue_t _queue = NULL;
 
 + (void)dispatchCallState:(pjsua_call_id)callId event:(pjsip_event *)e {
     NSLog(@"Gossip: dispatchCallState(%d)", callId);
-
+    
     NSDictionary *info = nil;
     info = [NSDictionary dictionaryWithObjectsAndKeys:
             [NSNumber numberWithInt:callId], GSSIPCallIdKey,
@@ -122,13 +121,13 @@ static dispatch_queue_t _queue = NULL;
 }
 
 + (void)dispatchBuddyState:(pjsua_buddy_id)buddyId {
-    NSLog(@"%i", buddyId);
-    pjsua_buddy_info info;
-    pjsua_buddy_get_info(buddyId, &info);
-    
-    NSString *statusText = [GSPJUtil stringWithPJString:&info.status_text];
-    NSLog(@"%@", statusText);
-    NSLog(@"%i", info.status);
+    NSDictionary *dict = nil;
+    dict = [NSDictionary dictionaryWithObjectsAndKeys:
+            [NSNumber numberWithInt:buddyId], GSSIPBuddyIdKey, nil];
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center postNotificationName:GSSIPBuddyStateDidChangeNotification
+                          object:self
+                        userInfo:dict];
 }
 
 @end
@@ -138,13 +137,13 @@ static dispatch_queue_t _queue = NULL;
 
 // Bridge C-land callbacks to ObjC-land.
 
-static inline void dispatch(dispatch_block_t block) {    
+static inline void dispatch(dispatch_block_t block) {
     // autorelease here since events wouldn't be triggered that often.
     // + GCD autorelease pool do not have drainage time guarantee (== possible mem headaches).
     // See the "Implementing tasks using blocks" section for more info
     // REF: http://developer.apple.com/library/ios/#documentation/General/Conceptual/ConcurrencyProgrammingGuide/OperationQueues/OperationQueues.html
     @autoreleasepool {
-
+        
         // NOTE: Needs to use dispatch_sync() instead of dispatch_async() because we do not know
         //   the lifetime of the stuff being given to us by PJSIP (e.g. pjsip_rx_data*) so we
         //   must process it completely before the method ends.
@@ -177,7 +176,7 @@ void onCallState(pjsua_call_id callId, pjsip_event *e) {
 }
 
 void onBuddyState(pjsua_buddy_id buddy_id) {
-    dispatch(^{ [GSDispatch dispatchBuddyState:buddy_id]; });
+    [GSDispatch dispatchBuddyState:buddy_id];
 }
 
 void onIncomingSubscribe(pjsua_acc_id acc_id,
@@ -189,5 +188,4 @@ void onIncomingSubscribe(pjsua_acc_id acc_id,
                          pj_str_t *reason,
                          pjsua_msg_data *msg_data_) {
     NSLog(@"onIncomingSubscribe");
-    pjsua_pres_notify(acc_id, srv_pres, PJSIP_EVSUB_STATE_ACCEPTED, NULL, reason, PJ_FALSE, msg_data_);
 }

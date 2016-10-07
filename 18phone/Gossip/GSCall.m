@@ -34,21 +34,17 @@
 + (GSCall *)incomingCallWithId:(int)callId toAccount:(GSAccount *)account {
     GSIncomingCall *call = [GSIncomingCall alloc];
     call = [call initWithCallId:callId toAccount:account];
-
+    
     return call;
 }
 
 - (NSString *)incomingCallInfo {
     pjsua_call_info callInfo;
     pjsua_call_get_info(_callId, &callInfo);
-    NSLog(@"remote_contact vid_cnt:%i", callInfo.setting.vid_cnt);
     NSString *remote_contact = [NSString stringWithUTF8String:callInfo.remote_info.ptr];
-    NSLog(@"remote_contact:%@", remote_contact);
     NSRange start = [remote_contact rangeOfString:@":"];
     NSRange end = [remote_contact rangeOfString:@"@"];
-    NSLog(@"start %lu end %lu", start.location, end.location);
     NSString *contactId = [remote_contact substringWithRange:NSMakeRange(start.location + 1, end.location - start.location - 1)];
-    NSLog(@"contactId:%@", contactId);
     
     return contactId;
 }
@@ -60,24 +56,29 @@
 - (id)initWithAccount:(GSAccount *)account {
     if (self = [super init]) {
         GSAccountConfiguration *config = account.configuration;
-
+        
         _account = account;
         _status = GSCallStatusReady;
+        _buddyStatus = GSBuddyStatusUnknown;
         _callId = PJSUA_INVALID_ID;
         
         _ringback = nil;
         if (config.enableRingback) {
             _ringback = [GSRingback ringbackWithSoundNamed:config.ringbackFilename];
         }
-
+        
         _volumeScale = [GSUserAgent sharedAgent].configuration.volumeScale;
         _volume = 1.0 / _volumeScale;
         _micVolume = 1.0 / _volumeScale;
-
+        
         NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
         [center addObserver:self
                    selector:@selector(callStateDidChange:)
                        name:GSSIPCallStateDidChangeNotification
+                     object:[GSDispatch class]];
+        [center addObserver:self
+                   selector:@selector(buddyStatusDidChange:)
+                       name:GSSIPBuddyStateDidChangeNotification
                      object:[GSDispatch class]];
         [center addObserver:self
                    selector:@selector(callMediaStateDidChange:)
@@ -90,12 +91,12 @@
 - (void)dealloc {
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center removeObserver:self];
-
+    
     if (_ringback && _ringback.isPlaying) {
         [_ringback stop];
         _ringback = nil;
     }
-
+    
     if (_callId != PJSUA_INVALID_ID && pjsua_call_is_active(_callId)) {
         GSLogIfFails(pjsua_call_hangup(_callId, 0, NULL, NULL));
     }
@@ -116,10 +117,14 @@
     [self didChangeValueForKey:@"callId"];
 }
 
+- (void)setBuddyStatus:(GSBuddyStatus)buddyStatus {
+    _buddyStatus = buddyStatus;
+}
+
 - (void)setStatus:(GSCallStatus)status {
-//    [self willChangeValueForKey:@"status"];
+    //    [self willChangeValueForKey:@"status"];
     _status = status;
-//    [self didChangeValueForKey:@"status"];
+    //    [self didChangeValueForKey:@"status"];
 }
 
 - (float)volume {
@@ -147,14 +152,39 @@
 }
 
 -(void)checkBuddy {
-    pjsua_buddy_id buddy_id;
+    pj_str_t remoteUri = [GSPJUtil PJStringWithString:((GSOutgoingCall *)self).remoteUri];
+    pjsua_buddy_id buddy_id = pjsua_buddy_find(&remoteUri);
+    if (buddy_id != PJSUA_INVALID_ID) {
+        pjsua_buddy_del(buddy_id);
+    }
     pjsua_buddy_config buddy_cfg;
     pjsua_buddy_config_default(&buddy_cfg);
-    NSLog(@"%@", ((GSOutgoingCall *)self).remoteUri);
-    pj_str_t remoteUri = [GSPJUtil PJStringWithString:((GSOutgoingCall *)self).remoteUri];
     buddy_cfg.uri = remoteUri;
     buddy_cfg.subscribe = PJ_TRUE;
     GSReturnIfFails(pjsua_buddy_add(&buddy_cfg, &buddy_id));
+    //        pjsua_buddy_subscribe_pres(buddy_id, PJ_TRUE);
+    //        pjsua_buddy_update_pres(buddy_id);
+    //        pjsua_buddy_info buddy_info;
+    //        pjsua_buddy_get_info(buddy_id, &buddy_info);
+    //        NSString *statusText = [GSPJUtil stringWithPJString:&buddy_info.status_text];
+    //        NSLog(@"checkBuddy statusText:%@", statusText);
+    //        NSLog(@"checkBuddy status:%i", buddy_info.status);
+    //        switch (buddy_info.status) {
+    //            case PJSUA_BUDDY_STATUS_UNKNOWN:
+    //                _buddyStatus = GSBuddyStatusUnknown;
+    //                break;
+    //
+    //            case PJSUA_BUDDY_STATUS_ONLINE:
+    //                _buddyStatus = GSBuddyStatusOnline;
+    //                break;
+    //
+    //            case PJSUA_BUDDY_STATUS_OFFLINE:
+    //                _buddyStatus = GSBuddyStatusOffline;
+    //                break;
+    //
+    //            default:
+    //                break;
+    //        }
 }
 
 - (BOOL)begin {
@@ -320,26 +350,24 @@
 - (void)stopRingback {
     if (!(_ringback && _ringback.isPlaying))
         return;
-
+    
     [_ringback stop];
 }
 
+- (void)buddyStatusDidChange:(NSNotification *)notif {
+    pjsua_buddy_id buddy_id = GSNotifGetInt(notif, GSSIPBuddyIdKey);
+    pjsua_buddy_info info;
+    pjsua_buddy_get_info(buddy_id, &info);
+    NSString *statusText = [GSPJUtil stringWithPJString:&info.status_text];
+    NSLog(@"statusText:%@", statusText);
+    NSLog(@"status:%i", info.status);
+}
+
 - (void)callStateDidChange:(NSNotification *)notif {
-    //NSLog(@"callStateDidChange");
-//    pjsua_call_id callId = GSNotifGetInt(notif, GSSIPCallIdKey);
-//    pjsua_acc_id accountId = GSNotifGetInt(notif, GSSIPAccountIdKey);
-//    if (callId != _callId || accountId != _account.accountId)
-//        NSLog(@"callStateDidChange return");
-//        return;
-//    
-//    pjsua_call_info callInfo;
-//    pjsua_call_get_info(_callId, &callInfo);
     
     pjsua_call_id callId = GSNotifGetInt(notif, GSSIPCallIdKey);
     pjsua_call_info callInfo;
     pjsua_call_get_info(callId, &callInfo);
-    
-    
     
     GSCallStatus callStatus;
     switch (callInfo.state) {
@@ -366,7 +394,6 @@
         } break;
             
         case PJSIP_INV_STATE_DISCONNECTED: {
-            [self stopRingback];
             callStatus = GSCallStatusDisconnected;
         } break;
     }

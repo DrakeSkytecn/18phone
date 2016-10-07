@@ -104,7 +104,6 @@
     return YES;
 }
 
-
 - (BOOL)connect {
     NSAssert(!!_config, @"GSAccount not configured.");
 
@@ -114,8 +113,8 @@
 }
 
 - (BOOL)disconnect {
-    NSAssert(!!_config, @"GSAccount not configured.");
-        
+//    NSAssert(!!_config, @"GSAccount not configured.");
+    
     GSReturnNoIfFails(pjsua_acc_set_online_status(_accountId, PJ_FALSE));
     GSReturnNoIfFails(pjsua_acc_set_registration(_accountId, PJ_FALSE));
     return YES;

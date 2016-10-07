@@ -21,6 +21,7 @@ GSConstSynthesize(GSVolumeDidChangeNotification);
 GSConstSynthesize(GSSIPAccountIdKey);
 GSConstSynthesize(GSSIPRenewKey);
 GSConstSynthesize(GSSIPCallIdKey);
+GSConstSynthesize(GSSIPBuddyIdKey);
 GSConstSynthesize(GSSIPDataKey);
 
 GSConstSynthesize(GSVolumeKey);

@@ -23,6 +23,7 @@ GSConstDefine(GSVolumeDidChangeNotification);
 GSConstDefine(GSSIPAccountIdKey);
 GSConstDefine(GSSIPRenewKey);
 GSConstDefine(GSSIPCallIdKey);
+GSConstDefine(GSSIPBuddyIdKey);
 GSConstDefine(GSSIPDataKey);
 
 GSConstDefine(GSVolumeKey);

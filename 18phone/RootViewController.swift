@@ -242,5 +242,9 @@ class RootViewController: UIViewController, GSAccountDelegate {
         }
         
     }
+    
+    deinit {
+        App.userAgentAccount.disconnect()
+    }
 }
 
