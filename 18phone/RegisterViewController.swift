@@ -1,20 +1,22 @@
 //
-//  LoginViewController.swift
+//  RegisterViewController.swift
 //  18phone
 //
-//  Created by 戴全艺 on 16/9/27.
+//  Created by 戴全艺 on 16/10/8.
 //  Copyright © 2016年 Kratos. All rights reserved.
 //
 
 import UIKit
 
-class LoginViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
+class RegisterViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
 
-    var titles = ["请输入手机号", "请输入密码"]
+    var titles = ["请输入手机号", "请输入密码", "请确认密码", "请输入验证码"]
     
     var phoneNumber = ""
     
     var password = ""
+    
+    var passwordConfirm = ""
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -24,10 +26,6 @@ class LoginViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.dataSource = self
         tableView.delegate = self
     }
-    
-    override func viewWillAppear(animated: Bool) {
-        //navigationController?.navigationBar.hidden = false
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -35,40 +33,39 @@ class LoginViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 4
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.login_cell)
-        cell?.titleLabel.text = titles[indexPath.row]
-        cell?.contentField.tag = indexPath.row
-        cell?.contentField.delegate = self
-        cell?.contentField.addTarget(self, action: #selector(textFieldDidChange(_:)), forControlEvents: .EditingChanged)
-        if indexPath.row == 0 {
-            cell?.contentField.text = "18823754172"
-            phoneNumber = "18823754172"
-            cell?.contentField.keyboardType = .NumberPad
-            cell?.contentField.becomeFirstResponder()
+        print("cellForRowAtIndexPath")
+        if indexPath.row != 3 {
+            let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.register_cell_a)
+            cell?.titleLabel.text = titles[indexPath.row]
+            cell?.contentField.delegate = self
+            switch indexPath.row {
+            case 0:
+                cell?.contentField.keyboardType = .NumberPad
+                cell?.contentField.becomeFirstResponder()
+                break
+            case 1,2:
+                cell?.contentField.keyboardType = .Default
+                break
+            default:
+                break
+            }
+            return cell!
         } else {
-            cell?.contentField.text = "123"
-            password = "123"
-            cell?.contentField.keyboardType = .Default
+            let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.register_cell_b)
+            cell?.titleLabel.text = titles[indexPath.row]
+            cell?.contentField.delegate = self
+            cell?.idCodeBtn.addTarget(self, action: #selector(codeBtnVerification(_:)), forControlEvents: .TouchUpInside)
+            
+            return cell!
         }
-
-        return cell!
     }
     
-    func textFieldDidChange(textField: UITextField) {
-        switch textField.tag {
-        case 0:
-            phoneNumber = textField.text!
-            break
-        case 1:
-            password = textField.text!
-            break
-        default:
-            break
-        }
+    func codeBtnVerification(sender: VerifyCodeButton) {
+        sender.timeFailBeginFrom(5)
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -79,8 +76,8 @@ class LoginViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBAction func cancel(sender: UIBarButtonItem) {
         dismissViewControllerAnimated(true, completion: nil)
     }
-    
-    @IBAction func login(sender: UIButton) {
+
+    @IBAction func submit(sender: UIButton) {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .Alert)
         let okAction = UIAlertAction(title: "好的", style: .Default, handler: nil)
         alertController.addAction(okAction)
@@ -101,4 +98,14 @@ class LoginViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
         presentViewController(R.storyboard.main.kTabBarController()!, animated: true, completion: nil)
     }
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
 }

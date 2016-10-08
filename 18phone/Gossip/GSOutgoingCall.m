@@ -11,15 +11,6 @@
 #import "Util.h"
 #import "GSUserAgent.h"
 
-pj_status_t capturecb(pjmedia_vid_dev_stream *stream,
-                      void *user_data,
-                      pjmedia_frame *frame);
-
-pj_status_t rendercb(pjmedia_vid_dev_stream *stream,
-                     void *user_data,
-                     pjmedia_frame *frame);
-
-
 @implementation GSOutgoingCall {
     
 }
@@ -41,9 +32,6 @@ pj_status_t rendercb(pjmedia_vid_dev_stream *stream,
 }
 
 - (BOOL)begin {
-//    if (![_remoteUri hasPrefix:@"sip:"]) {
-//        _remoteUri = [@"sip:" stringByAppendingString:_remoteUri];
-//    }
     pj_str_t remoteUri = [GSPJUtil PJStringWithString:_remoteUri];
     pjsua_call_setting call_setting;
     pjsua_call_setting_default(&call_setting);
@@ -57,20 +45,12 @@ pj_status_t rendercb(pjmedia_vid_dev_stream *stream,
 }
 
 - (BOOL)beginVideo {
-    if (![_remoteUri hasPrefix:@"sip:"]) {
-        _remoteUri = [@"sip:" stringByAppendingString:_remoteUri];
-    }
     pj_str_t remoteUri = [GSPJUtil PJStringWithString:_remoteUri];
     pjsua_call_setting call_setting;
     pjsua_call_setting_default(&call_setting);
     call_setting.aud_cnt = 1;
     call_setting.vid_cnt = 1;
     pjsua_call_id callId;
-//    NSDictionary *info=[NSDictionary dictionaryWithObjectsAndKeys:phoneNumber,@"phoneNumber",area,@"area", nil];
-//    NSData *data = [NSJSONSerialization dataWithJSONObject:info options:NSJSONWritingPrettyPrinted error:nil];
-//    NSString *strJson = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-//    NSLog(@"strJson: %@", strJson);
-
     GSReturnNoIfFails(pjsua_call_make_call(self.account.accountId, &remoteUri, &call_setting, NULL, NULL, &callId));
     [self setCallId:callId];
     
@@ -84,18 +64,6 @@ pj_status_t rendercb(pjmedia_vid_dev_stream *stream,
         [self setCallId:PJSUA_INVALID_ID];
     }
     return YES;
-}
-
-pj_status_t capturecb(pjmedia_vid_dev_stream *stream,
-                      void *user_data,
-                      pjmedia_frame *frame) {
-    return PJ_SUCCESS;
-}
-
-pj_status_t rendercb(pjmedia_vid_dev_stream *stream,
-                     void *user_data,
-                     pjmedia_frame *frame) {
-    return PJ_SUCCESS;
 }
 
 @end

@@ -82,6 +82,9 @@
 		E199E03F1D97FBE7001237AD /* EditUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E199E03E1D97FBE7001237AD /* EditUserViewController.swift */; };
 		E19AAD441D51DF480053D2C3 /* CallConView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E19AAD431D51DF480053D2C3 /* CallConView.xib */; };
 		E19AAD461D51DF6A0053D2C3 /* CallConView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19AAD451D51DF690053D2C3 /* CallConView.swift */; };
+		E1AC7F831DA89B85001C2676 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC7F821DA89B85001C2676 /* RegisterViewController.swift */; };
+		E1AC7F851DA89E1C001C2676 /* RegisterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC7F841DA89E1C001C2676 /* RegisterCell.swift */; };
+		E1AC7F871DA8CAE5001C2676 /* VerifyCodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC7F861DA8CAE5001C2676 /* VerifyCodeButton.swift */; };
 		E1C048661D867F650009DF6B /* GSAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C048491D867F650009DF6B /* GSAccount.m */; };
 		E1C048671D867F650009DF6B /* GSAccountConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C0484C1D867F650009DF6B /* GSAccountConfiguration.m */; };
 		E1C048681D867F650009DF6B /* GSCall.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C0484E1D867F650009DF6B /* GSCall.m */; };
@@ -223,6 +226,9 @@
 		E199E03E1D97FBE7001237AD /* EditUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditUserViewController.swift; sourceTree = "<group>"; };
 		E19AAD431D51DF480053D2C3 /* CallConView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CallConView.xib; sourceTree = "<group>"; };
 		E19AAD451D51DF690053D2C3 /* CallConView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallConView.swift; sourceTree = "<group>"; };
+		E1AC7F821DA89B85001C2676 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		E1AC7F841DA89E1C001C2676 /* RegisterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterCell.swift; sourceTree = "<group>"; };
+		E1AC7F861DA8CAE5001C2676 /* VerifyCodeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyCodeButton.swift; sourceTree = "<group>"; };
 		E1C048471D867F650009DF6B /* Gossip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Gossip.h; path = 18phone/Gossip/Gossip.h; sourceTree = SOURCE_ROOT; };
 		E1C048481D867F650009DF6B /* GSAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSAccount.h; path = 18phone/Gossip/GSAccount.h; sourceTree = SOURCE_ROOT; };
 		E1C048491D867F650009DF6B /* GSAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GSAccount.m; path = 18phone/Gossip/GSAccount.m; sourceTree = SOURCE_ROOT; };
@@ -582,6 +588,7 @@
 				E199E03E1D97FBE7001237AD /* EditUserViewController.swift */,
 				E193274C1D9A51BA006BA8B2 /* CheckAccountViewController.swift */,
 				E19327501D9A6623006BA8B2 /* LoginViewController.swift */,
+				E1AC7F821DA89B85001C2676 /* RegisterViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -601,6 +608,8 @@
 				E1626D581D93BA7100C3422C /* DetailLogCell.swift */,
 				E11E37E51D94C619004B566D /* UserDetailCell.swift */,
 				E11227CF1D9B5F3200B08ACD /* LoginCell.swift */,
+				E1AC7F841DA89E1C001C2676 /* RegisterCell.swift */,
+				E1AC7F861DA8CAE5001C2676 /* VerifyCodeButton.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -806,6 +815,7 @@
 				E13BACDB1D51946B00414ACE /* KTabBarController.swift in Sources */,
 				E1721F301D90E27500A67C5B /* QRCodeViewController.swift in Sources */,
 				E193274D1D9A51BA006BA8B2 /* CheckAccountViewController.swift in Sources */,
+				E1AC7F851DA89E1C001C2676 /* RegisterCell.swift in Sources */,
 				E13BACE21D5196EE00414ACE /* DialNumberCell.swift in Sources */,
 				E138D0791D630B7A0091AF4A /* IncomingCallViewController.swift in Sources */,
 				E1C0486E1D867F650009DF6B /* GSOutgoingCall.m in Sources */,
@@ -826,6 +836,7 @@
 				E1C0486D1D867F650009DF6B /* GSNotifications.m in Sources */,
 				E115A0451D6D762C005FCB8F /* README.md in Sources */,
 				E13BACD21D518FF000414ACE /* StatusCode.swift in Sources */,
+				E1AC7F871DA8CAE5001C2676 /* VerifyCodeButton.swift in Sources */,
 				E19327511D9A6623006BA8B2 /* LoginViewController.swift in Sources */,
 				E13BACD01D518FF000414ACE /* Operation.swift in Sources */,
 				E1C048691D867F650009DF6B /* GSCodecInfo.m in Sources */,
@@ -855,6 +866,7 @@
 				E12EBA841D532447007B5CBD /* piQ.swift in Sources */,
 				E11E37E81D94CCC6004B566D /* UserCenterViewController.swift in Sources */,
 				E11227D01D9B5F3200B08ACD /* LoginCell.swift in Sources */,
+				E1AC7F831DA89B85001C2676 /* RegisterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

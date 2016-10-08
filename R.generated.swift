@@ -379,7 +379,7 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 14 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 16 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `backup_cell_a`.
     static let backup_cell_a: ReuseIdentifier<UITableViewCell> = ReuseIdentifier(identifier: "backup_cell_a")
@@ -405,6 +405,10 @@ struct R: Rswift.Validatable {
     static let login_cell: ReuseIdentifier<LoginCell> = ReuseIdentifier(identifier: "login_cell")
     /// Reuse identifier `message_cell`.
     static let message_cell: ReuseIdentifier<UITableViewCell> = ReuseIdentifier(identifier: "message_cell")
+    /// Reuse identifier `register_cell_a`.
+    static let register_cell_a: ReuseIdentifier<RegisterCell> = ReuseIdentifier(identifier: "register_cell_a")
+    /// Reuse identifier `register_cell_b`.
+    static let register_cell_b: ReuseIdentifier<RegisterCell> = ReuseIdentifier(identifier: "register_cell_b")
     /// Reuse identifier `setting_cell`.
     static let setting_cell: ReuseIdentifier<UITableViewCell> = ReuseIdentifier(identifier: "setting_cell")
     /// Reuse identifier `user_detail_cell`.
@@ -539,7 +543,7 @@ struct _R: Rswift.Validatable {
     }
     
     struct main: StoryboardResourceWithInitialControllerType, Rswift.Validatable {
-      typealias InitialController = KTabBarController
+      typealias InitialController = CheckAccountViewController
       
       let backupViewController = StoryboardViewControllerResource<BackupViewController>(identifier: "BackupViewController")
       let bundle = _R.hostingBundle
