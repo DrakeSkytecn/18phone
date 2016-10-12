@@ -20,7 +20,7 @@ struct URL {
     
     /// 比一比SIP服务器地址
 //    static let BEYEBE_SIP_SERVER = "211.149.172.109:5060"
-    static let BEYEBE_SIP_SERVER = "192.168.10.239:5060"
+    static let BEYEBE_SIP_SERVER = "192.168.10.186:5060"
 //    static let BEYEBE_SIP_SERVER = "192.168.0.113:5060"
     
     /// 比一比SIP服务器域名
@@ -201,6 +201,22 @@ struct StringUtil {
         } else {
             return ""
         }
+    }
+}
+
+struct ViewUtil {
+    /**
+     Number Pad没有return键需手动添加
+     
+     - parameter textField: 需要添加return键的textField
+     */
+    static func setupNumberBar(textField: UITextField) {
+        let numberBar = R.nib.numberBar.firstView(owner: nil)
+        var temp = numberBar!.frame
+        temp.size.width = Screen.width
+        numberBar?.frame = temp
+        numberBar?.textField = textField
+        textField.inputAccessoryView = numberBar
     }
 }
 

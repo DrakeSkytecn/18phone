@@ -1773,7 +1773,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jcH-Uo-fba" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2694" y="-485"/>
+            <point key="canvasLocation" x="2694" y="-417"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="2IE-Oc-1Tz">
@@ -2979,7 +2979,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R1M-bd-EfS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1882" y="-485"/>
+            <point key="canvasLocation" x="1882" y="-417"/>
         </scene>
     </scenes>
     <resources>

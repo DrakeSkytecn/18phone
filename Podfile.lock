@@ -1,35 +1,42 @@
 PODS:
   - ActionSheetPicker-3.0 (2.2.0)
-  - PageMenu (1.2.9)
-  - R.swift (2.4.0):
-    - R.swift.Library (~> 2.2.0)
-  - R.swift.Library (2.2.0)
-  - Realm (1.0.2):
-    - Realm/Headers (= 1.0.2)
-  - Realm/Headers (1.0.2)
-  - RealmSwift (1.0.2):
-    - Realm (= 1.0.2)
-  - SwiftDate (3.0.8)
-  - SwiftEventBus (1.1.0)
+  - R.swift (3.1.0):
+    - R.swift.Library (~> 3.0.2)
+  - R.swift.Library (3.0.2)
+  - Realm (2.0.2):
+    - Realm/Headers (= 2.0.2)
+  - Realm/Headers (2.0.2)
+  - RealmSwift (2.0.2):
+    - Realm (= 2.0.2)
+  - SwiftDate (4.0.5)
+  - SwiftEventBus (2.1.0)
 
 DEPENDENCIES:
   - ActionSheetPicker-3.0
-  - PageMenu
-  - R.swift
-  - RealmSwift
-  - SwiftDate
-  - SwiftEventBus
+  - R.swift (~> 3.1.0)
+  - RealmSwift (~> 2.0.2)
+  - SwiftDate (~> 4.0.5)
+  - SwiftEventBus (from `https://github.com/cesarferreira/SwiftEventBus.git`, tag `2.1.2`)
+
+EXTERNAL SOURCES:
+  SwiftEventBus:
+    :git: https://github.com/cesarferreira/SwiftEventBus.git
+    :tag: 2.1.2
+
+CHECKOUT OPTIONS:
+  SwiftEventBus:
+    :git: https://github.com/cesarferreira/SwiftEventBus.git
+    :tag: 2.1.2
 
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: d11a4c12c6aaf704b8a3f56d179198c99f3e41e6
-  PageMenu: ba19ff267f7a19e444e93c20a7847b78954a7011
-  R.swift: 0ef9c42dc6c94ac44a3c78a7639c73f855a8e159
-  R.swift.Library: 31a487b65381f37a7d203a6f1f935b43c9be35b0
-  Realm: 9d5c46a4d7d27958530a8dfc58f63a99e5c2cba3
-  RealmSwift: 82f3ac5e24530143dddfde2033acc0d308f27d96
-  SwiftDate: 971f8b9394f664f2226b9c3ab64e801a7291c612
-  SwiftEventBus: d33b51752d4e3e994f0ea7b31873f0beca7eada0
+  R.swift: 14400e5784224d1e4e59a8fc5549198c7e8fe360
+  R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
+  Realm: 0f5a194af0b7e6158b83db41b4ee1a00be7ddf1a
+  RealmSwift: 0eb5070d851cba7c66e841ca756d83609dc78bc8
+  SwiftDate: a945bf4150ef977824df91116ca30a04604216d3
+  SwiftEventBus: 03fb72b65f3ae11912dec2591567b89e5908a781
 
-PODFILE CHECKSUM: 5c36cfa3e0d411dd38eefea3ccfaf983485c5e89
+PODFILE CHECKSUM: fea37c0268caba96d7b1a4be4911c17722e0e661
 
 COCOAPODS: 1.0.1

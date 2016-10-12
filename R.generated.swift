@@ -359,12 +359,14 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.nib` struct is generated, and contains static references to 2 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 3 nibs.
   struct nib {
     /// Nib `CallConView`.
     static let callConView = _R.nib._CallConView()
     /// Nib `DialView`.
     static let dialView = _R.nib._DialView()
+    /// Nib `NumberBar`.
+    static let numberBar = _R.nib._NumberBar()
     
     /// `UINib(name: "CallConView", bundle: ...)`
     static func callConView(_: Void) -> UINib {
@@ -374,6 +376,11 @@ struct R: Rswift.Validatable {
     /// `UINib(name: "DialView", bundle: ...)`
     static func dialView(_: Void) -> UINib {
       return UINib(resource: R.nib.dialView)
+    }
+    
+    /// `UINib(name: "NumberBar", bundle: ...)`
+    static func numberBar(_: Void) -> UINib {
+      return UINib(resource: R.nib.numberBar)
     }
     
     private init() {}
@@ -481,8 +488,13 @@ struct R: Rswift.Validatable {
     private init() {}
   }
   
-  /// This `R.string` struct is generated, and contains static references to 0 localization tables.
+  /// This `R.string` struct is generated, and contains static references to 1 localization tables.
   struct string {
+    /// This `R.string.launchScreen` struct is generated, and contains static references to 0 localization keys.
+    struct launchScreen {
+      private init() {}
+    }
+    
     private init() {}
   }
   
@@ -515,6 +527,17 @@ struct _R: Rswift.Validatable {
       
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> UIView? {
         return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? UIView
+      }
+      
+      private init() {}
+    }
+    
+    struct _NumberBar: NibResourceType {
+      let bundle = _R.hostingBundle
+      let name = "NumberBar"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> NumberBar? {
+        return instantiateWithOwner(ownerOrNil, options: optionsOrNil)[0] as? NumberBar
       }
       
       private init() {}

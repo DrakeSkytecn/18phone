@@ -85,7 +85,6 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/ActionSheetPicker-3.0/ActionSheetPicker_3_0.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/PageMenu/PageMenu.framework"
   install_framework "$BUILT_PRODUCTS_DIR/R.swift.Library/Rswift.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Realm/Realm.framework"
   install_framework "$BUILT_PRODUCTS_DIR/RealmSwift/RealmSwift.framework"
@@ -94,7 +93,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/ActionSheetPicker-3.0/ActionSheetPicker_3_0.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/PageMenu/PageMenu.framework"
   install_framework "$BUILT_PRODUCTS_DIR/R.swift.Library/Rswift.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Realm/Realm.framework"
   install_framework "$BUILT_PRODUCTS_DIR/RealmSwift/RealmSwift.framework"

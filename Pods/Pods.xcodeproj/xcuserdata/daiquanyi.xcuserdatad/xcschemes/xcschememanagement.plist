@@ -9,11 +9,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>PageMenu.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-18phone.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -52,37 +47,32 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>21C461B0CAD90DE64B07A5D212C5F829</key>
+		<key>3F514C893F95140E011C2BA6141C5B86</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7A6AD60FC6546AA4AF54CBF7F0F242DF</key>
+		<key>4E7188A16563527EDE370BB49539CD1A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>81A899B046E54DEDC36BE1126B7A0A0B</key>
+		<key>AE533AF98FE9A635EA38B6F6507EA65A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A887CA115A758E2C0EA9A2C78290B16D</key>
+		<key>C49CD877D093981D500FF15078518190</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CDC8AAE1779443F6EBC61F02D7A29032</key>
+		<key>E44F814123CCE5EF35107E09394E116E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CF363F86EA8C612FB4DACFF65FEFFD2D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F861166674258D3392B88ECD6E115A1A</key>
+		<key>F662611102EF2CD849D81B592E7E3E8B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
