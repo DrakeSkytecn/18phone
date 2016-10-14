@@ -11,10 +11,10 @@ import AVFoundation
 
 class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 
-    private var captureSession: AVCaptureSession?
-    private var videoPreviewLayer: AVCaptureVideoPreviewLayer?
-    private var animationLineView: UIImageView?
-    private var timer: NSTimer?
+    fileprivate var captureSession: AVCaptureSession?
+    fileprivate var videoPreviewLayer: AVCaptureVideoPreviewLayer?
+    fileprivate var animationLineView: UIImageView?
+    fileprivate var timer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,35 +24,35 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         buildAnimationLineView()
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         if timer != nil {
             timer!.invalidate()
             timer = nil
         }
     }
     
-    private func buildTitleLabel() {
+    fileprivate func buildTitleLabel() {
         let titleLabel = UILabel()
         titleLabel.text = "将二维码对准方块扫描"
-        titleLabel.textColor = UIColor.whiteColor()
-        titleLabel.font = UIFont.systemFontOfSize(16)
-        titleLabel.frame = CGRectMake(0, 340, Screen.width, 30)
-        titleLabel.textAlignment = .Center
+        titleLabel.textColor = UIColor.white
+        titleLabel.font = UIFont.systemFont(ofSize: 16)
+        titleLabel.frame = CGRect(x: 0, y: 340, width: Screen.width, height: 30)
+        titleLabel.textAlignment = .center
         
         let tintLabel = UILabel()
         tintLabel.text = "(不支持微信账号二维码)"
-        tintLabel.textColor = UIColor.whiteColor()
-        tintLabel.font = UIFont.systemFontOfSize(12)
-        tintLabel.frame = CGRectMake(0, 380, Screen.width, 30)
-        tintLabel.textAlignment = .Center
+        tintLabel.textColor = UIColor.white
+        tintLabel.font = UIFont.systemFont(ofSize: 12)
+        tintLabel.frame = CGRect(x: 0, y: 380, width: Screen.width, height: 30)
+        tintLabel.textAlignment = .center
         
         view.addSubview(titleLabel)
 //        view.addSubview(tintLabel)
     }
     
-    private func buildInputAVCaptureDevice() {
+    fileprivate func buildInputAVCaptureDevice() {
         
-        let captureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
+        let captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
         
         let input = try? AVCaptureDeviceInput(device: captureDevice)
         if input == nil {
@@ -63,22 +63,22 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         captureSession = AVCaptureSession()
         captureSession?.addInput(input!)
         captureSession?.addOutput(captureMetadataOutput)
-        let dispatchQueue = dispatch_queue_create("myQueue", nil)
+        let dispatchQueue = DispatchQueue(label: "myQueue", attributes: [])
         captureMetadataOutput.setMetadataObjectsDelegate(self, queue: dispatchQueue)
         captureMetadataOutput.metadataObjectTypes = [AVMetadataObjectTypeQRCode, AVMetadataObjectTypeAztecCode]
         videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         videoPreviewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
         videoPreviewLayer?.frame = view.layer.frame
         view.layer.addSublayer(videoPreviewLayer!)
-        captureMetadataOutput.rectOfInterest = CGRectMake(100 / view.bounds.height, 0.2, (100 + Screen.width * 0.6) / view.bounds.height, 0.8)
+        captureMetadataOutput.rectOfInterest = CGRect(x: 100 / view.bounds.height, y: 0.2, width: (100 + Screen.width * 0.6) / view.bounds.height, height: 0.8)
         captureSession?.startRunning()
     }
     
-    private func buildFrameImageView() {
-        let lineT = [CGRectMake(0, 0, Screen.width, 100),
-            CGRectMake(0, 100, Screen.width * 0.2, Screen.width * 0.6),
-            CGRectMake(0, 100 + Screen.width * 0.6, Screen.width, view.bounds.height - 100 - Screen.width * 0.6),
-            CGRectMake(Screen.width * 0.8, 100, Screen.width * 0.2, Screen.width * 0.6)]
+    fileprivate func buildFrameImageView() {
+        let lineT = [CGRect(x: 0, y: 0, width: Screen.width, height: 100),
+            CGRect(x: 0, y: 100, width: Screen.width * 0.2, height: Screen.width * 0.6),
+            CGRect(x: 0, y: 100 + Screen.width * 0.6, width: Screen.width, height: view.bounds.height - 100 - Screen.width * 0.6),
+            CGRect(x: Screen.width * 0.8, y: 100, width: Screen.width * 0.2, height: Screen.width * 0.6)]
         for lineTFrame in lineT {
             buildTransparentView(lineTFrame)
         }
@@ -87,69 +87,69 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         let yellowWidth: CGFloat = 30
         let yellowX: CGFloat = Screen.width * 0.2
         let bottomY: CGFloat = 100 + Screen.width * 0.6
-        let lineY = [CGRectMake(yellowX, 100, yellowWidth, yellowHeight),
-            CGRectMake(yellowX, 100, yellowHeight, yellowWidth),
-            CGRectMake(Screen.width * 0.8 - yellowHeight, 100, yellowHeight, yellowWidth),
-            CGRectMake(Screen.width * 0.8 - yellowWidth, 100, yellowWidth, yellowHeight),
-            CGRectMake(yellowX, bottomY - yellowHeight + 2, yellowWidth, yellowHeight),
-            CGRectMake(Screen.width * 0.8 - yellowWidth, bottomY - yellowHeight + 2, yellowWidth, yellowHeight),
-            CGRectMake(yellowX, bottomY - yellowWidth, yellowHeight, yellowWidth),
-            CGRectMake(Screen.width * 0.8 - yellowHeight, bottomY - yellowWidth, yellowHeight, yellowWidth)]
+        let lineY = [CGRect(x: yellowX, y: 100, width: yellowWidth, height: yellowHeight),
+            CGRect(x: yellowX, y: 100, width: yellowHeight, height: yellowWidth),
+            CGRect(x: Screen.width * 0.8 - yellowHeight, y: 100, width: yellowHeight, height: yellowWidth),
+            CGRect(x: Screen.width * 0.8 - yellowWidth, y: 100, width: yellowWidth, height: yellowHeight),
+            CGRect(x: yellowX, y: bottomY - yellowHeight + 2, width: yellowWidth, height: yellowHeight),
+            CGRect(x: Screen.width * 0.8 - yellowWidth, y: bottomY - yellowHeight + 2, width: yellowWidth, height: yellowHeight),
+            CGRect(x: yellowX, y: bottomY - yellowWidth, width: yellowHeight, height: yellowWidth),
+            CGRect(x: Screen.width * 0.8 - yellowHeight, y: bottomY - yellowWidth, width: yellowHeight, height: yellowWidth)]
         
         for yellowRect in lineY {
             buildYellowLineView(yellowRect)
         }
     }
     
-    private func buildYellowLineView(frame: CGRect) {
+    fileprivate func buildYellowLineView(_ frame: CGRect) {
         let yellowView = UIView(frame: frame)
-        yellowView.backgroundColor = UIColor.greenColor()
+        yellowView.backgroundColor = UIColor.green
         view.addSubview(yellowView)
     }
     
-    private func buildTransparentView(frame: CGRect) {
+    fileprivate func buildTransparentView(_ frame: CGRect) {
         let tView = UIView(frame: frame)
-        tView.backgroundColor = UIColor.blackColor()
+        tView.backgroundColor = UIColor.black
         tView.alpha = 0.5
         view.addSubview(tView)
     }
     
-    private func buildAnimationLineView() {
+    fileprivate func buildAnimationLineView() {
         animationLineView = UIImageView()
         animationLineView!.image = UIImage(named: "yellowlight")
         view.addSubview(animationLineView!)
         
-        timer = NSTimer(timeInterval: 2.5, target: self, selector: "startYellowViewAnimation", userInfo: nil, repeats: true)
-        let runloop = NSRunLoop.currentRunLoop()
-        runloop.addTimer(timer!, forMode: NSRunLoopCommonModes)
+        timer = Timer(timeInterval: 2.5, target: self, selector: #selector(QRCodeViewController.startYellowViewAnimation), userInfo: nil, repeats: true)
+        let runloop = RunLoop.current
+        runloop.add(timer!, forMode: RunLoopMode.commonModes)
         timer!.fire()
     }
     
     func startYellowViewAnimation() {
         weak var weakSelf = self
-        animationLineView!.frame = CGRectMake(Screen.width * 0.2 + Screen.width * 0.1 * 0.5, 100, Screen.width * 0.5, 20)
-        UIView.animateWithDuration(2.5) {
+        animationLineView!.frame = CGRect(x: Screen.width * 0.2 + Screen.width * 0.1 * 0.5, y: 100, width: Screen.width * 0.5, height: 20)
+        UIView.animate(withDuration: 2.5, animations: {
             weakSelf!.animationLineView!.frame.origin.y += Screen.width * 0.55
-        }
+        }) 
     }
     
-    func captureOutput(captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [AnyObject]!, fromConnection connection: AVCaptureConnection!) {
+    func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
         var stringValue:String?
         if metadataObjects.count > 0 {
             let metadataObject = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
             stringValue = metadataObject.stringValue
         }
-        NSThread.sleepForTimeInterval(0.5)
+        Thread.sleep(forTimeInterval: 0.5)
         captureSession!.stopRunning()
-        let alertController = UIAlertController(title: "二维码", message: "扫到的二维码结果为:\(stringValue!) 是否打开？", preferredStyle: UIAlertControllerStyle.Alert)
-        alertController.addAction(UIAlertAction(title: "确认", style: .Default, handler: { action in
-            App.application.openURL(NSURL(string: stringValue!)!)
+        let alertController = UIAlertController(title: "二维码", message: "扫到的二维码结果为:\(stringValue!) 是否打开？", preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "确认", style: .default, handler: { action in
+            App.application.openURL(Foundation.URL(string: stringValue!)!)
             self.captureSession?.startRunning()
         }))
-        alertController.addAction(UIAlertAction(title: "取消", style: .Cancel, handler: { action in
+        alertController.addAction(UIAlertAction(title: "取消", style: .cancel, handler: { action in
             self.captureSession?.startRunning()
         }))
-        self.presentViewController(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {

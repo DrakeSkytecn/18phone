@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftEventBus
 
 /// 拨号页面根控制器
 class RootViewController: UIViewController, GSAccountDelegate {
@@ -16,10 +17,10 @@ class RootViewController: UIViewController, GSAccountDelegate {
     @IBOutlet weak var menuY: NSLayoutConstraint!
     
     /// 用于判断拨号盘是否展开
-    private var isMenuShow: Bool = false
+    fileprivate var isMenuShow: Bool = false
     
     /// 用于判断拨号页面是否显示
-    private var isViewHidden: Bool = false
+    fileprivate var isViewHidden: Bool = false
     
     /// 拨号盘
     @IBOutlet weak var menuView: UIView!
@@ -40,27 +41,27 @@ class RootViewController: UIViewController, GSAccountDelegate {
         super.viewDidLoad()
         menuHeight.constant = Screen.height - 49
         menuY.constant = menuHeight.constant - 20
-        App.userAgentAccount.delegate = self
-        App.userAgentAccount.addObserver(self, forKeyPath: "status", options: .Initial, context: nil)
-        App.userAgentAccount.connect()
+        App.userAgentAccount?.delegate = self
+        App.userAgentAccount?.addObserver(self, forKeyPath: "status", options: .initial, context: nil)
+        App.userAgentAccount?.connect()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         isViewHidden = false
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         isViewHidden = true
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-        App.userAgentAccount.disconnect()
+        App.userAgentAccount?.disconnect()
     }
     
     /**
@@ -68,7 +69,7 @@ class RootViewController: UIViewController, GSAccountDelegate {
      
      - parameter item: 选中的底部子菜单项
      */
-    func changeMenuState(item: UITabBarItem) {
+    func changeMenuState(_ item: UITabBarItem) {
         print("changeMenuState")
         if !isViewHidden {
             if isMenuShow {
@@ -86,7 +87,7 @@ class RootViewController: UIViewController, GSAccountDelegate {
     /**
      展开拨号盘
      */
-    private func show() {
+    fileprivate func show() {
         navigationController?.setNavigationBarHidden(true, animated: true)
         menuTranYAnimation(-menuView.frame.height)
         isMenuShow = true
@@ -95,7 +96,7 @@ class RootViewController: UIViewController, GSAccountDelegate {
     /**
      收起拨号盘
      */
-    private func hide() {
+    fileprivate func hide() {
         navigationController?.setNavigationBarHidden(false, animated: true)
         menuTranYAnimation(menuView.frame.height)
         isMenuShow = false
@@ -106,7 +107,7 @@ class RootViewController: UIViewController, GSAccountDelegate {
      
      - parameter height: 移动的距离，默认传入拨号盘的高度
      */
-    private func resetMenuY(height: CGFloat) {
+    fileprivate func resetMenuY(_ height: CGFloat) {
         var rect = menuView.frame
         rect.origin.y = rect.origin.y + height
         menuView.frame = rect
@@ -118,8 +119,8 @@ class RootViewController: UIViewController, GSAccountDelegate {
      
      - parameter height: 移动的距离，默认传入拨号盘的高度
      */
-    private func menuTranYAnimation(height: CGFloat) {
-        UIView.animateWithDuration(0.6, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .CurveEaseInOut, animations: {
+    fileprivate func menuTranYAnimation(_ height: CGFloat) {
+        UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: UIViewAnimationOptions(), animations: {
             self.resetMenuY(height)
             }, completion: nil)
     }
@@ -129,18 +130,18 @@ class RootViewController: UIViewController, GSAccountDelegate {
      
      - parameter sender: 被点击的分页导航控件
      */
-    @IBAction func topMenuNav(sender: UISegmentedControl) {
+    @IBAction func topMenuNav(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            aContainer.hidden = false
-            bContainer.hidden = true
+            aContainer.isHidden = false
+            bContainer.isHidden = true
             callLogViewController?.scrollsToTopEnable(true)
             contactViewController?.scrollsToTopEnable(false)
             navigationItem.leftBarButtonItem?.image = R.image.delete_all()
             break
         case 1:
-            aContainer.hidden = true
-            bContainer.hidden = false
+            aContainer.isHidden = true
+            bContainer.isHidden = false
             callLogViewController?.scrollsToTopEnable(false)
             contactViewController?.scrollsToTopEnable(true)
             navigationItem.leftBarButtonItem?.image = R.image.backup()
@@ -150,36 +151,36 @@ class RootViewController: UIViewController, GSAccountDelegate {
         }
     }
     
-    @IBAction func leftMenu(sender: UIBarButtonItem) {
+    @IBAction func leftMenu(_ sender: UIBarButtonItem) {
         if navigationItem.leftBarButtonItem?.image == R.image.delete_all() {
             let callLogs = App.realm.objects(CallLog.self)
             if callLogs.count != 0 {
-                let alertController = UIAlertController(title: "清空通话记录", message: "此操作不可撤回，确认清除所有的通话记录吗？", preferredStyle: .ActionSheet)
-                alertController.addAction(UIAlertAction(title: "确认", style: .Destructive) { action in
+                let alertController = UIAlertController(title: "清空通话记录", message: "此操作不可撤回，确认清除所有的通话记录吗？", preferredStyle: .actionSheet)
+                alertController.addAction(UIAlertAction(title: "确认", style: .destructive) { action in
                     SwiftEventBus.post("deleteAllCallLogs")
                     SwiftEventBus.post("showCallCon")
                     })
-                alertController.addAction(UIAlertAction(title: "取消", style: .Cancel) { action in
+                alertController.addAction(UIAlertAction(title: "取消", style: .cancel) { action in
                     SwiftEventBus.post("showCallCon")
                     })
-                presentViewController(alertController, animated: true, completion: nil)
+                present(alertController, animated: true, completion: nil)
             }
         } else {
             navigationController?.pushViewController(R.storyboard.main.backupViewController()!, animated: true)
         }
     }
     
-    @IBAction func scanQRCode(sender: UIBarButtonItem) {
+    @IBAction func scanQRCode(_ sender: UIBarButtonItem) {
         let qrCodeViewController = QRCodeViewController()
         navigationController?.pushViewController(qrCodeViewController, animated: true)
     }
     
-    @IBAction func toUserCenter(sender: UIBarButtonItem) {
+    @IBAction func toUserCenter(_ sender: UIBarButtonItem) {
         
     }
     
     func statusDidChange() {
-        switch App.userAgentAccount.status {
+        switch App.userAgentAccount!.status {
         case GSAccountStatusOffline:
             print("Offline")
             break
@@ -198,7 +199,7 @@ class RootViewController: UIViewController, GSAccountDelegate {
         }
     }
     
-    func account(account: GSAccount!, didReceiveIncomingCall call: GSCall!) {
+    func account(_ account: GSAccount!, didReceiveIncomingCall call: GSCall!) {
 //        print("didReceiveIncomingCall")
 //        
 //        let incomingVideoViewController = R.storyboard.main.incomingVideoViewController()
@@ -206,35 +207,35 @@ class RootViewController: UIViewController, GSAccountDelegate {
 //        presentViewController(incomingVideoViewController!, animated: true, completion: nil)
     }
     
-    func didReceiveIncomingCall(callData: [NSObject : AnyObject]!) {
+    func didReceiveIncomingCall(_ callData: [AnyHashable: Any]!) {
         let account = callData["account"] as! GSAccount
         let inCall = callData["inCall"] as! GSCall
         let vid_cnt = callData["vid_cnt"] as! Int
         if vid_cnt == 0 {
             let incomingCallViewController = R.storyboard.main.incomingCallViewController()
             incomingCallViewController?.inCall = inCall
-            presentViewController(incomingCallViewController!, animated: true, completion: nil)
+            present(incomingCallViewController!, animated: true, completion: nil)
         } else {
             let incomingVideoViewController = R.storyboard.main.incomingVideoViewController()
             incomingVideoViewController!.inCall = inCall
-            presentViewController(incomingVideoViewController!, animated: true, completion: nil)
+            present(incomingVideoViewController!, animated: true, completion: nil)
         }
     }
     
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "status" {
             statusDidChange()
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier =  segue.identifier {
             switch identifier {
             case R.segue.rootViewController.callLogViewController.identifier:
-                callLogViewController = segue.destinationViewController as? CallLogViewController
+                callLogViewController = segue.destination as? CallLogViewController
                 break
             case R.segue.rootViewController.contactViewController.identifier:
-                contactViewController = segue.destinationViewController as? ContactViewController
+                contactViewController = segue.destination as? ContactViewController
                 break
             default:
                 break
@@ -244,7 +245,7 @@ class RootViewController: UIViewController, GSAccountDelegate {
     }
     
     deinit {
-        App.userAgentAccount.disconnect()
+        App.userAgentAccount?.disconnect()
     }
 }
 

@@ -27,7 +27,7 @@ class KTabBarController: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
         case 1:
             (viewControllers![1].childViewControllers[0] as! RootViewController).changeMenuState(item)

@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import SwiftEventBus
 
 class CallLogMenuViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -22,7 +23,7 @@ class CallLogMenuViewController: UIViewController, UITableViewDataSource, UITabl
         tableView.tableFooterView = UIView()
         tableView.dataSource = self
         tableView.delegate = self
-        callLogs = App.realm.objects(CallLog.self).filter("identifier == '\(contactId!)'").sorted("callStartTime", ascending: false)
+        callLogs = App.realm.objects(CallLog.self).filter("identifier == '\(contactId!)'").sorted(byProperty: "callStartTime", ascending: false)
         SwiftEventBus.onMainThread(self, name: "reloadCallLogs") { result in
             self.reloadCallLogs()
         }
@@ -34,51 +35,51 @@ class CallLogMenuViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func reloadCallLogs() {
-        callLogs = App.realm.objects(CallLog.self).filter("identifier == '\(contactId!)'").sorted("callStartTime", ascending: false)
+        callLogs = App.realm.objects(CallLog.self).filter("identifier == '\(contactId!)'").sorted(byProperty: "callStartTime", ascending: false)
         tableView.reloadData()
     }
     
-    @IBAction func clearAllCallLog(sender: UIButton) {
+    @IBAction func clearAllCallLog(_ sender: UIButton) {
         if callLogs!.count != 0 {
-            let alertController = UIAlertController(title: "清空通话记录", message: "此操作不可撤回，确认清除所有的通话记录吗？", preferredStyle: .ActionSheet)
-            alertController.addAction(UIAlertAction(title: "确认", style: .Destructive) { action in
+            let alertController = UIAlertController(title: "清空通话记录", message: "此操作不可撤回，确认清除所有的通话记录吗？", preferredStyle: .actionSheet)
+            alertController.addAction(UIAlertAction(title: "确认", style: .destructive) { action in
                 try! App.realm.write {
                     App.realm.delete(self.callLogs!)
                 }
                 self.reloadCallLogs()
                 SwiftEventBus.post("reloadCallLogs")
                 })
-            alertController.addAction(UIAlertAction(title: "取消", style: .Cancel) { action in
+            alertController.addAction(UIAlertAction(title: "取消", style: .cancel) { action in
                 
                 })
-            presentViewController(alertController, animated: true, completion: nil)
+            present(alertController, animated: true, completion: nil)
         }
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return callLogs!.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let callLog = callLogs![indexPath.row]
-        let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.detail_log_cell)
-        if callLog.callType == CallType.Voice.rawValue {
+        let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.detail_log_cell)
+        if callLog.callType == CallType.voice.rawValue {
             cell!.callType.image = R.image.voice_call()
         } else {
             cell!.callType.image = R.image.video_call()
         }
         cell?.callStartTime.text = DateUtil.dateToString(callLog.callStartTime)
         switch callLog.callState {
-        case CallState.InUnConnected.rawValue:
+        case CallState.inUnConnected.rawValue:
             cell!.callState.image = R.image.call_in_unconnected()
             break
-        case CallState.InConnected.rawValue:
+        case CallState.inConnected.rawValue:
             cell!.callState.image = R.image.call_in_connected()
             break
-        case CallState.OutUnConnected.rawValue:
+        case CallState.outUnConnected.rawValue:
             cell!.callState.image = R.image.call_out_unconnected()
             break
-        case CallState.OutConnected.rawValue:
+        case CallState.outConnected.rawValue:
             cell!.callState.image = R.image.call_out_connected()
             break
         default:
@@ -89,8 +90,8 @@ class CallLogMenuViewController: UIViewController, UITableViewDataSource, UITabl
         return cell!
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     /*
     // MARK: - Navigation

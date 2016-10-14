@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import SwiftEventBus
 
 class CallLogViewController: UITableViewController {
     
@@ -15,7 +16,7 @@ class CallLogViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        callLogs = App.realm.objects(CallLog.self).sorted("callStartTime", ascending: false)
+        callLogs = App.realm.objects(CallLog.self).sorted(byProperty: "callStartTime", ascending: false)
         tableView.tableFooterView = UIView()
         SwiftEventBus.onMainThread(self, name: "reloadCallLogs") { result in
             self.reloadCallLogs()
@@ -29,19 +30,19 @@ class CallLogViewController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
     
-    func scrollsToTopEnable(enable: Bool) {
+    func scrollsToTopEnable(_ enable: Bool) {
         tableView.scrollsToTop = enable
     }
     
     // MARK: - Table view data source
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return callLogs!.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.log_a)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.log_a)
         let callLog = callLogs![indexPath.row]
         
         if callLog.name.isEmpty {
@@ -57,27 +58,27 @@ class CallLogViewController: UITableViewController {
         if callLog.headPhoto == nil {
             cell!.headPhoto.image = R.image.head_photo_default()!
         } else {
-            cell!.headPhoto.image = UIImage(data: callLog.headPhoto!)
+            cell!.headPhoto.image = UIImage(data: callLog.headPhoto! as Data)
         }
         print("callLog.callState:\(callLog.callState)")
         switch callLog.callState {
-        case CallState.InUnConnected.rawValue:
+        case CallState.inUnConnected.rawValue:
             cell!.callState.image = R.image.call_in_unconnected()
             break
-        case CallState.InConnected.rawValue:
+        case CallState.inConnected.rawValue:
             cell!.callState.image = R.image.call_in_connected()
             break
-        case CallState.OutUnConnected.rawValue:
+        case CallState.outUnConnected.rawValue:
             cell!.callState.image = R.image.call_out_unconnected()
             break
-        case CallState.OutConnected.rawValue:
+        case CallState.outConnected.rawValue:
             cell!.callState.image = R.image.call_out_connected()
             break
         default:
             break
         }
         
-        if callLog.callType == CallType.Voice.rawValue {
+        if callLog.callType == CallType.voice.rawValue {
             cell!.callType.image = R.image.voice_call()
         } else {
             cell!.callType.image = R.image.video_call()
@@ -90,30 +91,30 @@ class CallLogViewController: UITableViewController {
         return cell!
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         let callLog = self.callLogs![indexPath.row]
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-        alertController.addAction(UIAlertAction(title: "语音通话", style: .Default) { action in
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alertController.addAction(UIAlertAction(title: "语音通话", style: .default) { action in
             let outgoingCallViewController = R.storyboard.main.outgoingCallViewController()
             outgoingCallViewController?.contactId = callLog.identifier
             outgoingCallViewController?.toNumber = callLog.phone
             outgoingCallViewController?.contactName = callLog.name
             outgoingCallViewController?.phoneArea = callLog.area
-            self.presentViewController(outgoingCallViewController!, animated: true, completion: nil)
+            self.present(outgoingCallViewController!, animated: true, completion: nil)
             })
-        alertController.addAction(UIAlertAction(title: "视频通话", style: .Default) { action in
+        alertController.addAction(UIAlertAction(title: "视频通话", style: .default) { action in
             let outgoingVideoViewController = R.storyboard.main.outgoingVideoViewController()
             outgoingVideoViewController!.toNumber = callLog.phone
-            self.presentViewController(outgoingVideoViewController!, animated: true, completion: nil)
+            self.present(outgoingVideoViewController!, animated: true, completion: nil)
             })
-        alertController.addAction(UIAlertAction(title: "举报", style: .Destructive) { action in
+        alertController.addAction(UIAlertAction(title: "举报", style: .destructive) { action in
             
             })
-        alertController.addAction(UIAlertAction(title: "取消", style: .Cancel) { action in
+        alertController.addAction(UIAlertAction(title: "取消", style: .cancel) { action in
             
             })
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
     
     /*
@@ -125,15 +126,15 @@ class CallLogViewController: UITableViewController {
      */
     
     // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
             // Delete the row from the data source
             let callLog = callLogs![indexPath.row]
             try! App.realm.write {
                 App.realm.delete(callLog)
             }
-            callLogs = App.realm.objects(CallLog.self).sorted("callStartTime", ascending: false)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            callLogs = App.realm.objects(CallLog.self).sorted(byProperty: "callStartTime", ascending: false)
+            tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
     
@@ -163,7 +164,7 @@ class CallLogViewController: UITableViewController {
      */
     
     func reloadCallLogs() {
-        callLogs = App.realm.objects(CallLog.self).sorted("callStartTime", ascending: false)
+        callLogs = App.realm.objects(CallLog.self).sorted(byProperty: "callStartTime", ascending: false)
         tableView.reloadData()
     }
     

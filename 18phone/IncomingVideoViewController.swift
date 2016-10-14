@@ -19,12 +19,12 @@ class IncomingVideoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         inCall?.incomingCallInfo()
-        inCall?.addObserver(self, forKeyPath: "status", options: .Initial, context: nil)
+        inCall?.addObserver(self, forKeyPath: "status", options: .initial, context: nil)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         inCall?.startPreviewWindow()
-        let previewWindow = inCall!.createPreviewWindow(CGRectMake(0, 0, previewCon.frame.width, previewCon.frame.height))
+        let previewWindow = inCall!.createPreviewWindow(CGRect(x: 0, y: 0, width: previewCon.frame.width, height: previewCon.frame.height))
         previewCon.addSubview(previewWindow!)
         inCall?.orientation()
     }
@@ -34,12 +34,12 @@ class IncomingVideoViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func hangup(sender: UIButton) {
+    @IBAction func hangup(_ sender: UIButton) {
         inCall?.end()
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func answer(sender: UIButton) {
+    @IBAction func answer(_ sender: UIButton) {
         inCall?.beginVideo()
     }
     
@@ -61,7 +61,7 @@ class IncomingVideoViewController: UIViewController {
         case GSCallStatusConnected:
             print("IncomingCallViewController Connected.")
             let videoView = inCall!.createVideoWindow(view.frame)
-            videoView!.backgroundColor = UIColor.blueColor()
+            videoView!.backgroundColor = UIColor.blue
             renderCon.addSubview(videoView!)
             inCall?.orientation()
             
@@ -81,7 +81,7 @@ class IncomingVideoViewController: UIViewController {
             //            try! App.realm.write {
             //                App.realm.add(callLog)
             //            }
-            dismissViewControllerAnimated(true, completion: nil)
+            dismiss(animated: true, completion: nil)
             break
             
         default:
@@ -89,7 +89,7 @@ class IncomingVideoViewController: UIViewController {
         }
     }
     
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "status" {
             callStatusDidChange()
         }

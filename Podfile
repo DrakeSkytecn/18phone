@@ -9,6 +9,9 @@ target :"18phone" do
     pod 'SwiftDate', '~> 4.0.5'
     pod 'ActionSheetPicker-3.0'
     pod 'RealmSwift', '~> 2.0.2'
+    pod 'JSONJoy-Swift'
+    pod 'SwiftHTTP'
+    pod 'AsyncSwift'
 end
 
 post_install do |installer|

@@ -33,9 +33,6 @@
 		E114D1C41D4F1F15006AB978 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E114D1C31D4F1F15006AB978 /* AppDelegate.swift */; };
 		E114D1C61D4F1F15006AB978 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E114D1C51D4F1F15006AB978 /* ContactViewController.swift */; };
 		E114D1CE1D4F1F15006AB978 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E114D1CC1D4F1F15006AB978 /* LaunchScreen.storyboard */; };
-		E115A0441D6D762C005FCB8F /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = E1159FDF1D6D762C005FCB8F /* LICENSE */; };
-		E115A0451D6D762C005FCB8F /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = E1159FE01D6D762C005FCB8F /* README.md */; };
-		E115A0461D6D762C005FCB8F /* SwiftEventBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1159FE21D6D762C005FCB8F /* SwiftEventBus.swift */; };
 		E11E37E61D94C619004B566D /* UserDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11E37E51D94C619004B566D /* UserDetailCell.swift */; };
 		E11E37E81D94CCC6004B566D /* UserCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11E37E71D94CCC6004B566D /* UserCenterViewController.swift */; };
 		E11E92921D5EBBAB004D634A /* DialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E11E92911D5EBBAB004D634A /* DialView.xib */; };
@@ -47,13 +44,6 @@
 		E138D0771D6301EA0091AF4A /* OutgoingCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E138D0761D6301EA0091AF4A /* OutgoingCallViewController.swift */; };
 		E138D0791D630B7A0091AF4A /* IncomingCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E138D0781D630B7A0091AF4A /* IncomingCallViewController.swift */; };
 		E13BACC21D518F5200414ACE /* AppUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACC11D518F5200414ACE /* AppUtil.swift */; };
-		E13BACC71D518FDE00414ACE /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACC61D518FDE00414ACE /* Async.swift */; };
-		E13BACC91D518FE500414ACE /* JSONJoy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACC81D518FE500414ACE /* JSONJoy.swift */; };
-		E13BACCF1D518FF000414ACE /* HTTPSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACCA1D518FF000414ACE /* HTTPSecurity.swift */; };
-		E13BACD01D518FF000414ACE /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACCB1D518FF000414ACE /* Operation.swift */; };
-		E13BACD11D518FF000414ACE /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACCC1D518FF000414ACE /* Request.swift */; };
-		E13BACD21D518FF000414ACE /* StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACCD1D518FF000414ACE /* StatusCode.swift */; };
-		E13BACD31D518FF000414ACE /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACCE1D518FF000414ACE /* Upload.swift */; };
 		E13BACD51D51907600414ACE /* CallLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACD41D51907600414ACE /* CallLog.swift */; };
 		E13BACDA1D51946B00414ACE /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACD61D51946B00414ACE /* RootViewController.swift */; };
 		E13BACDB1D51946B00414ACE /* KTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACD71D51946B00414ACE /* KTabBarController.swift */; };
@@ -178,9 +168,6 @@
 		E114D1C51D4F1F15006AB978 /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		E114D1CD1D4F1F15006AB978 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E114D1CF1D4F1F15006AB978 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E1159FDF1D6D762C005FCB8F /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		E1159FE01D6D762C005FCB8F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		E1159FE21D6D762C005FCB8F /* SwiftEventBus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftEventBus.swift; sourceTree = "<group>"; };
 		E118835D1DAA26020084B760 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		E118835E1DAA26180084B760 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		E11E37E51D94C619004B566D /* UserDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailCell.swift; sourceTree = "<group>"; };
@@ -194,13 +181,6 @@
 		E138D0761D6301EA0091AF4A /* OutgoingCallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutgoingCallViewController.swift; sourceTree = "<group>"; };
 		E138D0781D630B7A0091AF4A /* IncomingCallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomingCallViewController.swift; sourceTree = "<group>"; };
 		E13BACC11D518F5200414ACE /* AppUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUtil.swift; sourceTree = "<group>"; };
-		E13BACC61D518FDE00414ACE /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
-		E13BACC81D518FE500414ACE /* JSONJoy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONJoy.swift; sourceTree = "<group>"; };
-		E13BACCA1D518FF000414ACE /* HTTPSecurity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPSecurity.swift; sourceTree = "<group>"; };
-		E13BACCB1D518FF000414ACE /* Operation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
-		E13BACCC1D518FF000414ACE /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
-		E13BACCD1D518FF000414ACE /* StatusCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusCode.swift; sourceTree = "<group>"; };
-		E13BACCE1D518FF000414ACE /* Upload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Upload.swift; sourceTree = "<group>"; };
 		E13BACD41D51907600414ACE /* CallLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallLog.swift; sourceTree = "<group>"; };
 		E13BACD61D51946B00414ACE /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		E13BACD71D51946B00414ACE /* KTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTabBarController.swift; sourceTree = "<group>"; };
@@ -533,24 +513,6 @@
 			path = 18phone;
 			sourceTree = "<group>";
 		};
-		E1159FDE1D6D762C005FCB8F /* SwiftEventBus */ = {
-			isa = PBXGroup;
-			children = (
-				E1159FDF1D6D762C005FCB8F /* LICENSE */,
-				E1159FE01D6D762C005FCB8F /* README.md */,
-				E1159FE11D6D762C005FCB8F /* SwiftEventBus */,
-			);
-			path = SwiftEventBus;
-			sourceTree = "<group>";
-		};
-		E1159FE11D6D762C005FCB8F /* SwiftEventBus */ = {
-			isa = PBXGroup;
-			children = (
-				E1159FE21D6D762C005FCB8F /* SwiftEventBus.swift */,
-			);
-			path = SwiftEventBus;
-			sourceTree = "<group>";
-		};
 		E12EBA821D532428007B5CBD /* piQ */ = {
 			isa = PBXGroup;
 			children = (
@@ -563,11 +525,7 @@
 			isa = PBXGroup;
 			children = (
 				E10953E71D7FBC00001E7060 /* Gossip */,
-				E1159FDE1D6D762C005FCB8F /* SwiftEventBus */,
 				E12EBA821D532428007B5CBD /* piQ */,
-				E13BACC51D518F9F00414ACE /* Async */,
-				E13BACC41D518F9D00414ACE /* JSONJoy */,
-				E13BACC31D518F9900414ACE /* SwiftHTTP */,
 				E13BACC11D518F5200414ACE /* AppUtil.swift */,
 			);
 			name = Util;
@@ -634,34 +592,6 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		E13BACC31D518F9900414ACE /* SwiftHTTP */ = {
-			isa = PBXGroup;
-			children = (
-				E13BACCA1D518FF000414ACE /* HTTPSecurity.swift */,
-				E13BACCB1D518FF000414ACE /* Operation.swift */,
-				E13BACCC1D518FF000414ACE /* Request.swift */,
-				E13BACCD1D518FF000414ACE /* StatusCode.swift */,
-				E13BACCE1D518FF000414ACE /* Upload.swift */,
-			);
-			name = SwiftHTTP;
-			sourceTree = "<group>";
-		};
-		E13BACC41D518F9D00414ACE /* JSONJoy */ = {
-			isa = PBXGroup;
-			children = (
-				E13BACC81D518FE500414ACE /* JSONJoy.swift */,
-			);
-			name = JSONJoy;
-			sourceTree = "<group>";
-		};
-		E13BACC51D518F9F00414ACE /* Async */ = {
-			isa = PBXGroup;
-			children = (
-				E13BACC61D518FDE00414ACE /* Async.swift */,
-			);
-			name = Async;
-			sourceTree = "<group>";
-		};
 		E15C42101D7D091100124257 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -708,6 +638,7 @@
 					E114D1BF1D4F1F13006AB978 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 4937KKX7AX;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -739,7 +670,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E115A0441D6D762C005FCB8F /* LICENSE in Resources */,
 				E15C42121D7D094000124257 /* ringtone.wav in Resources */,
 				E11E92921D5EBBAB004D634A /* DialView.xib in Resources */,
 				E114D1CE1D4F1F15006AB978 /* LaunchScreen.storyboard in Resources */,
@@ -821,7 +751,6 @@
 			files = (
 				E12EBA811D531FF3007B5CBD /* CallLogACell.swift in Sources */,
 				E1626D591D93BA7100C3422C /* DetailLogCell.swift in Sources */,
-				E13BACC91D518FE500414ACE /* JSONJoy.swift in Sources */,
 				E1C0486A1D867F650009DF6B /* GSConfiguration.m in Sources */,
 				E16453EA1D6AA3150036B53F /* Contact.swift in Sources */,
 				E13BACDB1D51946B00414ACE /* KTabBarController.swift in Sources */,
@@ -839,18 +768,13 @@
 				E1C0486C1D867F650009DF6B /* GSIncomingCall.m in Sources */,
 				E1DE61831D88F1E900321B47 /* ContactCell.swift in Sources */,
 				E13BACE31D5196EE00414ACE /* DialIconCell.swift in Sources */,
-				E13BACD11D518FF000414ACE /* Request.swift in Sources */,
 				E148E6C31D6C397000BE131E /* OutgoingVideoViewController.swift in Sources */,
 				E1C048711D867F650009DF6B /* GSUserAgent.m in Sources */,
 				E13BACDA1D51946B00414ACE /* RootViewController.swift in Sources */,
 				E13D21951D6ECFCA00C6EA98 /* IncomingVideoViewController.swift in Sources */,
-				E115A0461D6D762C005FCB8F /* SwiftEventBus.swift in Sources */,
 				E1C0486D1D867F650009DF6B /* GSNotifications.m in Sources */,
-				E115A0451D6D762C005FCB8F /* README.md in Sources */,
-				E13BACD21D518FF000414ACE /* StatusCode.swift in Sources */,
 				E1AC7F871DA8CAE5001C2676 /* VerifyCodeButton.swift in Sources */,
 				E19327511D9A6623006BA8B2 /* LoginViewController.swift in Sources */,
-				E13BACD01D518FF000414ACE /* Operation.swift in Sources */,
 				E1C048691D867F650009DF6B /* GSCodecInfo.m in Sources */,
 				E13BACDD1D51946B00414ACE /* CallLogViewController.swift in Sources */,
 				E123C3FC1DADDA3E00E6D442 /* CAPSPageMenu.swift in Sources */,
@@ -859,12 +783,9 @@
 				E11E37E61D94C619004B566D /* UserDetailCell.swift in Sources */,
 				E199E03F1D97FBE7001237AD /* EditUserViewController.swift in Sources */,
 				E1330E271D92378400996D2A /* DetailMenuViewController.swift in Sources */,
-				E13BACCF1D518FF000414ACE /* HTTPSecurity.swift in Sources */,
 				E140B1871D8E36FA00178D74 /* ShowNumberCon.swift in Sources */,
 				E13BACE71D51977C00414ACE /* R.generated.swift in Sources */,
 				E138D0771D6301EA0091AF4A /* OutgoingCallViewController.swift in Sources */,
-				E13BACC71D518FDE00414ACE /* Async.swift in Sources */,
-				E13BACD31D518FF000414ACE /* Upload.swift in Sources */,
 				E11E92941D5F2C9F004D634A /* DialView1Controller.swift in Sources */,
 				E13BACC21D518F5200414ACE /* AppUtil.swift in Sources */,
 				E1C048681D867F650009DF6B /* GSCall.m in Sources */,
@@ -1046,6 +967,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "18phone/18phone-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 armv7";
 			};
@@ -1103,6 +1025,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "18phone/18phone-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 armv7";
 			};

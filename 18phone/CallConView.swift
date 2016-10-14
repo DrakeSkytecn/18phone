@@ -12,7 +12,7 @@ class CallConView: UIView {
     
     var delegate: DialViewController?
     
-    @IBAction func call(sender: UIButton) {
+    @IBAction func call(_ sender: UIButton) {
         if delegate != nil {
             delegate?.call(sender)
         }

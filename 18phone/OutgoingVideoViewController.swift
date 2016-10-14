@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Async
 
 class OutgoingVideoViewController: UIViewController {
     
@@ -24,17 +25,17 @@ class OutgoingVideoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let account = GSUserAgent.sharedAgent().account
-        outCall = GSCall.outgoingCallToUri(toNumber! + "@" + URL.BEYEBE_SIP_DOMAIN, fromAccount: account)
-        outCall?.addObserver(self, forKeyPath: "status", options: .Initial, context: nil)
+        let account = GSUserAgent.shared().account
+        outCall = GSCall.outgoingCall(toUri: toNumber! + "@" + URL.BEYEBE_SIP_DOMAIN, from: account)
+        outCall?.addObserver(self, forKeyPath: "status", options: .initial, context: nil)
         outCall?.beginVideo()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         Async.background {
             self.outCall?.startPreviewWindow()
-        }.main {
-            let previewWindow = self.outCall!.createPreviewWindow(CGRectMake(0, 0, self.previewCon.frame.width, self.previewCon.frame.height))
+        }.main { _ in
+            let previewWindow = self.outCall!.createPreviewWindow(CGRect(x: 0, y: 0, width: self.previewCon.frame.width, height: self.previewCon.frame.height))
             self.previewCon.addSubview(previewWindow!)
             self.outCall?.orientation()
         }
@@ -45,10 +46,10 @@ class OutgoingVideoViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func hangup(sender: UIButton) {
+    @IBAction func hangup(_ sender: UIButton) {
         outCall?.stopPreviewWindow()
         outCall?.end()
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
         //            let callLog = CallLog()
         //            callLog.name = "James"
         //            callLog.phone = toNumber!
@@ -84,7 +85,7 @@ class OutgoingVideoViewController: UIViewController {
             print("OutgoingCallViewController Connected.")
             isConnected = true
             let videoView = outCall!.createVideoWindow(view.frame)
-            videoView!.backgroundColor = UIColor.blueColor()
+            videoView!.backgroundColor = UIColor.blue
             renderCon.addSubview(videoView!)
             outCall?.orientation()
             
@@ -92,7 +93,7 @@ class OutgoingVideoViewController: UIViewController {
             
         case GSCallStatusDisconnected:
             print("OutgoingCallViewController Disconnected.")
-            dismissViewControllerAnimated(true, completion: nil)
+            dismiss(animated: true, completion: nil)
             break
             
         default:
@@ -100,7 +101,7 @@ class OutgoingVideoViewController: UIViewController {
         }
     }
     
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "status" {
             callStatusDidChange()
         }

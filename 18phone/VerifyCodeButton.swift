@@ -10,28 +10,28 @@ import UIKit
 
 class VerifyCodeButton: UIButton {
     
-    var timer: NSTimer?
+    var timer: Timer?
     var count = 0
     
-    func timeFailBeginFrom(timeCount: Int) {
-        enabled = false
+    func timeFailBeginFrom(_ timeCount: Int) {
+        isEnabled = false
         count = timeCount
         titleLabel?.text = "剩余\(count)秒"
-        setTitle("剩余\(count)秒", forState: .Disabled)
+        setTitle("剩余\(count)秒", for: .disabled)
         // 加1个计时器
-        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(timerFired), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(timerFired), userInfo: nil, repeats: true)
     }
     
     func timerFired() {
         if count != 1 {
             count -= 1
             titleLabel?.text = "剩余\(count)秒"
-            setTitle("剩余\(count)秒", forState: .Disabled)
+            setTitle("剩余\(count)秒", for: .disabled)
         } else {
             titleLabel?.text = "获取验证码"
-            setTitle("获取验证码", forState: .Normal)
+            setTitle("获取验证码", for: UIControlState())
             timer?.invalidate()
-            enabled = true
+            isEnabled = true
         }
     }
 }

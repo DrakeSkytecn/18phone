@@ -8,6 +8,7 @@
 
 import UIKit
 import ActionSheetPicker_3_0
+import Async
 
 class EditUserViewController: UITableViewController, UITextFieldDelegate {
 
@@ -44,32 +45,32 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate {
 
     // MARK: - Table view data source
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 7
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let cell = tableView.cellForRow(at: indexPath)
         hideKeyBoard()
-        switch indexPath.row {
+        switch (indexPath as NSIndexPath).row {
         case 0:
             Async.main {
                 self.headphotoSheet()
             }
             break
         case 2:
-            ActionSheetStringPicker.showPickerWithTitle("", rows: sexChoices, initialSelection: 0, doneBlock: { picker, selectedIndex, selectedValue in
+            ActionSheetStringPicker.show(withTitle: "", rows: sexChoices, initialSelection: 0, doneBlock: { picker, selectedIndex, selectedValue in
                 self.sexLabel.text = self.sexChoices[selectedIndex]
-                }, cancelBlock: { _ in
+                }, cancel: { _ in
                     
                 }, origin: cell)
             break
         case 3:
-            ActionSheetDatePicker.showPickerWithTitle("生日", datePickerMode: .Date, selectedDate: NSDate(), doneBlock: { picker, selectedValue, selectedIndex in
-                let birthday = selectedValue as! NSDate
+            ActionSheetDatePicker.show(withTitle: "生日", datePickerMode: .date, selectedDate: Date(), doneBlock: { picker, selectedValue, selectedIndex in
+                let birthday = selectedValue as! Date
                 self.ageLabel.text = DateUtil.getAgeFromBirthday((birthday)) + "岁"
-                }, cancelBlock: { _ in
+                }, cancel: { _ in
                 
                 }, origin: cell)
             break
@@ -78,7 +79,7 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == tableView {
             let y = scrollView.contentOffset.y
             if y < lastScrollOffset {
@@ -88,39 +89,39 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate {
         }
     }
 
-    @IBAction func save(sender: UIBarButtonItem) {
-        navigationController?.popViewControllerAnimated(true)
+    @IBAction func save(_ sender: UIBarButtonItem) {
+        navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func editHeadphoto(sender: UITapGestureRecognizer) {
+    @IBAction func editHeadphoto(_ sender: UITapGestureRecognizer) {
         headphotoSheet()
     }
     
     func headphotoSheet() {
         print("headphotoSheet")
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-        alertController.addAction(UIAlertAction(title: "拍照", style: .Default) { action in
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alertController.addAction(UIAlertAction(title: "拍照", style: .default) { action in
             
             })
-        alertController.addAction(UIAlertAction(title: "相册", style: .Default) { action in
+        alertController.addAction(UIAlertAction(title: "相册", style: .default) { action in
             
             })
-        alertController.addAction(UIAlertAction(title: "取消", style: .Cancel) { action in
+        alertController.addAction(UIAlertAction(title: "取消", style: .cancel) { action in
             
             })
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
     
     func hideKeyBoard() {
-        if nameField.isFirstResponder() {
+        if nameField.isFirstResponder {
             nameField.resignFirstResponder()
         }
-        if signField.isFirstResponder() {
+        if signField.isFirstResponder {
             signField.resignFirstResponder()
         }
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }

@@ -8,7 +8,6 @@
 
 import UIKit
 import Contacts
-import PageMenu
 
 class ContactDetailViewController: UIViewController {
 
@@ -30,13 +29,9 @@ class ContactDetailViewController: UIViewController {
     
     @IBOutlet weak var detailCon: UIView!
     
-    @IBOutlet weak var pageMenuCon: UIView!
+    var detailMenuViewController = R.storyboard.main.detailMenuViewController()!
     
-    var pageMenu : CAPSPageMenu?
-    
-    var detailMenuViewController = R.storyboard.main.detailMenuViewController()
-    
-    var callLogMenuViewController = R.storyboard.main.callLogMenuViewController()
+    var callLogMenuViewController = R.storyboard.main.callLogMenuViewController()!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,15 +43,15 @@ class ContactDetailViewController: UIViewController {
     
     func initContactInfo() {
         let store = CNContactStore()
-        let keysToFetch = [CNContactFormatter.descriptorForRequiredKeysForStyle(.FullName),
+        let keysToFetch = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
                            CNContactImageDataKey,
                            CNContactThumbnailImageDataKey,
                            CNContactImageDataAvailableKey,
                            CNContactPhoneNumbersKey,
                            CNContactPhoneticGivenNameKey,
-                           CNContactPhoneticFamilyNameKey]
+                           CNContactPhoneticFamilyNameKey] as [Any]
         
-        let contact = try! store.unifiedContactWithIdentifier(contactId!, keysToFetch: keysToFetch)
+        let contact = try! store.unifiedContact(withIdentifier: contactId!, keysToFetch: keysToFetch as! [CNKeyDescriptor])
         let appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contactId!)'").first
         if contact.imageDataAvailable {
             headPhoto.image = UIImage(data: contact.thumbnailImageData!)
@@ -67,10 +62,10 @@ class ContactDetailViewController: UIViewController {
         nameLabel.text = fullName
         
         switch appContactInfo!.sex {
-        case Sex.Male.rawValue:
+        case Sex.male.rawValue:
             sexImage.image = R.image.male()
             break
-        case Sex.Female.rawValue:
+        case Sex.female.rawValue:
             sexImage.image = R.image.female()
             break
         default:
@@ -84,33 +79,32 @@ class ContactDetailViewController: UIViewController {
         }
         phones.removeAll()
         for number in contact.phoneNumbers {
-            let phoneNumber = (number.value as! CNPhoneNumber).stringValue
+            let phoneNumber = (number.value ).stringValue
             phones.append(PhoneUtil.formatPhoneNumber(phoneNumber))
         }
-        detailMenuViewController?.identifier = contactId
-        detailMenuViewController?.name = fullName
-        detailMenuViewController?.phones = phones
-        callLogMenuViewController?.contactId = contactId
+        detailMenuViewController.identifier = contactId
+        detailMenuViewController.name = fullName
+        detailMenuViewController.phones = phones
+        callLogMenuViewController.contactId = contactId
     }
     
     func initPageMenu() {
-        let controllerArray : [UIViewController] = [detailMenuViewController!, callLogMenuViewController!]
+        let controllerArray : [UIViewController] = [R.storyboard.main.a()! , R.storyboard.main.b()!]
         let parameters: [CAPSPageMenuOption] = [
-            .ScrollMenuBackgroundColor(UIColor.whiteColor()),
-            .ViewBackgroundColor(UIColor.whiteColor()),
-            .SelectionIndicatorColor(UIColor(red: 38.0/255.0, green: 173.0/255.0, blue: 86.0/255.0, alpha: 1.0)),
-            .SelectedMenuItemLabelColor(UIColor(red: 38.0/255.0, green: 173.0/255.0, blue: 86.0/255.0, alpha: 1.0)),
-            .UnselectedMenuItemLabelColor(UIColor.blackColor()),
-            .BottomMenuHairlineColor(UIColor(red: 70.0/255.0, green: 70.0/255.0, blue: 80.0/255.0, alpha: 1.0)),
-            .CenterMenuItems(true),
-            .MenuItemWidth(Screen.width / 2),
-            .MenuMargin(0.0)
+            .scrollMenuBackgroundColor(UIColor.white),
+            .viewBackgroundColor(UIColor.white),
+            .selectionIndicatorColor(UIColor(red: 38.0/255.0, green: 173.0/255.0, blue: 86.0/255.0, alpha: 1.0)),
+            .selectedMenuItemLabelColor(UIColor(red: 38.0/255.0, green: 173.0/255.0, blue: 86.0/255.0, alpha: 1.0)),
+            .unselectedMenuItemLabelColor(UIColor.black),
+            .bottomMenuHairlineColor(UIColor(red: 70.0/255.0, green: 70.0/255.0, blue: 80.0/255.0, alpha: 1.0)),
+            .centerMenuItems(true),
+            .menuItemWidth(Screen.width / 2),
+            .menuMargin(0.0)
         ]
-        
-        pageMenu = CAPSPageMenu(viewControllers: controllerArray, frame: CGRectMake(0, detailCon.frame.height, Screen.width, view.frame.height - detailCon.frame.height), pageMenuOptions: parameters)
-        addChildViewController(pageMenu!)
-        view.addSubview(pageMenu!.view)
-        pageMenu!.didMoveToParentViewController(self)
+        let pageMenu = CAPSPageMenu(viewControllers: controllerArray, frame: CGRect(x: 0, y: detailCon.frame.height, width: Screen.width, height: view.frame.height - detailCon.frame.height), pageMenuOptions: parameters)
+        addChildViewController(pageMenu)
+        view.addSubview(pageMenu.view)
+        pageMenu.didMove(toParentViewController: self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -118,21 +112,21 @@ class ContactDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func moreFeature(sender: UIBarButtonItem) {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-        alertController.addAction(UIAlertAction(title: "编辑联系人", style: .Default) { action in
+    @IBAction func moreFeature(_ sender: UIBarButtonItem) {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alertController.addAction(UIAlertAction(title: "编辑联系人", style: .default) { action in
             
             })
-        alertController.addAction(UIAlertAction(title: "添加黑名单", style: .Default) { action in
+        alertController.addAction(UIAlertAction(title: "添加黑名单", style: .default) { action in
             
             })
-        alertController.addAction(UIAlertAction(title: "分享", style: .Default) { action in
+        alertController.addAction(UIAlertAction(title: "分享", style: .default) { action in
             
             })
-        alertController.addAction(UIAlertAction(title: "取消", style: .Cancel) { action in
+        alertController.addAction(UIAlertAction(title: "取消", style: .cancel) { action in
             
             })
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
 
     /*

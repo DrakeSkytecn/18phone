@@ -10,9 +10,7 @@ import Foundation
 import UIKit
 import CoreImage
 
-
-
-public class piQ{
+open class piQ{
     public init (){
         print("Class has been initialised")
     }
@@ -20,9 +18,9 @@ public class piQ{
     
 /*========================================TOGGLEVISIBILITYANIMATION============================================*/
     
-    public var imageHeightVisible : CGFloat!
+    open var imageHeightVisible : CGFloat!
     
-    public func toggleImageViewVisibility(Controller: UIViewController, ImageConstraint : NSLayoutConstraint){
+    open func toggleImageViewVisibility(_ Controller: UIViewController, ImageConstraint : NSLayoutConstraint){
         
         //let animated : Bool = true
        
@@ -33,7 +31,7 @@ public class piQ{
         } else {
             ImageConstraint.constant = imageHeightVisible
         }
-            UIView.animateWithDuration(0.2, animations: { () -> Void in
+            UIView.animate(withDuration: 0.2, animations: { () -> Void in
                 Controller.view.layoutIfNeeded()
                 }, completion: nil)
     }
@@ -72,18 +70,18 @@ extension UIImageView {
         let bezierPath = UIBezierPath()
         
         // Draw Points
-        bezierPath.moveToPoint(CGPoint(x: layerWidth/2, y: 0))
-        bezierPath.addLineToPoint(CGPoint(x: layerWidth, y: layerHeight))
-        bezierPath.addLineToPoint(CGPoint(x: 0, y: layerHeight))
+        bezierPath.move(to: CGPoint(x: layerWidth/2, y: 0))
+        bezierPath.addLine(to: CGPoint(x: layerWidth, y: layerHeight))
+        bezierPath.addLine(to: CGPoint(x: 0, y: layerHeight))
         // bezierPath.addLineToPoint(CGPoint(x: 0, y: 0))
-        bezierPath.closePath()
+        bezierPath.close()
         
         
         
         // Mask to Path
         let mask = CAShapeLayer()
         mask.frame = self.bounds
-        mask.path = bezierPath.CGPath
+        mask.path = bezierPath.cgPath
         
         self.layer.mask = mask
         
@@ -99,18 +97,18 @@ extension UIImageView {
         let bezierPath = UIBezierPath()
         
         // Draw Points
-        bezierPath.moveToPoint(CGPoint(x: 0, y: 0))
-        bezierPath.addLineToPoint(CGPoint(x: layerWidth, y: 0))
-        bezierPath.addLineToPoint(CGPoint(x: layerWidth/2, y: layerHeight))
+        bezierPath.move(to: CGPoint(x: 0, y: 0))
+        bezierPath.addLine(to: CGPoint(x: layerWidth, y: 0))
+        bezierPath.addLine(to: CGPoint(x: layerWidth/2, y: layerHeight))
         // bezierPath.addLineToPoint(CGPoint(x: 0, y: 0))
-        bezierPath.closePath()
+        bezierPath.close()
         
         
         
         // Mask to Path
         let mask = CAShapeLayer()
         mask.frame = self.bounds
-        mask.path = bezierPath.CGPath
+        mask.path = bezierPath.cgPath
         
         self.layer.mask = mask
         
@@ -126,18 +124,18 @@ extension UIImageView {
         let bezierPath = UIBezierPath()
         
         // Draw Points
-        bezierPath.moveToPoint(CGPoint(x: 0, y: 0))
-        bezierPath.addLineToPoint(CGPoint(x: layerWidth, y: 0))
-        bezierPath.addLineToPoint(CGPoint(x: layerWidth/2, y: layerHeight))
+        bezierPath.move(to: CGPoint(x: 0, y: 0))
+        bezierPath.addLine(to: CGPoint(x: layerWidth, y: 0))
+        bezierPath.addLine(to: CGPoint(x: layerWidth/2, y: layerHeight))
         // bezierPath.addLineToPoint(CGPoint(x: 0, y: 0))
-        bezierPath.closePath()
+        bezierPath.close()
         
         
         
         // Mask to Path
         let mask = CAShapeLayer()
         mask.frame = self.bounds
-        mask.path = bezierPath.CGPath
+        mask.path = bezierPath.cgPath
         
         self.layer.mask = mask
         
@@ -153,18 +151,18 @@ extension UIImageView {
         let bezierPath = UIBezierPath()
         
         // Draw Points
-        bezierPath.moveToPoint(CGPoint(x: 0, y: 0))
-        bezierPath.addLineToPoint(CGPoint(x: layerWidth, y: 0))
-        bezierPath.addLineToPoint(CGPoint(x: layerWidth/2, y: layerHeight))
+        bezierPath.move(to: CGPoint(x: 0, y: 0))
+        bezierPath.addLine(to: CGPoint(x: layerWidth, y: 0))
+        bezierPath.addLine(to: CGPoint(x: layerWidth/2, y: layerHeight))
         // bezierPath.addLineToPoint(CGPoint(x: 0, y: 0))
-        bezierPath.closePath()
+        bezierPath.close()
         
         
         
         // Mask to Path
         let mask = CAShapeLayer()
         mask.frame = self.bounds
-        mask.path = bezierPath.CGPath
+        mask.path = bezierPath.cgPath
         
         self.layer.mask = mask
         
@@ -180,18 +178,18 @@ extension UIImageView {
         let bezierPath = UIBezierPath()
         
         // Draw Points
-        bezierPath.moveToPoint(CGPoint(x: 0, y: 0))
-        bezierPath.addLineToPoint(CGPoint(x: layerWidth, y: 0))
-        bezierPath.addLineToPoint(CGPoint(x: layerWidth/2, y: layerHeight))
+        bezierPath.move(to: CGPoint(x: 0, y: 0))
+        bezierPath.addLine(to: CGPoint(x: layerWidth, y: 0))
+        bezierPath.addLine(to: CGPoint(x: layerWidth/2, y: layerHeight))
         // bezierPath.addLineToPoint(CGPoint(x: 0, y: 0))
-        bezierPath.closePath()
+        bezierPath.close()
         
         
         
         // Mask to Path
         let mask = CAShapeLayer()
         mask.frame = self.bounds
-        mask.path = bezierPath.CGPath
+        mask.path = bezierPath.cgPath
         
         self.layer.mask = mask
         
@@ -223,14 +221,14 @@ extension UIImageView {
     
     
     public enum filterNames {
-        case Tonality
-        case Noir
-        case AnselAdams
-        case Dark
-        case Dots
+        case tonality
+        case noir
+        case anselAdams
+        case dark
+        case dots
     }
     
-    public func piQ_convertToGrayScale(imageFilter:filterNames){
+    public func piQ_convertToGrayScale(_ imageFilter:filterNames){
         
         // var filterNames: [String] = ["CIPhotoEffectTonal","CIPhotoEffectNoir","CIMaximumComponent","CIMinimumComponent","CIDotScreen"]
         
@@ -240,19 +238,19 @@ extension UIImageView {
         
         
         switch imageFilter {
-        case .Tonality:
+        case .tonality:
             CIfilterName = "CIPhotoEffectTonal"
             break
-        case .Noir:
+        case .noir:
             CIfilterName = "CIPhotoEffectNoir"
             break
-        case .AnselAdams:
+        case .anselAdams:
             CIfilterName = "CIMaximumComponent"
             break
-        case .Dark:
+        case .dark:
             CIfilterName = "CIMinimumComponent"
             break
-        case .Dots:
+        case .dots:
             CIfilterName = "CIDotScreen"
             break
         default:
@@ -272,15 +270,15 @@ extension UIImageView {
         //LETS WORK
         
         filter?.setValue(startImage, forKey: kCIInputImageKey)
-        let filteredImageData = filter?.valueForKey(kCIOutputImageKey) as! CIImage
+        let filteredImageData = filter?.value(forKey: kCIOutputImageKey) as! CIImage
         
-        let filteredImageRef = ciContext.createCGImage(filteredImageData, fromRect: filteredImageData.extent)
-        self.image = UIImage(CGImage: filteredImageRef)
+        let filteredImageRef = ciContext.createCGImage(filteredImageData, from: filteredImageData.extent)
+        self.image = UIImage(cgImage: filteredImageRef!)
         
     }
     
-    public func piQ_tintImageColor(color: UIColor){
-        self.image = self.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+    public func piQ_tintImageColor(_ color: UIColor){
+        self.image = self.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
         self.tintColor = color
         
         
@@ -321,10 +319,10 @@ extension UIImageView {
     =========================================================*/
 
     public func piQ_rotateImage(){
-        self.transform = CGAffineTransformMakeRotation((180.0 * CGFloat(M_PI)) / 180.0)
+        self.transform = CGAffineTransform(rotationAngle: (180.0 * CGFloat(M_PI)) / 180.0)
     }
     
-    public func piQ_rotateImageWithAnimation(Duration:Double){
+    public func piQ_rotateImageWithAnimation(_ Duration:Double){
         rotateFirst(self, time: Duration)
         rotateSecond(self, time: Duration)
         
@@ -355,60 +353,59 @@ extension UIImageView {
     
     
     
-    public func piQ_imageFromUrl(urlString: String) {
-        
-        
-        if let url = NSURL(string: urlString) {
-            let request = NSURLRequest(URL: url)
-            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {
-                (response: NSURLResponse?, data: NSData?, error: NSError?) -> Void in
-                if data != nil {
-                self.image = UIImage(data: data!)
-                } else {
-                    print("Error Loading Image")
-                }
-            }
-            }
-    }
-    
-    public func piQ_imageFromUrl(urlString: String, placeholderImage: UIImage) {
-        
-        //Use your Placeholder, if you download an image with big loading times.
-        self.image = placeholderImage
-        
-        if let url = NSURL(string: urlString) {
-            let request = NSURLRequest(URL: url)
-            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {
-                (response: NSURLResponse?, data: NSData?, error: NSError?) -> Void in
-                if data != nil {
-                self.image =  UIImage(data: data!)
-                } else {
-                    print("Error Loading Image")
-                }
-            }
-        } else {
-            print("Error Loading Image")
-        }
-    }
+//    public func piQ_imageFromUrl(_ urlString: String) {
+//        
+//        
+//        if let url = Foundation.URL(string: urlString) {
+//            let request = URLRequest(url: url)
+//            NSURLConnection.sendAsynchronousRequest(request, queue: OperationQueue.main) {
+//                (response: URLResponse?, data: Data?, error: NSError?) -> Void in
+//                if data != nil {
+//                self.image = UIImage(data: data!)
+//                } else {
+//                    print("Error Loading Image")
+//                }
+//            } as! (URLResponse?, Data?, Error?) -> Void            }
+//    }
+//    
+//    public func piQ_imageFromUrl(_ urlString: String, placeholderImage: UIImage) {
+//        
+//        //Use your Placeholder, if you download an image with big loading times.
+//        self.image = placeholderImage
+//        
+//        if let url = Foundation.URL(string: urlString) {
+//            let request = URLRequest(url: url)
+//            NSURLConnection.sendAsynchronousRequest(request, queue: OperationQueue.main) {
+//                (response: URLResponse?, data: Data?, error: NSError?) -> Void in
+//                if data != nil {
+//                self.image =  UIImage(data: data!)
+//                } else {
+//                    print("Error Loading Image")
+//                }
+//            } as! (URLResponse?, Data?, Error?) -> Void as! (URLResponse?, Data?, Error?) -> Void as! (URLResponse?, Data?, Error?) -> Void as! (URLResponse?, Data?, Error?) -> Void as! (URLResponse?, Data?, Error?) -> Void as! (URLResponse?, Data?, Error?) -> Void as! (URLResponse?, Data?, Error?) -> Void
+//        } else {
+//            print("Error Loading Image")
+//        }
+//    }
     
     
     
     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     
-    func rotateFirst(image: UIImageView!, time:Double){
+    func rotateFirst(_ image: UIImageView!, time:Double){
         
         
-        UIView.animateWithDuration(time / 2, animations: {
-            image.transform = CGAffineTransformMakeRotation((180.0 * CGFloat(M_PI)) / 180.0)
+        UIView.animate(withDuration: time / 2, animations: {
+            image.transform = CGAffineTransform(rotationAngle: (180.0 * CGFloat(M_PI)) / 180.0)
             
         })
     }
     
-    func rotateSecond(image: UIImageView!, time:Double){
+    func rotateSecond(_ image: UIImageView!, time:Double){
         
         
-        UIView.animateWithDuration(time / 2, animations: {
-            image.transform = CGAffineTransformMakeRotation((0.0 * CGFloat(M_PI)) / 180.0)
+        UIView.animate(withDuration: time / 2, animations: {
+            image.transform = CGAffineTransform(rotationAngle: (0.0 * CGFloat(M_PI)) / 180.0)
             
         })
     }

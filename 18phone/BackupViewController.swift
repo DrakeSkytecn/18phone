@@ -23,9 +23,9 @@ class BackupViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.dataSource = self
         tableView.delegate = self
         let store = CNContactStore()
-        let keysToFetch = [CNContactFormatter.descriptorForRequiredKeysForStyle(.FullName)]
+        let keysToFetch = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName)]
         let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch)
-        try! store.enumerateContactsWithFetchRequest(fetchRequest) {(let contact, let stop) -> Void in
+        try! store.enumerateContacts(with: fetchRequest) {(contact, stop) -> Void in
             self.contactCount = self.contactCount + 1
         }
     }
@@ -35,17 +35,16 @@ class BackupViewController: UIViewController, UITableViewDataSource, UITableView
         // Dispose of any resources that can be recreated.
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.backup_cell_a)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.backup_cell_a)
         cell!.textLabel!.text = titles[indexPath.row]
-        cell?.selectionStyle = .None
+        cell?.selectionStyle = .none
         
-        switch indexPath.row {
+        switch (indexPath as NSIndexPath).row {
         case 0:
             cell!.detailTextLabel!.text = "\(contactCount)人"
             
@@ -57,13 +56,13 @@ class BackupViewController: UIViewController, UITableViewDataSource, UITableView
             cell!.detailTextLabel!.text = "上次同步2016/09/15"
             break
         case 3:
-            cell?.selectionStyle = .Default
+            cell?.selectionStyle = .default
             break
         case 4:
-            let autoSwitch = UISwitch(frame: CGRectMake(0, 0, 51, 31))
-            autoSwitch.on = NSUserDefaults.standardUserDefaults().boolForKey("auto_backup")
+            let autoSwitch = UISwitch(frame: CGRect(x: 0, y: 0, width: 51, height: 31))
+            autoSwitch.isOn = UserDefaults.standard.bool(forKey: "auto_backup")
             cell?.accessoryView = autoSwitch
-            autoSwitch.addTarget(self, action: #selector(switchAction(_:)), forControlEvents: .ValueChanged)
+            autoSwitch.addTarget(self, action: #selector(switchAction(_:)), for: .valueChanged)
             break
         default:
             break
@@ -71,21 +70,21 @@ class BackupViewController: UIViewController, UITableViewDataSource, UITableView
         return cell!
     }
     
-    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.1
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0.001
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func switchAction(sender: UISwitch) {
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        userDefaults.setBool(sender.on, forKey: "auto_backup")
+    func switchAction(_ sender: UISwitch) {
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(sender.isOn, forKey: "auto_backup")
         userDefaults.synchronize()
     }
     /*

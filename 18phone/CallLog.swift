@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+import JSONJoy
 
 /**
  通话记录类型
@@ -20,25 +21,25 @@ import RealmSwift
 enum CallState: Int {
     
     /// 拨入未接通
-    case InUnConnected
+    case inUnConnected
     
     /// 拨入已接通
-    case InConnected
+    case inConnected
     
     /// 拨出未接通
-    case OutUnConnected
+    case outUnConnected
     
     /// 拨出已接通
-    case OutConnected
+    case outConnected
 }
 
 enum CallType: Int {
     
     /// 语音通话
-    case Voice
+    case voice
     
     /// 视频通话
-    case Video
+    case video
 }
 
 /// 通话记录数据对象
@@ -48,7 +49,7 @@ class CallLog: Object {
     dynamic var identifier = ""
     
     /// 联系人头像
-    dynamic var headPhoto: NSData? = nil
+    dynamic var headPhoto: Data? = nil
     
     /// 联系人姓名
     dynamic var name = ""
@@ -57,19 +58,19 @@ class CallLog: Object {
     dynamic var phone = ""
     
     /// 通话记录类型
-    dynamic var callState = CallState.InUnConnected.rawValue
+    dynamic var callState = CallState.inUnConnected.rawValue
     
     /// 通话方式
-    dynamic var callType = CallType.Voice.rawValue
+    dynamic var callType = CallType.voice.rawValue
     
     /// 号码归属地
     dynamic var area = ""
     
     /// 通话开始时间
-    dynamic var callStartTime = NSDate()
+    dynamic var callStartTime = Date()
     
     /// 通话时长
-    dynamic var callDuration = NSDate()
+    dynamic var callDuration = Date()
 }
 
 struct RetData: JSONJoy {

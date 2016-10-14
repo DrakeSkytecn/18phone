@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftEventBus
 
 class OutgoingCallViewController: UIViewController {
 
@@ -41,8 +42,8 @@ class OutgoingCallViewController: UIViewController {
         /**
          storyboard目前不支持设置CGColor
          */
-        dialPlateBtn.layer.borderColor = UIColor.whiteColor().CGColor
-        speakerBtn.layer.borderColor = UIColor.whiteColor().CGColor
+        dialPlateBtn.layer.borderColor = UIColor.white.cgColor
+        speakerBtn.layer.borderColor = UIColor.white.cgColor
         if !contactName!.isEmpty {
             nameLabel.text = contactName
         } else {
@@ -50,10 +51,10 @@ class OutgoingCallViewController: UIViewController {
             areaLabel.text = phoneArea
         }
         
-        let account = GSUserAgent.sharedAgent().account
-        outCall = GSCall.outgoingCallToUri(toNumber! + "@" + URL.BEYEBE_SIP_DOMAIN, fromAccount: account)
+        let account = GSUserAgent.shared().account
+        outCall = GSCall.outgoingCall(toUri: toNumber! + "@" + URL.BEYEBE_SIP_DOMAIN, from: account)
         outCall?.checkBuddy()
-        outCall?.addObserver(self, forKeyPath: "status", options: .Initial, context: nil)
+        outCall?.addObserver(self, forKeyPath: "status", options: .initial, context: nil)
         self.outCall?.begin()
     }
 
@@ -62,19 +63,19 @@ class OutgoingCallViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func hangup(sender: UIButton) {
+    @IBAction func hangup(_ sender: UIButton) {
         outCall?.end()
         let callLog = CallLog()
         callLog.identifier = contactId!
         callLog.name = contactName!
         callLog.phone = toNumber!
         if isConnected {
-            callLog.callState = CallState.OutConnected.rawValue
+            callLog.callState = CallState.outConnected.rawValue
         } else {
-            callLog.callState = CallState.OutUnConnected.rawValue
+            callLog.callState = CallState.outUnConnected.rawValue
         }
-        callLog.callType = CallType.Voice.rawValue
-        callLog.callStartTime = NSDate()
+        callLog.callType = CallType.voice.rawValue
+        callLog.callStartTime = Date()
         if phoneArea != nil {
             callLog.area = phoneArea!
         }
@@ -82,7 +83,7 @@ class OutgoingCallViewController: UIViewController {
             App.realm.add(callLog)
         }
         SwiftEventBus.post("reloadCallLogs")
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 
     func callStatusDidChange() {
@@ -102,8 +103,8 @@ class OutgoingCallViewController: UIViewController {
         case GSCallStatusConnected:
             print("OutgoingCallViewController Connected.")
             isConnected = true
-            dialPlateCon.hidden = false
-            speakerCon.hidden = false
+            dialPlateCon.isHidden = false
+            speakerCon.isHidden = false
             break
             
         case GSCallStatusDisconnected:
@@ -116,7 +117,7 @@ class OutgoingCallViewController: UIViewController {
         }
     }
     
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "status" {
             callStatusDidChange()
         }

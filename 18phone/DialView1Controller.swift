@@ -51,43 +51,43 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
         // Dispose of any resources that can be recreated.
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 12
     }
 
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        switch indexPath.row {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        switch (indexPath as NSIndexPath).row {
         /// 数字按键要展示的布局
         case 0...8:
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(R.reuseIdentifier.dial_1.identifier, forIndexPath: indexPath) as! DialNumberCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.dial_1.identifier, for: indexPath) as! DialNumberCell
             
-            if indexPath.row == 0 {
+            if (indexPath as NSIndexPath).row == 0 {
                 cell.number.text = "\(indexPath.row + 1)"
             } else {
                 cell.number.text = "\(indexPath.row + 1)"
                 cell.character.text = characters[indexPath.row - 1]
             }
             cell.effect.tag = indexPath.row + 1
-            cell.effect.addTarget(self, action: #selector(clickDialButton(_:)), forControlEvents: .TouchUpInside)
+            cell.effect.addTarget(self, action: #selector(clickDialButton(_:)), for: .touchUpInside)
             return cell
         case 10:
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(R.reuseIdentifier.dial_3.identifier, forIndexPath: indexPath) as! DialNumberCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.dial_3.identifier, for: indexPath) as! DialNumberCell
             cell.number.text = "0"
             cell.effect.tag = 0
-            cell.effect.addTarget(self, action: #selector(clickDialButton(_:)), forControlEvents: .TouchUpInside)
+            cell.effect.addTarget(self, action: #selector(clickDialButton(_:)), for: .touchUpInside)
             return cell
             
         /// 添加和删除按键要展示的布局
         case 9:
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(R.reuseIdentifier.dial_2.identifier, forIndexPath: indexPath) as! DialIconCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.dial_2.identifier, for: indexPath) as! DialIconCell
             cell.icon.image = R.image.add_contact()
-            cell.effect.addTarget(self, action: #selector(addContact(_:)), forControlEvents: .TouchUpInside)
+            cell.effect.addTarget(self, action: #selector(addContact(_:)), for: .touchUpInside)
             
             return cell
         case 11:
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(R.reuseIdentifier.dial_2.identifier, forIndexPath: indexPath) as! DialIconCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.dial_2.identifier, for: indexPath) as! DialIconCell
             cell.icon.image = R.image.delete()
-            cell.effect.addTarget(self, action: #selector(backSpace(_:)), forControlEvents: .TouchUpInside)
+            cell.effect.addTarget(self, action: #selector(backSpace(_:)), for: .touchUpInside)
             
             return cell
         default:
@@ -95,15 +95,15 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
         }
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        var temp = numberText.text
-        switch indexPath.row {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        var temp = numberText.text!
+        switch (indexPath as NSIndexPath).row {
         /// 监听数字按键的事件
         case 0...8, 10:
             
-            if temp?.characters.count < 12 {
-                let number = (collectionView.cellForItemAtIndexPath(indexPath) as!DialNumberCell).number.text
-                temp = temp! + number!
+            if temp.characters.count < 12 {
+                let number = (collectionView.cellForItem(at: indexPath) as!DialNumberCell).number.text!
+                temp = temp + number
                 numberText.text = temp
                 checkNumberArea(temp)
             }
@@ -115,9 +115,9 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
         /// 监听删除按键的事件
         case 11:
             
-            let length = temp?.characters.count
+            let length = temp.characters.count
             if length > 0 {
-                temp = temp?.substringToIndex(temp!.startIndex.advancedBy(length! - 1))
+                temp = temp.substring(to: temp.characters.index(temp.startIndex, offsetBy: length - 1))
                 numberText.text = temp
                 if length == 1 {
                     
@@ -129,7 +129,7 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
         }
     }
     
-    func checkNumberArea(temp: String?) {
+    func checkNumberArea(_ temp: String?) {
         if PhoneUtil.isMobileNumber(temp) || PhoneUtil.isTelephoneNumber(temp) || temp == "10086" {
             PhoneUtil.getPhoneAreaInfo(temp!){ phoneAreaInfo in
                 if phoneAreaInfo.errNum == 0 {
@@ -139,17 +139,17 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
                 }
                 self.areaText.text = self.tempArea
                 let store = CNContactStore()
-                let keysToFetch = [CNContactFormatter.descriptorForRequiredKeysForStyle(.FullName),
+                let keysToFetch = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
                                    CNContactGivenNameKey,
                                    CNContactFamilyNameKey,
-                                   CNContactPhoneNumbersKey]
-                let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch)
+                                   CNContactPhoneNumbersKey] as [Any]
+                let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch as! [CNKeyDescriptor])
                 self.isRegister = false
                 self.appContactInfo = nil
-                try! store.enumerateContactsWithFetchRequest(fetchRequest) { (let contact, let stop) -> Void in
+                try! store.enumerateContacts(with: fetchRequest) { (contact, stop) -> Void in
                     for number in contact.phoneNumbers {
                         
-                        let phoneNumber = PhoneUtil.formatPhoneNumber((number.value as! CNPhoneNumber).stringValue)
+                        let phoneNumber = PhoneUtil.formatPhoneNumber((number.value).stringValue)
                         if phoneNumber == temp {
                             print("phoneNumber:\(phoneNumber)")
                             self.tempName = contact.familyName + contact.givenName
@@ -174,21 +174,21 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
         }
     }
     
-    func clickDialButton(sender:UIButton) {
-        var temp = numberText.text
-        if temp?.characters.count < 12 {
+    func clickDialButton(_ sender:UIButton) {
+        var temp = numberText.text!
+        if temp.characters.count < 12 {
             let number = String(sender.tag)
-            temp = temp! + number
+            temp = temp + number
             numberText.text = temp
             checkNumberArea(temp)
         }
     }
     
-    func backSpace(sender:UIButton) {
-        var temp = numberText.text
-        let length = temp?.characters.count
+    func backSpace(_ sender:UIButton) {
+        var temp = numberText.text!
+        let length = temp.characters.count
         if length > 0 {
-            temp = temp?.substringToIndex(temp!.startIndex.advancedBy(length! - 1))
+            temp = temp.substring(to: temp.characters.index(temp.startIndex, offsetBy: length - 1))
             numberText.text = temp
             if length == 1 {
                 
@@ -197,19 +197,19 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
         }
     }
     
-    func addContact(sender: UIButton) {
+    func addContact(_ sender: UIButton) {
         if !numberText.text!.isEmpty {
-            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-            alertController.addAction(UIAlertAction(title: "新增联系人", style: .Default) { action in
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            alertController.addAction(UIAlertAction(title: "新增联系人", style: .default) { action in
                 
                 })
-            alertController.addAction(UIAlertAction(title: "加入到现有的联系人", style: .Default) { action in
+            alertController.addAction(UIAlertAction(title: "加入到现有的联系人", style: .default) { action in
                 
                 })
-            alertController.addAction(UIAlertAction(title: "取消", style: .Cancel) { action in
+            alertController.addAction(UIAlertAction(title: "取消", style: .cancel) { action in
                 
                 })
-            presentViewController(alertController, animated: true, completion: nil)
+            present(alertController, animated: true, completion: nil)
         }
     }
     
@@ -218,7 +218,7 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
      
      - parameter sender: 拨打按钮
      */
-    @IBAction func call(sender: UIButton) {
+    @IBAction func call(_ sender: UIButton) {
         if !numberText.text!.isEmpty {
             if PhoneUtil.isMobileNumber(numberText.text) || PhoneUtil.isTelephoneNumber(numberText.text) {
                 if isRegister {
@@ -227,7 +227,7 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
                     outgoingCallViewController?.toNumber = numberText.text
                     outgoingCallViewController?.contactName = tempName
                     outgoingCallViewController?.phoneArea = tempArea
-                    presentViewController(outgoingCallViewController!, animated: true, completion: nil)
+                    present(outgoingCallViewController!, animated: true, completion: nil)
                 } else {
                     PhoneUtil.callSystemPhone(numberText.text!)
                     addCallLog(numberText.text!)
@@ -239,7 +239,7 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
         }
     }
     
-    func addCallLog(number: String) {
+    func addCallLog(_ number: String) {
         let callLog = CallLog()
         if appContactInfo != nil {
             callLog.identifier = appContactInfo!.identifier
@@ -249,12 +249,12 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
         }
         callLog.phone = numberText.text!
         if true {
-            callLog.callState = CallState.OutConnected.rawValue
+            callLog.callState = CallState.outConnected.rawValue
         } else {
-            callLog.callState = CallState.OutUnConnected.rawValue
+            callLog.callState = CallState.outUnConnected.rawValue
         }
-        callLog.callType = CallType.Voice.rawValue
-        callLog.callStartTime = NSDate()
+        callLog.callType = CallType.voice.rawValue
+        callLog.callStartTime = Date()
         if tempArea != nil {
             callLog.area = tempArea!
         }
@@ -263,23 +263,23 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
         }
     }
     
-    func pasteToShowNumber(menu :UIMenuController)
+    func pasteToShowNumber(_ menu :UIMenuController)
     {
-        let paste = UIPasteboard.generalPasteboard()
+        let paste = UIPasteboard.general
         if PhoneUtil.isNumber(paste.string) {
             numberText.text = paste.string
             checkNumberArea(paste.string)
         }
     }
     
-    @IBAction func longPressShowNumberCon(sender: UILongPressGestureRecognizer) {
-        if sender.state == .Began {
+    @IBAction func longPressShowNumberCon(_ sender: UILongPressGestureRecognizer) {
+        if sender.state == .began {
             showNumberCon.becomeFirstResponder()
-            let menu = UIMenuController.sharedMenuController()
+            let menu = UIMenuController.shared
             menu.menuItems = [UIMenuItem(title: "粘贴", action:#selector(pasteToShowNumber(_:)))]
-            menu.arrowDirection = .Up
-            let rect = CGRectMake((Screen.width - 50) / 2, showNumberCon.frame.height, 50, 25)
-            menu.setTargetRect(rect, inView: showNumberCon)
+            menu.arrowDirection = .up
+            let rect = CGRect(x: (Screen.width - 50) / 2, y: showNumberCon.frame.height, width: 50, height: 25)
+            menu.setTargetRect(rect, in: showNumberCon)
             menu.setMenuVisible(true, animated: true)
         }
     }

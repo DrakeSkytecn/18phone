@@ -35,88 +35,88 @@ class RegisterViewController: UIViewController, UITableViewDataSource, UITableVi
         // Dispose of any resources that can be recreated.
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if indexPath.row != 3 {
-            let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.register_cell_a)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if (indexPath as NSIndexPath).row != 3 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.register_cell_a)
             cell?.titleLabel.text = titles[indexPath.row]
             cell?.contentField.delegate = self
             cell?.contentField.tag = indexPath.row
             
-            switch indexPath.row {
+            switch (indexPath as NSIndexPath).row {
             case 0:
-                cell?.contentField.keyboardType = .NumberPad
+                cell?.contentField.keyboardType = .numberPad
                 cell?.contentField.becomeFirstResponder()
                 ViewUtil.setupNumberBar(cell!.contentField)
                 break
             case 1,2:
-                cell?.contentField.keyboardType = .Default
+                cell?.contentField.keyboardType = .default
                 break
             default:
                 break
             }
             return cell!
         } else {
-            let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.register_cell_b)
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.register_cell_b)
             cell?.titleLabel.text = titles[indexPath.row]
             cell?.contentField.delegate = self
             cell?.contentField.tag = indexPath.row
-            cell?.idCodeBtn.addTarget(self, action: #selector(codeBtnVerification(_:)), forControlEvents: .TouchUpInside)
+            cell?.idCodeBtn.addTarget(self, action: #selector(codeBtnVerification(_:)), for: .touchUpInside)
             ViewUtil.setupNumberBar(cell!.contentField)
             
             return cell!
         }
     }
     
-    func codeBtnVerification(sender: VerifyCodeButton) {
+    func codeBtnVerification(_ sender: VerifyCodeButton) {
         sender.timeFailBeginFrom(60)
     }
     
-    @IBAction func cancel(sender: UIBarButtonItem) {
-        dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
     }
 
-    @IBAction func submit(sender: UIButton) {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .Alert)
-        let okAction = UIAlertAction(title: "好的", style: .Default, handler: nil)
+    @IBAction func submit(_ sender: UIButton) {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "好的", style: .default, handler: nil)
         alertController.addAction(okAction)
         if phoneNumber.isEmpty {
             alertController.message = "请输入手机号"
-            presentViewController(alertController, animated: true, completion: nil)
+            present(alertController, animated: true, completion: nil)
             return
         }
         if !PhoneUtil.isMobileNumber(phoneNumber) {
             alertController.message = "输入的手机号格式不正确"
-            presentViewController(alertController, animated: true, completion: nil)
+            present(alertController, animated: true, completion: nil)
             return
         }
         if password.isEmpty {
             alertController.message = "请输入密码"
-            presentViewController(alertController, animated: true, completion: nil)
+            present(alertController, animated: true, completion: nil)
             return
         }
         if passwordConfirm.isEmpty {
             alertController.message = "请再次输入密码"
-            presentViewController(alertController, animated: true, completion: nil)
+            present(alertController, animated: true, completion: nil)
             return
         }
         if verifyCode.isEmpty {
             alertController.message = "请输入验证码"
-            presentViewController(alertController, animated: true, completion: nil)
+            present(alertController, animated: true, completion: nil)
             return
         }
         if password != passwordConfirm {
             alertController.message = "两次输入的密码不匹配"
-            presentViewController(alertController, animated: true, completion: nil)
+            present(alertController, animated: true, completion: nil)
             return
         }
-        presentViewController(R.storyboard.main.kTabBarController()!, animated: true, completion: nil)
+        present(R.storyboard.main.kTabBarController()!, animated: true, completion: nil)
     }
     
-    func textFieldDidChange(textField: UITextField) {
+    func textFieldDidChange(_ textField: UITextField) {
         switch textField.tag {
         case 0:
             phoneNumber = textField.text!
@@ -135,7 +135,7 @@ class RegisterViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }

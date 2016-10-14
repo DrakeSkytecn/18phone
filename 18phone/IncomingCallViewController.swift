@@ -43,8 +43,8 @@ class IncomingCallViewController: UIViewController {
         /**
          storyboard目前不支持设置CGColor
          */
-        dialPlateBtn.layer.borderColor = UIColor.whiteColor().CGColor
-        speakerBtn.layer.borderColor = UIColor.whiteColor().CGColor
+        dialPlateBtn.layer.borderColor = UIColor.white.cgColor
+        speakerBtn.layer.borderColor = UIColor.white.cgColor
         let phoneNumber = inCall?.incomingCallInfo()
         self.nameLabel.text = phoneNumber
         PhoneUtil.getPhoneAreaInfo(phoneNumber!) { phoneAreaInfo in
@@ -55,14 +55,14 @@ class IncomingCallViewController: UIViewController {
                 self.areaLabel.text = "未知归属地"
             }
             let store = CNContactStore()
-            let keysToFetch = [CNContactFormatter.descriptorForRequiredKeysForStyle(.FullName),
+            let keysToFetch = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
                                CNContactGivenNameKey,
                                CNContactFamilyNameKey,
-                               CNContactPhoneNumbersKey]
-            let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch)
-            try! store.enumerateContactsWithFetchRequest(fetchRequest) { (let contact, let stop) -> Void in
+                               CNContactPhoneNumbersKey] as [Any]
+            let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch as! [CNKeyDescriptor])
+            try! store.enumerateContacts(with: fetchRequest) { (contact, stop) -> Void in
                 for number in contact.phoneNumbers {
-                    let tempNumber = (number.value as! CNPhoneNumber).stringValue
+                    let tempNumber = (number.value).stringValue
                     if tempNumber == phoneNumber {
                         self.nameLabel.text = contact.familyName + contact.givenName
                         return
@@ -71,7 +71,7 @@ class IncomingCallViewController: UIViewController {
             }
             
         }
-        inCall?.addObserver(self, forKeyPath: "status", options: .Initial, context: nil)
+        inCall?.addObserver(self, forKeyPath: "status", options: .initial, context: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -79,12 +79,12 @@ class IncomingCallViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func hangup(sender: UIButton) {
+    @IBAction func hangup(_ sender: UIButton) {
         inCall?.end()
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 
-    @IBAction func answer(sender: UIButton) {
+    @IBAction func answer(_ sender: UIButton) {
         self.inCall?.begin()
     }
     
@@ -105,10 +105,10 @@ class IncomingCallViewController: UIViewController {
         case GSCallStatusConnected:
             print("IncomingCallViewController Connected.")
             isConnected = true
-            connectingCon.hidden = true
-            hangupCon.hidden = false
-            dialPlateCon.hidden = false
-            speakerCon.hidden = false
+            connectingCon.isHidden = true
+            hangupCon.isHidden = false
+            dialPlateCon.isHidden = false
+            speakerCon.isHidden = false
             break
             
         case GSCallStatusDisconnected:
@@ -125,7 +125,7 @@ class IncomingCallViewController: UIViewController {
 //            try! App.realm.write {
 //                App.realm.add(callLog)
 //            }
-            dismissViewControllerAnimated(true, completion: nil)
+            dismiss(animated: true, completion: nil)
             break
             
         default:
@@ -133,7 +133,7 @@ class IncomingCallViewController: UIViewController {
         }
     }
     
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "status" {
             callStatusDidChange()
         }

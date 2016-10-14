@@ -8,11 +8,11 @@
 
 import UIKit
 
-public class NumberBar: UIToolbar {
+open class NumberBar: UIToolbar {
     
     weak var textField:UITextField?
     
-    @IBAction func finish(sender: UIBarButtonItem) {
+    @IBAction func finish(_ sender: UIBarButtonItem) {
         textField?.resignFirstResponder()
     }
 }

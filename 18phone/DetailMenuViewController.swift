@@ -28,21 +28,21 @@ class DetailMenuViewController: UIViewController, UITableViewDataSource, UITable
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func videoCall(sender: UIButton) {
+    @IBAction func videoCall(_ sender: UIButton) {
         
     }
     
-    @IBAction func voiceCall(sender: UIButton) {
+    @IBAction func voiceCall(_ sender: UIButton) {
         
     }
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return phones!.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.detail_phone_cell)
-        let phoneNumber = phones![indexPath.row]
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.detail_phone_cell)
+        let phoneNumber = phones![(indexPath as NSIndexPath).row]
         cell?.textLabel?.text = phoneNumber
         cell?.detailTextLabel?.text = "未知归属地"
         PhoneUtil.getPhoneAreaInfo(phoneNumber) { phoneAreaInfo in
@@ -54,24 +54,24 @@ class DetailMenuViewController: UIViewController, UITableViewDataSource, UITable
         return cell!
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        PhoneUtil.callSystemPhone(phones![indexPath.row])
-        addCallLog(phones![indexPath.row], area: tableView.cellForRowAtIndexPath(indexPath)!.detailTextLabel!.text!)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        PhoneUtil.callSystemPhone(phones![(indexPath as NSIndexPath).row])
+        addCallLog(phones![(indexPath as NSIndexPath).row], area: tableView.cellForRow(at: indexPath)!.detailTextLabel!.text!)
     }
     
-    func addCallLog(number: String, area: String) {
+    func addCallLog(_ number: String, area: String) {
         let callLog = CallLog()
         callLog.identifier = identifier!
         callLog.name = name!
         callLog.phone = number
         if true {
-            callLog.callState = CallState.OutConnected.rawValue
+            callLog.callState = CallState.outConnected.rawValue
         } else {
-            callLog.callState = CallState.OutUnConnected.rawValue
+            callLog.callState = CallState.outUnConnected.rawValue
         }
-        callLog.callType = CallType.Voice.rawValue
-        callLog.callStartTime = NSDate()
+        callLog.callType = CallType.voice.rawValue
+        callLog.callStartTime = Date()
         callLog.area = area
         try! App.realm.write {
             App.realm.add(callLog)

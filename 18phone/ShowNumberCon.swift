@@ -10,7 +10,7 @@ import UIKit
 
 class ShowNumberCon: UIView {
     
-    override func canBecomeFirstResponder() -> Bool {
+    override var canBecomeFirstResponder : Bool {
         return true
     }
 }

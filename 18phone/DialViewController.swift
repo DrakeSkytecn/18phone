@@ -8,6 +8,8 @@
 
 import UIKit
 import Contacts
+import SwiftEventBus
+
 
 /// 拨号盘控制器
 class DialViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
@@ -39,11 +41,11 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func viewDidLoad() {
         super.viewDidLoad()
         dialPlateFlowLayout.itemSize.width = (Screen.width - 4) / 3
-        callConView = R.nib.callConView.firstView(owner: self)
-        let callConViewWidth = Screen.width / 3
-        callConView?.frame = CGRectMake((Screen.width - callConViewWidth) / 2, (Screen.height - (callConView?.frame.height)!), callConViewWidth, (callConView?.frame.height)!)
-        callConView?.delegate = self
-        App.application.keyWindow?.addSubview(callConView!)
+//        callConView = R.nib.callConView.firstView(self)
+//        let callConViewWidth = Screen.width / 3
+//        callConView?.frame = CGRect(x: (Screen.width - callConViewWidth) / 2, y: (Screen.height - (callConView?.frame.height)!), width: callConViewWidth, height: (callConView?.frame.height)!)
+//        callConView?.delegate = self
+//        App.application.keyWindow?.addSubview(callConView!)
         SwiftEventBus.onMainThread(self, name: "hideCallCon") { result in
             self.hideCallCon()
         }
@@ -52,18 +54,18 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         print("DialViewController viewWillDisappear")
-        callConView?.hidden = true
+        callConView?.isHidden = true
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         print("DialViewController viewDidDisappear")
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         if !dialNumber.text!.isEmpty {
-            callConView?.hidden = false
+            callConView?.isHidden = false
         }
     }
     
@@ -72,51 +74,52 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
         // Dispose of any resources that can be recreated.
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 12
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        switch indexPath.row {
-            /// 数字按键要展示的布局
-        case 0...8, 10:
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(R.reuseIdentifier.dial_a.identifier, forIndexPath: indexPath) as! DialNumberCell
-            
-            if indexPath.row == 0 {
-                cell.number.text = "\(indexPath.row + 1)"
-            } else if indexPath.row == 10 {
-                cell.number.text = "0"
-            } else {
-                cell.number.text = "\(indexPath.row + 1)"
-                cell.character.text = characters[indexPath.row - 1]
-            }
-            return cell
-            /// 粘贴和删除按键要展示的布局
-        case 9, 11:
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(R.reuseIdentifier.dial_b.identifier, forIndexPath: indexPath) as! DialIconCell
-            if indexPath.row == 9 {
-                cell.icon.image = R.image.paste()
-                cell.hint.text = "粘贴"
-            }else{
-                cell.icon.image = R.image.delete()
-                cell.hint.text = "删除"
-            }
-            
-            return cell
-        default:
-            return UICollectionViewCell()
-        }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        switch (indexPath as NSIndexPath).row {
+//            /// 数字按键要展示的布局
+//        case 0...8, 10:
+//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.dial_a.identifier, for: indexPath) as! DialNumberCell
+//            
+//            if (indexPath as NSIndexPath).row == 0 {
+//                cell.number.text = "\(indexPath.row + 1)"
+//            } else if (indexPath as NSIndexPath).row == 10 {
+//                cell.number.text = "0"
+//            } else {
+//                cell.number.text = "\(indexPath.row + 1)"
+//                cell.character.text = characters[indexPath.row - 1]
+//            }
+//            return cell
+//            /// 粘贴和删除按键要展示的布局
+//        case 9, 11:
+//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.dial_b.identifier, for: indexPath) as! DialIconCell
+//            if (indexPath as NSIndexPath).row == 9 {
+//                cell.icon.image = R.image.paste()
+//                cell.hint.text = "粘贴"
+//            }else{
+//                cell.icon.image = R.image.delete()
+//                cell.hint.text = "删除"
+//            }
+//            
+//            return cell
+//        default:
+//            return UICollectionViewCell()
+//        }
+        return UICollectionViewCell()
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        switch indexPath.row {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch (indexPath as NSIndexPath).row {
             /// 监听数字按键的事件
         case 0...8, 10:
             var temp = dialNumber.text
-            if temp?.characters.count < 12 {
-                dialNumberCon.hidden = false
-                callConView?.hidden = false
-                let number = (collectionView.cellForItemAtIndexPath(indexPath) as!DialNumberCell).number.text
+            if temp!.characters.count < 12 {
+                dialNumberCon.isHidden = false
+                callConView?.isHidden = false
+                let number = (collectionView.cellForItem(at: indexPath) as!DialNumberCell).number.text
                 temp = temp! + number!
                 dialNumber.text = temp
                 if PhoneUtil.isMobileNumber(temp) || PhoneUtil.isTelephoneNumber(temp) || temp == "10086" {
@@ -133,24 +136,24 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
             /// 监听粘贴按键的事件
         case 9:
-            let paste = UIPasteboard.generalPasteboard()
+            let paste = UIPasteboard.general
             if PhoneUtil.isNumber(paste.string) {
                 dialNumber.text = paste.string
-                dialNumberCon.hidden = false
-                callConView?.hidden = false
+                dialNumberCon.isHidden = false
+                callConView?.isHidden = false
             } else {
                 
             }
             /// 监听删除按键的事件
         case 11:
-            var temp = dialNumber.text
-            let length = temp?.characters.count
+            var temp = dialNumber.text!
+            let length = temp.characters.count
             if length > 0 {
-                temp = temp?.substringToIndex(temp!.startIndex.advancedBy(length! - 1))
+                temp = temp.substring(to: temp.characters.index(temp.startIndex, offsetBy: length - 1))
                 dialNumber.text = temp
                 if length == 1 {
-                    dialNumberCon.hidden = true
-                    callConView?.hidden = true
+                    dialNumberCon.isHidden = true
+                    callConView?.isHidden = true
                 }
             }
         default:
@@ -163,18 +166,18 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
      
      - parameter sender: 拨打按钮
      */
-    @IBAction func call(sender: UIButton) {
+    @IBAction func call(_ sender: UIButton) {
         if PhoneUtil.isMobileNumber(dialNumber.text) || PhoneUtil.isTelephoneNumber(dialNumber.text) {
-            UIApplication.sharedApplication().openURL(NSURL(string: "tel://" + dialNumber.text!)!)
+            UIApplication.shared.openURL(Foundation.URL(string: "tel://" + dialNumber.text!)!)
             
         } else {
-            UIApplication.sharedApplication().openURL(NSURL(string: "tel://" + dialNumber.text!)!)
+            UIApplication.shared.openURL(Foundation.URL(string: "tel://" + dialNumber.text!)!)
         }
         let callLog = CallLog()
         callLog.name = "James"
         callLog.phone = dialNumber.text!
         //callLog.callState = CallState.In.rawValue
-        callLog.callStartTime = NSDate()
+        callLog.callStartTime = Date()
         if tempArea != nil {
             callLog.area = tempArea!
         }
@@ -183,12 +186,12 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
-    func collectionView(collectionView: UICollectionView, didHighlightItemAtIndexPath indexPath: NSIndexPath) {
-        collectionView.cellForItemAtIndexPath(indexPath)?.backgroundColor = UIColor.groupTableViewBackgroundColor()
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        collectionView.cellForItem(at: indexPath)?.backgroundColor = UIColor.groupTableViewBackground
     }
     
-    func collectionView(collectionView: UICollectionView, didUnhighlightItemAtIndexPath indexPath: NSIndexPath) {
-        collectionView.cellForItemAtIndexPath(indexPath)?.backgroundColor = UIColor.whiteColor()
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        collectionView.cellForItem(at: indexPath)?.backgroundColor = UIColor.white
     }
     
     /*
@@ -202,12 +205,12 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
      */
     
     func hideCallCon() {
-        callConView?.hidden = true
+        callConView?.isHidden = true
     }
     
     func showCallCon() {
         if !dialNumber.text!.isEmpty {
-            callConView?.hidden = false
+            callConView?.isHidden = false
         }
     }
 }

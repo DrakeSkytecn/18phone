@@ -21,9 +21,9 @@ class Phone: Object {
  - Unknown: 未编辑
  */
 enum Sex: Int {
-    case Male
-    case Female
-    case Unknown
+    case male
+    case female
+    case unknown
 }
 
 /// 联系人数据对象
@@ -33,7 +33,7 @@ struct LocalContactInfo {
     var identifier: String?
     
     /// 联系人头像
-    var headPhoto: NSData?
+    var headPhoto: Data?
     
     /// 联系人姓名
     var name: String?
@@ -63,7 +63,7 @@ class AppContactInfo: Object {
     var isRegister = false
     
     /// 联系人性别
-    dynamic var sex = Sex.Unknown.rawValue
+    dynamic var sex = Sex.unknown.rawValue
     
     /// 联系人年龄
     dynamic var age = -1
