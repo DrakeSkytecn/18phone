@@ -87,7 +87,7 @@
     
     pjsua_config_default(&uaConfig);
     pj_str_t stun1 = pj_str("stunserver.org");
-    uaConfig.stun_srv[0] = stun1;
+//    uaConfig.stun_srv[0] = stun1;
     
     [GSDispatch configureCallbacksForAgent:&uaConfig];
     
@@ -108,7 +108,7 @@
     pj_str_t google_dns = [GSPJUtil PJStringWithString:@"119.29.29.29"];
     struct pj_str_t servers[] = { google_dns };
     GSReturnNoIfFails(pjsip_endpt_create_resolver(endpoint, &resolver));
-    GSReturnNoIfFails(pj_dns_resolver_set_ns(resolver, 1, servers, nil));
+//    GSReturnNoIfFails(pj_dns_resolver_set_ns(resolver, 1, servers, nil));
     GSReturnNoIfFails(pjsip_endpt_set_resolver(endpoint, resolver));
     
     // create UDP transport
@@ -116,6 +116,7 @@
     // TODO: Make separate class? since things like public_addr might be useful to some.
     pjsua_transport_config transportConfig;
     pjsua_transport_config_default(&transportConfig);
+    transportConfig.port = 5060;
     pjsip_transport_type_e transportType = 0;
     switch (_config.transportType) {
         case GSUDPTransportType: transportType = PJSIP_TRANSPORT_UDP; break;
@@ -125,6 +126,14 @@
     }
     
     GSReturnNoIfFails(pjsua_transport_create(transportType, &transportConfig, &_transportId));
+    
+    pjsua_transport_config udp_cfg;
+    udp_cfg = transportConfig;
+    udp_cfg.port = 5070;
+    
+    GSReturnNoIfFails(pjsua_transport_create(PJSIP_TRANSPORT_UDP6, &udp_cfg, &_transportId));
+    
+    
     [self setStatus:GSUserAgentStateConfigured];
 
     // configure account

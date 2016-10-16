@@ -24,7 +24,7 @@ export TEST_OBJS +=	main.o
 # Additional LDFLAGS for pjlib-test
 #
 # Disabled, as this causes duplicated LDFLAGS, which may raise linking errors
-#export TEST_LDFLAGS += -L/Users/daiquanyi/Documents/ioscode/18phone/pjproject-2.5.5/third_party/openh264/lib -O2 -arch armv7 -isysroot /Applications/XCode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk -framework AudioToolbox -framework Foundation -lopenh264 -lstdc++ -lm -lpthread  -framework CoreAudio -framework CoreFoundation -framework AudioToolbox -framework CFNetwork -framework UIKit -framework UIKit -framework AVFoundation -framework CoreGraphics -framework QuartzCore -framework CoreVideo -framework CoreMedia -framework OpenGLES
+#export TEST_LDFLAGS += -L/Users/daiquanyi/Documents/pjproject-2.5.5/third_party/openh264/lib -O2 -arch armv7 -isysroot /Applications/XCode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk -framework AudioToolbox -framework Foundation -lopenh264 -lstdc++ -lm -lpthread  -framework CoreAudio -framework CoreFoundation -framework AudioToolbox -framework CFNetwork -framework UIKit -framework UIKit -framework AVFoundation -framework CoreGraphics -framework QuartzCore -framework CoreVideo -framework CoreMedia -framework OpenGLES
 
 #
 # TARGETS are make targets in the Makefile, to be executed for this given
