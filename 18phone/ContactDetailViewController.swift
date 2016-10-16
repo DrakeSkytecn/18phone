@@ -11,6 +11,8 @@ import Contacts
 
 class ContactDetailViewController: UIViewController {
 
+    @IBOutlet weak var detailConHeight: NSLayoutConstraint!
+    
     var contactId: String?
     
     var phones = [String]()
@@ -27,15 +29,13 @@ class ContactDetailViewController: UIViewController {
     
     @IBOutlet weak var ageLabel: UILabel!
     
-    @IBOutlet weak var detailCon: UIView!
-    
+
     var detailMenuViewController = R.storyboard.main.detailMenuViewController()!
     
     var callLogMenuViewController = R.storyboard.main.callLogMenuViewController()!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(contactId)
         initContactInfo()
         initPageMenu()
         // Do any additional setup after loading the view.
@@ -89,7 +89,7 @@ class ContactDetailViewController: UIViewController {
     }
     
     func initPageMenu() {
-        let controllerArray : [UIViewController] = [R.storyboard.main.a()! , R.storyboard.main.b()!]
+        let controllerArray : [UIViewController] = [detailMenuViewController , callLogMenuViewController]
         let parameters: [CAPSPageMenuOption] = [
             .scrollMenuBackgroundColor(UIColor.white),
             .viewBackgroundColor(UIColor.white),
@@ -101,10 +101,10 @@ class ContactDetailViewController: UIViewController {
             .menuItemWidth(Screen.width / 2),
             .menuMargin(0.0)
         ]
-        let pageMenu = CAPSPageMenu(viewControllers: controllerArray, frame: CGRect(x: 0, y: detailCon.frame.height, width: Screen.width, height: view.frame.height - detailCon.frame.height), pageMenuOptions: parameters)
+        let pageMenu = CAPSPageMenu(viewControllers: controllerArray, frame: CGRect(x: 0, y: detailConHeight.constant, width: Screen.width, height: view.frame.height - detailConHeight.constant), pageMenuOptions: parameters)
         addChildViewController(pageMenu)
         view.addSubview(pageMenu.view)
-        pageMenu.didMove(toParentViewController: self)
+//        pageMenu.didMove(toParentViewController: self)
     }
 
     override func didReceiveMemoryWarning() {

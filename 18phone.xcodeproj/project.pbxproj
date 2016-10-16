@@ -57,6 +57,7 @@
 		E13D21951D6ECFCA00C6EA98 /* IncomingVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13D21941D6ECFCA00C6EA98 /* IncomingVideoViewController.swift */; };
 		E140B1871D8E36FA00178D74 /* ShowNumberCon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E140B1861D8E36FA00178D74 /* ShowNumberCon.swift */; };
 		E148E6C31D6C397000BE131E /* OutgoingVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E148E6C21D6C397000BE131E /* OutgoingVideoViewController.swift */; };
+		E148FDE11DB270C100E2DBC0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E148FDE01DB270C100E2DBC0 /* ViewController.swift */; };
 		E15C42121D7D094000124257 /* ringtone.wav in Resources */ = {isa = PBXBuildFile; fileRef = E15C42111D7D094000124257 /* ringtone.wav */; };
 		E15C4C3A1D965DA700688086 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15C4C391D965DA700688086 /* MessageViewController.swift */; };
 		E15C4C3C1D96689300688086 /* ZFRippleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15C4C3B1D96689300688086 /* ZFRippleButton.swift */; };
@@ -194,6 +195,7 @@
 		E13D21941D6ECFCA00C6EA98 /* IncomingVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomingVideoViewController.swift; sourceTree = "<group>"; };
 		E140B1861D8E36FA00178D74 /* ShowNumberCon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowNumberCon.swift; sourceTree = "<group>"; };
 		E148E6C21D6C397000BE131E /* OutgoingVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutgoingVideoViewController.swift; sourceTree = "<group>"; };
+		E148FDE01DB270C100E2DBC0 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E1534A0A1D7E668A007FE351 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		E1534A0C1D7E6692007FE351 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		E15C42111D7D094000124257 /* ringtone.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ringtone.wav; sourceTree = "<group>"; };
@@ -555,6 +557,7 @@
 				E193274C1D9A51BA006BA8B2 /* CheckAccountViewController.swift */,
 				E19327501D9A6623006BA8B2 /* LoginViewController.swift */,
 				E1AC7F821DA89B85001C2676 /* RegisterViewController.swift */,
+				E148FDE01DB270C100E2DBC0 /* ViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -797,6 +800,7 @@
 				E1C048661D867F650009DF6B /* GSAccount.m in Sources */,
 				E1C048671D867F650009DF6B /* GSAccountConfiguration.m in Sources */,
 				E13BACD51D51907600414ACE /* CallLog.swift in Sources */,
+				E148FDE11DB270C100E2DBC0 /* ViewController.swift in Sources */,
 				E1721F321D910D4D00A67C5B /* ContactDetailViewController.swift in Sources */,
 				E12EBA841D532447007B5CBD /* piQ.swift in Sources */,
 				E11E37E81D94CCC6004B566D /* UserCenterViewController.swift in Sources */,

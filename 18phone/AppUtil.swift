@@ -214,12 +214,12 @@ struct ViewUtil {
      - parameter textField: 需要添加return键的textField
      */
     static func setupNumberBar(_ textField: UITextField) {
-//        let numberBar = R.nib.numberBar.firstView(owner: nil)
-//        var temp = numberBar!.frame
-//        temp.size.width = Screen.width
-//        numberBar?.frame = temp
-//        numberBar?.textField = textField
-//        textField.inputAccessoryView = numberBar
+        let numberBar = R.nib.numberBar.firstView(owner: nil)
+        var temp = numberBar!.frame
+        temp.size.width = Screen.width
+        numberBar?.frame = temp
+        numberBar?.textField = textField
+        textField.inputAccessoryView = numberBar
     }
 }
 
