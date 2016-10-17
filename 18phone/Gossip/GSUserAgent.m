@@ -107,9 +107,9 @@
     pj_dns_resolver* resolver;
     pj_str_t google_dns = [GSPJUtil PJStringWithString:@"119.29.29.29"];
     struct pj_str_t servers[] = { google_dns };
-    GSReturnNoIfFails(pjsip_endpt_create_resolver(endpoint, &resolver));
+//    GSReturnNoIfFails(pjsip_endpt_create_resolver(endpoint, &resolver));
 //    GSReturnNoIfFails(pj_dns_resolver_set_ns(resolver, 1, servers, nil));
-    GSReturnNoIfFails(pjsip_endpt_set_resolver(endpoint, resolver));
+//    GSReturnNoIfFails(pjsip_endpt_set_resolver(endpoint, resolver));
     
     // create UDP transport
     // TODO: Make configurable? (which transport type to use/other transport opts)
@@ -132,7 +132,6 @@
     udp_cfg.port = 5070;
     
     GSReturnNoIfFails(pjsua_transport_create(PJSIP_TRANSPORT_UDP6, &udp_cfg, &_transportId));
-    
     
     [self setStatus:GSUserAgentStateConfigured];
 
