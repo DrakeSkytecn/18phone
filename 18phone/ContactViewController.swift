@@ -76,7 +76,7 @@ class ContactViewController: UITableViewController {
                 }
                 for number in contact.phoneNumbers {
                     let phone = Phone()
-                    phone.number = (number.value ).stringValue
+                    phone.number = number.value.stringValue
                     localContactInfo.phones?.append(phone)
                 }
                 if var localContactInfos = self.groupValues[initial] {
@@ -161,7 +161,7 @@ class ContactViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         let localContactInfo = groupValues[groupTitles[(indexPath as NSIndexPath).section]]!![(indexPath as NSIndexPath).row]
         contactId = localContactInfo.identifier!
-        performSegue(withIdentifier: R.segue.contactViewController.contactDetailViewController.identifier, sender: contactId)
+        performSegue(withIdentifier: R.segue.contactViewController.contactDetailViewController, sender: contactId)
     }
     
     override func didReceiveMemoryWarning() {

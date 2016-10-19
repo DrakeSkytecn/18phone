@@ -53,7 +53,7 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let cell = tableView.cellForRow(at: indexPath)
         hideKeyBoard()
-        switch (indexPath as NSIndexPath).row {
+        switch indexPath.row {
         case 0:
             Async.main {
                 self.headphotoSheet()

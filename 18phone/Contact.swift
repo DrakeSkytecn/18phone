@@ -9,8 +9,11 @@
 import Foundation
 import RealmSwift
 
-class Phone: Object {
-    dynamic var number = ""
+class Phone{
+    
+    var number = ""
+    
+    var area = ""
 }
 
 /**
@@ -39,7 +42,7 @@ struct LocalContactInfo {
     var name: String?
     
     /// 联系人电话
-    var phones: List<Phone>?
+    var phones: Array<Phone>?
     
     var isRegister = false
     
@@ -47,7 +50,7 @@ struct LocalContactInfo {
         identifier = nil
         headPhoto = nil
         name = nil
-        phones = List<Phone>()
+        phones = Array<Phone>()
     }
 }
 
@@ -57,10 +60,10 @@ class AppContactInfo: Object {
     dynamic var identifier = ""
     
     /// 注册后分配的账号
-    var account = 0
+    dynamic var account = 0
     
     /// 该联系人是否是18phone的用户标识
-    var isRegister = false
+    dynamic var isRegister = false
     
     /// 联系人性别
     dynamic var sex = Sex.unknown.rawValue

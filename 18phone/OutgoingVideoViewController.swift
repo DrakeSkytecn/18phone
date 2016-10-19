@@ -93,7 +93,7 @@ class OutgoingVideoViewController: UIViewController {
             
         case GSCallStatusDisconnected:
             print("OutgoingCallViewController Disconnected.")
-            dismiss(animated: true, completion: nil)
+//            dismiss(animated: true, completion: nil)
             break
             
         default:

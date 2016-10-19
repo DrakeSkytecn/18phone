@@ -29,7 +29,6 @@ class ContactDetailViewController: UIViewController {
     
     @IBOutlet weak var ageLabel: UILabel!
     
-
     var detailMenuViewController = R.storyboard.main.detailMenuViewController()!
     
     var callLogMenuViewController = R.storyboard.main.callLogMenuViewController()!
@@ -89,12 +88,12 @@ class ContactDetailViewController: UIViewController {
     }
     
     func initPageMenu() {
-        let controllerArray : [UIViewController] = [detailMenuViewController , callLogMenuViewController]
+        let controllerArray : [UIViewController] = [detailMenuViewController, callLogMenuViewController]
         let parameters: [CAPSPageMenuOption] = [
             .scrollMenuBackgroundColor(UIColor.white),
             .viewBackgroundColor(UIColor.white),
             .selectionIndicatorColor(UIColor(red: 38.0/255.0, green: 173.0/255.0, blue: 86.0/255.0, alpha: 1.0)),
-            .selectedMenuItemLabelColor(UIColor(red: 38.0/255.0, green: 173.0/255.0, blue: 86.0/255.0, alpha: 1.0)),
+            .selectedMenuItemLabelColor(UIColor(red: 38.0/255.0, green: 173.0/255.0, blue:  86.0/255.0, alpha: 1.0)),
             .unselectedMenuItemLabelColor(UIColor.black),
             .bottomMenuHairlineColor(UIColor(red: 70.0/255.0, green: 70.0/255.0, blue: 80.0/255.0, alpha: 1.0)),
             .centerMenuItems(true),
@@ -104,7 +103,6 @@ class ContactDetailViewController: UIViewController {
         let pageMenu = CAPSPageMenu(viewControllers: controllerArray, frame: CGRect(x: 0, y: detailConHeight.constant, width: Screen.width, height: view.frame.height - detailConHeight.constant), pageMenuOptions: parameters)
         addChildViewController(pageMenu)
         view.addSubview(pageMenu.view)
-//        pageMenu.didMove(toParentViewController: self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -115,7 +113,7 @@ class ContactDetailViewController: UIViewController {
     @IBAction func moreFeature(_ sender: UIBarButtonItem) {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: "编辑联系人", style: .default) { action in
-            
+            self.performSegue(withIdentifier: R.segue.contactDetailViewController.editContactViewController, sender: nil)
             })
         alertController.addAction(UIAlertAction(title: "添加黑名单", style: .default) { action in
             

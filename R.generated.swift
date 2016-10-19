@@ -375,8 +375,10 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 16 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 18 reuse identifiers.
   struct reuseIdentifier {
+    /// Reuse identifier `ad_cell`.
+    static let ad_cell: Rswift.ReuseIdentifier<UIKit.UITableViewCell> = Rswift.ReuseIdentifier(identifier: "ad_cell")
     /// Reuse identifier `backup_cell_a`.
     static let backup_cell_a: Rswift.ReuseIdentifier<UIKit.UITableViewCell> = Rswift.ReuseIdentifier(identifier: "backup_cell_a")
     /// Reuse identifier `contact`.
@@ -395,6 +397,8 @@ struct R: Rswift.Validatable {
     static let dial_a: Rswift.ReuseIdentifier<DialNumberCell> = Rswift.ReuseIdentifier(identifier: "dial_a")
     /// Reuse identifier `dial_b`.
     static let dial_b: Rswift.ReuseIdentifier<DialIconCell> = Rswift.ReuseIdentifier(identifier: "dial_b")
+    /// Reuse identifier `edit_contact_cell`.
+    static let edit_contact_cell: Rswift.ReuseIdentifier<EditContactCell> = Rswift.ReuseIdentifier(identifier: "edit_contact_cell")
     /// Reuse identifier `log_a`.
     static let log_a: Rswift.ReuseIdentifier<CallLogACell> = Rswift.ReuseIdentifier(identifier: "log_a")
     /// Reuse identifier `login_cell`.
@@ -413,8 +417,23 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.segue` struct is generated, and contains static references to 2 view controllers.
+  /// This `R.segue` struct is generated, and contains static references to 4 view controllers.
   struct segue {
+    /// This struct is generated for `ContactDetailViewController`, and contains static references to 1 segues.
+    struct contactDetailViewController {
+      /// Segue identifier `editContactViewController`.
+      static let editContactViewController: Rswift.StoryboardSegueIdentifier<UIKit.UIStoryboardSegue, ContactDetailViewController, EditContactViewController> = Rswift.StoryboardSegueIdentifier(identifier: "editContactViewController")
+      
+      /// Optionally returns a typed version of segue `editContactViewController`.
+      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
+      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
+      static func editContactViewController(segue: UIKit.UIStoryboardSegue) -> Rswift.TypedStoryboardSegueInfo<UIKit.UIStoryboardSegue, ContactDetailViewController, EditContactViewController>? {
+        return Rswift.TypedStoryboardSegueInfo(segueIdentifier: R.segue.contactDetailViewController.editContactViewController, segue: segue)
+      }
+      
+      fileprivate init() {}
+    }
+    
     /// This struct is generated for `ContactViewController`, and contains static references to 1 segues.
     struct contactViewController {
       /// Segue identifier `contactDetailViewController`.
@@ -449,6 +468,39 @@ struct R: Rswift.Validatable {
       /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
       static func contactViewController(segue: UIKit.UIStoryboardSegue) -> Rswift.TypedStoryboardSegueInfo<UIKit.UIStoryboardSegue, RootViewController, ContactViewController>? {
         return Rswift.TypedStoryboardSegueInfo(segueIdentifier: R.segue.rootViewController.contactViewController, segue: segue)
+      }
+      
+      fileprivate init() {}
+    }
+    
+    /// This struct is generated for `UserCenterViewController`, and contains static references to 3 segues.
+    struct userCenterViewController {
+      /// Segue identifier `aboutViewController`.
+      static let aboutViewController: Rswift.StoryboardSegueIdentifier<UIKit.UIStoryboardSegue, UserCenterViewController, AboutViewController> = Rswift.StoryboardSegueIdentifier(identifier: "aboutViewController")
+      /// Segue identifier `billViewController`.
+      static let billViewController: Rswift.StoryboardSegueIdentifier<UIKit.UIStoryboardSegue, UserCenterViewController, BillViewController> = Rswift.StoryboardSegueIdentifier(identifier: "billViewController")
+      /// Segue identifier `mySettingViewController`.
+      static let mySettingViewController: Rswift.StoryboardSegueIdentifier<UIKit.UIStoryboardSegue, UserCenterViewController, MySettingViewController> = Rswift.StoryboardSegueIdentifier(identifier: "mySettingViewController")
+      
+      /// Optionally returns a typed version of segue `aboutViewController`.
+      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
+      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
+      static func aboutViewController(segue: UIKit.UIStoryboardSegue) -> Rswift.TypedStoryboardSegueInfo<UIKit.UIStoryboardSegue, UserCenterViewController, AboutViewController>? {
+        return Rswift.TypedStoryboardSegueInfo(segueIdentifier: R.segue.userCenterViewController.aboutViewController, segue: segue)
+      }
+      
+      /// Optionally returns a typed version of segue `billViewController`.
+      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
+      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
+      static func billViewController(segue: UIKit.UIStoryboardSegue) -> Rswift.TypedStoryboardSegueInfo<UIKit.UIStoryboardSegue, UserCenterViewController, BillViewController>? {
+        return Rswift.TypedStoryboardSegueInfo(segueIdentifier: R.segue.userCenterViewController.billViewController, segue: segue)
+      }
+      
+      /// Optionally returns a typed version of segue `mySettingViewController`.
+      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
+      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
+      static func mySettingViewController(segue: UIKit.UIStoryboardSegue) -> Rswift.TypedStoryboardSegueInfo<UIKit.UIStoryboardSegue, UserCenterViewController, MySettingViewController>? {
+        return Rswift.TypedStoryboardSegueInfo(segueIdentifier: R.segue.userCenterViewController.mySettingViewController, segue: segue)
       }
       
       fileprivate init() {}
@@ -571,11 +623,12 @@ struct _R: Rswift.Validatable {
     struct main: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
       typealias InitialController = CheckAccountViewController
       
-      let a = StoryboardViewControllerResource<UIKit.UIViewController>(identifier: "A")
-      let b = StoryboardViewControllerResource<UIKit.UIViewController>(identifier: "B")
       let backupViewController = StoryboardViewControllerResource<BackupViewController>(identifier: "BackupViewController")
       let bundle = R.hostingBundle
       let callLogMenuViewController = StoryboardViewControllerResource<CallLogMenuViewController>(identifier: "CallLogMenuViewController")
+      let communicateListViewController = StoryboardViewControllerResource<CommunicateListViewController>(identifier: "CommunicateListViewController")
+      let communicateViewController = StoryboardViewControllerResource<CommunicateViewController>(identifier: "CommunicateViewController")
+      let consumeViewController = StoryboardViewControllerResource<ConsumeViewController>(identifier: "ConsumeViewController")
       let detailMenuViewController = StoryboardViewControllerResource<DetailMenuViewController>(identifier: "DetailMenuViewController")
       let dialViewController = StoryboardViewControllerResource<DialView1Controller>(identifier: "DialViewController")
       let incomingCallViewController = StoryboardViewControllerResource<IncomingCallViewController>(identifier: "IncomingCallViewController")
@@ -585,20 +638,24 @@ struct _R: Rswift.Validatable {
       let outgoingCallViewController = StoryboardViewControllerResource<OutgoingCallViewController>(identifier: "OutgoingCallViewController")
       let outgoingVideoViewController = StoryboardViewControllerResource<OutgoingVideoViewController>(identifier: "OutgoingVideoViewController")
       
-      func a(_: Void = ()) -> UIKit.UIViewController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: a)
-      }
-      
-      func b(_: Void = ()) -> UIKit.UIViewController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: b)
-      }
-      
       func backupViewController(_: Void = ()) -> BackupViewController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: backupViewController)
       }
       
       func callLogMenuViewController(_: Void = ()) -> CallLogMenuViewController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: callLogMenuViewController)
+      }
+      
+      func communicateListViewController(_: Void = ()) -> CommunicateListViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: communicateListViewController)
+      }
+      
+      func communicateViewController(_: Void = ()) -> CommunicateViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: communicateViewController)
+      }
+      
+      func consumeViewController(_: Void = ()) -> ConsumeViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: consumeViewController)
       }
       
       func detailMenuViewController(_: Void = ()) -> DetailMenuViewController? {
@@ -632,37 +689,41 @@ struct _R: Rswift.Validatable {
       static func validate() throws {
         if UIKit.UIImage(named: "delete_all") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'delete_all' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "male") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'male' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "user") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'user' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "voice_icon") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'voice_icon' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "bill") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'bill' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "call_in_connected") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'call_in_connected' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "Launch") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Launch' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "head_photo_default") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'head_photo_default' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "shop_selected") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'shop_selected' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "speaker") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'speaker' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "voice_call") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'voice_call' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "dial_tab_selected") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'dial_tab_selected' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "dial_tab") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'dial_tab' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "voice_call") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'voice_call' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "shop") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'shop' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "more") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'more' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "dial") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'dial' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "message") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'message' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "user") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'user' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "voice_icon") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'voice_icon' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "shop_selected") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'shop_selected' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "speaker") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'speaker' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "head_photo_default") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'head_photo_default' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "setting") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'setting' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "wallet") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'wallet' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "answer") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'answer' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "dial_plate") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'dial_plate' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "hang_up") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'hang_up' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "message") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'message' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "video_icon") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'video_icon' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "message_selected") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'message_selected' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "qrcode") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'qrcode' is used in storyboard 'Main', but couldn't be loaded.") }
-        if _R.storyboard.main().b() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'b' could not be loaded from storyboard 'Main' as 'UIKit.UIViewController'.") }
         if _R.storyboard.main().detailMenuViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'detailMenuViewController' could not be loaded from storyboard 'Main' as 'DetailMenuViewController'.") }
         if _R.storyboard.main().dialViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'dialViewController' could not be loaded from storyboard 'Main' as 'DialView1Controller'.") }
         if _R.storyboard.main().backupViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'backupViewController' could not be loaded from storyboard 'Main' as 'BackupViewController'.") }
-        if _R.storyboard.main().a() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'a' could not be loaded from storyboard 'Main' as 'UIKit.UIViewController'.") }
+        if _R.storyboard.main().consumeViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'consumeViewController' could not be loaded from storyboard 'Main' as 'ConsumeViewController'.") }
         if _R.storyboard.main().outgoingCallViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'outgoingCallViewController' could not be loaded from storyboard 'Main' as 'OutgoingCallViewController'.") }
         if _R.storyboard.main().kTabBarController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'kTabBarController' could not be loaded from storyboard 'Main' as 'KTabBarController'.") }
         if _R.storyboard.main().outgoingVideoViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'outgoingVideoViewController' could not be loaded from storyboard 'Main' as 'OutgoingVideoViewController'.") }
         if _R.storyboard.main().callLogMenuViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'callLogMenuViewController' could not be loaded from storyboard 'Main' as 'CallLogMenuViewController'.") }
+        if _R.storyboard.main().communicateViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'communicateViewController' could not be loaded from storyboard 'Main' as 'CommunicateViewController'.") }
         if _R.storyboard.main().incomingVideoViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'incomingVideoViewController' could not be loaded from storyboard 'Main' as 'IncomingVideoViewController'.") }
         if _R.storyboard.main().incomingCallViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'incomingCallViewController' could not be loaded from storyboard 'Main' as 'IncomingCallViewController'.") }
+        if _R.storyboard.main().communicateListViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'communicateListViewController' could not be loaded from storyboard 'Main' as 'CommunicateListViewController'.") }
       }
       
       fileprivate init() {}

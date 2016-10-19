@@ -78,7 +78,26 @@ class UserCenterViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+        switch indexPath.section {
+        case 0:
+            break
+        case 1:
+            if indexPath.row == 0 {
+                
+            } else {
+                performSegue(withIdentifier: R.segue.userCenterViewController.billViewController, sender: nil)
+            }
+            break
+        case 2:
+            if indexPath.row == 0 {
+                performSegue(withIdentifier: R.segue.userCenterViewController.mySettingViewController, sender: nil)
+            } else {
+                performSegue(withIdentifier: R.segue.userCenterViewController.aboutViewController, sender: nil)
+            }
+            break
+        default:
+            break
+        }
     }
 
     /*

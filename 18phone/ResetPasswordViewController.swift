@@ -1,16 +1,16 @@
 //
-//  RegisterViewController.swift
+//  ResetPasswordViewController.swift
 //  18phone
 //
-//  Created by 戴全艺 on 16/10/8.
+//  Created by 戴全艺 on 2016/10/17.
 //  Copyright © 2016年 Kratos. All rights reserved.
 //
 
 import UIKit
 
-class RegisterViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
+class ResetPasswordViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
 
-    var titles = ["请输入手机号", "请输入密码", "请确认密码", "请输入验证码"]
+    var titles = ["请输入手机号", "请输入新密码", "请确认新密码", "请输入验证码"]
     
     var phoneNumber = ""
     
@@ -28,7 +28,7 @@ class RegisterViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.dataSource = self
         tableView.delegate = self
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -78,7 +78,7 @@ class RegisterViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
-
+    
     @IBAction func submit(_ sender: UIButton) {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "好的", style: .default, handler: nil)
@@ -140,14 +140,11 @@ class RegisterViewController: UIViewController, UITableViewDataSource, UITableVi
         return true
     }
     
-    deinit {
-        print("RegisterViewController deinit")
-    }
     /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }

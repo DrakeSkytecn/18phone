@@ -33,10 +33,16 @@
 		E114D1C41D4F1F15006AB978 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E114D1C31D4F1F15006AB978 /* AppDelegate.swift */; };
 		E114D1C61D4F1F15006AB978 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E114D1C51D4F1F15006AB978 /* ContactViewController.swift */; };
 		E114D1CE1D4F1F15006AB978 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E114D1CC1D4F1F15006AB978 /* LaunchScreen.storyboard */; };
+		E11D4CF01DB6118C00737790 /* ChangePhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D4CEF1DB6118C00737790 /* ChangePhoneNumberViewController.swift */; };
 		E11E37E61D94C619004B566D /* UserDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11E37E51D94C619004B566D /* UserDetailCell.swift */; };
 		E11E37E81D94CCC6004B566D /* UserCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11E37E71D94CCC6004B566D /* UserCenterViewController.swift */; };
 		E11E92921D5EBBAB004D634A /* DialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E11E92911D5EBBAB004D634A /* DialView.xib */; };
 		E11E92941D5F2C9F004D634A /* DialView1Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11E92931D5F2C9F004D634A /* DialView1Controller.swift */; };
+		E121297C1DB7154A009EE55B /* BillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E121297B1DB7154A009EE55B /* BillViewController.swift */; };
+		E121297E1DB71A0B009EE55B /* ConsumeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E121297D1DB71A0B009EE55B /* ConsumeViewController.swift */; };
+		E12129801DB71A5B009EE55B /* CommunicateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E121297F1DB71A5B009EE55B /* CommunicateViewController.swift */; };
+		E12129821DB74D18009EE55B /* CommunicateListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12129811DB74D18009EE55B /* CommunicateListViewController.swift */; };
+		E12129841DB75AAC009EE55B /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12129831DB75AAC009EE55B /* AboutViewController.swift */; };
 		E123C3FC1DADDA3E00E6D442 /* CAPSPageMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E123C3FB1DADDA3E00E6D442 /* CAPSPageMenu.swift */; };
 		E12EBA811D531FF3007B5CBD /* CallLogACell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12EBA801D531FF3007B5CBD /* CallLogACell.swift */; };
 		E12EBA841D532447007B5CBD /* piQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12EBA831D532447007B5CBD /* piQ.swift */; };
@@ -57,7 +63,10 @@
 		E13D21951D6ECFCA00C6EA98 /* IncomingVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13D21941D6ECFCA00C6EA98 /* IncomingVideoViewController.swift */; };
 		E140B1871D8E36FA00178D74 /* ShowNumberCon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E140B1861D8E36FA00178D74 /* ShowNumberCon.swift */; };
 		E148E6C31D6C397000BE131E /* OutgoingVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E148E6C21D6C397000BE131E /* OutgoingVideoViewController.swift */; };
-		E148FDE11DB270C100E2DBC0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E148FDE01DB270C100E2DBC0 /* ViewController.swift */; };
+		E155425E1DB4A66000DBEAFB /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E155425D1DB4A66000DBEAFB /* ResetPasswordViewController.swift */; };
+		E15AF2041DB5BB4C00D74E68 /* EditContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15AF2031DB5BB4C00D74E68 /* EditContactViewController.swift */; };
+		E15AF2061DB5C0AA00D74E68 /* EditContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15AF2051DB5C0AA00D74E68 /* EditContactCell.swift */; };
+		E15AF2081DB5FA1C00D74E68 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15AF2071DB5FA1C00D74E68 /* ChangePasswordViewController.swift */; };
 		E15C42121D7D094000124257 /* ringtone.wav in Resources */ = {isa = PBXBuildFile; fileRef = E15C42111D7D094000124257 /* ringtone.wav */; };
 		E15C4C3A1D965DA700688086 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15C4C391D965DA700688086 /* MessageViewController.swift */; };
 		E15C4C3C1D96689300688086 /* ZFRippleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15C4C3B1D96689300688086 /* ZFRippleButton.swift */; };
@@ -76,6 +85,8 @@
 		E199E03F1D97FBE7001237AD /* EditUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E199E03E1D97FBE7001237AD /* EditUserViewController.swift */; };
 		E19AAD441D51DF480053D2C3 /* CallConView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E19AAD431D51DF480053D2C3 /* CallConView.xib */; };
 		E19AAD461D51DF6A0053D2C3 /* CallConView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19AAD451D51DF690053D2C3 /* CallConView.swift */; };
+		E19BEB001DB4D14300AE73E1 /* MySettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19BEAFF1DB4D14200AE73E1 /* MySettingViewController.swift */; };
+		E19BEB021DB4D82900AE73E1 /* ADSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19BEB011DB4D82900AE73E1 /* ADSettingViewController.swift */; };
 		E1AC7F831DA89B85001C2676 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC7F821DA89B85001C2676 /* RegisterViewController.swift */; };
 		E1AC7F851DA89E1C001C2676 /* RegisterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC7F841DA89E1C001C2676 /* RegisterCell.swift */; };
 		E1AC7F871DA8CAE5001C2676 /* VerifyCodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC7F861DA8CAE5001C2676 /* VerifyCodeButton.swift */; };
@@ -171,10 +182,16 @@
 		E114D1CF1D4F1F15006AB978 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E118835D1DAA26020084B760 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		E118835E1DAA26180084B760 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		E11D4CEF1DB6118C00737790 /* ChangePhoneNumberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePhoneNumberViewController.swift; sourceTree = "<group>"; };
 		E11E37E51D94C619004B566D /* UserDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailCell.swift; sourceTree = "<group>"; };
 		E11E37E71D94CCC6004B566D /* UserCenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCenterViewController.swift; sourceTree = "<group>"; };
 		E11E92911D5EBBAB004D634A /* DialView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DialView.xib; sourceTree = "<group>"; };
 		E11E92931D5F2C9F004D634A /* DialView1Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialView1Controller.swift; sourceTree = "<group>"; };
+		E121297B1DB7154A009EE55B /* BillViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillViewController.swift; sourceTree = "<group>"; };
+		E121297D1DB71A0B009EE55B /* ConsumeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsumeViewController.swift; sourceTree = "<group>"; };
+		E121297F1DB71A5B009EE55B /* CommunicateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunicateViewController.swift; sourceTree = "<group>"; };
+		E12129811DB74D18009EE55B /* CommunicateListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunicateListViewController.swift; sourceTree = "<group>"; };
+		E12129831DB75AAC009EE55B /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		E123C3FB1DADDA3E00E6D442 /* CAPSPageMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAPSPageMenu.swift; sourceTree = "<group>"; };
 		E12EBA801D531FF3007B5CBD /* CallLogACell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallLogACell.swift; sourceTree = "<group>"; };
 		E12EBA831D532447007B5CBD /* piQ.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = piQ.swift; sourceTree = "<group>"; };
@@ -195,9 +212,12 @@
 		E13D21941D6ECFCA00C6EA98 /* IncomingVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomingVideoViewController.swift; sourceTree = "<group>"; };
 		E140B1861D8E36FA00178D74 /* ShowNumberCon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowNumberCon.swift; sourceTree = "<group>"; };
 		E148E6C21D6C397000BE131E /* OutgoingVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutgoingVideoViewController.swift; sourceTree = "<group>"; };
-		E148FDE01DB270C100E2DBC0 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E1534A0A1D7E668A007FE351 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		E1534A0C1D7E6692007FE351 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		E155425D1DB4A66000DBEAFB /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
+		E15AF2031DB5BB4C00D74E68 /* EditContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditContactViewController.swift; sourceTree = "<group>"; };
+		E15AF2051DB5C0AA00D74E68 /* EditContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditContactCell.swift; sourceTree = "<group>"; };
+		E15AF2071DB5FA1C00D74E68 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		E15C42111D7D094000124257 /* ringtone.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ringtone.wav; sourceTree = "<group>"; };
 		E15C4C391D965DA700688086 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		E15C4C3B1D96689300688086 /* ZFRippleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZFRippleButton.swift; sourceTree = "<group>"; };
@@ -216,6 +236,8 @@
 		E199E03E1D97FBE7001237AD /* EditUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditUserViewController.swift; sourceTree = "<group>"; };
 		E19AAD431D51DF480053D2C3 /* CallConView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CallConView.xib; sourceTree = "<group>"; };
 		E19AAD451D51DF690053D2C3 /* CallConView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallConView.swift; sourceTree = "<group>"; };
+		E19BEAFF1DB4D14200AE73E1 /* MySettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySettingViewController.swift; sourceTree = "<group>"; };
+		E19BEB011DB4D82900AE73E1 /* ADSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADSettingViewController.swift; sourceTree = "<group>"; };
 		E1AC7F821DA89B85001C2676 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		E1AC7F841DA89E1C001C2676 /* RegisterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterCell.swift; sourceTree = "<group>"; };
 		E1AC7F861DA8CAE5001C2676 /* VerifyCodeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyCodeButton.swift; sourceTree = "<group>"; };
@@ -536,8 +558,11 @@
 		E13BACBE1D518E6300414ACE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E13BACD61D51946B00414ACE /* RootViewController.swift */,
+				E193274C1D9A51BA006BA8B2 /* CheckAccountViewController.swift */,
+				E1AC7F821DA89B85001C2676 /* RegisterViewController.swift */,
+				E19327501D9A6623006BA8B2 /* LoginViewController.swift */,
 				E13BACD71D51946B00414ACE /* KTabBarController.swift */,
+				E13BACD61D51946B00414ACE /* RootViewController.swift */,
 				E13BACD81D51946B00414ACE /* DialViewController.swift */,
 				E13BACD91D51946B00414ACE /* CallLogViewController.swift */,
 				E114D1C51D4F1F15006AB978 /* ContactViewController.swift */,
@@ -554,10 +579,17 @@
 				E11E37E71D94CCC6004B566D /* UserCenterViewController.swift */,
 				E15C4C391D965DA700688086 /* MessageViewController.swift */,
 				E199E03E1D97FBE7001237AD /* EditUserViewController.swift */,
-				E193274C1D9A51BA006BA8B2 /* CheckAccountViewController.swift */,
-				E19327501D9A6623006BA8B2 /* LoginViewController.swift */,
-				E1AC7F821DA89B85001C2676 /* RegisterViewController.swift */,
-				E148FDE01DB270C100E2DBC0 /* ViewController.swift */,
+				E155425D1DB4A66000DBEAFB /* ResetPasswordViewController.swift */,
+				E15AF2071DB5FA1C00D74E68 /* ChangePasswordViewController.swift */,
+				E19BEAFF1DB4D14200AE73E1 /* MySettingViewController.swift */,
+				E19BEB011DB4D82900AE73E1 /* ADSettingViewController.swift */,
+				E15AF2031DB5BB4C00D74E68 /* EditContactViewController.swift */,
+				E11D4CEF1DB6118C00737790 /* ChangePhoneNumberViewController.swift */,
+				E121297B1DB7154A009EE55B /* BillViewController.swift */,
+				E121297D1DB71A0B009EE55B /* ConsumeViewController.swift */,
+				E121297F1DB71A5B009EE55B /* CommunicateViewController.swift */,
+				E12129811DB74D18009EE55B /* CommunicateListViewController.swift */,
+				E12129831DB75AAC009EE55B /* AboutViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -582,6 +614,7 @@
 				E1AC7F861DA8CAE5001C2676 /* VerifyCodeButton.swift */,
 				E17C4FFD1DA9D90300F986A4 /* NumberBar.xib */,
 				E17C4FFF1DA9DDC000F986A4 /* NumberBar.swift */,
+				E15AF2051DB5C0AA00D74E68 /* EditContactCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -754,6 +787,7 @@
 			files = (
 				E12EBA811D531FF3007B5CBD /* CallLogACell.swift in Sources */,
 				E1626D591D93BA7100C3422C /* DetailLogCell.swift in Sources */,
+				E19BEB021DB4D82900AE73E1 /* ADSettingViewController.swift in Sources */,
 				E1C0486A1D867F650009DF6B /* GSConfiguration.m in Sources */,
 				E16453EA1D6AA3150036B53F /* Contact.swift in Sources */,
 				E13BACDB1D51946B00414ACE /* KTabBarController.swift in Sources */,
@@ -762,15 +796,18 @@
 				E1AC7F851DA89E1C001C2676 /* RegisterCell.swift in Sources */,
 				E13BACE21D5196EE00414ACE /* DialNumberCell.swift in Sources */,
 				E138D0791D630B7A0091AF4A /* IncomingCallViewController.swift in Sources */,
+				E15AF2041DB5BB4C00D74E68 /* EditContactViewController.swift in Sources */,
 				E1C0486E1D867F650009DF6B /* GSOutgoingCall.m in Sources */,
 				E19AAD461D51DF6A0053D2C3 /* CallConView.swift in Sources */,
 				E1C0486F1D867F650009DF6B /* GSPJUtil.m in Sources */,
 				E111AEFF1D8E9A140045E2E2 /* BackupViewController.swift in Sources */,
 				E13BACDC1D51946B00414ACE /* DialViewController.swift in Sources */,
+				E12129801DB71A5B009EE55B /* CommunicateViewController.swift in Sources */,
 				E15C4C3A1D965DA700688086 /* MessageViewController.swift in Sources */,
 				E1C0486C1D867F650009DF6B /* GSIncomingCall.m in Sources */,
 				E1DE61831D88F1E900321B47 /* ContactCell.swift in Sources */,
 				E13BACE31D5196EE00414ACE /* DialIconCell.swift in Sources */,
+				E121297E1DB71A0B009EE55B /* ConsumeViewController.swift in Sources */,
 				E148E6C31D6C397000BE131E /* OutgoingVideoViewController.swift in Sources */,
 				E1C048711D867F650009DF6B /* GSUserAgent.m in Sources */,
 				E13BACDA1D51946B00414ACE /* RootViewController.swift in Sources */,
@@ -782,6 +819,7 @@
 				E13BACDD1D51946B00414ACE /* CallLogViewController.swift in Sources */,
 				E123C3FC1DADDA3E00E6D442 /* CAPSPageMenu.swift in Sources */,
 				E1626D551D937F7B00C3422C /* CallLogMenuViewController.swift in Sources */,
+				E11D4CF01DB6118C00737790 /* ChangePhoneNumberViewController.swift in Sources */,
 				E1C0486B1D867F650009DF6B /* GSDispatch.m in Sources */,
 				E11E37E61D94C619004B566D /* UserDetailCell.swift in Sources */,
 				E199E03F1D97FBE7001237AD /* EditUserViewController.swift in Sources */,
@@ -790,6 +828,7 @@
 				E13BACE71D51977C00414ACE /* R.generated.swift in Sources */,
 				E138D0771D6301EA0091AF4A /* OutgoingCallViewController.swift in Sources */,
 				E11E92941D5F2C9F004D634A /* DialView1Controller.swift in Sources */,
+				E15AF2061DB5C0AA00D74E68 /* EditContactCell.swift in Sources */,
 				E13BACC21D518F5200414ACE /* AppUtil.swift in Sources */,
 				E1C048681D867F650009DF6B /* GSCall.m in Sources */,
 				E114D1C61D4F1F15006AB978 /* ContactViewController.swift in Sources */,
@@ -797,15 +836,20 @@
 				E114D1C41D4F1F15006AB978 /* AppDelegate.swift in Sources */,
 				E15C4C3C1D96689300688086 /* ZFRippleButton.swift in Sources */,
 				E17C50001DA9DDC000F986A4 /* NumberBar.swift in Sources */,
+				E15AF2081DB5FA1C00D74E68 /* ChangePasswordViewController.swift in Sources */,
+				E155425E1DB4A66000DBEAFB /* ResetPasswordViewController.swift in Sources */,
 				E1C048661D867F650009DF6B /* GSAccount.m in Sources */,
 				E1C048671D867F650009DF6B /* GSAccountConfiguration.m in Sources */,
 				E13BACD51D51907600414ACE /* CallLog.swift in Sources */,
-				E148FDE11DB270C100E2DBC0 /* ViewController.swift in Sources */,
 				E1721F321D910D4D00A67C5B /* ContactDetailViewController.swift in Sources */,
+				E121297C1DB7154A009EE55B /* BillViewController.swift in Sources */,
 				E12EBA841D532447007B5CBD /* piQ.swift in Sources */,
 				E11E37E81D94CCC6004B566D /* UserCenterViewController.swift in Sources */,
 				E11227D01D9B5F3200B08ACD /* LoginCell.swift in Sources */,
 				E1AC7F831DA89B85001C2676 /* RegisterViewController.swift in Sources */,
+				E12129821DB74D18009EE55B /* CommunicateListViewController.swift in Sources */,
+				E12129841DB75AAC009EE55B /* AboutViewController.swift in Sources */,
+				E19BEB001DB4D14300AE73E1 /* MySettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
