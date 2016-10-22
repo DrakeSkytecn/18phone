@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import RealmSwift
 
 class DetailMenuViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var identifier: String?
+    var contactId: String?
     var name: String?
     var phones: [String]?
+    var phoneAreas: [String]?
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -42,13 +44,29 @@ class DetailMenuViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.detail_phone_cell)
-        let phoneNumber = phones![(indexPath as NSIndexPath).row]
-        cell?.textLabel?.text = phoneNumber
-        cell?.detailTextLabel?.text = "未知归属地"
-        PhoneUtil.getPhoneAreaInfo(phoneNumber) { phoneAreaInfo in
-            if phoneAreaInfo.errNum == 0 {
-                cell?.detailTextLabel?.text = (phoneAreaInfo.retData?.province!)! + (phoneAreaInfo.retData?.city!)!
+        let phoneNumber = phones![indexPath.row]
+        let phoneArea = phoneAreas![indexPath.row]
+        cell?.textLabel?.text = phoneNumber // 号码
+        if phoneArea.isEmpty || phoneArea == "未知" {
+            cell?.detailTextLabel?.text = "未知" // 归属地
+            PhoneUtil.getPhoneAreaInfo(phoneNumber) { phoneAreaInfo in
+                let area = App.realm.objects(Area.self).filter("key == '\(phoneNumber)'").first!
+                if phoneAreaInfo.errNum == 0 {
+                    let fullArea = phoneAreaInfo.retData!.province! + phoneAreaInfo.retData!.city!
+                    cell?.detailTextLabel?.text = fullArea
+                    self.phoneAreas![indexPath.row] = fullArea
+                    try! App.realm.write {
+                        area.name = fullArea
+                    }
+                } else {
+                    cell?.detailTextLabel?.text = "未知"
+                    try! App.realm.write {
+                        area.name = "未知"
+                    }
+                }
             }
+        } else {
+            cell?.detailTextLabel?.text = phoneArea
         }
 
         return cell!
@@ -62,7 +80,7 @@ class DetailMenuViewController: UIViewController, UITableViewDataSource, UITable
     
     func addCallLog(_ number: String, area: String) {
         let callLog = CallLog()
-        callLog.identifier = identifier!
+        callLog.contactId = contactId!
         callLog.name = name!
         callLog.phone = number
         if true {

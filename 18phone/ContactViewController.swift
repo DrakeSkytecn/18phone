@@ -76,8 +76,16 @@ class ContactViewController: UITableViewController {
                 }
                 for number in contact.phoneNumbers {
                     let phone = Phone()
-                    phone.number = number.value.stringValue
+                    let formatNumber = PhoneUtil.formatPhoneNumber(number.value.stringValue)
+                    phone.number = formatNumber
                     localContactInfo.phones?.append(phone)
+                    if App.realm.objects(Area.self).filter("key == '\(formatNumber)'").first == nil {
+                        let area = Area()
+                        area.key = formatNumber
+                        try! App.realm.write {
+                            App.realm.add(area)
+                        }
+                    }
                 }
                 if var localContactInfos = self.groupValues[initial] {
                     localContactInfos?.append(localContactInfo)

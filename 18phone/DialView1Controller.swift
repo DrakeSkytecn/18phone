@@ -242,7 +242,7 @@ class DialView1Controller: UIViewController, UICollectionViewDelegate, UICollect
     func addCallLog(_ number: String) {
         let callLog = CallLog()
         if appContactInfo != nil {
-            callLog.identifier = appContactInfo!.identifier
+            callLog.contactId = appContactInfo!.identifier
         }
         if tempName != nil {
             callLog.name = tempName!

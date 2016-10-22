@@ -66,7 +66,7 @@ class OutgoingCallViewController: UIViewController {
     @IBAction func hangup(_ sender: UIButton) {
         outCall?.end()
         let callLog = CallLog()
-        callLog.identifier = contactId!
+        callLog.contactId = contactId!
         callLog.name = contactName!
         callLog.phone = toNumber!
         if isConnected {

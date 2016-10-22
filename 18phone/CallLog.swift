@@ -46,7 +46,7 @@ enum CallType: Int {
 class CallLog: Object {
     
     /// 通讯录联系人ID
-    dynamic var identifier = ""
+    dynamic var contactId = ""
     
     /// 联系人头像
     dynamic var headPhoto: Data? = nil

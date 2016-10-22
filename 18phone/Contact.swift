@@ -9,11 +9,18 @@
 import Foundation
 import RealmSwift
 
-class Phone{
-    
+class Phone {
     var number = ""
+}
+
+/// 用于收集和存放号码归属地
+class Area: Object {
     
-    var area = ""
+    /// 号码作为键
+    dynamic var key = ""
+    
+    /// 号码归属地
+    dynamic var name = ""
 }
 
 /**
@@ -44,6 +51,7 @@ struct LocalContactInfo {
     /// 联系人电话
     var phones: Array<Phone>?
     
+    /// 是否为18phone注册用户的标识
     var isRegister = false
     
     init () {

@@ -82,6 +82,9 @@
 		E1838A101D8F959A0043F0A8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1838A0F1D8F959A0043F0A8 /* CoreLocation.framework */; };
 		E193274D1D9A51BA006BA8B2 /* CheckAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E193274C1D9A51BA006BA8B2 /* CheckAccountViewController.swift */; };
 		E19327511D9A6623006BA8B2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19327501D9A6623006BA8B2 /* LoginViewController.swift */; };
+		E195B36B1DB9C4BB00C27552 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E195B36A1DB9C4BB00C27552 /* CoreMotion.framework */; };
+		E195B36D1DB9C4C900C27552 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E195B36C1DB9C4C900C27552 /* SystemConfiguration.framework */; };
+		E195B36F1DB9C4E900C27552 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E195B36E1DB9C4E900C27552 /* libc++.tbd */; };
 		E199E03F1D97FBE7001237AD /* EditUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E199E03E1D97FBE7001237AD /* EditUserViewController.swift */; };
 		E19AAD441D51DF480053D2C3 /* CallConView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E19AAD431D51DF480053D2C3 /* CallConView.xib */; };
 		E19AAD461D51DF6A0053D2C3 /* CallConView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19AAD451D51DF690053D2C3 /* CallConView.swift */; };
@@ -233,6 +236,9 @@
 		E1838A0F1D8F959A0043F0A8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E193274C1D9A51BA006BA8B2 /* CheckAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckAccountViewController.swift; sourceTree = "<group>"; };
 		E19327501D9A6623006BA8B2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		E195B36A1DB9C4BB00C27552 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		E195B36C1DB9C4C900C27552 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		E195B36E1DB9C4E900C27552 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		E199E03E1D97FBE7001237AD /* EditUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditUserViewController.swift; sourceTree = "<group>"; };
 		E19AAD431D51DF480053D2C3 /* CallConView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CallConView.xib; sourceTree = "<group>"; };
 		E19AAD451D51DF690053D2C3 /* CallConView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallConView.swift; sourceTree = "<group>"; };
@@ -354,6 +360,9 @@
 				E1C048AA1D8691ED0009DF6B /* libpj-arm64-apple-darwin_ios.a in Frameworks */,
 				E1C048A81D8691DA0009DF6B /* libopenh264.a in Frameworks */,
 				E1C048D41D8697770009DF6B /* libstdc++.tbd in Frameworks */,
+				E195B36F1DB9C4E900C27552 /* libc++.tbd in Frameworks */,
+				E195B36D1DB9C4C900C27552 /* SystemConfiguration.framework in Frameworks */,
+				E195B36B1DB9C4BB00C27552 /* CoreMotion.framework in Frameworks */,
 				E1838A101D8F959A0043F0A8 /* CoreLocation.framework in Frameworks */,
 				E1DE61851D894E3F00321B47 /* CoreTelephony.framework in Frameworks */,
 				E1C048D21D8697690009DF6B /* CFNetwork.framework in Frameworks */,
@@ -375,6 +384,9 @@
 		A13A5015FDD7155192CC0662 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E195B36E1DB9C4E900C27552 /* libc++.tbd */,
+				E195B36C1DB9C4C900C27552 /* SystemConfiguration.framework */,
+				E195B36A1DB9C4BB00C27552 /* CoreMotion.framework */,
 				E111AEF01D8E6D3C0045E2E2 /* libg7221codec-armv7-apple-darwin_ios.a */,
 				E111AEF11D8E6D3C0045E2E2 /* libgsmcodec-armv7-apple-darwin_ios.a */,
 				E111AEF21D8E6D3C0045E2E2 /* libilbccodec-armv7-apple-darwin_ios.a */,

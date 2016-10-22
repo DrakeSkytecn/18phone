@@ -9,12 +9,6 @@
 import UIKit
 
 class UserCenterViewController: UITableViewController {
-
-    var settings: [Int : Any] = [0: [0: [""], 1: [""]],
-                    1: [0: [R.image.wallet()!, R.image.bill()!],
-                        1: ["我的钱包", "我的账单"]],
-                    2: [0: [R.image.setting()!, R.image.about()!],
-                        1: ["我的设置", "关于18phone"]]]
     
     var icons1 = [R.image.wallet(), R.image.bill()]
     var icons2 = [R.image.setting(), R.image.about()]

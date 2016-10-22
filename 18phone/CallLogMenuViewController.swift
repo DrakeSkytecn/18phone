@@ -23,7 +23,7 @@ class CallLogMenuViewController: UIViewController, UITableViewDataSource, UITabl
         tableView.tableFooterView = UIView()
         tableView.dataSource = self
         tableView.delegate = self
-        callLogs = App.realm.objects(CallLog.self).filter("identifier == '\(contactId!)'").sorted(byProperty: "callStartTime", ascending: false)
+        callLogs = App.realm.objects(CallLog.self).filter("contactId == '\(contactId!)'").sorted(byProperty: "callStartTime", ascending: false)
         SwiftEventBus.onMainThread(self, name: "reloadCallLogs") { result in
             self.reloadCallLogs()
         }
@@ -35,7 +35,7 @@ class CallLogMenuViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func reloadCallLogs() {
-        callLogs = App.realm.objects(CallLog.self).filter("identifier == '\(contactId!)'").sorted(byProperty: "callStartTime", ascending: false)
+        callLogs = App.realm.objects(CallLog.self).filter("contactId == '\(contactId!)'").sorted(byProperty: "callStartTime", ascending: false)
         tableView.reloadData()
     }
     

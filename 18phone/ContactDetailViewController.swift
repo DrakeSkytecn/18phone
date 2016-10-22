@@ -8,6 +8,7 @@
 
 import UIKit
 import Contacts
+import RealmSwift
 
 class ContactDetailViewController: UIViewController {
 
@@ -16,6 +17,8 @@ class ContactDetailViewController: UIViewController {
     var contactId: String?
     
     var phones = [String]()
+    
+    var phoneAreas = [String]()
     
     @IBOutlet weak var headPhoto: UIImageView!
     
@@ -51,7 +54,7 @@ class ContactDetailViewController: UIViewController {
                            CNContactPhoneticFamilyNameKey] as [Any]
         
         let contact = try! store.unifiedContact(withIdentifier: contactId!, keysToFetch: keysToFetch as! [CNKeyDescriptor])
-        let appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contactId!)'").first
+        let appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contactId!)'").first!
         if contact.imageDataAvailable {
             headPhoto.image = UIImage(data: contact.thumbnailImageData!)
         } else {
@@ -60,7 +63,7 @@ class ContactDetailViewController: UIViewController {
         let fullName = contact.familyName + contact.givenName
         nameLabel.text = fullName
         
-        switch appContactInfo!.sex {
+        switch appContactInfo.sex {
         case Sex.male.rawValue:
             sexImage.image = R.image.male()
             break
@@ -71,19 +74,25 @@ class ContactDetailViewController: UIViewController {
             break
         }
         
-        signLabel.text = appContactInfo?.signature
-        areaLabel.text = appContactInfo?.area
-        if appContactInfo?.age != -1 {
-            ageLabel.text = "\(appContactInfo?.age)"
+        signLabel.text = appContactInfo.signature
+        areaLabel.text = appContactInfo.area
+        if appContactInfo.age != -1 {
+            ageLabel.text = "\(appContactInfo.age)"
         }
         phones.removeAll()
+        phoneAreas.removeAll()
         for number in contact.phoneNumbers {
-            let phoneNumber = (number.value ).stringValue
-            phones.append(PhoneUtil.formatPhoneNumber(phoneNumber))
+            let phoneNumber = number.value.stringValue
+            let formatNumber = PhoneUtil.formatPhoneNumber(phoneNumber)
+            phones.append(formatNumber)
+            let area = App.realm.objects(Area.self).filter("key == '\(formatNumber)'").first!
+            phoneAreas.append(area.name)
         }
-        detailMenuViewController.identifier = contactId
+        
+        detailMenuViewController.contactId = contactId
         detailMenuViewController.name = fullName
         detailMenuViewController.phones = phones
+        detailMenuViewController.phoneAreas = phoneAreas
         callLogMenuViewController.contactId = contactId
     }
     
