@@ -36,8 +36,7 @@
 		E11D4CF01DB6118C00737790 /* ChangePhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11D4CEF1DB6118C00737790 /* ChangePhoneNumberViewController.swift */; };
 		E11E37E61D94C619004B566D /* UserDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11E37E51D94C619004B566D /* UserDetailCell.swift */; };
 		E11E37E81D94CCC6004B566D /* UserCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11E37E71D94CCC6004B566D /* UserCenterViewController.swift */; };
-		E11E92921D5EBBAB004D634A /* DialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E11E92911D5EBBAB004D634A /* DialView.xib */; };
-		E11E92941D5F2C9F004D634A /* DialView1Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11E92931D5F2C9F004D634A /* DialView1Controller.swift */; };
+		E11E92941D5F2C9F004D634A /* DialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11E92931D5F2C9F004D634A /* DialViewController.swift */; };
 		E121297C1DB7154A009EE55B /* BillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E121297B1DB7154A009EE55B /* BillViewController.swift */; };
 		E121297E1DB71A0B009EE55B /* ConsumeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E121297D1DB71A0B009EE55B /* ConsumeViewController.swift */; };
 		E12129801DB71A5B009EE55B /* CommunicateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E121297F1DB71A5B009EE55B /* CommunicateViewController.swift */; };
@@ -53,7 +52,6 @@
 		E13BACD51D51907600414ACE /* CallLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACD41D51907600414ACE /* CallLog.swift */; };
 		E13BACDA1D51946B00414ACE /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACD61D51946B00414ACE /* RootViewController.swift */; };
 		E13BACDB1D51946B00414ACE /* KTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACD71D51946B00414ACE /* KTabBarController.swift */; };
-		E13BACDC1D51946B00414ACE /* DialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACD81D51946B00414ACE /* DialViewController.swift */; };
 		E13BACDD1D51946B00414ACE /* CallLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACD91D51946B00414ACE /* CallLogViewController.swift */; };
 		E13BACDF1D51948C00414ACE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E13BACDE1D51948C00414ACE /* Main.storyboard */; };
 		E13BACE21D5196EE00414ACE /* DialNumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACE01D5196EE00414ACE /* DialNumberCell.swift */; };
@@ -86,8 +84,6 @@
 		E195B36D1DB9C4C900C27552 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E195B36C1DB9C4C900C27552 /* SystemConfiguration.framework */; };
 		E195B36F1DB9C4E900C27552 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E195B36E1DB9C4E900C27552 /* libc++.tbd */; };
 		E199E03F1D97FBE7001237AD /* EditUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E199E03E1D97FBE7001237AD /* EditUserViewController.swift */; };
-		E19AAD441D51DF480053D2C3 /* CallConView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E19AAD431D51DF480053D2C3 /* CallConView.xib */; };
-		E19AAD461D51DF6A0053D2C3 /* CallConView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19AAD451D51DF690053D2C3 /* CallConView.swift */; };
 		E19BEB001DB4D14300AE73E1 /* MySettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19BEAFF1DB4D14200AE73E1 /* MySettingViewController.swift */; };
 		E19BEB021DB4D82900AE73E1 /* ADSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19BEB011DB4D82900AE73E1 /* ADSettingViewController.swift */; };
 		E1AC7F831DA89B85001C2676 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC7F821DA89B85001C2676 /* RegisterViewController.swift */; };
@@ -188,8 +184,7 @@
 		E11D4CEF1DB6118C00737790 /* ChangePhoneNumberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePhoneNumberViewController.swift; sourceTree = "<group>"; };
 		E11E37E51D94C619004B566D /* UserDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDetailCell.swift; sourceTree = "<group>"; };
 		E11E37E71D94CCC6004B566D /* UserCenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCenterViewController.swift; sourceTree = "<group>"; };
-		E11E92911D5EBBAB004D634A /* DialView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DialView.xib; sourceTree = "<group>"; };
-		E11E92931D5F2C9F004D634A /* DialView1Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialView1Controller.swift; sourceTree = "<group>"; };
+		E11E92931D5F2C9F004D634A /* DialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialViewController.swift; sourceTree = "<group>"; };
 		E121297B1DB7154A009EE55B /* BillViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillViewController.swift; sourceTree = "<group>"; };
 		E121297D1DB71A0B009EE55B /* ConsumeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsumeViewController.swift; sourceTree = "<group>"; };
 		E121297F1DB71A5B009EE55B /* CommunicateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunicateViewController.swift; sourceTree = "<group>"; };
@@ -205,7 +200,6 @@
 		E13BACD41D51907600414ACE /* CallLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallLog.swift; sourceTree = "<group>"; };
 		E13BACD61D51946B00414ACE /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		E13BACD71D51946B00414ACE /* KTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KTabBarController.swift; sourceTree = "<group>"; };
-		E13BACD81D51946B00414ACE /* DialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialViewController.swift; sourceTree = "<group>"; };
 		E13BACD91D51946B00414ACE /* CallLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallLogViewController.swift; sourceTree = "<group>"; };
 		E13BACDE1D51948C00414ACE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E13BACE01D5196EE00414ACE /* DialNumberCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialNumberCell.swift; sourceTree = "<group>"; };
@@ -240,8 +234,6 @@
 		E195B36C1DB9C4C900C27552 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E195B36E1DB9C4E900C27552 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		E199E03E1D97FBE7001237AD /* EditUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditUserViewController.swift; sourceTree = "<group>"; };
-		E19AAD431D51DF480053D2C3 /* CallConView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CallConView.xib; sourceTree = "<group>"; };
-		E19AAD451D51DF690053D2C3 /* CallConView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallConView.swift; sourceTree = "<group>"; };
 		E19BEAFF1DB4D14200AE73E1 /* MySettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySettingViewController.swift; sourceTree = "<group>"; };
 		E19BEB011DB4D82900AE73E1 /* ADSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADSettingViewController.swift; sourceTree = "<group>"; };
 		E1AC7F821DA89B85001C2676 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -575,10 +567,9 @@
 				E19327501D9A6623006BA8B2 /* LoginViewController.swift */,
 				E13BACD71D51946B00414ACE /* KTabBarController.swift */,
 				E13BACD61D51946B00414ACE /* RootViewController.swift */,
-				E13BACD81D51946B00414ACE /* DialViewController.swift */,
 				E13BACD91D51946B00414ACE /* CallLogViewController.swift */,
 				E114D1C51D4F1F15006AB978 /* ContactViewController.swift */,
-				E11E92931D5F2C9F004D634A /* DialView1Controller.swift */,
+				E11E92931D5F2C9F004D634A /* DialViewController.swift */,
 				E138D0761D6301EA0091AF4A /* OutgoingCallViewController.swift */,
 				E138D0781D630B7A0091AF4A /* IncomingCallViewController.swift */,
 				E148E6C21D6C397000BE131E /* OutgoingVideoViewController.swift */,
@@ -613,10 +604,7 @@
 				E15C4C3B1D96689300688086 /* ZFRippleButton.swift */,
 				E13BACE01D5196EE00414ACE /* DialNumberCell.swift */,
 				E13BACE11D5196EE00414ACE /* DialIconCell.swift */,
-				E19AAD451D51DF690053D2C3 /* CallConView.swift */,
-				E19AAD431D51DF480053D2C3 /* CallConView.xib */,
 				E12EBA801D531FF3007B5CBD /* CallLogACell.swift */,
-				E11E92911D5EBBAB004D634A /* DialView.xib */,
 				E1DE61821D88F1E900321B47 /* ContactCell.swift */,
 				E140B1861D8E36FA00178D74 /* ShowNumberCon.swift */,
 				E1626D581D93BA7100C3422C /* DetailLogCell.swift */,
@@ -719,12 +707,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E15C42121D7D094000124257 /* ringtone.wav in Resources */,
-				E11E92921D5EBBAB004D634A /* DialView.xib in Resources */,
 				E114D1CE1D4F1F15006AB978 /* LaunchScreen.storyboard in Resources */,
 				E1626D571D93AFC600C3422C /* test in Resources */,
 				E13BACE51D51974900414ACE /* Assets.xcassets in Resources */,
 				E13BACDF1D51948C00414ACE /* Main.storyboard in Resources */,
-				E19AAD441D51DF480053D2C3 /* CallConView.xib in Resources */,
 				E17C4FFE1DA9D90300F986A4 /* NumberBar.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -810,10 +796,8 @@
 				E138D0791D630B7A0091AF4A /* IncomingCallViewController.swift in Sources */,
 				E15AF2041DB5BB4C00D74E68 /* EditContactViewController.swift in Sources */,
 				E1C0486E1D867F650009DF6B /* GSOutgoingCall.m in Sources */,
-				E19AAD461D51DF6A0053D2C3 /* CallConView.swift in Sources */,
 				E1C0486F1D867F650009DF6B /* GSPJUtil.m in Sources */,
 				E111AEFF1D8E9A140045E2E2 /* BackupViewController.swift in Sources */,
-				E13BACDC1D51946B00414ACE /* DialViewController.swift in Sources */,
 				E12129801DB71A5B009EE55B /* CommunicateViewController.swift in Sources */,
 				E15C4C3A1D965DA700688086 /* MessageViewController.swift in Sources */,
 				E1C0486C1D867F650009DF6B /* GSIncomingCall.m in Sources */,
@@ -839,7 +823,7 @@
 				E140B1871D8E36FA00178D74 /* ShowNumberCon.swift in Sources */,
 				E13BACE71D51977C00414ACE /* R.generated.swift in Sources */,
 				E138D0771D6301EA0091AF4A /* OutgoingCallViewController.swift in Sources */,
-				E11E92941D5F2C9F004D634A /* DialView1Controller.swift in Sources */,
+				E11E92941D5F2C9F004D634A /* DialViewController.swift in Sources */,
 				E15AF2061DB5C0AA00D74E68 /* EditContactCell.swift in Sources */,
 				E13BACC21D518F5200414ACE /* AppUtil.swift in Sources */,
 				E1C048681D867F650009DF6B /* GSCall.m in Sources */,
@@ -979,7 +963,6 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1039,7 +1022,6 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

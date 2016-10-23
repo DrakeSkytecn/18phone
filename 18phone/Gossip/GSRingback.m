@@ -34,7 +34,7 @@
         _playerId = PJSUA_INVALID_ID;
 
         _volumeScale = [GSUserAgent sharedAgent].configuration.volumeScale;
-        _volume = 0.5 / _volumeScale; // half volume by default
+        _volume = 1.0 / _volumeScale; // half volume by default
 
         // resolve bundle filename
         filename = [filename lastPathComponent];

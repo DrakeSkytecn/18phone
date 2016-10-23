@@ -48,10 +48,8 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 42 images.
+  /// This `R.image` struct is generated, and contains static references to 41 images.
   struct image {
-    /// Image `Brand Assets`.
-    static let brandAssets = Rswift.ImageResource(bundle: R.hostingBundle, name: "Brand Assets")
     /// Image `Launch`.
     static let launch = Rswift.ImageResource(bundle: R.hostingBundle, name: "Launch")
     /// Image `about`.
@@ -134,11 +132,6 @@ struct R: Rswift.Validatable {
     static let wallet = Rswift.ImageResource(bundle: R.hostingBundle, name: "wallet")
     /// Image `yellowlight`.
     static let yellowlight = Rswift.ImageResource(bundle: R.hostingBundle, name: "yellowlight")
-    
-    /// `UIImage(named: "Brand Assets", bundle: ..., traitCollection: ...)`
-    static func brandAssets(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.brandAssets, compatibleWith: traitCollection)
-    }
     
     /// `UIImage(named: "Launch", bundle: ..., traitCollection: ...)`
     static func launch(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
@@ -348,24 +341,10 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.nib` struct is generated, and contains static references to 3 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 1 nibs.
   struct nib {
-    /// Nib `CallConView`.
-    static let callConView = _R.nib._CallConView()
-    /// Nib `DialView`.
-    static let dialView = _R.nib._DialView()
     /// Nib `NumberBar`.
     static let numberBar = _R.nib._NumberBar()
-    
-    /// `UINib(name: "CallConView", in: bundle)`
-    static func callConView(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.callConView)
-    }
-    
-    /// `UINib(name: "DialView", in: bundle)`
-    static func dialView(_: Void = ()) -> UIKit.UINib {
-      return UIKit.UINib(resource: R.nib.dialView)
-    }
     
     /// `UINib(name: "NumberBar", in: bundle)`
     static func numberBar(_: Void = ()) -> UIKit.UINib {
@@ -375,7 +354,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 18 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 16 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `ad_cell`.
     static let ad_cell: Rswift.ReuseIdentifier<UIKit.UITableViewCell> = Rswift.ReuseIdentifier(identifier: "ad_cell")
@@ -393,10 +372,6 @@ struct R: Rswift.Validatable {
     static let dial_2: Rswift.ReuseIdentifier<DialIconCell> = Rswift.ReuseIdentifier(identifier: "dial_2")
     /// Reuse identifier `dial_3`.
     static let dial_3: Rswift.ReuseIdentifier<DialNumberCell> = Rswift.ReuseIdentifier(identifier: "dial_3")
-    /// Reuse identifier `dial_a`.
-    static let dial_a: Rswift.ReuseIdentifier<DialNumberCell> = Rswift.ReuseIdentifier(identifier: "dial_a")
-    /// Reuse identifier `dial_b`.
-    static let dial_b: Rswift.ReuseIdentifier<DialIconCell> = Rswift.ReuseIdentifier(identifier: "dial_b")
     /// Reuse identifier `edit_contact_cell`.
     static let edit_contact_cell: Rswift.ReuseIdentifier<EditContactCell> = Rswift.ReuseIdentifier(identifier: "edit_contact_cell")
     /// Reuse identifier `log_a`.
@@ -553,40 +528,9 @@ struct R: Rswift.Validatable {
 struct _R: Rswift.Validatable {
   static func validate() throws {
     try storyboard.validate()
-    try nib.validate()
   }
   
-  struct nib: Rswift.Validatable {
-    static func validate() throws {
-      try _CallConView.validate()
-    }
-    
-    struct _CallConView: Rswift.NibResourceType, Rswift.Validatable {
-      let bundle = R.hostingBundle
-      let name = "CallConView"
-      
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> CallConView? {
-        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? CallConView
-      }
-      
-      static func validate() throws {
-        if UIKit.UIImage(named: "call") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'call' is used in nib 'CallConView', but couldn't be loaded.") }
-      }
-      
-      fileprivate init() {}
-    }
-    
-    struct _DialView: Rswift.NibResourceType {
-      let bundle = R.hostingBundle
-      let name = "DialView"
-      
-      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> UIKit.UIView? {
-        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
-      }
-      
-      fileprivate init() {}
-    }
-    
+  struct nib {
     struct _NumberBar: Rswift.NibResourceType {
       let bundle = R.hostingBundle
       let name = "NumberBar"
@@ -630,7 +574,7 @@ struct _R: Rswift.Validatable {
       let communicateViewController = StoryboardViewControllerResource<CommunicateViewController>(identifier: "CommunicateViewController")
       let consumeViewController = StoryboardViewControllerResource<ConsumeViewController>(identifier: "ConsumeViewController")
       let detailMenuViewController = StoryboardViewControllerResource<DetailMenuViewController>(identifier: "DetailMenuViewController")
-      let dialViewController = StoryboardViewControllerResource<DialView1Controller>(identifier: "DialViewController")
+      let dialViewController = StoryboardViewControllerResource<DialViewController>(identifier: "DialViewController")
       let incomingCallViewController = StoryboardViewControllerResource<IncomingCallViewController>(identifier: "IncomingCallViewController")
       let incomingVideoViewController = StoryboardViewControllerResource<IncomingVideoViewController>(identifier: "IncomingVideoViewController")
       let kTabBarController = StoryboardViewControllerResource<KTabBarController>(identifier: "KTabBarController")
@@ -662,7 +606,7 @@ struct _R: Rswift.Validatable {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: detailMenuViewController)
       }
       
-      func dialViewController(_: Void = ()) -> DialView1Controller? {
+      func dialViewController(_: Void = ()) -> DialViewController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: dialViewController)
       }
       
@@ -713,7 +657,7 @@ struct _R: Rswift.Validatable {
         if UIKit.UIImage(named: "message_selected") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'message_selected' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "qrcode") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'qrcode' is used in storyboard 'Main', but couldn't be loaded.") }
         if _R.storyboard.main().detailMenuViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'detailMenuViewController' could not be loaded from storyboard 'Main' as 'DetailMenuViewController'.") }
-        if _R.storyboard.main().dialViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'dialViewController' could not be loaded from storyboard 'Main' as 'DialView1Controller'.") }
+        if _R.storyboard.main().dialViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'dialViewController' could not be loaded from storyboard 'Main' as 'DialViewController'.") }
         if _R.storyboard.main().backupViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'backupViewController' could not be loaded from storyboard 'Main' as 'BackupViewController'.") }
         if _R.storyboard.main().consumeViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'consumeViewController' could not be loaded from storyboard 'Main' as 'ConsumeViewController'.") }
         if _R.storyboard.main().outgoingCallViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'outgoingCallViewController' could not be loaded from storyboard 'Main' as 'OutgoingCallViewController'.") }

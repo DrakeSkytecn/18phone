@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2548a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="PW8-L3-Heh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="PW8-L3-Heh">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -638,10 +638,10 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="detail_log_cell" id="kUL-of-p2N" customClass="DetailLogCell" customModule="_8phone" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="28" width="1000" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kUL-of-p2N" id="Fqk-Zy-hEq">
-                                            <frame key="frameInset" width="375" height="60"/>
+                                            <frame key="frameInset" width="1000" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="call_in_connected" translatesAutoresizingMaskIntoConstraints="NO" id="pCc-c8-xt7">
@@ -872,10 +872,10 @@
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="edit_contact_cell" id="Abl-Tg-ZsJ" customClass="EditContactCell" customModule="_8phone" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="28" width="1000" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Abl-Tg-ZsJ" id="6zO-wH-s9I">
-                                            <frame key="frameInset" width="375" height="60"/>
+                                            <frame key="frameInset" width="1000" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVS-3d-HZT">
@@ -1259,21 +1259,21 @@
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="backup_cell_a" textLabel="jZI-uM-hqb" detailTextLabel="dCa-yf-Lkn" rowHeight="60" style="IBUITableViewCellStyleValue1" id="Wuh-Js-GdW">
-                                        <rect key="frame" x="0.0" y="56" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="56" width="1000" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wuh-Js-GdW" id="QLK-aW-yvB">
-                                            <frame key="frameInset" width="375" height="59"/>
+                                            <frame key="frameInset" width="1000" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jZI-uM-hqb">
-                                                    <frame key="frameInset" minX="15" minY="20" width="31.5" height="19.5"/>
+                                                    <frame key="frameInset" minX="164" minY="20" width="31.5" height="19.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dCa-yf-Lkn">
-                                                    <frame key="frameInset" minX="318.5" minY="20" width="41.5" height="19.5"/>
+                                                    <frame key="frameInset" minX="794.5" minY="20" width="41.5" height="19.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1416,186 +1416,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2889" y="388"/>
-        </scene>
-        <!--Dial View Controller-->
-        <scene sceneID="h7N-az-w6S">
-            <objects>
-                <viewController id="UEa-9K-uhz" customClass="DialViewController" customModule="_8phone" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="J7l-Pt-LGs"/>
-                        <viewControllerLayoutGuide type="bottom" id="Bce-WR-3qN"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="O7b-Fg-RYl">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z2U-9G-xXa">
-                                <subviews>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jbx-DH-fzS">
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Hn-IY-zkF">
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="195" id="8Ir-9F-6CZ"/>
-                                                    <constraint firstAttribute="height" constant="33" id="Phd-xH-Lp0"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="14L-9i-HtP">
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="32" id="8BJ-cj-aFp"/>
-                                                    <constraint firstAttribute="width" constant="32" id="mzx-xi-vkh"/>
-                                                </constraints>
-                                                <state key="normal" image="dial"/>
-                                                <connections>
-                                                    <action selector="call:" destination="UEa-9K-uhz" eventType="touchUpInside" id="Gva-va-zh0"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="14L-9i-HtP" secondAttribute="trailing" constant="20" id="A6f-or-Nzb"/>
-                                            <constraint firstItem="2Hn-IY-zkF" firstAttribute="centerY" secondItem="jbx-DH-fzS" secondAttribute="centerY" id="kA6-eR-l6q"/>
-                                            <constraint firstItem="14L-9i-HtP" firstAttribute="centerY" secondItem="jbx-DH-fzS" secondAttribute="centerY" id="u8A-Ki-uxc"/>
-                                            <constraint firstItem="2Hn-IY-zkF" firstAttribute="centerX" secondItem="jbx-DH-fzS" secondAttribute="centerX" id="yct-l2-SGm"/>
-                                        </constraints>
-                                    </view>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5b7-hO-Ehw">
-                                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="240" id="2Tu-ep-fw3"/>
-                                        </constraints>
-                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="MhG-mB-f4K">
-                                            <size key="itemSize" width="200" height="60"/>
-                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                            <inset key="sectionInset" minX="1" minY="1" maxX="1" maxY="1"/>
-                                        </collectionViewFlowLayout>
-                                        <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="dial_a" id="reJ-Gz-YOu" customClass="DialNumberCell" customModule="_8phone" customModuleProvider="target">
-                                                <rect key="frame" x="87.5" y="1" width="200" height="60"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                    <rect key="frame" x="0.0" y="0.0" width="201" height="60"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sip-Mh-jRY">
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WfW-xU-h5a">
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZg-rZ-a4F">
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                                    <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                            <constraints>
-                                                                <constraint firstAttribute="bottom" secondItem="dZg-rZ-a4F" secondAttribute="bottom" constant="-2" id="1u8-LV-lIP"/>
-                                                                <constraint firstItem="WfW-xU-h5a" firstAttribute="trailing" secondItem="dZg-rZ-a4F" secondAttribute="trailing" id="CCj-e4-ovA"/>
-                                                                <constraint firstItem="WfW-xU-h5a" firstAttribute="leading" secondItem="dZg-rZ-a4F" secondAttribute="leading" id="FpO-Z4-1df"/>
-                                                                <constraint firstAttribute="bottom" secondItem="WfW-xU-h5a" secondAttribute="bottom" constant="17" id="JUS-pk-jhF"/>
-                                                                <constraint firstAttribute="width" constant="50" id="N97-rd-jF1"/>
-                                                                <constraint firstItem="WfW-xU-h5a" firstAttribute="top" secondItem="Sip-Mh-jRY" secondAttribute="top" constant="2" id="Yc3-sh-Wcb"/>
-                                                                <constraint firstItem="dZg-rZ-a4F" firstAttribute="top" secondItem="Sip-Mh-jRY" secondAttribute="top" constant="21" id="ZCJ-4Z-Imc"/>
-                                                                <constraint firstAttribute="trailing" secondItem="WfW-xU-h5a" secondAttribute="trailing" id="agW-gf-dPl"/>
-                                                                <constraint firstAttribute="height" constant="40" id="cHM-1l-PbG"/>
-                                                                <constraint firstItem="WfW-xU-h5a" firstAttribute="leading" secondItem="Sip-Mh-jRY" secondAttribute="leading" id="cx3-oO-plN"/>
-                                                            </constraints>
-                                                        </view>
-                                                    </subviews>
-                                                </view>
-                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstItem="Sip-Mh-jRY" firstAttribute="centerY" secondItem="reJ-Gz-YOu" secondAttribute="centerY" id="8eP-Ay-SpN"/>
-                                                    <constraint firstItem="Sip-Mh-jRY" firstAttribute="centerX" secondItem="reJ-Gz-YOu" secondAttribute="centerX" id="duX-Z9-ENm"/>
-                                                </constraints>
-                                                <connections>
-                                                    <outlet property="character" destination="dZg-rZ-a4F" id="H6a-t3-F4v"/>
-                                                    <outlet property="number" destination="WfW-xU-h5a" id="5Nr-l3-cFD"/>
-                                                </connections>
-                                            </collectionViewCell>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="dial_b" id="ljd-55-SaA" customClass="DialIconCell" customModule="_8phone" customModuleProvider="target">
-                                                <rect key="frame" x="87.5" y="62" width="200" height="60"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                    <rect key="frame" x="0.0" y="0.0" width="201" height="60"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bnc-8c-Ngr">
-                                                            <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ech-uW-c9v"/>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qfi-hO-Xmk">
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                                    <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                            <constraints>
-                                                                <constraint firstItem="Ech-uW-c9v" firstAttribute="top" secondItem="bnc-8c-Ngr" secondAttribute="top" id="1Yo-XV-uXk"/>
-                                                                <constraint firstAttribute="trailing" secondItem="qfi-hO-Xmk" secondAttribute="trailing" id="4Y7-ea-olU"/>
-                                                                <constraint firstAttribute="height" constant="40" id="5Ec-pO-X68"/>
-                                                                <constraint firstItem="Ech-uW-c9v" firstAttribute="leading" secondItem="bnc-8c-Ngr" secondAttribute="leading" constant="12" id="CbT-wy-Dhq"/>
-                                                                <constraint firstItem="Ech-uW-c9v" firstAttribute="centerX" secondItem="qfi-hO-Xmk" secondAttribute="centerX" id="G9D-6w-Jvr"/>
-                                                                <constraint firstItem="qfi-hO-Xmk" firstAttribute="top" secondItem="bnc-8c-Ngr" secondAttribute="top" constant="21" id="Q8c-3J-BWM"/>
-                                                                <constraint firstItem="qfi-hO-Xmk" firstAttribute="leading" secondItem="bnc-8c-Ngr" secondAttribute="leading" id="Ukw-Op-fcJ"/>
-                                                                <constraint firstAttribute="bottom" secondItem="Ech-uW-c9v" secondAttribute="bottom" constant="15" id="sci-1V-qkr"/>
-                                                                <constraint firstAttribute="bottom" secondItem="qfi-hO-Xmk" secondAttribute="bottom" constant="-2" id="tpS-0u-ayj"/>
-                                                                <constraint firstAttribute="width" constant="50" id="zsw-9L-SXh"/>
-                                                            </constraints>
-                                                        </view>
-                                                    </subviews>
-                                                </view>
-                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstItem="bnc-8c-Ngr" firstAttribute="centerX" secondItem="ljd-55-SaA" secondAttribute="centerX" id="0e0-JX-iUX"/>
-                                                    <constraint firstItem="bnc-8c-Ngr" firstAttribute="centerY" secondItem="ljd-55-SaA" secondAttribute="centerY" id="dHh-Bz-e3N"/>
-                                                </constraints>
-                                                <connections>
-                                                    <outlet property="hint" destination="qfi-hO-Xmk" id="e2g-qh-N3g"/>
-                                                    <outlet property="icon" destination="Ech-uW-c9v" id="0s7-ey-nnH"/>
-                                                </connections>
-                                            </collectionViewCell>
-                                        </cells>
-                                        <connections>
-                                            <outlet property="dataSource" destination="UEa-9K-uhz" id="ZGz-Tp-Gws"/>
-                                            <outlet property="delegate" destination="UEa-9K-uhz" id="yo0-oa-6Mc"/>
-                                        </connections>
-                                    </collectionView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="5b7-hO-Ehw" firstAttribute="top" secondItem="jbx-DH-fzS" secondAttribute="bottom" id="1mM-wJ-beD"/>
-                                    <constraint firstItem="5b7-hO-Ehw" firstAttribute="centerX" secondItem="Z2U-9G-xXa" secondAttribute="centerX" id="1yX-dq-gTm"/>
-                                    <constraint firstItem="jbx-DH-fzS" firstAttribute="top" secondItem="Z2U-9G-xXa" secondAttribute="top" id="5rx-D5-nQf"/>
-                                    <constraint firstAttribute="bottom" secondItem="5b7-hO-Ehw" secondAttribute="bottom" id="74Z-IZ-gEu"/>
-                                    <constraint firstItem="jbx-DH-fzS" firstAttribute="leading" secondItem="5b7-hO-Ehw" secondAttribute="leading" id="HTK-5B-fPv"/>
-                                    <constraint firstAttribute="height" constant="289" id="bJt-gq-EbW"/>
-                                    <constraint firstItem="jbx-DH-fzS" firstAttribute="trailing" secondItem="5b7-hO-Ehw" secondAttribute="trailing" id="cFo-R8-FpC"/>
-                                    <constraint firstItem="5b7-hO-Ehw" firstAttribute="width" secondItem="Z2U-9G-xXa" secondAttribute="width" id="mWm-nn-GVU"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="Z2U-9G-xXa" firstAttribute="centerX" secondItem="O7b-Fg-RYl" secondAttribute="centerX" id="3aC-yw-X4o"/>
-                            <constraint firstItem="Z2U-9G-xXa" firstAttribute="width" secondItem="O7b-Fg-RYl" secondAttribute="width" id="QLn-tP-97e"/>
-                            <constraint firstItem="Z2U-9G-xXa" firstAttribute="top" secondItem="J7l-Pt-LGs" secondAttribute="bottom" constant="-20" id="ecs-dv-oXB"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="dialNumber" destination="2Hn-IY-zkF" id="jQt-7x-qdf"/>
-                        <outlet property="dialNumberCon" destination="jbx-DH-fzS" id="h44-Lb-dXf"/>
-                        <outlet property="dialPlate" destination="5b7-hO-Ehw" id="YS4-4V-e2b"/>
-                        <outlet property="dialPlateFlowLayout" destination="MhG-mB-f4K" id="Rcr-7J-fcv"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fOw-oW-bdB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3665" y="353.5"/>
         </scene>
         <!--Check Account View Controller-->
         <scene sceneID="YdM-d3-mbX">
@@ -2049,7 +1869,7 @@
         <!--Item-->
         <scene sceneID="DOS-6m-ofF">
             <objects>
-                <viewController storyboardIdentifier="DialViewController" id="LS6-Bl-nv0" customClass="DialView1Controller" customModule="_8phone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DialViewController" id="LS6-Bl-nv0" customClass="DialViewController" customModule="_8phone" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="B5u-gh-gF7"/>
                         <viewControllerLayoutGuide type="bottom" id="xPj-Ic-1iH"/>
@@ -2176,7 +1996,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="dial_2" id="XMX-Pq-Lcl" customClass="DialIconCell" customModule="_8phone" customModuleProvider="target">
-                                        <rect key="frame" x="90" y="0.0" width="70" height="70"/>
+                                        <rect key="frame" x="93" y="0.0" width="70" height="70"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
@@ -2222,10 +2042,10 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="dial_3" id="CEc-gn-lOO" customClass="DialNumberCell" customModule="_8phone" customModuleProvider="target">
-                                        <rect key="frame" x="180" y="0.0" width="70" height="70"/>
+                                        <rect key="frame" x="186" y="0.0" width="70" height="70"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="71" height="70"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L0I-xx-t4C" customClass="ZFRippleButton" customModule="_8phone" customModuleProvider="target">
@@ -3467,10 +3287,10 @@
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="login_cell" id="qNW-Q7-J4R" customClass="LoginCell" customModule="_8phone" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="28" width="1000" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qNW-Q7-J4R" id="dXJ-fr-Fur">
-                                            <frame key="frameInset" width="375" height="60"/>
+                                            <frame key="frameInset" width="1000" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="knv-Wp-4aP">
