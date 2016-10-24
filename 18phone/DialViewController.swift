@@ -129,43 +129,93 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
-    func checkNumberArea(_ temp: String?) {
+    func checkNumberArea(_ temp: String) {
         if PhoneUtil.isMobileNumber(temp) || PhoneUtil.isTelephoneNumber(temp) || temp == "10086" {
-            PhoneUtil.getPhoneAreaInfo(temp!){ phoneAreaInfo in
-                if phoneAreaInfo.errNum == 0 {
-                    self.tempArea = (phoneAreaInfo.retData?.province!)! + (phoneAreaInfo.retData?.city!)!
-                } else {
-                    self.tempArea = "未知归属地"
+            
+            let store = CNContactStore()
+            let keysToFetch = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
+                               CNContactGivenNameKey,
+                               CNContactFamilyNameKey,
+                               CNContactPhoneNumbersKey] as [Any]
+            let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch as! [CNKeyDescriptor])
+            isRegister = false
+            appContactInfo = nil
+            
+            try! store.enumerateContacts(with: fetchRequest) { (contact, stop) -> Void in
+                for number in contact.phoneNumbers {
+                    
+                    let phoneNumber = PhoneUtil.formatPhoneNumber((number.value).stringValue)
+                    if phoneNumber == temp {
+                        print("phoneNumber:\(phoneNumber)")
+                        self.tempName = contact.familyName + contact.givenName
+                        print("self.tempName:\(self.tempName)")
+                        self.areaText.text = self.tempName
+                        self.appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contact.identifier)'").first
+                        if self.appContactInfo != nil {
+                            self.isRegister = self.appContactInfo!.isRegister
+                        }
+                        break
+                    }
                 }
-                self.areaText.text = self.tempArea
-                let store = CNContactStore()
-                let keysToFetch = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
-                                   CNContactGivenNameKey,
-                                   CNContactFamilyNameKey,
-                                   CNContactPhoneNumbersKey] as [Any]
-                let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch as! [CNKeyDescriptor])
-                self.isRegister = false
-                self.appContactInfo = nil
-                try! store.enumerateContacts(with: fetchRequest) { (contact, stop) -> Void in
-                    for number in contact.phoneNumbers {
-                        
-                        let phoneNumber = PhoneUtil.formatPhoneNumber((number.value).stringValue)
-                        if phoneNumber == temp {
-                            print("phoneNumber:\(phoneNumber)")
-                            self.tempName = contact.familyName + contact.givenName
-                            print("self.tempName:\(self.tempName)")
-                            self.nameText.text = self.tempName
-                            self.appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contact.identifier)'").first
-                            if self.appContactInfo != nil {
-                                self.isRegister = self.appContactInfo!.isRegister
-                            }
-                            return
+            }
+            
+            if tempName == nil {
+                if let area = App.realm.objects(Area.self).filter("key == '\(temp)'").first {
+                    tempArea = area.name
+                    areaText.text = tempArea
+                } else {
+                    PhoneUtil.getPhoneAreaInfo(temp){ phoneAreaInfo in
+                        if phoneAreaInfo.errNum == 0 {
+                            self.tempArea = (phoneAreaInfo.retData?.province!)! + (phoneAreaInfo.retData?.city!)!
+                        } else {
+                            self.tempArea = "未知"
+                        }
+                        self.areaText.text = self.tempArea
+                        let area = Area()
+                        area.key = temp
+                        area.name = self.tempArea!
+                        try! App.realm.write {
+                            App.realm.add(area)
                         }
                     }
                 }
             }
+            
+//            PhoneUtil.getPhoneAreaInfo(temp!){ phoneAreaInfo in
+//                if phoneAreaInfo.errNum == 0 {
+//                    self.tempArea = (phoneAreaInfo.retData?.province!)! + (phoneAreaInfo.retData?.city!)!
+//                } else {
+//                    self.tempArea = "未知归属地"
+//                }
+//                self.areaText.text = self.tempArea
+//                let store = CNContactStore()
+//                let keysToFetch = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
+//                                   CNContactGivenNameKey,
+//                                   CNContactFamilyNameKey,
+//                                   CNContactPhoneNumbersKey] as [Any]
+//                let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch as! [CNKeyDescriptor])
+//                self.isRegister = false
+//                self.appContactInfo = nil
+//                try! store.enumerateContacts(with: fetchRequest) { (contact, stop) -> Void in
+//                    for number in contact.phoneNumbers {
+//                        
+//                        let phoneNumber = PhoneUtil.formatPhoneNumber((number.value).stringValue)
+//                        if phoneNumber == temp {
+//                            print("phoneNumber:\(phoneNumber)")
+//                            self.tempName = contact.familyName + contact.givenName
+//                            print("self.tempName:\(self.tempName)")
+//                            self.nameText.text = self.tempName
+//                            self.appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contact.identifier)'").first
+//                            if self.appContactInfo != nil {
+//                                self.isRegister = self.appContactInfo!.isRegister
+//                            }
+//                            return
+//                        }
+//                    }
+//                }
+//            }
         } else {
-            tempArea = "未知归属地"
+            tempArea = "未知"
             tempName = nil
             areaText.text = nil
             nameText.text = nil
@@ -268,7 +318,7 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let paste = UIPasteboard.general
         if PhoneUtil.isNumber(paste.string) {
             numberText.text = paste.string
-            checkNumberArea(paste.string)
+            checkNumberArea(paste.string!)
         }
     }
     
