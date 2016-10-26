@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftEventBus
+import AVFoundation
 
 class OutgoingCallViewController: UIViewController {
 
@@ -17,6 +18,7 @@ class OutgoingCallViewController: UIViewController {
     var contactId: String?
     var outCall: GSCall?
     var isConnected: Bool = false
+    var isSpeakerOn: Bool = false
     
     /// 显示姓名或号码
     @IBOutlet weak var nameLabel: UILabel!
@@ -81,14 +83,25 @@ class OutgoingCallViewController: UIViewController {
         }
         try! App.realm.write {
             App.realm.add(callLog)
-        }
+        }                                                                                                       
         SwiftEventBus.post("reloadCallLogs")
+        if isSpeakerOn {
+            try! AVAudioSession.sharedInstance().overrideOutputAudioPort(.none)
+            isSpeakerOn = false
+        }
         dismiss(animated: true, completion: nil)
     }
 
     @IBAction func speakerOnOff(_ sender: UIButton) {
-        
+        if isSpeakerOn {
+            try! AVAudioSession.sharedInstance().overrideOutputAudioPort(.none)
+            isSpeakerOn = false
+        } else {
+            try! AVAudioSession.sharedInstance().overrideOutputAudioPort(.speaker)
+            isSpeakerOn = true
+        }
     }
+    
     func callStatusDidChange() {
         switch outCall!.status {
         case GSCallStatusReady:

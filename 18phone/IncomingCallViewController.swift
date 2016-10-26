@@ -8,11 +8,13 @@
 
 import UIKit
 import Contacts
+import AVFoundation
 
 class IncomingCallViewController: UIViewController {
 
     var inCall: GSCall?
     var isConnected: Bool = false
+    var isSpeakerOn: Bool = false
     
     /// 接通前显示来电信息，接通后显示通话时间
     @IBOutlet weak var nameLabel: UILabel!
@@ -60,6 +62,7 @@ class IncomingCallViewController: UIViewController {
                 let formatPhoneNumber = PhoneUtil.formatPhoneNumber(number.value.stringValue)
                 if formatPhoneNumber == phoneNumber {
                     tempName = contact.familyName + contact.givenName
+                    self.areaLabel.text = tempName
                     break
                 }
             }
@@ -89,11 +92,26 @@ class IncomingCallViewController: UIViewController {
     
     @IBAction func hangup(_ sender: UIButton) {
         inCall?.end()
+        if isSpeakerOn {
+            try! AVAudioSession.sharedInstance().overrideOutputAudioPort(.none)
+            isSpeakerOn = false
+        }
         dismiss(animated: true, completion: nil)
     }
 
     @IBAction func answer(_ sender: UIButton) {
         self.inCall?.begin()
+    }
+    
+    @IBAction func speakerOnOff(_ sender: UIButton) {
+        
+        if isSpeakerOn {
+            try! AVAudioSession.sharedInstance().overrideOutputAudioPort(.none)
+            isSpeakerOn = false
+        } else {
+            try! AVAudioSession.sharedInstance().overrideOutputAudioPort(.speaker)
+            isSpeakerOn = true
+        }
     }
     
     func callStatusDidChange() {
