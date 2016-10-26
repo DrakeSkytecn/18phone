@@ -211,6 +211,7 @@ class RootViewController: UIViewController, GSAccountDelegate {
         let account = callData["account"] as! GSAccount
         let inCall = callData["inCall"] as! GSCall
         let vid_cnt = callData["vid_cnt"] as! Int
+        print("vid_cnt:\(vid_cnt)")
         if vid_cnt == 0 {
             let incomingCallViewController = R.storyboard.main.incomingCallViewController()
             incomingCallViewController?.inCall = inCall

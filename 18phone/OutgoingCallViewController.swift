@@ -86,6 +86,9 @@ class OutgoingCallViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
+    @IBAction func speakerOnOff(_ sender: UIButton) {
+        
+    }
     func callStatusDidChange() {
         switch outCall!.status {
         case GSCallStatusReady:
@@ -109,7 +112,7 @@ class OutgoingCallViewController: UIViewController {
             
         case GSCallStatusDisconnected:
             print("OutgoingCallViewController Disconnected.")
-            
+            dismiss(animated: true, completion: nil)
             break
             
         default:

@@ -230,23 +230,27 @@
 
 - (UIView *)createVideoWindow:(CGRect)frame {
     NSLog(@"_callId:%d", _callId);
+    
     // 获取窗口ID
-    int vid_idx;
+//    int vid_idx;
     pjsua_vid_win_id wid = 0;
-    vid_idx = pjsua_call_get_vid_stream_idx(_callId);
-    NSLog(@"vid_idx:%d", vid_idx);
-    pjsua_vid_win_id wids[100];
-    unsigned count;
+//    vid_idx = pjsua_call_get_vid_stream_idx(_callId);
+//    NSLog(@"vid_idx:%d", vid_idx);
+    pjsua_vid_win_id wids[3];
+    unsigned count = 3;
     pjsua_vid_enum_wins(wids, &count);
+    pjsua_call_info ci;
+    pjsua_call_get_info(_callId, &ci);
     for (int i=0; i<count; i++) {
-        NSLog(@"wids[%d]:%d", i, wids[i]);
+        wid = ci.media[i].stream.vid.win_in;
     }
-    if (vid_idx >= 0){
-        pjsua_call_info ci;
-        pjsua_call_get_info(_callId, &ci);
-        
-        wid = ci.media[vid_idx].stream.vid.win_in;
-    }
+    NSLog(@"wid:%d", wid);
+//    if (vid_idx >= 0){
+//        pjsua_call_info ci;
+//        pjsua_call_get_info(_callId, &ci);
+//        
+//        wid = ci.media[vid_idx].stream.vid.win_in;
+//    }
     
     NSLog(@"wid:%d", wid);
     //设置窗口位置大小
@@ -320,9 +324,7 @@
                                        home button on the left side */
     };
     UIDeviceOrientation dev_ori = [[UIDevice currentDevice] orientation];
-    NSLog(@"dev_ori:%d", dev_ori);
     for (int i = pjsua_vid_dev_count()-1; i >= 0; i--) {
-        NSLog(@"pjsua_vid_dev_set_setting");
         pjsua_vid_dev_set_setting(i, PJMEDIA_VID_DEV_CAP_ORIENTATION,
                                   &pj_ori[0], PJ_TRUE);
     }

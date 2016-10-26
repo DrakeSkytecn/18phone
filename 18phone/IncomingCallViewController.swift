@@ -47,30 +47,38 @@ class IncomingCallViewController: UIViewController {
         speakerBtn.layer.borderColor = UIColor.white.cgColor
         let phoneNumber = inCall?.incomingCallInfo()
         self.nameLabel.text = phoneNumber
-        PhoneUtil.getPhoneAreaInfo(phoneNumber!) { phoneAreaInfo in
-            if phoneAreaInfo.errNum == 0 {
-                let tempArea = (phoneAreaInfo.retData?.province!)! + (phoneAreaInfo.retData?.city!)!
-                self.areaLabel.text = tempArea
-            } else {
-                self.areaLabel.text = "未知归属地"
+        
+        let store = CNContactStore()
+        let keysToFetch = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
+                           CNContactGivenNameKey,
+                           CNContactFamilyNameKey,
+                           CNContactPhoneNumbersKey] as [Any]
+        let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch as! [CNKeyDescriptor])
+        var tempName:String? = nil
+        try! store.enumerateContacts(with: fetchRequest) { (contact, stop) -> Void in
+            for number in contact.phoneNumbers {
+                let formatPhoneNumber = PhoneUtil.formatPhoneNumber(number.value.stringValue)
+                if formatPhoneNumber == phoneNumber {
+                    tempName = contact.familyName + contact.givenName
+                    break
+                }
             }
-            let store = CNContactStore()
-            let keysToFetch = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
-                               CNContactGivenNameKey,
-                               CNContactFamilyNameKey,
-                               CNContactPhoneNumbersKey] as [Any]
-            let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch as! [CNKeyDescriptor])
-            try! store.enumerateContacts(with: fetchRequest) { (contact, stop) -> Void in
-                for number in contact.phoneNumbers {
-                    let tempNumber = (number.value).stringValue
-                    if tempNumber == phoneNumber {
-                        self.nameLabel.text = contact.familyName + contact.givenName
-                        return
+        }
+        if tempName == nil {
+            if let area = App.realm.objects(Area.self).filter("key == '\(phoneNumber)'").first {
+                areaLabel.text = area.name
+            } else {
+                PhoneUtil.getPhoneAreaInfo(phoneNumber!) { phoneAreaInfo in
+                    if phoneAreaInfo.errNum == 0 {
+                        let tempArea = (phoneAreaInfo.retData?.province!)! + (phoneAreaInfo.retData?.city!)!
+                        self.areaLabel.text = tempArea
+                    } else {
+                        self.areaLabel.text = "未知"
                     }
                 }
             }
-            
         }
+        
         inCall?.addObserver(self, forKeyPath: "status", options: .initial, context: nil)
     }
 

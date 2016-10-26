@@ -32,13 +32,10 @@ class OutgoingVideoViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        Async.background {
             self.outCall?.startPreviewWindow()
-        }.main { _ in
             let previewWindow = self.outCall!.createPreviewWindow(CGRect(x: 0, y: 0, width: self.previewCon.frame.width, height: self.previewCon.frame.height))
             self.previewCon.addSubview(previewWindow!)
             self.outCall?.orientation()
-        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -85,7 +82,6 @@ class OutgoingVideoViewController: UIViewController {
             print("OutgoingCallViewController Connected.")
             isConnected = true
             let videoView = outCall!.createVideoWindow(view.frame)
-            videoView!.backgroundColor = UIColor.blue
             renderCon.addSubview(videoView!)
             outCall?.orientation()
             
@@ -93,7 +89,7 @@ class OutgoingVideoViewController: UIViewController {
             
         case GSCallStatusDisconnected:
             print("OutgoingCallViewController Disconnected.")
-//            dismiss(animated: true, completion: nil)
+            dismiss(animated: true, completion: nil)
             break
             
         default:
