@@ -14,7 +14,6 @@ class IncomingCallViewController: UIViewController {
 
     var inCall: GSCall?
     var isConnected: Bool = false
-    var isSpeakerOn: Bool = false
     
     /// 接通前显示来电信息，接通后显示通话时间
     @IBOutlet weak var nameLabel: UILabel!
@@ -81,8 +80,8 @@ class IncomingCallViewController: UIViewController {
                 }
             }
         }
-        
         inCall?.addObserver(self, forKeyPath: "status", options: .initial, context: nil)
+        inCall?.startRingback()
     }
 
     override func didReceiveMemoryWarning() {
@@ -92,10 +91,7 @@ class IncomingCallViewController: UIViewController {
     
     @IBAction func hangup(_ sender: UIButton) {
         inCall?.end()
-        if isSpeakerOn {
-            try! AVAudioSession.sharedInstance().overrideOutputAudioPort(.none)
-            isSpeakerOn = false
-        }
+        App.changeSpeaker(false)
         dismiss(animated: true, completion: nil)
     }
 
@@ -104,20 +100,24 @@ class IncomingCallViewController: UIViewController {
     }
     
     @IBAction func speakerOnOff(_ sender: UIButton) {
-        
-        if isSpeakerOn {
-            try! AVAudioSession.sharedInstance().overrideOutputAudioPort(.none)
-            isSpeakerOn = false
+        if App.isSpeakerOn {
+            App.changeSpeaker(!App.isSpeakerOn)
         } else {
-            try! AVAudioSession.sharedInstance().overrideOutputAudioPort(.speaker)
-            isSpeakerOn = true
+            App.changeSpeaker(App.isSpeakerOn)
         }
     }
+    
+//    func changeSpeaker(_ isOn: Bool) {
+//        let port = isOn ? AVAudioSessionPortOverride.speaker : AVAudioSessionPortOverride.none
+//        isSpeakerOn = isOn
+//        try! AVAudioSession.sharedInstance().overrideOutputAudioPort(port)
+//    }
     
     func callStatusDidChange() {
         switch inCall!.status {
         case GSCallStatusReady:
             print("IncomingCallViewController Ready.")
+            App.changeSpeaker(true)
             break
             
         case GSCallStatusConnecting:
@@ -151,6 +151,7 @@ class IncomingCallViewController: UIViewController {
 //            try! App.realm.write {
 //                App.realm.add(callLog)
 //            }
+            App.changeSpeaker(false)
             dismiss(animated: true, completion: nil)
             break
             

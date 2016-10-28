@@ -18,7 +18,6 @@ class OutgoingCallViewController: UIViewController {
     var contactId: String?
     var outCall: GSCall?
     var isConnected: Bool = false
-    var isSpeakerOn: Bool = false
     
     /// 显示姓名或号码
     @IBOutlet weak var nameLabel: UILabel!
@@ -85,20 +84,15 @@ class OutgoingCallViewController: UIViewController {
             App.realm.add(callLog)
         }                                                                                                       
         SwiftEventBus.post("reloadCallLogs")
-        if isSpeakerOn {
-            try! AVAudioSession.sharedInstance().overrideOutputAudioPort(.none)
-            isSpeakerOn = false
-        }
+        App.changeSpeaker(false)
         dismiss(animated: true, completion: nil)
     }
 
     @IBAction func speakerOnOff(_ sender: UIButton) {
-        if isSpeakerOn {
-            try! AVAudioSession.sharedInstance().overrideOutputAudioPort(.none)
-            isSpeakerOn = false
+        if App.isSpeakerOn {
+            App.changeSpeaker(!App.isSpeakerOn)
         } else {
-            try! AVAudioSession.sharedInstance().overrideOutputAudioPort(.speaker)
-            isSpeakerOn = true
+            App.changeSpeaker(App.isSpeakerOn)
         }
     }
     
@@ -114,6 +108,7 @@ class OutgoingCallViewController: UIViewController {
             
         case GSCallStatusCalling:
             print("OutgoingCallViewController Calling...")
+            App.changeSpeaker(true)
             break
             
         case GSCallStatusConnected:
@@ -121,11 +116,12 @@ class OutgoingCallViewController: UIViewController {
             isConnected = true
             dialPlateCon.isHidden = false
             speakerCon.isHidden = false
+            
             break
             
         case GSCallStatusDisconnected:
             print("OutgoingCallViewController Disconnected.")
-            dismiss(animated: true, completion: nil)
+//            dismiss(animated: true, completion: nil)
             break
             
         default:

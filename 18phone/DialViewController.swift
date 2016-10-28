@@ -10,7 +10,7 @@ import UIKit
 import Contacts
 
 class DialViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-
+    
     @IBOutlet weak var showNumberCon: UIView!
     
     @IBOutlet weak var dialCollectionView: UICollectionView!
@@ -45,7 +45,7 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
         dialCollectionView.scrollsToTop = false
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -54,7 +54,7 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 12
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch (indexPath as NSIndexPath).row {
         /// 数字按键要展示的布局
@@ -131,7 +131,7 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func checkNumberArea(_ temp: String) {
         if PhoneUtil.isMobileNumber(temp) || PhoneUtil.isTelephoneNumber(temp) || temp == "10086" {
-            
+            //先查是否为通讯录联系人
             let store = CNContactStore()
             let keysToFetch = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
                                CNContactGivenNameKey,
@@ -149,7 +149,7 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
                         print("phoneNumber:\(phoneNumber)")
                         self.tempName = contact.familyName + contact.givenName
                         print("self.tempName:\(self.tempName)")
-                        self.areaText.text = self.tempName
+                        //                        self.areaText.text = self.tempName
                         self.appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contact.identifier)'").first
                         if self.appContactInfo != nil {
                             self.isRegister = self.appContactInfo!.isRegister
@@ -159,63 +159,54 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 }
             }
             
-            if tempName == nil {
-                if let area = App.realm.objects(Area.self).filter("key == '\(temp)'").first {
-                    tempArea = area.name
-                    areaText.text = tempArea
-                } else {
+            // 然后查号码归属地，本地查不到就通过接口查询并保存
+            if let area = App.realm.objects(Area.self).filter("key == '\(temp)'").first {
+                tempArea = area.name
+                if tempArea!.isEmpty || tempArea == "未知" {
                     PhoneUtil.getPhoneAreaInfo(temp){ phoneAreaInfo in
                         if phoneAreaInfo.errNum == 0 {
-                            self.tempArea = (phoneAreaInfo.retData?.province!)! + (phoneAreaInfo.retData?.city!)!
+                            self.tempArea = phoneAreaInfo.retData!.province! + phoneAreaInfo.retData!.city!
                         } else {
                             self.tempArea = "未知"
                         }
-                        self.areaText.text = self.tempArea
-                        let area = Area()
-                        area.key = temp
-                        area.name = self.tempArea!
-                        try! App.realm.write {
-                            App.realm.add(area)
+                        if self.tempName == nil {
+                            self.areaText.text = self.tempArea
+                        } else {
+                            self.areaText.text = self.tempName
                         }
+                        try! App.realm.write {
+                            area.name = self.tempArea!
+                        }
+                    }
+                } else {
+                    if tempName == nil {
+                        areaText.text = tempArea
+                    } else {
+                        areaText.text = tempName
+                    }
+                }
+            } else {
+                PhoneUtil.getPhoneAreaInfo(temp){ phoneAreaInfo in
+                    if phoneAreaInfo.errNum == 0 {
+                        self.tempArea = phoneAreaInfo.retData!.province! + phoneAreaInfo.retData!.city!
+                    } else {
+                        self.tempArea = "未知"
+                    }
+                    if self.tempName == nil {
+                        self.areaText.text = self.tempArea
+                    } else {
+                        self.areaText.text = self.tempName
+                    }
+                    let area = Area()
+                    area.key = temp
+                    area.name = self.tempArea!
+                    try! App.realm.write {
+                        App.realm.add(area)
                     }
                 }
             }
-            
-//            PhoneUtil.getPhoneAreaInfo(temp!){ phoneAreaInfo in
-//                if phoneAreaInfo.errNum == 0 {
-//                    self.tempArea = (phoneAreaInfo.retData?.province!)! + (phoneAreaInfo.retData?.city!)!
-//                } else {
-//                    self.tempArea = "未知归属地"
-//                }
-//                self.areaText.text = self.tempArea
-//                let store = CNContactStore()
-//                let keysToFetch = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
-//                                   CNContactGivenNameKey,
-//                                   CNContactFamilyNameKey,
-//                                   CNContactPhoneNumbersKey] as [Any]
-//                let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch as! [CNKeyDescriptor])
-//                self.isRegister = false
-//                self.appContactInfo = nil
-//                try! store.enumerateContacts(with: fetchRequest) { (contact, stop) -> Void in
-//                    for number in contact.phoneNumbers {
-//                        
-//                        let phoneNumber = PhoneUtil.formatPhoneNumber((number.value).stringValue)
-//                        if phoneNumber == temp {
-//                            print("phoneNumber:\(phoneNumber)")
-//                            self.tempName = contact.familyName + contact.givenName
-//                            print("self.tempName:\(self.tempName)")
-//                            self.nameText.text = self.tempName
-//                            self.appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contact.identifier)'").first
-//                            if self.appContactInfo != nil {
-//                                self.isRegister = self.appContactInfo!.isRegister
-//                            }
-//                            return
-//                        }
-//                    }
-//                }
-//            }
         } else {
-            tempArea = "未知"
+            tempArea = ""
             tempName = nil
             areaText.text = nil
             nameText.text = nil
@@ -252,13 +243,13 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
             let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             alertController.addAction(UIAlertAction(title: "新增联系人", style: .default) { action in
                 
-                })
+            })
             alertController.addAction(UIAlertAction(title: "加入到现有的联系人", style: .default) { action in
                 
-                })
+            })
             alertController.addAction(UIAlertAction(title: "取消", style: .cancel) { action in
                 
-                })
+            })
             present(alertController, animated: true, completion: nil)
         }
     }

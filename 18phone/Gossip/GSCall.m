@@ -56,19 +56,19 @@
     if (self = [super init]) {
         GSAccountConfiguration *config = account.configuration;
         
-        _account = account;
-        _status = GSCallStatusReady;
-        _buddyStatus = GSBuddyStatusUnknown;
-        _callId = PJSUA_INVALID_ID;
-        
+        _volumeScale = [GSUserAgent sharedAgent].configuration.volumeScale;
+        _volume = 1.0 / _volumeScale;
+        _micVolume = 1.0 / _volumeScale;
         _ringback = nil;
         if (config.enableRingback) {
             _ringback = [GSRingback ringbackWithSoundNamed:config.ringbackFilename];
         }
         
-        _volumeScale = [GSUserAgent sharedAgent].configuration.volumeScale;
-        _volume = 1.0 / _volumeScale;
-        _micVolume = 1.0 / _volumeScale;
+        _account = account;
+        _status = GSCallStatusReady;
+        _buddyStatus = GSBuddyStatusUnknown;
+        _callId = PJSUA_INVALID_ID;
+    
         
         NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
         [center addObserver:self

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AVFoundation
 import RealmSwift
 import SwiftDate
 import SwiftHTTP
@@ -22,13 +23,16 @@ struct URL {
     static let phoneAreaUrl = "http://apis.baidu.com/apistore/mobilenumber/mobilenumber"
     
     /// 比一比SIP服务器地址
-    static let BEYEBE_SIP_SERVER = "211.149.172.109:5060"
-//    static let BEYEBE_SIP_SERVER = "192.168.10.204:5060"
+//    static let BEYEBE_SIP_SERVER = "211.149.172.109:5060"
+    static let BEYEBE_SIP_SERVER = "192.168.10.204:5060"
 //    static let BEYEBE_SIP_SERVER = "192.168.10.239:5060"
     
     /// 比一比SIP服务器域名
-    static let BEYEBE_SIP_DOMAIN = "18phone.beyebe"
-//    static let BEYEBE_SIP_DOMAIN = "myvoipapp.com"
+//    static let BEYEBE_SIP_DOMAIN = "18phone.beyebe"
+    static let BEYEBE_SIP_DOMAIN = "myvoipapp.com"
+    
+    /// 18phone接口地址
+    static let BEYEBE_18PHONE_API_BASE = "http://192.168.10.249/api/Phone/"
 }
 
 /**
@@ -43,6 +47,7 @@ struct App {
     static let userAgentAccount = GSUserAgent.shared().account
     static let statusBarHeight = application.statusBarFrame.height
     static let navigationBarHeight: CGFloat = 44.0
+    static var isSpeakerOn = false
     
     static func initUserAgent(_ username: String, password: String) {
         let userAgent = GSUserAgent.shared()
@@ -71,6 +76,12 @@ struct App {
             userDefaults.synchronize()
             initUserAgent(username, password: password)
         }
+    }
+    
+    static func changeSpeaker(_ isOn: Bool) {
+        let port = isOn ? AVAudioSessionPortOverride.speaker : AVAudioSessionPortOverride.none
+        isSpeakerOn = isOn
+        try! AVAudioSession.sharedInstance().overrideOutputAudioPort(port)
     }
 }
 
@@ -220,6 +231,54 @@ struct ViewUtil {
         numberBar?.frame = temp
         numberBar?.textField = textField
         textField.inputAccessoryView = numberBar
+    }
+}
+
+struct APIUtil {
+    static func getVerifyCodeInfo(_ phoneNumber: String, callBack: ((VerifyCodeInfo) -> ())?) {
+        do {
+            let opt = try HTTP.GET(URL.BEYEBE_18PHONE_API_BASE + "getVerificationCode", parameters: ["accountNumber":phoneNumber, "datatype":"json"])
+            opt.start { response in
+                if let error = response.error {
+                    print("error: \(error.localizedDescription)")
+                    print("error: \(error.code)")
+                    
+                    return
+                }
+                print(response.text)
+                let verifyCodeInfo = VerifyCodeInfo(JSONDecoder(response.data))
+                if callBack != nil {
+                    Async.main {
+                        callBack!(verifyCodeInfo)
+                    }
+                }
+            }
+        } catch {
+            print("got an error creating the request: \(error)")
+        }
+    }
+    
+    static func register(_ phoneNumber: String, password: String, verificationCode: String, deviceId: String) {
+        do {
+            let opt = try HTTP.GET(URL.BEYEBE_18PHONE_API_BASE + "register", parameters: ["accountNumber":phoneNumber, "password":password, "verificationCode":verificationCode, "DeviceID":deviceId, "datatype":"json"])
+            opt.start { response in
+                if let error = response.error {
+                    print("error: \(error.localizedDescription)")
+                    print("error: \(error.code)")
+                    
+                    return
+                }
+                print(response.text)
+//                let verifyCodeInfo = VerifyCodeInfo(JSONDecoder(response.data))
+//                if callBack != nil {
+//                    Async.main {
+//                        callBack!(verifyCodeInfo)
+//                    }
+//                }
+            }
+        } catch {
+            print("got an error creating the request: \(error)")
+        }
     }
 }
 

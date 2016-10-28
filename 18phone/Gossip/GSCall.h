@@ -81,6 +81,8 @@ typedef enum {
 
 -(void)orientation;
 
+-(void)startRingback;
+
 - (BOOL)sendDTMFDigits:(NSString *)digits; ///< Sends DTMF digits over the call.
 
 @end

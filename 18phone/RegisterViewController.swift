@@ -64,6 +64,7 @@ class RegisterViewController: UIViewController, UITableViewDataSource, UITableVi
             cell.titleLabel.text = titles[indexPath.row]
             cell.contentField.delegate = self
             cell.contentField.tag = indexPath.row
+            cell.contentField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
             cell.idCodeBtn.addTarget(self, action: #selector(codeBtnVerification(_:)), for: .touchUpInside)
             ViewUtil.setupNumberBar(cell.contentField)
             
@@ -72,7 +73,10 @@ class RegisterViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func codeBtnVerification(_ sender: VerifyCodeButton) {
-        sender.timeFailBeginFrom(60)
+        if !phoneNumber.isEmpty {
+            sender.timeFailBeginFrom(60)
+            APIUtil.getVerifyCodeInfo(phoneNumber, callBack: nil)
+        }
     }
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
@@ -113,7 +117,9 @@ class RegisterViewController: UIViewController, UITableViewDataSource, UITableVi
             present(alertController, animated: true, completion: nil)
             return
         }
-        present(R.storyboard.main.kTabBarController()!, animated: true, completion: nil)
+        
+        APIUtil.register(phoneNumber, password: password, verificationCode: verifyCode, deviceId: "deviceId")
+//        present(R.storyboard.main.kTabBarController()!, animated: true, completion: nil)
     }
     
     func textFieldDidChange(_ textField: UITextField) {

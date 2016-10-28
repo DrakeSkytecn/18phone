@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3CDEEA757806A094659EB15D /* Pods_18phone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 047EB72D84437E0BA79D1A70 /* Pods_18phone.framework */; };
+		845C24541DC359120050ABD4 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845C24531DC359120050ABD4 /* Register.swift */; };
+		84D31B8F1DC3390F0005DE8E /* VerifyCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D31B8E1DC3390F0005DE8E /* VerifyCode.swift */; };
 		E111AED71D8E6CD10045E2E2 /* libpj-armv7-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E111AED61D8E6CD10045E2E2 /* libpj-armv7-apple-darwin_ios.a */; };
 		E111AED91D8E6CEB0045E2E2 /* libpjlib-util-armv7-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E111AED81D8E6CEB0045E2E2 /* libpjlib-util-armv7-apple-darwin_ios.a */; };
 		E111AEDF1D8E6CFA0045E2E2 /* libpjmedia-armv7-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E111AEDA1D8E6CFA0045E2E2 /* libpjmedia-armv7-apple-darwin_ios.a */; };
@@ -151,6 +153,8 @@
 /* Begin PBXFileReference section */
 		047EB72D84437E0BA79D1A70 /* Pods_18phone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_18phone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		075A21CADC9C03D40A071C6E /* Pods-18phone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-18phone.release.xcconfig"; path = "Pods/Target Support Files/Pods-18phone/Pods-18phone.release.xcconfig"; sourceTree = "<group>"; };
+		845C24531DC359120050ABD4 /* Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
+		84D31B8E1DC3390F0005DE8E /* VerifyCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyCode.swift; sourceTree = "<group>"; };
 		A3792B97A14496699EE5544B /* Pods-18phone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-18phone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-18phone/Pods-18phone.debug.xcconfig"; sourceTree = "<group>"; };
 		E111AED61D8E6CD10045E2E2 /* libpj-armv7-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpj-armv7-apple-darwin_ios.a"; path = "pjproject-2.5.5/pjlib/lib/libpj-armv7-apple-darwin_ios.a"; sourceTree = "<group>"; };
 		E111AED81D8E6CEB0045E2E2 /* libpjlib-util-armv7-apple-darwin_ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libpjlib-util-armv7-apple-darwin_ios.a"; path = "pjproject-2.5.5/pjlib-util/lib/libpjlib-util-armv7-apple-darwin_ios.a"; sourceTree = "<group>"; };
@@ -624,6 +628,8 @@
 			children = (
 				E13BACD41D51907600414ACE /* CallLog.swift */,
 				E16453E91D6AA3150036B53F /* Contact.swift */,
+				84D31B8E1DC3390F0005DE8E /* VerifyCode.swift */,
+				845C24531DC359120050ABD4 /* Register.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -787,6 +793,7 @@
 				E1626D591D93BA7100C3422C /* DetailLogCell.swift in Sources */,
 				E19BEB021DB4D82900AE73E1 /* ADSettingViewController.swift in Sources */,
 				E1C0486A1D867F650009DF6B /* GSConfiguration.m in Sources */,
+				845C24541DC359120050ABD4 /* Register.swift in Sources */,
 				E16453EA1D6AA3150036B53F /* Contact.swift in Sources */,
 				E13BACDB1D51946B00414ACE /* KTabBarController.swift in Sources */,
 				E1721F301D90E27500A67C5B /* QRCodeViewController.swift in Sources */,
@@ -810,6 +817,7 @@
 				E13D21951D6ECFCA00C6EA98 /* IncomingVideoViewController.swift in Sources */,
 				E1C0486D1D867F650009DF6B /* GSNotifications.m in Sources */,
 				E1AC7F871DA8CAE5001C2676 /* VerifyCodeButton.swift in Sources */,
+				84D31B8F1DC3390F0005DE8E /* VerifyCode.swift in Sources */,
 				E19327511D9A6623006BA8B2 /* LoginViewController.swift in Sources */,
 				E1C048691D867F650009DF6B /* GSCodecInfo.m in Sources */,
 				E13BACDD1D51946B00414ACE /* CallLogViewController.swift in Sources */,
