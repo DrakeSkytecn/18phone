@@ -13,6 +13,7 @@ import AVFoundation
 class IncomingCallViewController: UIViewController {
 
     var inCall: GSCall?
+    
     var isConnected: Bool = false
     
     /// 接通前显示来电信息，接通后显示通话时间
@@ -41,6 +42,7 @@ class IncomingCallViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         /**
          storyboard目前不支持设置CGColor
          */

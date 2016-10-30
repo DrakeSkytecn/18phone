@@ -13,10 +13,15 @@ import AVFoundation
 class OutgoingCallViewController: UIViewController {
 
     var toNumber: String?
+    
     var contactName: String?
+    
     var phoneArea: String?
+    
     var contactId: String?
+    
     var outCall: GSCall?
+    
     var isConnected: Bool = false
     
     /// 显示姓名或号码
@@ -39,7 +44,6 @@ class OutgoingCallViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("OutgoingCallViewController viewDidLoad")
         /**
          storyboard目前不支持设置CGColor
          */
