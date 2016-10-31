@@ -99,6 +99,13 @@ class LoginViewController: UIViewController, UITableViewDataSource, UITableViewD
             present(alertController, animated: true, completion: nil)
             return
         }
-        present(R.storyboard.main.kTabBarController()!, animated: true, completion: nil)
+        APIUtil.login(phoneNumber, password: password, callBack: { loginInfo in
+            if loginInfo.codeStatus == 1 {
+                self.present(R.storyboard.main.kTabBarController()!, animated: true, completion: nil)
+            } else {
+                alertController.message = loginInfo.codeInfo
+                self.present(alertController, animated: true, completion: nil)
+            }
+        })
     }
 }

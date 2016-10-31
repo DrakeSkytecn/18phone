@@ -24,15 +24,16 @@ struct URL {
     
     /// 比一比SIP服务器地址
     static let BEYEBE_SIP_SERVER = "211.149.172.109:5060"
-//    static let BEYEBE_SIP_SERVER = "192.168.10.204:5060"
-//    static let BEYEBE_SIP_SERVER = "192.168.10.239:5060"
+    //    static let BEYEBE_SIP_SERVER = "192.168.10.204:5060"
+    //    static let BEYEBE_SIP_SERVER = "192.168.10.239:5060"
     
     /// 比一比SIP服务器域名
     static let BEYEBE_SIP_DOMAIN = "18phone.beyebe"
-//    static let BEYEBE_SIP_DOMAIN = "myvoipapp.com"
+    //    static let BEYEBE_SIP_DOMAIN = "myvoipapp.com"
     
     /// 18phone接口地址
     static let BEYEBE_18PHONE_API_BASE = "http://192.168.10.249/api/Phone/"
+//    static let BEYEBE_18PHONE_API_BASE = "http://18phone.beyebe.cn/api/Phone/"
 }
 
 /**
@@ -237,7 +238,7 @@ struct ViewUtil {
 struct APIUtil {
     static func getVerifyCodeInfo(_ phoneNumber: String, callBack: ((VerifyCodeInfo) -> ())?) {
         do {
-            let opt = try HTTP.GET(URL.BEYEBE_18PHONE_API_BASE + "getVerificationCode", parameters: ["accountNumber":phoneNumber, "datatype":"json"])
+            let opt = try HTTP.GET(URL.BEYEBE_18PHONE_API_BASE + "getVerificationCode", parameters: ["accountNumber":phoneNumber])
             opt.start { response in
                 if let error = response.error {
                     print("error: \(error.localizedDescription)")
@@ -260,7 +261,7 @@ struct APIUtil {
     
     static func register(_ phoneNumber: String, password: String, verificationCode: String, deviceId: String) {
         do {
-            let opt = try HTTP.GET(URL.BEYEBE_18PHONE_API_BASE + "register", parameters: ["accountNumber":phoneNumber, "password":password, "verificationCode":verificationCode, "DeviceID":deviceId, "datatype":"json"])
+            let opt = try HTTP.GET(URL.BEYEBE_18PHONE_API_BASE + "register", parameters: ["accountNumber":phoneNumber, "password":password, "verificationCode":verificationCode, "DeviceID":deviceId])
             opt.start { response in
                 if let error = response.error {
                     print("error: \(error.localizedDescription)")
@@ -269,12 +270,58 @@ struct APIUtil {
                     return
                 }
                 print(response.text)
-//                let verifyCodeInfo = VerifyCodeInfo(JSONDecoder(response.data))
-//                if callBack != nil {
-//                    Async.main {
-//                        callBack!(verifyCodeInfo)
-//                    }
-//                }
+                //                let verifyCodeInfo = VerifyCodeInfo(JSONDecoder(response.data))
+                //                if callBack != nil {
+                //                    Async.main {
+                //                        callBack!(verifyCodeInfo)
+                //                    }
+                //                }
+            }
+        } catch {
+            print("got an error creating the request: \(error)")
+        }
+    }
+    
+    static func login(_ phoneNumber: String, password: String, callBack: ((LoginInfo) -> ())?) {
+        do {
+            let opt = try HTTP.GET(URL.BEYEBE_18PHONE_API_BASE + "login", parameters: ["PhoneNumber":phoneNumber, "password":password])
+            opt.start { response in
+                if let error = response.error {
+                    print("error: \(error.localizedDescription)")
+                    print("error: \(error.code)")
+                    
+                    return
+                }
+                print(response.text)
+                let loginInfo = LoginInfo(JSONDecoder(response.data))
+                if callBack != nil {
+                    Async.main {
+                        callBack!(loginInfo)
+                    }
+                }
+            }
+        } catch {
+            print("got an error creating the request: \(error)")
+        }
+    }
+    
+    static func getDayLeft(_ userID: String, callBack: ((DayLeft) -> ())?) {
+        do {
+            let opt = try HTTP.GET(URL.BEYEBE_18PHONE_API_BASE + "getServiceEndTime", parameters: ["userID":userID])
+            opt.start { response in
+                if let error = response.error {
+                    print("error: \(error.localizedDescription)")
+                    print("error: \(error.code)")
+                    
+                    return
+                }
+                print(response.text)
+                let dayLeft = DayLeft(JSONDecoder(response.data))
+                if callBack != nil {
+                    Async.main {
+                        callBack!(dayLeft)
+                    }
+                }
             }
         } catch {
             print("got an error creating the request: \(error)")
