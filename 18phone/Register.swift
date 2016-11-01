@@ -9,12 +9,14 @@
 import UIKit
 import JSONJoy
 
-class RegisterInfo: JSONJoy {
+struct RegisterInfo: JSONJoy {
     
+    let userID: String?
     let codeStatus: Int?
     let codeinfo: String?
     
-    required init(_ decoder: JSONDecoder) {
+    init(_ decoder: JSONDecoder) {
+        userID = decoder["userID"].string
         codeStatus = decoder["codeStatus"].integer
         codeinfo = decoder["codeinfo"].string
     }

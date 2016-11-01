@@ -118,8 +118,12 @@ class RegisterViewController: UIViewController, UITableViewDataSource, UITableVi
             return
         }
         
-        APIUtil.register(phoneNumber, password: password, verificationCode: verifyCode, deviceId: "deviceId")
-//        present(R.storyboard.main.kTabBarController()!, animated: true, completion: nil)
+        APIUtil.register(phoneNumber, password: password, verificationCode: verifyCode, deviceId: "deviceId", callBack: { registerInfo in
+            let userDefaults = UserDefaults.standard
+            userDefaults.set(registerInfo.userID, forKey: "userID")
+            userDefaults.synchronize()
+            self.present(R.storyboard.main.kTabBarController()!, animated: true, completion: nil)
+        })
     }
     
     func textFieldDidChange(_ textField: UITextField) {

@@ -22,6 +22,9 @@ class RootViewController: UIViewController, GSAccountDelegate {
     /// 用于判断拨号页面是否显示
     fileprivate var isViewHidden: Bool = false
     
+    /// 显示免费通话剩余天数
+    @IBOutlet weak var dayLeftItem: UIBarButtonItem!
+    
     /// 拨号盘
     @IBOutlet weak var menuView: UIView!
     
@@ -44,8 +47,8 @@ class RootViewController: UIViewController, GSAccountDelegate {
         App.userAgentAccount?.delegate = self
         App.userAgentAccount?.addObserver(self, forKeyPath: "status", options: .initial, context: nil)
         App.userAgentAccount?.connect()
-        APIUtil.getDayLeft("fc6e694f-5062-4cb2-af2f-291df452c7a1", callBack: { dayLeft in
-            
+        APIUtil.getDayLeft(UserDefaults.standard.string(forKey: "userID")!, callBack: { dayLeft in
+            self.dayLeftItem.title = String(describing: dayLeft.day!)
         })
     }
     
@@ -77,12 +80,8 @@ class RootViewController: UIViewController, GSAccountDelegate {
         if !isViewHidden {
             if isMenuShow {
                 hide()
-                //                item.selectedImage = R.image.dial_up()
-                //                item.title = "展开"
             } else {
                 show()
-                //                item.selectedImage = R.image.dial_down()
-                //                item.title = "收起"
             }
         }
     }

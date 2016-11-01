@@ -236,7 +236,7 @@ struct ViewUtil {
 }
 
 struct APIUtil {
-    static func getVerifyCodeInfo(_ phoneNumber: String, callBack: ((VerifyCodeInfo) -> ())?) {
+    static func getVerifyCodeInfo(_ phoneNumber: String, callBack: ((VerifyCodeInfo) -> ())?){
         do {
             let opt = try HTTP.GET(URL.BEYEBE_18PHONE_API_BASE + "getVerificationCode", parameters: ["accountNumber":phoneNumber])
             opt.start { response in
@@ -259,7 +259,7 @@ struct APIUtil {
         }
     }
     
-    static func register(_ phoneNumber: String, password: String, verificationCode: String, deviceId: String) {
+    static func register(_ phoneNumber: String, password: String, verificationCode: String, deviceId: String, callBack: ((RegisterInfo) -> ())?) {
         do {
             let opt = try HTTP.GET(URL.BEYEBE_18PHONE_API_BASE + "register", parameters: ["accountNumber":phoneNumber, "password":password, "verificationCode":verificationCode, "DeviceID":deviceId])
             opt.start { response in
@@ -270,12 +270,12 @@ struct APIUtil {
                     return
                 }
                 print(response.text)
-                //                let verifyCodeInfo = VerifyCodeInfo(JSONDecoder(response.data))
-                //                if callBack != nil {
-                //                    Async.main {
-                //                        callBack!(verifyCodeInfo)
-                //                    }
-                //                }
+                let registerInfo = RegisterInfo(JSONDecoder(response.data))
+                if callBack != nil {
+                    Async.main {
+                        callBack!(registerInfo)
+                    }
+                }
             }
         } catch {
             print("got an error creating the request: \(error)")
@@ -315,11 +315,34 @@ struct APIUtil {
                     
                     return
                 }
-                print(response.text)
+                print(response.text!)
                 let dayLeft = DayLeft(JSONDecoder(response.data))
                 if callBack != nil {
                     Async.main {
                         callBack!(dayLeft)
+                    }
+                }
+            }
+        } catch {
+            print("got an error creating the request: \(error)")
+        }
+    }
+    
+    static func getUserInfo(_ userID: String, callBack: ((UserInfo) -> ())?) {
+        do {
+            let opt = try HTTP.GET(URL.BEYEBE_18PHONE_API_BASE + "getPersonSelfInfo", parameters: ["userID":userID])
+            opt.start { response in
+                if let error = response.error {
+                    print("error: \(error.localizedDescription)")
+                    print("error: \(error.code)")
+                    
+                    return
+                }
+                print(response.text!)
+                let userInfo = UserInfo(JSONDecoder(response.data))
+                if callBack != nil {
+                    Async.main {
+                        callBack!(userInfo)
                     }
                 }
             }

@@ -47,6 +47,13 @@ class UserCenterViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.user_detail_cell)
+            APIUtil.getUserInfo(UserDefaults.standard.string(forKey: "userID")!, callBack: { userInfo in
+                if userInfo.userData?.name == nil {
+                    cell?.nameLabel.text = userInfo.userData?.mobile
+                } else {
+                    cell?.nameLabel.text = userInfo.userData?.name
+                }
+            })
             return cell!
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.setting_cell)
