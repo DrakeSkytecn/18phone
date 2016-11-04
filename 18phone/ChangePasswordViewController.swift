@@ -101,6 +101,11 @@ class ChangePasswordViewController: UIViewController, UITableViewDataSource, UIT
             present(alertController, animated: true, completion: nil)
             return
         }
+        
+        APIUtil.changePassword(UserDefaults.standard.string(forKey: "userID")!, oldPassword: oldPassword, newPassword: newPassword, callBack: { resetPassword in
+            alertController.message = resetPassword.codeInfo
+            self.present(alertController, animated: true, completion: nil)
+        })
     }
     
     /*

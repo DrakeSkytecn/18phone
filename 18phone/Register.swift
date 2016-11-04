@@ -18,6 +18,6 @@ struct RegisterInfo: JSONJoy {
     init(_ decoder: JSONDecoder) {
         userID = decoder["userID"].string
         codeStatus = decoder["codeStatus"].integer
-        codeinfo = decoder["codeinfo"].string
+        codeinfo = decoder["codeInfo"].string
     }
 }

@@ -18,7 +18,7 @@ struct UserInfo: JSONJoy {
     init(_ decoder: JSONDecoder) {
         userData = UserData(decoder["data"])
         codeStatus = decoder["codeStatus"].integer
-        codeInfo = decoder["codeinfo"].string
+        codeInfo = decoder["codeInfo"].string
     }
 }
 
@@ -27,21 +27,23 @@ struct UserData {
     let userID: String?
     let addressDetail: String?
     let headImageUrl: String?
-    let sex: String?
+    let sex: Int?
     let provinceCity: String?
     let name: String?
     let mobile: String?
-    let age: String?
+    let age: Int?
+    let personalSignature: String?
     
     init(_ decoder: JSONDecoder) {
         userID = decoder["UserID"].string
         addressDetail = decoder["AddressDetail"].string
         headImageUrl = decoder["HeadImageUrl"].string
-        sex = decoder["Sex"].string
+        sex = decoder["Sex"].integer
         provinceCity = decoder["ProvinceCity"].string
         name = decoder["Name"].string
         mobile = decoder["Mobile"].string
-        age = decoder["Age"].string
+        age = decoder["Age"].integer
+        personalSignature = decoder["PersonalSignature"].string
     }
 }
 

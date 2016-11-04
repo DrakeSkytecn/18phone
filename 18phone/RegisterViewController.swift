@@ -73,9 +73,18 @@ class RegisterViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func codeBtnVerification(_ sender: VerifyCodeButton) {
-        if !phoneNumber.isEmpty {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "好的", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        if phoneNumber.isEmpty {
+            alertController.message = "请输入手机号"
+            present(alertController, animated: true, completion: nil)
+        } else if PhoneUtil.isMobileNumber(phoneNumber) {
             sender.timeFailBeginFrom(60)
             APIUtil.getVerifyCodeInfo(phoneNumber, callBack: nil)
+        } else {
+            alertController.message = "手机号格式不正确"
+            present(alertController, animated: true, completion: nil)
         }
     }
     
@@ -119,10 +128,15 @@ class RegisterViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         
         APIUtil.register(phoneNumber, password: password, verificationCode: verifyCode, deviceId: "deviceId", callBack: { registerInfo in
-            let userDefaults = UserDefaults.standard
-            userDefaults.set(registerInfo.userID, forKey: "userID")
-            userDefaults.synchronize()
-            self.present(R.storyboard.main.kTabBarController()!, animated: true, completion: nil)
+            if registerInfo.codeStatus == 1 {
+                let userDefaults = UserDefaults.standard
+                userDefaults.set(registerInfo.userID, forKey: "userID")
+                userDefaults.synchronize()
+                self.present(R.storyboard.main.kTabBarController()!, animated: true, completion: nil)
+            } else {
+                alertController.message = registerInfo.codeinfo
+                self.present(alertController, animated: true, completion: nil)
+            }
         })
     }
     

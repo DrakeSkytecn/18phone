@@ -106,6 +106,7 @@ class LoginViewController: UIViewController, UITableViewDataSource, UITableViewD
                     userDefaults.set(loginInfo.userID, forKey: "userID")
                     userDefaults.synchronize()
                 }
+                App.autoLogin(self.phoneNumber, password: self.password)
                 self.present(R.storyboard.main.kTabBarController()!, animated: true, completion: nil)
             } else {
                 alertController.message = loginInfo.codeInfo

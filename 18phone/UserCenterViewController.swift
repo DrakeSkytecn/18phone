@@ -7,16 +7,26 @@
 //
 
 import UIKit
+import SwiftEventBus
 
 class UserCenterViewController: UITableViewController {
     
     var icons1 = [R.image.wallet(), R.image.bill()]
+    
     var icons2 = [R.image.setting(), R.image.about()]
+    
     var titles1 = ["我的钱包", "我的账单"]
+    
     var titles2 = ["我的设置", "关于18phone"]
+    
+    var userData: UserData?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        SwiftEventBus.onMainThread(self, name: "reloadUserInfo") { result in
+            let phoneNumber = result.object as! String
+            self.reloadUserInfo(phoneNumber)
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -48,11 +58,27 @@ class UserCenterViewController: UITableViewController {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.user_detail_cell)
             APIUtil.getUserInfo(UserDefaults.standard.string(forKey: "userID")!, callBack: { userInfo in
-                if userInfo.userData?.name == nil {
-                    cell?.nameLabel.text = userInfo.userData?.mobile
+                self.userData = userInfo.userData
+                if self.userData!.headImageUrl != nil {
+                    cell?.headPhoto.piQ_imageFromUrl(self.userData!.headImageUrl!, placeholderImage: R.image.head_photo_default()!)
                 } else {
-                    cell?.nameLabel.text = userInfo.userData?.name
+                    cell?.headPhoto.image = R.image.head_photo_default()
                 }
+                if self.userData?.name == nil {
+                    cell?.nameLabel.text = self.userData?.mobile
+                } else {
+                    cell?.nameLabel.text = self.userData?.name
+                }
+                if self.userData?.sex == Sex.male.rawValue {
+                    cell?.sexImage.image = R.image.male()
+                } else if self.userData?.sex == Sex.female.rawValue {
+                    cell?.sexImage.image = R.image.female()
+                }
+                if self.userData!.age != nil {
+                    cell?.ageLabel.text = String(describing: self.userData!.age!) + "岁"
+                }
+                cell?.areaLabel.text = self.userData!.provinceCity
+                cell?.signLabel.text = self.userData!.personalSignature
             })
             return cell!
         } else {
@@ -101,6 +127,12 @@ class UserCenterViewController: UITableViewController {
         }
     }
 
+    func reloadUserInfo(_ phoneNumber: String) {
+        let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! UserDetailCell
+        cell.nameLabel.text = phoneNumber
+//        tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+    }
+    
     /*
     // MARK: - Navigation
 

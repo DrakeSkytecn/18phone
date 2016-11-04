@@ -21,12 +21,20 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.file` struct is generated, and contains static references to 2 files.
+  /// This `R.file` struct is generated, and contains static references to 3 files.
   struct file {
+    /// Resource file `Address.plist`.
+    static let addressPlist = Rswift.FileResource(bundle: R.hostingBundle, name: "Address", pathExtension: "plist")
     /// Resource file `ringtone.wav`.
     static let ringtoneWav = Rswift.FileResource(bundle: R.hostingBundle, name: "ringtone", pathExtension: "wav")
     /// Resource file `test`.
     static let test = Rswift.FileResource(bundle: R.hostingBundle, name: "test", pathExtension: "")
+    
+    /// `bundle.url(forResource: "Address", withExtension: "plist")`
+    static func addressPlist(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.addressPlist
+      return fileResource.bundle.url(forResource: fileResource)
+    }
     
     /// `bundle.url(forResource: "ringtone", withExtension: "wav")`
     static func ringtoneWav(_: Void = ()) -> Foundation.URL? {
@@ -632,27 +640,26 @@ struct _R: Rswift.Validatable {
       
       static func validate() throws {
         if UIKit.UIImage(named: "delete_all") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'delete_all' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "male") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'male' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "user") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'user' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "bill") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'bill' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "voice_icon") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'voice_icon' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "call_in_connected") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'call_in_connected' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "Launch") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'Launch' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "voice_call") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'voice_call' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "head_photo_default") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'head_photo_default' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "setting") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'setting' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "shop_selected") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'shop_selected' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "dial_tab_selected") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'dial_tab_selected' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "dial_tab") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'dial_tab' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "speaker") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'speaker' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "voice_call") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'voice_call' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "wallet") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'wallet' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "shop") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'shop' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "more") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'more' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "dial") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'dial' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "message") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'message' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "user") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'user' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "voice_icon") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'voice_icon' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "shop_selected") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'shop_selected' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "speaker") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'speaker' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "head_photo_default") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'head_photo_default' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "setting") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'setting' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "wallet") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'wallet' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "answer") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'answer' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "dial_plate") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'dial_plate' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "hang_up") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'hang_up' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "message") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'message' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "video_icon") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'video_icon' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "message_selected") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'message_selected' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "qrcode") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'qrcode' is used in storyboard 'Main', but couldn't be loaded.") }

@@ -74,6 +74,21 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate {
                 
                 }, origin: cell)
             break
+        case 4:
+            let areaPicker = SelectView(zgqFrame: view.frame, selectCityTtitle: "地区")
+            areaPicker?.showCityView({ province, city, district in
+                let provinceStr = province![province!.startIndex..<province!.index(province!.endIndex, offsetBy: -1)]
+                let cityStr = city![city!.startIndex..<city!.index(city!.endIndex, offsetBy: -1)]
+                switch provinceStr {
+                    case "北京", "上海", "天津", "重庆":
+                        self.areaLabel.text = provinceStr
+                        break
+                    default:
+                        self.areaLabel.text = provinceStr + cityStr
+                        break
+                }
+            })
+            break
         default:
             break
         }
@@ -90,7 +105,7 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate {
     }
 
     @IBAction func save(_ sender: UIBarButtonItem) {
-        navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
     
     @IBAction func editHeadphoto(_ sender: UITapGestureRecognizer) {

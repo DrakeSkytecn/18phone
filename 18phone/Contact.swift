@@ -26,14 +26,14 @@ class Area: Object {
 /**
  性别
  
+ - Unknown: 未编辑
  - Male:    男
  - Female:  女
- - Unknown: 未编辑
  */
 enum Sex: Int {
+    case unknown
     case male
     case female
-    case unknown
 }
 
 /// 联系人数据对象

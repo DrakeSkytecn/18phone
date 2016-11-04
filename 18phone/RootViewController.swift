@@ -12,6 +12,8 @@ import SwiftEventBus
 /// 拨号页面根控制器
 class RootViewController: UIViewController, GSAccountDelegate {
     
+    let topIcons = [R.image.delete_all(), R.image.backup()]
+    
     @IBOutlet weak var menuHeight: NSLayoutConstraint!
     
     @IBOutlet weak var menuY: NSLayoutConstraint!
@@ -42,6 +44,7 @@ class RootViewController: UIViewController, GSAccountDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.leftBarButtonItem?.image = topIcons[0]
         menuHeight.constant = Screen.height - 49
         menuY.constant = menuHeight.constant - 20
         App.userAgentAccount?.delegate = self
@@ -139,14 +142,14 @@ class RootViewController: UIViewController, GSAccountDelegate {
             bContainer.isHidden = true
             callLogViewController?.scrollsToTopEnable(true)
             contactViewController?.scrollsToTopEnable(false)
-            navigationItem.leftBarButtonItem?.image = R.image.delete_all()
+            navigationItem.leftBarButtonItem?.image = topIcons[0]
             break
         case 1:
             aContainer.isHidden = true
             bContainer.isHidden = false
             callLogViewController?.scrollsToTopEnable(false)
             contactViewController?.scrollsToTopEnable(true)
-            navigationItem.leftBarButtonItem?.image = R.image.backup()
+            navigationItem.leftBarButtonItem?.image = topIcons[1]
             break
         default:
             break
@@ -154,7 +157,8 @@ class RootViewController: UIViewController, GSAccountDelegate {
     }
     
     @IBAction func leftMenu(_ sender: UIBarButtonItem) {
-        if navigationItem.leftBarButtonItem?.image == R.image.delete_all() {
+        print(navigationItem.leftBarButtonItem?.image)
+        if navigationItem.leftBarButtonItem?.image == topIcons[0] {
             let callLogs = App.realm.objects(CallLog.self)
             if callLogs.count != 0 {
                 let alertController = UIAlertController(title: "清空通话记录", message: "此操作不可撤回，确认清除所有的通话记录吗？", preferredStyle: .actionSheet)

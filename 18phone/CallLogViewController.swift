@@ -44,7 +44,6 @@ class CallLogViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.log_a)
         let callLog = callLogs![indexPath.row]
-        
         if callLog.name.isEmpty {
             cell!.phoneName.text = callLog.phone
             cell!.name.text = nil
@@ -54,7 +53,6 @@ class CallLogViewController: UITableViewController {
             cell!.name.text = callLog.name
             cell!.phone.text = callLog.phone
         }
-        
         if callLog.headPhoto == nil {
             cell!.headPhoto.image = R.image.head_photo_default()!
         } else {
@@ -77,15 +75,16 @@ class CallLogViewController: UITableViewController {
         default:
             break
         }
-        
         if callLog.callType == CallType.voice.rawValue {
             cell!.callType.image = R.image.voice_call()
         } else {
             cell!.callType.image = R.image.video_call()
         }
-        
-        cell!.area.text = callLog.area
-        
+        if callLog.area.isEmpty {
+            cell!.area.text = "未知"
+        } else {
+            cell!.area.text = callLog.area
+        }
         cell!.callStartTime.text = DateUtil.dateToString(callLog.callStartTime)
         
         return cell!

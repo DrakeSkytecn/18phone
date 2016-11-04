@@ -64,6 +64,7 @@ class ResetPasswordViewController: UIViewController, UITableViewDataSource, UITa
             cell.titleLabel.text = titles[indexPath.row]
             cell.contentField.delegate = self
             cell.contentField.tag = indexPath.row
+            cell.contentField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
             cell.idCodeBtn.addTarget(self, action: #selector(codeBtnVerification(_:)), for: .touchUpInside)
             ViewUtil.setupNumberBar(cell.contentField)
             
@@ -72,7 +73,19 @@ class ResetPasswordViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func codeBtnVerification(_ sender: VerifyCodeButton) {
-        sender.timeFailBeginFrom(60)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "好的", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        if phoneNumber.isEmpty {
+            alertController.message = "请输入手机号"
+            present(alertController, animated: true, completion: nil)
+        } else if PhoneUtil.isMobileNumber(phoneNumber) {
+            sender.timeFailBeginFrom(60)
+            APIUtil.getVerifyCodeInfo(phoneNumber, callBack: nil)
+        } else {
+            alertController.message = "手机号格式不正确"
+            present(alertController, animated: true, completion: nil)
+        }
     }
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
@@ -113,7 +126,14 @@ class ResetPasswordViewController: UIViewController, UITableViewDataSource, UITa
             present(alertController, animated: true, completion: nil)
             return
         }
-        present(R.storyboard.main.kTabBarController()!, animated: true, completion: nil)
+        APIUtil.resetPassword(phoneNumber, password: password, verificationCode: verifyCode, callBack: { resetPassword in
+            if resetPassword.codeStatus == 1 {
+                _ = self.navigationController?.popViewController(animated: true)
+            } else {
+                alertController.message = resetPassword.codeInfo
+                self.present(alertController, animated: true, completion: nil)
+            }
+        })
     }
     
     func textFieldDidChange(_ textField: UITextField) {

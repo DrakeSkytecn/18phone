@@ -86,7 +86,7 @@
     pjsua_media_config mediaConfig;
     
     pjsua_config_default(&uaConfig);
-    pj_str_t stun = pj_str("stun.xten.com");
+    pj_str_t stun = pj_str("stun.counterpath.com");
     uaConfig.stun_srv_cnt = 1;
     uaConfig.stun_srv[0] = stun;
     

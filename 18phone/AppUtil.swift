@@ -24,16 +24,18 @@ struct URL {
     
     /// 比一比SIP服务器地址
     static let BEYEBE_SIP_SERVER = "211.149.172.109:5060"
-    //    static let BEYEBE_SIP_SERVER = "192.168.10.204:5060"
+//        static let BEYEBE_SIP_SERVER = "192.168.10.165:5060"
     //    static let BEYEBE_SIP_SERVER = "192.168.10.239:5060"
     
     /// 比一比SIP服务器域名
     static let BEYEBE_SIP_DOMAIN = "18phone.beyebe"
-    //    static let BEYEBE_SIP_DOMAIN = "myvoipapp.com"
+//        static let BEYEBE_SIP_DOMAIN = "myvoipapp.com"
     
     /// 18phone接口地址
     static let BEYEBE_18PHONE_API_BASE = "http://192.168.10.249/api/Phone/"
 //    static let BEYEBE_18PHONE_API_BASE = "http://18phone.beyebe.cn/api/Phone/"
+    
+    static let SIP_ACCOUNT_URL = "http://192.168.10.186:5060/api/accounts/18phone.beyebe/userz/csv"
 }
 
 /**
@@ -345,6 +347,121 @@ struct APIUtil {
                         callBack!(userInfo)
                     }
                 }
+            }
+        } catch {
+            print("got an error creating the request: \(error)")
+        }
+    }
+    
+    static func resetPassword(_ phoneNumber: String, password: String, verificationCode: String, callBack: ((ResetPassword) -> ())?) {
+        do {
+            let opt = try HTTP.GET(URL.BEYEBE_18PHONE_API_BASE + "modifiPassWordByPhone", parameters: ["mobilePhone":phoneNumber, "newPassW":password, "verificationCode":verificationCode])
+            opt.start { response in
+                if let error = response.error {
+                    print("error: \(error.localizedDescription)")
+                    print("error: \(error.code)")
+                    
+                    return
+                }
+                print(response.text!)
+                let resetPassword = ResetPassword(JSONDecoder(response.data))
+                if callBack != nil {
+                    Async.main {
+                        callBack!(resetPassword)
+                    }
+                }
+            }
+        } catch {
+            print("got an error creating the request: \(error)")
+        }
+    }
+    
+    static func changePassword(_ userID: String, oldPassword: String, newPassword: String, callBack: ((ResetPassword) -> ())?) {
+        do {
+            let opt = try HTTP.GET(URL.BEYEBE_18PHONE_API_BASE + "modifiPassWordByUserID", parameters: ["userID":userID, "oldPassW":oldPassword, "newPassW":newPassword])
+            opt.start { response in
+                if let error = response.error {
+                    print("error: \(error.localizedDescription)")
+                    print("error: \(error.code)")
+                    
+                    return
+                }
+                print(response.text!)
+                let resetPassword = ResetPassword(JSONDecoder(response.data))
+                if callBack != nil {
+                    Async.main {
+                        callBack!(resetPassword)
+                    }
+                }
+            }
+        } catch {
+            print("got an error creating the request: \(error)")
+        }
+    }
+    
+    static func changePhoneNumber(_ userID: String, phoneNumber: String, password: String, verificationCode: String, callBack: ((ResetPassword) -> ())?) {
+        do {
+            let opt = try HTTP.GET(URL.BEYEBE_18PHONE_API_BASE + "modifiedMobile", parameters: ["userID":userID, "newMobile":phoneNumber, "password":password, "verificationCode":verificationCode])
+            opt.start { response in
+                if let error = response.error {
+                    print("error: \(error.localizedDescription)")
+                    print("error: \(error.code)")
+                    
+                    return
+                }
+                print(response.text!)
+                let resetPassword = ResetPassword(JSONDecoder(response.data))
+                if callBack != nil {
+                    Async.main {
+                        callBack!(resetPassword)
+                    }
+                }
+            }
+        } catch {
+            print("got an error creating the request: \(error)")
+        }
+    }
+    
+    static func editUserInfo(_ userInfo: [String: String], callBack: ((ResetPassword) -> ())?) {
+        do {
+            let opt = try HTTP.GET(URL.BEYEBE_18PHONE_API_BASE + "updatePersonSelfInfo", parameters: ["UserID":userInfo[""], "Sex":userInfo[""], "Name":userInfo[""], "Age":userInfo[""], "ProvinceCity":userInfo[""], "AddressDetail":userInfo[""], "PersonalSignature":userInfo[""]])
+            opt.start { response in
+                if let error = response.error {
+                    print("error: \(error.localizedDescription)")
+                    print("error: \(error.code)")
+                    
+                    return
+                }
+                print(response.text!)
+                let resetPassword = ResetPassword(JSONDecoder(response.data))
+                if callBack != nil {
+                    Async.main {
+                        callBack!(resetPassword)
+                    }
+                }
+            }
+        } catch {
+            print("got an error creating the request: \(error)")
+        }
+    }
+    
+    static func addSipAccount() {
+        do {
+            let opt = try HTTP.POST(URL.SIP_ACCOUNT_URL, parameters: ["time":"1478165098438", "user":"administrator", "sig":"aa332a6101d19206f1fc1be0ff971e14", "name":"100", "displayName":"", "email":"", "password":"123"])
+            opt.start { response in
+                if let error = response.error {
+                    print("error: \(error.localizedDescription)")
+                    print("error: \(error.code)")
+                    
+                    return
+                }
+                print(response.text!)
+//                let resetPassword = ResetPassword(JSONDecoder(response.data))
+//                if callBack != nil {
+//                    Async.main {
+//                        callBack!(resetPassword)
+//                    }
+//                }
             }
         } catch {
             print("got an error creating the request: \(error)")

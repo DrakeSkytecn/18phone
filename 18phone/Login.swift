@@ -21,3 +21,14 @@ struct LoginInfo: JSONJoy {
         codeInfo = decoder["codeInfo"].string
     }
 }
+
+struct ResetPassword: JSONJoy {
+
+    let codeStatus: Int?
+    let codeInfo: String?
+    
+    init(_ decoder: JSONDecoder) {
+        codeStatus = decoder["codeStatus"].integer
+        codeInfo = decoder["codeInfo"].string
+    }
+}

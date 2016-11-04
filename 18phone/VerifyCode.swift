@@ -16,6 +16,6 @@ struct VerifyCodeInfo: JSONJoy {
     
     init(_ decoder: JSONDecoder) {
         codeStatus = decoder["codeStatus"].integer
-        codeinfo = decoder["codeinfo"].string
+        codeinfo = decoder["codeInfo"].string
     }
 }

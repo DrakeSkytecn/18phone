@@ -77,6 +77,8 @@
 		E1626D571D93AFC600C3422C /* test in Resources */ = {isa = PBXBuildFile; fileRef = E1626D561D93AFC600C3422C /* test */; };
 		E1626D591D93BA7100C3422C /* DetailLogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1626D581D93BA7100C3422C /* DetailLogCell.swift */; };
 		E16453EA1D6AA3150036B53F /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16453E91D6AA3150036B53F /* Contact.swift */; };
+		E1711F831DCC58C200227329 /* Address.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1711F821DCC58C200227329 /* Address.plist */; };
+		E1711F861DCC59BD00227329 /* SelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1711F851DCC59BD00227329 /* SelectView.m */; };
 		E1721F301D90E27500A67C5B /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1721F2F1D90E27500A67C5B /* QRCodeViewController.swift */; };
 		E1721F321D910D4D00A67C5B /* ContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1721F311D910D4D00A67C5B /* ContactDetailViewController.swift */; };
 		E17C4FFE1DA9D90300F986A4 /* NumberBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = E17C4FFD1DA9D90300F986A4 /* NumberBar.xib */; };
@@ -231,6 +233,9 @@
 		E1626D561D93AFC600C3422C /* test */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test; sourceTree = "<group>"; };
 		E1626D581D93BA7100C3422C /* DetailLogCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailLogCell.swift; sourceTree = "<group>"; };
 		E16453E91D6AA3150036B53F /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		E1711F821DCC58C200227329 /* Address.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Address.plist; sourceTree = "<group>"; };
+		E1711F841DCC59BD00227329 /* SelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectView.h; sourceTree = "<group>"; };
+		E1711F851DCC59BD00227329 /* SelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectView.m; sourceTree = "<group>"; };
 		E1721F2F1D90E27500A67C5B /* QRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
 		E1721F311D910D4D00A67C5B /* ContactDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactDetailViewController.swift; sourceTree = "<group>"; };
 		E17C4FFD1DA9D90300F986A4 /* NumberBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NumberBar.xib; sourceTree = "<group>"; };
@@ -608,6 +613,8 @@
 		E13BACBF1D518E6600414ACE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E1711F841DCC59BD00227329 /* SelectView.h */,
+				E1711F851DCC59BD00227329 /* SelectView.m */,
 				E123C3FB1DADDA3E00E6D442 /* CAPSPageMenu.swift */,
 				E15C4C3B1D96689300688086 /* ZFRippleButton.swift */,
 				E13BACE01D5196EE00414ACE /* DialNumberCell.swift */,
@@ -643,6 +650,7 @@
 		E15C42101D7D091100124257 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E1711F821DCC58C200227329 /* Address.plist */,
 				E15C42111D7D094000124257 /* ringtone.wav */,
 			);
 			name = Resource;
@@ -724,6 +732,7 @@
 				E13BACE51D51974900414ACE /* Assets.xcassets in Resources */,
 				E13BACDF1D51948C00414ACE /* Main.storyboard in Resources */,
 				E17C4FFE1DA9D90300F986A4 /* NumberBar.xib in Resources */,
+				E1711F831DCC58C200227329 /* Address.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -841,6 +850,7 @@
 				E11E92941D5F2C9F004D634A /* DialViewController.swift in Sources */,
 				E15AF2061DB5C0AA00D74E68 /* EditContactCell.swift in Sources */,
 				842B024D1DC736E100CFB00A /* User.swift in Sources */,
+				E1711F861DCC59BD00227329 /* SelectView.m in Sources */,
 				E13BACC21D518F5200414ACE /* AppUtil.swift in Sources */,
 				E1C048681D867F650009DF6B /* GSCall.m in Sources */,
 				E114D1C61D4F1F15006AB978 /* ContactViewController.swift in Sources */,
