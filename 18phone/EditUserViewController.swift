@@ -75,7 +75,7 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate {
                 }, origin: cell)
             break
         case 4:
-            let areaPicker = SelectView(zgqFrame: view.frame, selectCityTtitle: "地区")
+            let areaPicker = SelectView(zgqFrame: Screen.bounds, selectCityTtitle: "地区")
             areaPicker?.showCityView({ province, city, district in
                 let provinceStr = province![province!.startIndex..<province!.index(province!.endIndex, offsetBy: -1)]
                 let cityStr = city![city!.startIndex..<city!.index(city!.endIndex, offsetBy: -1)]

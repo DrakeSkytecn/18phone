@@ -143,7 +143,6 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
             
             try! store.enumerateContacts(with: fetchRequest) { (contact, stop) -> Void in
                 for number in contact.phoneNumbers {
-                    
                     let phoneNumber = PhoneUtil.formatPhoneNumber((number.value).stringValue)
                     if phoneNumber == temp {
                         print("phoneNumber:\(phoneNumber)")
@@ -165,7 +164,17 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 if tempArea!.isEmpty || tempArea == "未知" {
                     PhoneUtil.getPhoneAreaInfo(temp){ phoneAreaInfo in
                         if phoneAreaInfo.errNum == 0 {
-                            self.tempArea = phoneAreaInfo.retData!.province! + phoneAreaInfo.retData!.city!
+                            let province = phoneAreaInfo.retData!.province!
+                            let city = phoneAreaInfo.retData!.city!
+                            let fullArea = province + city
+                            switch province {
+                            case "北京", "上海", "天津", "重庆":
+                                self.tempArea = province
+                                break
+                            default:
+                                self.tempArea = fullArea
+                                break
+                            }
                         } else {
                             self.tempArea = "未知"
                         }
@@ -188,7 +197,17 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
             } else {
                 PhoneUtil.getPhoneAreaInfo(temp){ phoneAreaInfo in
                     if phoneAreaInfo.errNum == 0 {
-                        self.tempArea = phoneAreaInfo.retData!.province! + phoneAreaInfo.retData!.city!
+                        let province = phoneAreaInfo.retData!.province!
+                        let city = phoneAreaInfo.retData!.city!
+                        let fullArea = province + city
+                        switch province {
+                        case "北京", "上海", "天津", "重庆":
+                            self.tempArea = province
+                            break
+                        default:
+                            self.tempArea = fullArea
+                            break
+                        }
                     } else {
                         self.tempArea = "未知"
                     }

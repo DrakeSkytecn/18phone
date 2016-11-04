@@ -39,7 +39,7 @@
         _DisAry = [NSMutableArray array];
         self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
         [UIView animateWithDuration:0.3 animations:^{
-            //self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+            self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
         }];
         _ALLARY = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Address" ofType:@"plist"]];
         for (NSDictionary *dic in _ALLARY) {

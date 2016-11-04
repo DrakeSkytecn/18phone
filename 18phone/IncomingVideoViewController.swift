@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Async
 
 class IncomingVideoViewController: UIViewController {
     
@@ -23,10 +24,19 @@ class IncomingVideoViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        inCall?.startPreviewWindow()
-        let previewWindow = inCall!.createPreviewWindow(CGRect(x: 0, y: 0, width: previewCon.frame.width, height: previewCon.frame.height))
-        previewCon.addSubview(previewWindow!)
-        inCall?.orientation()
+        
+        Async.background {
+            self.inCall?.startPreviewWindow()
+            }.main { _ in
+                let previewWindow = self.inCall!.createPreviewWindow(CGRect(x: 0, y: 0, width: self.previewCon.frame.width, height: self.previewCon.frame.height))
+                self.previewCon.addSubview(previewWindow!)
+                self.inCall?.orientation()
+        }
+        
+//        inCall?.startPreviewWindow()
+//        let previewWindow = inCall!.createPreviewWindow(CGRect(x: 0, y: 0, width: previewCon.frame.width, height: previewCon.frame.height))
+//        previewCon.addSubview(previewWindow!)
+//        inCall?.orientation()
     }
     
     override func didReceiveMemoryWarning() {

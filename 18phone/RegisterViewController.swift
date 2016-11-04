@@ -126,7 +126,6 @@ class RegisterViewController: UIViewController, UITableViewDataSource, UITableVi
             present(alertController, animated: true, completion: nil)
             return
         }
-        
         APIUtil.register(phoneNumber, password: password, verificationCode: verifyCode, deviceId: "deviceId", callBack: { registerInfo in
             if registerInfo.codeStatus == 1 {
                 let userDefaults = UserDefaults.standard

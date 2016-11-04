@@ -52,9 +52,19 @@ class DetailMenuViewController: UIViewController, UITableViewDataSource, UITable
             PhoneUtil.getPhoneAreaInfo(phoneNumber) { phoneAreaInfo in
                 let area = App.realm.objects(Area.self).filter("key == '\(phoneNumber)'").first!
                 if phoneAreaInfo.errNum == 0 {
-                    let fullArea = phoneAreaInfo.retData!.province! + phoneAreaInfo.retData!.city!
-                    cell?.detailTextLabel?.text = fullArea
-                    self.phoneAreas![indexPath.row] = fullArea
+                    let province = phoneAreaInfo.retData!.province!
+                    let city = phoneAreaInfo.retData!.city!
+                    let fullArea = province + city
+                    switch province {
+                    case "北京", "上海", "天津", "重庆":
+                        cell?.detailTextLabel?.text = province
+                        self.phoneAreas![indexPath.row] = province
+                        break
+                    default:
+                        cell?.detailTextLabel?.text = fullArea
+                        self.phoneAreas![indexPath.row] = fullArea
+                        break
+                    }
                     try! App.realm.write {
                         area.name = fullArea
                     }

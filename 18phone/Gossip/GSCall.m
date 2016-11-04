@@ -277,17 +277,20 @@
     pj_thread_t *thread = 0;
     if(!pj_thread_is_registered())
     {
+        NSLog(@"pj_thread_is_registered");
         pj_thread_register(NULL,desc,&thread);
     }
     pjsua_vid_preview_param preview_param;
     pjsua_vid_preview_param_default(&preview_param);
     preview_param.wnd_flags = PJMEDIA_VID_DEV_WND_BORDER |
     PJMEDIA_VID_DEV_WND_RESIZABLE;
-//    preview_param.show = PJ_TRUE;
     pjsua_vid_preview_start(PJMEDIA_VID_DEFAULT_CAPTURE_DEV, &preview_param);
+//    preview_param.show = PJ_TRUE;
+    
 }
 
 - (UIView *)createPreviewWindow:(CGRect)frame {
+    
     pjsua_vid_win_id wid = 0;
     wid = pjsua_vid_preview_get_win(PJMEDIA_VID_DEFAULT_CAPTURE_DEV);
     pjmedia_coord rect;
@@ -298,8 +301,11 @@
     rect_size.w = frame.size.width;
     pjsua_vid_win_set_size(wid,&rect_size);
     pjsua_vid_win_set_pos(wid,&rect);
+    
+    
     pjsua_vid_win_info win_info;
     pjsua_vid_win_get_info(wid, &win_info);
+    
     UIView *view = (__bridge UIView *)win_info.hwnd.info.ios.window;
     view.frame = frame;
     win_info.is_native = PJ_FALSE;

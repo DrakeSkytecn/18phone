@@ -20,7 +20,7 @@ import Async
 struct URL {
     
     /// 百度提供的查询号码归属地api
-    static let phoneAreaUrl = "http://apis.baidu.com/apistore/mobilenumber/mobilenumber"
+    static let phoneAreaUrl = "https://apis.baidu.com/apistore/mobilenumber/mobilenumber"
     
     /// 比一比SIP服务器地址
     static let BEYEBE_SIP_SERVER = "211.149.172.109:5060"
@@ -94,6 +94,7 @@ struct App {
 struct Screen {
     static let width = UIScreen.main.bounds.width
     static let height = UIScreen.main.bounds.height
+    static let bounds = UIScreen.main.bounds
 }
 
 /**

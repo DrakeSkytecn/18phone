@@ -74,8 +74,17 @@ class IncomingCallViewController: UIViewController {
             } else {
                 PhoneUtil.getPhoneAreaInfo(phoneNumber!) { phoneAreaInfo in
                     if phoneAreaInfo.errNum == 0 {
-                        let tempArea = (phoneAreaInfo.retData?.province!)! + (phoneAreaInfo.retData?.city!)!
-                        self.areaLabel.text = tempArea
+                        let province = phoneAreaInfo.retData!.province!
+                        let city = phoneAreaInfo.retData!.city!
+                        let fullArea = province + city
+                        switch province {
+                        case "北京", "上海", "天津", "重庆":
+                            self.areaLabel.text = province
+                            break
+                        default:
+                            self.areaLabel.text = fullArea
+                            break
+                        }
                     } else {
                         self.areaLabel.text = "未知"
                     }
