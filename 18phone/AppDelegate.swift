@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        App.autoLogin("18603001016", password: "123")
 //        App.autoLogin("104", password: "104")
 //        App.autoLogin("102", password: "102")
-        
+        APIUtil.uploadImageFile()
         return true
     }
 

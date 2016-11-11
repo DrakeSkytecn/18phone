@@ -19,19 +19,20 @@ class IncomingVideoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        inCall?.incomingCallInfo()
+        inCall?.videoCon = previewCon
+//        inCall?.incomingCallInfo()
         inCall?.addObserver(self, forKeyPath: "status", options: .initial, context: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
-        Async.background {
-            self.inCall?.startPreviewWindow()
-            }.main { _ in
-                let previewWindow = self.inCall!.createPreviewWindow(CGRect(x: 0, y: 0, width: self.previewCon.frame.width, height: self.previewCon.frame.height))
-                self.previewCon.addSubview(previewWindow!)
-                self.inCall?.orientation()
-        }
+//        Async.background {
+//            self.inCall?.startPreviewWindow()
+//            }.main { _ in
+//                let previewWindow = self.inCall!.createPreviewWindow(CGRect(x: 0, y: 0, width: self.previewCon.frame.width, height: self.previewCon.frame.height))
+//                self.previewCon.addSubview(previewWindow!)
+//                self.inCall?.orientation()
+//        }
         
 //        inCall?.startPreviewWindow()
 //        let previewWindow = inCall!.createPreviewWindow(CGRect(x: 0, y: 0, width: previewCon.frame.width, height: previewCon.frame.height))

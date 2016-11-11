@@ -130,7 +130,7 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func checkNumberArea(_ temp: String) {
-        if PhoneUtil.isMobileNumber(temp) || PhoneUtil.isTelephoneNumber(temp) || temp == "10086" {
+        if PhoneUtil.isMobileNumber(temp) || PhoneUtil.isTelephoneNumber(temp)  {
             //先查是否为通讯录联系人
             let store = CNContactStore()
             let keysToFetch = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
@@ -280,7 +280,7 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
      */
     @IBAction func call(_ sender: UIButton) {
         if !numberText.text!.isEmpty {
-            if PhoneUtil.isMobileNumber(numberText.text) || PhoneUtil.isTelephoneNumber(numberText.text) {
+            if PhoneUtil.isMobileNumber(numberText.text) {
                 if isRegister {
                     let outgoingCallViewController = R.storyboard.main.outgoingCallViewController()
                     outgoingCallViewController?.contactId = appContactInfo?.identifier
@@ -289,10 +289,13 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     outgoingCallViewController?.phoneArea = tempArea
                     present(outgoingCallViewController!, animated: true, completion: nil)
                 } else {
-                    PhoneUtil.callSystemPhone(numberText.text!)
-                    addCallLog(numberText.text!)
+                    if let saveUsername = UserDefaults.standard.string(forKey: "username") {
+                        PhoneUtil.dialBackCall(saveUsername, toNumber: numberText.text!)
+                    }
+//                    PhoneUtil.callSystemPhone(numberText.text!)
+//                    addCallLog(numberText.text!)
                 }
-            } else {
+            } else if PhoneUtil.isTelephoneNumber(numberText.text) {
                 PhoneUtil.callSystemPhone(numberText.text!)
                 addCallLog(numberText.text!)
             }

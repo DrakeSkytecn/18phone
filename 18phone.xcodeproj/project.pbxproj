@@ -486,6 +486,7 @@
 		E10953E71D7FBC00001E7060 /* Gossip */ = {
 			isa = PBXGroup;
 			children = (
+				E12EBA821D532428007B5CBD /* piQ */,
 				E1C048471D867F650009DF6B /* Gossip.h */,
 				E1C048481D867F650009DF6B /* GSAccount.h */,
 				E1C048491D867F650009DF6B /* GSAccount.m */,
@@ -560,13 +561,13 @@
 				E12EBA831D532447007B5CBD /* piQ.swift */,
 			);
 			name = piQ;
+			path = ../../18phone;
 			sourceTree = "<group>";
 		};
 		E13BACBD1D518E5F00414ACE /* Util */ = {
 			isa = PBXGroup;
 			children = (
 				E10953E71D7FBC00001E7060 /* Gossip */,
-				E12EBA821D532428007B5CBD /* piQ */,
 				E13BACC11D518F5200414ACE /* AppUtil.swift */,
 			);
 			name = Util;

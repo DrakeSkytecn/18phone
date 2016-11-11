@@ -9,8 +9,9 @@
 import UIKit
 import ActionSheetPicker_3_0
 import Async
+import MobileCoreServices
 
-class EditUserViewController: UITableViewController, UITextFieldDelegate {
+class EditUserViewController: UITableViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     var lastScrollOffset: CGFloat = 0.0
     
@@ -112,11 +113,47 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate {
         headphotoSheet()
     }
     
+    func isCameraAvailable() -> Bool {
+        return UIImagePickerController.isSourceTypeAvailable(.camera)
+    }
+    
+    func isFrontCameraAvailable() -> Bool {
+        return UIImagePickerController.isCameraDeviceAvailable(.front)
+    }
+    
+    func cameraSupportsMedia(_ paramMediaType: String, sourceType: UIImagePickerControllerSourceType) -> Bool {
+        var result = false
+        if paramMediaType.isEmpty {
+            return false
+        }
+        let availableMediaTypes = UIImagePickerController.availableMediaTypes(for: sourceType)
+        for (_, mediaType) in availableMediaTypes!.enumerated() {
+            if mediaType == paramMediaType {
+                result = true
+                break
+            }
+        }
+        
+        return result
+    }
+    
+    func doesCameraSupportTakingPhotos() -> Bool {
+        return cameraSupportsMedia(kUTTypeImage as String, sourceType: .camera)
+    }
+    
     func headphotoSheet() {
-        print("headphotoSheet")
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: "拍照", style: .default) { action in
-            
+            if self.isCameraAvailable() && self.doesCameraSupportTakingPhotos() {
+                let controller = UIImagePickerController()
+                controller.sourceType = .camera
+                if self.isFrontCameraAvailable() {
+                    controller.cameraDevice = .front
+                }
+                controller.mediaTypes = [kUTTypeImage as String]
+                controller.delegate = self
+                self.present(controller, animated: true, completion: nil)
+            }
             })
         alertController.addAction(UIAlertAction(title: "相册", style: .default) { action in
             

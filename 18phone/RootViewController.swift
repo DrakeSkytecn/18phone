@@ -50,9 +50,13 @@ class RootViewController: UIViewController, GSAccountDelegate {
         App.userAgentAccount?.delegate = self
         App.userAgentAccount?.addObserver(self, forKeyPath: "status", options: .initial, context: nil)
         App.userAgentAccount?.connect()
-        APIUtil.getDayLeft(UserDefaults.standard.string(forKey: "userID")!, callBack: { dayLeft in
-            self.dayLeftItem.title = String(describing: dayLeft.day!)
-        })
+        if let userID = UserDefaults.standard.string(forKey: "userID") {
+            APIUtil.getDayLeft(userID, callBack: { dayLeft in
+                if let day = dayLeft.day {
+                    self.dayLeftItem.title = String(describing: day)
+                }
+            })
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

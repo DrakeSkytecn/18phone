@@ -4,3 +4,4 @@
 
 #import "Gossip.h"
 #import "SelectView.h"
+#import <CommonCrypto/CommonDigest.h>

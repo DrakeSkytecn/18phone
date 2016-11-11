@@ -42,6 +42,18 @@ enum CallType: Int {
     case video
 }
 
+enum DialLine: Int {
+    
+    /// 互联网语音
+    case p2p
+    
+    /// 直拨通话
+    case direct
+    
+    /// 回拨通话
+    case dialBack
+}
+
 /// 通话记录数据对象
 class CallLog: Object {
     
@@ -62,6 +74,9 @@ class CallLog: Object {
     
     /// 通话方式
     dynamic var callType = CallType.voice.rawValue
+    
+    /// 拨号方式
+    dynamic var dialType = DialLine.p2p.rawValue
     
     /// 号码归属地
     dynamic var area = ""

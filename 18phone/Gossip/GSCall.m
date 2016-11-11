@@ -266,8 +266,8 @@
     pjsua_vid_win_get_info(wid, &win_info);
     win_info.is_native = PJ_FALSE;
     UIView *view = (__bridge UIView *)win_info.hwnd.info.ios.window;
-    view.frame = frame;
-    pjsua_vid_win_set_show(wid,PJ_TRUE);
+//    view.frame = frame;
+    pjsua_vid_win_set_show(wid, PJ_TRUE);
     
     return view;
 }
@@ -285,12 +285,10 @@
     preview_param.wnd_flags = PJMEDIA_VID_DEV_WND_BORDER |
     PJMEDIA_VID_DEV_WND_RESIZABLE;
     pjsua_vid_preview_start(PJMEDIA_VID_DEFAULT_CAPTURE_DEV, &preview_param);
-//    preview_param.show = PJ_TRUE;
     
 }
 
 - (UIView *)createPreviewWindow:(CGRect)frame {
-    
     pjsua_vid_win_id wid = 0;
     wid = pjsua_vid_preview_get_win(PJMEDIA_VID_DEFAULT_CAPTURE_DEV);
     pjmedia_coord rect;
@@ -301,11 +299,8 @@
     rect_size.w = frame.size.width;
     pjsua_vid_win_set_size(wid,&rect_size);
     pjsua_vid_win_set_pos(wid,&rect);
-    
-    
     pjsua_vid_win_info win_info;
     pjsua_vid_win_get_info(wid, &win_info);
-    
     UIView *view = (__bridge UIView *)win_info.hwnd.info.ios.window;
     view.frame = frame;
     win_info.is_native = PJ_FALSE;
@@ -387,12 +382,36 @@
             
         case PJSIP_INV_STATE_EARLY:
         case PJSIP_INV_STATE_CONNECTING: {
-            
             callStatus = GSCallStatusConnecting;
         } break;
             
         case PJSIP_INV_STATE_CONFIRMED: {
             [self stopRingback];
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                [self startPreviewWindow];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    pjsua_vid_win_id wid = 0;
+                    wid = pjsua_vid_preview_get_win(PJMEDIA_VID_DEFAULT_CAPTURE_DEV);
+                    pjmedia_coord rect;
+                    rect.x = 0;
+                    rect.y = 0;
+                    pjmedia_rect_size rect_size;
+                    rect_size.h = _videoCon.frame.size.height;
+                    rect_size.w = _videoCon.frame.size.width;
+                    pjsua_vid_win_set_size(wid,&rect_size);
+                    pjsua_vid_win_set_pos(wid,&rect);
+                    pjsua_vid_win_info win_info;
+                    pjsua_vid_win_get_info(wid, &win_info);
+                    UIView *view = (__bridge UIView *)win_info.hwnd.info.ios.window;
+//                    view.frame = CGRectMake(0, 0, 400, 400);
+                    view.backgroundColor = [UIColor blueColor];
+//                    view.frame = _videoCon.frame;
+                    [_videoCon addSubview:view];
+                    win_info.is_native = PJ_FALSE;
+                    //显示窗口
+                    win_info.show = YES;
+                });
+            });
             callStatus = GSCallStatusConnected;
         } break;
             
@@ -420,12 +439,10 @@
         NSLog(@"callInfo.media[mi].dir:%d", callInfo.media[mi].dir);
     }
     
-    
     if (callInfo.media_status == PJSUA_CALL_MEDIA_ACTIVE) {
         pjsua_conf_port_id callPort = pjsua_call_get_conf_port(_callId);
         GSReturnIfFails(pjsua_conf_connect(callPort, 0));
         GSReturnIfFails(pjsua_conf_connect(0, callPort));
-        
         [self adjustVolume:_volume mic:_micVolume];
     }
 }

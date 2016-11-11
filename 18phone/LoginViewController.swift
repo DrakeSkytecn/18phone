@@ -45,13 +45,17 @@ class LoginViewController: UIViewController, UITableViewDataSource, UITableViewD
         cell.contentField.delegate = self
         cell.contentField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         if (indexPath as NSIndexPath).row == 0 {
-            cell.contentField.text = "18823754172"
-            phoneNumber = "18823754172"
+            if let saveUsername = UserDefaults.standard.string(forKey: "username") {
+                cell.contentField.text = saveUsername
+                phoneNumber = saveUsername
+            }
             cell.contentField.keyboardType = .numberPad
             cell.contentField.becomeFirstResponder()
         } else {
-            cell.contentField.text = "123"
-            password = "123"
+            if let savePassword = UserDefaults.standard.string(forKey: "password") {
+                cell.contentField.text = savePassword
+                password = savePassword
+            }
             cell.contentField.keyboardType = .default
         }
 

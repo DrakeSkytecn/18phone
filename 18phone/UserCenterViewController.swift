@@ -57,29 +57,32 @@ class UserCenterViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.user_detail_cell)
-            APIUtil.getUserInfo(UserDefaults.standard.string(forKey: "userID")!, callBack: { userInfo in
-                self.userData = userInfo.userData
-                if self.userData!.headImageUrl != nil {
-                    cell?.headPhoto.piQ_imageFromUrl(self.userData!.headImageUrl!, placeholderImage: R.image.head_photo_default()!)
-                } else {
-                    cell?.headPhoto.image = R.image.head_photo_default()
-                }
-                if self.userData?.name == nil {
-                    cell?.nameLabel.text = self.userData?.mobile
-                } else {
-                    cell?.nameLabel.text = self.userData?.name
-                }
-                if self.userData?.sex == Sex.male.rawValue {
-                    cell?.sexImage.image = R.image.male()
-                } else if self.userData?.sex == Sex.female.rawValue {
-                    cell?.sexImage.image = R.image.female()
-                }
-                if self.userData!.age != nil {
-                    cell?.ageLabel.text = String(describing: self.userData!.age!) + "岁"
-                }
-                cell?.areaLabel.text = self.userData!.provinceCity
-                cell?.signLabel.text = self.userData!.personalSignature
-            })
+            if let userID = UserDefaults.standard.string(forKey: "userID") {
+                APIUtil.getUserInfo(userID, callBack: { userInfo in
+                    self.userData = userInfo.userData
+                    if self.userData!.headImageUrl != nil {
+                        cell?.headPhoto.piQ_imageFromUrl(self.userData!.headImageUrl!, placeholderImage: R.image.head_photo_default()!)
+                    } else {
+                        cell?.headPhoto.image = R.image.head_photo_default()
+                    }
+                    if self.userData?.name == nil {
+                        cell?.nameLabel.text = self.userData?.mobile
+                    } else {
+                        cell?.nameLabel.text = self.userData?.name
+                    }
+                    if self.userData?.sex == Sex.male.rawValue {
+                        cell?.sexImage.image = R.image.male()
+                    } else if self.userData?.sex == Sex.female.rawValue {
+                        cell?.sexImage.image = R.image.female()
+                    }
+                    if self.userData!.age != nil {
+                        cell?.ageLabel.text = String(describing: self.userData!.age!) + "岁"
+                    }
+                    cell?.areaLabel.text = self.userData!.provinceCity
+                    cell?.signLabel.text = self.userData!.personalSignature
+                })
+            }
+            
             return cell!
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.setting_cell)

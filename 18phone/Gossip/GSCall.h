@@ -41,6 +41,8 @@ typedef enum {
 @property (nonatomic, readonly) float volume; ///< Call volume. Set to 0 to mute.
 @property (nonatomic, readonly) float micVolume; ///< Call microphone volume. i.e. the volume to transmit sound from the mic. Set to 0 to mute.
 
+@property (nonatomic) UIView *videoCon;
+
 /// Creats a new outgoing call to the specified remoteUri.
 /** Use begin() to begin calling. */
 + (GSCall *)outgoingCallToUri:(NSString *)remoteUri fromAccount:(GSAccount *)account;

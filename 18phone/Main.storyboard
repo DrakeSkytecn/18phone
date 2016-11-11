@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2548a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="PW8-L3-Heh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2548a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0yS-Oz-RnD">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -2088,7 +2088,7 @@
                                         <rect key="frame" x="90" y="0.0" width="70" height="70"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="71" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wOv-ox-1pX" customClass="ZFRippleButton" customModule="_8phone" customModuleProvider="target">
@@ -2809,6 +2809,15 @@
                                     <constraint firstAttribute="height" constant="120" id="qCe-6z-Vwt"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2KL-Aw-ZbK">
+                                <rect key="frame" x="171.5" y="318" width="31" height="30"/>
+                                <state key="normal" title="变大">
+                                    <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="big:" destination="o0o-G6-5fU" eventType="touchUpInside" id="rPZ-BA-59R"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -2819,6 +2828,8 @@
                             <constraint firstItem="avu-qG-2o1" firstAttribute="top" secondItem="7QH-Ld-d2i" secondAttribute="bottom" constant="16" id="9La-RV-Xgb"/>
                             <constraint firstItem="fXj-sb-ohp" firstAttribute="centerX" secondItem="taD-sm-7Jk" secondAttribute="centerX" id="Dlg-2R-166"/>
                             <constraint firstItem="UTP-K7-MNq" firstAttribute="width" secondItem="taD-sm-7Jk" secondAttribute="width" id="GbJ-Ef-uj9"/>
+                            <constraint firstItem="2KL-Aw-ZbK" firstAttribute="centerY" secondItem="taD-sm-7Jk" secondAttribute="centerY" id="LTj-D6-GJj"/>
+                            <constraint firstItem="2KL-Aw-ZbK" firstAttribute="centerX" secondItem="taD-sm-7Jk" secondAttribute="centerX" id="MKM-xf-vxt"/>
                             <constraint firstItem="qSH-fY-nQv" firstAttribute="top" secondItem="7QH-Ld-d2i" secondAttribute="bottom" constant="8" id="S4p-e2-9VS"/>
                             <constraint firstItem="qSH-fY-nQv" firstAttribute="width" secondItem="taD-sm-7Jk" secondAttribute="width" id="VWr-Da-2iO"/>
                             <constraint firstAttribute="trailingMargin" secondItem="avu-qG-2o1" secondAttribute="trailing" constant="8" id="VZ7-ZS-c4f"/>
@@ -2837,6 +2848,7 @@
                         <outlet property="areaLabel" destination="qSH-fY-nQv" id="86J-eh-zD0"/>
                         <outlet property="previewCon" destination="avu-qG-2o1" id="4ko-Vn-Mxo"/>
                         <outlet property="renderCon" destination="UTP-K7-MNq" id="vkQ-eV-cV3"/>
+                        <outlet property="videoWidth" destination="mKS-BA-ebj" id="oY1-5y-jEO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vp2-z7-2jD" userLabel="First Responder" sceneMemberID="firstResponder"/>
