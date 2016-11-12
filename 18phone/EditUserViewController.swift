@@ -11,9 +11,11 @@ import ActionSheetPicker_3_0
 import Async
 import MobileCoreServices
 
-class EditUserViewController: UITableViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class EditUserViewController: UITableViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, NJImageCropperDelegate {
 
     var lastScrollOffset: CGFloat = 0.0
+    
+    let ORIGINAL_MAX_WIDTH: CGFloat = 640.0
     
     @IBOutlet weak var headPhoto: UIImageView!
     
@@ -33,6 +35,7 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate, UINavi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("\(view.frame.width)  \(view.frame.height)")
         tableView.tableFooterView = UIView()
         headPhoto.image = R.image.head_photo_default()
         nameField.delegate = self
@@ -113,12 +116,18 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate, UINavi
         headphotoSheet()
     }
     
+    // MARK: - camera utility
+    
     func isCameraAvailable() -> Bool {
         return UIImagePickerController.isSourceTypeAvailable(.camera)
     }
     
     func isFrontCameraAvailable() -> Bool {
         return UIImagePickerController.isCameraDeviceAvailable(.front)
+    }
+    
+    func isPhotoLibraryAvailable() -> Bool {
+        return UIImagePickerController.isSourceTypeAvailable(.photoLibrary)
     }
     
     func cameraSupportsMedia(_ paramMediaType: String, sourceType: UIImagePickerControllerSourceType) -> Bool {
@@ -141,6 +150,77 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate, UINavi
         return cameraSupportsMedia(kUTTypeImage as String, sourceType: .camera)
     }
     
+    // MARK: - image scale utility
+    
+    func imageByScalingToMaxSize(_ sourceImage: UIImage) -> UIImage? {
+        if sourceImage.size.width < ORIGINAL_MAX_WIDTH {
+            return sourceImage
+        }
+        var btWidth: CGFloat = 0.0
+        var btHeight: CGFloat = 0.0
+        if sourceImage.size.width > sourceImage.size.height {
+            btHeight = ORIGINAL_MAX_WIDTH
+            btWidth = sourceImage.size.width * (ORIGINAL_MAX_WIDTH / sourceImage.size.height)
+        } else {
+            btWidth = ORIGINAL_MAX_WIDTH
+            btHeight = sourceImage.size.height * (ORIGINAL_MAX_WIDTH / sourceImage.size.width)
+        }
+        let targetSize = CGSize(width: btWidth, height: btHeight)
+        return imageByScalingAndCroppingForSourceImage(sourceImage, targetSize: targetSize)
+    }
+    
+    func imageByScalingAndCroppingForSourceImage(_ sourceImage: UIImage, targetSize: CGSize) -> UIImage? {
+        var newImage: UIImage? = nil
+        let imageSize = sourceImage.size
+        let width = imageSize.width
+        let height = imageSize.height
+        let targetWidth = targetSize.width
+        let targetHeight = targetSize.height
+        var scaleFactor: CGFloat = 0.0
+        var scaledWidth = targetWidth
+        var scaledHeight = targetHeight
+        var thumbnailPoint = CGPoint(x: 0.0,y: 0.0)
+        if !imageSize.equalTo(targetSize)
+        {
+            let widthFactor = targetWidth / width
+            let heightFactor = targetHeight / height
+            
+            if widthFactor > heightFactor {
+                scaleFactor = widthFactor // scale to fit height
+            } else {
+                scaleFactor = heightFactor // scale to fit width
+            }
+            
+            scaledWidth  = width * scaleFactor
+            scaledHeight = height * scaleFactor
+            
+            // center the image
+            if widthFactor > heightFactor
+            {
+                thumbnailPoint.y = (targetHeight - scaledHeight) * 0.5
+            }
+            else if widthFactor < heightFactor {
+                thumbnailPoint.x = (targetWidth - scaledWidth) * 0.5
+            }
+        }
+        UIGraphicsBeginImageContext(targetSize) // this will crop
+        var thumbnailRect = CGRect.zero
+        thumbnailRect.origin = thumbnailPoint
+        thumbnailRect.size.width  = scaledWidth
+        thumbnailRect.size.height = scaledHeight
+        
+        sourceImage.draw(in: thumbnailRect)
+        newImage = UIGraphicsGetImageFromCurrentImageContext()
+        if newImage == nil {
+            print("could not scale image")
+        }
+        
+        //pop the context to get back to the default
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
+    
     func headphotoSheet() {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: "拍照", style: .default) { action in
@@ -156,7 +236,13 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate, UINavi
             }
             })
         alertController.addAction(UIAlertAction(title: "相册", style: .default) { action in
-            
+            if self.isPhotoLibraryAvailable() {
+                let controller = UIImagePickerController()
+                controller.sourceType = .photoLibrary
+                controller.mediaTypes = [kUTTypeImage as String]
+                controller.delegate = self
+                self.present(controller, animated: true, completion: nil)
+            }
             })
         alertController.addAction(UIAlertAction(title: "取消", style: .cancel) { action in
             
@@ -178,6 +264,43 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate, UINavi
         return true
     }
 
+    // MARK: - UIImagePickerControllerDelegate
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        picker.dismiss(animated: true, completion: {
+            var portraitImg = info["UIImagePickerControllerOriginalImage"] as! UIImage
+            portraitImg = self.imageByScalingToMaxSize(portraitImg)!
+            let imgEditorVC = NJImageCropperViewController(image: portraitImg, cropFrame: CGRect(x: 0.0, y: 100.0, width: Screen.width, height: Screen.width) , limitScaleRatio: 3)
+            imgEditorVC?.delegate = self
+            self.present(imgEditorVC!, animated: true, completion: nil)
+        })
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: - VPImageCropperDelegate
+    
+    func imageCropper(_ cropperViewController: NJImageCropperViewController!, didFinished editedImage: UIImage!) {
+        headPhoto.image = editedImage
+        cropperViewController.dismiss(animated: true, completion: nil)
+    }
+    
+    func imageCropperDidCancel(_ cropperViewController: NJImageCropperViewController!) {
+        cropperViewController.dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: - UINavigationControllerDelegate
+    
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        
+    }
+    
+    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+        
+    }
+    
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)

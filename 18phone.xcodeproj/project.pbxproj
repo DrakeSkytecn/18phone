@@ -66,6 +66,7 @@
 		E140B1871D8E36FA00178D74 /* ShowNumberCon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E140B1861D8E36FA00178D74 /* ShowNumberCon.swift */; };
 		E148E6C31D6C397000BE131E /* OutgoingVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E148E6C21D6C397000BE131E /* OutgoingVideoViewController.swift */; };
 		E155425E1DB4A66000DBEAFB /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E155425D1DB4A66000DBEAFB /* ResetPasswordViewController.swift */; };
+		E159FF441DD6BBD30094D3E9 /* NJImageCropperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E159FF431DD6BBD30094D3E9 /* NJImageCropperViewController.m */; };
 		E15AF2041DB5BB4C00D74E68 /* EditContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15AF2031DB5BB4C00D74E68 /* EditContactViewController.swift */; };
 		E15AF2061DB5C0AA00D74E68 /* EditContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15AF2051DB5C0AA00D74E68 /* EditContactCell.swift */; };
 		E15AF2081DB5FA1C00D74E68 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15AF2071DB5FA1C00D74E68 /* ChangePasswordViewController.swift */; };
@@ -222,6 +223,8 @@
 		E1534A0A1D7E668A007FE351 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		E1534A0C1D7E6692007FE351 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		E155425D1DB4A66000DBEAFB /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
+		E159FF421DD6BBD30094D3E9 /* NJImageCropperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJImageCropperViewController.h; sourceTree = "<group>"; };
+		E159FF431DD6BBD30094D3E9 /* NJImageCropperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJImageCropperViewController.m; sourceTree = "<group>"; };
 		E15AF2031DB5BB4C00D74E68 /* EditContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditContactViewController.swift; sourceTree = "<group>"; };
 		E15AF2051DB5C0AA00D74E68 /* EditContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditContactCell.swift; sourceTree = "<group>"; };
 		E15AF2071DB5FA1C00D74E68 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
@@ -576,6 +579,7 @@
 		E13BACBE1D518E6300414ACE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E159FF411DD6BBBF0094D3E9 /* NJImageCropper */,
 				E193274C1D9A51BA006BA8B2 /* CheckAccountViewController.swift */,
 				E1AC7F821DA89B85001C2676 /* RegisterViewController.swift */,
 				E19327501D9A6623006BA8B2 /* LoginViewController.swift */,
@@ -614,8 +618,7 @@
 		E13BACBF1D518E6600414ACE /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E1711F841DCC59BD00227329 /* SelectView.h */,
-				E1711F851DCC59BD00227329 /* SelectView.m */,
+				E159FF401DD6BBA90094D3E9 /* SelectView */,
 				E123C3FB1DADDA3E00E6D442 /* CAPSPageMenu.swift */,
 				E15C4C3B1D96689300688086 /* ZFRippleButton.swift */,
 				E13BACE01D5196EE00414ACE /* DialNumberCell.swift */,
@@ -646,6 +649,24 @@
 				842B024C1DC736E100CFB00A /* User.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		E159FF401DD6BBA90094D3E9 /* SelectView */ = {
+			isa = PBXGroup;
+			children = (
+				E1711F841DCC59BD00227329 /* SelectView.h */,
+				E1711F851DCC59BD00227329 /* SelectView.m */,
+			);
+			name = SelectView;
+			sourceTree = "<group>";
+		};
+		E159FF411DD6BBBF0094D3E9 /* NJImageCropper */ = {
+			isa = PBXGroup;
+			children = (
+				E159FF421DD6BBD30094D3E9 /* NJImageCropperViewController.h */,
+				E159FF431DD6BBD30094D3E9 /* NJImageCropperViewController.m */,
+			);
+			name = NJImageCropper;
 			sourceTree = "<group>";
 		};
 		E15C42101D7D091100124257 /* Resource */ = {
@@ -812,6 +833,7 @@
 				845C24541DC359120050ABD4 /* Register.swift in Sources */,
 				E16453EA1D6AA3150036B53F /* Contact.swift in Sources */,
 				E13BACDB1D51946B00414ACE /* KTabBarController.swift in Sources */,
+				E159FF441DD6BBD30094D3E9 /* NJImageCropperViewController.m in Sources */,
 				E1721F301D90E27500A67C5B /* QRCodeViewController.swift in Sources */,
 				E193274D1D9A51BA006BA8B2 /* CheckAccountViewController.swift in Sources */,
 				842B024B1DC72DA400CFB00A /* Login.swift in Sources */,

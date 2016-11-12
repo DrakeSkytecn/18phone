@@ -293,7 +293,7 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
                         PhoneUtil.dialBackCall(saveUsername, toNumber: numberText.text!)
                     }
 //                    PhoneUtil.callSystemPhone(numberText.text!)
-//                    addCallLog(numberText.text!)
+                    addCallLog(numberText.text!)
                 }
             } else if PhoneUtil.isTelephoneNumber(numberText.text) {
                 PhoneUtil.callSystemPhone(numberText.text!)
