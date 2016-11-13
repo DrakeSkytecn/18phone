@@ -128,23 +128,23 @@
     
     GSReturnNoIfFails(pjsua_transport_create(PJSIP_TRANSPORT_UDP, &transportConfig, &_transportId));
     
-//    pjsua_transport_config udp_cfg;
-//    udp_cfg = transportConfig;
-//    udp_cfg.port = 5070;
+    pjsua_transport_config udp_cfg;
+    udp_cfg = transportConfig;
+    udp_cfg.port = 5070;
     
-//    GSReturnNoIfFails(pjsua_transport_create(PJSIP_TRANSPORT_UDP6, &udp_cfg, &_transportId));
+    GSReturnNoIfFails(pjsua_transport_create(PJSIP_TRANSPORT_UDP6, &udp_cfg, &_transportId));
     
-//    pjsua_transport_config tcp_cfg;
-//    tcp_cfg = transportConfig;
-//    tcp_cfg.port = 5080;
+    pjsua_transport_config tcp_cfg;
+    tcp_cfg = transportConfig;
+    tcp_cfg.port = 5080;
     
-//    GSReturnNoIfFails(pjsua_transport_create(PJSIP_TRANSPORT_TCP, &tcp_cfg, &_transportId));
+    GSReturnNoIfFails(pjsua_transport_create(PJSIP_TRANSPORT_TCP, &tcp_cfg, &_transportId));
     
-//    pjsua_transport_config tcp6_cfg;
-//    tcp6_cfg = transportConfig;
-//    tcp6_cfg.port = 5090;
+    pjsua_transport_config tcp6_cfg;
+    tcp6_cfg = transportConfig;
+    tcp6_cfg.port = 5090;
     
-//    GSReturnNoIfFails(pjsua_transport_create(PJSIP_TRANSPORT_TCP6, &tcp6_cfg, &_transportId));
+    GSReturnNoIfFails(pjsua_transport_create(PJSIP_TRANSPORT_TCP6, &tcp6_cfg, &_transportId));
     
     
     [self setStatus:GSUserAgentStateConfigured];

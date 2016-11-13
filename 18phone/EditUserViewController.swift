@@ -35,7 +35,6 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate, UINavi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("\(view.frame.width)  \(view.frame.height)")
         tableView.tableFooterView = UIView()
         headPhoto.image = R.image.head_photo_default()
         nameField.delegate = self

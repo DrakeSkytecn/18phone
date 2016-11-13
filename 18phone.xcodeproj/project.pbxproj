@@ -47,6 +47,7 @@
 		E12129821DB74D18009EE55B /* CommunicateListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12129811DB74D18009EE55B /* CommunicateListViewController.swift */; };
 		E12129841DB75AAC009EE55B /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12129831DB75AAC009EE55B /* AboutViewController.swift */; };
 		E123C3FC1DADDA3E00E6D442 /* CAPSPageMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E123C3FB1DADDA3E00E6D442 /* CAPSPageMenu.swift */; };
+		E1281EAE1DD81A7100C94038 /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1281EAD1DD81A7000C94038 /* PushKit.framework */; };
 		E12EBA811D531FF3007B5CBD /* CallLogACell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12EBA801D531FF3007B5CBD /* CallLogACell.swift */; };
 		E12EBA841D532447007B5CBD /* piQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12EBA831D532447007B5CBD /* piQ.swift */; };
 		E1330E271D92378400996D2A /* DetailMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1330E261D92378400996D2A /* DetailMenuViewController.swift */; };
@@ -202,6 +203,7 @@
 		E12129811DB74D18009EE55B /* CommunicateListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunicateListViewController.swift; sourceTree = "<group>"; };
 		E12129831DB75AAC009EE55B /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		E123C3FB1DADDA3E00E6D442 /* CAPSPageMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAPSPageMenu.swift; sourceTree = "<group>"; };
+		E1281EAD1DD81A7000C94038 /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = System/Library/Frameworks/PushKit.framework; sourceTree = SDKROOT; };
 		E12EBA801D531FF3007B5CBD /* CallLogACell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallLogACell.swift; sourceTree = "<group>"; };
 		E12EBA831D532447007B5CBD /* piQ.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = piQ.swift; sourceTree = "<group>"; };
 		E1330E261D92378400996D2A /* DetailMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailMenuViewController.swift; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 				E1C048A81D8691DA0009DF6B /* libopenh264.a in Frameworks */,
 				E1C048D41D8697770009DF6B /* libstdc++.tbd in Frameworks */,
 				E195B36F1DB9C4E900C27552 /* libc++.tbd in Frameworks */,
+				E1281EAE1DD81A7100C94038 /* PushKit.framework in Frameworks */,
 				E195B36D1DB9C4C900C27552 /* SystemConfiguration.framework in Frameworks */,
 				E195B36B1DB9C4BB00C27552 /* CoreMotion.framework in Frameworks */,
 				E1838A101D8F959A0043F0A8 /* CoreLocation.framework in Frameworks */,
@@ -392,6 +395,7 @@
 		A13A5015FDD7155192CC0662 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E1281EAD1DD81A7000C94038 /* PushKit.framework */,
 				E195B36E1DB9C4E900C27552 /* libc++.tbd */,
 				E195B36C1DB9C4C900C27552 /* SystemConfiguration.framework */,
 				E195B36A1DB9C4BB00C27552 /* CoreMotion.framework */,
@@ -1054,7 +1058,7 @@
 					"$(PROJECT_DIR)/pjproject-2.5.5/third_party/openh264/lib",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kratos.18phone;
+				PRODUCT_BUNDLE_IDENTIFIER = com.beyebe.18phone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "18phone/18phone-Bridging-Header.h";
@@ -1112,7 +1116,7 @@
 					"$(PROJECT_DIR)/pjproject-2.5.5/third_party/openh264/lib",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kratos.18phone;
+				PRODUCT_BUNDLE_IDENTIFIER = com.beyebe.18phone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "18phone/18phone-Bridging-Header.h";

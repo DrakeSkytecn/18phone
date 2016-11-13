@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import PushKit
 import CoreTelephony
 import SwiftEventBus
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, PKPushRegistryDelegate {
 
     var window: UIWindow?
 
@@ -19,12 +20,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.backgroundColor = UIColor.white
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor(red: 38.0 / 255.0, green: 173.0 / 255.0, blue: 86.0 / 255.0, alpha: 1.0)], for: .selected)
+        let userNotifiSetting = UIUserNotificationSettings(types: [.badge, .alert, .sound], categories: nil)
+        application.registerUserNotificationSettings(userNotifiSetting)
+        let pushRegistry = PKPushRegistry(queue: DispatchQueue.main)
+        pushRegistry.delegate = self
+        pushRegistry.desiredPushTypes = [.voIP]
 //        App.autoLogin("18823754172", password: "123")
 //        App.autoLogin("15016721385", password: "123")
 //        App.autoLogin("18603001016", password: "123")
 //        App.autoLogin("104", password: "104")
 //        App.autoLogin("102", password: "102")
-        APIUtil.uploadImageFile()
+//        APIUtil.uploadImageFile()
         return true
     }
 
@@ -53,6 +59,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+//    func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
+//        application.registerForRemoteNotifications()
+//    }
+    
+    func pushRegistry(_ registry: PKPushRegistry, didUpdate credentials: PKPushCredentials, forType type: PKPushType) {
+        print(credentials.token)
+    }
+    
+    func pushRegistry(_ registry: PKPushRegistry, didReceiveIncomingPushWith payload: PKPushPayload, forType type: PKPushType) {
+        
+        
+        
     }
 }
 
