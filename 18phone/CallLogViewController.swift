@@ -96,6 +96,7 @@ class CallLogViewController: UITableViewController {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: "语音通话", style: .default) { action in
             let outgoingCallViewController = R.storyboard.main.outgoingCallViewController()
+            outgoingCallViewController?.callLog = callLog
             outgoingCallViewController?.contactId = callLog.contactId
             outgoingCallViewController?.toNumber = callLog.phone
             outgoingCallViewController?.contactName = callLog.name
@@ -104,7 +105,10 @@ class CallLogViewController: UITableViewController {
             })
         alertController.addAction(UIAlertAction(title: "视频通话", style: .default) { action in
             let outgoingVideoViewController = R.storyboard.main.outgoingVideoViewController()
-            outgoingVideoViewController!.toNumber = callLog.phone
+            outgoingVideoViewController?.contactId = callLog.contactId
+            outgoingVideoViewController?.toNumber = callLog.phone
+            outgoingVideoViewController?.contactName = callLog.name
+            outgoingVideoViewController?.phoneArea = callLog.area
             self.present(outgoingVideoViewController!, animated: true, completion: nil)
             })
         alertController.addAction(UIAlertAction(title: "举报", style: .destructive) { action in

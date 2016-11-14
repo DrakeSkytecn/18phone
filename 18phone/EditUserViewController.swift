@@ -17,6 +17,10 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate, UINavi
     
     let ORIGINAL_MAX_WIDTH: CGFloat = 640.0
     
+    var userID = ""
+    
+//    var userInfo = [String: Any]()
+    
     @IBOutlet weak var headPhoto: UIImageView!
     
     @IBOutlet weak var nameField: UITextField!
@@ -108,7 +112,26 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate, UINavi
     }
 
     @IBAction func save(_ sender: UIBarButtonItem) {
-        _ = navigationController?.popViewController(animated: true)
+        var userInfo = [String:String]()
+        userInfo["UserID"] = userID
+        userInfo["Sex"] = sexLabel.text!
+        userInfo["Name"] = nameField.text!
+        userInfo["Age"] = ageLabel.text!
+        userInfo["ProvinceCity"] = areaLabel.text!
+        userInfo["AddressDetail"] = addressField.text!
+        userInfo["PersonalSignature"] = signField.text!
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        
+//        FileManager.default.createFile(atPath: <#T##String#>, contents: <#T##Data?#>, attributes: <#T##[String : Any]?#>)
+        let filePath = paths[0].appending("/\(userID).jpg")
+        let imageUrl = URL(fileURLWithPath: filePath)
+        do {
+            try UIImagePNGRepresentation(headPhoto.image!)?.write(to: imageUrl)
+            APIUtil.editUserInfo(userInfo, image: imageUrl, callBack: nil)
+        }catch {
+            print("got an error creating the request: \(error)")
+        }
+//        _ = navigationController?.popViewController(animated: true)
     }
     
     @IBAction func editHeadphoto(_ sender: UITapGestureRecognizer) {

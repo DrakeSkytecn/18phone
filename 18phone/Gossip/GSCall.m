@@ -284,8 +284,7 @@
     pjsua_vid_preview_param_default(&preview_param);
     preview_param.wnd_flags = PJMEDIA_VID_DEV_WND_BORDER |
     PJMEDIA_VID_DEV_WND_RESIZABLE;
-    pjsua_vid_preview_start(PJMEDIA_VID_DEFAULT_CAPTURE_DEV, &preview_param);
-    
+    pjsua_vid_preview_start(PJMEDIA_VID_DEFAULT_CAPTURE_DEV, NULL);
 }
 
 - (UIView *)createPreviewWindow:(CGRect)frame {
@@ -303,7 +302,7 @@
     pjsua_vid_win_get_info(wid, &win_info);
     UIView *view = (__bridge UIView *)win_info.hwnd.info.ios.window;
     view.frame = frame;
-    win_info.is_native = PJ_FALSE;
+    win_info.is_native = PJ_TRUE;
     //显示窗口
     win_info.show = YES;
     

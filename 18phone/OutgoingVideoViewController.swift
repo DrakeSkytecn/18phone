@@ -13,22 +13,36 @@ class OutgoingVideoViewController: UIViewController {
     
     @IBOutlet weak var videoWidth: NSLayoutConstraint!
     
+    var contactId: String?
+    
     var toNumber: String?
+    
+    var contactName: String?
+    
+    var phoneArea: String?
+    
     var outCall:GSCall?
+    
     var isConnected: Bool = false
     
     @IBOutlet weak var renderCon: UIView!
     
     @IBOutlet weak var previewCon: UIView!
     
-    @IBOutlet weak var NameLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     
     @IBOutlet weak var areaLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if !contactName!.isEmpty {
+            nameLabel.text = contactName
+        } else {
+            nameLabel.text = toNumber
+            areaLabel.text = phoneArea
+        }
         let account = GSUserAgent.shared().account
-        outCall = GSCall.outgoingCall(toUri: toNumber! + "@" + URL.BEYEBE_SIP_DOMAIN, from: account)
+        outCall = GSCall.outgoingCall(toUri: toNumber! + "@" + AppURL.BEYEBE_SIP_DOMAIN, from: account)
         outCall?.videoCon = previewCon
         outCall?.addObserver(self, forKeyPath: "status", options: .initial, context: nil)
         outCall?.beginVideo()
@@ -36,16 +50,17 @@ class OutgoingVideoViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         Async.background {
-//            self.outCall?.startPreviewWindow()
+            self.outCall?.startPreviewWindow()
             print("222")
         }.main { _ in
             print("111")
             
+            let previewWindow = self.outCall!.createPreviewWindow(CGRect(x: 0, y: 0, width: 40, height: 80))
+            previewWindow?.backgroundColor = UIColor.blue
+            self.previewCon.addSubview(previewWindow!)
+            self.outCall?.orientation()
         }
-//        let previewWindow = self.outCall!.createPreviewWindow(CGRect(x: 0, y: 0, width: self.previewCon.frame.width, height: self.previewCon.frame.height))
-//        previewWindow?.backgroundColor = UIColor.blue
-//        self.previewCon.addSubview(previewWindow!)
-//        self.outCall?.orientation()
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -56,7 +71,7 @@ class OutgoingVideoViewController: UIViewController {
     @IBAction func big(_ sender: UIButton) {
 //        videoWidth.constant = 400
 //        previewCon.subviews[0].backgroundColor = UIColor.blue
-        previewCon.subviews[0].frame = CGRect(x: 10, y: 0, width: 400, height: 400)
+        previewCon.subviews[0].frame = CGRect(x: -20, y: 20, width: 81, height: 121)
     }
     
     @IBAction func hangup(_ sender: UIButton) {

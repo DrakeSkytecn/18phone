@@ -21,10 +21,12 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.file` struct is generated, and contains static references to 3 files.
+  /// This `R.file` struct is generated, and contains static references to 4 files.
   struct file {
     /// Resource file `Address.plist`.
     static let addressPlist = Rswift.FileResource(bundle: R.hostingBundle, name: "Address", pathExtension: "plist")
+    /// Resource file `headphoto.jpg`.
+    static let headphotoJpg = Rswift.FileResource(bundle: R.hostingBundle, name: "headphoto", pathExtension: "jpg")
     /// Resource file `ringtone.wav`.
     static let ringtoneWav = Rswift.FileResource(bundle: R.hostingBundle, name: "ringtone", pathExtension: "wav")
     /// Resource file `test`.
@@ -33,6 +35,12 @@ struct R: Rswift.Validatable {
     /// `bundle.url(forResource: "Address", withExtension: "plist")`
     static func addressPlist(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.addressPlist
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "headphoto", withExtension: "jpg")`
+    static func headphotoJpg(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.headphotoJpg
       return fileResource.bundle.url(forResource: fileResource)
     }
     
@@ -56,7 +64,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 41 images.
+  /// This `R.image` struct is generated, and contains static references to 42 images.
   struct image {
     /// Image `Launch`.
     static let launch = Rswift.ImageResource(bundle: R.hostingBundle, name: "Launch")
@@ -102,6 +110,8 @@ struct R: Rswift.Validatable {
     static let hang_up = Rswift.ImageResource(bundle: R.hostingBundle, name: "hang_up")
     /// Image `head_photo_default`.
     static let head_photo_default = Rswift.ImageResource(bundle: R.hostingBundle, name: "head_photo_default")
+    /// Image `headphoto.jpg`.
+    static let headphotoJpg = Rswift.ImageResource(bundle: R.hostingBundle, name: "headphoto.jpg")
     /// Image `is_register`.
     static let is_register = Rswift.ImageResource(bundle: R.hostingBundle, name: "is_register")
     /// Image `male`.
@@ -249,6 +259,11 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "head_photo_default", bundle: ..., traitCollection: ...)`
     static func head_photo_default(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.head_photo_default, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "headphoto.jpg", bundle: ..., traitCollection: ...)`
+    static func headphotoJpg(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.headphotoJpg, compatibleWith: traitCollection)
     }
     
     /// `UIImage(named: "is_register", bundle: ..., traitCollection: ...)`
@@ -456,12 +471,14 @@ struct R: Rswift.Validatable {
       fileprivate init() {}
     }
     
-    /// This struct is generated for `UserCenterViewController`, and contains static references to 3 segues.
+    /// This struct is generated for `UserCenterViewController`, and contains static references to 4 segues.
     struct userCenterViewController {
       /// Segue identifier `aboutViewController`.
       static let aboutViewController: Rswift.StoryboardSegueIdentifier<UIKit.UIStoryboardSegue, UserCenterViewController, AboutViewController> = Rswift.StoryboardSegueIdentifier(identifier: "aboutViewController")
       /// Segue identifier `billViewController`.
       static let billViewController: Rswift.StoryboardSegueIdentifier<UIKit.UIStoryboardSegue, UserCenterViewController, BillViewController> = Rswift.StoryboardSegueIdentifier(identifier: "billViewController")
+      /// Segue identifier `editUserViewController`.
+      static let editUserViewController: Rswift.StoryboardSegueIdentifier<UIKit.UIStoryboardSegue, UserCenterViewController, EditUserViewController> = Rswift.StoryboardSegueIdentifier(identifier: "editUserViewController")
       /// Segue identifier `mySettingViewController`.
       static let mySettingViewController: Rswift.StoryboardSegueIdentifier<UIKit.UIStoryboardSegue, UserCenterViewController, MySettingViewController> = Rswift.StoryboardSegueIdentifier(identifier: "mySettingViewController")
       
@@ -477,6 +494,13 @@ struct R: Rswift.Validatable {
       /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
       static func billViewController(segue: UIKit.UIStoryboardSegue) -> Rswift.TypedStoryboardSegueInfo<UIKit.UIStoryboardSegue, UserCenterViewController, BillViewController>? {
         return Rswift.TypedStoryboardSegueInfo(segueIdentifier: R.segue.userCenterViewController.billViewController, segue: segue)
+      }
+      
+      /// Optionally returns a typed version of segue `editUserViewController`.
+      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
+      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
+      static func editUserViewController(segue: UIKit.UIStoryboardSegue) -> Rswift.TypedStoryboardSegueInfo<UIKit.UIStoryboardSegue, UserCenterViewController, EditUserViewController>? {
+        return Rswift.TypedStoryboardSegueInfo(segueIdentifier: R.segue.userCenterViewController.editUserViewController, segue: segue)
       }
       
       /// Optionally returns a typed version of segue `mySettingViewController`.

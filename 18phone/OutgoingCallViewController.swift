@@ -12,13 +12,15 @@ import AVFoundation
 
 class OutgoingCallViewController: UIViewController {
 
+    var callLog: CallLog?
+    
+    var contactId: String?
+    
     var toNumber: String?
     
     var contactName: String?
     
     var phoneArea: String?
-    
-    var contactId: String?
     
     var outCall: GSCall?
     
@@ -50,14 +52,14 @@ class OutgoingCallViewController: UIViewController {
         dialPlateBtn.layer.borderColor = UIColor.white.cgColor
         speakerBtn.layer.borderColor = UIColor.white.cgColor
         if !contactName!.isEmpty {
-            nameLabel.text = contactName
+            nameLabel.text = callLog!.name
         } else {
-            nameLabel.text = toNumber
-            areaLabel.text = phoneArea
+            nameLabel.text = callLog!.phone
+            areaLabel.text = callLog!.area
         }
         
         let account = GSUserAgent.shared().account
-        outCall = GSCall.outgoingCall(toUri: toNumber! + "@" + URL.BEYEBE_SIP_DOMAIN, from: account)
+        outCall = GSCall.outgoingCall(toUri: callLog!.phone + "@" + AppURL.BEYEBE_SIP_DOMAIN, from: account)
         outCall?.checkBuddy()
         outCall?.addObserver(self, forKeyPath: "status", options: .initial, context: nil)
         self.outCall?.begin()
@@ -70,22 +72,22 @@ class OutgoingCallViewController: UIViewController {
     
     @IBAction func hangup(_ sender: UIButton) {
         outCall?.end()
-        let callLog = CallLog()
-        callLog.contactId = contactId!
-        callLog.name = contactName!
-        callLog.phone = toNumber!
+        let newCallLog = CallLog()
+        newCallLog.contactId = callLog!.contactId
+        newCallLog.name = callLog!.name
+        newCallLog.phone = callLog!.phone
         if isConnected {
-            callLog.callState = CallState.outConnected.rawValue
+            newCallLog.callState = CallState.outConnected.rawValue
         } else {
-            callLog.callState = CallState.outUnConnected.rawValue
+            newCallLog.callState = CallState.outUnConnected.rawValue
         }
-        callLog.callType = CallType.voice.rawValue
-        callLog.callStartTime = Date()
+        newCallLog.callType = CallType.voice.rawValue
+        newCallLog.callStartTime = Date()
         if phoneArea != nil {
-            callLog.area = phoneArea!
+            newCallLog.area = callLog!.area
         }
         try! App.realm.write {
-            App.realm.add(callLog)
+            App.realm.add(newCallLog)
         }                                                                                                       
         SwiftEventBus.post("reloadCallLogs")
         App.changeSpeaker(false)

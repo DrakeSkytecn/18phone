@@ -136,14 +136,15 @@ class UserCenterViewController: UITableViewController {
 //        tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
     }
     
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == R.segue.userCenterViewController.editUserViewController.identifier {
+            let editUserViewController = segue.destination as! EditUserViewController
+            if let userID = UserDefaults.standard.string(forKey: "userID") {
+                editUserViewController.userID = userID
+            }
+        }
     }
-    */
-
 }
