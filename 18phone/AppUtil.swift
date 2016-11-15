@@ -149,9 +149,9 @@ struct DateUtil {
         }
     }
     
-    static func getAgeFromBirthday(_ date: Date) -> String {
+    static func getAgeFromBirthday(_ date: Date) -> Int {
         let dateDiff = date.timeIntervalSinceNow
-        let age = String(Int(abs(trunc(dateDiff/(60*60*24))/365)))
+        let age = Int(abs(trunc(dateDiff/(60*60*24))/365))
         
         return age
     }
@@ -323,6 +323,7 @@ struct MathUtil {
 }
 
 struct APIUtil {
+    
     static func getVerifyCodeInfo(_ phoneNumber: String, callBack: ((VerifyCodeInfo) -> ())?){
         do {
             let opt = try HTTP.GET(AppURL.BEYEBE_18PHONE_API_BASE + "getVerificationCode", parameters: ["accountNumber":phoneNumber])
@@ -348,7 +349,7 @@ struct APIUtil {
     
     static func register(_ phoneNumber: String, password: String, verificationCode: String, deviceId: String, callBack: ((RegisterInfo) -> ())?) {
         do {
-            let opt = try HTTP.GET(AppURL.BEYEBE_18PHONE_API_BASE + "register", parameters: ["accountNumber":phoneNumber, "password":password, "verificationCode":verificationCode, "DeviceID":deviceId])
+            let opt = try HTTP.POST(AppURL.BEYEBE_18PHONE_API_BASE + "register", parameters: ["accountNumber":phoneNumber, "password":password, "verificationCode":verificationCode, "DeviceID":deviceId])
             opt.start { response in
                 if let error = response.error {
                     print("error: \(error.localizedDescription)")
@@ -371,7 +372,7 @@ struct APIUtil {
     
     static func login(_ phoneNumber: String, password: String, callBack: ((LoginInfo) -> ())?) {
         do {
-            let opt = try HTTP.GET(AppURL.BEYEBE_18PHONE_API_BASE + "login", parameters: ["PhoneNumber":phoneNumber, "password":password])
+            let opt = try HTTP.POST(AppURL.BEYEBE_18PHONE_API_BASE + "login", parameters: ["PhoneNumber":phoneNumber, "password":password])
             opt.start { response in
                 if let error = response.error {
                     print("error: \(error.localizedDescription)")
@@ -394,7 +395,7 @@ struct APIUtil {
     
     static func getDayLeft(_ userID: String, callBack: ((DayLeft) -> ())?) {
         do {
-            let opt = try HTTP.GET(AppURL.BEYEBE_18PHONE_API_BASE + "getServiceEndTime", parameters: ["userID":userID])
+            let opt = try HTTP.POST(AppURL.BEYEBE_18PHONE_API_BASE + "getServiceEndTime", parameters: ["userID":userID])
             opt.start { response in
                 if let error = response.error {
                     print("error: \(error.localizedDescription)")
@@ -417,7 +418,7 @@ struct APIUtil {
     
     static func getUserInfo(_ userID: String, callBack: ((UserInfo) -> ())?) {
         do {
-            let opt = try HTTP.GET(AppURL.BEYEBE_18PHONE_API_BASE + "getPersonSelfInfo", parameters: ["userID":userID])
+            let opt = try HTTP.POST(AppURL.BEYEBE_18PHONE_API_BASE + "getPersonSelfInfo", parameters: ["userID":userID])
             opt.start { response in
                 if let error = response.error {
                     print("error: \(error.localizedDescription)")
@@ -440,7 +441,7 @@ struct APIUtil {
     
     static func resetPassword(_ phoneNumber: String, password: String, verificationCode: String, callBack: ((ResetPassword) -> ())?) {
         do {
-            let opt = try HTTP.GET(AppURL.BEYEBE_18PHONE_API_BASE + "modifiPassWordByPhone", parameters: ["mobilePhone":phoneNumber, "newPassW":password, "verificationCode":verificationCode])
+            let opt = try HTTP.POST(AppURL.BEYEBE_18PHONE_API_BASE + "modifiPassWordByPhone", parameters: ["mobilePhone":phoneNumber, "newPassW":password, "verificationCode":verificationCode])
             opt.start { response in
                 if let error = response.error {
                     print("error: \(error.localizedDescription)")
@@ -463,7 +464,7 @@ struct APIUtil {
     
     static func changePassword(_ userID: String, oldPassword: String, newPassword: String, callBack: ((ResetPassword) -> ())?) {
         do {
-            let opt = try HTTP.GET(AppURL.BEYEBE_18PHONE_API_BASE + "modifiPassWordByUserID", parameters: ["userID":userID, "oldPassW":oldPassword, "newPassW":newPassword])
+            let opt = try HTTP.POST(AppURL.BEYEBE_18PHONE_API_BASE + "modifiPassWordByUserID", parameters: ["userID":userID, "oldPassW":oldPassword, "newPassW":newPassword])
             opt.start { response in
                 if let error = response.error {
                     print("error: \(error.localizedDescription)")
@@ -486,7 +487,7 @@ struct APIUtil {
     
     static func changePhoneNumber(_ userID: String, phoneNumber: String, password: String, verificationCode: String, callBack: ((ResetPassword) -> ())?) {
         do {
-            let opt = try HTTP.GET(AppURL.BEYEBE_18PHONE_API_BASE + "modifiedMobile", parameters: ["userID":userID, "newMobile":phoneNumber, "password":password, "verificationCode":verificationCode])
+            let opt = try HTTP.POST(AppURL.BEYEBE_18PHONE_API_BASE + "modifiedMobile", parameters: ["userID":userID, "newMobile":phoneNumber, "password":password, "verificationCode":verificationCode])
             opt.start { response in
                 if let error = response.error {
                     print("error: \(error.localizedDescription)")
@@ -507,9 +508,9 @@ struct APIUtil {
         }
     }
     
-    static func editUserInfo(_ userInfo: [String: String], image: URL, callBack: ((ResetPassword) -> ())?) {
+    static func editUserInfo(_ userInfo: [String: Any], callBack: ((ResetPassword) -> ())?) {
         do {
-            let opt = try HTTP.POST(AppURL.BEYEBE_18PHONE_API_BASE + "updatePersonSelfInfo", parameters: ["UserID":userInfo["UserID"], "Sex":userInfo["Sex"], "Name":userInfo["Name"], "Age":userInfo["Age"], "ProvinceCity":userInfo["ProvinceCity"], "AddressDetail":userInfo["AddressDetail"], "PersonalSignature":userInfo["PersonalSignature"], "image": Upload(fileUrl: image)])
+            let opt = try HTTP.POST(AppURL.BEYEBE_18PHONE_API_BASE + "updatePersonSelfInfo", parameters: ["UserID":userInfo["UserID"], "Sex":userInfo["Sex"], "Name":userInfo["Name"], "Age":userInfo["Age"], "ProvinceCity":userInfo["ProvinceCity"], "AddressDetail":userInfo["AddressDetail"], "PersonalSignature":userInfo["PersonalSignature"], "HeadPhotoImage": userInfo["HeadPhotoImage"]])
             opt.start { response in
                 if let error = response.error {
                     print("error: \(error.localizedDescription)")
@@ -524,31 +525,6 @@ struct APIUtil {
                         callBack!(resetPassword)
                     }
                 }
-            }
-        } catch {
-            print("got an error creating the request: \(error)")
-        }
-    }
-    
-    static func uploadImageFile() {
-        do {//, "image": Upload(fileUrl: fileUrl)
-            
-            let fileUrl = Bundle.main.url(forResource: "headphoto", withExtension: "jpg")!
-            let opt = try HTTP.POST(AppURL.BEYEBE_18PHONE_API_BASE + "ediltPersonPicture", parameters: ["userID":"10", "image": Upload(fileUrl: fileUrl)])
-            opt.start { response in
-                if let error = response.error {
-                    print("error: \(error.localizedDescription)")
-                    print("error: \(error.code)")
-                    
-                    return
-                }
-                print(response.text!)
-//                let resetPassword = ResetPassword(JSONDecoder(response.data))
-//                if callBack != nil {
-//                    Async.main {
-//                        callBack!(resetPassword)
-//                    }
-//                }
             }
         } catch {
             print("got an error creating the request: \(error)")

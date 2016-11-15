@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKPushRegistryDelegate {
         let pushRegistry = PKPushRegistry(queue: DispatchQueue.main)
         pushRegistry.delegate = self
         pushRegistry.desiredPushTypes = [.voIP]
-        App.autoLogin("18823754172", password: "123")
+//        App.autoLogin("18823754172", password: "123")
 //        App.autoLogin("15016721385", password: "123")
 //        App.autoLogin("18603001016", password: "123")
 //        App.autoLogin("104", password: "104")

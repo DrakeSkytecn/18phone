@@ -24,8 +24,8 @@ class UserCenterViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         SwiftEventBus.onMainThread(self, name: "reloadUserInfo") { result in
-            let phoneNumber = result.object as! String
-            self.reloadUserInfo(phoneNumber)
+//            let phoneNumber = result.object as! String
+            self.reloadUserInfo("")
         }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -65,7 +65,7 @@ class UserCenterViewController: UITableViewController {
                     } else {
                         cell?.headPhoto.image = R.image.head_photo_default()
                     }
-                    if self.userData?.name == nil {
+                    if self.userData?.name == nil || self.userData!.name!.isEmpty {
                         cell?.nameLabel.text = self.userData?.mobile
                     } else {
                         cell?.nameLabel.text = self.userData?.name
@@ -75,7 +75,7 @@ class UserCenterViewController: UITableViewController {
                     } else if self.userData?.sex == Sex.female.rawValue {
                         cell?.sexImage.image = R.image.female()
                     }
-                    if self.userData!.age != nil {
+                    if self.userData!.age != nil && self.userData!.age != -1  {
                         cell?.ageLabel.text = String(describing: self.userData!.age!) + "岁"
                     }
                     cell?.areaLabel.text = self.userData!.provinceCity
@@ -129,21 +129,26 @@ class UserCenterViewController: UITableViewController {
             break
         }
     }
-
+    
+    func resetUserPhone(_ phoneNumber: String) {
+        
+    }
+    
     func reloadUserInfo(_ phoneNumber: String) {
-        let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! UserDetailCell
-        cell.nameLabel.text = phoneNumber
-//        tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+//        let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! UserDetailCell
+//        cell.nameLabel.text = phoneNumber
+        tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
     }
     
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == R.segue.userCenterViewController.editUserViewController.identifier {
             let editUserViewController = segue.destination as! EditUserViewController
             if let userID = UserDefaults.standard.string(forKey: "userID") {
                 editUserViewController.userID = userID
+                editUserViewController.userData = userData
             }
         }
     }

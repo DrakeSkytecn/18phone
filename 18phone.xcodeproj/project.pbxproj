@@ -50,7 +50,6 @@
 		E1281EAE1DD81A7100C94038 /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1281EAD1DD81A7000C94038 /* PushKit.framework */; };
 		E12CC4641DD9692500248E8D /* headphoto.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E12CC4631DD9692500248E8D /* headphoto.jpg */; };
 		E12EBA811D531FF3007B5CBD /* CallLogACell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12EBA801D531FF3007B5CBD /* CallLogACell.swift */; };
-		E12EBA841D532447007B5CBD /* piQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12EBA831D532447007B5CBD /* piQ.swift */; };
 		E1330E271D92378400996D2A /* DetailMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1330E261D92378400996D2A /* DetailMenuViewController.swift */; };
 		E138D0771D6301EA0091AF4A /* OutgoingCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E138D0761D6301EA0091AF4A /* OutgoingCallViewController.swift */; };
 		E138D0791D630B7A0091AF4A /* IncomingCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E138D0781D630B7A0091AF4A /* IncomingCallViewController.swift */; };
@@ -142,6 +141,7 @@
 		E1C048D41D8697770009DF6B /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C048D31D8697770009DF6B /* libstdc++.tbd */; };
 		E1DE61831D88F1E900321B47 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DE61821D88F1E900321B47 /* ContactCell.swift */; };
 		E1DE61851D894E3F00321B47 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1DE61841D894E3F00321B47 /* CoreTelephony.framework */; };
+		E1E09C671DDA9A4D005B21C2 /* piQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E09C661DDA9A4D005B21C2 /* piQ.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -207,7 +207,6 @@
 		E1281EAD1DD81A7000C94038 /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = System/Library/Frameworks/PushKit.framework; sourceTree = SDKROOT; };
 		E12CC4631DD9692500248E8D /* headphoto.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = headphoto.jpg; sourceTree = "<group>"; };
 		E12EBA801D531FF3007B5CBD /* CallLogACell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallLogACell.swift; sourceTree = "<group>"; };
-		E12EBA831D532447007B5CBD /* piQ.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = piQ.swift; sourceTree = "<group>"; };
 		E1330E261D92378400996D2A /* DetailMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailMenuViewController.swift; sourceTree = "<group>"; };
 		E138D0761D6301EA0091AF4A /* OutgoingCallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutgoingCallViewController.swift; sourceTree = "<group>"; };
 		E138D0781D630B7A0091AF4A /* IncomingCallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomingCallViewController.swift; sourceTree = "<group>"; };
@@ -322,6 +321,7 @@
 		E1C048D31D8697770009DF6B /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		E1DE61821D88F1E900321B47 /* ContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		E1DE61841D894E3F00321B47 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		E1E09C661DDA9A4D005B21C2 /* piQ.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = piQ.swift; sourceTree = "<group>"; };
 		E1F5E57C1D59E5990010FF2C /* 18phone-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "18phone-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -495,7 +495,6 @@
 		E10953E71D7FBC00001E7060 /* Gossip */ = {
 			isa = PBXGroup;
 			children = (
-				E12EBA821D532428007B5CBD /* piQ */,
 				E1C048471D867F650009DF6B /* Gossip.h */,
 				E1C048481D867F650009DF6B /* GSAccount.h */,
 				E1C048491D867F650009DF6B /* GSAccount.m */,
@@ -564,18 +563,10 @@
 			path = 18phone;
 			sourceTree = "<group>";
 		};
-		E12EBA821D532428007B5CBD /* piQ */ = {
-			isa = PBXGroup;
-			children = (
-				E12EBA831D532447007B5CBD /* piQ.swift */,
-			);
-			name = piQ;
-			path = ../../18phone;
-			sourceTree = "<group>";
-		};
 		E13BACBD1D518E5F00414ACE /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				E1E09C651DDA9A23005B21C2 /* piQ */,
 				E10953E71D7FBC00001E7060 /* Gossip */,
 				E13BACC11D518F5200414ACE /* AppUtil.swift */,
 			);
@@ -683,6 +674,14 @@
 				E15C42111D7D094000124257 /* ringtone.wav */,
 			);
 			name = Resource;
+			sourceTree = "<group>";
+		};
+		E1E09C651DDA9A23005B21C2 /* piQ */ = {
+			isa = PBXGroup;
+			children = (
+				E1E09C661DDA9A4D005B21C2 /* piQ.swift */,
+			);
+			name = piQ;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -869,6 +868,7 @@
 				E1C048691D867F650009DF6B /* GSCodecInfo.m in Sources */,
 				E13BACDD1D51946B00414ACE /* CallLogViewController.swift in Sources */,
 				E123C3FC1DADDA3E00E6D442 /* CAPSPageMenu.swift in Sources */,
+				E1E09C671DDA9A4D005B21C2 /* piQ.swift in Sources */,
 				E1626D551D937F7B00C3422C /* CallLogMenuViewController.swift in Sources */,
 				E11D4CF01DB6118C00737790 /* ChangePhoneNumberViewController.swift in Sources */,
 				E1C0486B1D867F650009DF6B /* GSDispatch.m in Sources */,
@@ -896,7 +896,6 @@
 				E13BACD51D51907600414ACE /* CallLog.swift in Sources */,
 				E1721F321D910D4D00A67C5B /* ContactDetailViewController.swift in Sources */,
 				E121297C1DB7154A009EE55B /* BillViewController.swift in Sources */,
-				E12EBA841D532447007B5CBD /* piQ.swift in Sources */,
 				E11E37E81D94CCC6004B566D /* UserCenterViewController.swift in Sources */,
 				E11227D01D9B5F3200B08ACD /* LoginCell.swift in Sources */,
 				E1AC7F831DA89B85001C2676 /* RegisterViewController.swift in Sources */,

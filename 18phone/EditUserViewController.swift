@@ -10,6 +10,8 @@ import UIKit
 import ActionSheetPicker_3_0
 import Async
 import MobileCoreServices
+import SwiftHTTP
+import SwiftEventBus
 
 class EditUserViewController: UITableViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, NJImageCropperDelegate {
 
@@ -17,7 +19,15 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate, UINavi
     
     let ORIGINAL_MAX_WIDTH: CGFloat = 640.0
     
-    var userID = ""
+    var userID: String?
+    
+    var age = -1
+    
+    var sex = Sex.unknown.rawValue
+    
+    let headPhotoImage = R.image.head_photo_default()
+    
+    var userData: UserData?
     
 //    var userInfo = [String: Any]()
     
@@ -35,12 +45,28 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate, UINavi
     
     @IBOutlet weak var addressField: UILabel!
     
-    let sexChoices = ["男", "女"]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
-        headPhoto.image = R.image.head_photo_default()
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        let filePath = paths[0].appending("/\(userID!).jpeg")
+        let fileManager = FileManager.default
+        if fileManager.fileExists(atPath: filePath) {
+            headPhoto.image = UIImage(contentsOfFile: filePath)
+        } else {
+            headPhoto.image = headPhotoImage
+        }
+        nameField.text = userData?.name
+        if userData?.sex == Sex.male.rawValue {
+            sexLabel.text = "男"
+        } else if userData?.sex == Sex.female.rawValue {
+            sexLabel.text = "女"
+        }
+        ageLabel.text = "\(userData!.age!)岁"
+        areaLabel.text = userData?.provinceCity
+        signField.text = userData?.personalSignature
+        age = userData!.age!
+        sex = userData!.sex!
         nameField.delegate = self
         signField.delegate = self
     }
@@ -60,6 +86,7 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate, UINavi
         tableView.deselectRow(at: indexPath, animated: true)
         let cell = tableView.cellForRow(at: indexPath)
         hideKeyBoard()
+        let sexChoices = ["男", "女"]
         switch indexPath.row {
         case 0:
             Async.main {
@@ -68,7 +95,8 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate, UINavi
             break
         case 2:
             ActionSheetStringPicker.show(withTitle: "", rows: sexChoices, initialSelection: 0, doneBlock: { picker, selectedIndex, selectedValue in
-                self.sexLabel.text = self.sexChoices[selectedIndex]
+                self.sex = selectedIndex + 1
+                self.sexLabel.text = sexChoices[selectedIndex]
                 }, cancel: { _ in
                     
                 }, origin: cell)
@@ -76,7 +104,8 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate, UINavi
         case 3:
             ActionSheetDatePicker.show(withTitle: "生日", datePickerMode: .date, selectedDate: Date(), doneBlock: { picker, selectedValue, selectedIndex in
                 let birthday = selectedValue as! Date
-                self.ageLabel.text = DateUtil.getAgeFromBirthday((birthday)) + "岁"
+                self.age = DateUtil.getAgeFromBirthday((birthday))
+                self.ageLabel.text =  "\(self.age)岁"
                 }, cancel: { _ in
                 
                 }, origin: cell)
@@ -112,26 +141,29 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate, UINavi
     }
 
     @IBAction func save(_ sender: UIBarButtonItem) {
-        var userInfo = [String:String]()
+        var userInfo = [String:Any]()
         userInfo["UserID"] = userID
-        userInfo["Sex"] = sexLabel.text!
+        userInfo["Sex"] = "\(sex)"
         userInfo["Name"] = nameField.text!
-        userInfo["Age"] = ageLabel.text!
+        userInfo["Age"] = "\(age)"
         userInfo["ProvinceCity"] = areaLabel.text!
         userInfo["AddressDetail"] = addressField.text!
         userInfo["PersonalSignature"] = signField.text!
-        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        
-//        FileManager.default.createFile(atPath: <#T##String#>, contents: <#T##Data?#>, attributes: <#T##[String : Any]?#>)
-        let filePath = paths[0].appending("/\(userID).jpg")
-        let imageUrl = URL(fileURLWithPath: filePath)
-        do {
-            try UIImagePNGRepresentation(headPhoto.image!)?.write(to: imageUrl)
-            APIUtil.editUserInfo(userInfo, image: imageUrl, callBack: nil)
-        }catch {
-            print("got an error creating the request: \(error)")
+        var imageUrl: URL?
+        if  headPhoto.image != headPhotoImage {
+            let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+            let filePath = paths[0].appending("/\(userID!).jpeg")
+            imageUrl = URL(fileURLWithPath: filePath)
+            do {
+                try UIImageJPEGRepresentation(headPhoto.image!, 1.0)?.write(to: imageUrl!)
+            }catch {
+                print("got an error write: \(error)")
+            }
+            userInfo["HeadPhotoImage"] = Upload(fileUrl: imageUrl!)
         }
-//        _ = navigationController?.popViewController(animated: true)
+        APIUtil.editUserInfo(userInfo, callBack: nil)
+        SwiftEventBus.post("reloadUserInfo")
+        _ = navigationController?.popViewController(animated: true)
     }
     
     @IBAction func editHeadphoto(_ sender: UITapGestureRecognizer) {

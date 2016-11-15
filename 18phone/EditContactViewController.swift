@@ -11,6 +11,8 @@ import ActionSheetPicker_3_0
 
 class EditContactViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    var age = -1
+    
     var titles = ["性别", "年龄", "地区"]
     
     let sexChoices = ["男", "女"]
@@ -55,7 +57,8 @@ class EditContactViewController: UIViewController, UITableViewDataSource, UITabl
         case 1:
             ActionSheetDatePicker.show(withTitle: "生日", datePickerMode: .date, selectedDate: Date(), doneBlock: { picker, selectedValue, selectedIndex in
                 let birthday = selectedValue as! Date
-                cell.contentLabel.text = DateUtil.getAgeFromBirthday((birthday)) + "岁"
+                self.age = DateUtil.getAgeFromBirthday((birthday))
+                cell.contentLabel.text = "\(self.age)岁"
                 }, cancel: { _ in
                     
                 }, origin: cell)
