@@ -73,7 +73,7 @@ struct App {
         userAgent?.start()
     }
     
-    static func autoLogin(_ username: String, password: String) {
+    static func autoLogin(_ userID: String, username: String, password: String) {
         let userDefaults = UserDefaults.standard
         if let saveUsername = userDefaults.string(forKey: "username") {
             let savePassword = userDefaults.string(forKey: "password")
@@ -508,7 +508,7 @@ struct APIUtil {
         }
     }
     
-    static func editUserInfo(_ userInfo: [String: Any], callBack: ((ResetPassword) -> ())?) {
+    static func editUserInfo(_ userInfo: [String: Any], callBack: ((EditUser) -> ())?) {
         do {
             let opt = try HTTP.POST(AppURL.BEYEBE_18PHONE_API_BASE + "updatePersonSelfInfo", parameters: ["UserID":userInfo["UserID"], "Sex":userInfo["Sex"], "Name":userInfo["Name"], "Age":userInfo["Age"], "ProvinceCity":userInfo["ProvinceCity"], "AddressDetail":userInfo["AddressDetail"], "PersonalSignature":userInfo["PersonalSignature"], "HeadPhotoImage": userInfo["HeadPhotoImage"]])
             opt.start { response in
@@ -519,10 +519,33 @@ struct APIUtil {
                     return
                 }
                 print(response.text!)
-                let resetPassword = ResetPassword(JSONDecoder(response.data))
+                let editUser = EditUser(JSONDecoder(response.data))
                 if callBack != nil {
                     Async.main {
-                        callBack!(resetPassword)
+                        callBack!(editUser)
+                    }
+                }
+            }
+        } catch {
+            print("got an error creating the request: \(error)")
+        }
+    }
+    
+    static func getContactID(_ phoneNumber: String, callBack: ((ContactIDInfo) -> ())?) {
+        do {
+            let opt = try HTTP.POST(AppURL.BEYEBE_18PHONE_API_BASE + "getUserID", parameters: ["mobile":phoneNumber])
+            opt.start { response in
+                if let error = response.error {
+                    print("error: \(error.localizedDescription)")
+                    print("error: \(error.code)")
+                    
+                    return
+                }
+                print(response.text!)
+                let contactIDInfo = ContactIDInfo(JSONDecoder(response.data))
+                if callBack != nil {
+                    Async.main {
+                        callBack!(contactIDInfo)
                     }
                 }
             }

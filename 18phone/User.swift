@@ -22,6 +22,17 @@ struct UserInfo: JSONJoy {
     }
 }
 
+struct EditUser: JSONJoy {
+    
+    let codeStatus: Int?
+    let codeInfo: String?
+    
+    init(_ decoder: JSONDecoder) {
+        codeStatus = decoder["codeStatus"].integer
+        codeInfo = decoder["codeInfo"].string
+    }
+}
+
 struct UserData {
     
     let userID: String?

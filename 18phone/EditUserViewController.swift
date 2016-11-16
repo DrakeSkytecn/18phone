@@ -62,7 +62,9 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate, UINavi
         } else if userData?.sex == Sex.female.rawValue {
             sexLabel.text = "女"
         }
-        ageLabel.text = "\(userData!.age!)岁"
+        if userData!.age! != -1 {
+            ageLabel.text = "\(userData!.age!)岁"
+        }
         areaLabel.text = userData?.provinceCity
         signField.text = userData?.personalSignature
         age = userData!.age!
@@ -161,9 +163,10 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate, UINavi
             }
             userInfo["HeadPhotoImage"] = Upload(fileUrl: imageUrl!)
         }
-        APIUtil.editUserInfo(userInfo, callBack: nil)
-        SwiftEventBus.post("reloadUserInfo")
-        _ = navigationController?.popViewController(animated: true)
+        APIUtil.editUserInfo(userInfo, callBack: { editUser in
+            SwiftEventBus.post("reloadUserInfo")
+            _ = self.navigationController?.popViewController(animated: true)
+        })
     }
     
     @IBAction func editHeadphoto(_ sender: UITapGestureRecognizer) {

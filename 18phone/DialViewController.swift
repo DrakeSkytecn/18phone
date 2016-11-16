@@ -8,6 +8,7 @@
 
 import UIKit
 import Contacts
+import ContactsUI
 
 class DialViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -130,7 +131,7 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func checkNumberArea(_ temp: String) {
-        if PhoneUtil.isMobileNumber(temp) || PhoneUtil.isTelephoneNumber(temp)  {
+        if PhoneUtil.isMobileNumber(temp) {
             //先查是否为通讯录联系人
             let store = CNContactStore()
             let keysToFetch = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
@@ -151,7 +152,15 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
                         //                        self.areaText.text = self.tempName
                         self.appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contact.identifier)'").first
                         if self.appContactInfo != nil {
-                            self.isRegister = self.appContactInfo!.isRegister
+                            APIUtil.getContactID(phoneNumber, callBack: { contactIDInfo in
+                                if contactIDInfo.codeStatus == 1 {
+                                    try! App.realm.write {
+                                        self.appContactInfo?.accountId = contactIDInfo.userID!
+                                        self.appContactInfo?.isRegister = contactIDInfo.isRegister!
+                                    }
+                                    self.isRegister = contactIDInfo.isRegister!
+                                }
+                            })
                         }
                         break
                     }
@@ -234,6 +243,10 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
+    func checkIs18User(_ phoneNumber: String) {
+        
+    }
+    
     func clickDialButton(_ sender:UIButton) {
         var temp = numberText.text!
         if temp.characters.count < 12 {
@@ -241,6 +254,7 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
             temp = temp + number
             numberText.text = temp
             checkNumberArea(temp)
+            checkIs18User(temp)
         }
     }
     
@@ -283,7 +297,17 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
             if PhoneUtil.isMobileNumber(numberText.text) {
                 if isRegister {
                     let outgoingCallViewController = R.storyboard.main.outgoingCallViewController()
+                    let callLog = CallLog()
+                    callLog.accountId = appContactInfo!.accountId
+                    callLog.contactId = appContactInfo!.identifier
+                    callLog.phone = numberText.text!
+                    callLog.name = tempName!
+                    callLog.area = tempArea!
+                    callLog.callStartTime = Date()
+                    callLog.callType = CallType.voice.rawValue
+                    outgoingCallViewController?.callLog = callLog
                     outgoingCallViewController?.contactId = appContactInfo?.identifier
+                    outgoingCallViewController?.accountId = appContactInfo?.accountId
                     outgoingCallViewController?.toNumber = numberText.text
                     outgoingCallViewController?.contactName = tempName
                     outgoingCallViewController?.phoneArea = tempArea

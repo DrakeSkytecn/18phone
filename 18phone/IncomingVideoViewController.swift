@@ -34,10 +34,10 @@ class IncomingVideoViewController: UIViewController {
 //                self.inCall?.orientation()
 //        }
         
-//        inCall?.startPreviewWindow()
-//        let previewWindow = inCall!.createPreviewWindow(CGRect(x: 0, y: 0, width: previewCon.frame.width, height: previewCon.frame.height))
-//        previewCon.addSubview(previewWindow!)
-//        inCall?.orientation()
+        inCall?.startPreviewWindow()
+        let previewWindow = inCall!.createPreviewWindow(CGRect(x: 0, y: 0, width: previewCon.frame.width, height: previewCon.frame.height))
+        previewCon.addSubview(previewWindow!)
+        inCall?.orientation()
     }
     
     override func didReceiveMemoryWarning() {
@@ -92,7 +92,7 @@ class IncomingVideoViewController: UIViewController {
             //            try! App.realm.write {
             //                App.realm.add(callLog)
             //            }
-            dismiss(animated: true, completion: nil)
+//            dismiss(animated: true, completion: nil)
             break
             
         default:

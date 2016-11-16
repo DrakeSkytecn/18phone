@@ -106,11 +106,13 @@ class LoginViewController: UIViewController, UITableViewDataSource, UITableViewD
         APIUtil.login(phoneNumber, password: password, callBack: { loginInfo in
             if loginInfo.codeStatus == 1 {
                 let userDefaults = UserDefaults.standard
-                if userDefaults.string(forKey: "userID") == nil{
+                if userDefaults.string(forKey: "userID") == nil {
                     userDefaults.set(loginInfo.userID, forKey: "userID")
+                    userDefaults.set(self.phoneNumber, forKey: "username")
+                    userDefaults.set(self.password, forKey: "password")
                     userDefaults.synchronize()
                 }
-                App.autoLogin(self.phoneNumber, password: self.password)
+                App.initUserAgent(loginInfo.userID!, password: self.password)
                 self.present(R.storyboard.main.kTabBarController()!, animated: true, completion: nil)
             } else {
                 alertController.message = loginInfo.codeInfo

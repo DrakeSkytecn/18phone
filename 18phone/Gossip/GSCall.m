@@ -273,13 +273,13 @@
 }
 
 -(void)startPreviewWindow {
-    pj_thread_desc desc;
-    pj_thread_t *thread = 0;
-    if(!pj_thread_is_registered())
-    {
-        NSLog(@"pj_thread_is_registered");
-        pj_thread_register(NULL,desc,&thread);
-    }
+//    pj_thread_desc desc;
+//    pj_thread_t *thread = 0;
+//    if(!pj_thread_is_registered())
+//    {
+//        NSLog(@"pj_thread_is_registered");
+//        pj_thread_register(NULL,desc,&thread);
+//    }
     pjsua_vid_preview_param preview_param;
     pjsua_vid_preview_param_default(&preview_param);
     preview_param.wnd_flags = PJMEDIA_VID_DEV_WND_BORDER |
@@ -386,31 +386,6 @@
             
         case PJSIP_INV_STATE_CONFIRMED: {
             [self stopRingback];
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                [self startPreviewWindow];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    pjsua_vid_win_id wid = 0;
-                    wid = pjsua_vid_preview_get_win(PJMEDIA_VID_DEFAULT_CAPTURE_DEV);
-                    pjmedia_coord rect;
-                    rect.x = 0;
-                    rect.y = 0;
-                    pjmedia_rect_size rect_size;
-                    rect_size.h = _videoCon.frame.size.height;
-                    rect_size.w = _videoCon.frame.size.width;
-                    pjsua_vid_win_set_size(wid,&rect_size);
-                    pjsua_vid_win_set_pos(wid,&rect);
-                    pjsua_vid_win_info win_info;
-                    pjsua_vid_win_get_info(wid, &win_info);
-                    UIView *view = (__bridge UIView *)win_info.hwnd.info.ios.window;
-//                    view.frame = CGRectMake(0, 0, 400, 400);
-                    view.backgroundColor = [UIColor blueColor];
-//                    view.frame = _videoCon.frame;
-                    [_videoCon addSubview:view];
-                    win_info.is_native = PJ_FALSE;
-                    //显示窗口
-                    win_info.show = YES;
-                });
-            });
             callStatus = GSCallStatusConnected;
         } break;
             

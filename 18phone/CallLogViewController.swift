@@ -95,13 +95,20 @@ class CallLogViewController: UITableViewController {
         let callLog = self.callLogs![indexPath.row]
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: "语音通话", style: .default) { action in
-            let outgoingCallViewController = R.storyboard.main.outgoingCallViewController()
-            outgoingCallViewController?.callLog = callLog
-            outgoingCallViewController?.contactId = callLog.contactId
-            outgoingCallViewController?.toNumber = callLog.phone
-            outgoingCallViewController?.contactName = callLog.name
-            outgoingCallViewController?.phoneArea = callLog.area
-            self.present(outgoingCallViewController!, animated: true, completion: nil)
+            if callLog.accountId.isEmpty {
+                if let fromNumber = UserDefaults.standard.string(forKey: "username") {
+                    PhoneUtil.dialBackCall(fromNumber, toNumber: callLog.phone)
+                }
+            } else {
+                let outgoingCallViewController = R.storyboard.main.outgoingCallViewController()
+                outgoingCallViewController?.callLog = callLog
+                outgoingCallViewController?.accountId = callLog.accountId
+                outgoingCallViewController?.contactId = callLog.contactId
+                outgoingCallViewController?.toNumber = callLog.phone
+                outgoingCallViewController?.contactName = callLog.name
+                outgoingCallViewController?.phoneArea = callLog.area
+                self.present(outgoingCallViewController!, animated: true, completion: nil)
+            }
             })
         alertController.addAction(UIAlertAction(title: "视频通话", style: .default) { action in
             let outgoingVideoViewController = R.storyboard.main.outgoingVideoViewController()

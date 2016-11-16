@@ -43,24 +43,25 @@ class OutgoingVideoViewController: UIViewController {
         }
         let account = GSUserAgent.shared().account
         outCall = GSCall.outgoingCall(toUri: toNumber! + "@" + AppURL.BEYEBE_SIP_DOMAIN, from: account)
-        outCall?.videoCon = previewCon
+//        outCall?.videoCon = previewCon
         outCall?.addObserver(self, forKeyPath: "status", options: .initial, context: nil)
         outCall?.beginVideo()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        Async.background {
-            self.outCall?.startPreviewWindow()
-            print("222")
-        }.main { _ in
-            print("111")
-            
-            let previewWindow = self.outCall!.createPreviewWindow(CGRect(x: 0, y: 0, width: 40, height: 80))
-            previewWindow?.backgroundColor = UIColor.blue
-            self.previewCon.addSubview(previewWindow!)
-            self.outCall?.orientation()
-        }
-        
+//        Async.background {
+//            self.outCall?.startPreviewWindow()
+//        }.main { _ in
+//            let previewWindow = self.outCall!.createPreviewWindow(CGRect(x: 0, y: 0, width: 40, height: 80))
+//            previewWindow?.backgroundColor = UIColor.blue
+//            self.previewCon.addSubview(previewWindow!)
+//            self.outCall?.orientation()
+//        }
+        self.outCall?.startPreviewWindow()
+        let previewWindow = self.outCall!.createPreviewWindow(CGRect(x: 0, y: 0, width: previewCon.frame.width, height: previewCon.frame.height))
+//        previewWindow?.backgroundColor = UIColor.blue
+        self.previewCon.addSubview(previewWindow!)
+        self.outCall?.orientation()
     }
     
     override func didReceiveMemoryWarning() {
@@ -120,7 +121,7 @@ class OutgoingVideoViewController: UIViewController {
             
         case GSCallStatusDisconnected:
             print("OutgoingCallViewController Disconnected.")
-            dismiss(animated: true, completion: nil)
+//            dismiss(animated: true, completion: nil)
             break
             
         default:

@@ -14,6 +14,8 @@ class OutgoingCallViewController: UIViewController {
 
     var callLog: CallLog?
     
+    var accountId: String?
+    
     var contactId: String?
     
     var toNumber: String?
@@ -59,8 +61,8 @@ class OutgoingCallViewController: UIViewController {
         }
         
         let account = GSUserAgent.shared().account
-        outCall = GSCall.outgoingCall(toUri: callLog!.phone + "@" + AppURL.BEYEBE_SIP_DOMAIN, from: account)
-        outCall?.checkBuddy()
+        outCall = GSCall.outgoingCall(toUri: callLog!.accountId + "@" + AppURL.BEYEBE_SIP_DOMAIN, from: account)
+//        outCall?.checkBuddy()
         outCall?.addObserver(self, forKeyPath: "status", options: .initial, context: nil)
         self.outCall?.begin()
     }
@@ -73,6 +75,7 @@ class OutgoingCallViewController: UIViewController {
     @IBAction func hangup(_ sender: UIButton) {
         outCall?.end()
         let newCallLog = CallLog()
+        newCallLog.accountId = callLog!.accountId
         newCallLog.contactId = callLog!.contactId
         newCallLog.name = callLog!.name
         newCallLog.phone = callLog!.phone

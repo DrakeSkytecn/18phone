@@ -70,20 +70,23 @@ open class JSONDecoder {
         return value as? NSNumber
     }
     ///treat the value as a bool
-    open var bool: Bool {
-        if let str = self.string {
-            let lower = str.lowercased()
-            if lower == "true" || Int(lower) > 0 {
-                return true
-            }
-        } else if let num = self.integer {
-            return num > 0
-        } else if let num = self.double {
-            return num > 0.99
-        } else if let num = self.float {
-            return num > 0.99
-        }
-        return false
+//    open var bool: Bool {
+//        if let str = self.string {
+//            let lower = str.lowercased()
+//            if lower == "true" || Int(lower) > 0 {
+//                return true
+//            }
+//        } else if let num = self.integer {
+//            return num > 0
+//        } else if let num = self.double {
+//            return num > 0.99
+//        } else if let num = self.float {
+//            return num > 0.99
+//        }
+//        return false
+//    }
+    open var bool: Bool? {
+        return value as? Bool
     }
     //get  the value if it is an error
     open var error: NSError? {
@@ -139,7 +142,7 @@ open class JSONDecoder {
         if let _ = value as? NSNull {
             throw JSONError.wrongType
         }
-        return bool
+        return bool!
     }
     
     //pull the raw values out of an array

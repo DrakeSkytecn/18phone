@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+import JSONJoy
 
 class Phone {
     var number = ""
@@ -67,8 +68,8 @@ class AppContactInfo: Object {
     /// 联系人ID
     dynamic var identifier = ""
     
-    /// 注册后分配的账号
-    dynamic var account = 0
+    /// 注册后分配的账号ID
+    dynamic var accountId = ""
     
     /// 该联系人是否是18phone的用户标识
     dynamic var isRegister = false
@@ -86,5 +87,18 @@ class AppContactInfo: Object {
     dynamic var signature = ""
 }
 
-
+struct ContactIDInfo: JSONJoy {
+    
+    let userID: String?
+    let isRegister: Bool?
+    let codeStatus: Int?
+    let codeinfo: String?
+    
+    init(_ decoder: JSONDecoder) {
+        userID = decoder["UserID"].string
+        isRegister = decoder["IsRegister"].bool
+        codeStatus = decoder["codeStatus"].integer
+        codeinfo = decoder["codeInfo"].string
+    }
+}
 

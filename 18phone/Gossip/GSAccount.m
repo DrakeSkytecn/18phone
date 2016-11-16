@@ -63,11 +63,9 @@
 
 - (BOOL)configure:(GSAccountConfiguration *)configuration {
     _config = [configuration copy];
-    
     // prepare account config
     pjsua_acc_config accConfig;
     pjsua_acc_config_default(&accConfig);
-    
     accConfig.id = [GSPJUtil PJAddressWithString:_config.address];
     accConfig.reg_uri = [GSPJUtil PJAddressWithString:_config.domain];
     accConfig.register_on_acc_add = PJ_FALSE; // connect manually
@@ -80,14 +78,12 @@
     PJMEDIA_VID_DEV_WND_RESIZABLE;
     accConfig.vid_cap_dev = PJMEDIA_VID_DEFAULT_CAPTURE_DEV;
     accConfig.vid_rend_dev = PJMEDIA_VID_DEFAULT_RENDER_DEV;
-    
     if (!_config.proxyServer) {
         accConfig.proxy_cnt = 0;
     } else {
         accConfig.proxy_cnt = 1;
         accConfig.proxy[0] = [GSPJUtil PJAddressWithString:_config.proxyServer];
     }
-    
     // adds credentials info
     pjsip_cred_info creds;
     creds.scheme = [GSPJUtil PJStringWithString:_config.authScheme];
