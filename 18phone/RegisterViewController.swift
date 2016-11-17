@@ -130,7 +130,10 @@ class RegisterViewController: UIViewController, UITableViewDataSource, UITableVi
             if registerInfo.codeStatus == 1 {
                 let userDefaults = UserDefaults.standard
                 userDefaults.set(registerInfo.userID, forKey: "userID")
+                userDefaults.set(self.phoneNumber, forKey: "username")
+                userDefaults.set(self.password, forKey: "password")
                 userDefaults.synchronize()
+                App.initUserAgent(registerInfo.userID!, password: self.password)
                 self.present(R.storyboard.main.kTabBarController()!, animated: true, completion: nil)
             } else {
                 alertController.message = registerInfo.codeinfo

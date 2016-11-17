@@ -14,16 +14,6 @@ class OutgoingCallViewController: UIViewController {
 
     var callLog: CallLog?
     
-    var accountId: String?
-    
-    var contactId: String?
-    
-    var toNumber: String?
-    
-    var contactName: String?
-    
-    var phoneArea: String?
-    
     var outCall: GSCall?
     
     var isConnected: Bool = false
@@ -53,13 +43,12 @@ class OutgoingCallViewController: UIViewController {
          */
         dialPlateBtn.layer.borderColor = UIColor.white.cgColor
         speakerBtn.layer.borderColor = UIColor.white.cgColor
-        if !contactName!.isEmpty {
+        if !callLog!.name.isEmpty {
             nameLabel.text = callLog!.name
         } else {
             nameLabel.text = callLog!.phone
             areaLabel.text = callLog!.area
         }
-        
         let account = GSUserAgent.shared().account
         outCall = GSCall.outgoingCall(toUri: callLog!.accountId + "@" + AppURL.BEYEBE_SIP_DOMAIN, from: account)
 //        outCall?.checkBuddy()
@@ -86,9 +75,7 @@ class OutgoingCallViewController: UIViewController {
         }
         newCallLog.callType = CallType.voice.rawValue
         newCallLog.callStartTime = Date()
-        if phoneArea != nil {
-            newCallLog.area = callLog!.area
-        }
+        newCallLog.area = callLog!.area
         try! App.realm.write {
             App.realm.add(newCallLog)
         }                                                                                                       

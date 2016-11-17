@@ -38,27 +38,15 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         titleLabel.font = UIFont.systemFont(ofSize: 16)
         titleLabel.frame = CGRect(x: 0, y: 340, width: Screen.width, height: 30)
         titleLabel.textAlignment = .center
-        
-        let tintLabel = UILabel()
-        tintLabel.text = "(不支持微信账号二维码)"
-        tintLabel.textColor = UIColor.white
-        tintLabel.font = UIFont.systemFont(ofSize: 12)
-        tintLabel.frame = CGRect(x: 0, y: 380, width: Screen.width, height: 30)
-        tintLabel.textAlignment = .center
-        
         view.addSubview(titleLabel)
-//        view.addSubview(tintLabel)
     }
     
     fileprivate func buildInputAVCaptureDevice() {
-        
         let captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
-        
         let input = try? AVCaptureDeviceInput(device: captureDevice)
         if input == nil {
             return
         }
-        
         let captureMetadataOutput = AVCaptureMetadataOutput()
         captureSession = AVCaptureSession()
         captureSession?.addInput(input!)

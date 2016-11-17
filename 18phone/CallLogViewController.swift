@@ -92,31 +92,43 @@ class CallLogViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let callLog = self.callLogs![indexPath.row]
+        let callLog = callLogs![indexPath.row]
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: "语音通话", style: .default) { action in
             if callLog.accountId.isEmpty {
                 if let fromNumber = UserDefaults.standard.string(forKey: "username") {
                     PhoneUtil.dialBackCall(fromNumber, toNumber: callLog.phone)
                 }
+                APIUtil.getContactID(callLog.phone, callBack: { contactIDInfo in
+                    if contactIDInfo.codeStatus == 1 {
+                        try! App.realm.write {
+                            callLog.accountId = contactIDInfo.userID!
+                        }
+                    }
+                })
             } else {
                 let outgoingCallViewController = R.storyboard.main.outgoingCallViewController()
                 outgoingCallViewController?.callLog = callLog
-                outgoingCallViewController?.accountId = callLog.accountId
-                outgoingCallViewController?.contactId = callLog.contactId
-                outgoingCallViewController?.toNumber = callLog.phone
-                outgoingCallViewController?.contactName = callLog.name
-                outgoingCallViewController?.phoneArea = callLog.area
                 self.present(outgoingCallViewController!, animated: true, completion: nil)
             }
             })
         alertController.addAction(UIAlertAction(title: "视频通话", style: .default) { action in
-            let outgoingVideoViewController = R.storyboard.main.outgoingVideoViewController()
-            outgoingVideoViewController?.contactId = callLog.contactId
-            outgoingVideoViewController?.toNumber = callLog.phone
-            outgoingVideoViewController?.contactName = callLog.name
-            outgoingVideoViewController?.phoneArea = callLog.area
-            self.present(outgoingVideoViewController!, animated: true, completion: nil)
+            if callLog.accountId.isEmpty {
+                APIUtil.getContactID(callLog.phone, callBack: { contactIDInfo in
+                    if contactIDInfo.codeStatus == 1 {
+                        try! App.realm.write {
+                            callLog.accountId = contactIDInfo.userID!
+                        }
+                    } else {
+                        
+                    }
+                })
+            } else {
+                let outgoingVideoViewController = R.storyboard.main.outgoingVideoViewController()
+                outgoingVideoViewController?.callLog = callLog
+                self.present(outgoingVideoViewController!, animated: true, completion: nil)
+            }
+            
             })
         alertController.addAction(UIAlertAction(title: "举报", style: .destructive) { action in
             

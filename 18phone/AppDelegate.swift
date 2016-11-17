@@ -20,11 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKPushRegistryDelegate {
         
         window?.backgroundColor = UIColor.white
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor(red: 38.0 / 255.0, green: 173.0 / 255.0, blue: 86.0 / 255.0, alpha: 1.0)], for: .selected)
-        let userNotifiSetting = UIUserNotificationSettings(types: [.badge, .alert, .sound], categories: nil)
-        application.registerUserNotificationSettings(userNotifiSetting)
         let pushRegistry = PKPushRegistry(queue: DispatchQueue.main)
         pushRegistry.delegate = self
         pushRegistry.desiredPushTypes = [.voIP]
+        let userNotifiSetting = UIUserNotificationSettings(types: [.badge, .alert, .sound], categories: nil)
+        application.registerUserNotificationSettings(userNotifiSetting)
 //        App.autoLogin("18823754172", password: "123")
 //        App.autoLogin("15016721385", password: "123")
 //        App.autoLogin("18603001016", password: "123")
@@ -69,8 +69,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKPushRegistryDelegate {
     }
     
     func pushRegistry(_ registry: PKPushRegistry, didReceiveIncomingPushWith payload: PKPushPayload, forType type: PKPushType) {
-        
-        
         
     }
 }

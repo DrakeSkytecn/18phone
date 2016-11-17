@@ -142,7 +142,7 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
             isRegister = false
             appContactInfo = nil
             
-            try! store.enumerateContacts(with: fetchRequest) { (contact, stop) -> Void in
+            try! store.enumerateContacts(with: fetchRequest) { contact, stop -> Void in
                 for number in contact.phoneNumbers {
                     let phoneNumber = PhoneUtil.formatPhoneNumber((number.value).stringValue)
                     if phoneNumber == temp {
@@ -150,13 +150,13 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
                         self.tempName = contact.familyName + contact.givenName
                         print("self.tempName:\(self.tempName)")
                         //                        self.areaText.text = self.tempName
-                        self.appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contact.identifier)'").first
+                        self.appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contact.identifier)'").first!
                         if self.appContactInfo != nil {
                             APIUtil.getContactID(phoneNumber, callBack: { contactIDInfo in
                                 if contactIDInfo.codeStatus == 1 {
                                     try! App.realm.write {
-                                        self.appContactInfo?.accountId = contactIDInfo.userID!
-                                        self.appContactInfo?.isRegister = contactIDInfo.isRegister!
+                                        self.appContactInfo!.accountId = contactIDInfo.userID!
+                                        self.appContactInfo!.isRegister = contactIDInfo.isRegister!
                                     }
                                     self.isRegister = contactIDInfo.isRegister!
                                 }
@@ -300,17 +300,18 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     let callLog = CallLog()
                     callLog.accountId = appContactInfo!.accountId
                     callLog.contactId = appContactInfo!.identifier
+                    print("appContactInfo!.accountId:\(appContactInfo!.accountId)")
                     callLog.phone = numberText.text!
                     callLog.name = tempName!
                     callLog.area = tempArea!
                     callLog.callStartTime = Date()
                     callLog.callType = CallType.voice.rawValue
                     outgoingCallViewController?.callLog = callLog
-                    outgoingCallViewController?.contactId = appContactInfo?.identifier
-                    outgoingCallViewController?.accountId = appContactInfo?.accountId
-                    outgoingCallViewController?.toNumber = numberText.text
-                    outgoingCallViewController?.contactName = tempName
-                    outgoingCallViewController?.phoneArea = tempArea
+//                    outgoingCallViewController?.contactId = appContactInfo?.identifier
+//                    outgoingCallViewController?.accountId = appContactInfo?.accountId
+//                    outgoingCallViewController?.toNumber = numberText.text
+//                    outgoingCallViewController?.contactName = tempName
+//                    outgoingCallViewController?.phoneArea = tempArea
                     present(outgoingCallViewController!, animated: true, completion: nil)
                 } else {
                     if let saveUsername = UserDefaults.standard.string(forKey: "username") {

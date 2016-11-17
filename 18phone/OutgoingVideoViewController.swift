@@ -11,19 +11,13 @@ import Async
 
 class OutgoingVideoViewController: UIViewController {
     
-    @IBOutlet weak var videoWidth: NSLayoutConstraint!
-    
-    var contactId: String?
-    
-    var toNumber: String?
-    
-    var contactName: String?
-    
-    var phoneArea: String?
+    var callLog: CallLog?
     
     var outCall:GSCall?
     
     var isConnected: Bool = false
+    
+    @IBOutlet weak var videoWidth: NSLayoutConstraint!
     
     @IBOutlet weak var renderCon: UIView!
     
@@ -35,15 +29,14 @@ class OutgoingVideoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if !contactName!.isEmpty {
-            nameLabel.text = contactName
+        if !callLog!.name.isEmpty {
+            nameLabel.text = callLog!.name
         } else {
-            nameLabel.text = toNumber
-            areaLabel.text = phoneArea
+            nameLabel.text = callLog!.phone
+            areaLabel.text = callLog!.area
         }
         let account = GSUserAgent.shared().account
-        outCall = GSCall.outgoingCall(toUri: toNumber! + "@" + AppURL.BEYEBE_SIP_DOMAIN, from: account)
-//        outCall?.videoCon = previewCon
+        outCall = GSCall.outgoingCall(toUri: callLog!.accountId + "@" + AppURL.BEYEBE_SIP_DOMAIN, from: account)
         outCall?.addObserver(self, forKeyPath: "status", options: .initial, context: nil)
         outCall?.beginVideo()
     }
@@ -59,7 +52,6 @@ class OutgoingVideoViewController: UIViewController {
 //        }
         self.outCall?.startPreviewWindow()
         let previewWindow = self.outCall!.createPreviewWindow(CGRect(x: 0, y: 0, width: previewCon.frame.width, height: previewCon.frame.height))
-//        previewWindow?.backgroundColor = UIColor.blue
         self.previewCon.addSubview(previewWindow!)
         self.outCall?.orientation()
     }

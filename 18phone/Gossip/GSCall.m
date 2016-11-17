@@ -266,7 +266,6 @@
     pjsua_vid_win_get_info(wid, &win_info);
     win_info.is_native = PJ_FALSE;
     UIView *view = (__bridge UIView *)win_info.hwnd.info.ios.window;
-//    view.frame = frame;
     pjsua_vid_win_set_show(wid, PJ_TRUE);
     
     return view;

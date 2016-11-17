@@ -42,54 +42,48 @@ class IncomingCallViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         /**
          storyboard目前不支持设置CGColor
          */
         dialPlateBtn.layer.borderColor = UIColor.white.cgColor
         speakerBtn.layer.borderColor = UIColor.white.cgColor
-        let phoneNumber = inCall?.incomingCallInfo()
-        self.nameLabel.text = phoneNumber
-        
-        let store = CNContactStore()
-        let keysToFetch = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
-                           CNContactGivenNameKey,
-                           CNContactFamilyNameKey,
-                           CNContactPhoneNumbersKey] as [Any]
-        let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch as! [CNKeyDescriptor])
-        var tempName:String? = nil
-        try! store.enumerateContacts(with: fetchRequest) { (contact, stop) -> Void in
-            for number in contact.phoneNumbers {
-                let formatPhoneNumber = PhoneUtil.formatPhoneNumber(number.value.stringValue)
-                if formatPhoneNumber == phoneNumber {
-                    tempName = contact.familyName + contact.givenName
-                    self.areaLabel.text = tempName
-                    break
-                }
-            }
-        }
-        if tempName == nil {
-            if let area = App.realm.objects(Area.self).filter("key == '\(phoneNumber)'").first {
-                areaLabel.text = area.name
-            } else {
-                PhoneUtil.getPhoneAreaInfo(phoneNumber!) { phoneAreaInfo in
-                    if phoneAreaInfo.errNum == 0 {
-                        let province = phoneAreaInfo.retData!.province!
-                        let city = phoneAreaInfo.retData!.city!
-                        let fullArea = province + city
-                        switch province {
-                        case "北京", "上海", "天津", "重庆":
-                            self.areaLabel.text = province
-                            break
-                        default:
-                            self.areaLabel.text = fullArea
-                            break
+        let accountId = inCall?.incomingCallInfo()
+        var appContactInfo = App.realm.objects(AppContactInfo.self).filter("accountId == '\(accountId!)'").first
+        if appContactInfo == nil {
+            APIUtil.getUserInfo(accountId!, callBack: { userInfo in
+                if userInfo.codeStatus == 1 {
+                    let store = CNContactStore()
+                    let keysToFetch = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
+                                       CNContactGivenNameKey,
+                                       CNContactFamilyNameKey,
+                                       CNContactPhoneNumbersKey] as [Any]
+                    let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch as! [CNKeyDescriptor])
+                    try! store.enumerateContacts(with: fetchRequest) { contact, stop -> Void in
+                        for number in contact.phoneNumbers {
+                            let phoneNumber = PhoneUtil.formatPhoneNumber((number.value).stringValue)
+                            if phoneNumber == userInfo.userData!.mobile! {
+                                self.nameLabel.text = contact.familyName + contact.givenName
+                                appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contact.identifier)'").first
+                                try! App.realm.write {
+                                    appContactInfo?.accountId = accountId!
+                                    appContactInfo?.isRegister = true
+                                }
+                            }
                         }
-                    } else {
-                        self.areaLabel.text = "未知"
                     }
+//                    if self.nameLabel.text!.isEmpty {
+//                        self.nameLabel.text =
+//                    }
                 }
-            }
+            })
+        } else {
+            let store = CNContactStore()
+            let keysToFetch = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
+                               CNContactGivenNameKey,
+                               CNContactFamilyNameKey,
+                               CNContactPhoneNumbersKey] as [Any]
+            let contact = try! store.unifiedContact(withIdentifier: appContactInfo!.identifier, keysToFetch: keysToFetch as! [CNKeyDescriptor])
+            self.nameLabel.text = contact.familyName + contact.givenName
         }
         inCall?.addObserver(self, forKeyPath: "status", options: .initial, context: nil)
         inCall?.startRingback()
@@ -163,7 +157,7 @@ class IncomingCallViewController: UIViewController {
 //                App.realm.add(callLog)
 //            }
             App.changeSpeaker(false)
-            dismiss(animated: true, completion: nil)
+//            dismiss(animated: true, completion: nil)
             break
             
         default:

@@ -21,12 +21,10 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.file` struct is generated, and contains static references to 4 files.
+  /// This `R.file` struct is generated, and contains static references to 3 files.
   struct file {
     /// Resource file `Address.plist`.
     static let addressPlist = Rswift.FileResource(bundle: R.hostingBundle, name: "Address", pathExtension: "plist")
-    /// Resource file `headphoto.jpg`.
-    static let headphotoJpg = Rswift.FileResource(bundle: R.hostingBundle, name: "headphoto", pathExtension: "jpg")
     /// Resource file `ringtone.wav`.
     static let ringtoneWav = Rswift.FileResource(bundle: R.hostingBundle, name: "ringtone", pathExtension: "wav")
     /// Resource file `test`.
@@ -35,12 +33,6 @@ struct R: Rswift.Validatable {
     /// `bundle.url(forResource: "Address", withExtension: "plist")`
     static func addressPlist(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.addressPlist
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-    
-    /// `bundle.url(forResource: "headphoto", withExtension: "jpg")`
-    static func headphotoJpg(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.headphotoJpg
       return fileResource.bundle.url(forResource: fileResource)
     }
     
@@ -64,7 +56,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 42 images.
+  /// This `R.image` struct is generated, and contains static references to 41 images.
   struct image {
     /// Image `Launch`.
     static let launch = Rswift.ImageResource(bundle: R.hostingBundle, name: "Launch")
@@ -110,8 +102,6 @@ struct R: Rswift.Validatable {
     static let hang_up = Rswift.ImageResource(bundle: R.hostingBundle, name: "hang_up")
     /// Image `head_photo_default`.
     static let head_photo_default = Rswift.ImageResource(bundle: R.hostingBundle, name: "head_photo_default")
-    /// Image `headphoto.jpg`.
-    static let headphotoJpg = Rswift.ImageResource(bundle: R.hostingBundle, name: "headphoto.jpg")
     /// Image `is_register`.
     static let is_register = Rswift.ImageResource(bundle: R.hostingBundle, name: "is_register")
     /// Image `male`.
@@ -259,11 +249,6 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "head_photo_default", bundle: ..., traitCollection: ...)`
     static func head_photo_default(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.head_photo_default, compatibleWith: traitCollection)
-    }
-    
-    /// `UIImage(named: "headphoto.jpg", bundle: ..., traitCollection: ...)`
-    static func headphotoJpg(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.headphotoJpg, compatibleWith: traitCollection)
     }
     
     /// `UIImage(named: "is_register", bundle: ..., traitCollection: ...)`

@@ -48,7 +48,6 @@
 		E12129841DB75AAC009EE55B /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12129831DB75AAC009EE55B /* AboutViewController.swift */; };
 		E123C3FC1DADDA3E00E6D442 /* CAPSPageMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E123C3FB1DADDA3E00E6D442 /* CAPSPageMenu.swift */; };
 		E1281EAE1DD81A7100C94038 /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1281EAD1DD81A7000C94038 /* PushKit.framework */; };
-		E12CC4641DD9692500248E8D /* headphoto.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E12CC4631DD9692500248E8D /* headphoto.jpg */; };
 		E12EBA811D531FF3007B5CBD /* CallLogACell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12EBA801D531FF3007B5CBD /* CallLogACell.swift */; };
 		E1330E271D92378400996D2A /* DetailMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1330E261D92378400996D2A /* DetailMenuViewController.swift */; };
 		E138D0771D6301EA0091AF4A /* OutgoingCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E138D0761D6301EA0091AF4A /* OutgoingCallViewController.swift */; };
@@ -205,7 +204,6 @@
 		E12129831DB75AAC009EE55B /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		E123C3FB1DADDA3E00E6D442 /* CAPSPageMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAPSPageMenu.swift; sourceTree = "<group>"; };
 		E1281EAD1DD81A7000C94038 /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = System/Library/Frameworks/PushKit.framework; sourceTree = SDKROOT; };
-		E12CC4631DD9692500248E8D /* headphoto.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = headphoto.jpg; sourceTree = "<group>"; };
 		E12EBA801D531FF3007B5CBD /* CallLogACell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallLogACell.swift; sourceTree = "<group>"; };
 		E1330E261D92378400996D2A /* DetailMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailMenuViewController.swift; sourceTree = "<group>"; };
 		E138D0761D6301EA0091AF4A /* OutgoingCallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutgoingCallViewController.swift; sourceTree = "<group>"; };
@@ -669,7 +667,6 @@
 		E15C42101D7D091100124257 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				E12CC4631DD9692500248E8D /* headphoto.jpg */,
 				E1711F821DCC58C200227329 /* Address.plist */,
 				E15C42111D7D094000124257 /* ringtone.wav */,
 			);
@@ -754,7 +751,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E12CC4641DD9692500248E8D /* headphoto.jpg in Resources */,
 				E15C42121D7D094000124257 /* ringtone.wav in Resources */,
 				E114D1CE1D4F1F15006AB978 /* LaunchScreen.storyboard in Resources */,
 				E1626D571D93AFC600C3422C /* test in Resources */,
