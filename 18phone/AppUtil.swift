@@ -20,24 +20,22 @@ import Async
 struct AppURL {
     
     /// 百度提供的查询号码归属地api
-    static let phoneAreaUrl = "https://apis.baidu.com/apistore/mobilenumber/mobilenumber"
+    static let BAIDU_PHONEAREA_API = "https://apis.baidu.com/apistore/mobilenumber/mobilenumber"
     
     /// 比一比SIP服务器地址
     static let BEYEBE_SIP_SERVER = "211.149.172.109:5060"
-//        static let BEYEBE_SIP_SERVER = "192.168.10.165:5060"
+    //        static let BEYEBE_SIP_SERVER = "192.168.10.165:5060"
     //    static let BEYEBE_SIP_SERVER = "192.168.10.239:5060"
     
     /// 比一比SIP服务器域名
     static let BEYEBE_SIP_DOMAIN = "18phone.beyebe"
-//        static let BEYEBE_SIP_DOMAIN = "myvoipapp.com"
+    //        static let BEYEBE_SIP_DOMAIN = "myvoipapp.com"
     
     /// 18phone接口地址
     static let BEYEBE_18PHONE_API_BASE = "http://192.168.10.249/Home/"
-//    static let BEYEBE_18PHONE_API_BASE = "http://18phone.beyebe.cn/api/Phone/"
+    //    static let BEYEBE_18PHONE_API_BASE = "http://18phone.beyebe.cn/api/Phone/"
     
-    static let SIP_ACCOUNT_URL = "http://192.168.10.186:5060/api/accounts/18phone.beyebe/userz/csv"
-    
-    static let ZHIYU_BASE_URL = "http://www.zypaas.com:9988/V1/Account/" + App.ZHIYU_API_ACCOUNT
+    static let ZHIYU_BASE_URL = "http://www.zypaas.com:9988/V1/Account/"
 }
 
 /**
@@ -163,7 +161,7 @@ struct DateUtil {
 struct PhoneUtil {
     static func getPhoneAreaInfo(_ phoneNumber: String, callBack: ((PhoneAreaInfo) -> ())?) {
         do{
-            let opt = try HTTP.GET(AppURL.phoneAreaUrl, parameters: ["phone":phoneNumber], headers: ["apikey": App.APIStoreKey])
+            let opt = try HTTP.GET(AppURL.BAIDU_PHONEAREA_API, parameters: ["phone":phoneNumber], headers: ["apikey": App.APIStoreKey])
             opt.start { response in
                 if let error = response.error {
                     print("error: \(error.localizedDescription)")
@@ -211,35 +209,78 @@ struct PhoneUtil {
         UIApplication.shared.openURL(Foundation.URL(string: "tel://" + number)!)
     }
     
-    static func dialBackCall(_ fromNumber: String, toNumber: String) {
-//        请求消息头:
-//        POST /.../callback/call HTTP/1.1
-//        Content-Length: 256
-//        Content-Type: application/json; charset=UTF-8
-//        Host: 172.18.0.134:8080
-//        Connection: Keep-Alive
-//        User-Agent: Apache-HttpClient/4.5 (Java/1.7.0_79)
-//        Accept-Encoding: gzip,deflate
-//        请求消息体:
-//        {
-//            "apiAccount": "ACC19a660c5b79947768bda869f3128a868",
-//            "appId": "APP49933e2f3c674b49b1620f38ff320c99",
-//            "requestId": "123",
-//            "userData": "userData",
-//            "caller": "15899774455",
-//            "callerDisplay": "13826504034",
-//            "callee": "13826504034",
-//            "calleeDisplay": "15899774455",
-//            "maxDuration": 600,
-//            "promptTone": "xxx.wav",
-//            "recordFlag": 0,
-//            "timeStamp": "1467177012406",
-//            "sign": "bca84dc426a7ce176b01f1b8187f9623"
-//        }
+    static func dialBackCall(_ fromNumber: String, toNumber: String, callBack: ((DialBackCallInfo) -> ())?) {
+        //        请求消息头:
+        //        POST /.../callback/call HTTP/1.1
+        //        Content-Length: 256
+        //        Content-Type: application/json; charset=UTF-8
+        //        Host: 172.18.0.134:8080
+        //        Connection: Keep-Alive
+        //        User-Agent: Apache-HttpClient/4.5 (Java/1.7.0_79)
+        //        Accept-Encoding: gzip,deflate
+        //        请求消息体:
+        //        {
+        //            "apiAccount": "ACC19a660c5b79947768bda869f3128a868",
+        //            "appId": "APP49933e2f3c674b49b1620f38ff320c99",
+        //            "requestId": "123",
+        //            "userData": "userData",
+        //            "caller": "15899774455",
+        //            "callerDisplay": "13826504034",
+        //            "callee": "13826504034",
+        //            "calleeDisplay": "15899774455",
+        //            "maxDuration": 600,
+        //            "promptTone": "xxx.wav",
+        //            "recordFlag": 0,
+        //            "timeStamp": "1467177012406",
+        //            "sign": "bca84dc426a7ce176b01f1b8187f9623"
+        //        }
         let timeStamp = Date().timeIntervalSince1970 / 1000
         let sign = MathUtil.md5(App.ZHIYU_API_ACCOUNT + App.ZHIYU_API_KEY + "\(timeStamp)").uppercased()
         do {
-            let opt = try HTTP.POST(AppURL.ZHIYU_BASE_URL + "/callback/call", parameters:["apiAccount":App.ZHIYU_API_ACCOUNT, "appId":App.ZHIYU_APP_ID, "requestId":"18phone", "userData":"userData", "caller":fromNumber, "callerDisplay":toNumber, "callee":toNumber, "calleeDisplay":fromNumber, "maxDuration":600, "promptTone":"", "recordFlag":1, "cdrUrl":"", "sign":sign, "timeStamp":"\(timeStamp)"], headers:["Content-Length":"256", "Content-Type":"application/json; charset=utf-8", "Host":"172.18.0.134:8080", "Connection":"Keep-Alive", "Accept-Encoding":"gzip,deflate"], requestSerializer:JSONParameterSerializer())
+            let opt = try HTTP.POST(AppURL.ZHIYU_BASE_URL + App.ZHIYU_API_ACCOUNT + "/callback/call", parameters:["apiAccount":App.ZHIYU_API_ACCOUNT, "appId":App.ZHIYU_APP_ID, "requestId":"18phone", "userData":"userData", "caller":fromNumber, "callerDisplay":toNumber, "callee":toNumber, "calleeDisplay":fromNumber, "maxDuration":600, "promptTone":"", "recordFlag":1, "cdrUrl":"", "sign":sign, "timeStamp":"\(timeStamp)"], headers:["Content-Length":"256", "Content-Type":"application/json; charset=utf-8", "Host":"172.18.0.134:8080", "Connection":"Keep-Alive", "Accept-Encoding":"gzip,deflate"], requestSerializer:JSONParameterSerializer())
+            opt.start { response in
+                if let error = response.error {
+                    print("error: \(error.localizedDescription)")
+                    print("error: \(error.code)")
+                    
+                    return
+                }
+                print(response.text!)
+                let dialBackCallInfo = DialBackCallInfo(JSONDecoder(response.data))
+                if callBack != nil {
+                    Async.main {
+                        callBack!(dialBackCallInfo)
+                    }
+                }
+            }
+        } catch {
+            print("got an error creating the request: \(error)")
+        }
+    }
+    
+    static func getBackCallDuration(_ callId: String) {
+        //        3、请求示例
+        //
+        //        请求消息头:
+        //        POST /cdr HTTP/1.1
+        //        Content-Length: 256
+        //        Content-Type: application/json; charset=UTF-8
+        //        Host: 172.18.0.134:8080
+        //        Connection: Keep-Alive
+        //        User-Agent: Apache-HttpClient/4.5 (Java/1.7.0_79)
+        //        Accept-Encoding: gzip,deflate
+        //        请求消息体:
+        //        {
+        //            "apiAccount": "ACC19a660c5b79947768bda869f3128a869",
+        //            "appId": "APP49933e2f3c674b49b1620f38ff320c99",
+        //            "callId": "14738178086511111312878516015899774959,14732982703030011312878516015899774959",
+        //            "timeStamp": "1476091190611",
+        //            "sign": "0ACC5F9D61684A5552230ADFF40D9148"
+        //        }
+        let timeStamp = Date().timeIntervalSince1970 / 1000
+        let sign = MathUtil.md5(App.ZHIYU_API_ACCOUNT + App.ZHIYU_API_KEY + "\(timeStamp)").uppercased()
+        do {
+            let opt = try HTTP.POST(AppURL.ZHIYU_BASE_URL + "cdrQuery/voiceCallbackCdr", parameters:["apiAccount":App.ZHIYU_API_ACCOUNT, "appId":App.ZHIYU_APP_ID, "callId":callId, "timeStamp":"\(timeStamp)", "sign":sign], headers:["Content-Length":"256", "Content-Type":"application/json; charset=utf-8", "Host":"172.18.0.134:8080", "Connection":"Keep-Alive", "Accept-Encoding":"gzip,deflate"], requestSerializer:JSONParameterSerializer())
             opt.start { response in
                 if let error = response.error {
                     print("error: \(error.localizedDescription)")
@@ -259,6 +300,50 @@ struct PhoneUtil {
             print("got an error creating the request: \(error)")
         }
     }
+    
+    static func hangupBackCall(_ callId: String, callBack: ((DialBackCallInfo) -> ())?) {
+        //        3、请求示例
+        //
+        //        请求消息头:
+        //        POST /.../callback/cancel HTTP/1.1
+        //        Content-Length: 156
+        //        Content-Type: application/json; charset=UTF-8
+        //        Host: 172.18.0.134:8080
+        //        Connection: Keep-Alive
+        //        User-Agent: Apache-HttpClient/4.5 (Java/1.7.0_79)
+        //        Accept-Encoding: gzip,deflate
+        //        请求消息体:
+        //        {
+        //            "apiAccount": "ACC19a660c5b79947768bda869f3128a868",
+        //            "appId": "APP49933e2f3c674b49b1620f38ff320c99",
+        //            "requestId": "123",
+        //            "callId": "1467177012406431100513826504034",
+        //            "timeStamp": "1467177012406",
+        //            "sign": "bca84dc426a7ce176b01f1b8187f9623"
+        //        }
+        let timeStamp = Date().timeIntervalSince1970 / 1000
+        let sign = MathUtil.md5(App.ZHIYU_API_ACCOUNT + App.ZHIYU_API_KEY + "\(timeStamp)").uppercased()
+        do {
+            let opt = try HTTP.POST(AppURL.ZHIYU_BASE_URL + App.ZHIYU_API_ACCOUNT + "/callback/cancel", parameters:["apiAccount":App.ZHIYU_API_ACCOUNT, "appId":App.ZHIYU_APP_ID, "requestId":"18phone", "callId":callId, "timeStamp":"\(timeStamp)", "sign":sign], headers:["Content-Length":"156", "Content-Type":"application/json; charset=utf-8", "Host":"172.18.0.134:8080", "Connection":"Keep-Alive", "Accept-Encoding":"gzip,deflate"], requestSerializer:JSONParameterSerializer())
+            opt.start { response in
+                if let error = response.error {
+                    print("error: \(error.localizedDescription)")
+                    print("error: \(error.code)")
+                    
+                    return
+                }
+                print(response.text!)
+                let dialBackCallInfo = DialBackCallInfo(JSONDecoder(response.data))
+                if callBack != nil {
+                    Async.main {
+                        callBack!(dialBackCallInfo)
+                    }
+                }
+            }
+        } catch {
+            print("got an error creating the request: \(error)")
+        }
+    }
 }
 
 struct StringUtil {
@@ -272,20 +357,6 @@ struct StringUtil {
             }
         } else {
             return ""
-        }
-    }
-    
-    static func createDialBackJsonString() -> String? {
-        let timeStamp = Date().timeIntervalSince1970
-        let sign = MathUtil.md5(App.ZHIYU_API_ACCOUNT + App.ZHIYU_API_KEY + "\(timeStamp)")
-        let dict: [String:Any] = ["apiAccount":App.ZHIYU_API_ACCOUNT, "appId":App.ZHIYU_APP_ID, "requestId":"18phone", "userData":"userData", "caller":"18823754172", "callerDisplay":"18823754172", "callee":"15016721385", "calleeDisplay":"15016721385", "maxDuration":600, "promptTone":"", "recordFlag":1, "cdrUrl":"", "sign":sign, "timeStamp":"\(timeStamp)"]
-        do {
-            let data = try JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
-            let jsonString = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
-            return jsonString as? String
-        } catch {
-            print("got an error creating the request: \(error)")
-            return nil
         }
     }
 }

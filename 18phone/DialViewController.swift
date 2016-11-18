@@ -9,8 +9,11 @@
 import UIKit
 import Contacts
 import ContactsUI
+import SwiftEventBus
 
 class DialViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    var callId: String?
     
     @IBOutlet weak var showNumberCon: UIView!
     
@@ -44,7 +47,22 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func viewDidLoad() {
         super.viewDidLoad()
         dialCollectionView.scrollsToTop = false
+        SwiftEventBus.onMainThread(self, name: "getBackCallDuration") { result in
+            if self.callId != nil {
+                PhoneUtil.getBackCallDuration(self.callId!)
+                //self.addCallLog(self.numberText.text!)
+                self.callId = nil
+            }
+        }
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        print("DialViewController viewDidDisappear")
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        print("DialViewController viewWillDisappear")
     }
     
     override func didReceiveMemoryWarning() {
@@ -151,7 +169,7 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
                         print("self.tempName:\(self.tempName)")
                         //                        self.areaText.text = self.tempName
                         self.appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contact.identifier)'").first!
-                        if self.appContactInfo != nil {
+                        if self.appContactInfo != nil && self.appContactInfo!.accountId.isEmpty {
                             APIUtil.getContactID(phoneNumber, callBack: { contactIDInfo in
                                 if contactIDInfo.codeStatus == 1 {
                                     try! App.realm.write {
@@ -295,7 +313,7 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBAction func call(_ sender: UIButton) {
         if !numberText.text!.isEmpty {
             if PhoneUtil.isMobileNumber(numberText.text) {
-                if isRegister {
+                if  appContactInfo != nil && !appContactInfo!.accountId.isEmpty {
                     let outgoingCallViewController = R.storyboard.main.outgoingCallViewController()
                     let callLog = CallLog()
                     callLog.accountId = appContactInfo!.accountId
@@ -307,18 +325,30 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     callLog.callStartTime = Date()
                     callLog.callType = CallType.voice.rawValue
                     outgoingCallViewController?.callLog = callLog
-//                    outgoingCallViewController?.contactId = appContactInfo?.identifier
-//                    outgoingCallViewController?.accountId = appContactInfo?.accountId
-//                    outgoingCallViewController?.toNumber = numberText.text
-//                    outgoingCallViewController?.contactName = tempName
-//                    outgoingCallViewController?.phoneArea = tempArea
                     present(outgoingCallViewController!, animated: true, completion: nil)
                 } else {
                     if let saveUsername = UserDefaults.standard.string(forKey: "username") {
-                        PhoneUtil.dialBackCall(saveUsername, toNumber: numberText.text!)
+                        let alertController = UIAlertController(title: "回拨电话", message: "正在拨号中，您将收到一通回拨电话，接听等待即可通话", preferredStyle: .alert)
+                        let indicator = UIActivityIndicatorView(frame: alertController.view.bounds)
+                        indicator.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                        alertController.view.addSubview(indicator)
+                        alertController.addAction(UIAlertAction(title: "挂断", style: .cancel) { action in
+                            if self.callId != nil {
+                                PhoneUtil.hangupBackCall(self.callId!, callBack: { dialBackCallInfo in
+                                    if dialBackCallInfo.status == "0" {
+                                        alertController.dismiss(animated: true, completion: nil)
+                                    }
+                                })
+                            }
+                        })
+                        present(alertController, animated: true, completion: nil)
+                        PhoneUtil.dialBackCall(saveUsername, toNumber: numberText.text!, callBack: { dialBackCallInfo in
+                            if dialBackCallInfo.status == "0" {
+                                self.callId = dialBackCallInfo.callId
+                            }
+                        })
                     }
-//                    PhoneUtil.callSystemPhone(numberText.text!)
-                    addCallLog(numberText.text!)
+//                    addCallLog(numberText.text!)
                 }
             } else if PhoneUtil.isTelephoneNumber(numberText.text) {
                 PhoneUtil.callSystemPhone(numberText.text!)

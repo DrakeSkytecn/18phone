@@ -48,14 +48,17 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate, UINavi
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
-        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        let filePath = paths[0].appending("/\(userID!).jpeg")
-        let fileManager = FileManager.default
-        if fileManager.fileExists(atPath: filePath) {
-            headPhoto.image = UIImage(contentsOfFile: filePath)
-        } else {
-            headPhoto.image = headPhotoImage
+        if userData!.headImageUrl != nil {
+            headPhoto.piQ_imageFromUrl(userData!.headImageUrl!, placeholderImage: headPhotoImage!)
         }
+//        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+//        let filePath = paths[0].appending("/\(userID!).jpeg")
+//        let fileManager = FileManager.default
+//        if fileManager.fileExists(atPath: filePath) {
+//            headPhoto.image = UIImage(contentsOfFile: filePath)
+//        } else {
+//            headPhoto.image = headPhotoImage
+//        }
         nameField.text = userData?.name
         if userData?.sex == Sex.male.rawValue {
             sexLabel.text = "男"

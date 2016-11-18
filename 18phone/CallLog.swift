@@ -52,6 +52,9 @@ enum DialLine: Int {
     
     /// 回拨通话
     case dialBack
+    
+    /// 系统电话
+    case system
 }
 
 /// 通话记录数据对象
@@ -118,3 +121,90 @@ struct PhoneAreaInfo: JSONJoy {
         retData = RetData(decoder["retData"])
     }
 }
+
+struct DialBackCallInfo: JSONJoy {
+    
+    let status: String?
+    let desc: String?
+    let callId: String?
+    let requestId: String?
+    
+    init(_ decoder: JSONDecoder) {
+        status = decoder["status"].string
+        desc = decoder["desc"].string
+        callId = decoder["callId"].string
+        requestId = decoder["requestId"].string
+    }
+}
+
+//struct CDR: JSONJoy {
+//    
+//    let caller: String?
+//    let holdTime: String?
+//    let appId: String?
+//    let hangupCode: String?
+//    let callerInviteTime: String?
+//    let requestId: String?
+//    let calleeRingingBeginTime: String?
+//    let callerHangupTime: String?
+//    let recordFile: String?
+//    let state: String?
+//    let calleeHangupTime: String?
+//    let calleeDisplay: String?
+//    let userData: String?
+////    let callId: String?
+////    let caller: String?
+////    let caller: String?
+////    let caller: String?
+////    let caller: String?
+//    
+//    //    "caller": "18823754172",
+//    //    "holdTime": 48,
+//    //    "appId": "APP1e811237a2674f5c824b512a7916c5a8",
+//    //    "hangupCode": 1,
+//    //    "callerInviteTime": 0,
+//    //    "requestId": "18phone",
+//    //    "calleeRingingBeginTime": 1479439119,
+//    //    "callerHangupTime": 0,
+//    //    "recordFile": "1479439110_14794391101710651882375417213825169159.wav",
+//    //    "state": 0,
+//    //    "calleeHangupTime": 1479439180,
+//    //    "calleeDisplay": "18823754172",
+//    //    "userData": "",
+//    //    "callId": "14794391101710651882375417213825169159",
+//    //    "fee": 0,
+//    //    "calleeAnswerTime": 1479439132,
+//    //    "calleeInviteTime": 1479439110,
+//    //    "callerRingingBeginTime": 0,
+//    //    "hangupReason": "主叫挂机",
+//    //    "callerAnswerTime": 0,
+//    //    "callee": "13825169159",
+//    //    "dtmf": "",
+//    //    "callerDisplay": "13825169159",
+//    //    "callType": 1
+//    
+//    init(_ decoder: JSONDecoder) {
+//        callId = decoder["callId"].string
+//    }
+//}
+
+struct CDRS: JSONJoy {
+    
+    let callId: String?
+    
+    init(_ decoder: JSONDecoder) {
+        callId = decoder["callId"].string
+    }
+}
+
+struct BackCallInfo: JSONJoy {
+    
+    let status: String?
+    let desc: String?
+    
+    init(_ decoder: JSONDecoder) {
+        status = decoder["status"].string
+        desc = decoder["desc"].string
+    }
+}
+

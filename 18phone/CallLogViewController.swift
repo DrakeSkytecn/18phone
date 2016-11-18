@@ -97,7 +97,7 @@ class CallLogViewController: UITableViewController {
         alertController.addAction(UIAlertAction(title: "语音通话", style: .default) { action in
             if callLog.accountId.isEmpty {
                 if let fromNumber = UserDefaults.standard.string(forKey: "username") {
-                    PhoneUtil.dialBackCall(fromNumber, toNumber: callLog.phone)
+                    PhoneUtil.dialBackCall(fromNumber, toNumber: callLog.phone, callBack: nil)
                 }
                 APIUtil.getContactID(callLog.phone, callBack: { contactIDInfo in
                     if contactIDInfo.codeStatus == 1 {
