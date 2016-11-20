@@ -10,6 +10,7 @@ import UIKit
 import Contacts
 import ContactsUI
 import SwiftEventBus
+import Async
 
 class DialViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -31,6 +32,8 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
     /// 显示姓名
     @IBOutlet weak var nameText: UILabel!
     
+    var pending: UIAlertController?
+    
     /// 用于查询后保存的号码归属地
     var tempArea: String?
     
@@ -48,7 +51,9 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
         super.viewDidLoad()
         dialCollectionView.scrollsToTop = false
         SwiftEventBus.onMainThread(self, name: "getBackCallDuration") { result in
+            self.pending?.dismiss(animated: false, completion: nil)
             if self.callId != nil {
+                
                 PhoneUtil.getBackCallDuration(self.callId!)
                 //self.addCallLog(self.numberText.text!)
                 self.callId = nil
@@ -328,20 +333,20 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     present(outgoingCallViewController!, animated: true, completion: nil)
                 } else {
                     if let saveUsername = UserDefaults.standard.string(forKey: "username") {
-                        let alertController = UIAlertController(title: "回拨电话", message: "正在拨号中，您将收到一通回拨电话，接听等待即可通话", preferredStyle: .alert)
-                        let indicator = UIActivityIndicatorView(frame: alertController.view.bounds)
+                        pending = UIAlertController(title: "回拨电话", message: "正在拨号中，您将收到一通回拨电话，接听等待即可通话", preferredStyle: .alert)
+                        let indicator = UIActivityIndicatorView(frame: pending!.view.bounds)
                         indicator.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-                        alertController.view.addSubview(indicator)
-                        alertController.addAction(UIAlertAction(title: "挂断", style: .cancel) { action in
+                        pending?.view.addSubview(indicator)
+                        pending?.addAction(UIAlertAction(title: "挂断", style: .cancel) { action in
                             if self.callId != nil {
                                 PhoneUtil.hangupBackCall(self.callId!, callBack: { dialBackCallInfo in
                                     if dialBackCallInfo.status == "0" {
-                                        alertController.dismiss(animated: true, completion: nil)
+                                        self.pending?.dismiss(animated: true, completion: nil)
                                     }
                                 })
                             }
                         })
-                        present(alertController, animated: true, completion: nil)
+                        present(pending!, animated: true, completion: nil)
                         PhoneUtil.dialBackCall(saveUsername, toNumber: numberText.text!, callBack: { dialBackCallInfo in
                             if dialBackCallInfo.status == "0" {
                                 self.callId = dialBackCallInfo.callId
