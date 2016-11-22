@@ -221,6 +221,7 @@
 		E13D21941D6ECFCA00C6EA98 /* IncomingVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomingVideoViewController.swift; sourceTree = "<group>"; };
 		E140B1861D8E36FA00178D74 /* ShowNumberCon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowNumberCon.swift; sourceTree = "<group>"; };
 		E148E6C21D6C397000BE131E /* OutgoingVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutgoingVideoViewController.swift; sourceTree = "<group>"; };
+		E14CC6DC1DE4161100327685 /* 18phone.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = 18phone.entitlements; sourceTree = "<group>"; };
 		E1534A0A1D7E668A007FE351 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		E1534A0C1D7E6692007FE351 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		E155425D1DB4A66000DBEAFB /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
@@ -554,6 +555,7 @@
 				E13BACDE1D51948C00414ACE /* Main.storyboard */,
 				E114D1CC1D4F1F15006AB978 /* LaunchScreen.storyboard */,
 				E13BACE41D51974900414ACE /* Assets.xcassets */,
+				E14CC6DC1DE4161100327685 /* 18phone.entitlements */,
 				E114D1CF1D4F1F15006AB978 /* Info.plist */,
 				E1F5E57C1D59E5990010FF2C /* 18phone-Bridging-Header.h */,
 				E1626D561D93AFC600C3422C /* test */,
@@ -722,6 +724,9 @@
 						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 						};
@@ -1016,6 +1021,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = 18phone/18phone.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
@@ -1075,6 +1081,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = 18phone/18phone.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;

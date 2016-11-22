@@ -50,13 +50,17 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func viewDidLoad() {
         super.viewDidLoad()
         dialCollectionView.scrollsToTop = false
-        SwiftEventBus.onMainThread(self, name: "getBackCallDuration") { result in
+        
+        SwiftEventBus.onMainThread(self, name: "getBackCallInfo") { result in
             self.pending?.dismiss(animated: false, completion: nil)
             if self.callId != nil {
-                
-                PhoneUtil.getBackCallDuration(self.callId!)
-                //self.addCallLog(self.numberText.text!)
+                PhoneUtil.getBackCallInfo(self.callId!, callBack: { backCallInfo in
+                    if backCallInfo.status == "0" {
+//                        let cdr = backCallInfo.cdrs.first
+                    }
+                })
                 self.callId = nil
+                self.addCallLog(self.numberText.text!)
             }
         }
         // Do any additional setup after loading the view.
@@ -189,7 +193,7 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     }
                 }
             }
-            
+            self.areaText.text = tempName
             // 然后查号码归属地，本地查不到就通过接口查询并保存
             if let area = App.realm.objects(Area.self).filter("key == '\(temp)'").first {
                 tempArea = area.name
@@ -323,7 +327,6 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     let callLog = CallLog()
                     callLog.accountId = appContactInfo!.accountId
                     callLog.contactId = appContactInfo!.identifier
-                    print("appContactInfo!.accountId:\(appContactInfo!.accountId)")
                     callLog.phone = numberText.text!
                     callLog.name = tempName!
                     callLog.area = tempArea!
@@ -353,9 +356,9 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
                             }
                         })
                     }
-//                    addCallLog(numberText.text!)
+                    //                    addCallLog(numberText.text!)
                 }
-            } else if PhoneUtil.isTelephoneNumber(numberText.text) {
+            } else {
                 PhoneUtil.callSystemPhone(numberText.text!)
                 addCallLog(numberText.text!)
             }

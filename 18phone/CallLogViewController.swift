@@ -12,7 +12,13 @@ import SwiftEventBus
 
 class CallLogViewController: UITableViewController {
     
+    var index = 0
+    
+    var callId: String?
+    
     var callLogs: Results<CallLog>?
+    
+    var pending: UIAlertController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +29,18 @@ class CallLogViewController: UITableViewController {
         }
         SwiftEventBus.onMainThread(self, name: "deleteAllCallLogs") { result in
             self.deleteAllCallLogs()
+        }
+        SwiftEventBus.onMainThread(self, name: "getBackCallInfo") { result in
+            self.pending?.dismiss(animated: false, completion: nil)
+            if self.callId != nil {
+                PhoneUtil.getBackCallInfo(self.callId!, callBack: { backCallInfo in
+                    if backCallInfo.status == "0" {
+                        
+                    }
+                })
+                self.callId = nil
+                self.addCallLog()
+            }
         }
     }
     
@@ -56,7 +74,7 @@ class CallLogViewController: UITableViewController {
         if callLog.headPhoto == nil {
             cell!.headPhoto.image = R.image.head_photo_default()!
         } else {
-            cell!.headPhoto.image = UIImage(data: callLog.headPhoto! as Data)
+            cell!.headPhoto.image = UIImage(data: callLog.headPhoto!)
         }
         print("callLog.callState:\(callLog.callState)")
         switch callLog.callState {
@@ -92,20 +110,44 @@ class CallLogViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        index = indexPath.row
         let callLog = callLogs![indexPath.row]
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: "语音通话", style: .default) { action in
             if callLog.accountId.isEmpty {
-                if let fromNumber = UserDefaults.standard.string(forKey: "username") {
-                    PhoneUtil.dialBackCall(fromNumber, toNumber: callLog.phone, callBack: nil)
-                }
-                APIUtil.getContactID(callLog.phone, callBack: { contactIDInfo in
-                    if contactIDInfo.codeStatus == 1 {
-                        try! App.realm.write {
-                            callLog.accountId = contactIDInfo.userID!
-                        }
+                if PhoneUtil.isMobileNumber(callLog.phone) {
+                    if let fromNumber = UserDefaults.standard.string(forKey: "username") {
+                        self.pending = UIAlertController(title: "回拨电话", message: "正在拨号中，您将收到一通回拨电话，接听等待即可通话", preferredStyle: .alert)
+                        let indicator = UIActivityIndicatorView(frame: self.pending!.view.bounds)
+                        indicator.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                        self.pending?.view.addSubview(indicator)
+                        self.pending?.addAction(UIAlertAction(title: "挂断", style: .cancel) { action in
+                            if self.callId != nil {
+                                PhoneUtil.hangupBackCall(self.callId!, callBack: { dialBackCallInfo in
+                                    if dialBackCallInfo.status == "0" {
+                                        self.pending?.dismiss(animated: true, completion: nil)
+                                    }
+                                })
+                            }
+                        })
+                        self.present(self.pending!, animated: true, completion: nil)
+                        PhoneUtil.dialBackCall(fromNumber, toNumber: callLog.phone, callBack: { dialBackCallInfo in
+                            if dialBackCallInfo.status == "0" {
+                                self.callId = dialBackCallInfo.callId
+                            }
+                        })
                     }
-                })
+                    APIUtil.getContactID(callLog.phone, callBack: { contactIDInfo in
+                        if contactIDInfo.codeStatus == 1 {
+                            try! App.realm.write {
+                                callLog.accountId = contactIDInfo.userID!
+                            }
+                        }
+                    })
+                } else {
+                    PhoneUtil.callSystemPhone(callLog.phone)
+                    self.addCallLog()
+                }
             } else {
                 let outgoingCallViewController = R.storyboard.main.outgoingCallViewController()
                 outgoingCallViewController?.callLog = callLog
@@ -184,6 +226,23 @@ class CallLogViewController: UITableViewController {
      // Pass the selected object to the new view controller.
      }
      */
+    
+    func addCallLog() {
+        let newCallLog = CallLog()
+        let callLog = callLogs![index]
+        newCallLog.contactId = callLog.contactId
+        newCallLog.accountId = callLog.accountId
+        newCallLog.headPhoto = callLog.headPhoto
+        newCallLog.name = callLog.name
+        newCallLog.phone = callLog.phone
+        newCallLog.callState = callLog.callState
+        newCallLog.callType = callLog.callType
+        newCallLog.callStartTime = Date()
+        newCallLog.area = callLog.area
+        try! App.realm.write {
+            App.realm.add(newCallLog)
+        }
+    }
     
     func reloadCallLogs() {
         callLogs = App.realm.objects(CallLog.self).sorted(byProperty: "callStartTime", ascending: false)

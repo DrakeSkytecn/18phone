@@ -53,6 +53,7 @@ class OutgoingCallViewController: UIViewController {
         outCall = GSCall.outgoingCall(toUri: callLog!.accountId + "@" + AppURL.BEYEBE_SIP_DOMAIN, from: account)
 //        outCall?.checkBuddy()
         outCall?.addObserver(self, forKeyPath: "status", options: .initial, context: nil)
+        App.changeSpeaker(true)
         self.outCall?.begin()
     }
 
@@ -85,11 +86,7 @@ class OutgoingCallViewController: UIViewController {
     }
 
     @IBAction func speakerOnOff(_ sender: UIButton) {
-        if App.isSpeakerOn {
-            App.changeSpeaker(!App.isSpeakerOn)
-        } else {
-            App.changeSpeaker(App.isSpeakerOn)
-        }
+        App.changeSpeaker(!App.isSpeakerOn)
     }
     
     func callStatusDidChange() {
@@ -104,7 +101,7 @@ class OutgoingCallViewController: UIViewController {
             
         case GSCallStatusCalling:
             print("OutgoingCallViewController Calling...")
-            App.changeSpeaker(true)
+            
             break
             
         case GSCallStatusConnected:

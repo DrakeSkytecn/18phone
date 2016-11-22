@@ -582,11 +582,12 @@ struct _R: Rswift.Validatable {
     }
     
     struct main: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
-      typealias InitialController = KTabBarController
+      typealias InitialController = CheckAccountViewController
       
       let backupViewController = StoryboardViewControllerResource<BackupViewController>(identifier: "BackupViewController")
       let bundle = R.hostingBundle
       let callLogMenuViewController = StoryboardViewControllerResource<CallLogMenuViewController>(identifier: "CallLogMenuViewController")
+      let checkAccountViewController = StoryboardViewControllerResource<CheckAccountViewController>(identifier: "CheckAccountViewController")
       let communicateListViewController = StoryboardViewControllerResource<CommunicateListViewController>(identifier: "CommunicateListViewController")
       let communicateViewController = StoryboardViewControllerResource<CommunicateViewController>(identifier: "CommunicateViewController")
       let consumeViewController = StoryboardViewControllerResource<ConsumeViewController>(identifier: "ConsumeViewController")
@@ -605,6 +606,10 @@ struct _R: Rswift.Validatable {
       
       func callLogMenuViewController(_: Void = ()) -> CallLogMenuViewController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: callLogMenuViewController)
+      }
+      
+      func checkAccountViewController(_: Void = ()) -> CheckAccountViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: checkAccountViewController)
       }
       
       func communicateListViewController(_: Void = ()) -> CommunicateListViewController? {
@@ -672,18 +677,19 @@ struct _R: Rswift.Validatable {
         if UIKit.UIImage(named: "video_icon") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'video_icon' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "message_selected") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'message_selected' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "qrcode") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'qrcode' is used in storyboard 'Main', but couldn't be loaded.") }
-        if _R.storyboard.main().detailMenuViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'detailMenuViewController' could not be loaded from storyboard 'Main' as 'DetailMenuViewController'.") }
         if _R.storyboard.main().dialViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'dialViewController' could not be loaded from storyboard 'Main' as 'DialViewController'.") }
-        if _R.storyboard.main().backupViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'backupViewController' could not be loaded from storyboard 'Main' as 'BackupViewController'.") }
         if _R.storyboard.main().consumeViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'consumeViewController' could not be loaded from storyboard 'Main' as 'ConsumeViewController'.") }
-        if _R.storyboard.main().outgoingCallViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'outgoingCallViewController' could not be loaded from storyboard 'Main' as 'OutgoingCallViewController'.") }
-        if _R.storyboard.main().kTabBarController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'kTabBarController' could not be loaded from storyboard 'Main' as 'KTabBarController'.") }
+        if _R.storyboard.main().communicateViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'communicateViewController' could not be loaded from storyboard 'Main' as 'CommunicateViewController'.") }
         if _R.storyboard.main().outgoingVideoViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'outgoingVideoViewController' could not be loaded from storyboard 'Main' as 'OutgoingVideoViewController'.") }
         if _R.storyboard.main().callLogMenuViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'callLogMenuViewController' could not be loaded from storyboard 'Main' as 'CallLogMenuViewController'.") }
-        if _R.storyboard.main().communicateViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'communicateViewController' could not be loaded from storyboard 'Main' as 'CommunicateViewController'.") }
         if _R.storyboard.main().incomingVideoViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'incomingVideoViewController' could not be loaded from storyboard 'Main' as 'IncomingVideoViewController'.") }
-        if _R.storyboard.main().incomingCallViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'incomingCallViewController' could not be loaded from storyboard 'Main' as 'IncomingCallViewController'.") }
         if _R.storyboard.main().communicateListViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'communicateListViewController' could not be loaded from storyboard 'Main' as 'CommunicateListViewController'.") }
+        if _R.storyboard.main().incomingCallViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'incomingCallViewController' could not be loaded from storyboard 'Main' as 'IncomingCallViewController'.") }
+        if _R.storyboard.main().detailMenuViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'detailMenuViewController' could not be loaded from storyboard 'Main' as 'DetailMenuViewController'.") }
+        if _R.storyboard.main().backupViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'backupViewController' could not be loaded from storyboard 'Main' as 'BackupViewController'.") }
+        if _R.storyboard.main().outgoingCallViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'outgoingCallViewController' could not be loaded from storyboard 'Main' as 'OutgoingCallViewController'.") }
+        if _R.storyboard.main().kTabBarController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'kTabBarController' could not be loaded from storyboard 'Main' as 'KTabBarController'.") }
+        if _R.storyboard.main().checkAccountViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'checkAccountViewController' could not be loaded from storyboard 'Main' as 'CheckAccountViewController'.") }
       }
       
       fileprivate init() {}

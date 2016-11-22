@@ -2,6 +2,6 @@
 
 import UIKit
 
-var province = "Hello, playground"
+var str = "Hello, playground"
 
-print(province[province.startIndex..<province.index(province.endIndex, offsetBy: -1)])
+String(format:"%02x", 10)

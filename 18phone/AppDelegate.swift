@@ -17,19 +17,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKPushRegistryDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+        print("didFinishLaunchingWithOptions")
         window?.backgroundColor = UIColor.white
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor(red: 38.0 / 255.0, green: 173.0 / 255.0, blue: 86.0 / 255.0, alpha: 1.0)], for: .selected)
+        let userNotifiSetting = UIUserNotificationSettings(types: [.badge, .alert, .sound], categories: nil)
+        application.registerUserNotificationSettings(userNotifiSetting)
         let pushRegistry = PKPushRegistry(queue: DispatchQueue.main)
         pushRegistry.delegate = self
         pushRegistry.desiredPushTypes = [.voIP]
-        let userNotifiSetting = UIUserNotificationSettings(types: [.badge, .alert, .sound], categories: nil)
-        application.registerUserNotificationSettings(userNotifiSetting)
-//        App.autoLogin("18823754172", password: "123")
-//        App.autoLogin("15016721385", password: "123")
-//        App.autoLogin("18603001016", password: "123")
-//        App.autoLogin("104", password: "104")
-//        App.autoLogin("102", password: "102")
+        let userDefaults = UserDefaults.standard
+        if let userID = userDefaults.string(forKey: "userID") {
+            let password = userDefaults.string(forKey: "password")
+            App.initUserAgent(userID, password: password!)
+            window?.rootViewController = R.storyboard.main.kTabBarController()
+        } else {
+            window?.rootViewController = R.storyboard.main.checkAccountViewController()
+        }
+        window?.makeKeyAndVisible()
+        
         return true
     }
 
@@ -53,24 +58,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKPushRegistryDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         print("applicationDidBecomeActive")
+        SwiftEventBus.post("getBackCallInfo")
         SwiftEventBus.post("reloadCallLogs")
-        SwiftEventBus.post("getBackCallDuration")
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-//    func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
-//        application.registerForRemoteNotifications()
-//    }
+    func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
+        print("didRegister notificationSettings")
+        application.registerForRemoteNotifications()
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let token = deviceToken.reduce(""){
+            $0 + String(format:"%02.2hhx", $1)
+        }
+        print("APNSToken:\(token)")
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        
+    }
     
     func pushRegistry(_ registry: PKPushRegistry, didUpdate credentials: PKPushCredentials, forType type: PKPushType) {
-        print(credentials.token)
+        print("pushRegistry didUpdate")
+        let token = credentials.token.reduce(""){
+            $0 + String(format:"%02.2hhx", $1)
+        }
+        print("pushKitToken:\(token)")
     }
     
     func pushRegistry(_ registry: PKPushRegistry, didReceiveIncomingPushWith payload: PKPushPayload, forType type: PKPushType) {
-        
+        print("pushRegistry didReceiveIncomingPushWith")
     }
 }
 

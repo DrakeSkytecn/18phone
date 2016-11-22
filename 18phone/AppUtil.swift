@@ -258,7 +258,7 @@ struct PhoneUtil {
         }
     }
     
-    static func getBackCallDuration(_ callId: String) {
+    static func getBackCallInfo(_ callId: String, callBack: ((BackCallInfo) -> ())?) {
         //        3、请求示例
         //
         //        请求消息头:
@@ -289,12 +289,12 @@ struct PhoneUtil {
                     return
                 }
                 print(response.text!)
-                //                let resetPassword = ResetPassword(JSONDecoder(response.data))
-                //                if callBack != nil {
-                //                    Async.main {
-                //                        callBack!(resetPassword)
-                //                    }
-                //                }
+                let backCallInfo = BackCallInfo(JSONDecoder(response.data))
+                if callBack != nil {
+                    Async.main {
+                        callBack!(backCallInfo)
+                    }
+                }
             }
         } catch {
             print("got an error creating the request: \(error)")

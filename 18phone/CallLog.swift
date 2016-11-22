@@ -137,63 +137,69 @@ struct DialBackCallInfo: JSONJoy {
     }
 }
 
-//struct CDR: JSONJoy {
-//    
-//    let caller: String?
-//    let holdTime: String?
-//    let appId: String?
-//    let hangupCode: String?
-//    let callerInviteTime: String?
-//    let requestId: String?
-//    let calleeRingingBeginTime: String?
-//    let callerHangupTime: String?
-//    let recordFile: String?
-//    let state: String?
-//    let calleeHangupTime: String?
-//    let calleeDisplay: String?
-//    let userData: String?
-////    let callId: String?
-////    let caller: String?
-////    let caller: String?
-////    let caller: String?
-////    let caller: String?
-//    
-//    //    "caller": "18823754172",
-//    //    "holdTime": 48,
-//    //    "appId": "APP1e811237a2674f5c824b512a7916c5a8",
-//    //    "hangupCode": 1,
-//    //    "callerInviteTime": 0,
-//    //    "requestId": "18phone",
-//    //    "calleeRingingBeginTime": 1479439119,
-//    //    "callerHangupTime": 0,
-//    //    "recordFile": "1479439110_14794391101710651882375417213825169159.wav",
-//    //    "state": 0,
-//    //    "calleeHangupTime": 1479439180,
-//    //    "calleeDisplay": "18823754172",
-//    //    "userData": "",
-//    //    "callId": "14794391101710651882375417213825169159",
-//    //    "fee": 0,
-//    //    "calleeAnswerTime": 1479439132,
-//    //    "calleeInviteTime": 1479439110,
-//    //    "callerRingingBeginTime": 0,
-//    //    "hangupReason": "主叫挂机",
-//    //    "callerAnswerTime": 0,
-//    //    "callee": "13825169159",
-//    //    "dtmf": "",
-//    //    "callerDisplay": "13825169159",
-//    //    "callType": 1
-//    
-//    init(_ decoder: JSONDecoder) {
-//        callId = decoder["callId"].string
-//    }
-//}
+struct CDR: JSONJoy {
+    
+    let caller: String?
+    let holdTime: Int?
+    let appId: String?
+    let hangupCode: Int?
+    let callerInviteTime: Int?
+    let requestId: String?
+    let calleeRingingBeginTime: Int?
+    let callerHangupTime: Int?
+    let recordFile: String?
+    let state: Int?
+    let calleeHangupTime: Int?
+    let calleeDisplay: String?
+    let userData: String?
+    let callId: String?
+    let fee: Double?
+    let calleeAnswerTime: Int?
+    let calleeInviteTime: Int?
+    let callerRingingBeginTime: Int?
+    let hangupReason: String?
+    let callerAnswerTime: Int?
+    let callee: String?
+    let dtmf: String?
+    let callerDisplay: String?
+    let callType: Int?
+    
+    init(_ decoder: JSONDecoder) {
+        caller = decoder["caller"].string
+        holdTime = decoder["holdTime"].integer
+        appId = decoder["appId"].string
+        hangupCode = decoder["hangupCode"].integer
+        callerInviteTime = decoder["callerInviteTime"].integer
+        requestId = decoder["requestId"].string
+        calleeRingingBeginTime = decoder["calleeRingingBeginTime"].integer
+        callerHangupTime = decoder["callerHangupTime"].integer
+        recordFile = decoder["recordFile"].string
+        state = decoder["state"].integer
+        calleeHangupTime = decoder["calleeHangupTime"].integer
+        calleeDisplay = decoder["calleeDisplay"].string
+        userData = decoder["userData"].string
+        callId = decoder["callId"].string
+        fee = decoder["fee"].double
+        calleeAnswerTime = decoder["calleeAnswerTime"].integer
+        calleeInviteTime = decoder["calleeInviteTime"].integer
+        callerRingingBeginTime = decoder["callerRingingBeginTime"].integer
+        hangupReason = decoder["hangupReason"].string
+        callerAnswerTime = decoder["callerAnswerTime"].integer
+        callee = decoder["callee"].string
+        dtmf = decoder["dtmf"].string
+        callerDisplay = decoder["callerDisplay"].string
+        callType = decoder["callType"].integer
+    }
+}
 
 struct CDRS: JSONJoy {
     
     let callId: String?
+    let cdr: CDR?
     
     init(_ decoder: JSONDecoder) {
         callId = decoder["callId"].string
+        cdr = CDR(decoder["cdr"])
     }
 }
 
@@ -201,10 +207,16 @@ struct BackCallInfo: JSONJoy {
     
     let status: String?
     let desc: String?
+    var cdrs = [CDRS]()
     
     init(_ decoder: JSONDecoder) {
         status = decoder["status"].string
         desc = decoder["desc"].string
+        if let tempcdrs = decoder["cdrs"].array {
+            for cdrDecoder in tempcdrs {
+                cdrs.append(CDRS(cdrDecoder))
+            }
+        }
     }
 }
 

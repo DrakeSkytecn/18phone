@@ -86,7 +86,8 @@ class IncomingCallViewController: UIViewController {
             self.nameLabel.text = contact.familyName + contact.givenName
         }
         inCall?.addObserver(self, forKeyPath: "status", options: .initial, context: nil)
-        inCall?.startRingback()
+//        inCall?.startRingback()
+        App.changeSpeaker(true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -95,8 +96,8 @@ class IncomingCallViewController: UIViewController {
     }
     
     @IBAction func hangup(_ sender: UIButton) {
-        inCall?.end()
         App.changeSpeaker(false)
+        inCall?.end()
         dismiss(animated: true, completion: nil)
     }
 
@@ -105,11 +106,7 @@ class IncomingCallViewController: UIViewController {
     }
     
     @IBAction func speakerOnOff(_ sender: UIButton) {
-        if App.isSpeakerOn {
-            App.changeSpeaker(!App.isSpeakerOn)
-        } else {
-            App.changeSpeaker(App.isSpeakerOn)
-        }
+        App.changeSpeaker(!App.isSpeakerOn)
     }
     
 //    func changeSpeaker(_ isOn: Bool) {
@@ -122,7 +119,6 @@ class IncomingCallViewController: UIViewController {
         switch inCall!.status {
         case GSCallStatusReady:
             print("IncomingCallViewController Ready.")
-            App.changeSpeaker(true)
             break
             
         case GSCallStatusConnecting:
@@ -156,7 +152,6 @@ class IncomingCallViewController: UIViewController {
 //            try! App.realm.write {
 //                App.realm.add(callLog)
 //            }
-            App.changeSpeaker(false)
 //            dismiss(animated: true, completion: nil)
             break
             
