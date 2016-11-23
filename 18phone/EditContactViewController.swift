@@ -8,14 +8,24 @@
 
 import UIKit
 import ActionSheetPicker_3_0
+import SwiftEventBus
+import ContactsUI
 
-class EditContactViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class EditContactViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CNContactViewControllerDelegate {
 
     var age = -1
+    
+    var sex = Sex.unknown.rawValue
+    
+    var area = ""
     
     var titles = ["性别", "年龄", "地区"]
     
     let sexChoices = ["男", "女"]
+    
+    var appContactInfo: AppContactInfo?
+    
+    var contact: CNContact?
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -39,6 +49,27 @@ class EditContactViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.edit_contact_cell)!
         cell.titleLabel.text = titles[indexPath.row]
+        switch indexPath.row {
+        case 0:
+            sex = appContactInfo!.sex
+            if appContactInfo!.sex != Sex.unknown.rawValue {
+                cell.contentLabel.text = sexChoices[appContactInfo!.sex - 1]
+            }
+            break
+        case 1:
+            age = appContactInfo!.age
+            if appContactInfo!.age != -1 {
+                cell.contentLabel.text = "\(appContactInfo!.age)岁"
+            }
+            break
+        case 2:
+            area = appContactInfo!.area
+            cell.contentLabel.text = area
+            break
+        default:
+            break
+        }
+        
         
         return cell
     }
@@ -50,6 +81,7 @@ class EditContactViewController: UIViewController, UITableViewDataSource, UITabl
         case 0:
             ActionSheetStringPicker.show(withTitle: "", rows: sexChoices, initialSelection: 0, doneBlock: { picker, selectedIndex, selectedValue in
                 cell.contentLabel.text = self.sexChoices[selectedIndex]
+                self.sex = selectedIndex + 1
                 }, cancel: { _ in
                     
                 }, origin: cell)
@@ -64,7 +96,21 @@ class EditContactViewController: UIViewController, UITableViewDataSource, UITabl
                 }, origin: cell)
             break
         case 2:
-            
+            let areaPicker = SelectView(zgqFrame: Screen.bounds, selectCityTtitle: "地区")
+            areaPicker?.showCityView({ province, city, district in
+                let provinceStr = province![province!.startIndex..<province!.index(province!.endIndex, offsetBy: -1)]
+                let cityStr = city![city!.startIndex..<city!.index(city!.endIndex, offsetBy: -1)]
+                switch provinceStr {
+                case "北京", "上海", "天津", "重庆":
+                    self.area = provinceStr
+                    cell.contentLabel.text = provinceStr
+                    break
+                default:
+                    self.area = provinceStr + cityStr
+                    cell.contentLabel.text = self.area
+                    break
+                }
+            })
             break
         default:
             break
@@ -72,9 +118,37 @@ class EditContactViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     @IBAction func save(_ sender: UIBarButtonItem) {
-        
+        var userInfo = [String:Any]()
+        try! App.realm.write {
+            appContactInfo?.age = age
+            appContactInfo?.sex = sex
+            appContactInfo?.area = area
+        }
+        SwiftEventBus.post("reloadContactInfo")
+        _ = navigationController?.popViewController(animated: true)
     }
 
+    @IBAction func editLocal(_ sender: UIButton) {
+//        let keysToFetch = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName), CNContactIdentifierKey, CNContactImageDataKey, CNContactThumbnailImageDataKey, CNContactImageDataAvailableKey, CNContactPhoneNumbersKey, CNContactPhoneticGivenNameKey, CNContactPhoneticFamilyNameKey, CNContactViewController.descriptorForRequiredKeys()] as [Any]
+        let contactViewController = CNContactViewController(forNewContact: contact)
+        contactViewController.title = "编辑联系人"
+        contactViewController.delegate = self
+//        contactViewController.allowsEditing = true
+//        contactViewController.allowsActions = true
+//        contactViewController.displayedPropertyKeys = keysToFetch
+        navigationController?.pushViewController(contactViewController, animated: true)
+    }
+    
+//    func contactViewController(_ viewController: CNContactViewController, shouldPerformDefaultActionFor property: CNContactProperty) -> Bool {
+//        print("shouldPerformDefaultActionFor")
+//        return false
+//    }
+    
+    func contactViewController(_ viewController: CNContactViewController, didCompleteWith contact: CNContact?) {
+        print("didCompleteWith")
+        _ = navigationController?.popViewController(animated: true)
+    }
+    
     /*
     // MARK: - Navigation
 

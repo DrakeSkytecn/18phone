@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Contacts
+import ContactsUI
 import SwiftEventBus
 
 /// 拨号页面根控制器
@@ -57,6 +59,9 @@ class RootViewController: UIViewController, GSAccountDelegate {
                 }
             })
         }
+//        SwiftEventBus.onMainThread(self, name: "newContact", handler: { result in
+//            self.newContact(phoneNumber: result.object as! String)
+//        })
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -161,7 +166,6 @@ class RootViewController: UIViewController, GSAccountDelegate {
     }
     
     @IBAction func leftMenu(_ sender: UIBarButtonItem) {
-        print(navigationItem.leftBarButtonItem?.image)
         if navigationItem.leftBarButtonItem?.image == topIcons[0] {
             let callLogs = App.realm.objects(CallLog.self)
             if callLogs.count != 0 {
@@ -189,6 +193,13 @@ class RootViewController: UIViewController, GSAccountDelegate {
         
     }
     
+//    func newContact(phoneNumber: String) {
+//        let contact = CNMutableContact()
+//        contact.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: phoneNumber))]
+//        let contactViewController = CNContactViewController(forNewContact: contact)
+//        self.navigationController?.pushViewController(contactViewController, animated: true)
+//    }
+    
     func statusDidChange() {
         switch App.userAgentAccount!.status {
         case GSAccountStatusOffline:
@@ -207,14 +218,6 @@ class RootViewController: UIViewController, GSAccountDelegate {
         default:
             break
         }
-    }
-    
-    func account(_ account: GSAccount!, didReceiveIncomingCall call: GSCall!) {
-//        print("didReceiveIncomingCall")
-//        
-//        let incomingVideoViewController = R.storyboard.main.incomingVideoViewController()
-//        incomingVideoViewController!.inCall = call
-//        presentViewController(incomingVideoViewController!, animated: true, completion: nil)
     }
     
     func didReceiveIncomingCall(_ callData: [AnyHashable: Any]!) {

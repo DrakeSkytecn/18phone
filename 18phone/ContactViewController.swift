@@ -8,6 +8,7 @@
 
 import UIKit
 import Contacts
+import SwiftEventBus
 
 class ContactViewController: UITableViewController {
 
@@ -24,6 +25,9 @@ class ContactViewController: UITableViewController {
         tableView.sectionIndexBackgroundColor = UIColor.clear
         loadContacts()
         initGroup()
+        SwiftEventBus.onMainThread(self, name: "reloadContacts", handler: { result in
+            self.reloadContacts()
+        })
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -115,6 +119,12 @@ class ContactViewController: UITableViewController {
                 }
             }
         }
+    }
+    
+    func reloadContacts() {
+        loadContacts()
+        initGroup()
+        tableView.reloadData()
     }
     
     // MARK: - Table view data source

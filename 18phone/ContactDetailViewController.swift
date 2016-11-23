@@ -8,7 +8,9 @@
 
 import UIKit
 import Contacts
+import ContactsUI
 import RealmSwift
+import SwiftEventBus
 
 class ContactDetailViewController: UIViewController {
 
@@ -19,6 +21,10 @@ class ContactDetailViewController: UIViewController {
     var phones = [String]()
     
     var phoneAreas = [String]()
+    
+    var appContactInfo: AppContactInfo?
+    
+    var contact: CNContact?
     
     @IBOutlet weak var headPhoto: UIImageView!
     
@@ -40,6 +46,9 @@ class ContactDetailViewController: UIViewController {
         super.viewDidLoad()
         initContactInfo()
         initPageMenu()
+        SwiftEventBus.onMainThread(self, name: "reloadContactInfo", handler: { result in
+            self.reloadContactInfo()
+        })
         // Do any additional setup after loading the view.
     }
     
@@ -51,19 +60,19 @@ class ContactDetailViewController: UIViewController {
                            CNContactImageDataAvailableKey,
                            CNContactPhoneNumbersKey,
                            CNContactPhoneticGivenNameKey,
-                           CNContactPhoneticFamilyNameKey] as [Any]
+                           CNContactPhoneticFamilyNameKey, CNContactViewController.descriptorForRequiredKeys()] as [Any]
         
-        let contact = try! store.unifiedContact(withIdentifier: contactId!, keysToFetch: keysToFetch as! [CNKeyDescriptor])
-        let appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contactId!)'").first!
-        if contact.imageDataAvailable {
-            headPhoto.image = UIImage(data: contact.thumbnailImageData!)
+        contact = try! store.unifiedContact(withIdentifier: contactId!, keysToFetch: keysToFetch as! [CNKeyDescriptor])
+        appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contactId!)'").first
+        if contact!.imageDataAvailable {
+            headPhoto.image = UIImage(data: contact!.thumbnailImageData!)
         } else {
             headPhoto.image = R.image.head_photo_default()
         }
-        let fullName = contact.familyName + contact.givenName
+        let fullName = contact!.familyName + contact!.givenName
         nameLabel.text = fullName
         
-        switch appContactInfo.sex {
+        switch appContactInfo!.sex {
         case Sex.male.rawValue:
             sexImage.image = R.image.male()
             break
@@ -74,14 +83,14 @@ class ContactDetailViewController: UIViewController {
             break
         }
         
-        signLabel.text = appContactInfo.signature
-        areaLabel.text = appContactInfo.area
-        if appContactInfo.age != -1 {
-            ageLabel.text = "\(appContactInfo.age)"
+        signLabel.text = appContactInfo!.signature
+        areaLabel.text = appContactInfo!.area
+        if appContactInfo!.age != -1 {
+            ageLabel.text = "\(appContactInfo!.age)岁"
         }
         phones.removeAll()
         phoneAreas.removeAll()
-        for number in contact.phoneNumbers {
+        for number in contact!.phoneNumbers {
             let phoneNumber = number.value.stringValue
             let formatNumber = PhoneUtil.formatPhoneNumber(phoneNumber)
             phones.append(formatNumber)
@@ -113,6 +122,18 @@ class ContactDetailViewController: UIViewController {
         addChildViewController(pageMenu)
         view.addSubview(pageMenu.view)
     }
+    
+    func reloadContactInfo() {
+        if appContactInfo!.sex == Sex.male.rawValue {
+            sexImage.image = R.image.male()
+        } else if appContactInfo!.sex == Sex.female.rawValue {
+            sexImage.image = R.image.female()
+        }
+        if appContactInfo!.age != -1 {
+            ageLabel.text = "\(appContactInfo!.age)岁"
+        }
+        areaLabel.text = appContactInfo!.area
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -122,7 +143,7 @@ class ContactDetailViewController: UIViewController {
     @IBAction func moreFeature(_ sender: UIBarButtonItem) {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: "编辑联系人", style: .default) { action in
-            self.performSegue(withIdentifier: R.segue.contactDetailViewController.editContactViewController, sender: nil)
+            self.performSegue(withIdentifier: R.segue.contactDetailViewController.editContactViewController, sender: ["appContactInfo":self.appContactInfo!, "contact":self.contact!])
             })
         alertController.addAction(UIAlertAction(title: "添加黑名单", style: .default) { action in
             
@@ -136,14 +157,12 @@ class ContactDetailViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == R.segue.contactDetailViewController.editContactViewController.identifier {
+            let editContactViewController = segue.destination as! EditContactViewController
+            let info = sender as! [String:Any]
+            editContactViewController.appContactInfo = info["appContactInfo"] as? AppContactInfo
+            editContactViewController.contact = info["contact"] as? CNContact
+        }
     }
-    */
-
 }

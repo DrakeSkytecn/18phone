@@ -12,7 +12,7 @@ import ContactsUI
 import SwiftEventBus
 import Async
 
-class DialViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class DialViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CNContactViewControllerDelegate, CNContactPickerDelegate {
     
     var callId: String?
     
@@ -50,7 +50,6 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func viewDidLoad() {
         super.viewDidLoad()
         dialCollectionView.scrollsToTop = false
-        
         SwiftEventBus.onMainThread(self, name: "getBackCallInfo") { result in
             self.pending?.dismiss(animated: false, completion: nil)
             if self.callId != nil {
@@ -302,10 +301,22 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
         if !numberText.text!.isEmpty {
             let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             alertController.addAction(UIAlertAction(title: "新增联系人", style: .default) { action in
-                
+                let contact = CNMutableContact()
+                contact.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: self.numberText.text!))]
+                let contactViewController = CNContactViewController(forNewContact: contact)
+                contactViewController.hidesBottomBarWhenPushed = true
+                contactViewController.delegate = self
+                self.navigationController?.pushViewController(contactViewController, animated: true)
+                self.navigationController?.setNavigationBarHidden(false, animated: true)
+//                SwiftEventBus.post("newContact", sender: self.numberText.text! as NSString)
             })
             alertController.addAction(UIAlertAction(title: "加入到现有的联系人", style: .default) { action in
-                
+                let contactPickerViewController = CNContactPickerViewController()
+                contactPickerViewController.hidesBottomBarWhenPushed = true
+                contactPickerViewController.delegate = self
+                self.present(contactPickerViewController, animated: true, completion: nil)
+//                self.navigationController?.pushViewController(contactPickerViewController, animated: true)
+//                self.navigationController?.setNavigationBarHidden(false, animated: true)
             })
             alertController.addAction(UIAlertAction(title: "取消", style: .cancel) { action in
                 
@@ -410,4 +421,15 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
+    func contactViewController(_ viewController: CNContactViewController, didCompleteWith contact: CNContact?) {
+        if contact != nil {
+            SwiftEventBus.post("reloadContacts")
+        }
+        _ = navigationController?.popViewController(animated: true)
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
+        print("contactPickerDidCancel")
+    }
 }
