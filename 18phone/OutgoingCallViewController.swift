@@ -18,6 +18,8 @@ class OutgoingCallViewController: UIViewController {
     
     var isConnected: Bool = false
     
+    let newCallLog = CallLog()
+    
     /// 显示姓名或号码
     @IBOutlet weak var nameLabel: UILabel!
     
@@ -64,7 +66,6 @@ class OutgoingCallViewController: UIViewController {
     
     @IBAction func hangup(_ sender: UIButton) {
         outCall?.end()
-        let newCallLog = CallLog()
         newCallLog.accountId = callLog!.accountId
         newCallLog.contactId = callLog!.contactId
         newCallLog.name = callLog!.name
@@ -75,11 +76,12 @@ class OutgoingCallViewController: UIViewController {
             newCallLog.callState = CallState.outUnConnected.rawValue
         }
         newCallLog.callType = CallType.voice.rawValue
-        newCallLog.callStartTime = Date()
         newCallLog.area = callLog!.area
         try! App.realm.write {
             App.realm.add(newCallLog)
-        }                                                                                                       
+        }
+        let callInfo = ["AuserID":UserDefaults.standard.string(forKey: "userID")!, "BUCID":newCallLog.accountId, "CallType":newCallLog.callType, "IncomingType":newCallLog.callState, "CallTime":newCallLog.callStartTime.description, "TalkTimeLength":"1000", "EndTime":newCallLog.callEndTime.description, "Area":newCallLog.area, "Name":newCallLog.name, "Mobile":newCallLog.phone] as [String : Any]
+        APIUtil.saveCallLog(callInfo)
         SwiftEventBus.post("reloadCallLogs")
         App.changeSpeaker(false)
         dismiss(animated: true, completion: nil)

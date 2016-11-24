@@ -122,6 +122,10 @@ class ContactViewController: UITableViewController {
     }
     
     func reloadContacts() {
+        groupTitles.removeAll()
+        commonGroups.removeAll()
+        registerGroups.removeAll()
+        groupValues.removeAll()
         loadContacts()
         initGroup()
         tableView.reloadData()

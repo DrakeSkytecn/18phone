@@ -13,6 +13,8 @@ class OutgoingVideoViewController: UIViewController {
     
     var callLog: CallLog?
     
+    let newCallLog = CallLog()
+    
     var outCall:GSCall?
     
     var isConnected: Bool = false
@@ -70,6 +72,20 @@ class OutgoingVideoViewController: UIViewController {
     @IBAction func hangup(_ sender: UIButton) {
         outCall?.stopPreviewWindow()
         outCall?.end()
+        newCallLog.accountId = callLog!.accountId
+        newCallLog.contactId = callLog!.contactId
+        newCallLog.name = callLog!.name
+        newCallLog.phone = callLog!.phone
+        if isConnected {
+            newCallLog.callState = CallState.outConnected.rawValue
+        } else {
+            newCallLog.callState = CallState.outUnConnected.rawValue
+        }
+        newCallLog.callType = CallType.video.rawValue
+        newCallLog.area = callLog!.area
+        try! App.realm.write {
+            App.realm.add(newCallLog)
+        }
         dismiss(animated: true, completion: nil)
         //            let callLog = CallLog()
         //            callLog.name = "James"

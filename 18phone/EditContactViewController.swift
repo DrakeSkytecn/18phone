@@ -129,34 +129,21 @@ class EditContactViewController: UIViewController, UITableViewDataSource, UITabl
     }
 
     @IBAction func editLocal(_ sender: UIButton) {
-//        let keysToFetch = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName), CNContactIdentifierKey, CNContactImageDataKey, CNContactThumbnailImageDataKey, CNContactImageDataAvailableKey, CNContactPhoneNumbersKey, CNContactPhoneticGivenNameKey, CNContactPhoneticFamilyNameKey, CNContactViewController.descriptorForRequiredKeys()] as [Any]
         let contactViewController = CNContactViewController(forNewContact: contact)
         contactViewController.title = "编辑联系人"
         contactViewController.delegate = self
-//        contactViewController.allowsEditing = true
-//        contactViewController.allowsActions = true
-//        contactViewController.displayedPropertyKeys = keysToFetch
         navigationController?.pushViewController(contactViewController, animated: true)
     }
     
-//    func contactViewController(_ viewController: CNContactViewController, shouldPerformDefaultActionFor property: CNContactProperty) -> Bool {
-//        print("shouldPerformDefaultActionFor")
-//        return false
-//    }
+    // MARK: - CNContactViewControllerDelegate
     
     func contactViewController(_ viewController: CNContactViewController, didCompleteWith contact: CNContact?) {
         print("didCompleteWith")
+        if contact != nil {
+            SwiftEventBus.post("reloadContacts")
+            let fullName = contact!.familyName + contact!.givenName
+            SwiftEventBus.post("reloadContactInfo", sender: fullName as NSString)
+        }
         _ = navigationController?.popViewController(animated: true)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

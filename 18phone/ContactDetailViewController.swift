@@ -47,7 +47,7 @@ class ContactDetailViewController: UIViewController {
         initContactInfo()
         initPageMenu()
         SwiftEventBus.onMainThread(self, name: "reloadContactInfo", handler: { result in
-            self.reloadContactInfo()
+            self.reloadContactInfo(name: result.object as! String)
         })
         // Do any additional setup after loading the view.
     }
@@ -123,7 +123,8 @@ class ContactDetailViewController: UIViewController {
         view.addSubview(pageMenu.view)
     }
     
-    func reloadContactInfo() {
+    func reloadContactInfo(name: String) {
+        nameLabel.text = name
         if appContactInfo!.sex == Sex.male.rawValue {
             sexImage.image = R.image.male()
         } else if appContactInfo!.sex == Sex.female.rawValue {
@@ -164,5 +165,9 @@ class ContactDetailViewController: UIViewController {
             editContactViewController.appContactInfo = info["appContactInfo"] as? AppContactInfo
             editContactViewController.contact = info["contact"] as? CNContact
         }
+    }
+    
+    deinit {
+        SwiftEventBus.unregister(self)
     }
 }

@@ -891,7 +891,7 @@
             </objects>
             <point key="canvasLocation" x="12402" y="-260"/>
         </scene>
-        <!--编辑联系人-->
+        <!--备注联系人-->
         <scene sceneID="VBB-1O-2go">
             <objects>
                 <viewController id="wHK-Ws-T87" customClass="EditContactViewController" customModule="_8phone" customModuleProvider="target" sceneMemberID="viewController">
@@ -983,7 +983,7 @@
                             <constraint firstItem="xxa-qr-YiV" firstAttribute="leading" secondItem="JHv-Of-bpD" secondAttribute="leadingMargin" id="vlZ-sC-4oR"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="编辑联系人" id="ec9-Fh-dV7">
+                    <navigationItem key="navigationItem" title="备注联系人" id="ec9-Fh-dV7">
                         <barButtonItem key="rightBarButtonItem" title="保存" id="hgp-Aq-bDa">
                             <connections>
                                 <action selector="save:" destination="wHK-Ws-T87" id="jsn-TA-hIK"/>

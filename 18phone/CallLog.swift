@@ -90,6 +90,9 @@ class CallLog: Object {
     /// 通话开始时间
     dynamic var callStartTime = Date()
     
+    /// 通话结束时间
+    dynamic var callEndTime = Date()
+    
     /// 通话时长
     dynamic var callDuration = Date()
 }

@@ -20,7 +20,7 @@ import Async
 struct AppURL {
     
     /// 百度提供的查询号码归属地api
-    static let BAIDU_PHONEAREA_API = "https://apis.baidu.com/apistore/mobilenumber/mobilenumber"
+    static let BAIDU_PHONEAREA_API = "http://apis.baidu.com/apistore/mobilenumber/mobilenumber"
     
     /// 比一比SIP服务器地址
     static let BEYEBE_SIP_SERVER = "211.149.172.109:5060"
@@ -33,7 +33,7 @@ struct AppURL {
     
     /// 18phone接口地址
     static let BEYEBE_18PHONE_API_BASE = "http://192.168.10.249/Home/"
-    //    static let BEYEBE_18PHONE_API_BASE = "http://18phone.beyebe.cn/api/Phone/"
+//        static let BEYEBE_18PHONE_API_BASE = "http://18phone.beyebe.cn/Home/"
     
     static let ZHIYU_BASE_URL = "http://www.zypaas.com:9988/V1/Account/"
 }
@@ -124,7 +124,6 @@ struct DateUtil {
     }
     
     static func dateToString(_ date: Date) -> String {
-        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
         let secondsPerDay: TimeInterval = 24 * 60 * 60
@@ -581,7 +580,7 @@ struct APIUtil {
     
     static func editUserInfo(_ userInfo: [String: Any], callBack: ((EditUser) -> ())?) {
         do {
-            let opt = try HTTP.POST(AppURL.BEYEBE_18PHONE_API_BASE + "updatePersonSelfInfo", parameters: ["UserID":userInfo["UserID"], "Sex":userInfo["Sex"], "Name":userInfo["Name"], "Age":userInfo["Age"], "ProvinceCity":userInfo["ProvinceCity"], "AddressDetail":userInfo["AddressDetail"], "PersonalSignature":userInfo["PersonalSignature"], "HeadPhotoImage": userInfo["HeadPhotoImage"]])
+            let opt = try HTTP.POST(AppURL.BEYEBE_18PHONE_API_BASE + "updatePersonSelfInfo", parameters: userInfo)
             opt.start { response in
                 if let error = response.error {
                     print("error: \(error.localizedDescription)")
@@ -624,7 +623,27 @@ struct APIUtil {
             print("got an error creating the request: \(error)")
         }
     }
+    
+    static func saveCallLog(_ callInfo: [String:Any]) {
+        do {
+            let opt = try HTTP.POST(AppURL.BEYEBE_18PHONE_API_BASE + "putUser_CallRecord", parameters: callInfo)
+            opt.start { response in
+                if let error = response.error {
+                    print("error: \(error.localizedDescription)")
+                    print("error: \(error.code)")
+                    
+                    return
+                }
+                print(response.text!)
+//                let contactIDInfo = ContactIDInfo(JSONDecoder(response.data))
+//                if callBack != nil {
+//                    Async.main {
+//                        callBack!(contactIDInfo)
+//                    }
+//                }
+            }
+        } catch {
+            print("got an error creating the request: \(error)")
+        }
+    }
 }
-
-
-

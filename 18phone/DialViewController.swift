@@ -308,15 +308,12 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 contactViewController.delegate = self
                 self.navigationController?.pushViewController(contactViewController, animated: true)
                 self.navigationController?.setNavigationBarHidden(false, animated: true)
-//                SwiftEventBus.post("newContact", sender: self.numberText.text! as NSString)
             })
             alertController.addAction(UIAlertAction(title: "加入到现有的联系人", style: .default) { action in
                 let contactPickerViewController = CNContactPickerViewController()
                 contactPickerViewController.hidesBottomBarWhenPushed = true
                 contactPickerViewController.delegate = self
                 self.present(contactPickerViewController, animated: true, completion: nil)
-//                self.navigationController?.pushViewController(contactPickerViewController, animated: true)
-//                self.navigationController?.setNavigationBarHidden(false, animated: true)
             })
             alertController.addAction(UIAlertAction(title: "取消", style: .cancel) { action in
                 
@@ -421,6 +418,8 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
+    // MARK: - CNContactViewControllerDelegate
+    
     func contactViewController(_ viewController: CNContactViewController, didCompleteWith contact: CNContact?) {
         if contact != nil {
             SwiftEventBus.post("reloadContacts")
@@ -429,7 +428,20 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
+    // MARK: - CNContactPickerDelegate
+    
     func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
-        print("contactPickerDidCancel")
+        
+    }
+    
+    func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
+        let tempContact = contact.mutableCopy() as! CNMutableContact
+        tempContact.phoneNumbers.append(CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: numberText.text!)))
+        let contactViewController = CNContactViewController(forNewContact: tempContact)
+        contactViewController.hidesBottomBarWhenPushed = true
+        contactViewController.title = ""
+        contactViewController.delegate = self
+        navigationController?.pushViewController(contactViewController, animated: true)
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
 }
