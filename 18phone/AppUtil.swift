@@ -635,10 +635,50 @@ struct APIUtil {
                     return
                 }
                 print(response.text!)
-//                let contactIDInfo = ContactIDInfo(JSONDecoder(response.data))
+            }
+        } catch {
+            print("got an error creating the request: \(error)")
+        }
+    }
+    
+    static func getCallLogByMonth(_ userID: String, year: Int, month: Int, callBack: ((CallLogInfos) -> ())?) {
+        do {
+            let opt = try HTTP.POST(AppURL.BEYEBE_18PHONE_API_BASE + "getSomeMonthCallRecord", parameters: ["userID":userID, "year":year, "month":month])
+            opt.start { response in
+                if let error = response.error {
+                    print("error: \(error.localizedDescription)")
+                    print("error: \(error.code)")
+                    
+                    return
+                }
+                print(response.text!)
+                let callLogInfos = CallLogInfos(JSONDecoder(response.data))
+                if callBack != nil {
+                    Async.main {
+                        callBack!(callLogInfos)
+                    }
+                }
+            }
+        } catch {
+            print("got an error creating the request: \(error)")
+        }
+    }
+    
+    static func uploadContact(_ uploadContactInfo: [String:Any]) {
+        do {
+            let opt = try HTTP.POST(AppURL.BEYEBE_18PHONE_API_BASE + "backupPsersonInfo", parameters: uploadContactInfo)
+            opt.start { response in
+                if let error = response.error {
+                    print("error: \(error.localizedDescription)")
+                    print("error: \(error.code)")
+                    
+                    return
+                }
+                print(response.text!)
+//                let callLogInfos = CallLogInfos(JSONDecoder(response.data))
 //                if callBack != nil {
 //                    Async.main {
-//                        callBack!(contactIDInfo)
+//                        callBack!(callLogInfos)
 //                    }
 //                }
             }

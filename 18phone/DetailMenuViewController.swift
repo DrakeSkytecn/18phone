@@ -8,13 +8,18 @@
 
 import UIKit
 import RealmSwift
+import SwiftEventBus
 
 class DetailMenuViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    var appContactInfo: AppContactInfo?
+    var callId: String?
     var contactId: String?
     var name: String?
     var phones: [String]?
     var phoneAreas: [String]?
+    var pending: UIAlertController?
+    var callLog = CallLog()
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -23,6 +28,18 @@ class DetailMenuViewController: UIViewController, UITableViewDataSource, UITable
         tableView.tableFooterView = UIView()
         tableView.dataSource = self
         tableView.delegate = self
+        SwiftEventBus.onMainThread(self, name: "getBackCallInfo") { result in
+            self.pending?.dismiss(animated: false, completion: nil)
+            if self.callId != nil {
+                PhoneUtil.getBackCallInfo(self.callId!, callBack: { backCallInfo in
+                    if backCallInfo.status == "0" {
+                        
+                    }
+                })
+                self.callId = nil
+                self.addCallLog()
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,7 +52,41 @@ class DetailMenuViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     @IBAction func voiceCall(_ sender: UIButton) {
-        
+        if  appContactInfo != nil && !appContactInfo!.accountId.isEmpty {
+            let outgoingCallViewController = R.storyboard.main.outgoingCallViewController()
+            callLog.accountId = appContactInfo!.accountId
+            callLog.contactId = appContactInfo!.identifier
+            callLog.phone = phones!.first!
+            callLog.name = name!
+            callLog.area = phoneAreas!.first!
+            callLog.callType = CallType.voice.rawValue
+            outgoingCallViewController?.callLog = callLog
+            present(outgoingCallViewController!, animated: true, completion: nil)
+        } else {
+            if let saveUsername = UserDefaults.standard.string(forKey: "username") {
+                pending = UIAlertController(title: "回拨电话", message: "正在拨号中，您将收到一通回拨电话，接听等待即可通话", preferredStyle: .alert)
+                let indicator = UIActivityIndicatorView(frame: pending!.view.bounds)
+                indicator.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                pending?.view.addSubview(indicator)
+                pending?.addAction(UIAlertAction(title: "挂断", style: .cancel) { action in
+                    if self.callId != nil {
+                        PhoneUtil.hangupBackCall(self.callId!, callBack: { dialBackCallInfo in
+                            if dialBackCallInfo.status == "0" {
+                                self.pending?.dismiss(animated: true, completion: nil)
+                            }
+                        })
+                    }
+                })
+                present(pending!, animated: true, completion: nil)
+                if phones!.first != nil {
+                    PhoneUtil.dialBackCall(saveUsername, toNumber: phones!.first!, callBack: { dialBackCallInfo in
+                        if dialBackCallInfo.status == "0" {
+                            self.callId = dialBackCallInfo.callId
+                        }
+                    })
+                }
+            }
+        }
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -84,26 +135,30 @@ class DetailMenuViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        PhoneUtil.callSystemPhone(phones![(indexPath as NSIndexPath).row])
-        addCallLog(phones![(indexPath as NSIndexPath).row], area: tableView.cellForRow(at: indexPath)!.detailTextLabel!.text!)
     }
     
-    func addCallLog(_ number: String, area: String) {
-        let callLog = CallLog()
-        callLog.contactId = contactId!
+    func addCallLog() {
+        if appContactInfo != nil {
+            callLog.contactId = appContactInfo!.identifier
+        }
         callLog.name = name!
-        callLog.phone = number
+        callLog.phone = phones!.first!
         if true {
             callLog.callState = CallState.outConnected.rawValue
         } else {
             callLog.callState = CallState.outUnConnected.rawValue
         }
         callLog.callType = CallType.voice.rawValue
-        callLog.callStartTime = Date()
-        callLog.area = area
+        callLog.area = phoneAreas!.first!
         try! App.realm.write {
             App.realm.add(callLog)
         }
+        let callInfo = ["AuserID":UserDefaults.standard.string(forKey: "userID")!, "BUCID":callLog.accountId, "CallType":callLog.callType, "IncomingType":callLog.callState, "CallTime":callLog.callStartTime.description, "TalkTimeLength":"1000", "EndTime":callLog.callEndTime.description, "Area":callLog.area, "Name":callLog.name, "Mobile":callLog.phone] as [String : Any]
+        APIUtil.saveCallLog(callInfo)
+    }
+    
+    deinit {
+        SwiftEventBus.unregister(self)
     }
     /*
     // MARK: - Navigation

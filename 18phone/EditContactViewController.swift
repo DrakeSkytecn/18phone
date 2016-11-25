@@ -124,7 +124,7 @@ class EditContactViewController: UIViewController, UITableViewDataSource, UITabl
             appContactInfo?.sex = sex
             appContactInfo?.area = area
         }
-        SwiftEventBus.post("reloadContactInfo")
+        SwiftEventBus.post("reloadAppContactInfo")
         _ = navigationController?.popViewController(animated: true)
     }
 
@@ -140,9 +140,9 @@ class EditContactViewController: UIViewController, UITableViewDataSource, UITabl
     func contactViewController(_ viewController: CNContactViewController, didCompleteWith contact: CNContact?) {
         print("didCompleteWith")
         if contact != nil {
+            self.contact = contact
             SwiftEventBus.post("reloadContacts")
-            let fullName = contact!.familyName + contact!.givenName
-            SwiftEventBus.post("reloadContactInfo", sender: fullName as NSString)
+            SwiftEventBus.post("reloadLocalContactInfo", sender: contact)
         }
         _ = navigationController?.popViewController(animated: true)
     }

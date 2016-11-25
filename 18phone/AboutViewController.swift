@@ -21,6 +21,9 @@ class AboutViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func callService(_ sender: UIButton) {
+        PhoneUtil.callSystemPhone(sender.titleLabel!.text!)
+    }
 
     /*
     // MARK: - Navigation

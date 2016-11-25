@@ -46,8 +46,12 @@ class ContactDetailViewController: UIViewController {
         super.viewDidLoad()
         initContactInfo()
         initPageMenu()
-        SwiftEventBus.onMainThread(self, name: "reloadContactInfo", handler: { result in
-            self.reloadContactInfo(name: result.object as! String)
+        SwiftEventBus.onMainThread(self, name: "reloadAppContactInfo", handler: { result in
+            self.reloadAppContactInfo()
+        })
+        SwiftEventBus.onMainThread(self, name: "reloadLocalContactInfo", handler: { result in
+            let contact = result.object as! CNContact
+            self.reloadLocalContactInfo(contact)
         })
         // Do any additional setup after loading the view.
     }
@@ -102,6 +106,7 @@ class ContactDetailViewController: UIViewController {
         detailMenuViewController.name = fullName
         detailMenuViewController.phones = phones
         detailMenuViewController.phoneAreas = phoneAreas
+        detailMenuViewController.appContactInfo = appContactInfo
         callLogMenuViewController.contactId = contactId
     }
     
@@ -123,8 +128,7 @@ class ContactDetailViewController: UIViewController {
         view.addSubview(pageMenu.view)
     }
     
-    func reloadContactInfo(name: String) {
-        nameLabel.text = name
+    func reloadAppContactInfo() {
         if appContactInfo!.sex == Sex.male.rawValue {
             sexImage.image = R.image.male()
         } else if appContactInfo!.sex == Sex.female.rawValue {
@@ -136,6 +140,15 @@ class ContactDetailViewController: UIViewController {
         areaLabel.text = appContactInfo!.area
     }
 
+    func reloadLocalContactInfo(_ contact: CNContact) {
+        nameLabel.text = contact.familyName + contact.givenName
+        if contact.imageDataAvailable {
+            headPhoto.image = UIImage(data: contact.thumbnailImageData!)
+        } else {
+            headPhoto.image = R.image.head_photo_default()
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -146,12 +159,14 @@ class ContactDetailViewController: UIViewController {
         alertController.addAction(UIAlertAction(title: "编辑联系人", style: .default) { action in
             self.performSegue(withIdentifier: R.segue.contactDetailViewController.editContactViewController, sender: ["appContactInfo":self.appContactInfo!, "contact":self.contact!])
             })
-        alertController.addAction(UIAlertAction(title: "添加黑名单", style: .default) { action in
-            
+//        alertController.addAction(UIAlertAction(title: "添加黑名单", style: .default) { action in
+//            
+//            })
+        if appContactInfo!.accountId.isEmpty {
+            alertController.addAction(UIAlertAction(title: "分享", style: .default) { action in
+                
             })
-        alertController.addAction(UIAlertAction(title: "分享", style: .default) { action in
-            
-            })
+        }
         alertController.addAction(UIAlertAction(title: "取消", style: .cancel) { action in
             
             })

@@ -48,30 +48,24 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate, UINavi
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
-        if userData!.headImageUrl != nil {
+        if userData?.headImageUrl != nil {
             headPhoto.piQ_imageFromUrl(userData!.headImageUrl!, placeholderImage: headPhotoImage!)
         }
-//        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-//        let filePath = paths[0].appending("/\(userID!).jpeg")
-//        let fileManager = FileManager.default
-//        if fileManager.fileExists(atPath: filePath) {
-//            headPhoto.image = UIImage(contentsOfFile: filePath)
-//        } else {
-//            headPhoto.image = headPhotoImage
-//        }
         nameField.text = userData?.name
         if userData?.sex == Sex.male.rawValue {
             sexLabel.text = "男"
         } else if userData?.sex == Sex.female.rawValue {
             sexLabel.text = "女"
         }
-        if userData!.age! != -1 {
-            ageLabel.text = "\(userData!.age!)岁"
-        }
         areaLabel.text = userData?.provinceCity
         signField.text = userData?.personalSignature
-        age = userData!.age!
-        sex = userData!.sex!
+        if userData != nil {
+            if userData!.age! != -1 {
+                ageLabel.text = "\(userData!.age!)岁"
+            }
+            age = userData!.age!
+            sex = userData!.sex!
+        }
         nameField.delegate = self
         signField.delegate = self
     }

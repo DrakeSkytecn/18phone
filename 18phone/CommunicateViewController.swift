@@ -24,17 +24,44 @@ class CommunicateViewController: UIViewController {
     func initPageMenu() {
         let date = Date()
         var controllerArray = [UIViewController]()
-        for i in (1...date.month).reversed() {
+        if date.month >= 3 {
+            for i in ((date.month - 2)...date.month).reversed() {
+                let communicateListViewController = R.storyboard.main.communicateListViewController()!
+                communicateListViewController.title = "\(i)月"
+                communicateListViewController.year = date.year
+                communicateListViewController.month = i
+                controllerArray.append(communicateListViewController)
+            }
+        } else if date.month == 2 {
+            for i in (1...2).reversed() {
+                let communicateListViewController = R.storyboard.main.communicateListViewController()!
+                communicateListViewController.title = "\(i)月"
+                communicateListViewController.year = date.year
+                communicateListViewController.month = i
+                controllerArray.append(communicateListViewController)
+            }
+            let communicateListViewController1 = R.storyboard.main.communicateListViewController()!
+            communicateListViewController1.title = "\(date.year - 1)年12月"
+            communicateListViewController1.year = date.year - 1
+            communicateListViewController1.month = 12
+            controllerArray.append(communicateListViewController1)
+        } else {
             let communicateListViewController = R.storyboard.main.communicateListViewController()!
-            communicateListViewController.title = "\(i)月"
+            communicateListViewController.year = date.year
+            communicateListViewController.month = 1
+            communicateListViewController.title = "1月"
             controllerArray.append(communicateListViewController)
+            let communicateListViewController1 = R.storyboard.main.communicateListViewController()!
+            communicateListViewController1.year = date.year - 1
+            communicateListViewController1.month = 12
+            communicateListViewController1.title = "\(date.year - 1)年12月"
+            let communicateListViewController2 = R.storyboard.main.communicateListViewController()!
+            communicateListViewController2.year = date.year - 1
+            communicateListViewController2.month = 11
+            communicateListViewController2.title = "\(date.year - 1)年11月"
+            controllerArray.append(communicateListViewController1)
+            controllerArray.append(communicateListViewController2)
         }
-        let communicateListViewController1 = R.storyboard.main.communicateListViewController()!
-        communicateListViewController1.title = "\(date.year - 1)年12月"
-        let communicateListViewController2 = R.storyboard.main.communicateListViewController()!
-        communicateListViewController2.title = "\(date.year - 1)年11月"
-        controllerArray.append(communicateListViewController1)
-        controllerArray.append(communicateListViewController2)
         
         let parameters: [CAPSPageMenuOption] = [
             .scrollMenuBackgroundColor(UIColor.white),

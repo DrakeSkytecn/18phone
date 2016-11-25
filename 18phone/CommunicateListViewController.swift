@@ -10,42 +10,66 @@ import UIKit
 
 class CommunicateListViewController: UITableViewController {
 
+    var year: Int?
+    var month: Int?
+    var callLogInfos: [CallLogInfo]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        APIUtil.getCallLogByMonth(UserDefaults.standard.string(forKey: "userID")!, year: year!, month: month!, callBack: { callLogInfos in
+            if callLogInfos.codeStatus == 1 {
+                self.callLogInfos = callLogInfos.callLogInfos
+                self.tableView.reloadData()
+            }
+        })
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        if callLogInfos != nil {
+            return callLogInfos!.count
+        } else {
+            return 0
+        }
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        let callLogInfo = callLogInfos![indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.bill_call_log)!
+        cell.phone.text = callLogInfo.BMobile
+        cell.name.text = callLogInfo.Name
+        switch callLogInfo.IncomingType! {
+        case CallState.inUnConnected.rawValue:
+            cell.callState.image = R.image.call_in_unconnected()
+            break
+        case CallState.inConnected.rawValue:
+            cell.callState.image = R.image.call_in_connected()
+            break
+        case CallState.outUnConnected.rawValue:
+            cell.callState.image = R.image.call_out_unconnected()
+            break
+        case CallState.outConnected.rawValue:
+            cell.callState.image = R.image.call_out_connected()
+            break
+        default:
+            break
+        }
+        if callLogInfo.CallType == CallType.voice.rawValue {
+            cell.callType.image = R.image.voice_call()
+        } else if callLogInfo.CallType == CallType.video.rawValue {
+            cell.callType.image = R.image.video_call()
+        }
+        cell.callStartTime.text = callLogInfo.CallTime
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.

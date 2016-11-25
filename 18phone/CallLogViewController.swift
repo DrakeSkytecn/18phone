@@ -242,6 +242,8 @@ class CallLogViewController: UITableViewController {
         try! App.realm.write {
             App.realm.add(newCallLog)
         }
+        let callInfo = ["AuserID":UserDefaults.standard.string(forKey: "userID")!, "BUCID":newCallLog.accountId, "CallType":newCallLog.callType, "IncomingType":newCallLog.callState, "CallTime":newCallLog.callStartTime.description, "TalkTimeLength":"1000", "EndTime":newCallLog.callEndTime.description, "Area":newCallLog.area, "Name":newCallLog.name, "Mobile":newCallLog.phone] as [String : Any]
+        APIUtil.saveCallLog(callInfo)
     }
     
     func reloadCallLogs() {

@@ -8,6 +8,7 @@
 
 import UIKit
 import Async
+import SwiftEventBus
 
 class OutgoingVideoViewController: UIViewController {
     
@@ -83,22 +84,16 @@ class OutgoingVideoViewController: UIViewController {
         }
         newCallLog.callType = CallType.video.rawValue
         newCallLog.area = callLog!.area
+        newCallLog.callEndTime = Date()
         try! App.realm.write {
             App.realm.add(newCallLog)
         }
-        dismiss(animated: true, completion: nil)
-        //            let callLog = CallLog()
-        //            callLog.name = "James"
-        //            callLog.phone = toNumber!
-        //            callLog.callState = 0
-        //            callLog.callType = 0
-        //            callLog.callStartTime = DateUtil.getCurrentDate()
-        //            if phoneArea != nil {
-        //                callLog.area = phoneArea!
-        //            }
-        //            try! App.realm.write {
-        //                App.realm.add(callLog)
-        //            }
+        SwiftEventBus.post("reloadCallLogs")
+        App.changeSpeaker(false)
+        dismiss(animated: true, completion: {
+            let callInfo = ["AuserID":UserDefaults.standard.string(forKey: "userID")!, "BUCID":self.newCallLog.accountId, "CallType":self.newCallLog.callType, "IncomingType":self.newCallLog.callState, "CallTime":self.newCallLog.callStartTime.description, "TalkTimeLength":"1000", "EndTime":self.newCallLog.callEndTime.description, "Area":self.newCallLog.area, "Name":self.newCallLog.name, "Mobile":self.newCallLog.phone] as [String : Any]
+            APIUtil.saveCallLog(callInfo)
+        })
     }
     
     func callStatusDidChange() {

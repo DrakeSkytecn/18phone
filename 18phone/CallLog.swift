@@ -97,6 +97,46 @@ class CallLog: Object {
     dynamic var callDuration = Date()
 }
 
+struct CallLogInfo: JSONJoy{
+    
+    let CallType: Int?
+    let Name: String?
+    let IncomingType: Int?
+    let BMobile: String?
+    let CallTime: String?
+    let TalkTimeLength: String?
+    let EndTime: String?
+    let Area: String?
+    
+    init(_ decoder: JSONDecoder) {
+        CallType = decoder["CallType"].integer
+        Name = decoder["Name"].string
+        IncomingType = decoder["IncomingType"].integer
+        BMobile = decoder["BMobile"].string
+        CallTime = decoder["CallTime"].string
+        TalkTimeLength = decoder["TalkTimeLength"].string
+        EndTime = decoder["EndTime"].string
+        Area = decoder["Area"].string
+    }
+}
+
+struct CallLogInfos: JSONJoy {
+    
+    let codeStatus: Int?
+    let codeinfo: String?
+    var callLogInfos = [CallLogInfo]()
+    
+    init(_ decoder: JSONDecoder) {
+        codeStatus = decoder["codeStatus"].integer
+        codeinfo = decoder["codeInfo"].string
+        if let tempCallLogInfos = decoder["listUserCallRecord"].array {
+            for callLogInfoDecoder in tempCallLogInfos {
+                callLogInfos.append(CallLogInfo(callLogInfoDecoder))
+            }
+        }
+    }
+}
+
 struct RetData: JSONJoy {
     
     let phone: String?

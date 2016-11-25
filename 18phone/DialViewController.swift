@@ -59,7 +59,7 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     }
                 })
                 self.callId = nil
-                self.addCallLog(self.numberText.text!)
+                self.addCallLog()
             }
         }
         // Do any additional setup after loading the view.
@@ -368,12 +368,12 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 }
             } else {
                 PhoneUtil.callSystemPhone(numberText.text!)
-                addCallLog(numberText.text!)
+                addCallLog()
             }
         }
     }
     
-    func addCallLog(_ number: String) {
+    func addCallLog() {
         let callLog = CallLog()
         if appContactInfo != nil {
             callLog.contactId = appContactInfo!.identifier

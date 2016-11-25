@@ -18,6 +18,7 @@ class CallLogACell: UITableViewCell {
     @IBOutlet weak var phoneName: UILabel!
     @IBOutlet weak var area: UILabel!
     @IBOutlet weak var callStartTime: UILabel!
+    @IBOutlet weak var callDuration: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

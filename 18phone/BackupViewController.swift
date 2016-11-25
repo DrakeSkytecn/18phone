@@ -25,7 +25,21 @@ class BackupViewController: UIViewController, UITableViewDataSource, UITableView
         let store = CNContactStore()
         let keysToFetch = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName)]
         let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch)
-        try! store.enumerateContacts(with: fetchRequest) {(contact, stop) -> Void in
+        try! store.enumerateContacts(with: fetchRequest) { contact, stop -> Void in
+            if self.contactCount == 0 {
+                var phones = ""
+                for number in contact.phoneNumbers {
+                    let phoneNumber = number.value.stringValue
+                    let formatNumber = PhoneUtil.formatPhoneNumber(phoneNumber)
+                    if contact.phoneNumbers.count == 1 {
+                        phones = formatNumber
+                    } else {
+                        phones = phones + "," + formatNumber
+                    }
+                }
+                let uploadContactInfo = ["phoneID":contact.identifier, "userID":UserDefaults.standard.string(forKey: "userID")!, "name":contact.familyName + contact.givenName,"mobile":phones, "sex":0, "age":"10岁", "area":"广东深圳"] as [String : Any]
+                APIUtil.uploadContact(uploadContactInfo)
+            }
             self.contactCount = self.contactCount + 1
         }
     }
