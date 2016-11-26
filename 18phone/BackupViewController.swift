@@ -25,21 +25,7 @@ class BackupViewController: UIViewController, UITableViewDataSource, UITableView
         let store = CNContactStore()
         let keysToFetch = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName)]
         let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch)
-        try! store.enumerateContacts(with: fetchRequest) { contact, stop -> Void in
-            if self.contactCount == 0 {
-                var phones = ""
-                for number in contact.phoneNumbers {
-                    let phoneNumber = number.value.stringValue
-                    let formatNumber = PhoneUtil.formatPhoneNumber(phoneNumber)
-                    if contact.phoneNumbers.count == 1 {
-                        phones = formatNumber
-                    } else {
-                        phones = phones + "," + formatNumber
-                    }
-                }
-                let uploadContactInfo = ["phoneID":contact.identifier, "userID":UserDefaults.standard.string(forKey: "userID")!, "name":contact.familyName + contact.givenName,"mobile":phones, "sex":0, "age":"10岁", "area":"广东深圳"] as [String : Any]
-                APIUtil.uploadContact(uploadContactInfo)
-            }
+        try! store.enumerateContacts(with: fetchRequest) { contact, stop in
             self.contactCount = self.contactCount + 1
         }
     }
@@ -101,14 +87,30 @@ class BackupViewController: UIViewController, UITableViewDataSource, UITableView
         userDefaults.set(sender.isOn, forKey: "auto_backup")
         userDefaults.synchronize()
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
+    @IBAction func backupContacts(_ sender: UIButton) {
+        let store = CNContactStore()
+        let keysToFetch = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName), CNContactPhoneNumbersKey as CNKeyDescriptor, CNContactThumbnailImageDataKey as CNKeyDescriptor, CNContactImageDataAvailableKey as CNKeyDescriptor]
+        let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch)
+        try! store.enumerateContacts(with: fetchRequest) { contact, stop in
+            if self.contactCount == 0 {
+                var phones = ""
+                for number in contact.phoneNumbers {
+                    let phoneNumber = number.value.stringValue
+                    let formatNumber = PhoneUtil.formatPhoneNumber(phoneNumber)
+                    if contact.phoneNumbers.count == 1 {
+                        phones = formatNumber
+                    } else {
+                        phones = phones + "," + formatNumber
+                    }
+                }
+                if let userID = UserDefaults.standard.string(forKey: "userID") {
+                    let uploadContactInfo = ["phoneID":contact.identifier, "userID":userID, "name":contact.familyName + contact.givenName,"mobile":phones, "sex":0, "age":-1, "area":""] as [String : Any]
+                    APIUtil.uploadContact(uploadContactInfo)
+                }
+                
+            }
+        }
+        
+    }
 }

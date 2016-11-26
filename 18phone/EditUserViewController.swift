@@ -14,7 +14,7 @@ import SwiftHTTP
 import SwiftEventBus
 
 class EditUserViewController: UITableViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, NJImageCropperDelegate {
-
+    
     var lastScrollOffset: CGFloat = 0.0
     
     let ORIGINAL_MAX_WIDTH: CGFloat = 640.0
@@ -29,7 +29,7 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate, UINavi
     
     var userData: UserData?
     
-//    var userInfo = [String: Any]()
+    //    var userInfo = [String: Any]()
     
     @IBOutlet weak var headPhoto: UIImageView!
     
@@ -50,16 +50,19 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate, UINavi
         tableView.tableFooterView = UIView()
         if userData?.headImageUrl != nil {
             headPhoto.piQ_imageFromUrl(userData!.headImageUrl!, placeholderImage: headPhotoImage!)
+        } else {
+            headPhoto.image = headPhotoImage
         }
-        nameField.text = userData?.name
-        if userData?.sex == Sex.male.rawValue {
-            sexLabel.text = "男"
-        } else if userData?.sex == Sex.female.rawValue {
-            sexLabel.text = "女"
-        }
-        areaLabel.text = userData?.provinceCity
-        signField.text = userData?.personalSignature
         if userData != nil {
+            nameField.text = userData?.name
+            if userData?.sex == Sex.male.rawValue {
+                sexLabel.text = "男"
+            } else if userData?.sex == Sex.female.rawValue {
+                sexLabel.text = "女"
+            }
+            areaLabel.text = userData?.provinceCity
+            signField.text = userData?.personalSignature
+            
             if userData!.age! != -1 {
                 ageLabel.text = "\(userData!.age!)岁"
             }
@@ -69,12 +72,12 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate, UINavi
         nameField.delegate = self
         signField.delegate = self
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -96,18 +99,18 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate, UINavi
             ActionSheetStringPicker.show(withTitle: "", rows: sexChoices, initialSelection: 0, doneBlock: { picker, selectedIndex, selectedValue in
                 self.sex = selectedIndex + 1
                 self.sexLabel.text = sexChoices[selectedIndex]
-                }, cancel: { _ in
-                    
-                }, origin: cell)
+            }, cancel: { _ in
+                
+            }, origin: cell)
             break
         case 3:
             ActionSheetDatePicker.show(withTitle: "生日", datePickerMode: .date, selectedDate: Date(), doneBlock: { picker, selectedValue, selectedIndex in
                 let birthday = selectedValue as! Date
                 self.age = DateUtil.getAgeFromBirthday((birthday))
                 self.ageLabel.text =  "\(self.age)岁"
-                }, cancel: { _ in
+            }, cancel: { _ in
                 
-                }, origin: cell)
+            }, origin: cell)
             break
         case 4:
             let areaPicker = SelectView(zgqFrame: Screen.bounds, selectCityTtitle: "地区")
@@ -115,12 +118,12 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate, UINavi
                 let provinceStr = province![province!.startIndex..<province!.index(province!.endIndex, offsetBy: -1)]
                 let cityStr = city![city!.startIndex..<city!.index(city!.endIndex, offsetBy: -1)]
                 switch provinceStr {
-                    case "北京", "上海", "天津", "重庆":
-                        self.areaLabel.text = provinceStr
-                        break
-                    default:
-                        self.areaLabel.text = provinceStr + cityStr
-                        break
+                case "北京", "上海", "天津", "重庆":
+                    self.areaLabel.text = provinceStr
+                    break
+                default:
+                    self.areaLabel.text = provinceStr + cityStr
+                    break
                 }
             })
             break
@@ -138,7 +141,7 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate, UINavi
             lastScrollOffset = y
         }
     }
-
+    
     @IBAction func save(_ sender: UIBarButtonItem) {
         var userInfo = [String:Any]()
         userInfo["UserID"] = userID
@@ -149,7 +152,7 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate, UINavi
         userInfo["AddressDetail"] = addressField.text!
         userInfo["PersonalSignature"] = signField.text!
         var imageUrl: URL?
-        if  headPhoto.image != headPhotoImage {
+        if headPhoto.image != nil && headPhoto.image != headPhotoImage {
             let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
             let filePath = paths[0].appending("/\(userID!).jpeg")
             imageUrl = URL(fileURLWithPath: filePath)
@@ -288,7 +291,7 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate, UINavi
                 controller.delegate = self
                 self.present(controller, animated: true, completion: nil)
             }
-            })
+        })
         alertController.addAction(UIAlertAction(title: "相册", style: .default) { action in
             if self.isPhotoLibraryAvailable() {
                 let controller = UIImagePickerController()
@@ -297,10 +300,10 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate, UINavi
                 controller.delegate = self
                 self.present(controller, animated: true, completion: nil)
             }
-            })
+        })
         alertController.addAction(UIAlertAction(title: "取消", style: .cancel) { action in
             
-            })
+        })
         present(alertController, animated: true, completion: nil)
     }
     
@@ -317,7 +320,7 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate, UINavi
         textField.resignFirstResponder()
         return true
     }
-
+    
     // MARK: - UIImagePickerControllerDelegate
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -356,58 +359,58 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate, UINavi
     }
     
     /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
+     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+     let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+     
+     // Configure the cell...
+     
+     return cell
+     }
+     */
+    
     /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
+     // Override to support conditional editing of the table view.
+     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+     // Return false if you do not want the specified item to be editable.
+     return true
+     }
+     */
+    
     /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
+     // Override to support editing the table view.
+     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+     if editingStyle == .Delete {
+     // Delete the row from the data source
+     tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+     } else if editingStyle == .Insert {
+     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+     }
+     }
+     */
+    
     /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
+     // Override to support rearranging the table view.
+     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+     
+     }
+     */
+    
     /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
+     // Override to support conditional rearranging of the table view.
+     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+     // Return false if you do not want the item to be re-orderable.
+     return true
+     }
+     */
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
