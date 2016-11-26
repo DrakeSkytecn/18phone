@@ -13,7 +13,7 @@ import RealmSwift
 import SwiftEventBus
 
 class ContactDetailViewController: UIViewController {
-
+    
     @IBOutlet weak var detailConHeight: NSLayoutConstraint!
     
     var contactId: String?
@@ -139,7 +139,7 @@ class ContactDetailViewController: UIViewController {
         }
         areaLabel.text = appContactInfo!.area
     }
-
+    
     func reloadLocalContactInfo(_ contact: CNContact) {
         nameLabel.text = contact.familyName + contact.givenName
         if contact.imageDataAvailable {
@@ -158,21 +158,44 @@ class ContactDetailViewController: UIViewController {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: "编辑联系人", style: .default) { action in
             self.performSegue(withIdentifier: R.segue.contactDetailViewController.editContactViewController, sender: ["appContactInfo":self.appContactInfo!, "contact":self.contact!])
-            })
-//        alertController.addAction(UIAlertAction(title: "添加黑名单", style: .default) { action in
-//            
-//            })
+        })
+        //        alertController.addAction(UIAlertAction(title: "添加黑名单", style: .default) { action in
+        //
+        //            })
         if appContactInfo!.accountId.isEmpty {
             alertController.addAction(UIAlertAction(title: "分享", style: .default) { action in
+                let shareParames = NSMutableDictionary()
+                shareParames.ssdkSetupShareParams(byText: "分享测试",
+                                                  images : R.image.shareImg(),
+                                                  url : URL(string:"http://www.beyebe.com/"),
+                                                  title : "分享测试内容By Drake",
+                                                  type : .auto)
                 
+                ShareSDK.showShareActionSheet(self.view, items: nil, shareParams: shareParames) { state, platformType, userdata, contentEnity, error, end in
+                    switch state {
+                        
+                    case .success:
+                        print("分享成功")
+                        break
+                    case .fail:
+                        print("分享失败,错误描述:\(error)")
+                        break
+                    case .cancel:
+                        print("分享取消")
+                        break
+                        
+                    default:
+                        break
+                    }
+                }
             })
         }
         alertController.addAction(UIAlertAction(title: "取消", style: .cancel) { action in
             
-            })
+        })
         present(alertController, animated: true, completion: nil)
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == R.segue.contactDetailViewController.editContactViewController.identifier {
             let editContactViewController = segue.destination as! EditContactViewController

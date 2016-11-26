@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKPushRegistryDelegate {
         let pushRegistry = PKPushRegistry(queue: DispatchQueue.main)
         pushRegistry.delegate = self
         pushRegistry.desiredPushTypes = [.voIP]
+        initShareService()
         let userDefaults = UserDefaults.standard
         if let userID = userDefaults.string(forKey: "userID") {
             let password = userDefaults.string(forKey: "password")
@@ -92,6 +93,68 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKPushRegistryDelegate {
     
     func pushRegistry(_ registry: PKPushRegistry, didReceiveIncomingPushWith payload: PKPushPayload, forType type: PKPushType) {
         print("pushRegistry didReceiveIncomingPushWith")
+    }
+    
+    /**
+     初始化分享服务
+     */
+    func initShareService() {
+        ShareSDK.registerApp("f88ec2241369", activePlatforms: [SSDKPlatformType.typeSinaWeibo.rawValue, SSDKPlatformType.typeQQ
+            .rawValue, SSDKPlatformType.typeWechat.rawValue, SSDKPlatformType.typeTencentWeibo.rawValue], onImport: { platformType in
+                switch platformType {
+                case .typeSinaWeibo:
+                    ShareSDKConnector.connectWeibo(WeiboSDK.classForCoder())
+                    break;
+                    
+                case .typeQQ:
+                    
+                    ShareSDKConnector.connectQQ(QQApiInterface.classForCoder(), tencentOAuthClass: TencentOAuth.classForCoder())
+                    
+                    break;
+                    
+                case .typeWechat:
+                    ShareSDKConnector.connectWeChat(WXApi.classForCoder())
+                    break;
+                    
+                default:
+                    break;
+                }
+        }, onConfiguration: { platformType, appInfo in
+            
+            switch platformType {
+                
+            case .typeSinaWeibo:
+                
+                appInfo?.ssdkSetupSinaWeibo(byAppKey: "568898243", appSecret: "38a4f8204cc784f81f9f0daaf31e02e3", redirectUri: "http://www.sharesdk.cn", authType: SSDKAuthTypeBoth)
+                
+                break;
+                
+            case .typeQQ:
+                
+                appInfo?.ssdkSetupQQ(byAppId: "100371282",
+                                           appKey : "aed9b0303e3ed1e27bae87c33761161d",
+                                           authType : SSDKAuthTypeWeb)
+                
+                break;
+                
+            case .typeWechat:
+                
+                appInfo?.ssdkSetupWeChat(byAppId: "wx4868b35061f87885", appSecret: "64020361b8ec4c99936c0e3999a9f249")
+                
+                break;
+                
+            case .typeTencentWeibo:
+                
+                appInfo?.ssdkSetupTencentWeibo(byAppKey: "801307650",
+                                                      appSecret : "ae36f4ee3946e1cbb98d6965b0b2ff5c",
+                                                      redirectUri : "http://www.sharesdk.cn")
+                
+                break;
+                
+            default:
+                break;
+            }
+        })
     }
 }
 

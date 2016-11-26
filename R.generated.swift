@@ -21,10 +21,20 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.file` struct is generated, and contains static references to 3 files.
+  /// This `R.file` struct is generated, and contains static references to 8 files.
   struct file {
     /// Resource file `Address.plist`.
     static let addressPlist = Rswift.FileResource(bundle: R.hostingBundle, name: "Address", pathExtension: "plist")
+    /// Resource file `ShareSDK.bundle`.
+    static let shareSDKBundle = Rswift.FileResource(bundle: R.hostingBundle, name: "ShareSDK", pathExtension: "bundle")
+    /// Resource file `ShareSDKUI.bundle`.
+    static let shareSDKUIBundle = Rswift.FileResource(bundle: R.hostingBundle, name: "ShareSDKUI", pathExtension: "bundle")
+    /// Resource file `TencentOpenApi_IOS_Bundle.bundle`.
+    static let tencentOpenApi_IOS_BundleBundle = Rswift.FileResource(bundle: R.hostingBundle, name: "TencentOpenApi_IOS_Bundle", pathExtension: "bundle")
+    /// Resource file `WeiboSDK.bundle`.
+    static let weiboSDKBundle = Rswift.FileResource(bundle: R.hostingBundle, name: "WeiboSDK", pathExtension: "bundle")
+    /// Resource file `read_me.txt`.
+    static let read_meTxt = Rswift.FileResource(bundle: R.hostingBundle, name: "read_me", pathExtension: "txt")
     /// Resource file `ringtone.wav`.
     static let ringtoneWav = Rswift.FileResource(bundle: R.hostingBundle, name: "ringtone", pathExtension: "wav")
     /// Resource file `test`.
@@ -33,6 +43,36 @@ struct R: Rswift.Validatable {
     /// `bundle.url(forResource: "Address", withExtension: "plist")`
     static func addressPlist(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.addressPlist
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "ShareSDK", withExtension: "bundle")`
+    static func shareSDKBundle(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.shareSDKBundle
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "ShareSDKUI", withExtension: "bundle")`
+    static func shareSDKUIBundle(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.shareSDKUIBundle
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "TencentOpenApi_IOS_Bundle", withExtension: "bundle")`
+    static func tencentOpenApi_IOS_BundleBundle(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.tencentOpenApi_IOS_BundleBundle
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "WeiboSDK", withExtension: "bundle")`
+    static func weiboSDKBundle(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.weiboSDKBundle
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "read_me", withExtension: "txt")`
+    static func read_meTxt(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.read_meTxt
       return fileResource.bundle.url(forResource: fileResource)
     }
     
@@ -56,7 +96,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 41 images.
+  /// This `R.image` struct is generated, and contains static references to 42 images.
   struct image {
     /// Image `Launch`.
     static let launch = Rswift.ImageResource(bundle: R.hostingBundle, name: "Launch")
@@ -118,6 +158,8 @@ struct R: Rswift.Validatable {
     static let qrcode = Rswift.ImageResource(bundle: R.hostingBundle, name: "qrcode")
     /// Image `setting`.
     static let setting = Rswift.ImageResource(bundle: R.hostingBundle, name: "setting")
+    /// Image `shareImg`.
+    static let shareImg = Rswift.ImageResource(bundle: R.hostingBundle, name: "shareImg")
     /// Image `shop_selected`.
     static let shop_selected = Rswift.ImageResource(bundle: R.hostingBundle, name: "shop_selected")
     /// Image `shop`.
@@ -289,6 +331,11 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "setting", bundle: ..., traitCollection: ...)`
     static func setting(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.setting, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "shareImg", bundle: ..., traitCollection: ...)`
+    static func shareImg(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.shareImg, compatibleWith: traitCollection)
     }
     
     /// `UIImage(named: "shop", bundle: ..., traitCollection: ...)`
