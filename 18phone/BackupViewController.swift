@@ -89,28 +89,32 @@ class BackupViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     @IBAction func backupContacts(_ sender: UIButton) {
-        let store = CNContactStore()
-        let keysToFetch = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName), CNContactPhoneNumbersKey as CNKeyDescriptor, CNContactThumbnailImageDataKey as CNKeyDescriptor, CNContactImageDataAvailableKey as CNKeyDescriptor]
-        let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch)
-        try! store.enumerateContacts(with: fetchRequest) { contact, stop in
-            if self.contactCount == 0 {
-                var phones = ""
-                for number in contact.phoneNumbers {
-                    let phoneNumber = number.value.stringValue
-                    let formatNumber = PhoneUtil.formatPhoneNumber(phoneNumber)
-                    if contact.phoneNumbers.count == 1 {
-                        phones = formatNumber
-                    } else {
-                        phones = phones + "," + formatNumber
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "好的", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        if let userID = UserDefaults.standard.string(forKey: "userID") {
+            let store = CNContactStore()
+            let keysToFetch = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName), CNContactPhoneNumbersKey as CNKeyDescriptor, CNContactThumbnailImageDataKey as CNKeyDescriptor, CNContactImageDataAvailableKey as CNKeyDescriptor]
+            let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch)
+            try! store.enumerateContacts(with: fetchRequest) { contact, stop in
+                if self.contactCount == 0 {
+                    var phones = ""
+                    for number in contact.phoneNumbers {
+                        let phoneNumber = number.value.stringValue
+                        let formatNumber = PhoneUtil.formatPhoneNumber(phoneNumber)
+                        if contact.phoneNumbers.count == 1 {
+                            phones = formatNumber
+                        } else {
+                            phones = phones + "," + formatNumber
+                        }
                     }
-                }
-                if let userID = UserDefaults.standard.string(forKey: "userID") {
-                    let uploadContactInfo = ["phoneID":contact.identifier, "userID":userID, "name":contact.familyName + contact.givenName,"mobile":phones, "sex":0, "age":-1, "area":""] as [String : Any]
+                    let appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contact.identifier)'").first!
+                    let uploadContactInfo = ["phoneID":contact.identifier, "userID":userID, "name":contact.familyName + contact.givenName,"mobile":phones, "sex":appContactInfo.sex, "age":appContactInfo.age, "area":appContactInfo.area] as [String : Any]
                     APIUtil.uploadContact(uploadContactInfo)
                 }
-                
             }
+            alertController.message = "备份成功"
+            present(alertController, animated: true, completion: nil)
         }
-        
     }
 }

@@ -47,9 +47,7 @@ class ContactViewController: UITableViewController {
                            CNContactPhoneNumbersKey as CNKeyDescriptor,
                            CNContactPhoneticGivenNameKey as CNKeyDescriptor,
                            CNContactPhoneticFamilyNameKey as CNKeyDescriptor]
-        
         let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch)
-        
         do {
             try store.enumerateContacts(with: fetchRequest) { contact, stop in
                 var localContactInfo = LocalContactInfo()
@@ -63,7 +61,7 @@ class ContactViewController: UITableViewController {
                     }
                 } else {
                     //check is register
-                    
+                    localContactInfo.isRegister = appContactInfo!.isRegister
                 }
                 localContactInfo.headPhoto = contact.thumbnailImageData
                 localContactInfo.name = contact.familyName + contact.givenName
@@ -78,7 +76,8 @@ class ContactViewController: UITableViewController {
                         }
                     }
                 }
-                for number in contact.phoneNumbers {
+                
+                for (i, number) in contact.phoneNumbers.enumerated() {
                     let phone = Phone()
                     let formatNumber = PhoneUtil.formatPhoneNumber(number.value.stringValue)
                     phone.number = formatNumber
@@ -89,6 +88,16 @@ class ContactViewController: UITableViewController {
                         try! App.realm.write {
                             App.realm.add(area)
                         }
+                    }
+                    if i == 0 {
+                        APIUtil.getContactID(formatNumber, callBack: { contactIDInfo in
+                            if contactIDInfo.codeStatus == 1 {
+                                try! App.realm.write {
+                                    appContactInfo?.accountId = contactIDInfo.userID!
+                                    appContactInfo?.isRegister = true
+                                }
+                            }
+                        })
                     }
                 }
                 if var localContactInfos = self.groupValues[initial] {
@@ -156,6 +165,8 @@ class ContactViewController: UITableViewController {
         }
         if localContactInfo.isRegister {
             cell?.registerIcon.image = R.image.is_register()
+        } else {
+            cell?.registerIcon.image = nil
         }
         
         return cell!

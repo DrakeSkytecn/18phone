@@ -58,7 +58,7 @@ class IncomingCallViewController: UIViewController {
                                        CNContactFamilyNameKey,
                                        CNContactPhoneNumbersKey] as [Any]
                     let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch as! [CNKeyDescriptor])
-                    try! store.enumerateContacts(with: fetchRequest) { contact, stop -> Void in
+                    try! store.enumerateContacts(with: fetchRequest) { contact, stop in
                         for number in contact.phoneNumbers {
                             let phoneNumber = PhoneUtil.formatPhoneNumber((number.value).stringValue)
                             if phoneNumber == userInfo.userData!.mobile! {
@@ -71,9 +71,10 @@ class IncomingCallViewController: UIViewController {
                             }
                         }
                     }
-//                    if self.nameLabel.text!.isEmpty {
-//                        self.nameLabel.text =
-//                    }
+                    if self.nameLabel.text!.isEmpty {
+                        self.nameLabel.text = userInfo.userData?.mobile
+                        self.areaLabel.text = userInfo.userData?.provinceCity
+                    }
                 }
             })
         } else {
@@ -85,6 +86,9 @@ class IncomingCallViewController: UIViewController {
             let contact = try! store.unifiedContact(withIdentifier: appContactInfo!.identifier, keysToFetch: keysToFetch as! [CNKeyDescriptor])
             self.nameLabel.text = contact.familyName + contact.givenName
         }
+        
+        
+        
         inCall?.addObserver(self, forKeyPath: "status", options: .initial, context: nil)
 //        inCall?.startRingback()
         App.changeSpeaker(true)
@@ -109,11 +113,10 @@ class IncomingCallViewController: UIViewController {
         App.changeSpeaker(!App.isSpeakerOn)
     }
     
-//    func changeSpeaker(_ isOn: Bool) {
-//        let port = isOn ? AVAudioSessionPortOverride.speaker : AVAudioSessionPortOverride.none
-//        isSpeakerOn = isOn
-//        try! AVAudioSession.sharedInstance().overrideOutputAudioPort(port)
-//    }
+    func addCallLog() {
+        let callLog = CallLog()
+        
+    }
     
     func callStatusDidChange() {
         switch inCall!.status {
@@ -140,19 +143,6 @@ class IncomingCallViewController: UIViewController {
             
         case GSCallStatusDisconnected:
             print("IncomingCallViewController Disconnected.")
-//            let callLog = CallLog()
-//            callLog.name = "James"
-//            callLog.phone = toNumber!
-//            callLog.callState = 0
-//            callLog.callType = 0
-//            callLog.callStartTime = DateUtil.getCurrentDate()
-//            if phoneArea != nil {
-//                callLog.area = phoneArea!
-//            }
-//            try! App.realm.write {
-//                App.realm.add(callLog)
-//            }
-//            dismiss(animated: true, completion: nil)
             break
             
         default:
