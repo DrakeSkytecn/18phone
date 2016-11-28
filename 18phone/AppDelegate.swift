@@ -79,6 +79,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKPushRegistryDelegate {
         print("APNSToken:\(token)")
     }
     
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("didFailToRegisterForRemoteNotificationsWithError:\(error.localizedDescription)")
+    }
+    
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
         
     }

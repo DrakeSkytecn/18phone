@@ -32,8 +32,8 @@ struct AppURL {
     //        static let BEYEBE_SIP_DOMAIN = "myvoipapp.com"
     
     /// 18phone接口地址
-//    static let BEYEBE_18PHONE_API_BASE = "http://192.168.10.249/Home/"
-        static let BEYEBE_18PHONE_API_BASE = "http://18phone.beyebe.cn/Home/"
+    static let BEYEBE_18PHONE_API_BASE = "http://192.168.10.249/Home/"
+//        static let BEYEBE_18PHONE_API_BASE = "http://18phone.beyebe.cn/Home/"
     
     static let ZHIYU_BASE_URL = "http://www.zypaas.com:9988/V1/Account/"
 }
@@ -674,6 +674,7 @@ struct APIUtil {
                     
                     return
                 }
+                print("\(uploadContactInfo["name"])")
                 print(response.text!)
 //                let callLogInfos = CallLogInfos(JSONDecoder(response.data))
 //                if callBack != nil {

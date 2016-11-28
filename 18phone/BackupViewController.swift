@@ -8,6 +8,7 @@
 
 import UIKit
 import Contacts
+import SwiftHTTP
 
 class BackupViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -97,21 +98,29 @@ class BackupViewController: UIViewController, UITableViewDataSource, UITableView
             let keysToFetch = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName), CNContactPhoneNumbersKey as CNKeyDescriptor, CNContactThumbnailImageDataKey as CNKeyDescriptor, CNContactImageDataAvailableKey as CNKeyDescriptor]
             let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch)
             try! store.enumerateContacts(with: fetchRequest) { contact, stop in
-                if self.contactCount == 0 {
-                    var phones = ""
-                    for number in contact.phoneNumbers {
-                        let phoneNumber = number.value.stringValue
-                        let formatNumber = PhoneUtil.formatPhoneNumber(phoneNumber)
-                        if contact.phoneNumbers.count == 1 {
-                            phones = formatNumber
-                        } else {
-                            phones = phones + "," + formatNumber
-                        }
+                var phones = ""
+                for number in contact.phoneNumbers {
+                    let phoneNumber = number.value.stringValue
+                    let formatNumber = PhoneUtil.formatPhoneNumber(phoneNumber)
+                    if phones.isEmpty {
+                        phones = formatNumber
                     }
-                    let appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contact.identifier)'").first!
-                    let uploadContactInfo = ["phoneID":contact.identifier, "userID":userID, "name":contact.familyName + contact.givenName,"mobile":phones, "sex":appContactInfo.sex, "age":appContactInfo.age, "area":appContactInfo.area] as [String : Any]
-                    APIUtil.uploadContact(uploadContactInfo)
+                    phones = phones + "," + formatNumber
                 }
+                let appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contact.identifier)'").first!
+                var uploadContactInfo = ["phoneID":contact.identifier, "userID":userID, "name":contact.familyName + contact.givenName,"mobile":phones, "sex":appContactInfo.sex, "age":appContactInfo.age, "area":appContactInfo.area] as [String : Any]
+                if contact.imageDataAvailable {
+                    let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+                    let filePath = paths[0].appending("/\(contact.identifier).jpeg")
+                    let imageUrl = URL(fileURLWithPath: filePath)
+                    do {
+                        try contact.thumbnailImageData?.write(to: imageUrl)
+                    }catch {
+                        print("got an error write: \(error)")
+                    }
+                    uploadContactInfo["HeadPhotoImage"] = Upload(fileUrl: imageUrl)
+                }
+                APIUtil.uploadContact(uploadContactInfo)
             }
             alertController.message = "备份成功"
             present(alertController, animated: true, completion: nil)
