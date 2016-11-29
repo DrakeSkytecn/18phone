@@ -13,9 +13,9 @@ import SwiftEventBus
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, PKPushRegistryDelegate {
-
+    
     var window: UIWindow?
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         print("didFinishLaunchingWithOptions")
         window?.backgroundColor = UIColor.white
@@ -38,31 +38,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKPushRegistryDelegate {
         
         return true
     }
-
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
         print("applicationWillResignActive")
     }
-
+    
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         print("applicationDidEnterBackground")
+        performSelector(onMainThread: #selector(AppDelegate.keepAlive), with: nil, waitUntilDone: true)
+        application.setKeepAliveTimeout(600, handler: {
+            self.performSelector(onMainThread: #selector(AppDelegate.keepAlive), with: nil, waitUntilDone: true)
+        })
     }
-
+    
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
         print("applicationWillEnterForeground")
     }
-
+    
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         print("applicationDidBecomeActive")
         SwiftEventBus.post("getBackCallInfo")
         SwiftEventBus.post("reloadCallLogs")
     }
-
+    
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
@@ -97,6 +101,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKPushRegistryDelegate {
     
     func pushRegistry(_ registry: PKPushRegistry, didReceiveIncomingPushWith payload: PKPushPayload, forType type: PKPushType) {
         print("pushRegistry didReceiveIncomingPushWith")
+    }
+    
+    func keepAlive() {
+        App.userAgent?.keepAlive()
+    }
+    
+    func showNotification()
+    {
+        // Create a new notification
+        let alert = UILocalNotification()
+        alert.repeatInterval = NSCalendar.Unit(rawValue: 0)
+        alert.alertBody = "Incoming call received..."
+        /* This action just brings the app to the FG, it doesn't
+         * automatically answer the call (unless you specify the
+         * --auto-answer option).
+         */
+        alert.alertAction = "Activate app"
+        App.application.presentLocalNotificationNow(alert)
     }
     
     /**
@@ -136,8 +158,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKPushRegistryDelegate {
             case .typeQQ:
                 
                 appInfo?.ssdkSetupQQ(byAppId: "100371282",
-                                           appKey : "aed9b0303e3ed1e27bae87c33761161d",
-                                           authType : SSDKAuthTypeWeb)
+                                     appKey : "aed9b0303e3ed1e27bae87c33761161d",
+                                     authType : SSDKAuthTypeWeb)
                 
                 break;
                 
@@ -150,8 +172,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKPushRegistryDelegate {
             case .typeTencentWeibo:
                 
                 appInfo?.ssdkSetupTencentWeibo(byAppKey: "801307650",
-                                                      appSecret : "ae36f4ee3946e1cbb98d6965b0b2ff5c",
-                                                      redirectUri : "http://www.sharesdk.cn")
+                                               appSecret : "ae36f4ee3946e1cbb98d6965b0b2ff5c",
+                                               redirectUri : "http://www.sharesdk.cn")
                 
                 break;
                 

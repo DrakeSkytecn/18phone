@@ -173,19 +173,25 @@
 }
 
 - (void)keepAlive {
-    /* Register this thread if not yet */
+    
+    static pj_thread_desc a_thread_desc;
+    static pj_thread_t *a_thread;
+    int i;
+    
     if (!pj_thread_is_registered()) {
-        static pj_thread_desc   thread_desc;
-        static pj_thread_t     *thread;
-        pj_thread_register("mainthread", thread_desc, &thread);
+        pj_thread_register("18phone", a_thread_desc, &a_thread);
     }
     
-    /* Simply sleep for 5s, give the time for library to send transport
-     * keepalive packet, and wait for server response if any. Don't sleep
-     * too short, to avoid too many wakeups, because when there is any
-     * response from server, app will be woken up again (see also #1482).
+    /* Since iOS requires that the minimum keep alive interval is 600s,
+     * application needs to make sure that the account's registration
+     * timeout is long enough.
      */
-    pj_thread_sleep(5000);
+    for (i = 0; i < (int)pjsua_acc_get_count(); ++i) {
+        if (pjsua_acc_is_valid(i)) {
+            pjsua_acc_set_registration(i, PJ_TRUE);
+            pjsua_acc_set_online_status(i, PJ_TRUE);
+        }
+    }
 }
 
 - (NSArray *)arrayOfAvailableCodecs {

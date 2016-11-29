@@ -50,7 +50,6 @@
 		E111AEF81D8E6D3C0045E2E2 /* libgsmcodec-armv7-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E111AEF11D8E6D3C0045E2E2 /* libgsmcodec-armv7-apple-darwin_ios.a */; };
 		E111AEF91D8E6D3C0045E2E2 /* libilbccodec-armv7-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E111AEF21D8E6D3C0045E2E2 /* libilbccodec-armv7-apple-darwin_ios.a */; };
 		E111AEFA1D8E6D3C0045E2E2 /* libresample-armv7-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E111AEF31D8E6D3C0045E2E2 /* libresample-armv7-apple-darwin_ios.a */; };
-		E111AEFB1D8E6D3C0045E2E2 /* libspeex-armv7-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E111AEF41D8E6D3C0045E2E2 /* libspeex-armv7-apple-darwin_ios.a */; };
 		E111AEFC1D8E6D3C0045E2E2 /* libsrtp-armv7-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E111AEF51D8E6D3C0045E2E2 /* libsrtp-armv7-apple-darwin_ios.a */; };
 		E111AEFD1D8E6D3C0045E2E2 /* libyuv-armv7-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E111AEF61D8E6D3C0045E2E2 /* libyuv-armv7-apple-darwin_ios.a */; };
 		E111AEFF1D8E9A140045E2E2 /* BackupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E111AEFE1D8E9A140045E2E2 /* BackupViewController.swift */; };
@@ -114,6 +113,8 @@
 		E199E03F1D97FBE7001237AD /* EditUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E199E03E1D97FBE7001237AD /* EditUserViewController.swift */; };
 		E19BEB001DB4D14300AE73E1 /* MySettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19BEAFF1DB4D14200AE73E1 /* MySettingViewController.swift */; };
 		E19BEB021DB4D82900AE73E1 /* ADSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19BEB011DB4D82900AE73E1 /* ADSettingViewController.swift */; };
+		E1A0F9431DED7A2700B6174A /* libULinkVoiceSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1A0F9401DED585C00B6174A /* libULinkVoiceSDK.a */; };
+		E1A0F9441DED847400B6174A /* libspeex-arm64-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C0489E1D8691C60009DF6B /* libspeex-arm64-apple-darwin_ios.a */; };
 		E1AC7F831DA89B85001C2676 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC7F821DA89B85001C2676 /* RegisterViewController.swift */; };
 		E1AC7F851DA89E1C001C2676 /* RegisterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC7F841DA89E1C001C2676 /* RegisterCell.swift */; };
 		E1AC7F871DA8CAE5001C2676 /* VerifyCodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC7F861DA8CAE5001C2676 /* VerifyCodeButton.swift */; };
@@ -133,7 +134,6 @@
 		E1C048A11D8691C60009DF6B /* libgsmcodec-arm64-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C0489B1D8691C60009DF6B /* libgsmcodec-arm64-apple-darwin_ios.a */; };
 		E1C048A21D8691C60009DF6B /* libilbccodec-arm64-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C0489C1D8691C60009DF6B /* libilbccodec-arm64-apple-darwin_ios.a */; };
 		E1C048A31D8691C60009DF6B /* libresample-arm64-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C0489D1D8691C60009DF6B /* libresample-arm64-apple-darwin_ios.a */; };
-		E1C048A41D8691C60009DF6B /* libspeex-arm64-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C0489E1D8691C60009DF6B /* libspeex-arm64-apple-darwin_ios.a */; };
 		E1C048A51D8691C60009DF6B /* libsrtp-arm64-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C0489F1D8691C60009DF6B /* libsrtp-arm64-apple-darwin_ios.a */; };
 		E1C048A61D8691C60009DF6B /* libyuv-arm64-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C048A01D8691C60009DF6B /* libyuv-arm64-apple-darwin_ios.a */; };
 		E1C048A81D8691DA0009DF6B /* libopenh264.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C048A71D8691DA0009DF6B /* libopenh264.a */; };
@@ -310,6 +310,9 @@
 		E199E03E1D97FBE7001237AD /* EditUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditUserViewController.swift; sourceTree = "<group>"; };
 		E19BEAFF1DB4D14200AE73E1 /* MySettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySettingViewController.swift; sourceTree = "<group>"; };
 		E19BEB011DB4D82900AE73E1 /* ADSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADSettingViewController.swift; sourceTree = "<group>"; };
+		E1A0F93F1DED585C00B6174A /* CommonClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonClass.h; sourceTree = "<group>"; };
+		E1A0F9401DED585C00B6174A /* libULinkVoiceSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libULinkVoiceSDK.a; sourceTree = "<group>"; };
+		E1A0F9411DED585C00B6174A /* ULinkService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ULinkService.h; sourceTree = "<group>"; };
 		E1AC7F821DA89B85001C2676 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		E1AC7F841DA89E1C001C2676 /* RegisterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterCell.swift; sourceTree = "<group>"; };
 		E1AC7F861DA8CAE5001C2676 /* VerifyCodeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyCodeButton.swift; sourceTree = "<group>"; };
@@ -385,6 +388,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1A0F9431DED7A2700B6174A /* libULinkVoiceSDK.a in Frameworks */,
 				E109F61C1DE92CAE00B5B224 /* libicucore.tbd in Frameworks */,
 				E109F61A1DE92C9500B5B224 /* JavaScriptCore.framework in Frameworks */,
 				E109F6181DE92C6700B5B224 /* libz.tbd in Frameworks */,
@@ -396,7 +400,6 @@
 				E111AEF81D8E6D3C0045E2E2 /* libgsmcodec-armv7-apple-darwin_ios.a in Frameworks */,
 				E111AEF91D8E6D3C0045E2E2 /* libilbccodec-armv7-apple-darwin_ios.a in Frameworks */,
 				E111AEFA1D8E6D3C0045E2E2 /* libresample-armv7-apple-darwin_ios.a in Frameworks */,
-				E111AEFB1D8E6D3C0045E2E2 /* libspeex-armv7-apple-darwin_ios.a in Frameworks */,
 				E109F60D1DE92B5500B5B224 /* TencentOpenAPI.framework in Frameworks */,
 				E109F5E81DE92AE200B5B224 /* ShareSDKUI.framework in Frameworks */,
 				E111AEFC1D8E6D3C0045E2E2 /* libsrtp-armv7-apple-darwin_ios.a in Frameworks */,
@@ -420,10 +423,10 @@
 				E1C048A11D8691C60009DF6B /* libgsmcodec-arm64-apple-darwin_ios.a in Frameworks */,
 				E1C048A21D8691C60009DF6B /* libilbccodec-arm64-apple-darwin_ios.a in Frameworks */,
 				E1C048A31D8691C60009DF6B /* libresample-arm64-apple-darwin_ios.a in Frameworks */,
-				E1C048A41D8691C60009DF6B /* libspeex-arm64-apple-darwin_ios.a in Frameworks */,
 				E1C048A51D8691C60009DF6B /* libsrtp-arm64-apple-darwin_ios.a in Frameworks */,
 				E1C048A61D8691C60009DF6B /* libyuv-arm64-apple-darwin_ios.a in Frameworks */,
 				E1C048BE1D86923B0009DF6B /* libpjsip-arm64-apple-darwin_ios.a in Frameworks */,
+				E1A0F9441DED847400B6174A /* libspeex-arm64-apple-darwin_ios.a in Frameworks */,
 				E1C048BF1D86923B0009DF6B /* libpjsip-simple-arm64-apple-darwin_ios.a in Frameworks */,
 				E1C048C01D86923B0009DF6B /* libpjsip-ua-arm64-apple-darwin_ios.a in Frameworks */,
 				E1C048C11D86923B0009DF6B /* libpjsua-arm64-apple-darwin_ios.a in Frameworks */,
@@ -606,6 +609,7 @@
 		E109F5DD1DE92A8500B5B224 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				E1A0F93E1DED585C00B6174A /* ULinkVoiceSDK */,
 				E109F5DE1DE92AB000B5B224 /* ShareSDK */,
 			);
 			name = ThirdParty;
@@ -844,6 +848,16 @@
 				E15C42111D7D094000124257 /* ringtone.wav */,
 			);
 			name = Resource;
+			sourceTree = "<group>";
+		};
+		E1A0F93E1DED585C00B6174A /* ULinkVoiceSDK */ = {
+			isa = PBXGroup;
+			children = (
+				E1A0F93F1DED585C00B6174A /* CommonClass.h */,
+				E1A0F9401DED585C00B6174A /* libULinkVoiceSDK.a */,
+				E1A0F9411DED585C00B6174A /* ULinkService.h */,
+			);
+			path = ULinkVoiceSDK;
 			sourceTree = "<group>";
 		};
 		E1E09C651DDA9A23005B21C2 /* piQ */ = {
@@ -1239,8 +1253,30 @@
 					"$(PROJECT_DIR)/pjproject-2.5.5/third_party/lib",
 					"$(PROJECT_DIR)/pjproject-2.5.5/third_party/openh264/lib",
 					"$(PROJECT_DIR)/18phone",
+					"$(PROJECT_DIR)/18phone/ULinkVoiceSDK",
 				);
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"ActionSheetPicker_3_0\"",
+					"-framework",
+					"\"Async\"",
+					"-framework",
+					"\"JSONJoy\"",
+					"-framework",
+					"\"Realm\"",
+					"-framework",
+					"\"RealmSwift\"",
+					"-framework",
+					"\"Rswift\"",
+					"-framework",
+					"\"SwiftDate\"",
+					"-framework",
+					"\"SwiftEventBus\"",
+					"-framework",
+					"\"SwiftHTTP\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.beyebe.18phone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1300,8 +1336,30 @@
 					"$(PROJECT_DIR)/pjproject-2.5.5/third_party/lib",
 					"$(PROJECT_DIR)/pjproject-2.5.5/third_party/openh264/lib",
 					"$(PROJECT_DIR)/18phone",
+					"$(PROJECT_DIR)/18phone/ULinkVoiceSDK",
 				);
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"ActionSheetPicker_3_0\"",
+					"-framework",
+					"\"Async\"",
+					"-framework",
+					"\"JSONJoy\"",
+					"-framework",
+					"\"Realm\"",
+					"-framework",
+					"\"RealmSwift\"",
+					"-framework",
+					"\"Rswift\"",
+					"-framework",
+					"\"SwiftDate\"",
+					"-framework",
+					"\"SwiftEventBus\"",
+					"-framework",
+					"\"SwiftHTTP\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.beyebe.18phone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

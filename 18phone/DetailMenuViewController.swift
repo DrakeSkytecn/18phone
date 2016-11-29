@@ -48,7 +48,17 @@ class DetailMenuViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     @IBAction func videoCall(_ sender: UIButton) {
-        
+        if  appContactInfo != nil && !appContactInfo!.accountId.isEmpty {
+            let outgoingVideoViewController = R.storyboard.main.outgoingVideoViewController()
+            callLog.accountId = appContactInfo!.accountId
+            callLog.contactId = appContactInfo!.identifier
+            callLog.phone = phones!.first!
+            callLog.name = name!
+            callLog.area = phoneAreas!.first!
+            callLog.callType = CallType.video.rawValue
+            outgoingVideoViewController?.callLog = callLog
+            present(outgoingVideoViewController!, animated: true, completion: nil)
+        }
     }
     
     @IBAction func voiceCall(_ sender: UIButton) {

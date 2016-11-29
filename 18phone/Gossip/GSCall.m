@@ -40,12 +40,14 @@
 - (NSString *)incomingCallInfo {
     pjsua_call_info callInfo;
     pjsua_call_get_info(_callId, &callInfo);
-    NSString *remote_contact = [NSString stringWithUTF8String:callInfo.remote_info.ptr];
-    NSRange start = [remote_contact rangeOfString:@":"];
-    NSRange end = [remote_contact rangeOfString:@"@"];
-    NSString *contactId = [remote_contact substringWithRange:NSMakeRange(start.location + 1, end.location - start.location - 1)];
-    
-    return contactId;
+    if (callInfo.remote_info.ptr) {
+        NSString *remote_contact = [NSString stringWithUTF8String:callInfo.remote_info.ptr];
+        NSRange start = [remote_contact rangeOfString:@":"];
+        NSRange end = [remote_contact rangeOfString:@"@"];
+        NSString *contactId = [remote_contact substringWithRange:NSMakeRange(start.location + 1, end.location - start.location - 1)];
+        return contactId;
+    }
+    return @"";
 }
 
 - (id)init {
