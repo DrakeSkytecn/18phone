@@ -72,7 +72,6 @@ class IncomingVideoViewController: UIViewController {
         case GSCallStatusConnected:
             print("IncomingCallViewController Connected.")
             let videoView = inCall!.createVideoWindow(view.frame)
-            videoView!.backgroundColor = UIColor.blue
             renderCon.addSubview(videoView!)
             inCall?.orientation()
             

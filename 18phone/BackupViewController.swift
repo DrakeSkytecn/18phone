@@ -9,6 +9,7 @@
 import UIKit
 import Contacts
 import SwiftHTTP
+import Async
 
 class BackupViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -45,16 +46,20 @@ class BackupViewController: UIViewController, UITableViewDataSource, UITableView
         cell!.textLabel!.text = titles[indexPath.row]
         cell?.selectionStyle = .none
         
-        switch (indexPath as NSIndexPath).row {
+        switch indexPath.row {
         case 0:
             cell!.detailTextLabel!.text = "\(contactCount)人"
             
             break
         case 1:
-            cell!.detailTextLabel!.text = "\(contactCount)人"
+            if let upsucceedCount = UserDefaults.standard.string(forKey: "upsucceedCount") {
+                cell!.detailTextLabel!.text = "\(upsucceedCount)人"
+            }
             break
         case 2:
-            cell!.detailTextLabel!.text = "上次同步2016/09/15"
+            if let backupEndTime = UserDefaults.standard.string(forKey: "backupEndTime") {
+                cell!.detailTextLabel!.text = "上次同步\(backupEndTime)"
+            }
             break
         case 3:
             cell?.selectionStyle = .default
@@ -97,6 +102,7 @@ class BackupViewController: UIViewController, UITableViewDataSource, UITableView
             let store = CNContactStore()
             let keysToFetch = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName), CNContactPhoneNumbersKey as CNKeyDescriptor, CNContactThumbnailImageDataKey as CNKeyDescriptor, CNContactImageDataAvailableKey as CNKeyDescriptor]
             let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch)
+            var contactBackups = [[String : Any]]()
             try! store.enumerateContacts(with: fetchRequest) { contact, stop in
                 var phones = ""
                 for number in contact.phoneNumbers {
@@ -108,22 +114,28 @@ class BackupViewController: UIViewController, UITableViewDataSource, UITableView
                     phones = phones + "," + formatNumber
                 }
                 let appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contact.identifier)'").first!
-                var uploadContactInfo = ["phoneID":contact.identifier, "userID":userID, "name":contact.familyName + contact.givenName,"mobile":phones, "sex":appContactInfo.sex, "age":appContactInfo.age, "area":appContactInfo.area] as [String : Any]
+                var contactBackup: [String : Any] = ["phoneID":contact.identifier, "userID":userID, "name":contact.familyName + contact.givenName,"mobile":phones, "sex":appContactInfo.sex, "age":appContactInfo.age, "area":appContactInfo.area]
                 if contact.imageDataAvailable {
-                    let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-                    let filePath = paths[0].appending("/\(contact.identifier).jpeg")
-                    let imageUrl = URL(fileURLWithPath: filePath)
-                    do {
-                        try contact.thumbnailImageData?.write(to: imageUrl)
-                    }catch {
-                        print("got an error write: \(error)")
-                    }
-                    uploadContactInfo["HeadPhotoImage"] = Upload(fileUrl: imageUrl)
+                    contactBackup["imageBase64String"] = contact.thumbnailImageData!.base64EncodedString()
+                } else {
+                    contactBackup["imageBase64String"] = ""
                 }
-                APIUtil.uploadContact(uploadContactInfo)
+                contactBackups.append(contactBackup)
             }
-            alertController.message = "备份成功"
-            present(alertController, animated: true, completion: nil)
+            let contactBackupsJson = try! JSONSerialization.data(withJSONObject: contactBackups, options: JSONSerialization.WritingOptions.prettyPrinted)
+            let jsonString = NSString(data: contactBackupsJson, encoding: String.Encoding.utf8.rawValue)
+            APIUtil.uploadContact(jsonString as! String, callBack: { backupContactInfo in
+                if backupContactInfo.codeStatus == 1 {
+                    alertController.message = "备份成功"
+                    self.present(alertController, animated: true, completion: nil)
+                    self.tableView.cellForRow(at: IndexPath(row: 1, section: 0))?.detailTextLabel?.text = "\(backupContactInfo.upsucceedCount!)人"
+                    self.tableView.cellForRow(at: IndexPath(row: 2, section: 0))?.detailTextLabel?.text = "上次同步\(backupContactInfo.endTime!)"
+                    let userDefaults = UserDefaults.standard
+                    userDefaults.set(backupContactInfo.endTime, forKey: "backupEndTime")
+                    userDefaults.set(backupContactInfo.upsucceedCount, forKey: "upsucceedCount")
+                    userDefaults.synchronize()
+                }
+            })
         }
     }
 }

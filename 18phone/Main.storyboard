@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="PW8-L3-Heh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2548a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="PW8-L3-Heh">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -1206,7 +1206,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mjM-CR-DDY">
-                                                    <rect key="frame" x="102" y="0.5" width="257" height="59"/>
+                                                    <rect key="frame" x="102" y="0.0" width="257" height="59"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="59" id="MAo-Pn-0Ih"/>
                                                     </constraints>
@@ -1224,15 +1224,15 @@
                                         </tableViewCellContentView>
                                         <edgeInsets key="layoutMargins" top="8" left="0.0" bottom="8" right="8"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="60" id="1tW-6q-Vyn">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="60" id="1tW-6q-Vyn">
                                         <rect key="frame" x="0.0" y="400" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1tW-6q-Vyn" id="w6q-HB-YOs">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的地址" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lew-cH-Bqq">
-                                                    <rect key="frame" x="16" y="19.5" width="70" height="21"/>
+                                                    <rect key="frame" x="16" y="19" width="70" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="JJb-At-r9I"/>
                                                         <constraint firstAttribute="width" constant="70" id="bdf-Oj-VE2"/>
@@ -1241,20 +1241,20 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4P-me-qPg">
-                                                    <rect key="frame" x="102" y="19.5" width="232" height="21"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nsP-L0-cOg">
+                                                    <rect key="frame" x="102" y="0.0" width="257" height="59"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="gHu-Oe-BF7"/>
+                                                        <constraint firstAttribute="height" constant="59" id="StD-cI-cXR"/>
                                                     </constraints>
+                                                    <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="e4P-me-qPg" firstAttribute="leading" secondItem="Lew-cH-Bqq" secondAttribute="trailing" constant="16" id="9V6-nX-tPT"/>
-                                                <constraint firstItem="e4P-me-qPg" firstAttribute="trailing" secondItem="w6q-HB-YOs" secondAttribute="trailingMargin" id="A7U-zV-FoI"/>
-                                                <constraint firstItem="e4P-me-qPg" firstAttribute="centerY" secondItem="w6q-HB-YOs" secondAttribute="centerY" id="JDb-Ul-Uoe"/>
+                                                <constraint firstItem="nsP-L0-cOg" firstAttribute="leading" secondItem="Lew-cH-Bqq" secondAttribute="trailing" constant="16" id="0ka-r8-ftN"/>
+                                                <constraint firstItem="nsP-L0-cOg" firstAttribute="centerY" secondItem="w6q-HB-YOs" secondAttribute="centerY" id="7RO-q2-Uci"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="nsP-L0-cOg" secondAttribute="trailing" constant="8" id="RBQ-7T-edz"/>
                                                 <constraint firstItem="Lew-cH-Bqq" firstAttribute="centerY" secondItem="w6q-HB-YOs" secondAttribute="centerY" id="Vcm-lm-Sat"/>
                                                 <constraint firstItem="Lew-cH-Bqq" firstAttribute="leading" secondItem="w6q-HB-YOs" secondAttribute="leadingMargin" constant="8" id="u7f-RZ-4lC"/>
                                             </constraints>
@@ -1278,7 +1278,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addressField" destination="e4P-me-qPg" id="0DM-PP-dZz"/>
+                        <outlet property="addressField" destination="nsP-L0-cOg" id="Kdq-L9-e5E"/>
                         <outlet property="ageLabel" destination="LTs-b1-S8X" id="eh4-0z-cvm"/>
                         <outlet property="areaLabel" destination="I3i-7h-jvx" id="ERd-c7-wyN"/>
                         <outlet property="headPhoto" destination="vRK-pH-TGg" id="LSI-YV-INM"/>
@@ -1294,7 +1294,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="6543" y="353"/>
+            <point key="canvasLocation" x="6541.6000000000004" y="352.17391304347831"/>
         </scene>
         <!--通讯录云备份-->
         <scene sceneID="Vu6-gd-gh0">

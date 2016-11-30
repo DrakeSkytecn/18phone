@@ -664,9 +664,9 @@ struct APIUtil {
         }
     }
     
-    static func uploadContact(_ uploadContactInfo: [String:Any]) {
+    static func uploadContact(_ jsonStr: String, callBack: ((BackupContactInfo) -> ())?) {
         do {
-            let opt = try HTTP.POST(AppURL.BEYEBE_18PHONE_API_BASE + "backupPsersonInfo", parameters: uploadContactInfo)
+            let opt = try HTTP.POST(AppURL.BEYEBE_18PHONE_API_BASE + "backupContactsBook", parameters: ["jsonStr":jsonStr])
             opt.start { response in
                 if let error = response.error {
                     print("error: \(error.localizedDescription)")
@@ -674,14 +674,13 @@ struct APIUtil {
                     
                     return
                 }
-                print("\(uploadContactInfo["name"])")
                 print(response.text!)
-//                let callLogInfos = CallLogInfos(JSONDecoder(response.data))
-//                if callBack != nil {
-//                    Async.main {
-//                        callBack!(callLogInfos)
-//                    }
-//                }
+                let backupContactInfo = BackupContactInfo(JSONDecoder(response.data))
+                if callBack != nil {
+                    Async.main {
+                        callBack!(backupContactInfo)
+                    }
+                }
             }
         } catch {
             print("got an error creating the request: \(error)")

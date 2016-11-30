@@ -81,7 +81,11 @@ class RegisterViewController: UIViewController, UITableViewDataSource, UITableVi
             present(alertController, animated: true, completion: nil)
         } else if PhoneUtil.isMobileNumber(phoneNumber) {
             sender.timeFailBeginFrom(60)
-            APIUtil.getVerifyCodeInfo(phoneNumber, callBack: nil)
+            APIUtil.getVerifyCodeInfo(phoneNumber, callBack: { verifyCodeInfo in
+                if verifyCodeInfo.codeStatus == 1 {
+                    
+                }
+            })
         } else {
             alertController.message = "手机号格式不正确"
             present(alertController, animated: true, completion: nil)

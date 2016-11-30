@@ -102,3 +102,19 @@ struct ContactIDInfo: JSONJoy {
     }
 }
 
+struct BackupContactInfo: JSONJoy {
+    
+    let endTime: String?
+    let upsucceedCount: Int?
+    let upFailCount: Int?
+    let codeStatus: Int?
+    let codeinfo: String?
+    
+    init(_ decoder: JSONDecoder) {
+        endTime = decoder["endTime"].string
+        upsucceedCount = decoder["upsucceedCount"].integer
+        upFailCount = decoder["upFailCount"].integer
+        codeStatus = decoder["codeStatus"].integer
+        codeinfo = decoder["codeInfo"].string
+    }
+}

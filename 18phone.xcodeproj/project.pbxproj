@@ -113,11 +113,11 @@
 		E199E03F1D97FBE7001237AD /* EditUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E199E03E1D97FBE7001237AD /* EditUserViewController.swift */; };
 		E19BEB001DB4D14300AE73E1 /* MySettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19BEAFF1DB4D14200AE73E1 /* MySettingViewController.swift */; };
 		E19BEB021DB4D82900AE73E1 /* ADSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19BEB011DB4D82900AE73E1 /* ADSettingViewController.swift */; };
-		E1A0F9431DED7A2700B6174A /* libULinkVoiceSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1A0F9401DED585C00B6174A /* libULinkVoiceSDK.a */; };
 		E1A0F9441DED847400B6174A /* libspeex-arm64-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C0489E1D8691C60009DF6B /* libspeex-arm64-apple-darwin_ios.a */; };
 		E1AC7F831DA89B85001C2676 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC7F821DA89B85001C2676 /* RegisterViewController.swift */; };
 		E1AC7F851DA89E1C001C2676 /* RegisterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC7F841DA89E1C001C2676 /* RegisterCell.swift */; };
 		E1AC7F871DA8CAE5001C2676 /* VerifyCodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC7F861DA8CAE5001C2676 /* VerifyCodeButton.swift */; };
+		E1B0381B1DEE62470076C821 /* libspeex-armv7-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E111AEF41D8E6D3C0045E2E2 /* libspeex-armv7-apple-darwin_ios.a */; };
 		E1C048661D867F650009DF6B /* GSAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C048491D867F650009DF6B /* GSAccount.m */; };
 		E1C048671D867F650009DF6B /* GSAccountConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C0484C1D867F650009DF6B /* GSAccountConfiguration.m */; };
 		E1C048681D867F650009DF6B /* GSCall.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C0484E1D867F650009DF6B /* GSCall.m */; };
@@ -388,7 +388,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1A0F9431DED7A2700B6174A /* libULinkVoiceSDK.a in Frameworks */,
 				E109F61C1DE92CAE00B5B224 /* libicucore.tbd in Frameworks */,
 				E109F61A1DE92C9500B5B224 /* JavaScriptCore.framework in Frameworks */,
 				E109F6181DE92C6700B5B224 /* libz.tbd in Frameworks */,
@@ -399,6 +398,7 @@
 				E111AEF71D8E6D3C0045E2E2 /* libg7221codec-armv7-apple-darwin_ios.a in Frameworks */,
 				E111AEF81D8E6D3C0045E2E2 /* libgsmcodec-armv7-apple-darwin_ios.a in Frameworks */,
 				E111AEF91D8E6D3C0045E2E2 /* libilbccodec-armv7-apple-darwin_ios.a in Frameworks */,
+				E1B0381B1DEE62470076C821 /* libspeex-armv7-apple-darwin_ios.a in Frameworks */,
 				E111AEFA1D8E6D3C0045E2E2 /* libresample-armv7-apple-darwin_ios.a in Frameworks */,
 				E109F60D1DE92B5500B5B224 /* TencentOpenAPI.framework in Frameworks */,
 				E109F5E81DE92AE200B5B224 /* ShareSDKUI.framework in Frameworks */,
