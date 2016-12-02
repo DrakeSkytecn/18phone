@@ -95,7 +95,6 @@
 		E15C4C3C1D96689300688086 /* ZFRippleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15C4C3B1D96689300688086 /* ZFRippleButton.swift */; };
 		E161A6771D78069C00A1F3C4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E161A6761D78069C00A1F3C4 /* AVFoundation.framework */; };
 		E1626D551D937F7B00C3422C /* CallLogMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1626D541D937F7B00C3422C /* CallLogMenuViewController.swift */; };
-		E1626D571D93AFC600C3422C /* test in Resources */ = {isa = PBXBuildFile; fileRef = E1626D561D93AFC600C3422C /* test */; };
 		E1626D591D93BA7100C3422C /* DetailLogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1626D581D93BA7100C3422C /* DetailLogCell.swift */; };
 		E16453EA1D6AA3150036B53F /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16453E91D6AA3150036B53F /* Contact.swift */; };
 		E1711F831DCC58C200227329 /* Address.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1711F821DCC58C200227329 /* Address.plist */; };
@@ -291,7 +290,6 @@
 		E15C4C3B1D96689300688086 /* ZFRippleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZFRippleButton.swift; sourceTree = "<group>"; };
 		E161A6761D78069C00A1F3C4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		E1626D541D937F7B00C3422C /* CallLogMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallLogMenuViewController.swift; sourceTree = "<group>"; };
-		E1626D561D93AFC600C3422C /* test */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test; sourceTree = "<group>"; };
 		E1626D581D93BA7100C3422C /* DetailLogCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailLogCell.swift; sourceTree = "<group>"; };
 		E16453E91D6AA3150036B53F /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		E1711F821DCC58C200227329 /* Address.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Address.plist; sourceTree = "<group>"; };
@@ -311,8 +309,8 @@
 		E19BEAFF1DB4D14200AE73E1 /* MySettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySettingViewController.swift; sourceTree = "<group>"; };
 		E19BEB011DB4D82900AE73E1 /* ADSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADSettingViewController.swift; sourceTree = "<group>"; };
 		E1A0F93F1DED585C00B6174A /* CommonClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonClass.h; sourceTree = "<group>"; };
-		E1A0F9401DED585C00B6174A /* libULinkVoiceSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libULinkVoiceSDK.a; sourceTree = "<group>"; };
 		E1A0F9411DED585C00B6174A /* ULinkService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ULinkService.h; sourceTree = "<group>"; };
+		E1AA51291DF0016A00008594 /* libULinkVoiceSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libULinkVoiceSDK.a; sourceTree = "<group>"; };
 		E1AC7F821DA89B85001C2676 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		E1AC7F841DA89E1C001C2676 /* RegisterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterCell.swift; sourceTree = "<group>"; };
 		E1AC7F861DA8CAE5001C2676 /* VerifyCodeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyCodeButton.swift; sourceTree = "<group>"; };
@@ -733,7 +731,6 @@
 				E14CC6DC1DE4161100327685 /* 18phone.entitlements */,
 				E114D1CF1D4F1F15006AB978 /* Info.plist */,
 				E1F5E57C1D59E5990010FF2C /* 18phone-Bridging-Header.h */,
-				E1626D561D93AFC600C3422C /* test */,
 			);
 			path = 18phone;
 			sourceTree = "<group>";
@@ -854,7 +851,7 @@
 			isa = PBXGroup;
 			children = (
 				E1A0F93F1DED585C00B6174A /* CommonClass.h */,
-				E1A0F9401DED585C00B6174A /* libULinkVoiceSDK.a */,
+				E1AA51291DF0016A00008594 /* libULinkVoiceSDK.a */,
 				E1A0F9411DED585C00B6174A /* ULinkService.h */,
 			);
 			path = ULinkVoiceSDK;
@@ -944,7 +941,6 @@
 				E109F60E1DE92B5500B5B224 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				E15C42121D7D094000124257 /* ringtone.wav in Resources */,
 				E114D1CE1D4F1F15006AB978 /* LaunchScreen.storyboard in Resources */,
-				E1626D571D93AFC600C3422C /* test in Resources */,
 				E13BACE51D51974900414ACE /* Assets.xcassets in Resources */,
 				E109F5E91DE92AE200B5B224 /* ShareSDKUI.bundle in Resources */,
 				E13BACDF1D51948C00414ACE /* Main.storyboard in Resources */,
@@ -1141,7 +1137,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1156,7 +1152,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1189,6 +1185,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -1221,6 +1218,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/18phone",
 				);
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1258,6 +1256,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
+					"-ObjC",
 					"-framework",
 					"\"ActionSheetPicker_3_0\"",
 					"-framework",
@@ -1305,6 +1304,7 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/18phone",
 				);
+				GCC_OPTIMIZATION_LEVEL = 0;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
@@ -1341,6 +1341,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
+					"-ObjC",
 					"-framework",
 					"\"ActionSheetPicker_3_0\"",
 					"-framework",
@@ -1364,6 +1365,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "18phone/18phone-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 armv7";

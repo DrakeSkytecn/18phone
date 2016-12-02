@@ -99,7 +99,6 @@
     mediaConfig.clock_rate = _config.clockRate;
     mediaConfig.snd_clock_rate = _config.soundClockRate;
     //mediaConfig.ec_tail_len = 5000; // not sure what this does (Siphon use this.)
-    
     GSReturnNoIfFails(pjsua_init(&uaConfig, &logConfig, &mediaConfig));
     
     // Configure the DNS resolvers to also handle SRV records

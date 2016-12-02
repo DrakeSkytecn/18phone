@@ -69,6 +69,7 @@
 	<string>1</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>mqqOpensdkSSoLogin</string>
 		<string>mqqwpa</string>
 		<string>mqqopensdkapiV3</string>
 		<string>wtloginmqq2</string>
