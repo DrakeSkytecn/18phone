@@ -46,13 +46,13 @@ class ContactDetailViewController: UIViewController {
         super.viewDidLoad()
         initContactInfo()
         initPageMenu()
-        SwiftEventBus.onMainThread(self, name: "reloadAppContactInfo", handler: { result in
+        SwiftEventBus.onMainThread(self, name: "reloadAppContactInfo") { result in
             self.reloadAppContactInfo()
-        })
-        SwiftEventBus.onMainThread(self, name: "reloadLocalContactInfo", handler: { result in
+        }
+        SwiftEventBus.onMainThread(self, name: "reloadLocalContactInfo") { result in
             let contact = result.object as! CNContact
             self.reloadLocalContactInfo(contact)
-        })
+        }
         // Do any additional setup after loading the view.
     }
     

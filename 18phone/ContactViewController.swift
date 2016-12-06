@@ -25,9 +25,9 @@ class ContactViewController: UITableViewController {
         tableView.sectionIndexBackgroundColor = UIColor.clear
         loadContacts()
         initGroup()
-        SwiftEventBus.onMainThread(self, name: "reloadContacts", handler: { result in
+        SwiftEventBus.onMainThread(self, name: "reloadContacts") { result in
             self.reloadContacts()
-        })
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {

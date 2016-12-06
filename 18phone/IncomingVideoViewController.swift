@@ -11,6 +11,12 @@ import Async
 
 class IncomingVideoViewController: UIViewController {
     
+    var accountId = ""
+    
+    var appContactInfo: AppContactInfo?
+    
+    var phoneNumber = ""
+    
     var inCall: GSCall?
     
     @IBOutlet weak var previewCon: UIView!

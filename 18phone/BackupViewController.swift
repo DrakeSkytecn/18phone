@@ -10,6 +10,7 @@ import UIKit
 import Contacts
 import SwiftHTTP
 import Async
+import MBProgressHUD
 
 class BackupViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -54,11 +55,15 @@ class BackupViewController: UIViewController, UITableViewDataSource, UITableView
         case 1:
             if let upsucceedCount = UserDefaults.standard.string(forKey: "upsucceedCount") {
                 cell!.detailTextLabel!.text = "\(upsucceedCount)人"
+            } else {
+                cell!.detailTextLabel!.text = "未备份"
             }
             break
         case 2:
             if let backupEndTime = UserDefaults.standard.string(forKey: "backupEndTime") {
                 cell!.detailTextLabel!.text = "上次同步\(backupEndTime)"
+            } else {
+                cell!.detailTextLabel!.text = "未备份"
             }
             break
         case 3:
@@ -95,6 +100,7 @@ class BackupViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     @IBAction func backupContacts(_ sender: UIButton) {
+        MBProgressHUD.showAdded(to: view, animated: true)
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "好的", style: .default, handler: nil)
         alertController.addAction(okAction)
@@ -126,6 +132,7 @@ class BackupViewController: UIViewController, UITableViewDataSource, UITableView
             let jsonString = NSString(data: contactBackupsJson, encoding: String.Encoding.utf8.rawValue)
             APIUtil.uploadContact(jsonString as! String, callBack: { backupContactInfo in
                 if backupContactInfo.codeStatus == 1 {
+                    MBProgressHUD.hide(for: self.view, animated: true)
                     alertController.message = "备份成功"
                     self.present(alertController, animated: true, completion: nil)
                     self.tableView.cellForRow(at: IndexPath(row: 1, section: 0))?.detailTextLabel?.text = "\(backupContactInfo.upsucceedCount!)人"

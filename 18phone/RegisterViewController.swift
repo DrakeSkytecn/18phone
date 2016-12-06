@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class RegisterViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
 
@@ -130,14 +131,16 @@ class RegisterViewController: UIViewController, UITableViewDataSource, UITableVi
             present(alertController, animated: true, completion: nil)
             return
         }
-        APIUtil.register(phoneNumber, password: password, verificationCode: verifyCode, deviceId: "deviceId", callBack: { registerInfo in
+        MBProgressHUD.showAdded(to: view, animated: true)
+        let userDefaults = UserDefaults.standard
+        APIUtil.register(phoneNumber, password: password, verificationCode: verifyCode, deviceId: userDefaults.string(forKey: "deviceToken")!, callBack: { registerInfo in
             if registerInfo.codeStatus == 1 {
-                let userDefaults = UserDefaults.standard
                 userDefaults.set(registerInfo.userID, forKey: "userID")
                 userDefaults.set(self.phoneNumber, forKey: "username")
                 userDefaults.set(self.password, forKey: "password")
                 userDefaults.synchronize()
                 App.initUserAgent(registerInfo.userID!, password: self.password)
+                MBProgressHUD.hide(for: self.view, animated: true)
                 self.present(R.storyboard.main.kTabBarController()!, animated: true, completion: nil)
             } else {
                 alertController.message = registerInfo.codeinfo

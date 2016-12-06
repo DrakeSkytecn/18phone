@@ -16,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKPushRegistryDelegate {
     
     var window: UIWindow?
     
+    var aTokenID: String?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         print("didFinishLaunchingWithOptions")
         window?.backgroundColor = UIColor.white
@@ -29,12 +31,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKPushRegistryDelegate {
         let userDefaults = UserDefaults.standard
         if let userID = userDefaults.string(forKey: "userID") {
             let password = userDefaults.string(forKey: "password")
+            APIUtil.login(userDefaults.string(forKey: "username")!, password: password!, tokenID: userDefaults.string(forKey: "deviceToken")!, callBack: nil)
             App.initUserAgent(userID, password: password!)
             window?.rootViewController = R.storyboard.main.kTabBarController()
         } else {
             window?.rootViewController = R.storyboard.main.checkAccountViewController()
         }
         window?.makeKeyAndVisible()
+        if let userInfo = launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification] {
+            let userInfoDict = userInfo as! [String:Any]
+            aTokenID = userInfoDict["aTokenID"] as? String
+//            let alert = UIAlertController(title: "didFinishLaunchingWithOptions", message: userInfoDict.debugDescription, preferredStyle: .alert)
+//            let okAction = UIAlertAction(title: "好的", style: .default, handler: nil)
+//            alert.addAction(okAction)
+//            window?.rootViewController?.present(alert, animated: true, completion: nil)
+        }
         
         return true
     }
@@ -80,6 +91,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKPushRegistryDelegate {
         let token = deviceToken.reduce(""){
             $0 + String(format:"%02.2hhx", $1)
         }
+        let userDefaults = UserDefaults.standard
+        if userDefaults.string(forKey: "deviceToken") == nil {
+            userDefaults.set(token, forKey: "deviceToken")
+            userDefaults.synchronize()
+        }
         print("APNSToken:\(token)")
     }
     
@@ -88,7 +104,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKPushRegistryDelegate {
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
-        
+//        aTokenID = userInfo[AnyHashable("aTokenID")] as? String
+        SwiftEventBus.post("buddyOnline")
+//        let alert = UIAlertController(title: "didReceiveRemoteNotification", message: userInfo.debugDescription, preferredStyle: .alert)
+//        let okAction = UIAlertAction(title: "好的", style: .default, handler: nil)
+//        alert.addAction(okAction)
+//        window?.rootViewController?.present(alert, animated: true, completion: nil)
+    }
+    
+    func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [AnyHashable : Any], withResponseInfo responseInfo: [AnyHashable : Any], completionHandler: @escaping () -> Void) {
+        print("handleActionWithIdentifier forRemoteNotification")
     }
     
     func pushRegistry(_ registry: PKPushRegistry, didUpdate credentials: PKPushCredentials, forType type: PKPushType) {

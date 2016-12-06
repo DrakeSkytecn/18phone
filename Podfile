@@ -12,6 +12,7 @@ target :"18phone" do
     pod 'JSONJoy-Swift'
     pod 'SwiftHTTP'
     pod 'AsyncSwift'
+    pod 'MBProgressHUD'
 end
 
 post_install do |installer|

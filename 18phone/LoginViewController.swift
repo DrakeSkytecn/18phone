@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class LoginViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
 
@@ -103,21 +104,25 @@ class LoginViewController: UIViewController, UITableViewDataSource, UITableViewD
             present(alertController, animated: true, completion: nil)
             return
         }
-        APIUtil.login(phoneNumber, password: password, callBack: { loginInfo in
-            if loginInfo.codeStatus == 1 {
-                let userDefaults = UserDefaults.standard
-                if userDefaults.string(forKey: "userID") == nil {
-                    userDefaults.set(loginInfo.userID, forKey: "userID")
-                    userDefaults.set(self.phoneNumber, forKey: "username")
-                    userDefaults.set(self.password, forKey: "password")
-                    userDefaults.synchronize()
+        MBProgressHUD.showAdded(to: view, animated: true)
+        let userDefaults = UserDefaults.standard
+        APIUtil.login(phoneNumber, password: password, tokenID: userDefaults.string(forKey: "deviceToken")!, callBack: { loginInfo in
+            if loginInfo != nil {
+                if loginInfo!.codeStatus == 1 {
+                    if userDefaults.string(forKey: "userID") == nil {
+                        userDefaults.set(loginInfo!.userID, forKey: "userID")
+                        userDefaults.set(self.phoneNumber, forKey: "username")
+                        userDefaults.set(self.password, forKey: "password")
+                        userDefaults.synchronize()
+                    }
+                    App.initUserAgent((loginInfo!.userID)!, password: self.password)
+                    self.present(R.storyboard.main.kTabBarController()!, animated: true, completion: nil)
+                } else {
+                    alertController.message = loginInfo?.codeInfo
+                    self.present(alertController, animated: true, completion: nil)
                 }
-                App.initUserAgent(loginInfo.userID!, password: self.password)
-                self.present(R.storyboard.main.kTabBarController()!, animated: true, completion: nil)
-            } else {
-                alertController.message = loginInfo.codeInfo
-                self.present(alertController, animated: true, completion: nil)
             }
+            MBProgressHUD.hide(for: self.view, animated: true)
         })
     }
 }

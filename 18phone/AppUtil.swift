@@ -419,7 +419,7 @@ struct APIUtil {
     
     static func register(_ phoneNumber: String, password: String, verificationCode: String, deviceId: String, callBack: ((RegisterInfo) -> ())?) {
         do {
-            let opt = try HTTP.POST(AppURL.BEYEBE_18PHONE_API_BASE + "register", parameters: ["accountNumber":phoneNumber, "password":password, "verificationCode":verificationCode, "DeviceID":deviceId])
+            let opt = try HTTP.POST(AppURL.BEYEBE_18PHONE_API_BASE + "register", parameters: ["accountNumber":phoneNumber, "password":password, "verificationCode":verificationCode, "DeviceID":deviceId, "phoneType":0])
             opt.start { response in
                 if let error = response.error {
                     print("error: \(error.localizedDescription)")
@@ -440,14 +440,18 @@ struct APIUtil {
         }
     }
     
-    static func login(_ phoneNumber: String, password: String, callBack: ((LoginInfo) -> ())?) {
+    static func login(_ phoneNumber: String, password: String, tokenID: String, callBack: ((LoginInfo?) -> ())?) {
         do {
-            let opt = try HTTP.POST(AppURL.BEYEBE_18PHONE_API_BASE + "login", parameters: ["PhoneNumber":phoneNumber, "password":password])
+            let opt = try HTTP.POST(AppURL.BEYEBE_18PHONE_API_BASE + "login", parameters: ["PhoneNumber":phoneNumber, "password":password, "tokenID":tokenID, "phoneType":0])
             opt.start { response in
                 if let error = response.error {
                     print("error: \(error.localizedDescription)")
                     print("error: \(error.code)")
-                    
+                    if callBack != nil {
+                        Async.main {
+                            callBack!(nil)
+                        }
+                    }
                     return
                 }
                 print(response.text)
@@ -679,6 +683,52 @@ struct APIUtil {
                 if callBack != nil {
                     Async.main {
                         callBack!(backupContactInfo)
+                    }
+                }
+            }
+        } catch {
+            print("got an error creating the request: \(error)")
+        }
+    }
+    
+    static func p2pCall(_ AUserID: String, BUserID: String, callBack: ((VerifyCodeInfo) -> ())?) {
+        do {
+            let opt = try HTTP.POST(AppURL.BEYEBE_18PHONE_API_BASE + "pushXinGeMessage", parameters: ["AUserID":AUserID, "BUserID":BUserID])
+            opt.start { response in
+                if let error = response.error {
+                    print("error: \(error.localizedDescription)")
+                    print("error: \(error.code)")
+                    
+                    return
+                }
+                print(response.text!)
+                let verifyCodeInfo = VerifyCodeInfo(JSONDecoder(response.data))
+                if callBack != nil {
+                    Async.main {
+                        callBack!(verifyCodeInfo)
+                    }
+                }
+            }
+        } catch {
+            print("got an error creating the request: \(error)")
+        }
+    }
+    
+    static func p2pCallOnline(_ tokenID: String, callBack: ((VerifyCodeInfo) -> ())?) {
+        do {
+            let opt = try HTTP.POST(AppURL.BEYEBE_18PHONE_API_BASE + "pushPostback", parameters: ["tokenID":tokenID])
+            opt.start { response in
+                if let error = response.error {
+                    print("error: \(error.localizedDescription)")
+                    print("error: \(error.code)")
+                    
+                    return
+                }
+                print(response.text!)
+                let verifyCodeInfo = VerifyCodeInfo(JSONDecoder(response.data))
+                if callBack != nil {
+                    Async.main {
+                        callBack!(verifyCodeInfo)
                     }
                 }
             }

@@ -9,12 +9,19 @@
 import UIKit
 import Contacts
 import AVFoundation
+import SwiftEventBus
 
 class IncomingCallViewController: UIViewController {
 
-    var inCall: GSCall?
+    var accountId = ""
+    
+    var appContactInfo: AppContactInfo?
+    
+    var phoneNumber = ""
     
     var isConnected: Bool = false
+    
+    var inCall: GSCall?
     
     /// 接通前显示来电信息，接通后显示通话时间
     @IBOutlet weak var nameLabel: UILabel!
@@ -47,10 +54,10 @@ class IncomingCallViewController: UIViewController {
          */
         dialPlateBtn.layer.borderColor = UIColor.white.cgColor
         speakerBtn.layer.borderColor = UIColor.white.cgColor
-        let accountId = inCall?.incomingCallInfo()
-        var appContactInfo = App.realm.objects(AppContactInfo.self).filter("accountId == '\(accountId!)'").first
+        accountId = inCall!.incomingCallInfo()!
+        appContactInfo = App.realm.objects(AppContactInfo.self).filter("accountId == '\(accountId)'").first
         if appContactInfo == nil {
-            APIUtil.getUserInfo(accountId!, callBack: { userInfo in
+            APIUtil.getUserInfo(accountId, callBack: { userInfo in
                 if userInfo.codeStatus == 1 {
                     let store = CNContactStore()
                     let keysToFetch = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
@@ -60,14 +67,34 @@ class IncomingCallViewController: UIViewController {
                     let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch as! [CNKeyDescriptor])
                     try! store.enumerateContacts(with: fetchRequest) { contact, stop in
                         for number in contact.phoneNumbers {
-                            let phoneNumber = PhoneUtil.formatPhoneNumber((number.value).stringValue)
-                            if phoneNumber == userInfo.userData!.mobile! {
+                            let formatNumber = PhoneUtil.formatPhoneNumber((number.value).stringValue)
+                            if formatNumber == userInfo.userData!.mobile! {
+                                self.phoneNumber = formatNumber
                                 self.nameLabel.text = contact.familyName + contact.givenName
-                                appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contact.identifier)'").first
+                                self.appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contact.identifier)'").first
                                 try! App.realm.write {
-                                    appContactInfo?.accountId = accountId!
-                                    appContactInfo?.isRegister = true
+                                    self.appContactInfo?.accountId = self.accountId
+                                    self.appContactInfo?.isRegister = true
                                 }
+                                PhoneUtil.getPhoneAreaInfo(formatNumber, callBack: { phoneAreaInfo in
+                                    if phoneAreaInfo.errNum == 0 {
+                                        let province = phoneAreaInfo.retData!.province!
+                                        let city = phoneAreaInfo.retData!.city!
+                                        let fullArea = province + city
+                                        switch province {
+                                        case "北京", "上海", "天津", "重庆":
+                                            try! App.realm.write {
+                                                self.appContactInfo?.area = province
+                                            }
+                                            break
+                                        default:
+                                            try! App.realm.write {
+                                                self.appContactInfo?.area = fullArea
+                                            }
+                                            break
+                                        }
+                                    }
+                                })
                             }
                         }
                     }
@@ -83,11 +110,37 @@ class IncomingCallViewController: UIViewController {
                                CNContactGivenNameKey,
                                CNContactFamilyNameKey,
                                CNContactPhoneNumbersKey] as [Any]
-            let contact = try! store.unifiedContact(withIdentifier: appContactInfo!.identifier, keysToFetch: keysToFetch as! [CNKeyDescriptor])
-            self.nameLabel.text = contact.familyName + contact.givenName
+            do {
+                let contact = try store.unifiedContact(withIdentifier: appContactInfo!.identifier, keysToFetch: keysToFetch as! [CNKeyDescriptor])
+                self.nameLabel.text = contact.familyName + contact.givenName
+                for (i, item) in contact.phoneNumbers.enumerated() {
+                    if i == 0 {
+                        phoneNumber = PhoneUtil.formatPhoneNumber(item.value.stringValue)
+                        PhoneUtil.getPhoneAreaInfo(phoneNumber, callBack: { phoneAreaInfo in
+                            if phoneAreaInfo.errNum == 0 {
+                                let province = phoneAreaInfo.retData!.province!
+                                let city = phoneAreaInfo.retData!.city!
+                                let fullArea = province + city
+                                switch province {
+                                case "北京", "上海", "天津", "重庆":
+                                    try! App.realm.write {
+                                        self.appContactInfo?.area = province
+                                    }
+                                    break
+                                default:
+                                    try! App.realm.write {
+                                        self.appContactInfo?.area = fullArea
+                                    }
+                                    break
+                                }
+                            }
+                        })
+                    }
+                }
+            } catch {
+                
+            }
         }
-        
-        
         
         inCall?.addObserver(self, forKeyPath: "status", options: .initial, context: nil)
 //        inCall?.startRingback()
@@ -115,7 +168,25 @@ class IncomingCallViewController: UIViewController {
     
     func addCallLog() {
         let callLog = CallLog()
-        
+        callLog.accountId = accountId
+        callLog.contactId = appContactInfo!.identifier
+        if areaLabel.text!.isEmpty {
+            callLog.name = nameLabel.text!
+        }
+        callLog.phone = phoneNumber
+        if isConnected {
+            callLog.callState = CallState.inConnected.rawValue
+        } else {
+            callLog.callState = CallState.inUnConnected.rawValue
+        }
+        callLog.callType = CallType.voice.rawValue
+        callLog.area = appContactInfo!.area
+        try! App.realm.write {
+            App.realm.add(callLog)
+        }
+        let callInfo = ["AuserID":UserDefaults.standard.string(forKey: "userID")!, "BUCID":callLog.accountId, "CallType":callLog.callType, "IncomingType":callLog.callState, "CallTime":callLog.callStartTime.description, "TalkTimeLength":"1000", "EndTime":callLog.callEndTime.description, "Area":callLog.area, "Name":callLog.name, "Mobile":callLog.phone] as [String : Any]
+        APIUtil.saveCallLog(callInfo)
+        SwiftEventBus.post("reloadCallLogs")
     }
     
     func callStatusDidChange() {
@@ -143,6 +214,8 @@ class IncomingCallViewController: UIViewController {
             
         case GSCallStatusDisconnected:
             print("IncomingCallViewController Disconnected.")
+            addCallLog()
+            dismiss(animated: true, completion: nil)
             break
             
         default:

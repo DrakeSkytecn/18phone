@@ -53,16 +53,34 @@ class OutgoingCallViewController: UIViewController {
         }
         let account = GSUserAgent.shared().account
         outCall = GSCall.outgoingCall(toUri: callLog!.accountId + "@" + AppURL.BEYEBE_SIP_DOMAIN, from: account)
-//        outCall?.checkBuddy()
+        outCall?.checkBuddy()
         outCall?.addObserver(self, forKeyPath: "status", options: .initial, context: nil)
         App.changeSpeaker(true)
-        self.outCall?.begin()
+//        buddyOnline()
+        checkOnline()
+        APIUtil.p2pCall(UserDefaults.standard.string(forKey: "userID")!, BUserID: callLog!.accountId) { verifyCodeInfo in
+            
+        }
+        SwiftEventBus.onMainThread(self, name: "buddyOnline") { result in
+//            self.buddyOnline()
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func checkOnline() {
+        while true {
+            <#code#>
+        }
+        outCall?.begin()
+    }
+    
+//    func buddyOnline() {
+//        outCall?.begin()
+//    }
     
     @IBAction func hangup(_ sender: UIButton) {
         outCall?.end()
@@ -116,7 +134,8 @@ class OutgoingCallViewController: UIViewController {
             
         case GSCallStatusDisconnected:
             print("OutgoingCallViewController Disconnected.")
-//            dismiss(animated: true, completion: nil)
+            outCall?.end()
+            dismiss(animated: true, completion: nil)
             break
             
         default:

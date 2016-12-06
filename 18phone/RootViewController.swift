@@ -59,9 +59,6 @@ class RootViewController: UIViewController, GSAccountDelegate {
                 }
             })
         }
-//        SwiftEventBus.onMainThread(self, name: "newContact", handler: { result in
-//            self.newContact(phoneNumber: result.object as! String)
-//        })
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -211,6 +208,13 @@ class RootViewController: UIViewController, GSAccountDelegate {
             break
         case GSAccountStatusConnected:
             print("Connected")
+            if App.appDelegate.aTokenID != nil {
+                APIUtil.p2pCallOnline(App.appDelegate.aTokenID!) { verifyCodeInfo in
+                    
+                    App.appDelegate.aTokenID = nil
+                }
+            }
+            
             break
         case GSAccountStatusDisconnecting:
             print("Disconnecting")

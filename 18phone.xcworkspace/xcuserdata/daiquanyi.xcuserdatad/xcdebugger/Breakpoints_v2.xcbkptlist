@@ -9,22 +9,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "18phone/LoginViewController.swift"
-            timestampString = "501478975.942693"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
-            landmarkName = "login(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "18phone/Gossip/GSDispatch.m"
             timestampString = "502099037.323585"
             startingColumnNumber = "9223372036854775807"
@@ -42,7 +26,7 @@
                   moduleName = "18phone"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/daiquanyi/Documents/18phone/18phone/Gossip/GSDispatch.m"
-                  timestampString = "502099389.870284"
+                  timestampString = "502611241.67387"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "167"
@@ -57,7 +41,7 @@
                   moduleName = "18phone"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/daiquanyi/Documents/18phone/18phone/Gossip/GSDispatch.m"
-                  timestampString = "502099389.872064"
+                  timestampString = "502611241.675845"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "167"
