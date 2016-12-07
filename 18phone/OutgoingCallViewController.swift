@@ -9,14 +9,17 @@
 import UIKit
 import SwiftEventBus
 import AVFoundation
+import Async
 
 class OutgoingCallViewController: UIViewController {
-
+    
     var callLog: CallLog?
     
     var outCall: GSCall?
     
-    var isConnected: Bool = false
+    var isHangup = false
+    
+    var isConnected = false
     
     let newCallLog = CallLog()
     
@@ -24,7 +27,7 @@ class OutgoingCallViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     
     /// 显示号码归属地
-    @IBOutlet weak var areaLabel: UILabel!
+    @IBOutlet weak var areaLabel: MZTimerLabel!
     
     /// 拨号盘按钮容器
     @IBOutlet weak var dialPlateCon: UIView!
@@ -47,42 +50,71 @@ class OutgoingCallViewController: UIViewController {
         speakerBtn.layer.borderColor = UIColor.white.cgColor
         if !callLog!.name.isEmpty {
             nameLabel.text = callLog!.name
+            areaLabel.text = "正在拨号"
         } else {
             nameLabel.text = callLog!.phone
             areaLabel.text = callLog!.area
         }
         let account = GSUserAgent.shared().account
         outCall = GSCall.outgoingCall(toUri: callLog!.accountId + "@" + AppURL.BEYEBE_SIP_DOMAIN, from: account)
-        outCall?.checkBuddy()
+        //        outCall?.checkBuddy()
         outCall?.addObserver(self, forKeyPath: "status", options: .initial, context: nil)
         App.changeSpeaker(true)
-//        buddyOnline()
-        checkOnline()
+        outCall?.begin()
         APIUtil.p2pCall(UserDefaults.standard.string(forKey: "userID")!, BUserID: callLog!.accountId) { verifyCodeInfo in
             
         }
-        SwiftEventBus.onMainThread(self, name: "buddyOnline") { result in
-//            self.buddyOnline()
-        }
+        
+        //        SwiftEventBus.onMainThread(self, name: "buddyOnline") { result in
+        ////            self.buddyOnline()
+        //        }
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        checkOnline(callLog!.accountId)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    func checkOnline() {
-        while true {
-            <#code#>
+    func checkOnline(_ accountId: String) {
+        var b = true
+        Async.background {
+            var i = 0
+            while !self.isHangup {
+                
+                Async.background(after:1.0) {
+                    if i == 30 {
+                        b = false
+                        return
+                    }
+                    print("buddyIsOnline")
+                    APIUtil.buddyIsOnline(accountId, callBack: { verifyCodeInfo in
+                        i = i + 1
+                        if verifyCodeInfo.codeStatus == 1 {
+                            if verifyCodeInfo.codeInfo == "online" {
+                                b = false
+                                self.outCall?.begin()
+                                return
+                            }
+                        }
+                    })
+                }.wait()
+                if !b {
+                    return
+                }
+            }
         }
-        outCall?.begin()
     }
     
-//    func buddyOnline() {
-//        outCall?.begin()
-//    }
+    //    func buddyOnline() {
+    //        outCall?.begin()
+    //    }
     
     @IBAction func hangup(_ sender: UIButton) {
+        isHangup = true
         outCall?.end()
         newCallLog.accountId = callLog!.accountId
         newCallLog.contactId = callLog!.contactId
@@ -104,7 +136,7 @@ class OutgoingCallViewController: UIViewController {
         App.changeSpeaker(false)
         dismiss(animated: true, completion: nil)
     }
-
+    
     @IBAction func speakerOnOff(_ sender: UIButton) {
         App.changeSpeaker(!App.isSpeakerOn)
     }
@@ -126,6 +158,7 @@ class OutgoingCallViewController: UIViewController {
             
         case GSCallStatusConnected:
             print("OutgoingCallViewController Connected.")
+            areaLabel.start()
             isConnected = true
             dialPlateCon.isHidden = false
             speakerCon.isHidden = false
@@ -134,6 +167,7 @@ class OutgoingCallViewController: UIViewController {
             
         case GSCallStatusDisconnected:
             print("OutgoingCallViewController Disconnected.")
+            areaLabel.pause()
             outCall?.end()
             dismiss(animated: true, completion: nil)
             break

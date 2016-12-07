@@ -27,7 +27,7 @@ class IncomingCallViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     
     /// 接通前显示来电信息，接通后显示通话时间
-    @IBOutlet weak var areaLabel: UILabel!
+    @IBOutlet weak var areaLabel: MZTimerLabel!
     
     /// 接通前按钮容器
     @IBOutlet weak var connectingCon: UIView!
@@ -205,6 +205,7 @@ class IncomingCallViewController: UIViewController {
             
         case GSCallStatusConnected:
             print("IncomingCallViewController Connected.")
+            areaLabel.start()
             isConnected = true
             connectingCon.isHidden = true
             hangupCon.isHidden = false
@@ -214,6 +215,7 @@ class IncomingCallViewController: UIViewController {
             
         case GSCallStatusDisconnected:
             print("IncomingCallViewController Disconnected.")
+            areaLabel.pause()
             addCallLog()
             dismiss(animated: true, completion: nil)
             break

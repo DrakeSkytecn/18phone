@@ -38,7 +38,7 @@
     call_setting.aud_cnt = 1;
     call_setting.vid_cnt = 0;
     pjsua_call_id callId;
-    GSReturnNoIfFails(pjsua_call_make_call(self.account.accountId, &remoteUri, &call_setting, "fuck", NULL, &callId));
+    GSReturnNoIfFails(pjsua_call_make_call(self.account.accountId, &remoteUri, &call_setting, NULL, NULL, &callId));
     [self setCallId:callId];
     
     return YES;

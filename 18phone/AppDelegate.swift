@@ -104,8 +104,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKPushRegistryDelegate {
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        APIUtil.setOnline(UserDefaults.standard.string(forKey: "userID")!, callBack: nil)
 //        aTokenID = userInfo[AnyHashable("aTokenID")] as? String
-        SwiftEventBus.post("buddyOnline")
+//        SwiftEventBus.post("buddyOnline")
+        
 //        let alert = UIAlertController(title: "didReceiveRemoteNotification", message: userInfo.debugDescription, preferredStyle: .alert)
 //        let okAction = UIAlertAction(title: "好的", style: .default, handler: nil)
 //        alert.addAction(okAction)

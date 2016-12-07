@@ -12,10 +12,10 @@ import JSONJoy
 struct VerifyCodeInfo: JSONJoy {
 
     let codeStatus: Int?
-    let codeinfo: String?
+    let codeInfo: String?
     
     init(_ decoder: JSONDecoder) {
         codeStatus = decoder["codeStatus"].integer
-        codeinfo = decoder["codeInfo"].string
+        codeInfo = decoder["codeInfo"].string
     }
 }

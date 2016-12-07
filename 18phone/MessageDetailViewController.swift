@@ -1,18 +1,18 @@
 //
-//  MessageViewController.swift
+//  MessageDetailViewController.swift
 //  18phone
 //
-//  Created by Kratos on 9/24/16.
-//  Copyright © 2016 Kratos. All rights reserved.
+//  Created by 戴全艺 on 2016/12/7.
+//  Copyright © 2016年 Kratos. All rights reserved.
 //
 
 import UIKit
 
-class MessageViewController: UITableViewController {
+class MessageDetailViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.tableFooterView = UIView()
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -33,8 +33,7 @@ class MessageViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.message_cell)!
-        cell.imageView?.image = R.image.system_message()
+        let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.message_detail_cell)!
         let view = UIView(frame: CGRect(x: Screen.width - 80.0, y: 0.0, width: 80.0, height: 80.0))
         let timeLabel = UILabel(frame: CGRect(x: 0.0, y: 8.0, width: 80.0, height: 21.0))
         timeLabel.font = UIFont.systemFont(ofSize: 12.0)
@@ -47,14 +46,11 @@ class MessageViewController: UITableViewController {
 
         return cell
     }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
+
 
     /*
     // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
@@ -62,11 +58,11 @@ class MessageViewController: UITableViewController {
 
     /*
     // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
             // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
@@ -74,14 +70,14 @@ class MessageViewController: UITableViewController {
 
     /*
     // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
 
     }
     */
 
     /*
     // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
         return true
     }
@@ -91,7 +87,7 @@ class MessageViewController: UITableViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }

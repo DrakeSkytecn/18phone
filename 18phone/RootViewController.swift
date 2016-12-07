@@ -208,12 +208,15 @@ class RootViewController: UIViewController, GSAccountDelegate {
             break
         case GSAccountStatusConnected:
             print("Connected")
-            if App.appDelegate.aTokenID != nil {
-                APIUtil.p2pCallOnline(App.appDelegate.aTokenID!) { verifyCodeInfo in
-                    
-                    App.appDelegate.aTokenID = nil
-                }
+            APIUtil.setOnline(UserDefaults.standard.string(forKey: "userID")!) { verifyCodeInfo in
+                
             }
+//            if App.appDelegate.aTokenID != nil {
+//                APIUtil.p2pCallOnline(App.appDelegate.aTokenID!) { verifyCodeInfo in
+//                    
+//                    App.appDelegate.aTokenID = nil
+//                }
+//            }
             
             break
         case GSAccountStatusDisconnecting:

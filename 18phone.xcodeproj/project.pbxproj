@@ -161,6 +161,8 @@
 		E1DE61831D88F1E900321B47 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DE61821D88F1E900321B47 /* ContactCell.swift */; };
 		E1DE61851D894E3F00321B47 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1DE61841D894E3F00321B47 /* CoreTelephony.framework */; };
 		E1E09C671DDA9A4D005B21C2 /* piQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E09C661DDA9A4D005B21C2 /* piQ.swift */; };
+		E1E312911DF7A89400C67C13 /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E312901DF7A89400C67C13 /* MessageDetailViewController.swift */; };
+		E1E312951DF7B18100C67C13 /* MZTimerLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E312941DF7B18100C67C13 /* MZTimerLabel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -378,6 +380,9 @@
 		E1DE61821D88F1E900321B47 /* ContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		E1DE61841D894E3F00321B47 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		E1E09C661DDA9A4D005B21C2 /* piQ.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = piQ.swift; sourceTree = "<group>"; };
+		E1E312901DF7A89400C67C13 /* MessageDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageDetailViewController.swift; sourceTree = "<group>"; };
+		E1E312931DF7B17B00C67C13 /* MZTimerLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MZTimerLabel.h; sourceTree = "<group>"; };
+		E1E312941DF7B18100C67C13 /* MZTimerLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZTimerLabel.m; sourceTree = "<group>"; };
 		E1F5E57C1D59E5990010FF2C /* 18phone-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "18phone-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -780,6 +785,7 @@
 				E121297F1DB71A5B009EE55B /* CommunicateViewController.swift */,
 				E12129811DB74D18009EE55B /* CommunicateListViewController.swift */,
 				E12129831DB75AAC009EE55B /* AboutViewController.swift */,
+				E1E312901DF7A89400C67C13 /* MessageDetailViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -787,6 +793,7 @@
 		E13BACBF1D518E6600414ACE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E1E312921DF7B17100C67C13 /* MZTimerLabel */,
 				E159FF401DD6BBA90094D3E9 /* SelectView */,
 				E123C3FB1DADDA3E00E6D442 /* CAPSPageMenu.swift */,
 				E15C4C3B1D96689300688086 /* ZFRippleButton.swift */,
@@ -863,6 +870,15 @@
 				E1E09C661DDA9A4D005B21C2 /* piQ.swift */,
 			);
 			name = piQ;
+			sourceTree = "<group>";
+		};
+		E1E312921DF7B17100C67C13 /* MZTimerLabel */ = {
+			isa = PBXGroup;
+			children = (
+				E1E312931DF7B17B00C67C13 /* MZTimerLabel.h */,
+				E1E312941DF7B18100C67C13 /* MZTimerLabel.m */,
+			);
+			name = MZTimerLabel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1087,6 +1103,8 @@
 				E11227D01D9B5F3200B08ACD /* LoginCell.swift in Sources */,
 				E1AC7F831DA89B85001C2676 /* RegisterViewController.swift in Sources */,
 				E12129821DB74D18009EE55B /* CommunicateListViewController.swift in Sources */,
+				E1E312911DF7A89400C67C13 /* MessageDetailViewController.swift in Sources */,
+				E1E312951DF7B18100C67C13 /* MZTimerLabel.m in Sources */,
 				E12129841DB75AAC009EE55B /* AboutViewController.swift in Sources */,
 				E19BEB001DB4D14300AE73E1 /* MySettingViewController.swift in Sources */,
 			);

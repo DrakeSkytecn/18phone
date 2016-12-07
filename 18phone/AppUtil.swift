@@ -714,9 +714,32 @@ struct APIUtil {
         }
     }
     
-    static func p2pCallOnline(_ tokenID: String, callBack: ((VerifyCodeInfo) -> ())?) {
+    static func buddyIsOnline(_ userID: String, callBack: ((VerifyCodeInfo) -> ())?) {
         do {
-            let opt = try HTTP.POST(AppURL.BEYEBE_18PHONE_API_BASE + "pushPostback", parameters: ["tokenID":tokenID])
+            let opt = try HTTP.GET(AppURL.BEYEBE_18PHONE_API_BASE + "isOnline", parameters: ["userID":userID])
+            opt.start { response in
+                if let error = response.error {
+                    print("error: \(error.localizedDescription)")
+                    print("error: \(error.code)")
+                    
+                    return
+                }
+                print(response.text!)
+                let verifyCodeInfo = VerifyCodeInfo(JSONDecoder(response.data))
+                if callBack != nil {
+                    Async.main {
+                        callBack!(verifyCodeInfo)
+                    }
+                }
+            }
+        } catch {
+            print("got an error creating the request: \(error)")
+        }
+    }
+    
+    static func setOnline(_ userID: String, callBack: ((VerifyCodeInfo) -> ())?) {
+        do {
+            let opt = try HTTP.GET(AppURL.BEYEBE_18PHONE_API_BASE + "setCache", parameters: ["userID":userID])
             opt.start { response in
                 if let error = response.error {
                     print("error: \(error.localizedDescription)")
