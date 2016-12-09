@@ -13,6 +13,8 @@ import Async
 
 class OutgoingCallViewController: UIViewController {
     
+    var dialLine: DialLine = .p2p
+    
     var callLog: CallLog?
     
     var outCall: GSCall?
@@ -55,19 +57,17 @@ class OutgoingCallViewController: UIViewController {
             nameLabel.text = callLog!.phone
             areaLabel.text = callLog!.area
         }
-        let account = GSUserAgent.shared().account
-        outCall = GSCall.outgoingCall(toUri: callLog!.accountId + "@" + AppURL.BEYEBE_SIP_DOMAIN, from: account)
-        //        outCall?.checkBuddy()
-        outCall?.addObserver(self, forKeyPath: "status", options: .initial, context: nil)
         App.changeSpeaker(true)
-        outCall?.begin()
-        APIUtil.p2pCall(UserDefaults.standard.string(forKey: "userID")!, BUserID: callLog!.accountId) { verifyCodeInfo in
-            
+        if dialLine == .p2p {
+            let account = GSUserAgent.shared().account
+            outCall = GSCall.outgoingCall(toUri: callLog!.accountId + "@" + AppURL.BEYEBE_SIP_DOMAIN, from: account)
+            outCall?.addObserver(self, forKeyPath: "status", options: .initial, context: nil)
+            APIUtil.p2pCall(UserDefaults.standard.string(forKey: "userID")!, BUserID: callLog!.accountId) { verifyCodeInfo in
+                
+            }
+        } else if dialLine == .direct {
+            App.ulinkService.sendCallInvite("", toPhone: callLog!.phone, display: UserDefaults.standard.string(forKey: "username")!, attData: "")
         }
-        
-        //        SwiftEventBus.onMainThread(self, name: "buddyOnline") { result in
-        ////            self.buddyOnline()
-        //        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -84,13 +84,14 @@ class OutgoingCallViewController: UIViewController {
         Async.background {
             var i = 0
             while !self.isHangup {
-                
                 Async.background(after:1.0) {
-                    if i == 30 {
+                    if i == 60 {
                         b = false
+                        Async.main {
+                            self.areaLabel.text = "暂时无法接通，请稍后再拨"
+                        }
                         return
                     }
-                    print("buddyIsOnline")
                     APIUtil.buddyIsOnline(accountId, callBack: { verifyCodeInfo in
                         i = i + 1
                         if verifyCodeInfo.codeStatus == 1 {
@@ -109,15 +110,16 @@ class OutgoingCallViewController: UIViewController {
         }
     }
     
-    //    func buddyOnline() {
-    //        outCall?.begin()
-    //    }
-    
     @IBAction func hangup(_ sender: UIButton) {
         isHangup = true
-        outCall?.end()
+        if dialLine == .p2p {
+            outCall?.end()
+        } else {
+            App.ulinkService.sendCallBye()
+        }
         newCallLog.accountId = callLog!.accountId
         newCallLog.contactId = callLog!.contactId
+        newCallLog.headPhoto = callLog!.headPhoto
         newCallLog.name = callLog!.name
         newCallLog.phone = callLog!.phone
         if isConnected {
@@ -168,8 +170,7 @@ class OutgoingCallViewController: UIViewController {
         case GSCallStatusDisconnected:
             print("OutgoingCallViewController Disconnected.")
             areaLabel.pause()
-            outCall?.end()
-            dismiss(animated: true, completion: nil)
+            areaLabel.text = "通话已挂断"
             break
             
         default:
@@ -184,7 +185,9 @@ class OutgoingCallViewController: UIViewController {
     }
     
     deinit {
-        outCall?.removeObserver(self, forKeyPath: "status")
+        if dialLine == .p2p {
+            outCall?.removeObserver(self, forKeyPath: "status")
+        }
         print("OutgoingCallViewController deinit")
     }
 }

@@ -107,6 +107,9 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate, UINavi
         case 3:
             ActionSheetDatePicker.show(withTitle: "生日", datePickerMode: .date, selectedDate: Date(), doneBlock: { picker, selectedValue, selectedIndex in
                 let birthday = selectedValue as! Date
+                if birthday > Date() {
+                    print("")
+                }
                 self.age = DateUtil.getAgeFromBirthday((birthday))
                 self.ageLabel.text =  "\(self.age)岁"
             }, cancel: { _ in
@@ -144,6 +147,13 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate, UINavi
     }
     
     @IBAction func save(_ sender: UIBarButtonItem) {
+        if nameField.text!.characters.count > 6 {
+            let alertController = UIAlertController(title: nil, message: "姓名不能超过6个字符", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "好的", style: .default, handler: nil)
+            alertController.addAction(okAction)
+            present(alertController, animated: true, completion: nil)
+            return
+        }
         var userInfo = [String:Any]()
         userInfo["UserID"] = userID
         userInfo["Sex"] = "\(sex)"

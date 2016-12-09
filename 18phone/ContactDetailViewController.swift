@@ -70,6 +70,7 @@ class ContactDetailViewController: UIViewController {
         appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contactId!)'").first
         if contact!.imageDataAvailable {
             headPhoto.image = UIImage(data: contact!.thumbnailImageData!)
+            detailMenuViewController.headPhoto = contact?.thumbnailImageData
         } else {
             headPhoto.image = R.image.head_photo_default()
         }
@@ -165,12 +166,12 @@ class ContactDetailViewController: UIViewController {
         if appContactInfo!.accountId.isEmpty {
             alertController.addAction(UIAlertAction(title: "分享", style: .default) { action in
                 let shareParames = NSMutableDictionary()
-                shareParames.ssdkSetupShareParams(byText: "分享测试",
-                                                  images : R.image.shareImg(),
-                                                  url : URL(string:"http://www.beyebe.com/"),
-                                                  title : "分享测试内容By Drake",
+                shareParames.ssdkSetupShareParams(byText: "注册18phone，免费通话18天http://192.168.10.150:8080/view/index.html",
+                                                  images : R.image.shareImg()!,
+                                                  url : URL(string:"http://192.168.10.150:8080/view/index.html"),
+                                                  title : "18phone",
                                                   type : .auto)
-                
+                shareParames.ssdkSetupSMSParams(byText: "注册18phone，免费通话18天http://192.168.10.150:8080/view/index.html", title: "18phone", images: nil, attachments: nil, recipients: self.phones, type: .text)
                 ShareSDK.showShareActionSheet(self.view, items: nil, shareParams: shareParames) { state, platformType, userdata, contentEnity, error, end in
                     switch state {
                         

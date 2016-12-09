@@ -53,7 +53,7 @@ class ContactViewController: UITableViewController {
                 var localContactInfo = LocalContactInfo()
                 localContactInfo.identifier = contact.identifier
                 var appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contact.identifier)'").first
-                if  appContactInfo == nil {
+                if appContactInfo == nil {
                     appContactInfo = AppContactInfo()
                     appContactInfo!.identifier = contact.identifier
                     try! App.realm.write {
@@ -65,8 +65,8 @@ class ContactViewController: UITableViewController {
                 }
                 localContactInfo.headPhoto = contact.thumbnailImageData
                 localContactInfo.name = contact.familyName + contact.givenName
-                var initial = ""
-                if !(localContactInfo.name?.isEmpty)! {
+                var initial = "#"
+                if !localContactInfo.name!.isEmpty {
                     let str = StringUtil.HanToPin(localContactInfo.name!)
                     initial = str!.substring(with: NSRange(location: 0,length: 1)).uppercased()
                     for scalar in initial.unicodeScalars {
@@ -76,7 +76,6 @@ class ContactViewController: UITableViewController {
                         }
                     }
                 }
-                
                 for (i, number) in contact.phoneNumbers.enumerated() {
                     let phone = Phone()
                     let formatNumber = PhoneUtil.formatPhoneNumber(number.value.stringValue)
@@ -157,7 +156,13 @@ class ContactViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.contact)
         let localContactInfo = groupValues[groupTitles[(indexPath as NSIndexPath).section]]!![(indexPath as NSIndexPath).row]
-        cell!.name.text = localContactInfo.name
+        if !localContactInfo.name!.isEmpty {
+            cell!.name.text = localContactInfo.name
+        } else {
+            if !localContactInfo.phones!.isEmpty {
+                cell!.name.text = localContactInfo.phones![0].number
+            }
+        }
         if localContactInfo.headPhoto != nil {
             cell?.headPhoto.image = UIImage(data: localContactInfo.headPhoto! as Data)
         } else {

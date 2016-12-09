@@ -155,6 +155,7 @@ class IncomingCallViewController: UIViewController {
     @IBAction func hangup(_ sender: UIButton) {
         App.changeSpeaker(false)
         inCall?.end()
+        addCallLog()
         dismiss(animated: true, completion: nil)
     }
 
@@ -170,9 +171,7 @@ class IncomingCallViewController: UIViewController {
         let callLog = CallLog()
         callLog.accountId = accountId
         callLog.contactId = appContactInfo!.identifier
-        if areaLabel.text!.isEmpty {
-            callLog.name = nameLabel.text!
-        }
+        callLog.name = nameLabel.text!
         callLog.phone = phoneNumber
         if isConnected {
             callLog.callState = CallState.inConnected.rawValue
@@ -216,8 +215,8 @@ class IncomingCallViewController: UIViewController {
         case GSCallStatusDisconnected:
             print("IncomingCallViewController Disconnected.")
             areaLabel.pause()
-            addCallLog()
-            dismiss(animated: true, completion: nil)
+            areaLabel.text = "通话已挂断"
+//            dismiss(animated: true, completion: nil)
             break
             
         default:

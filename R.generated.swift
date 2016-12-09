@@ -21,10 +21,12 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.file` struct is generated, and contains static references to 7 files.
+  /// This `R.file` struct is generated, and contains static references to 8 files.
   struct file {
     /// Resource file `Address.plist`.
     static let addressPlist = Rswift.FileResource(bundle: R.hostingBundle, name: "Address", pathExtension: "plist")
+    /// Resource file `AppIcon.png`.
+    static let appIconPng = Rswift.FileResource(bundle: R.hostingBundle, name: "AppIcon", pathExtension: "png")
     /// Resource file `ShareSDK.bundle`.
     static let shareSDKBundle = Rswift.FileResource(bundle: R.hostingBundle, name: "ShareSDK", pathExtension: "bundle")
     /// Resource file `ShareSDKUI.bundle`.
@@ -41,6 +43,12 @@ struct R: Rswift.Validatable {
     /// `bundle.url(forResource: "Address", withExtension: "plist")`
     static func addressPlist(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.addressPlist
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "AppIcon", withExtension: "png")`
+    static func appIconPng(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.appIconPng
       return fileResource.bundle.url(forResource: fileResource)
     }
     
@@ -88,8 +96,10 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 42 images.
+  /// This `R.image` struct is generated, and contains static references to 43 images.
   struct image {
+    /// Image `AppIcon`.
+    static let appIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "AppIcon")
     /// Image `Launch`.
     static let launch = Rswift.ImageResource(bundle: R.hostingBundle, name: "Launch")
     /// Image `about`.
@@ -174,6 +184,11 @@ struct R: Rswift.Validatable {
     static let wallet = Rswift.ImageResource(bundle: R.hostingBundle, name: "wallet")
     /// Image `yellowlight`.
     static let yellowlight = Rswift.ImageResource(bundle: R.hostingBundle, name: "yellowlight")
+    
+    /// `UIImage(named: "AppIcon", bundle: ..., traitCollection: ...)`
+    static func appIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.appIcon, compatibleWith: traitCollection)
+    }
     
     /// `UIImage(named: "Launch", bundle: ..., traitCollection: ...)`
     static func launch(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {

@@ -20,10 +20,10 @@ import JSONJoy
  */
 enum CallState: Int {
     
-    /// 拨入未接通
+    /// 来电未接通
     case inUnConnected
     
-    /// 拨入已接通
+    /// 来电已接通
     case inConnected
     
     /// 拨出未接通

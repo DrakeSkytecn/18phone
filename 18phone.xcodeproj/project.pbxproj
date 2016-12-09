@@ -70,6 +70,7 @@
 		E1281EAE1DD81A7100C94038 /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1281EAD1DD81A7000C94038 /* PushKit.framework */; };
 		E12EBA811D531FF3007B5CBD /* CallLogACell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12EBA801D531FF3007B5CBD /* CallLogACell.swift */; };
 		E1330E271D92378400996D2A /* DetailMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1330E261D92378400996D2A /* DetailMenuViewController.swift */; };
+		E1370CB61DF938FD004FB202 /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E1370CB51DF938FD004FB202 /* AppIcon.png */; };
 		E138D0771D6301EA0091AF4A /* OutgoingCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E138D0761D6301EA0091AF4A /* OutgoingCallViewController.swift */; };
 		E138D0791D630B7A0091AF4A /* IncomingCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E138D0781D630B7A0091AF4A /* IncomingCallViewController.swift */; };
 		E13BACC21D518F5200414ACE /* AppUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BACC11D518F5200414ACE /* AppUtil.swift */; };
@@ -113,6 +114,7 @@
 		E19BEB001DB4D14300AE73E1 /* MySettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19BEAFF1DB4D14200AE73E1 /* MySettingViewController.swift */; };
 		E19BEB021DB4D82900AE73E1 /* ADSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19BEB011DB4D82900AE73E1 /* ADSettingViewController.swift */; };
 		E1A0F9441DED847400B6174A /* libspeex-arm64-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C0489E1D8691C60009DF6B /* libspeex-arm64-apple-darwin_ios.a */; };
+		E1A389411DFA8D82002C01F7 /* libULinkVoiceSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1370CB71DF93A3D004FB202 /* libULinkVoiceSDK.a */; };
 		E1AC7F831DA89B85001C2676 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC7F821DA89B85001C2676 /* RegisterViewController.swift */; };
 		E1AC7F851DA89E1C001C2676 /* RegisterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC7F841DA89E1C001C2676 /* RegisterCell.swift */; };
 		E1AC7F871DA8CAE5001C2676 /* VerifyCodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC7F861DA8CAE5001C2676 /* VerifyCodeButton.swift */; };
@@ -263,6 +265,8 @@
 		E1281EAD1DD81A7000C94038 /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = System/Library/Frameworks/PushKit.framework; sourceTree = SDKROOT; };
 		E12EBA801D531FF3007B5CBD /* CallLogACell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallLogACell.swift; sourceTree = "<group>"; };
 		E1330E261D92378400996D2A /* DetailMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailMenuViewController.swift; sourceTree = "<group>"; };
+		E1370CB51DF938FD004FB202 /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AppIcon.png; path = Assets.xcassets/shareImg.imageset/AppIcon.png; sourceTree = "<group>"; };
+		E1370CB71DF93A3D004FB202 /* libULinkVoiceSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libULinkVoiceSDK.a; sourceTree = "<group>"; };
 		E138D0761D6301EA0091AF4A /* OutgoingCallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutgoingCallViewController.swift; sourceTree = "<group>"; };
 		E138D0781D630B7A0091AF4A /* IncomingCallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomingCallViewController.swift; sourceTree = "<group>"; };
 		E13BACC11D518F5200414ACE /* AppUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUtil.swift; sourceTree = "<group>"; };
@@ -311,8 +315,7 @@
 		E19BEAFF1DB4D14200AE73E1 /* MySettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySettingViewController.swift; sourceTree = "<group>"; };
 		E19BEB011DB4D82900AE73E1 /* ADSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADSettingViewController.swift; sourceTree = "<group>"; };
 		E1A0F93F1DED585C00B6174A /* CommonClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonClass.h; sourceTree = "<group>"; };
-		E1A0F9411DED585C00B6174A /* ULinkService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ULinkService.h; sourceTree = "<group>"; };
-		E1AA51291DF0016A00008594 /* libULinkVoiceSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libULinkVoiceSDK.a; sourceTree = "<group>"; };
+		E1A389401DFA8D74002C01F7 /* ULinkService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ULinkService.h; sourceTree = "<group>"; };
 		E1AC7F821DA89B85001C2676 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		E1AC7F841DA89E1C001C2676 /* RegisterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterCell.swift; sourceTree = "<group>"; };
 		E1AC7F861DA8CAE5001C2676 /* VerifyCodeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyCodeButton.swift; sourceTree = "<group>"; };
@@ -391,6 +394,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1A389411DFA8D82002C01F7 /* libULinkVoiceSDK.a in Frameworks */,
 				E109F61C1DE92CAE00B5B224 /* libicucore.tbd in Frameworks */,
 				E109F61A1DE92C9500B5B224 /* JavaScriptCore.framework in Frameworks */,
 				E109F6181DE92C6700B5B224 /* libz.tbd in Frameworks */,
@@ -734,6 +738,7 @@
 				E114D1CC1D4F1F15006AB978 /* LaunchScreen.storyboard */,
 				E13BACE41D51974900414ACE /* Assets.xcassets */,
 				E14CC6DC1DE4161100327685 /* 18phone.entitlements */,
+				E1370CB51DF938FD004FB202 /* AppIcon.png */,
 				E114D1CF1D4F1F15006AB978 /* Info.plist */,
 				E1F5E57C1D59E5990010FF2C /* 18phone-Bridging-Header.h */,
 			);
@@ -857,9 +862,9 @@
 		E1A0F93E1DED585C00B6174A /* ULinkVoiceSDK */ = {
 			isa = PBXGroup;
 			children = (
+				E1A389401DFA8D74002C01F7 /* ULinkService.h */,
+				E1370CB71DF93A3D004FB202 /* libULinkVoiceSDK.a */,
 				E1A0F93F1DED585C00B6174A /* CommonClass.h */,
-				E1AA51291DF0016A00008594 /* libULinkVoiceSDK.a */,
-				E1A0F9411DED585C00B6174A /* ULinkService.h */,
 			);
 			path = ULinkVoiceSDK;
 			sourceTree = "<group>";
@@ -962,6 +967,7 @@
 				E13BACDF1D51948C00414ACE /* Main.storyboard in Resources */,
 				E17C4FFE1DA9D90300F986A4 /* NumberBar.xib in Resources */,
 				E109F6021DE92B4200B5B224 /* WeiboSDK.bundle in Resources */,
+				E1370CB61DF938FD004FB202 /* AppIcon.png in Resources */,
 				E109F60A1DE92B4D00B5B224 /* read_me.txt in Resources */,
 				E109F5F11DE92AF300B5B224 /* ShareSDK.bundle in Resources */,
 				E1711F831DCC58C200227329 /* Address.plist in Resources */,

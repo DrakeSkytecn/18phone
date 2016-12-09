@@ -14,7 +14,7 @@
 @property(nonatomic, assign) id <ULinkServiceDelegate> delegate;
 
 + (id)shareInstance;
- 
+
 //////////////////////////////////////////////////后台相关设定//////////////////////////////////////////////////
 
 /**
@@ -26,7 +26,7 @@
 
 /**
  
- @brief 设置后台心跳发送
+ @brief 设置后台心跳发送，废弃了
  
  */
 - (void) setBackgroundKeepAlive;
@@ -36,7 +36,7 @@
  @brief 设置应用进入前台时，检查连接是否连接，如果没连接则会执行连接
  
  */
-- (void) detectLinkWhenApplicationWillEnterForeground;
+- (void) detectLinkAndRelink;
 
 
 //////////////////////////////////////////////////相关ID设定////////////////////////////////////////////////////
@@ -76,6 +76,13 @@
 
 /**
  
+ @brief 断开Tcp连接，用户切到后台时，或退出登录等
+ 
+ */
+- (void) stopLink;
+
+/**
+ 
  @brief 软件退出登录
  
  */
@@ -95,6 +102,13 @@
  
  */
 - (BOOL) sendCallInvite:(NSString *)toName toPhone:(NSString *)toPhone display:(NSString *)display attData:(NSString *)attData;
+
+/**
+ 
+ @brief 重发上次缓存下来的呼叫请求，用于：当被叫不在线时，先发送一个voip push，然后6s后调用这个API重发呼叫请求
+ 
+ */
+- (BOOL) reSendLastCallInvite;
 
 /**
  
@@ -169,8 +183,10 @@
 - (void) stopP2PRingOrRingback;
 - (void) playSoundVibrate;
 
-- (void) setMute;
-- (void) setHandfree;
+- (void) setMute:(BOOL)value;
+- (BOOL) getMuteValue;
+- (void) setHandfree:(BOOL)value;
+- (BOOL) getHandfreeValue;
 
 
 @end

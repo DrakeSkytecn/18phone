@@ -40,6 +40,8 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
     /// 用于查询后保存的联系人姓名
     var tempName: String?
     
+    var headPhoto: Data?
+    
     /// 拨号盘数字按键上的字母
     let characters = ["ABC", "DEF", "GHI", "JKL", "MNO", "PQRS", "TUV", "WXYZ"]
     
@@ -161,6 +163,9 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
             //先查是否为通讯录联系人
             let store = CNContactStore()
             let keysToFetch = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
+                               CNContactImageDataKey,
+                               CNContactThumbnailImageDataKey,
+                               CNContactImageDataAvailableKey,
                                CNContactGivenNameKey,
                                CNContactFamilyNameKey,
                                CNContactPhoneNumbersKey] as [Any]
@@ -173,6 +178,9 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     let phoneNumber = PhoneUtil.formatPhoneNumber((number.value).stringValue)
                     if phoneNumber == temp {
                         print("phoneNumber:\(phoneNumber)")
+                        if contact.imageDataAvailable {
+                            self.headPhoto = contact.thumbnailImageData
+                        }
                         self.tempName = contact.familyName + contact.givenName
                         print("self.tempName:\(self.tempName)")
                         //                        self.areaText.text = self.tempName
@@ -336,33 +344,50 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
                     callLog.accountId = appContactInfo!.accountId
                     callLog.contactId = appContactInfo!.identifier
                     callLog.phone = numberText.text!
+                    callLog.headPhoto = headPhoto
                     callLog.name = tempName!
                     callLog.area = tempArea!
                     callLog.callStartTime = Date()
                     callLog.callType = CallType.voice.rawValue
-                    outgoingCallViewController?.callLog = callLog
+                    outgoingCallViewController!.callLog = callLog
                     present(outgoingCallViewController!, animated: true, completion: nil)
                 } else {
-                    if let saveUsername = UserDefaults.standard.string(forKey: "username") {
-                        pending = UIAlertController(title: "回拨电话", message: "正在拨号中，您将收到一通回拨电话，接听等待即可通话", preferredStyle: .alert)
-                        let indicator = UIActivityIndicatorView(frame: pending!.view.bounds)
-                        indicator.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-                        pending?.view.addSubview(indicator)
-                        pending?.addAction(UIAlertAction(title: "挂断", style: .cancel) { action in
-                            if self.callId != nil {
-                                PhoneUtil.hangupBackCall(self.callId!, callBack: { dialBackCallInfo in
-                                    if dialBackCallInfo.status == "0" {
-                                        self.pending?.dismiss(animated: true, completion: nil)
-                                    }
-                                })
-                            }
-                        })
-                        present(pending!, animated: true, completion: nil)
-                        PhoneUtil.dialBackCall(saveUsername, toNumber: numberText.text!, callBack: { dialBackCallInfo in
-                            if dialBackCallInfo.status == "0" {
-                                self.callId = dialBackCallInfo.callId
-                            }
-                        })
+                    if true {
+                        let outgoingCallViewController = R.storyboard.main.outgoingCallViewController()
+                        let callLog = CallLog()
+                        callLog.phone = numberText.text!
+                        callLog.headPhoto = headPhoto
+                        if tempName != nil {
+                            callLog.name = tempName!
+                            callLog.area = tempArea!
+                        }
+                        callLog.callStartTime = Date()
+                        callLog.callType = CallType.voice.rawValue
+                        outgoingCallViewController!.callLog = callLog
+                        outgoingCallViewController!.dialLine = .direct
+                        present(outgoingCallViewController!, animated: true, completion: nil)
+                    } else {
+                        if let saveUsername = UserDefaults.standard.string(forKey: "username") {
+                            pending = UIAlertController(title: "回拨电话", message: "正在拨号中，您将收到一通回拨电话，接听等待即可通话", preferredStyle: .alert)
+                            let indicator = UIActivityIndicatorView(frame: pending!.view.bounds)
+                            indicator.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                            pending?.view.addSubview(indicator)
+                            pending?.addAction(UIAlertAction(title: "挂断", style: .cancel) { action in
+                                if self.callId != nil {
+                                    PhoneUtil.hangupBackCall(self.callId!, callBack: { dialBackCallInfo in
+                                        if dialBackCallInfo.status == "0" {
+                                            self.pending?.dismiss(animated: true, completion: nil)
+                                        }
+                                    })
+                                }
+                            })
+                            present(pending!, animated: true, completion: nil)
+                            PhoneUtil.dialBackCall(saveUsername, toNumber: numberText.text!, callBack: { dialBackCallInfo in
+                                if dialBackCallInfo.status == "0" {
+                                    self.callId = dialBackCallInfo.callId
+                                }
+                            })
+                        }
                     }
                     //                    addCallLog(numberText.text!)
                 }
@@ -381,6 +406,7 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
         if tempName != nil {
             callLog.name = tempName!
         }
+        callLog.headPhoto = headPhoto
         callLog.phone = numberText.text!
         if true {
             callLog.callState = CallState.outConnected.rawValue

@@ -15,6 +15,7 @@ class DetailMenuViewController: UIViewController, UITableViewDataSource, UITable
     var appContactInfo: AppContactInfo?
     var callId: String?
     var contactId: String?
+    var headPhoto: Data?
     var name: String?
     var phones: [String]?
     var phoneAreas: [String]?
@@ -53,6 +54,7 @@ class DetailMenuViewController: UIViewController, UITableViewDataSource, UITable
             callLog.accountId = appContactInfo!.accountId
             callLog.contactId = appContactInfo!.identifier
             callLog.phone = phones!.first!
+            callLog.headPhoto = headPhoto
             callLog.name = name!
             callLog.area = phoneAreas!.first!
             callLog.callType = CallType.video.rawValue
@@ -67,6 +69,7 @@ class DetailMenuViewController: UIViewController, UITableViewDataSource, UITable
             callLog.accountId = appContactInfo!.accountId
             callLog.contactId = appContactInfo!.identifier
             callLog.phone = phones!.first!
+            callLog.headPhoto = headPhoto
             callLog.name = name!
             callLog.area = phoneAreas!.first!
             callLog.callType = CallType.voice.rawValue
@@ -151,6 +154,7 @@ class DetailMenuViewController: UIViewController, UITableViewDataSource, UITable
         if appContactInfo != nil {
             callLog.contactId = appContactInfo!.identifier
         }
+        callLog.headPhoto = headPhoto
         callLog.name = name!
         callLog.phone = phones!.first!
         if true {

@@ -234,26 +234,25 @@
     NSLog(@"_callId:%d", _callId);
     
     // 获取窗口ID
-//    int vid_idx;
+    int vid_idx;
     pjsua_vid_win_id wid = 0;
-//    vid_idx = pjsua_call_get_vid_stream_idx(_callId);
+    vid_idx = pjsua_call_get_vid_stream_idx(_callId);
 //    NSLog(@"vid_idx:%d", vid_idx);
     pjsua_vid_win_id wids[3];
     unsigned count = 3;
     pjsua_vid_enum_wins(wids, &count);
     pjsua_call_info ci;
     pjsua_call_get_info(_callId, &ci);
-    for (int i=0; i<count; i++) {
-        wid = ci.media[i].stream.vid.win_in;
-    }
-    NSLog(@"wid:%d", wid);
-//    if (vid_idx >= 0){
-//        pjsua_call_info ci;
-//        pjsua_call_get_info(_callId, &ci);
-//        
-//        wid = ci.media[vid_idx].stream.vid.win_in;
+//    for (int i=0; i<count; i++) {
+//        wid = ci.media[i].stream.vid.win_in;
 //    }
-    
+    NSLog(@"wid:%d", wid);
+    if (vid_idx >= 0){
+        pjsua_call_info ci;
+        pjsua_call_get_info(_callId, &ci);
+        
+        wid = ci.media[vid_idx].stream.vid.win_in;
+    }
     NSLog(@"wid:%d", wid);
     //设置窗口位置大小
     pjmedia_coord rect;
@@ -268,6 +267,7 @@
     pjsua_vid_win_get_info(wid, &win_info);
     win_info.is_native = PJ_FALSE;
     UIView *view = (__bridge UIView *)win_info.hwnd.info.ios.window;
+    win_info.show = YES;
     pjsua_vid_win_set_show(wid, PJ_TRUE);
     
     return view;

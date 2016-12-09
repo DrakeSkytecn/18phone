@@ -51,6 +51,7 @@ struct App {
     static let realm = try! Realm()
     static let userAgent = GSUserAgent.shared()
     static let userAgentAccount = GSUserAgent.shared().account
+    static let ulinkService = ULinkService.shareInstance() as! ULinkService
     static let statusBarHeight = application.statusBarFrame.height
     static let navigationBarHeight: CGFloat = 44.0
     static var isSpeakerOn = false

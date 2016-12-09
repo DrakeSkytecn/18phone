@@ -27,6 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKPushRegistryDelegate {
         let pushRegistry = PKPushRegistry(queue: DispatchQueue.main)
         pushRegistry.delegate = self
         pushRegistry.desiredPushTypes = [.voIP]
+        App.ulinkService.setDevID("7d2f95120cec8f3e2703f58b4826bc6b", appId: "22ca0cb5a77fc6a9329345d4dc117188", clientId: "13489385888@qq.com", clientPwd: "a12345678")
+        App.ulinkService.startLink()
         initShareService()
         let userDefaults = UserDefaults.standard
         if let userID = userDefaults.string(forKey: "userID") {
@@ -64,11 +66,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKPushRegistryDelegate {
         application.setKeepAliveTimeout(600, handler: {
             self.performSelector(onMainThread: #selector(AppDelegate.keepAlive), with: nil, waitUntilDone: true)
         })
+        App.ulinkService.setBackgroundKeepAlive()
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
         print("applicationWillEnterForeground")
+        App.ulinkService.detectLinkAndRelink()
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -152,25 +156,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKPushRegistryDelegate {
      初始化分享服务
      */
     func initShareService() {
-        ShareSDK.registerApp("f88ec2241369", activePlatforms: [SSDKPlatformType.typeSinaWeibo.rawValue, SSDKPlatformType.typeQQ
+        ShareSDK.registerApp("f88ec2241369", activePlatforms: [SSDKPlatformType.typeSMS.rawValue, SSDKPlatformType.typeSinaWeibo.rawValue, SSDKPlatformType.typeQQ
             .rawValue, SSDKPlatformType.typeWechat.rawValue, SSDKPlatformType.typeTencentWeibo.rawValue], onImport: { platformType in
                 switch platformType {
+                case .typeSMS:
+                    break
+                    
                 case .typeSinaWeibo:
                     ShareSDKConnector.connectWeibo(WeiboSDK.classForCoder())
-                    break;
+                    break
                     
                 case .typeQQ:
                     
                     ShareSDKConnector.connectQQ(QQApiInterface.classForCoder(), tencentOAuthClass: TencentOAuth.classForCoder())
                     
-                    break;
+                    break
                     
                 case .typeWechat:
                     ShareSDKConnector.connectWeChat(WXApi.classForCoder())
-                    break;
+                    break
                     
                 default:
-                    break;
+                    break
                 }
         }, onConfiguration: { platformType, appInfo in
             
