@@ -85,6 +85,8 @@
                    selector:@selector(callMediaStateDidChange:)
                        name:GSSIPCallMediaStateDidChangeNotification
                      object:[GSDispatch class]];
+        
+        [self startRingback];
     }
     return self;
 }

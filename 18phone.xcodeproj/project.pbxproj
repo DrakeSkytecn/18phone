@@ -88,10 +88,10 @@
 		E148E6C31D6C397000BE131E /* OutgoingVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E148E6C21D6C397000BE131E /* OutgoingVideoViewController.swift */; };
 		E155425E1DB4A66000DBEAFB /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E155425D1DB4A66000DBEAFB /* ResetPasswordViewController.swift */; };
 		E159FF441DD6BBD30094D3E9 /* NJImageCropperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E159FF431DD6BBD30094D3E9 /* NJImageCropperViewController.m */; };
+		E15AEA6C1DFBB42900F1A6EF /* ringtone.wav in Resources */ = {isa = PBXBuildFile; fileRef = E15AEA6B1DFBB42900F1A6EF /* ringtone.wav */; };
 		E15AF2041DB5BB4C00D74E68 /* EditContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15AF2031DB5BB4C00D74E68 /* EditContactViewController.swift */; };
 		E15AF2061DB5C0AA00D74E68 /* EditContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15AF2051DB5C0AA00D74E68 /* EditContactCell.swift */; };
 		E15AF2081DB5FA1C00D74E68 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15AF2071DB5FA1C00D74E68 /* ChangePasswordViewController.swift */; };
-		E15C42121D7D094000124257 /* ringtone.wav in Resources */ = {isa = PBXBuildFile; fileRef = E15C42111D7D094000124257 /* ringtone.wav */; };
 		E15C4C3A1D965DA700688086 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15C4C391D965DA700688086 /* MessageViewController.swift */; };
 		E15C4C3C1D96689300688086 /* ZFRippleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15C4C3B1D96689300688086 /* ZFRippleButton.swift */; };
 		E161A6771D78069C00A1F3C4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E161A6761D78069C00A1F3C4 /* AVFoundation.framework */; };
@@ -288,10 +288,10 @@
 		E155425D1DB4A66000DBEAFB /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		E159FF421DD6BBD30094D3E9 /* NJImageCropperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJImageCropperViewController.h; sourceTree = "<group>"; };
 		E159FF431DD6BBD30094D3E9 /* NJImageCropperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJImageCropperViewController.m; sourceTree = "<group>"; };
+		E15AEA6B1DFBB42900F1A6EF /* ringtone.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ringtone.wav; sourceTree = "<group>"; };
 		E15AF2031DB5BB4C00D74E68 /* EditContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditContactViewController.swift; sourceTree = "<group>"; };
 		E15AF2051DB5C0AA00D74E68 /* EditContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditContactCell.swift; sourceTree = "<group>"; };
 		E15AF2071DB5FA1C00D74E68 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
-		E15C42111D7D094000124257 /* ringtone.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ringtone.wav; sourceTree = "<group>"; };
 		E15C4C391D965DA700688086 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		E15C4C3B1D96689300688086 /* ZFRippleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZFRippleButton.swift; sourceTree = "<group>"; };
 		E161A6761D78069C00A1F3C4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -853,8 +853,8 @@
 		E15C42101D7D091100124257 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E15AEA6B1DFBB42900F1A6EF /* ringtone.wav */,
 				E1711F821DCC58C200227329 /* Address.plist */,
-				E15C42111D7D094000124257 /* ringtone.wav */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -960,7 +960,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E109F60E1DE92B5500B5B224 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
-				E15C42121D7D094000124257 /* ringtone.wav in Resources */,
 				E114D1CE1D4F1F15006AB978 /* LaunchScreen.storyboard in Resources */,
 				E13BACE51D51974900414ACE /* Assets.xcassets in Resources */,
 				E109F5E91DE92AE200B5B224 /* ShareSDKUI.bundle in Resources */,
@@ -969,6 +968,7 @@
 				E109F6021DE92B4200B5B224 /* WeiboSDK.bundle in Resources */,
 				E1370CB61DF938FD004FB202 /* AppIcon.png in Resources */,
 				E109F60A1DE92B4D00B5B224 /* read_me.txt in Resources */,
+				E15AEA6C1DFBB42900F1A6EF /* ringtone.wav in Resources */,
 				E109F5F11DE92AF300B5B224 /* ShareSDK.bundle in Resources */,
 				E1711F831DCC58C200227329 /* Address.plist in Resources */,
 			);

@@ -18,6 +18,8 @@ class OutgoingVideoViewController: UIViewController {
     
     var outCall:GSCall?
     
+    var isHangup = false
+    
     var isConnected: Bool = false
     
     @IBOutlet weak var videoWidth: NSLayoutConstraint!
@@ -28,12 +30,13 @@ class OutgoingVideoViewController: UIViewController {
     
     @IBOutlet weak var nameLabel: UILabel!
     
-    @IBOutlet weak var areaLabel: UILabel!
+    @IBOutlet weak var areaLabel: MZTimerLabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if !callLog!.name.isEmpty {
             nameLabel.text = callLog!.name
+            areaLabel.text = "正在拨打视频"
         } else {
             nameLabel.text = callLog!.phone
             areaLabel.text = callLog!.area
@@ -41,7 +44,10 @@ class OutgoingVideoViewController: UIViewController {
         let account = GSUserAgent.shared().account
         outCall = GSCall.outgoingCall(toUri: callLog!.accountId + "@" + AppURL.BEYEBE_SIP_DOMAIN, from: account)
         outCall?.addObserver(self, forKeyPath: "status", options: .initial, context: nil)
-        outCall?.beginVideo()
+        APIUtil.p2pCall(UserDefaults.standard.string(forKey: "userID")!, BUserID: callLog!.accountId) { verifyCodeInfo in
+            
+        }
+        App.changeSpeaker(true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -53,10 +59,42 @@ class OutgoingVideoViewController: UIViewController {
 //            self.previewCon.addSubview(previewWindow!)
 //            self.outCall?.orientation()
 //        }
-        self.outCall?.startPreviewWindow()
-        let previewWindow = self.outCall!.createPreviewWindow(CGRect(x: 0, y: 0, width: previewCon.frame.width, height: previewCon.frame.height))
-        self.previewCon.addSubview(previewWindow!)
-        self.outCall?.orientation()
+        checkOnline(callLog!.accountId)
+    }
+    
+    func checkOnline(_ accountId: String) {
+        var b = true
+        Async.background {
+            var i = 0
+            while !self.isHangup {
+                Async.background(after:1.0) {
+                    if i == 60 {
+                        b = false
+                        Async.main {
+                            self.areaLabel.text = "暂时无法接通，请稍后再拨"
+                        }
+                        return
+                    }
+                    APIUtil.buddyIsOnline(accountId, callBack: { verifyCodeInfo in
+                        i = i + 1
+                        if verifyCodeInfo.codeStatus == 1 {
+                            if verifyCodeInfo.codeInfo == "online" {
+                                b = false
+                                self.outCall?.beginVideo()
+                                self.outCall?.startPreviewWindow()
+                                let previewWindow = self.outCall!.createPreviewWindow(CGRect(x: 0, y: 0, width: self.previewCon.frame.width, height: self.previewCon.frame.height))
+                                self.previewCon.addSubview(previewWindow!)
+                                self.outCall?.orientation()
+                                return
+                            }
+                        }
+                    })
+                    }.wait()
+                if !b {
+                    return
+                }
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -71,6 +109,7 @@ class OutgoingVideoViewController: UIViewController {
     }
     
     @IBAction func hangup(_ sender: UIButton) {
+        isHangup = true
         outCall?.stopPreviewWindow()
         outCall?.end()
         newCallLog.accountId = callLog!.accountId
@@ -115,6 +154,7 @@ class OutgoingVideoViewController: UIViewController {
             
         case GSCallStatusConnected:
             print("OutgoingCallViewController Connected.")
+            areaLabel.start()
             isConnected = true
             let videoView = outCall!.createVideoWindow(view.frame)
             renderCon.addSubview(videoView!)
@@ -124,6 +164,8 @@ class OutgoingVideoViewController: UIViewController {
             
         case GSCallStatusDisconnected:
             print("OutgoingCallViewController Disconnected.")
+            areaLabel.pause()
+            areaLabel.text = "通话已挂断"
 //            dismiss(animated: true, completion: nil)
             break
             
