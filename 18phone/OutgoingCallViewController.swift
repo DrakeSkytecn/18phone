@@ -28,6 +28,8 @@ class OutgoingCallViewController: UIViewController {
     
     var checkOnlineLoop: Async?
     
+    var callDuration = ""
+    
     /// 显示姓名或号码
     @IBOutlet weak var nameLabel: UILabel!
     
@@ -125,6 +127,7 @@ class OutgoingCallViewController: UIViewController {
         newCallLog.headPhoto = callLog!.headPhoto
         newCallLog.name = callLog!.name
         newCallLog.phone = callLog!.phone
+        newCallLog.callDuration = callDuration
         if isConnected {
             newCallLog.callState = CallState.outConnected.rawValue
         } else {
@@ -174,6 +177,7 @@ class OutgoingCallViewController: UIViewController {
             print("OutgoingCallViewController Disconnected.")
             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
             areaLabel.pause()
+            callDuration = areaLabel.text!
             areaLabel.text = "通话已挂断"
             break
             

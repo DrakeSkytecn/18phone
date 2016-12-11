@@ -94,7 +94,7 @@ class CallLog: Object {
     dynamic var callEndTime = Date()
     
     /// 通话时长
-    dynamic var callDuration = Date()
+    dynamic var callDuration = ""
 }
 
 struct CallLogInfo: JSONJoy{

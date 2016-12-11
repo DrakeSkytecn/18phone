@@ -160,7 +160,7 @@ class IncomingCallViewController: UIViewController {
     }
 
     @IBAction func answer(_ sender: UIButton) {
-        self.inCall?.begin()
+        inCall?.begin()
     }
     
     @IBAction func speakerOnOff(_ sender: UIButton) {
@@ -216,7 +216,7 @@ class IncomingCallViewController: UIViewController {
             print("IncomingCallViewController Disconnected.")
             areaLabel.pause()
             areaLabel.text = "通话已挂断"
-//            dismiss(animated: true, completion: nil)
+
             break
             
         default:

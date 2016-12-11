@@ -761,3 +761,20 @@ struct APIUtil {
         }
     }
 }
+
+struct NetworkUtil {
+    
+    static func checkSpeed() {
+        var start = 0.0
+        do {
+            let opt = try HTTP.Download("http://pic55.nipic.com/file/20141208/19462408_171130083000_2.jpg") { url in
+                let speed = (8918 / 1024) / (Date().timeIntervalSince1970 - start)
+                print("speed:\(speed)")
+            }
+            opt.start()
+            start = Date().timeIntervalSince1970
+        } catch {
+            print("got an error creating the request: \(error)")
+        }
+    }
+}
