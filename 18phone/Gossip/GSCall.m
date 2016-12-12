@@ -378,7 +378,7 @@
             
         case PJSIP_INV_STATE_CALLING:
         case PJSIP_INV_STATE_INCOMING: {
-            [self startRingback];
+//            [self startRingback];
             callStatus = GSCallStatusCalling;
         } break;
             
@@ -393,6 +393,7 @@
         } break;
             
         case PJSIP_INV_STATE_DISCONNECTED: {
+            [self stopRingback];
             callStatus = GSCallStatusDisconnected;
         } break;
     }

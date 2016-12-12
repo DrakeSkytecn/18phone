@@ -36,6 +36,8 @@ struct AppURL {
 //        static let BEYEBE_18PHONE_API_BASE = "http://18phone.beyebe.cn/Home/"
     
     static let ZHIYU_BASE_URL = "http://www.zypaas.com:9988/V1/Account/"
+    
+    static let ULINK_LOGIN_URL = "https://app.youlianyun.com/mutual/testinfo.php"
 }
 
 /**
@@ -48,6 +50,8 @@ struct App {
     static let ZHIYU_API_ACCOUNT = "ACC755b7ec7456240b99db0eb8edd8f37a9"
     static let ZHIYU_API_KEY = "API11387e576dcd4dd886c02ea63a433e24"
     static let ZHIYU_APP_ID = "APP1e811237a2674f5c824b512a7916c5a8"
+    static let ULINK_ACCOUNT = "13489385888@qq.com"
+    static let ULINK_PASSWORD = "a12345678"
     static let realm = try! Realm()
     static let userAgent = GSUserAgent.shared()
     static let userAgentAccount = GSUserAgent.shared().account
@@ -339,6 +343,29 @@ struct PhoneUtil {
                         callBack!(dialBackCallInfo)
                     }
                 }
+            }
+        } catch {
+            print("got an error creating the request: \(error)")
+        }
+    }
+    
+    static func loginULink() {
+        do {
+            let opt = try HTTP.POST(AppURL.ULINK_LOGIN_URL, parameters:["account":App.ULINK_ACCOUNT, "password":App.ULINK_PASSWORD], headers:["Content-Type":"application/json; charset=utf-8", "Accept":"application/json"], requestSerializer:JSONParameterSerializer())
+            opt.start { response in
+                if let error = response.error {
+                    print("error: \(error.localizedDescription)")
+                    print("error: \(error.code)")
+                    
+                    return
+                }
+                print(response.text!)
+//                let dialBackCallInfo = DialBackCallInfo(JSONDecoder(response.data))
+//                if callBack != nil {
+//                    Async.main {
+//                        callBack!(dialBackCallInfo)
+//                    }
+//                }
             }
         } catch {
             print("got an error creating the request: \(error)")

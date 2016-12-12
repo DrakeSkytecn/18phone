@@ -76,7 +76,9 @@ class OutgoingCallViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        checkOnline(callLog!.accountId)
+        if dialLine == .p2p {
+            checkOnline(callLog!.accountId)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -177,7 +179,9 @@ class OutgoingCallViewController: UIViewController {
             print("OutgoingCallViewController Disconnected.")
             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
             areaLabel.pause()
-            callDuration = areaLabel.text!
+            if isConnected {
+                callDuration = areaLabel.text!
+            }
             areaLabel.text = "通话已挂断"
             break
             

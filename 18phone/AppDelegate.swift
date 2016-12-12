@@ -12,7 +12,7 @@ import CoreTelephony
 import SwiftEventBus
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, PKPushRegistryDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, PKPushRegistryDelegate, ULinkServiceDelegate {
     
     var window: UIWindow?
     
@@ -27,8 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKPushRegistryDelegate {
         let pushRegistry = PKPushRegistry(queue: DispatchQueue.main)
         pushRegistry.delegate = self
         pushRegistry.desiredPushTypes = [.voIP]
-        App.ulinkService.setDevID("7d2f95120cec8f3e2703f58b4826bc6b", appId: "22ca0cb5a77fc6a9329345d4dc117188", clientId: "13489385888@qq.com", clientPwd: "a12345678")
+        App.ulinkService.delegate = self
+        App.ulinkService.setBackgroundTask()
+        App.ulinkService.setDevID("7d2f95120cec8f3e2703f58b4826bc6b", appId: "22ca0cb5a77fc6a9329345d4dc117188", clientId: "1664005609346033", clientPwd: "5h56ySCy")
         App.ulinkService.startLink()
+        PhoneUtil.loginULink()
         initShareService()
         let userDefaults = UserDefaults.standard
         if let userID = userDefaults.string(forKey: "userID") {
@@ -215,6 +218,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKPushRegistryDelegate {
                 break;
             }
         })
+    }
+    
+    // MARK: - ULinkServiceDelegate
+    func uLinkService(_ aObject: ULinkService!, startHttpRequest obj: Any!) {
+        print("startHttpRequest")
+    }
+    
+    func uLinkService(_ aObject: ULinkService!, httpGetInitDataReturn stateCode: Int32) {
+        print("httpGetInitDataReturn \(stateCode)")
+    }
+    
+    func uLinkService(_ aObject: ULinkService!, httpCallBackStartReturn msgDic: Any!) {
+        print("httpCallBackStartReturn")
+    }
+    
+    func uLinkService(_ aObject: ULinkService!, httpCallBackStopReturn msgDic: Any!) {
+        print("httpCallBackStopReturn")
+    }
+    
+    func uLinkService(_ aObject: ULinkService!, startTcpLink obj: Any!) {
+        print("startTcpLink")
+    }
+    
+    func uLinkService(_ aObject: ULinkService!, receiveLoginAck stateCode: Int32) {
+        print("receiveLoginAck")
+    }
+    
+    func uLinkService(_ aObject: ULinkService!, receiveKickOff stateCode: Int32) {
+        print("receiveKickOff")
+    }
+    
+    func uLinkService(_ aObject: ULinkService!, receiveServerEvent msgDic: Any!) {
+        print("receiveServerEvent")
+    }
+    
+    func uLinkService(_ aObject: ULinkService!, tcpNetworkError stateCode: Int32) {
+        print("tcpNetworkError \(stateCode)")
+    }
+    
+    func uLinkService(_ aObject: ULinkService!, callReturnNotify callState: CallState, stateCode: Int32) {
+        print("callReturnNotify callState:\(callState) stateCode:\(stateCode)")
     }
 }
 

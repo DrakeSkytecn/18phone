@@ -13,7 +13,6 @@
 #import "PJSIP.h"
 #import "Util.h"
 
-
 @implementation GSUserAgent {
     GSConfiguration *_config;
     pjsua_transport_id _transportId;
@@ -29,7 +28,6 @@
     
     return agent;
 }
-
 
 - (id)init {
     if (self = [super init]) {
@@ -56,7 +54,6 @@
     _config = nil;
     _status = GSUserAgentStateDestroyed;
 }
-
 
 - (GSConfiguration *)configuration {
     return _config;
@@ -116,13 +113,13 @@
     pjsua_transport_config transportConfig;
     pjsua_transport_config_default(&transportConfig);
     transportConfig.port = 5060;
-    pjsip_transport_type_e transportType = 0;
-    switch (_config.transportType) {
-        case GSUDPTransportType: transportType = PJSIP_TRANSPORT_UDP; break;
-        case GSUDP6TransportType: transportType = PJSIP_TRANSPORT_UDP6; break;
-        case GSTCPTransportType: transportType = PJSIP_TRANSPORT_TCP; break;
-        case GSTCP6TransportType: transportType = PJSIP_TRANSPORT_TCP6; break;
-    }
+//    pjsip_transport_type_e transportType = 0;
+//    switch (_config.transportType) {
+//        case GSUDPTransportType: transportType = PJSIP_TRANSPORT_UDP; break;
+//        case GSUDP6TransportType: transportType = PJSIP_TRANSPORT_UDP6; break;
+//        case GSTCPTransportType: transportType = PJSIP_TRANSPORT_TCP; break;
+//        case GSTCP6TransportType: transportType = PJSIP_TRANSPORT_TCP6; break;
+//    }
     
     GSReturnNoIfFails(pjsua_transport_create(PJSIP_TRANSPORT_UDP, &transportConfig, &_transportId));
     
@@ -143,7 +140,6 @@
 //    tcp6_cfg.port = 5090;
 //    
 //    GSReturnNoIfFails(pjsua_transport_create(PJSIP_TRANSPORT_TCP6, &tcp6_cfg, &_transportId));
-    
     
     [self setStatus:GSUserAgentStateConfigured];
 

@@ -85,7 +85,10 @@ class CallLogMenuViewController: UIViewController, UITableViewDataSource, UITabl
         default:
             break
         }
-        //cell?.callDuration = callLog.callDuration
+        
+        if !callLog.callDuration.isEmpty {
+            cell?.callDuration.text = "接通\(callLog.callDuration)"
+        }
         
         return cell!
     }

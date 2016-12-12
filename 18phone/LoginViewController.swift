@@ -25,10 +25,6 @@ class LoginViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.dataSource = self
         tableView.delegate = self
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        //navigationController?.navigationBar.hidden = false
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -45,7 +41,7 @@ class LoginViewController: UIViewController, UITableViewDataSource, UITableViewD
         cell.contentField.tag = indexPath.row
         cell.contentField.delegate = self
         cell.contentField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-        if (indexPath as NSIndexPath).row == 0 {
+        if indexPath.row == 0 {
             if let saveUsername = UserDefaults.standard.string(forKey: "username") {
                 cell.contentField.text = saveUsername
                 phoneNumber = saveUsername
@@ -53,11 +49,12 @@ class LoginViewController: UIViewController, UITableViewDataSource, UITableViewD
             cell.contentField.keyboardType = .numberPad
             cell.contentField.becomeFirstResponder()
         } else {
+            cell.contentField.keyboardType = .default
+            cell.contentField.isSecureTextEntry = true
             if let savePassword = UserDefaults.standard.string(forKey: "password") {
                 cell.contentField.text = savePassword
                 password = savePassword
             }
-            cell.contentField.keyboardType = .default
         }
 
         return cell
@@ -117,13 +114,14 @@ class LoginViewController: UIViewController, UITableViewDataSource, UITableViewD
                             userDefaults.synchronize()
                         }
                         App.initUserAgent((loginInfo!.userID)!, password: self.password)
-                        self.present(R.storyboard.main.kTabBarController()!, animated: true, completion: nil)
+                        self.present(R.storyboard.main.kTabBarController()!, animated: true, completion: {
+                            MBProgressHUD.hide(for: self.view, animated: true)
+                        })
                     } else {
                         alertController.message = loginInfo?.codeInfo
                         self.present(alertController, animated: true, completion: nil)
                     }
                 }
-                MBProgressHUD.hide(for: self.view, animated: true)
             })
         }
     }

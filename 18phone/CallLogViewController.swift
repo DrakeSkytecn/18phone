@@ -116,26 +116,33 @@ class CallLogViewController: UITableViewController {
         alertController.addAction(UIAlertAction(title: "语音通话", style: .default) { action in
             if callLog.accountId.isEmpty {
                 if PhoneUtil.isMobileNumber(callLog.phone) {
-                    if let fromNumber = UserDefaults.standard.string(forKey: "username") {
-                        self.pending = UIAlertController(title: "回拨电话", message: "正在拨号中，您将收到一通回拨电话，接听等待即可通话", preferredStyle: .alert)
-                        let indicator = UIActivityIndicatorView(frame: self.pending!.view.bounds)
-                        indicator.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-                        self.pending?.view.addSubview(indicator)
-                        self.pending?.addAction(UIAlertAction(title: "挂断", style: .cancel) { action in
-                            if self.callId != nil {
-                                PhoneUtil.hangupBackCall(self.callId!, callBack: { dialBackCallInfo in
-                                    if dialBackCallInfo.status == "0" {
-                                        self.pending?.dismiss(animated: true, completion: nil)
-                                    }
-                                })
-                            }
-                        })
-                        self.present(self.pending!, animated: true, completion: nil)
-                        PhoneUtil.dialBackCall(fromNumber, toNumber: callLog.phone, callBack: { dialBackCallInfo in
-                            if dialBackCallInfo.status == "0" {
-                                self.callId = dialBackCallInfo.callId
-                            }
-                        })
+                    if true {
+                        let outgoingCallViewController = R.storyboard.main.outgoingCallViewController()
+                        outgoingCallViewController!.callLog = callLog
+                        outgoingCallViewController!.dialLine = .direct
+                        self.present(outgoingCallViewController!, animated: true, completion: nil)
+                    } else {
+                        if let fromNumber = UserDefaults.standard.string(forKey: "username") {
+                            self.pending = UIAlertController(title: "回拨电话", message: "正在拨号中，您将收到一通回拨电话，接听等待即可通话", preferredStyle: .alert)
+                            let indicator = UIActivityIndicatorView(frame: self.pending!.view.bounds)
+                            indicator.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                            self.pending?.view.addSubview(indicator)
+                            self.pending?.addAction(UIAlertAction(title: "挂断", style: .cancel) { action in
+                                if self.callId != nil {
+                                    PhoneUtil.hangupBackCall(self.callId!, callBack: { dialBackCallInfo in
+                                        if dialBackCallInfo.status == "0" {
+                                            self.pending?.dismiss(animated: true, completion: nil)
+                                        }
+                                    })
+                                }
+                            })
+                            self.present(self.pending!, animated: true, completion: nil)
+                            PhoneUtil.dialBackCall(fromNumber, toNumber: callLog.phone, callBack: { dialBackCallInfo in
+                                if dialBackCallInfo.status == "0" {
+                                    self.callId = dialBackCallInfo.callId
+                                }
+                            })
+                        }
                     }
                     APIUtil.getContactID(callLog.phone, callBack: { contactIDInfo in
                         if contactIDInfo.codeStatus == 1 {
@@ -150,7 +157,7 @@ class CallLogViewController: UITableViewController {
                 }
             } else {
                 let outgoingCallViewController = R.storyboard.main.outgoingCallViewController()
-                outgoingCallViewController?.callLog = callLog
+                outgoingCallViewController!.callLog = callLog
                 self.present(outgoingCallViewController!, animated: true, completion: nil)
             }
             })

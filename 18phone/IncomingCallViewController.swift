@@ -23,6 +23,8 @@ class IncomingCallViewController: UIViewController {
     
     var inCall: GSCall?
     
+    var callDuration = ""
+    
     /// 接通前显示来电信息，接通后显示通话时间
     @IBOutlet weak var nameLabel: UILabel!
     
@@ -49,6 +51,7 @@ class IncomingCallViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        App.changeSpeaker(true)
         /**
          storyboard目前不支持设置CGColor
          */
@@ -144,7 +147,6 @@ class IncomingCallViewController: UIViewController {
         
         inCall?.addObserver(self, forKeyPath: "status", options: .initial, context: nil)
 //        inCall?.startRingback()
-        App.changeSpeaker(true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -173,6 +175,7 @@ class IncomingCallViewController: UIViewController {
         callLog.contactId = appContactInfo!.identifier
         callLog.name = nameLabel.text!
         callLog.phone = phoneNumber
+        callLog.callDuration = callDuration
         if isConnected {
             callLog.callState = CallState.inConnected.rawValue
         } else {
@@ -204,6 +207,7 @@ class IncomingCallViewController: UIViewController {
             
         case GSCallStatusConnected:
             print("IncomingCallViewController Connected.")
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
             areaLabel.start()
             isConnected = true
             connectingCon.isHidden = true
@@ -214,9 +218,12 @@ class IncomingCallViewController: UIViewController {
             
         case GSCallStatusDisconnected:
             print("IncomingCallViewController Disconnected.")
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
             areaLabel.pause()
+            if isConnected {
+                callDuration = areaLabel.text!
+            }
             areaLabel.text = "通话已挂断"
-
             break
             
         default:

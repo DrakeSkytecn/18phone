@@ -166,12 +166,14 @@ class ContactDetailViewController: UIViewController {
         if appContactInfo!.accountId.isEmpty {
             alertController.addAction(UIAlertAction(title: "分享", style: .default) { action in
                 let shareParames = NSMutableDictionary()
-                shareParames.ssdkSetupShareParams(byText: "注册18phone，免费通话18天http://192.168.10.150:8080/view/index.html",
+                let userID = UserDefaults.standard.string(forKey: "userID")!
+                let shareURL = "http://192.168.10.249/Register/registerPage?randomID=\(userID)"
+                shareParames.ssdkSetupShareParams(byText: "注册18phone，免费通话18天\(shareURL)",
                                                   images : R.image.shareImg()!,
-                                                  url : URL(string:"http://192.168.10.150:8080/view/index.html"),
+                                                  url : URL(string: shareURL),
                                                   title : "18phone",
                                                   type : .auto)
-                shareParames.ssdkSetupSMSParams(byText: "注册18phone，免费通话18天http://192.168.10.150:8080/view/index.html", title: "18phone", images: nil, attachments: nil, recipients: self.phones, type: .text)
+                shareParames.ssdkSetupSMSParams(byText: "注册18phone，免费通话18天\(shareURL)", title: "18phone", images: nil, attachments: nil, recipients: self.phones, type: .text)
                 ShareSDK.showShareActionSheet(self.view, items: nil, shareParams: shareParames) { state, platformType, userdata, contentEnity, error, end in
                     switch state {
                         

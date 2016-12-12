@@ -55,6 +55,7 @@ class RegisterViewController: UIViewController, UITableViewDataSource, UITableVi
                 break
             case 1,2:
                 cell.contentField.keyboardType = .default
+                cell.contentField.isSecureTextEntry = true
                 break
             default:
                 break
@@ -140,12 +141,12 @@ class RegisterViewController: UIViewController, UITableViewDataSource, UITableVi
                 userDefaults.set(self.password, forKey: "password")
                 userDefaults.synchronize()
                 App.initUserAgent(registerInfo.userID!, password: self.password)
-                MBProgressHUD.hide(for: self.view, animated: true)
                 self.present(R.storyboard.main.kTabBarController()!, animated: true, completion: nil)
             } else {
                 alertController.message = registerInfo.codeinfo
                 self.present(alertController, animated: true, completion: nil)
             }
+            MBProgressHUD.hide(for: self.view, animated: true)
         })
     }
     
