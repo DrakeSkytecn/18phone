@@ -15,7 +15,7 @@ class UserCenterViewController: UITableViewController {
     
     var icons2 = [R.image.setting(), R.image.about()]
     
-    var titles1 = ["我的钱包", "我的账单"]
+    var titles1 = ["免费通话", "我的账单"]
     
     var titles2 = ["我的设置", "关于18phone"]
     
@@ -89,6 +89,17 @@ class UserCenterViewController: UITableViewController {
             if indexPath.section == 1 {
                 cell?.imageView?.image = icons1[indexPath.row]
                 cell?.textLabel?.text = titles1[indexPath.row]
+                if indexPath.row == 0 {
+                    cell?.accessoryType = .none
+                    cell?.detailTextLabel?.text = "0天"
+                    if let userID = UserDefaults.standard.string(forKey: "userID") {
+                        APIUtil.getDayLeft(userID, callBack: { dayLeft in
+                            if let day = dayLeft.day {
+                                cell?.detailTextLabel?.text = "\(String(describing: day))天"
+                            }
+                        })
+                    }
+                }
             } else if indexPath.section == 2 {
                 cell?.imageView?.image = icons2[indexPath.row]
                 cell?.textLabel?.text = titles2[indexPath.row]
