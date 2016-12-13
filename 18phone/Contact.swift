@@ -118,3 +118,45 @@ struct BackupContactInfo: JSONJoy {
         codeinfo = decoder["codeInfo"].string
     }
 }
+
+struct ContactInfo: JSONJoy {
+    
+    let PhoneID: String?
+    let Name: String?
+    let Mobile: String?
+    let Sex: Int?
+    let Age: Int?
+    let Area: String?
+    let PersonalSignature: String?
+    let HeadImageUrl: String?
+    let BUserID: String?
+    
+    init(_ decoder: JSONDecoder) {
+        PhoneID = decoder["PhoneID"].string
+        Name = decoder["Name"].string
+        Mobile = decoder["Mobile"].string
+        Sex = decoder["Sex"].integer
+        Age = decoder["Age"].integer
+        Area = decoder["Area"].string
+        PersonalSignature = decoder["PersonalSignature"].string
+        HeadImageUrl = decoder["HeadImageUrl"].string
+        BUserID = decoder["BUserID"].string
+    }
+}
+
+struct DownloadContactInfos: JSONJoy {
+    
+    let codeStatus: Int?
+    let codeInfo: String?
+    var contactInfos = [ContactInfo]()
+    
+    init(_ decoder: JSONDecoder) {
+        codeStatus = decoder["codeStatus"].integer
+        codeInfo = decoder["codeInfo"].string
+        if let tempContactInfos = decoder["data"].array {
+            for contactInfoDecoder in tempContactInfos {
+                contactInfos.append(ContactInfo(contactInfoDecoder))
+            }
+        }
+    }
+}

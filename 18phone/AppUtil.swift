@@ -719,6 +719,29 @@ struct APIUtil {
         }
     }
     
+    static func downloadContact(_ userID: String, callBack: ((DownloadContactInfos) -> ())?) {
+        do {
+            let opt = try HTTP.POST(AppURL.BEYEBE_18PHONE_API_BASE + "downloadContactsBook", parameters: ["userID":userID])
+            opt.start { response in
+                if let error = response.error {
+                    print("error: \(error.localizedDescription)")
+                    print("error: \(error.code)")
+                    
+                    return
+                }
+                print(response.text!)
+                let downloadContactInfos = DownloadContactInfos(JSONDecoder(response.data))
+                if callBack != nil {
+                    Async.main {
+                        callBack!(downloadContactInfos)
+                    }
+                }
+            }
+        } catch {
+            print("got an error creating the request: \(error)")
+        }
+    }
+    
     static func p2pCall(_ AUserID: String, BUserID: String, callBack: ((VerifyCodeInfo) -> ())?) {
         do {
             let opt = try HTTP.POST(AppURL.BEYEBE_18PHONE_API_BASE + "pushXinGeMessage", parameters: ["AUserID":AUserID, "BUserID":BUserID])

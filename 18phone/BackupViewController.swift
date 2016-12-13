@@ -91,6 +91,78 @@ class BackupViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        if indexPath.row == 3 {
+            MBProgressHUD.showAdded(to: view, animated: true)
+            let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "好的", style: .default, handler: nil)
+            alertController.addAction(okAction)
+            if let userID = UserDefaults.standard.string(forKey: "userID") {
+                APIUtil.downloadContact(userID) { downloadContactInfos in
+                    if downloadContactInfos.codeStatus == 1 {
+                        for contactInfo in downloadContactInfos.contactInfos {
+                            let store = CNContactStore()
+                            let keysToFetch = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
+                                               CNContactImageDataKey,
+                                               CNContactThumbnailImageDataKey,
+                                               CNContactImageDataAvailableKey,
+                                               CNContactPhoneNumbersKey,
+                                               CNContactPhoneticGivenNameKey,
+                                               CNContactPhoneticFamilyNameKey] as [Any]
+                            do {
+                                let contact = try store.unifiedContact(withIdentifier: contactInfo.PhoneID!, keysToFetch: keysToFetch as! [CNKeyDescriptor]).mutableCopy() as! CNMutableContact
+                                contact.familyName = contactInfo.Name!
+                                contact.givenName = ""
+                                var phoneNumbers = [CNLabeledValue<CNPhoneNumber>]()
+                                for phoneNumber in contactInfo.Mobile!.components(separatedBy: ",") {
+                                    phoneNumbers.append(CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: phoneNumber)))
+                                }
+                                contact.phoneNumbers = phoneNumbers
+                                let appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contact.identifier)'").first!
+                                try! App.realm.write {
+                                    appContactInfo.sex = contactInfo.Sex!
+                                    if contactInfo.Area != nil {
+                                        appContactInfo.area = contactInfo.Area!
+                                    }
+                                }
+                                let saveRequest = CNSaveRequest()
+                                saveRequest.update(contact)
+                                try store.execute(saveRequest)
+                            }catch {
+                                let contact = CNMutableContact()
+                                contact.familyName = contactInfo.Name!
+                                contact.givenName = ""
+                                var phoneNumbers = [CNLabeledValue<CNPhoneNumber>]()
+                                for phoneNumber in contactInfo.Mobile!.components(separatedBy: ",") {
+                                    phoneNumbers.append(CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: phoneNumber)))
+                                }
+                                contact.phoneNumbers = phoneNumbers
+                                let appContactInfo = AppContactInfo()
+                                try! App.realm.write {
+                                    appContactInfo.identifier = contact.identifier
+                                    appContactInfo.sex = contactInfo.Sex!
+                                    if contactInfo.Area != nil {
+                                        appContactInfo.area = contactInfo.Area!
+                                    }
+                                    appContactInfo.age = contactInfo.Age!
+                                    if contactInfo.PersonalSignature != nil {
+                                        appContactInfo.signature = contactInfo.PersonalSignature!
+                                    }
+                                }
+                                let store = CNContactStore()
+                                let saveRequest = CNSaveRequest()
+                                saveRequest.add(contact, toContainerWithIdentifier:nil)
+                                try! store.execute(saveRequest)
+                            }
+                        }
+                        alertController.message = "恢复成功"
+                    } else {
+                        alertController.message = downloadContactInfos.codeInfo
+                    }
+                    self.present(alertController, animated: true, completion: nil)
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                }
+            }
+        }
     }
     
     func switchAction(_ sender: UISwitch) {
@@ -101,7 +173,7 @@ class BackupViewController: UIViewController, UITableViewDataSource, UITableView
     
     @IBAction func backupContacts(_ sender: UIButton) {
         MBProgressHUD.showAdded(to: view, animated: true)
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+        let alertController = UIAlertController(title: nil, message: "备份成功", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "好的", style: .default, handler: nil)
         alertController.addAction(okAction)
         if let userID = UserDefaults.standard.string(forKey: "userID") {
@@ -116,8 +188,9 @@ class BackupViewController: UIViewController, UITableViewDataSource, UITableView
                     let formatNumber = PhoneUtil.formatPhoneNumber(phoneNumber)
                     if phones.isEmpty {
                         phones = formatNumber
+                    } else {
+                        phones = phones + "," + formatNumber
                     }
-                    phones = phones + "," + formatNumber
                 }
                 let appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contact.identifier)'").first!
                 var contactBackup: [String : Any] = ["phoneID":contact.identifier, "userID":userID, "name":contact.familyName + contact.givenName,"mobile":phones, "sex":appContactInfo.sex, "age":appContactInfo.age, "area":appContactInfo.area]
@@ -133,7 +206,6 @@ class BackupViewController: UIViewController, UITableViewDataSource, UITableView
             APIUtil.uploadContact(jsonString as! String, callBack: { backupContactInfo in
                 if backupContactInfo.codeStatus == 1 {
                     MBProgressHUD.hide(for: self.view, animated: true)
-                    alertController.message = "备份成功"
                     self.present(alertController, animated: true, completion: nil)
                     self.tableView.cellForRow(at: IndexPath(row: 1, section: 0))?.detailTextLabel?.text = "\(backupContactInfo.upsucceedCount!)人"
                     self.tableView.cellForRow(at: IndexPath(row: 2, section: 0))?.detailTextLabel?.text = "上次同步\(backupContactInfo.endTime!)"

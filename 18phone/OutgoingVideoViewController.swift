@@ -22,6 +22,8 @@ class OutgoingVideoViewController: UIViewController {
     
     var isConnected: Bool = false
     
+    var callDuration = ""
+    
     @IBOutlet weak var videoWidth: NSLayoutConstraint!
     
     @IBOutlet weak var renderCon: UIView!
@@ -116,6 +118,7 @@ class OutgoingVideoViewController: UIViewController {
         newCallLog.contactId = callLog!.contactId
         newCallLog.name = callLog!.name
         newCallLog.phone = callLog!.phone
+        newCallLog.callDuration = callDuration
         if isConnected {
             newCallLog.callState = CallState.outConnected.rawValue
         } else {
@@ -165,6 +168,9 @@ class OutgoingVideoViewController: UIViewController {
         case GSCallStatusDisconnected:
             print("OutgoingCallViewController Disconnected.")
             areaLabel.pause()
+            if isConnected {
+                callDuration = areaLabel.text!
+            }
             areaLabel.text = "通话已挂断"
 //            dismiss(animated: true, completion: nil)
             break

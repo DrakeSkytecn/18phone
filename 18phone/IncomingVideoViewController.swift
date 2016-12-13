@@ -23,6 +23,8 @@ class IncomingVideoViewController: UIViewController {
     
     var isConnected: Bool = false
     
+    var callDuration = ""
+    
     /// 接通前显示来电信息，接通后显示通话时间
     @IBOutlet weak var nameLabel: UILabel!
     
@@ -169,6 +171,7 @@ class IncomingVideoViewController: UIViewController {
         callLog.contactId = appContactInfo!.identifier
         callLog.name = nameLabel.text!
         callLog.phone = phoneNumber
+        callLog.callDuration = callDuration
         if isConnected {
             callLog.callState = CallState.inConnected.rawValue
         } else {
@@ -215,6 +218,9 @@ class IncomingVideoViewController: UIViewController {
         case GSCallStatusDisconnected:
             print("IncomingCallViewController Disconnected.")
             areaLabel.pause()
+            if isConnected {
+                callDuration = areaLabel.text!
+            }
             areaLabel.text = "通话已挂断"
 
             break

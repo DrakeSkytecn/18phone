@@ -55,9 +55,9 @@ class OutgoingCallViewController: UIViewController {
          */
         dialPlateBtn.layer.borderColor = UIColor.white.cgColor
         speakerBtn.layer.borderColor = UIColor.white.cgColor
+        areaLabel.text = "正在拨号"
         if !callLog!.name.isEmpty {
             nameLabel.text = callLog!.name
-            areaLabel.text = "正在拨号"
         } else {
             nameLabel.text = callLog!.phone
             areaLabel.text = callLog!.area
@@ -71,6 +71,21 @@ class OutgoingCallViewController: UIViewController {
                 
             }
         } else if dialLine == .direct {
+            SwiftEventBus.onMainThread(self, name: "talking") { result in
+                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+                self.areaLabel.start()
+            }
+            SwiftEventBus.onMainThread(self, name: "callStop") { result in
+                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+                self.areaLabel.pause()
+                self.areaLabel.text = "通话已挂断"
+            }
+            SwiftEventBus.onMainThread(self, name: "noAnswer") { result in
+                self.areaLabel.text = "暂时无法接通，请稍后再拨"
+            }
+//            SwiftEventBus.onMainThread(self, name: "hangup") { result in
+//                self.areaLabel.text = "通话已挂断"
+//            }
             App.ulinkService.sendCallInvite("", toPhone: callLog!.phone, display: UserDefaults.standard.string(forKey: "username")!, attData: "")
         }
     }
@@ -199,6 +214,8 @@ class OutgoingCallViewController: UIViewController {
     deinit {
         if dialLine == .p2p {
             outCall?.removeObserver(self, forKeyPath: "status")
+        } else {
+            SwiftEventBus.unregister(self)
         }
         print("OutgoingCallViewController deinit")
     }

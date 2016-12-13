@@ -143,14 +143,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKPushRegistryDelegate, U
     
     func showNotification()
     {
-        // Create a new notification
         let alert = UILocalNotification()
         alert.repeatInterval = NSCalendar.Unit(rawValue: 0)
         alert.alertBody = "Incoming call received..."
-        /* This action just brings the app to the FG, it doesn't
-         * automatically answer the call (unless you specify the
-         * --auto-answer option).
-         */
         alert.alertAction = "Activate app"
         App.application.presentLocalNotificationNow(alert)
     }
@@ -163,10 +158,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKPushRegistryDelegate, U
             .rawValue, SSDKPlatformType.typeWechat.rawValue, SSDKPlatformType.typeTencentWeibo.rawValue], onImport: { platformType in
                 switch platformType {
                 case .typeSMS:
+                    
                     break
                     
                 case .typeSinaWeibo:
                     ShareSDKConnector.connectWeibo(WeiboSDK.classForCoder())
+                    
                     break
                     
                 case .typeQQ:
@@ -177,6 +174,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKPushRegistryDelegate, U
                     
                 case .typeWechat:
                     ShareSDKConnector.connectWeChat(WXApi.classForCoder())
+                    
                     break
                     
                 default:
@@ -257,8 +255,90 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKPushRegistryDelegate, U
         print("tcpNetworkError \(stateCode)")
     }
     
-    func uLinkService(_ aObject: ULinkService!, callReturnNotify callState: CallState, stateCode: Int32) {
+    func uLinkService(_ aObject: ULinkService!, callReturnNotify callState: _CallState, stateCode: Int32) {
         print("callReturnNotify callState:\(callState) stateCode:\(stateCode)")
+        
+        switch callState
+        {
+        case CallStatusCode_CallProcess:
+            break
+        case CallStatusCode_Ringing:
+            App.ulinkService.playP2PRing("ringtone", soundType: "wav")
+//            if ([self getLocalCallDir]==CallDir_Caller)
+//            {
+//                [_callViewController setStatusTips:@"正在振铃..."];
+//                
+//                //直拨不用本地响回铃音
+//                if ([self getCallType]==CallType_P2P)
+//                {
+//                    [self playP2PRingback:@"ring" soundType:@"wav"];
+//                }
+//            }
+//            else
+//            {
+////                [_callViewController setStatusTips:@"电话呼入..."];
+//                
+//                //响起铃声
+////                if ([[ULinkService shareInstance] isBackground]==NO)
+////                {
+////                    [self playP2PRing:@"ring" soundType:@"wav"];
+////                }
+//            }
+            
+            break
+        case CallStatusCode_Talking:
+            SwiftEventBus.post("talking")
+            App.ulinkService.stopP2PRingOrRingback()
+            
+//            [_callViewController startSecondsTimer];
+            
+            //停止铃声或回铃音
+//            [self stopP2PRingOrRingback];
+            
+            break
+        case CallStatusCode_CalleeRefuse:
+            SwiftEventBus.post("noAnswer")
+            App.ulinkService.stopP2PRingOrRingback()
+//            [_callViewController setStatusTips:@"对方拒绝"];
+            
+            //停止铃声或回铃音
+//            [self stopP2PRingOrRingback];
+            
+//            [self performSelector:@selector(dismissModalViewController) withObject:nil afterDelay:0.8];
+            
+            break
+        case CallStatusCode_CallStop:
+            SwiftEventBus.post("callStop")
+            App.ulinkService.stopP2PRingOrRingback()
+//            [_callViewController stopSecondsTimer];
+            
+//            [_callViewController setStatusTips:@"通话结束"];
+            
+            //停止铃声或回铃音
+//            [self stopP2PRingOrRingback];
+            
+//            [self performSelector:@selector(dismissModalViewController) withObject:nil afterDelay:0.8];
+            
+//            [[LocalNotification shareInstance] stopLocalNotificationOfCall];
+            break
+        case CallStatusCode_CallTimeout:
+            SwiftEventBus.post("noAnswer")
+            App.ulinkService.stopP2PRingOrRingback()
+//            [_callViewController setStatusTips:@"呼叫超时"];
+            break
+        case CallStatusCode_CalleeNoReply:
+            SwiftEventBus.post("noAnswer")
+            App.ulinkService.stopP2PRingOrRingback()
+//            [_callViewController setStatusTips:@"对方无应答"];
+            
+            //停止铃声或回铃音
+//            [self stopP2PRingOrRingback];
+            
+            break
+            
+        default:
+            break
+        }
     }
 }
 
