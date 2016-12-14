@@ -5,13 +5,10 @@ use_frameworks!
 
 target :"18phone" do
     pod 'R.swift', '~> 3.1.0'
-    pod 'SwiftEventBus', :tag => '2.1.2', :git => 'https://github.com/cesarferreira/SwiftEventBus.git'
     pod 'SwiftDate', '~> 4.0.5'
     pod 'ActionSheetPicker-3.0'
     pod 'RealmSwift', '~> 2.0.2'
-    pod 'JSONJoy-Swift'
     pod 'SwiftHTTP'
-    pod 'AsyncSwift'
     pod 'MBProgressHUD'
 end
 

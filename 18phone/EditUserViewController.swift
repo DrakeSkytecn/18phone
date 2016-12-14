@@ -8,10 +8,8 @@
 
 import UIKit
 import ActionSheetPicker_3_0
-import Async
 import MobileCoreServices
 import SwiftHTTP
-import SwiftEventBus
 
 class EditUserViewController: UITableViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, NJImageCropperDelegate {
     

@@ -9,7 +9,6 @@
 import UIKit
 import Contacts
 import SwiftHTTP
-import Async
 import MBProgressHUD
 
 class BackupViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -110,8 +109,8 @@ class BackupViewController: UIViewController, UITableViewDataSource, UITableView
                                                CNContactPhoneticFamilyNameKey] as [Any]
                             do {
                                 let contact = try store.unifiedContact(withIdentifier: contactInfo.PhoneID!, keysToFetch: keysToFetch as! [CNKeyDescriptor]).mutableCopy() as! CNMutableContact
-                                contact.familyName = contactInfo.Name!
-                                contact.givenName = ""
+                                contact.familyName = ""
+                                contact.givenName = contactInfo.Name!
                                 var phoneNumbers = [CNLabeledValue<CNPhoneNumber>]()
                                 for phoneNumber in contactInfo.Mobile!.components(separatedBy: ",") {
                                     phoneNumbers.append(CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: phoneNumber)))
@@ -129,8 +128,8 @@ class BackupViewController: UIViewController, UITableViewDataSource, UITableView
                                 try store.execute(saveRequest)
                             }catch {
                                 let contact = CNMutableContact()
-                                contact.familyName = contactInfo.Name!
-                                contact.givenName = ""
+                                contact.familyName = ""
+                                contact.givenName = contactInfo.Name!
                                 var phoneNumbers = [CNLabeledValue<CNPhoneNumber>]()
                                 for phoneNumber in contactInfo.Mobile!.components(separatedBy: ",") {
                                     phoneNumbers.append(CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: phoneNumber)))
@@ -155,6 +154,7 @@ class BackupViewController: UIViewController, UITableViewDataSource, UITableView
                             }
                         }
                         alertController.message = "恢复成功"
+                        SwiftEventBus.post("reloadContacts")
                     } else {
                         alertController.message = downloadContactInfos.codeInfo
                     }
@@ -185,11 +185,10 @@ class BackupViewController: UIViewController, UITableViewDataSource, UITableView
                 var phones = ""
                 for number in contact.phoneNumbers {
                     let phoneNumber = number.value.stringValue
-                    let formatNumber = PhoneUtil.formatPhoneNumber(phoneNumber)
                     if phones.isEmpty {
-                        phones = formatNumber
+                        phones = phoneNumber
                     } else {
-                        phones = phones + "," + formatNumber
+                        phones = phones + "," + phoneNumber
                     }
                 }
                 let appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contact.identifier)'").first!

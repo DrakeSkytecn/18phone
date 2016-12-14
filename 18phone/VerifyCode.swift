@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import JSONJoy
 
 struct VerifyCodeInfo: JSONJoy {
 

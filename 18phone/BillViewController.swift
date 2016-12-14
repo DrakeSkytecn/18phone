@@ -22,7 +22,7 @@ class BillViewController: UIViewController {
     }
     
     func initPageMenu() {
-        let controllerArray : [UIViewController] = [R.storyboard.main.consumeViewController()! , R.storyboard.main.communicateViewController()!]
+        let controllerArray : [UIViewController] = [R.storyboard.main.communicateViewController()!]
         let parameters: [CAPSPageMenuOption] = [
             .scrollMenuBackgroundColor(UIColor.white),
             .viewBackgroundColor(UIColor.white),

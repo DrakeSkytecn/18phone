@@ -9,8 +9,6 @@
 import UIKit
 import Contacts
 import ContactsUI
-import SwiftEventBus
-import Async
 
 class DialViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CNContactViewControllerDelegate, CNContactPickerDelegate {
     

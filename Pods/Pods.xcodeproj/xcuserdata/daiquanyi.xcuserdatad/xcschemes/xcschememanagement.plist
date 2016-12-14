@@ -9,16 +9,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>AsyncSwift.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>JSONJoy-Swift.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -49,11 +39,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SwiftEventBus.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>SwiftHTTP.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -67,52 +52,37 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0C95279C26500B98CAD4CC3C7F5986E2</key>
+		<key>12C83EDF08CCDB8EA58B329F79EE870F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>15C1B984821E7437965DEF6D74DDBC10</key>
+		<key>34BC3478378EB0D9C4943851F32EA929</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2DA8B69CD0177F4A252231244AB35D4C</key>
+		<key>95FFA5E11696AED9F098E2BCE65A25F4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8AD42873602CCA21268367ADF5C16A6A</key>
+		<key>A48F4CF76732BD007DEB26625EA10D6B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9635810F3561F24028A6980FAC725742</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>AC82D9EC02A9072A60289675BE9349E8</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BD7680957F1D8397EF8FE9E56C3F1712</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C13DCD6FD93C25192E8D47506BA54605</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D1DC35DB2C695031A72543555FB23729</key>
+		<key>C34CEF2D7D2F9FF9E53D805556613D51</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>DBA6001481CEA0EBA031CC5C94508FAA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F2C053048D1CF4D0786908DBDF493C15</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -11,8 +11,6 @@ import AVFoundation
 import RealmSwift
 import SwiftDate
 import SwiftHTTP
-import JSONJoy
-import Async
 
 /**
  *  app中使用到的URL的定义
@@ -188,7 +186,7 @@ struct PhoneUtil {
     }
     
     static func formatPhoneNumber(_ phoneNumber: String) -> String {
-        return phoneNumber.replacingOccurrences(of: "^\\+8[56][2]*|\\W+|\\s/g", with: "", options: .regularExpression, range: nil)
+        return phoneNumber.replacingOccurrences(of: "^\\W+|\\s/g", with: "", options: .regularExpression, range: nil)
     }
     
     static func isMobileNumber(_ phoneNumber: String?) -> Bool {

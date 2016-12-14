@@ -8,7 +8,6 @@
 
 import Foundation
 import RealmSwift
-import JSONJoy
 
 /**
  通话记录类型

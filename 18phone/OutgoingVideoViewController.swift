@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Async
-import SwiftEventBus
 
 class OutgoingVideoViewController: UIViewController {
     
@@ -168,7 +166,7 @@ class OutgoingVideoViewController: UIViewController {
         case GSCallStatusDisconnected:
             print("OutgoingCallViewController Disconnected.")
             areaLabel.pause()
-            if isConnected {
+            if isConnected && callDuration.isEmpty {
                 callDuration = areaLabel.text!
             }
             areaLabel.text = "通话已挂断"

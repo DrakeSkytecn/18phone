@@ -9,7 +9,6 @@
 import UIKit
 import PushKit
 import CoreTelephony
-import SwiftEventBus
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, PKPushRegistryDelegate, ULinkServiceDelegate {

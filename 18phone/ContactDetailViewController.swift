@@ -10,7 +10,6 @@ import UIKit
 import Contacts
 import ContactsUI
 import RealmSwift
-import SwiftEventBus
 
 class ContactDetailViewController: UIViewController {
     
@@ -98,7 +97,7 @@ class ContactDetailViewController: UIViewController {
         for number in contact!.phoneNumbers {
             let phoneNumber = number.value.stringValue
             let formatNumber = PhoneUtil.formatPhoneNumber(phoneNumber)
-            phones.append(formatNumber)
+            phones.append(phoneNumber)
             let area = App.realm.objects(Area.self).filter("key == '\(formatNumber)'").first!
             phoneAreas.append(area.name)
         }

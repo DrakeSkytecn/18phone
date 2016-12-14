@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftEventBus
 
 class UserCenterViewController: UITableViewController {
     

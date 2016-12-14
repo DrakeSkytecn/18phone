@@ -8,7 +8,6 @@
 
 import UIKit
 import RealmSwift
-import SwiftEventBus
 
 class DetailMenuViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -121,9 +120,9 @@ class DetailMenuViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.detail_phone_cell)
-        let phoneNumber = phones![indexPath.row]
+        let phoneNumber =  PhoneUtil.formatPhoneNumber(phones![indexPath.row])
         let phoneArea = phoneAreas![indexPath.row]
-        cell?.textLabel?.text = phoneNumber // 号码
+        cell?.textLabel?.text = phones![indexPath.row] // 号码
         if phoneArea.isEmpty || phoneArea == "未知" {
             cell?.detailTextLabel?.text = "未知" // 归属地
             PhoneUtil.getPhoneAreaInfo(phoneNumber) { phoneAreaInfo in

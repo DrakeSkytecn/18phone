@@ -9,7 +9,6 @@
 import UIKit
 import Contacts
 import ContactsUI
-import SwiftEventBus
 
 /// 拨号页面根控制器
 class RootViewController: UIViewController, GSAccountDelegate {

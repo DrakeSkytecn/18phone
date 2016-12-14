@@ -7,9 +7,7 @@
 //
 
 import UIKit
-import SwiftEventBus
 import AVFoundation
-import Async
 import AudioToolbox
 
 class OutgoingCallViewController: UIViewController {
@@ -72,6 +70,7 @@ class OutgoingCallViewController: UIViewController {
             }
         } else if dialLine == .direct {
             SwiftEventBus.onMainThread(self, name: "talking") { result in
+                self.isConnected = true
                 AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
                 self.areaLabel.start()
             }
@@ -105,28 +104,30 @@ class OutgoingCallViewController: UIViewController {
         var b = true
         Async.background { [weak self] in
             var i = 0
-            while !self!.isHangup {
-                Async.background(after:1.0) {
-                    if i == 60 {
-                        b = false
-                        Async.main {
-                            self!.areaLabel.text = "暂时无法接通，请稍后再拨"
+            if self != nil {
+                while !self!.isHangup {
+                    Async.background(after:1.0) {
+                        if i == 60 {
+                            b = false
+                            Async.main {
+                                self!.areaLabel.text = "暂时无法接通，请稍后再拨"
+                            }
+                            return
                         }
+                        APIUtil.buddyIsOnline(accountId, callBack: { verifyCodeInfo in
+                            i = i + 1
+                            if verifyCodeInfo.codeStatus == 1 {
+                                if verifyCodeInfo.codeInfo == "online" {
+                                    b = false
+                                    self!.outCall?.begin()
+                                    return
+                                }
+                            }
+                        })
+                        }.wait()
+                    if !b {
                         return
                     }
-                    APIUtil.buddyIsOnline(accountId, callBack: { verifyCodeInfo in
-                        i = i + 1
-                        if verifyCodeInfo.codeStatus == 1 {
-                            if verifyCodeInfo.codeInfo == "online" {
-                                b = false
-                                self!.outCall?.begin()
-                                return
-                            }
-                        }
-                    })
-                }.wait()
-                if !b {
-                    return
                 }
             }
         }
@@ -194,7 +195,7 @@ class OutgoingCallViewController: UIViewController {
             print("OutgoingCallViewController Disconnected.")
             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
             areaLabel.pause()
-            if isConnected {
+            if isConnected && callDuration.isEmpty {
                 callDuration = areaLabel.text!
             }
             areaLabel.text = "通话已挂断"

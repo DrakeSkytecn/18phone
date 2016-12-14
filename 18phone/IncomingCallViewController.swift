@@ -9,7 +9,6 @@
 import UIKit
 import Contacts
 import AVFoundation
-import SwiftEventBus
 
 class IncomingCallViewController: UIViewController {
 
@@ -220,7 +219,7 @@ class IncomingCallViewController: UIViewController {
             print("IncomingCallViewController Disconnected.")
             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
             areaLabel.pause()
-            if isConnected {
+            if isConnected && callDuration.isEmpty {
                 callDuration = areaLabel.text!
             }
             areaLabel.text = "通话已挂断"

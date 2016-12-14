@@ -69,6 +69,7 @@
 		E123C3FC1DADDA3E00E6D442 /* CAPSPageMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E123C3FB1DADDA3E00E6D442 /* CAPSPageMenu.swift */; };
 		E1281EAE1DD81A7100C94038 /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1281EAD1DD81A7000C94038 /* PushKit.framework */; };
 		E12EBA811D531FF3007B5CBD /* CallLogACell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12EBA801D531FF3007B5CBD /* CallLogACell.swift */; };
+		E13148861E014EB000FDFD62 /* SwiftEventBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13148851E014EB000FDFD62 /* SwiftEventBus.swift */; };
 		E1330E271D92378400996D2A /* DetailMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1330E261D92378400996D2A /* DetailMenuViewController.swift */; };
 		E1370CB61DF938FD004FB202 /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E1370CB51DF938FD004FB202 /* AppIcon.png */; };
 		E138D0771D6301EA0091AF4A /* OutgoingCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E138D0761D6301EA0091AF4A /* OutgoingCallViewController.swift */; };
@@ -88,7 +89,6 @@
 		E148E6C31D6C397000BE131E /* OutgoingVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E148E6C21D6C397000BE131E /* OutgoingVideoViewController.swift */; };
 		E155425E1DB4A66000DBEAFB /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E155425D1DB4A66000DBEAFB /* ResetPasswordViewController.swift */; };
 		E159FF441DD6BBD30094D3E9 /* NJImageCropperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E159FF431DD6BBD30094D3E9 /* NJImageCropperViewController.m */; };
-		E15AEA6C1DFBB42900F1A6EF /* ringtone.wav in Resources */ = {isa = PBXBuildFile; fileRef = E15AEA6B1DFBB42900F1A6EF /* ringtone.wav */; };
 		E15AF2041DB5BB4C00D74E68 /* EditContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15AF2031DB5BB4C00D74E68 /* EditContactViewController.swift */; };
 		E15AF2061DB5C0AA00D74E68 /* EditContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15AF2051DB5C0AA00D74E68 /* EditContactCell.swift */; };
 		E15AF2081DB5FA1C00D74E68 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15AF2071DB5FA1C00D74E68 /* ChangePasswordViewController.swift */; };
@@ -160,6 +160,9 @@
 		E1C048D01D8694D30009DF6B /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C048CF1D8694D30009DF6B /* CoreFoundation.framework */; };
 		E1C048D21D8697690009DF6B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C048D11D8697690009DF6B /* CFNetwork.framework */; };
 		E1C048D41D8697770009DF6B /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C048D31D8697770009DF6B /* libstdc++.tbd */; };
+		E1C427B71E00EEF80068CFF0 /* ringtone.wav in Resources */ = {isa = PBXBuildFile; fileRef = E1C427B61E00EEF80068CFF0 /* ringtone.wav */; };
+		E1C427BA1E01463C0068CFF0 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C427B91E01463C0068CFF0 /* Async.swift */; };
+		E1C427BD1E014C020068CFF0 /* JSONJoy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C427BC1E014C020068CFF0 /* JSONJoy.swift */; };
 		E1DE61831D88F1E900321B47 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DE61821D88F1E900321B47 /* ContactCell.swift */; };
 		E1DE61851D894E3F00321B47 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1DE61841D894E3F00321B47 /* CoreTelephony.framework */; };
 		E1E09C671DDA9A4D005B21C2 /* piQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E09C661DDA9A4D005B21C2 /* piQ.swift */; };
@@ -264,6 +267,7 @@
 		E123C3FB1DADDA3E00E6D442 /* CAPSPageMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAPSPageMenu.swift; sourceTree = "<group>"; };
 		E1281EAD1DD81A7000C94038 /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = System/Library/Frameworks/PushKit.framework; sourceTree = SDKROOT; };
 		E12EBA801D531FF3007B5CBD /* CallLogACell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallLogACell.swift; sourceTree = "<group>"; };
+		E13148851E014EB000FDFD62 /* SwiftEventBus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftEventBus.swift; sourceTree = "<group>"; };
 		E1330E261D92378400996D2A /* DetailMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailMenuViewController.swift; sourceTree = "<group>"; };
 		E1370CB51DF938FD004FB202 /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AppIcon.png; path = Assets.xcassets/shareImg.imageset/AppIcon.png; sourceTree = "<group>"; };
 		E1370CB71DF93A3D004FB202 /* libULinkVoiceSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libULinkVoiceSDK.a; sourceTree = "<group>"; };
@@ -288,7 +292,6 @@
 		E155425D1DB4A66000DBEAFB /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		E159FF421DD6BBD30094D3E9 /* NJImageCropperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJImageCropperViewController.h; sourceTree = "<group>"; };
 		E159FF431DD6BBD30094D3E9 /* NJImageCropperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJImageCropperViewController.m; sourceTree = "<group>"; };
-		E15AEA6B1DFBB42900F1A6EF /* ringtone.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ringtone.wav; sourceTree = "<group>"; };
 		E15AF2031DB5BB4C00D74E68 /* EditContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditContactViewController.swift; sourceTree = "<group>"; };
 		E15AF2051DB5C0AA00D74E68 /* EditContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditContactCell.swift; sourceTree = "<group>"; };
 		E15AF2071DB5FA1C00D74E68 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
@@ -380,6 +383,9 @@
 		E1C048CF1D8694D30009DF6B /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		E1C048D11D8697690009DF6B /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		E1C048D31D8697770009DF6B /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		E1C427B61E00EEF80068CFF0 /* ringtone.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ringtone.wav; sourceTree = "<group>"; };
+		E1C427B91E01463C0068CFF0 /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
+		E1C427BC1E014C020068CFF0 /* JSONJoy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONJoy.swift; sourceTree = "<group>"; };
 		E1DE61821D88F1E900321B47 /* ContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		E1DE61841D894E3F00321B47 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		E1E09C661DDA9A4D005B21C2 /* piQ.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = piQ.swift; sourceTree = "<group>"; };
@@ -745,9 +751,20 @@
 			path = 18phone;
 			sourceTree = "<group>";
 		};
+		E13148841E014E9E00FDFD62 /* SwiftEventBus */ = {
+			isa = PBXGroup;
+			children = (
+				E13148851E014EB000FDFD62 /* SwiftEventBus.swift */,
+			);
+			name = SwiftEventBus;
+			sourceTree = "<group>";
+		};
 		E13BACBD1D518E5F00414ACE /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				E13148841E014E9E00FDFD62 /* SwiftEventBus */,
+				E1C427BB1E014BED0068CFF0 /* JSONJoy-Swift */,
+				E1C427B81E0145600068CFF0 /* AsyncSwift */,
 				E1E09C651DDA9A23005B21C2 /* piQ */,
 				E10953E71D7FBC00001E7060 /* Gossip */,
 				E13BACC11D518F5200414ACE /* AppUtil.swift */,
@@ -853,7 +870,7 @@
 		E15C42101D7D091100124257 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				E15AEA6B1DFBB42900F1A6EF /* ringtone.wav */,
+				E1C427B61E00EEF80068CFF0 /* ringtone.wav */,
 				E1711F821DCC58C200227329 /* Address.plist */,
 			);
 			name = Resource;
@@ -867,6 +884,22 @@
 				E1A0F93F1DED585C00B6174A /* CommonClass.h */,
 			);
 			path = ULinkVoiceSDK;
+			sourceTree = "<group>";
+		};
+		E1C427B81E0145600068CFF0 /* AsyncSwift */ = {
+			isa = PBXGroup;
+			children = (
+				E1C427B91E01463C0068CFF0 /* Async.swift */,
+			);
+			name = AsyncSwift;
+			sourceTree = "<group>";
+		};
+		E1C427BB1E014BED0068CFF0 /* JSONJoy-Swift */ = {
+			isa = PBXGroup;
+			children = (
+				E1C427BC1E014C020068CFF0 /* JSONJoy.swift */,
+			);
+			name = "JSONJoy-Swift";
 			sourceTree = "<group>";
 		};
 		E1E09C651DDA9A23005B21C2 /* piQ */ = {
@@ -923,8 +956,9 @@
 				TargetAttributes = {
 					E114D1BF1D4F1F13006AB978 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 4937KKX7AX;
+						DevelopmentTeam = VSSKQ8FUBD;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -961,6 +995,7 @@
 			files = (
 				E109F60E1DE92B5500B5B224 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				E114D1CE1D4F1F15006AB978 /* LaunchScreen.storyboard in Resources */,
+				E1C427B71E00EEF80068CFF0 /* ringtone.wav in Resources */,
 				E13BACE51D51974900414ACE /* Assets.xcassets in Resources */,
 				E109F5E91DE92AE200B5B224 /* ShareSDKUI.bundle in Resources */,
 				E13BACDF1D51948C00414ACE /* Main.storyboard in Resources */,
@@ -968,7 +1003,6 @@
 				E109F6021DE92B4200B5B224 /* WeiboSDK.bundle in Resources */,
 				E1370CB61DF938FD004FB202 /* AppIcon.png in Resources */,
 				E109F60A1DE92B4D00B5B224 /* read_me.txt in Resources */,
-				E15AEA6C1DFBB42900F1A6EF /* ringtone.wav in Resources */,
 				E109F5F11DE92AF300B5B224 /* ShareSDK.bundle in Resources */,
 				E1711F831DCC58C200227329 /* Address.plist in Resources */,
 			);
@@ -1046,6 +1080,7 @@
 				E1626D591D93BA7100C3422C /* DetailLogCell.swift in Sources */,
 				E19BEB021DB4D82900AE73E1 /* ADSettingViewController.swift in Sources */,
 				E1C0486A1D867F650009DF6B /* GSConfiguration.m in Sources */,
+				E1C427BA1E01463C0068CFF0 /* Async.swift in Sources */,
 				845C24541DC359120050ABD4 /* Register.swift in Sources */,
 				E16453EA1D6AA3150036B53F /* Contact.swift in Sources */,
 				E13BACDB1D51946B00414ACE /* KTabBarController.swift in Sources */,
@@ -1078,12 +1113,14 @@
 				E13BACDD1D51946B00414ACE /* CallLogViewController.swift in Sources */,
 				E123C3FC1DADDA3E00E6D442 /* CAPSPageMenu.swift in Sources */,
 				E1E09C671DDA9A4D005B21C2 /* piQ.swift in Sources */,
+				E13148861E014EB000FDFD62 /* SwiftEventBus.swift in Sources */,
 				E1626D551D937F7B00C3422C /* CallLogMenuViewController.swift in Sources */,
 				E11D4CF01DB6118C00737790 /* ChangePhoneNumberViewController.swift in Sources */,
 				E1C0486B1D867F650009DF6B /* GSDispatch.m in Sources */,
 				E11E37E61D94C619004B566D /* UserDetailCell.swift in Sources */,
 				E199E03F1D97FBE7001237AD /* EditUserViewController.swift in Sources */,
 				E1330E271D92378400996D2A /* DetailMenuViewController.swift in Sources */,
+				E1C427BD1E014C020068CFF0 /* JSONJoy.swift in Sources */,
 				E140B1871D8E36FA00178D74 /* ShowNumberCon.swift in Sources */,
 				E13BACE71D51977C00414ACE /* R.generated.swift in Sources */,
 				E138D0771D6301EA0091AF4A /* OutgoingCallViewController.swift in Sources */,
@@ -1236,6 +1273,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = VSSKQ8FUBD;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1284,10 +1322,6 @@
 					"-framework",
 					"\"ActionSheetPicker_3_0\"",
 					"-framework",
-					"\"Async\"",
-					"-framework",
-					"\"JSONJoy\"",
-					"-framework",
 					"\"Realm\"",
 					"-framework",
 					"\"RealmSwift\"",
@@ -1296,11 +1330,9 @@
 					"-framework",
 					"\"SwiftDate\"",
 					"-framework",
-					"\"SwiftEventBus\"",
-					"-framework",
 					"\"SwiftHTTP\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.beyebe.18phone;
+				PRODUCT_BUNDLE_IDENTIFIER = com.beyebe.yaobaphone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "18phone/18phone-Bridging-Header.h";
@@ -1322,6 +1354,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = VSSKQ8FUBD;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1369,10 +1402,6 @@
 					"-framework",
 					"\"ActionSheetPicker_3_0\"",
 					"-framework",
-					"\"Async\"",
-					"-framework",
-					"\"JSONJoy\"",
-					"-framework",
 					"\"Realm\"",
 					"-framework",
 					"\"RealmSwift\"",
@@ -1381,11 +1410,9 @@
 					"-framework",
 					"\"SwiftDate\"",
 					"-framework",
-					"\"SwiftEventBus\"",
-					"-framework",
 					"\"SwiftHTTP\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.beyebe.18phone;
+				PRODUCT_BUNDLE_IDENTIFIER = com.beyebe.yaobaphone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "18phone/18phone-Bridging-Header.h";

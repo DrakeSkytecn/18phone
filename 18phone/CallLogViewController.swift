@@ -8,7 +8,6 @@
 
 import UIKit
 import RealmSwift
-import SwiftEventBus
 
 class CallLogViewController: UITableViewController {
     
