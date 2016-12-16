@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import ActionSheetPicker_3_0
 import ContactsUI
 
 class EditContactViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CNContactViewControllerDelegate {

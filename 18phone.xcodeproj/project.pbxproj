@@ -119,6 +119,42 @@
 		E1AC7F851DA89E1C001C2676 /* RegisterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC7F841DA89E1C001C2676 /* RegisterCell.swift */; };
 		E1AC7F871DA8CAE5001C2676 /* VerifyCodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AC7F861DA8CAE5001C2676 /* VerifyCodeButton.swift */; };
 		E1B0381B1DEE62470076C821 /* libspeex-armv7-apple-darwin_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E111AEF41D8E6D3C0045E2E2 /* libspeex-armv7-apple-darwin_ios.a */; };
+		E1B51CDE1E02969F00F12AFD /* HTTPSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B51CD91E02969F00F12AFD /* HTTPSecurity.swift */; };
+		E1B51CDF1E02969F00F12AFD /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B51CDA1E02969F00F12AFD /* Operation.swift */; };
+		E1B51CE01E02969F00F12AFD /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B51CDB1E02969F00F12AFD /* Request.swift */; };
+		E1B51CE11E02969F00F12AFD /* StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B51CDC1E02969F00F12AFD /* StatusCode.swift */; };
+		E1B51CE21E02969F00F12AFD /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B51CDD1E02969F00F12AFD /* Upload.swift */; };
+		E1B51CFA1E02996700F12AFD /* CalendarName.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B51CE51E02996700F12AFD /* CalendarName.swift */; };
+		E1B51CFB1E02996700F12AFD /* Commons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B51CE61E02996700F12AFD /* Commons.swift */; };
+		E1B51CFC1E02996700F12AFD /* Date+Compare.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B51CE71E02996700F12AFD /* Date+Compare.swift */; };
+		E1B51CFD1E02996700F12AFD /* Date+Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B51CE81E02996700F12AFD /* Date+Components.swift */; };
+		E1B51CFE1E02996700F12AFD /* Date+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B51CE91E02996700F12AFD /* Date+Formatter.swift */; };
+		E1B51CFF1E02996700F12AFD /* Date+Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B51CEA1E02996700F12AFD /* Date+Math.swift */; };
+		E1B51D001E02996700F12AFD /* DateComponents+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B51CEB1E02996700F12AFD /* DateComponents+Extension.swift */; };
+		E1B51D011E02996700F12AFD /* DateInRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B51CEC1E02996700F12AFD /* DateInRegion.swift */; };
+		E1B51D021E02996700F12AFD /* DateInRegion+Compare.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B51CED1E02996700F12AFD /* DateInRegion+Compare.swift */; };
+		E1B51D031E02996700F12AFD /* DateInRegion+Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B51CEE1E02996700F12AFD /* DateInRegion+Components.swift */; };
+		E1B51D041E02996700F12AFD /* DateInRegion+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B51CEF1E02996700F12AFD /* DateInRegion+Formatter.swift */; };
+		E1B51D051E02996700F12AFD /* DateInRegion+Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B51CF01E02996700F12AFD /* DateInRegion+Math.swift */; };
+		E1B51D061E02996700F12AFD /* DateInRegionFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B51CF11E02996700F12AFD /* DateInRegionFormatter.swift */; };
+		E1B51D071E02996700F12AFD /* DateTimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B51CF21E02996700F12AFD /* DateTimeInterval.swift */; };
+		E1B51D081E02996700F12AFD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B51CF31E02996700F12AFD /* Extensions.swift */; };
+		E1B51D091E02996700F12AFD /* ISO8601DateTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B51CF41E02996700F12AFD /* ISO8601DateTimeFormatter.swift */; };
+		E1B51D0A1E02996700F12AFD /* LocaleName.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B51CF51E02996700F12AFD /* LocaleName.swift */; };
+		E1B51D0B1E02996700F12AFD /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B51CF61E02996700F12AFD /* Region.swift */; };
+		E1B51D0C1E02996700F12AFD /* SwiftDate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E1B51CF71E02996700F12AFD /* SwiftDate.bundle */; };
+		E1B51D0D1E02996700F12AFD /* TimeInterval+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B51CF81E02996700F12AFD /* TimeInterval+Extensions.swift */; };
+		E1B51D0E1E02996700F12AFD /* TimeZoneName.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B51CF91E02996700F12AFD /* TimeZoneName.swift */; };
+		E1B51D121E029B7D00F12AFD /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B51D111E029B7D00F12AFD /* MBProgressHUD.m */; };
+		E1B51D281E029C8400F12AFD /* AbstractActionSheetPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B51D151E029C8400F12AFD /* AbstractActionSheetPicker.m */; };
+		E1B51D291E029C8400F12AFD /* ActionSheetCustomPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B51D171E029C8400F12AFD /* ActionSheetCustomPicker.m */; };
+		E1B51D2A1E029C8400F12AFD /* ActionSheetDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B51D1A1E029C8400F12AFD /* ActionSheetDatePicker.m */; };
+		E1B51D2B1E029C8400F12AFD /* ActionSheetDistancePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B51D1C1E029C8400F12AFD /* ActionSheetDistancePicker.m */; };
+		E1B51D2C1E029C8400F12AFD /* ActionSheetLocalePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B51D1E1E029C8400F12AFD /* ActionSheetLocalePicker.m */; };
+		E1B51D2D1E029C8400F12AFD /* ActionSheetMultipleStringPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B51D201E029C8400F12AFD /* ActionSheetMultipleStringPicker.m */; };
+		E1B51D2E1E029C8400F12AFD /* ActionSheetStringPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B51D231E029C8400F12AFD /* ActionSheetStringPicker.m */; };
+		E1B51D2F1E029C8400F12AFD /* DistancePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B51D251E029C8400F12AFD /* DistancePickerView.m */; };
+		E1B51D301E029C8400F12AFD /* SWActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B51D271E029C8400F12AFD /* SWActionSheet.m */; };
 		E1C048661D867F650009DF6B /* GSAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C048491D867F650009DF6B /* GSAccount.m */; };
 		E1C048671D867F650009DF6B /* GSAccountConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C0484C1D867F650009DF6B /* GSAccountConfiguration.m */; };
 		E1C048681D867F650009DF6B /* GSCall.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C0484E1D867F650009DF6B /* GSCall.m */; };
@@ -322,6 +358,54 @@
 		E1AC7F821DA89B85001C2676 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		E1AC7F841DA89E1C001C2676 /* RegisterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterCell.swift; sourceTree = "<group>"; };
 		E1AC7F861DA8CAE5001C2676 /* VerifyCodeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyCodeButton.swift; sourceTree = "<group>"; };
+		E1B51CD91E02969F00F12AFD /* HTTPSecurity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPSecurity.swift; path = SwiftHTTP/HTTPSecurity.swift; sourceTree = "<group>"; };
+		E1B51CDA1E02969F00F12AFD /* Operation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Operation.swift; path = SwiftHTTP/Operation.swift; sourceTree = "<group>"; };
+		E1B51CDB1E02969F00F12AFD /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Request.swift; path = SwiftHTTP/Request.swift; sourceTree = "<group>"; };
+		E1B51CDC1E02969F00F12AFD /* StatusCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatusCode.swift; path = SwiftHTTP/StatusCode.swift; sourceTree = "<group>"; };
+		E1B51CDD1E02969F00F12AFD /* Upload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Upload.swift; path = SwiftHTTP/Upload.swift; sourceTree = "<group>"; };
+		E1B51CE51E02996700F12AFD /* CalendarName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarName.swift; path = SwiftDate/CalendarName.swift; sourceTree = "<group>"; };
+		E1B51CE61E02996700F12AFD /* Commons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Commons.swift; path = SwiftDate/Commons.swift; sourceTree = "<group>"; };
+		E1B51CE71E02996700F12AFD /* Date+Compare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Date+Compare.swift"; path = "SwiftDate/Date+Compare.swift"; sourceTree = "<group>"; };
+		E1B51CE81E02996700F12AFD /* Date+Components.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Date+Components.swift"; path = "SwiftDate/Date+Components.swift"; sourceTree = "<group>"; };
+		E1B51CE91E02996700F12AFD /* Date+Formatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Date+Formatter.swift"; path = "SwiftDate/Date+Formatter.swift"; sourceTree = "<group>"; };
+		E1B51CEA1E02996700F12AFD /* Date+Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Date+Math.swift"; path = "SwiftDate/Date+Math.swift"; sourceTree = "<group>"; };
+		E1B51CEB1E02996700F12AFD /* DateComponents+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DateComponents+Extension.swift"; path = "SwiftDate/DateComponents+Extension.swift"; sourceTree = "<group>"; };
+		E1B51CEC1E02996700F12AFD /* DateInRegion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateInRegion.swift; path = SwiftDate/DateInRegion.swift; sourceTree = "<group>"; };
+		E1B51CED1E02996700F12AFD /* DateInRegion+Compare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DateInRegion+Compare.swift"; path = "SwiftDate/DateInRegion+Compare.swift"; sourceTree = "<group>"; };
+		E1B51CEE1E02996700F12AFD /* DateInRegion+Components.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DateInRegion+Components.swift"; path = "SwiftDate/DateInRegion+Components.swift"; sourceTree = "<group>"; };
+		E1B51CEF1E02996700F12AFD /* DateInRegion+Formatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DateInRegion+Formatter.swift"; path = "SwiftDate/DateInRegion+Formatter.swift"; sourceTree = "<group>"; };
+		E1B51CF01E02996700F12AFD /* DateInRegion+Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DateInRegion+Math.swift"; path = "SwiftDate/DateInRegion+Math.swift"; sourceTree = "<group>"; };
+		E1B51CF11E02996700F12AFD /* DateInRegionFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateInRegionFormatter.swift; path = SwiftDate/DateInRegionFormatter.swift; sourceTree = "<group>"; };
+		E1B51CF21E02996700F12AFD /* DateTimeInterval.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateTimeInterval.swift; path = SwiftDate/DateTimeInterval.swift; sourceTree = "<group>"; };
+		E1B51CF31E02996700F12AFD /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = SwiftDate/Extensions.swift; sourceTree = "<group>"; };
+		E1B51CF41E02996700F12AFD /* ISO8601DateTimeFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ISO8601DateTimeFormatter.swift; path = SwiftDate/ISO8601DateTimeFormatter.swift; sourceTree = "<group>"; };
+		E1B51CF51E02996700F12AFD /* LocaleName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocaleName.swift; path = SwiftDate/LocaleName.swift; sourceTree = "<group>"; };
+		E1B51CF61E02996700F12AFD /* Region.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Region.swift; path = SwiftDate/Region.swift; sourceTree = "<group>"; };
+		E1B51CF71E02996700F12AFD /* SwiftDate.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SwiftDate.bundle; path = SwiftDate/SwiftDate.bundle; sourceTree = "<group>"; };
+		E1B51CF81E02996700F12AFD /* TimeInterval+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "TimeInterval+Extensions.swift"; path = "SwiftDate/TimeInterval+Extensions.swift"; sourceTree = "<group>"; };
+		E1B51CF91E02996700F12AFD /* TimeZoneName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeZoneName.swift; path = SwiftDate/TimeZoneName.swift; sourceTree = "<group>"; };
+		E1B51D101E029B7D00F12AFD /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
+		E1B51D111E029B7D00F12AFD /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = MBProgressHUD/MBProgressHUD.m; sourceTree = "<group>"; };
+		E1B51D141E029C8400F12AFD /* AbstractActionSheetPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AbstractActionSheetPicker.h; path = ActionSheetPicker/AbstractActionSheetPicker.h; sourceTree = "<group>"; };
+		E1B51D151E029C8400F12AFD /* AbstractActionSheetPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AbstractActionSheetPicker.m; path = ActionSheetPicker/AbstractActionSheetPicker.m; sourceTree = "<group>"; };
+		E1B51D161E029C8400F12AFD /* ActionSheetCustomPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionSheetCustomPicker.h; path = ActionSheetPicker/ActionSheetCustomPicker.h; sourceTree = "<group>"; };
+		E1B51D171E029C8400F12AFD /* ActionSheetCustomPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActionSheetCustomPicker.m; path = ActionSheetPicker/ActionSheetCustomPicker.m; sourceTree = "<group>"; };
+		E1B51D181E029C8400F12AFD /* ActionSheetCustomPickerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionSheetCustomPickerDelegate.h; path = ActionSheetPicker/ActionSheetCustomPickerDelegate.h; sourceTree = "<group>"; };
+		E1B51D191E029C8400F12AFD /* ActionSheetDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionSheetDatePicker.h; path = ActionSheetPicker/ActionSheetDatePicker.h; sourceTree = "<group>"; };
+		E1B51D1A1E029C8400F12AFD /* ActionSheetDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActionSheetDatePicker.m; path = ActionSheetPicker/ActionSheetDatePicker.m; sourceTree = "<group>"; };
+		E1B51D1B1E029C8400F12AFD /* ActionSheetDistancePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionSheetDistancePicker.h; path = ActionSheetPicker/ActionSheetDistancePicker.h; sourceTree = "<group>"; };
+		E1B51D1C1E029C8400F12AFD /* ActionSheetDistancePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActionSheetDistancePicker.m; path = ActionSheetPicker/ActionSheetDistancePicker.m; sourceTree = "<group>"; };
+		E1B51D1D1E029C8400F12AFD /* ActionSheetLocalePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionSheetLocalePicker.h; path = ActionSheetPicker/ActionSheetLocalePicker.h; sourceTree = "<group>"; };
+		E1B51D1E1E029C8400F12AFD /* ActionSheetLocalePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActionSheetLocalePicker.m; path = ActionSheetPicker/ActionSheetLocalePicker.m; sourceTree = "<group>"; };
+		E1B51D1F1E029C8400F12AFD /* ActionSheetMultipleStringPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionSheetMultipleStringPicker.h; path = ActionSheetPicker/ActionSheetMultipleStringPicker.h; sourceTree = "<group>"; };
+		E1B51D201E029C8400F12AFD /* ActionSheetMultipleStringPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActionSheetMultipleStringPicker.m; path = ActionSheetPicker/ActionSheetMultipleStringPicker.m; sourceTree = "<group>"; };
+		E1B51D211E029C8400F12AFD /* ActionSheetPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionSheetPicker.h; path = ActionSheetPicker/ActionSheetPicker.h; sourceTree = "<group>"; };
+		E1B51D221E029C8400F12AFD /* ActionSheetStringPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionSheetStringPicker.h; path = ActionSheetPicker/ActionSheetStringPicker.h; sourceTree = "<group>"; };
+		E1B51D231E029C8400F12AFD /* ActionSheetStringPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActionSheetStringPicker.m; path = ActionSheetPicker/ActionSheetStringPicker.m; sourceTree = "<group>"; };
+		E1B51D241E029C8400F12AFD /* DistancePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DistancePickerView.h; path = ActionSheetPicker/DistancePickerView.h; sourceTree = "<group>"; };
+		E1B51D251E029C8400F12AFD /* DistancePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DistancePickerView.m; path = ActionSheetPicker/DistancePickerView.m; sourceTree = "<group>"; };
+		E1B51D261E029C8400F12AFD /* SWActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWActionSheet.h; path = ActionSheetPicker/SWActionSheet.h; sourceTree = "<group>"; };
+		E1B51D271E029C8400F12AFD /* SWActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWActionSheet.m; path = ActionSheetPicker/SWActionSheet.m; sourceTree = "<group>"; };
 		E1C048471D867F650009DF6B /* Gossip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Gossip.h; path = 18phone/Gossip/Gossip.h; sourceTree = SOURCE_ROOT; };
 		E1C048481D867F650009DF6B /* GSAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GSAccount.h; path = 18phone/Gossip/GSAccount.h; sourceTree = SOURCE_ROOT; };
 		E1C048491D867F650009DF6B /* GSAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GSAccount.m; path = 18phone/Gossip/GSAccount.m; sourceTree = SOURCE_ROOT; };
@@ -762,6 +846,8 @@
 		E13BACBD1D518E5F00414ACE /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				E1B51CE31E0298D900F12AFD /* SwiftDate */,
+				E1B51CD81E02963F00F12AFD /* SwiftHTTP */,
 				E13148841E014E9E00FDFD62 /* SwiftEventBus */,
 				E1C427BB1E014BED0068CFF0 /* JSONJoy-Swift */,
 				E1C427B81E0145600068CFF0 /* AsyncSwift */,
@@ -815,6 +901,8 @@
 		E13BACBF1D518E6600414ACE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E1B51D131E029C5000F12AFD /* ActionSheetPicker */,
+				E1B51D0F1E029B3F00F12AFD /* MBProgressHUD */,
 				E1E312921DF7B17100C67C13 /* MZTimerLabel */,
 				E159FF401DD6BBA90094D3E9 /* SelectView */,
 				E123C3FB1DADDA3E00E6D442 /* CAPSPageMenu.swift */,
@@ -884,6 +972,90 @@
 				E1A0F93F1DED585C00B6174A /* CommonClass.h */,
 			);
 			path = ULinkVoiceSDK;
+			sourceTree = "<group>";
+		};
+		E1B51CD81E02963F00F12AFD /* SwiftHTTP */ = {
+			isa = PBXGroup;
+			children = (
+				E1B51CD91E02969F00F12AFD /* HTTPSecurity.swift */,
+				E1B51CDA1E02969F00F12AFD /* Operation.swift */,
+				E1B51CDB1E02969F00F12AFD /* Request.swift */,
+				E1B51CDC1E02969F00F12AFD /* StatusCode.swift */,
+				E1B51CDD1E02969F00F12AFD /* Upload.swift */,
+			);
+			name = SwiftHTTP;
+			sourceTree = "<group>";
+		};
+		E1B51CE31E0298D900F12AFD /* SwiftDate */ = {
+			isa = PBXGroup;
+			children = (
+				E1B51CE51E02996700F12AFD /* CalendarName.swift */,
+				E1B51CE61E02996700F12AFD /* Commons.swift */,
+				E1B51CE71E02996700F12AFD /* Date+Compare.swift */,
+				E1B51CE81E02996700F12AFD /* Date+Components.swift */,
+				E1B51CE91E02996700F12AFD /* Date+Formatter.swift */,
+				E1B51CEA1E02996700F12AFD /* Date+Math.swift */,
+				E1B51CEB1E02996700F12AFD /* DateComponents+Extension.swift */,
+				E1B51CEC1E02996700F12AFD /* DateInRegion.swift */,
+				E1B51CED1E02996700F12AFD /* DateInRegion+Compare.swift */,
+				E1B51CEE1E02996700F12AFD /* DateInRegion+Components.swift */,
+				E1B51CEF1E02996700F12AFD /* DateInRegion+Formatter.swift */,
+				E1B51CF01E02996700F12AFD /* DateInRegion+Math.swift */,
+				E1B51CF11E02996700F12AFD /* DateInRegionFormatter.swift */,
+				E1B51CF21E02996700F12AFD /* DateTimeInterval.swift */,
+				E1B51CF31E02996700F12AFD /* Extensions.swift */,
+				E1B51CF41E02996700F12AFD /* ISO8601DateTimeFormatter.swift */,
+				E1B51CF51E02996700F12AFD /* LocaleName.swift */,
+				E1B51CF61E02996700F12AFD /* Region.swift */,
+				E1B51CF81E02996700F12AFD /* TimeInterval+Extensions.swift */,
+				E1B51CF91E02996700F12AFD /* TimeZoneName.swift */,
+				E1B51CE41E02992100F12AFD /* Resources */,
+			);
+			name = SwiftDate;
+			sourceTree = "<group>";
+		};
+		E1B51CE41E02992100F12AFD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E1B51CF71E02996700F12AFD /* SwiftDate.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		E1B51D0F1E029B3F00F12AFD /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				E1B51D101E029B7D00F12AFD /* MBProgressHUD.h */,
+				E1B51D111E029B7D00F12AFD /* MBProgressHUD.m */,
+			);
+			name = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		E1B51D131E029C5000F12AFD /* ActionSheetPicker */ = {
+			isa = PBXGroup;
+			children = (
+				E1B51D141E029C8400F12AFD /* AbstractActionSheetPicker.h */,
+				E1B51D151E029C8400F12AFD /* AbstractActionSheetPicker.m */,
+				E1B51D161E029C8400F12AFD /* ActionSheetCustomPicker.h */,
+				E1B51D171E029C8400F12AFD /* ActionSheetCustomPicker.m */,
+				E1B51D181E029C8400F12AFD /* ActionSheetCustomPickerDelegate.h */,
+				E1B51D191E029C8400F12AFD /* ActionSheetDatePicker.h */,
+				E1B51D1A1E029C8400F12AFD /* ActionSheetDatePicker.m */,
+				E1B51D1B1E029C8400F12AFD /* ActionSheetDistancePicker.h */,
+				E1B51D1C1E029C8400F12AFD /* ActionSheetDistancePicker.m */,
+				E1B51D1D1E029C8400F12AFD /* ActionSheetLocalePicker.h */,
+				E1B51D1E1E029C8400F12AFD /* ActionSheetLocalePicker.m */,
+				E1B51D1F1E029C8400F12AFD /* ActionSheetMultipleStringPicker.h */,
+				E1B51D201E029C8400F12AFD /* ActionSheetMultipleStringPicker.m */,
+				E1B51D211E029C8400F12AFD /* ActionSheetPicker.h */,
+				E1B51D221E029C8400F12AFD /* ActionSheetStringPicker.h */,
+				E1B51D231E029C8400F12AFD /* ActionSheetStringPicker.m */,
+				E1B51D241E029C8400F12AFD /* DistancePickerView.h */,
+				E1B51D251E029C8400F12AFD /* DistancePickerView.m */,
+				E1B51D261E029C8400F12AFD /* SWActionSheet.h */,
+				E1B51D271E029C8400F12AFD /* SWActionSheet.m */,
+			);
+			name = ActionSheetPicker;
 			sourceTree = "<group>";
 		};
 		E1C427B81E0145600068CFF0 /* AsyncSwift */ = {
@@ -1005,6 +1177,7 @@
 				E109F60A1DE92B4D00B5B224 /* read_me.txt in Resources */,
 				E109F5F11DE92AF300B5B224 /* ShareSDK.bundle in Resources */,
 				E1711F831DCC58C200227329 /* Address.plist in Resources */,
+				E1B51D0C1E02996700F12AFD /* SwiftDate.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1076,14 +1249,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1B51D301E029C8400F12AFD /* SWActionSheet.m in Sources */,
 				E12EBA811D531FF3007B5CBD /* CallLogACell.swift in Sources */,
 				E1626D591D93BA7100C3422C /* DetailLogCell.swift in Sources */,
+				E1B51D091E02996700F12AFD /* ISO8601DateTimeFormatter.swift in Sources */,
 				E19BEB021DB4D82900AE73E1 /* ADSettingViewController.swift in Sources */,
 				E1C0486A1D867F650009DF6B /* GSConfiguration.m in Sources */,
+				E1B51CFE1E02996700F12AFD /* Date+Formatter.swift in Sources */,
+				E1B51CE01E02969F00F12AFD /* Request.swift in Sources */,
 				E1C427BA1E01463C0068CFF0 /* Async.swift in Sources */,
 				845C24541DC359120050ABD4 /* Register.swift in Sources */,
 				E16453EA1D6AA3150036B53F /* Contact.swift in Sources */,
 				E13BACDB1D51946B00414ACE /* KTabBarController.swift in Sources */,
+				E1B51D071E02996700F12AFD /* DateTimeInterval.swift in Sources */,
 				E159FF441DD6BBD30094D3E9 /* NJImageCropperViewController.m in Sources */,
 				E1721F301D90E27500A67C5B /* QRCodeViewController.swift in Sources */,
 				E193274D1D9A51BA006BA8B2 /* CheckAccountViewController.swift in Sources */,
@@ -1093,24 +1271,37 @@
 				E138D0791D630B7A0091AF4A /* IncomingCallViewController.swift in Sources */,
 				E15AF2041DB5BB4C00D74E68 /* EditContactViewController.swift in Sources */,
 				E1C0486E1D867F650009DF6B /* GSOutgoingCall.m in Sources */,
+				E1B51CFD1E02996700F12AFD /* Date+Components.swift in Sources */,
 				E1C0486F1D867F650009DF6B /* GSPJUtil.m in Sources */,
+				E1B51CFC1E02996700F12AFD /* Date+Compare.swift in Sources */,
 				E111AEFF1D8E9A140045E2E2 /* BackupViewController.swift in Sources */,
+				E1B51D061E02996700F12AFD /* DateInRegionFormatter.swift in Sources */,
 				E12129801DB71A5B009EE55B /* CommunicateViewController.swift in Sources */,
 				E15C4C3A1D965DA700688086 /* MessageViewController.swift in Sources */,
+				E1B51D0A1E02996700F12AFD /* LocaleName.swift in Sources */,
 				E1C0486C1D867F650009DF6B /* GSIncomingCall.m in Sources */,
 				E1DE61831D88F1E900321B47 /* ContactCell.swift in Sources */,
+				E1B51D0D1E02996700F12AFD /* TimeInterval+Extensions.swift in Sources */,
 				E13BACE31D5196EE00414ACE /* DialIconCell.swift in Sources */,
 				E121297E1DB71A0B009EE55B /* ConsumeViewController.swift in Sources */,
+				E1B51CE11E02969F00F12AFD /* StatusCode.swift in Sources */,
 				E148E6C31D6C397000BE131E /* OutgoingVideoViewController.swift in Sources */,
 				E1C048711D867F650009DF6B /* GSUserAgent.m in Sources */,
+				E1B51CDF1E02969F00F12AFD /* Operation.swift in Sources */,
 				E13BACDA1D51946B00414ACE /* RootViewController.swift in Sources */,
 				E13D21951D6ECFCA00C6EA98 /* IncomingVideoViewController.swift in Sources */,
 				E1C0486D1D867F650009DF6B /* GSNotifications.m in Sources */,
 				E1AC7F871DA8CAE5001C2676 /* VerifyCodeButton.swift in Sources */,
 				84D31B8F1DC3390F0005DE8E /* VerifyCode.swift in Sources */,
+				E1B51D281E029C8400F12AFD /* AbstractActionSheetPicker.m in Sources */,
+				E1B51D0E1E02996700F12AFD /* TimeZoneName.swift in Sources */,
 				E19327511D9A6623006BA8B2 /* LoginViewController.swift in Sources */,
 				E1C048691D867F650009DF6B /* GSCodecInfo.m in Sources */,
 				E13BACDD1D51946B00414ACE /* CallLogViewController.swift in Sources */,
+				E1B51D081E02996700F12AFD /* Extensions.swift in Sources */,
+				E1B51D0B1E02996700F12AFD /* Region.swift in Sources */,
+				E1B51D2E1E029C8400F12AFD /* ActionSheetStringPicker.m in Sources */,
+				E1B51CE21E02969F00F12AFD /* Upload.swift in Sources */,
 				E123C3FC1DADDA3E00E6D442 /* CAPSPageMenu.swift in Sources */,
 				E1E09C671DDA9A4D005B21C2 /* piQ.swift in Sources */,
 				E13148861E014EB000FDFD62 /* SwiftEventBus.swift in Sources */,
@@ -1121,18 +1312,30 @@
 				E199E03F1D97FBE7001237AD /* EditUserViewController.swift in Sources */,
 				E1330E271D92378400996D2A /* DetailMenuViewController.swift in Sources */,
 				E1C427BD1E014C020068CFF0 /* JSONJoy.swift in Sources */,
+				E1B51CFB1E02996700F12AFD /* Commons.swift in Sources */,
 				E140B1871D8E36FA00178D74 /* ShowNumberCon.swift in Sources */,
 				E13BACE71D51977C00414ACE /* R.generated.swift in Sources */,
+				E1B51D031E02996700F12AFD /* DateInRegion+Components.swift in Sources */,
 				E138D0771D6301EA0091AF4A /* OutgoingCallViewController.swift in Sources */,
+				E1B51D051E02996700F12AFD /* DateInRegion+Math.swift in Sources */,
 				E11E92941D5F2C9F004D634A /* DialViewController.swift in Sources */,
+				E1B51D291E029C8400F12AFD /* ActionSheetCustomPicker.m in Sources */,
+				E1B51D121E029B7D00F12AFD /* MBProgressHUD.m in Sources */,
+				E1B51D2A1E029C8400F12AFD /* ActionSheetDatePicker.m in Sources */,
 				E15AF2061DB5C0AA00D74E68 /* EditContactCell.swift in Sources */,
+				E1B51D041E02996700F12AFD /* DateInRegion+Formatter.swift in Sources */,
 				842B024D1DC736E100CFB00A /* User.swift in Sources */,
 				E1711F861DCC59BD00227329 /* SelectView.m in Sources */,
+				E1B51CFA1E02996700F12AFD /* CalendarName.swift in Sources */,
+				E1B51CDE1E02969F00F12AFD /* HTTPSecurity.swift in Sources */,
 				E13BACC21D518F5200414ACE /* AppUtil.swift in Sources */,
 				E1C048681D867F650009DF6B /* GSCall.m in Sources */,
+				E1B51D021E02996700F12AFD /* DateInRegion+Compare.swift in Sources */,
+				E1B51D011E02996700F12AFD /* DateInRegion.swift in Sources */,
 				E114D1C61D4F1F15006AB978 /* ContactViewController.swift in Sources */,
 				E1C048701D867F650009DF6B /* GSRingback.m in Sources */,
 				E114D1C41D4F1F15006AB978 /* AppDelegate.swift in Sources */,
+				E1B51CFF1E02996700F12AFD /* Date+Math.swift in Sources */,
 				E15C4C3C1D96689300688086 /* ZFRippleButton.swift in Sources */,
 				E17C50001DA9DDC000F986A4 /* NumberBar.swift in Sources */,
 				E15AF2081DB5FA1C00D74E68 /* ChangePasswordViewController.swift in Sources */,
@@ -1144,12 +1347,17 @@
 				E121297C1DB7154A009EE55B /* BillViewController.swift in Sources */,
 				E11E37E81D94CCC6004B566D /* UserCenterViewController.swift in Sources */,
 				E11227D01D9B5F3200B08ACD /* LoginCell.swift in Sources */,
+				E1B51D2C1E029C8400F12AFD /* ActionSheetLocalePicker.m in Sources */,
 				E1AC7F831DA89B85001C2676 /* RegisterViewController.swift in Sources */,
+				E1B51D2F1E029C8400F12AFD /* DistancePickerView.m in Sources */,
+				E1B51D2D1E029C8400F12AFD /* ActionSheetMultipleStringPicker.m in Sources */,
 				E12129821DB74D18009EE55B /* CommunicateListViewController.swift in Sources */,
 				E1E312911DF7A89400C67C13 /* MessageDetailViewController.swift in Sources */,
 				E1E312951DF7B18100C67C13 /* MZTimerLabel.m in Sources */,
 				E12129841DB75AAC009EE55B /* AboutViewController.swift in Sources */,
 				E19BEB001DB4D14300AE73E1 /* MySettingViewController.swift in Sources */,
+				E1B51D2B1E029C8400F12AFD /* ActionSheetDistancePicker.m in Sources */,
+				E1B51D001E02996700F12AFD /* DateComponents+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1320,17 +1528,9 @@
 					"$(inherited)",
 					"-ObjC",
 					"-framework",
-					"\"ActionSheetPicker_3_0\"",
-					"-framework",
 					"\"Realm\"",
 					"-framework",
 					"\"RealmSwift\"",
-					"-framework",
-					"\"Rswift\"",
-					"-framework",
-					"\"SwiftDate\"",
-					"-framework",
-					"\"SwiftHTTP\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.beyebe.yaobaphone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1400,17 +1600,9 @@
 					"$(inherited)",
 					"-ObjC",
 					"-framework",
-					"\"ActionSheetPicker_3_0\"",
-					"-framework",
 					"\"Realm\"",
 					"-framework",
 					"\"RealmSwift\"",
-					"-framework",
-					"\"Rswift\"",
-					"-framework",
-					"\"SwiftDate\"",
-					"-framework",
-					"\"SwiftHTTP\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.beyebe.yaobaphone;
 				PRODUCT_NAME = "$(TARGET_NAME)";

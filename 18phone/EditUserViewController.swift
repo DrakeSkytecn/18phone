@@ -7,9 +7,7 @@
 //
 
 import UIKit
-import ActionSheetPicker_3_0
 import MobileCoreServices
-import SwiftHTTP
 
 class EditUserViewController: UITableViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, NJImageCropperDelegate {
     
@@ -52,15 +50,20 @@ class EditUserViewController: UITableViewController, UITextFieldDelegate, UINavi
             headPhoto.image = headPhotoImage
         }
         if userData != nil {
-            nameField.text = userData?.name
+            if userData?.name != nil {
+                nameField.text = userData?.name
+            }
             if userData?.sex == Sex.male.rawValue {
                 sexLabel.text = "男"
             } else if userData?.sex == Sex.female.rawValue {
                 sexLabel.text = "女"
             }
-            areaLabel.text = userData?.provinceCity
-            signField.text = userData?.personalSignature
-            
+            if userData?.provinceCity != nil {
+                areaLabel.text = userData?.provinceCity
+            }
+            if userData?.personalSignature != nil {
+                signField.text = userData?.personalSignature
+            }
             if userData!.age! != -1 {
                 ageLabel.text = "\(userData!.age!)岁"
             }

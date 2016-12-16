@@ -175,7 +175,7 @@ class IncomingVideoViewController: UIViewController {
         } else {
             callLog.callState = CallState.inUnConnected.rawValue
         }
-        callLog.callType = CallType.voice.rawValue
+        callLog.callType = CallType.video.rawValue
         callLog.area = appContactInfo!.area
         try! App.realm.write {
             App.realm.add(callLog)

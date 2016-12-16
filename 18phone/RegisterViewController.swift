@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MBProgressHUD
 
 class RegisterViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
 

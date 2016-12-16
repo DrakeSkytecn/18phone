@@ -21,7 +21,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.file` struct is generated, and contains static references to 8 files.
+  /// This `R.file` struct is generated, and contains static references to 9 files.
   struct file {
     /// Resource file `Address.plist`.
     static let addressPlist = Rswift.FileResource(bundle: R.hostingBundle, name: "Address", pathExtension: "plist")
@@ -31,6 +31,8 @@ struct R: Rswift.Validatable {
     static let shareSDKBundle = Rswift.FileResource(bundle: R.hostingBundle, name: "ShareSDK", pathExtension: "bundle")
     /// Resource file `ShareSDKUI.bundle`.
     static let shareSDKUIBundle = Rswift.FileResource(bundle: R.hostingBundle, name: "ShareSDKUI", pathExtension: "bundle")
+    /// Resource file `SwiftDate.bundle`.
+    static let swiftDateBundle = Rswift.FileResource(bundle: R.hostingBundle, name: "SwiftDate", pathExtension: "bundle")
     /// Resource file `TencentOpenApi_IOS_Bundle.bundle`.
     static let tencentOpenApi_IOS_BundleBundle = Rswift.FileResource(bundle: R.hostingBundle, name: "TencentOpenApi_IOS_Bundle", pathExtension: "bundle")
     /// Resource file `WeiboSDK.bundle`.
@@ -61,6 +63,12 @@ struct R: Rswift.Validatable {
     /// `bundle.url(forResource: "ShareSDKUI", withExtension: "bundle")`
     static func shareSDKUIBundle(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.shareSDKUIBundle
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "SwiftDate", withExtension: "bundle")`
+    static func swiftDateBundle(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.swiftDateBundle
       return fileResource.bundle.url(forResource: fileResource)
     }
     

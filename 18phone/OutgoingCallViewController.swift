@@ -65,6 +65,7 @@ class OutgoingCallViewController: UIViewController {
             let account = GSUserAgent.shared().account
             outCall = GSCall.outgoingCall(toUri: callLog!.accountId + "@" + AppURL.BEYEBE_SIP_DOMAIN, from: account)
             outCall?.addObserver(self, forKeyPath: "status", options: .initial, context: nil)
+//            self.outCall?.begin()
             APIUtil.p2pCall(UserDefaults.standard.string(forKey: "userID")!, BUserID: callLog!.accountId) { verifyCodeInfo in
                 
             }
@@ -104,8 +105,8 @@ class OutgoingCallViewController: UIViewController {
         var b = true
         Async.background { [weak self] in
             var i = 0
-            if self != nil {
-                while !self!.isHangup {
+//            if self != nil {
+                while self != nil && !self!.isHangup {
                     Async.background(after:1.0) {
                         if i == 60 {
                             b = false
@@ -129,7 +130,7 @@ class OutgoingCallViewController: UIViewController {
                         return
                     }
                 }
-            }
+//            }
         }
     }
     

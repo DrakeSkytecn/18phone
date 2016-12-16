@@ -75,7 +75,7 @@ class DetailMenuViewController: UIViewController, UITableViewDataSource, UITable
             outgoingCallViewController?.callLog = callLog
             present(outgoingCallViewController!, animated: true, completion: nil)
         } else {
-            if true {
+            if false {
                 let outgoingCallViewController = R.storyboard.main.outgoingCallViewController()
                 callLog.accountId = appContactInfo!.accountId
                 callLog.contactId = appContactInfo!.identifier

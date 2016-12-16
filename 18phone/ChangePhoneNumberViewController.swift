@@ -45,6 +45,7 @@ class ChangePhoneNumberViewController: UIViewController, UITableViewDataSource, 
             cell.contentField.tag = indexPath.row
             if indexPath.row == 0 {
                 cell.contentField.keyboardType = .default
+                cell.contentField.isSecureTextEntry = true
                 cell.contentField.becomeFirstResponder()
             } else {
                 cell.contentField.keyboardType = .numberPad

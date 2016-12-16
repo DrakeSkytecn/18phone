@@ -4,16 +4,6 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>ActionSheetPicker-3.0.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>MBProgressHUD.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-18phone.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -34,55 +24,25 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SwiftDate.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>SwiftHTTP.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>053617A05C5A952CF2888B88D119FE01</key>
+		<key>57DA8C030071686837222025BE225CE5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>12C83EDF08CCDB8EA58B329F79EE870F</key>
+		<key>703EA371A318022C2BAF7E4B60C65FF8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>34BC3478378EB0D9C4943851F32EA929</key>
+		<key>DCFF935F8947EE566B875954E8C0E8B4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>95FFA5E11696AED9F098E2BCE65A25F4</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A48F4CF76732BD007DEB26625EA10D6B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C34CEF2D7D2F9FF9E53D805556613D51</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DBA6001481CEA0EBA031CC5C94508FAA</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F2C053048D1CF4D0786908DBDF493C15</key>
+		<key>E0015BD453B92B9ECCCE2A1D25FB710A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

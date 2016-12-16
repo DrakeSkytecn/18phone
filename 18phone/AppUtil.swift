@@ -9,8 +9,6 @@
 import Foundation
 import AVFoundation
 import RealmSwift
-import SwiftDate
-import SwiftHTTP
 
 /**
  *  app中使用到的URL的定义
@@ -22,12 +20,12 @@ struct AppURL {
     
     /// 比一比SIP服务器地址
     static let BEYEBE_SIP_SERVER = "211.149.172.109:5060"
-    //        static let BEYEBE_SIP_SERVER = "192.168.10.165:5060"
+//            static let BEYEBE_SIP_SERVER = "192.168.10.249:5060"
     //    static let BEYEBE_SIP_SERVER = "192.168.10.239:5060"
     
     /// 比一比SIP服务器域名
     static let BEYEBE_SIP_DOMAIN = "18phone.beyebe"
-    //        static let BEYEBE_SIP_DOMAIN = "myvoipapp.com"
+//            static let BEYEBE_SIP_DOMAIN = "myvoipapp.com"
     
     /// 18phone接口地址
     static let BEYEBE_18PHONE_API_BASE = "http://192.168.10.249/Home/"

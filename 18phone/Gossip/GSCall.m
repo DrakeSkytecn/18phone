@@ -269,7 +269,7 @@
     pjsua_vid_win_get_info(wid, &win_info);
     win_info.is_native = PJ_FALSE;
     UIView *view = (__bridge UIView *)win_info.hwnd.info.ios.window;
-    win_info.show = YES;
+//    win_info.show = YES;
     pjsua_vid_win_set_show(wid, PJ_TRUE);
     
     return view;
@@ -287,7 +287,7 @@
     pjsua_vid_preview_param_default(&preview_param);
     preview_param.wnd_flags = PJMEDIA_VID_DEV_WND_BORDER |
     PJMEDIA_VID_DEV_WND_RESIZABLE;
-    pjsua_vid_preview_start(PJMEDIA_VID_DEFAULT_CAPTURE_DEV, NULL);
+    pjsua_vid_preview_start(PJMEDIA_VID_DEFAULT_CAPTURE_DEV, &preview_param);
 }
 
 - (UIView *)createPreviewWindow:(CGRect)frame {

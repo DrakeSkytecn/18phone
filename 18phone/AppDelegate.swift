@@ -98,10 +98,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKPushRegistryDelegate, U
             $0 + String(format:"%02.2hhx", $1)
         }
         let userDefaults = UserDefaults.standard
-        if userDefaults.string(forKey: "deviceToken") == nil {
-            userDefaults.set(token, forKey: "deviceToken")
-            userDefaults.synchronize()
-        }
+        userDefaults.set(token, forKey: "deviceToken")
+        userDefaults.synchronize()
         print("APNSToken:\(token)")
     }
     

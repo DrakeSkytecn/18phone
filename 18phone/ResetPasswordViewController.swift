@@ -54,6 +54,7 @@ class ResetPasswordViewController: UIViewController, UITableViewDataSource, UITa
                 break
             case 1,2:
                 cell.contentField.keyboardType = .default
+                cell.contentField.isSecureTextEntry = true
                 break
             default:
                 break

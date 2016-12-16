@@ -44,6 +44,8 @@ class OutgoingVideoViewController: UIViewController {
         let account = GSUserAgent.shared().account
         outCall = GSCall.outgoingCall(toUri: callLog!.accountId + "@" + AppURL.BEYEBE_SIP_DOMAIN, from: account)
         outCall?.addObserver(self, forKeyPath: "status", options: .initial, context: nil)
+//        outCall?.beginVideo()
+        
         APIUtil.p2pCall(UserDefaults.standard.string(forKey: "userID")!, BUserID: callLog!.accountId) { verifyCodeInfo in
             
         }
@@ -51,6 +53,10 @@ class OutgoingVideoViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        outCall?.startPreviewWindow()
+        let previewWindow = outCall!.createPreviewWindow(CGRect(x: 0, y: 0, width: previewCon.frame.width, height: previewCon.frame.height))
+        previewCon.addSubview(previewWindow!)
+        outCall?.orientation()
 //        Async.background {
 //            self.outCall?.startPreviewWindow()
 //        }.main { _ in
@@ -59,19 +65,19 @@ class OutgoingVideoViewController: UIViewController {
 //            self.previewCon.addSubview(previewWindow!)
 //            self.outCall?.orientation()
 //        }
-        checkOnline(callLog!.accountId)
+//        checkOnline(callLog!.accountId)
     }
     
     func checkOnline(_ accountId: String) {
         var b = true
-        Async.background {
+        Async.background { [weak self] in
             var i = 0
-            while !self.isHangup {
+            while self != nil && !self!.isHangup {
                 Async.background(after:1.0) {
                     if i == 60 {
                         b = false
                         Async.main {
-                            self.areaLabel.text = "暂时无法接通，请稍后再拨"
+                            self!.areaLabel.text = "暂时无法接通，请稍后再拨"
                         }
                         return
                     }
@@ -80,11 +86,11 @@ class OutgoingVideoViewController: UIViewController {
                         if verifyCodeInfo.codeStatus == 1 {
                             if verifyCodeInfo.codeInfo == "online" {
                                 b = false
-                                self.outCall?.beginVideo()
-                                self.outCall?.startPreviewWindow()
-                                let previewWindow = self.outCall!.createPreviewWindow(CGRect(x: 0, y: 0, width: self.previewCon.frame.width, height: self.previewCon.frame.height))
-                                self.previewCon.addSubview(previewWindow!)
-                                self.outCall?.orientation()
+                                self!.outCall?.beginVideo()
+                                self!.outCall?.startPreviewWindow()
+                                let previewWindow = self!.outCall!.createPreviewWindow(CGRect(x: 0, y: 0, width: self!.previewCon.frame.width, height: self!.previewCon.frame.height))
+                                self!.previewCon.addSubview(previewWindow!)
+                                self!.outCall?.orientation()
                                 return
                             }
                         }

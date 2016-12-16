@@ -42,6 +42,7 @@ class ChangePasswordViewController: UIViewController, UITableViewDataSource, UIT
         cell.titleLabel.text = titles[indexPath.row]
         cell.contentField.delegate = self
         cell.contentField.tag = indexPath.row
+        cell.contentField.isSecureTextEntry = true
         cell.contentField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         
         if indexPath.row == 0 {
