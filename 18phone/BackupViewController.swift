@@ -89,77 +89,92 @@ class BackupViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.row == 3 {
-            MBProgressHUD.showAdded(to: view, animated: true)
             let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
             let okAction = UIAlertAction(title: "好的", style: .default, handler: nil)
             alertController.addAction(okAction)
-            if let userID = UserDefaults.standard.string(forKey: "userID") {
-                APIUtil.downloadContact(userID) { downloadContactInfos in
-                    if downloadContactInfos.codeStatus == 1 {
-                        for contactInfo in downloadContactInfos.contactInfos {
-                            let store = CNContactStore()
-                            let keysToFetch = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
-                                               CNContactImageDataKey,
-                                               CNContactThumbnailImageDataKey,
-                                               CNContactImageDataAvailableKey,
-                                               CNContactPhoneNumbersKey,
-                                               CNContactPhoneticGivenNameKey,
-                                               CNContactPhoneticFamilyNameKey] as [Any]
-                            do {
-                                let contact = try store.unifiedContact(withIdentifier: contactInfo.PhoneID!, keysToFetch: keysToFetch as! [CNKeyDescriptor]).mutableCopy() as! CNMutableContact
-                                contact.familyName = ""
-                                contact.givenName = contactInfo.Name!
-                                var phoneNumbers = [CNLabeledValue<CNPhoneNumber>]()
-                                for phoneNumber in contactInfo.Mobile!.components(separatedBy: ",") {
-                                    phoneNumbers.append(CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: phoneNumber)))
-                                }
-                                contact.phoneNumbers = phoneNumbers
-                                let appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contact.identifier)'").first!
-                                try! App.realm.write {
-                                    appContactInfo.sex = contactInfo.Sex!
-                                    if contactInfo.Area != nil {
-                                        appContactInfo.area = contactInfo.Area!
+            let confirm = UIAlertController(title: "校验", message: "请输入登录密码", preferredStyle: .alert)
+            confirm.addTextField(configurationHandler: { textField in
+                textField.placeholder = "请输入登录密码"
+            })
+            let cancel = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+            let confirmOK = UIAlertAction(title: "确认", style: .default, handler: { action in
+                if confirm.textFields![0].text == UserDefaults.standard.string(forKey: "password") {
+                    MBProgressHUD.showAdded(to: self.view, animated: true)
+                    if let userID = UserDefaults.standard.string(forKey: "userID") {
+                        APIUtil.downloadContact(userID) { downloadContactInfos in
+                            if downloadContactInfos.codeStatus == 1 {
+                                for contactInfo in downloadContactInfos.contactInfos {
+                                    let store = CNContactStore()
+                                    let keysToFetch = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
+                                                       CNContactImageDataKey,
+                                                       CNContactThumbnailImageDataKey,
+                                                       CNContactImageDataAvailableKey,
+                                                       CNContactPhoneNumbersKey,
+                                                       CNContactPhoneticGivenNameKey,
+                                                       CNContactPhoneticFamilyNameKey] as [Any]
+                                    do {
+                                        let contact = try store.unifiedContact(withIdentifier: contactInfo.PhoneID!, keysToFetch: keysToFetch as! [CNKeyDescriptor]).mutableCopy() as! CNMutableContact
+                                        contact.familyName = ""
+                                        contact.givenName = contactInfo.Name!
+                                        var phoneNumbers = [CNLabeledValue<CNPhoneNumber>]()
+                                        for phoneNumber in contactInfo.Mobile!.components(separatedBy: ",") {
+                                            phoneNumbers.append(CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: phoneNumber)))
+                                        }
+                                        contact.phoneNumbers = phoneNumbers
+                                        let appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contact.identifier)'").first!
+                                        try! App.realm.write {
+                                            appContactInfo.sex = contactInfo.Sex!
+                                            if contactInfo.Area != nil {
+                                                appContactInfo.area = contactInfo.Area!
+                                            }
+                                        }
+                                        let saveRequest = CNSaveRequest()
+                                        saveRequest.update(contact)
+                                        try store.execute(saveRequest)
+                                    }catch {
+                                        let contact = CNMutableContact()
+                                        contact.familyName = ""
+                                        contact.givenName = contactInfo.Name!
+                                        var phoneNumbers = [CNLabeledValue<CNPhoneNumber>]()
+                                        for phoneNumber in contactInfo.Mobile!.components(separatedBy: ",") {
+                                            phoneNumbers.append(CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: phoneNumber)))
+                                        }
+                                        contact.phoneNumbers = phoneNumbers
+                                        let appContactInfo = AppContactInfo()
+                                        try! App.realm.write {
+                                            appContactInfo.identifier = contact.identifier
+                                            appContactInfo.sex = contactInfo.Sex!
+                                            if contactInfo.Area != nil {
+                                                appContactInfo.area = contactInfo.Area!
+                                            }
+                                            appContactInfo.age = contactInfo.Age!
+                                            if contactInfo.PersonalSignature != nil {
+                                                appContactInfo.signature = contactInfo.PersonalSignature!
+                                            }
+                                        }
+                                        let store = CNContactStore()
+                                        let saveRequest = CNSaveRequest()
+                                        saveRequest.add(contact, toContainerWithIdentifier:nil)
+                                        try! store.execute(saveRequest)
                                     }
                                 }
-                                let saveRequest = CNSaveRequest()
-                                saveRequest.update(contact)
-                                try store.execute(saveRequest)
-                            }catch {
-                                let contact = CNMutableContact()
-                                contact.familyName = ""
-                                contact.givenName = contactInfo.Name!
-                                var phoneNumbers = [CNLabeledValue<CNPhoneNumber>]()
-                                for phoneNumber in contactInfo.Mobile!.components(separatedBy: ",") {
-                                    phoneNumbers.append(CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: phoneNumber)))
-                                }
-                                contact.phoneNumbers = phoneNumbers
-                                let appContactInfo = AppContactInfo()
-                                try! App.realm.write {
-                                    appContactInfo.identifier = contact.identifier
-                                    appContactInfo.sex = contactInfo.Sex!
-                                    if contactInfo.Area != nil {
-                                        appContactInfo.area = contactInfo.Area!
-                                    }
-                                    appContactInfo.age = contactInfo.Age!
-                                    if contactInfo.PersonalSignature != nil {
-                                        appContactInfo.signature = contactInfo.PersonalSignature!
-                                    }
-                                }
-                                let store = CNContactStore()
-                                let saveRequest = CNSaveRequest()
-                                saveRequest.add(contact, toContainerWithIdentifier:nil)
-                                try! store.execute(saveRequest)
+                                alertController.message = "恢复成功"
+                                SwiftEventBus.post("reloadContacts")
+                            } else {
+                                alertController.message = downloadContactInfos.codeInfo
                             }
+                            self.present(alertController, animated: true, completion: nil)
+                            MBProgressHUD.hide(for: self.view, animated: true)
                         }
-                        alertController.message = "恢复成功"
-                        SwiftEventBus.post("reloadContacts")
-                    } else {
-                        alertController.message = downloadContactInfos.codeInfo
                     }
+                } else {
+                    alertController.message = "密码错误"
                     self.present(alertController, animated: true, completion: nil)
-                    MBProgressHUD.hide(for: self.view, animated: true)
                 }
-            }
+            })
+            confirm.addAction(confirmOK)
+            confirm.addAction(cancel)
+            present(confirm, animated: true, completion: nil)
         }
     }
     

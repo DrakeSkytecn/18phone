@@ -45,7 +45,7 @@ class OutgoingVideoViewController: UIViewController {
         outCall = GSCall.outgoingCall(toUri: callLog!.accountId + "@" + AppURL.BEYEBE_SIP_DOMAIN, from: account)
         outCall?.addObserver(self, forKeyPath: "status", options: .initial, context: nil)
 //        outCall?.beginVideo()
-        
+        checkOnline(callLog!.accountId)
         APIUtil.p2pCall(UserDefaults.standard.string(forKey: "userID")!, BUserID: callLog!.accountId) { verifyCodeInfo in
             
         }
@@ -65,7 +65,6 @@ class OutgoingVideoViewController: UIViewController {
 //            self.previewCon.addSubview(previewWindow!)
 //            self.outCall?.orientation()
 //        }
-//        checkOnline(callLog!.accountId)
     }
     
     func checkOnline(_ accountId: String) {
@@ -87,10 +86,6 @@ class OutgoingVideoViewController: UIViewController {
                             if verifyCodeInfo.codeInfo == "online" {
                                 b = false
                                 self!.outCall?.beginVideo()
-                                self!.outCall?.startPreviewWindow()
-                                let previewWindow = self!.outCall!.createPreviewWindow(CGRect(x: 0, y: 0, width: self!.previewCon.frame.width, height: self!.previewCon.frame.height))
-                                self!.previewCon.addSubview(previewWindow!)
-                                self!.outCall?.orientation()
                                 return
                             }
                         }
@@ -111,7 +106,7 @@ class OutgoingVideoViewController: UIViewController {
     @IBAction func big(_ sender: UIButton) {
 //        videoWidth.constant = 400
 //        previewCon.subviews[0].backgroundColor = UIColor.blue
-        previewCon.subviews[0].frame = CGRect(x: -20, y: 20, width: 81, height: 121)
+//        previewCon.subviews[0].frame = CGRect(x: -20, y: 20, width: 81, height: 121)
     }
     
     @IBAction func hangup(_ sender: UIButton) {

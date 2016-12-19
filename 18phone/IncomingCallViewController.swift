@@ -24,6 +24,8 @@ class IncomingCallViewController: UIViewController {
     
     var callDuration = ""
     
+    let callLog = CallLog()
+    
     /// 接通前显示来电信息，接通后显示通话时间
     @IBOutlet weak var nameLabel: UILabel!
     
@@ -73,6 +75,7 @@ class IncomingCallViewController: UIViewController {
                             if formatNumber == userInfo.userData!.mobile! {
                                 self.phoneNumber = formatNumber
                                 self.nameLabel.text = contact.familyName + contact.givenName
+                                self.callLog.name = self.nameLabel.text!
                                 self.appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contact.identifier)'").first
                                 try! App.realm.write {
                                     self.appContactInfo?.accountId = self.accountId
@@ -120,20 +123,22 @@ class IncomingCallViewController: UIViewController {
                         phoneNumber = PhoneUtil.formatPhoneNumber(item.value.stringValue)
                         PhoneUtil.getPhoneAreaInfo(phoneNumber, callBack: { phoneAreaInfo in
                             if phoneAreaInfo.errNum == 0 {
-                                let province = phoneAreaInfo.retData!.province!
-                                let city = phoneAreaInfo.retData!.city!
-                                let fullArea = province + city
-                                switch province {
-                                case "北京", "上海", "天津", "重庆":
-                                    try! App.realm.write {
-                                        self.appContactInfo?.area = province
+                                if phoneAreaInfo.retData!.province != nil {
+                                    let province = phoneAreaInfo.retData!.province!
+                                    let city = phoneAreaInfo.retData!.city!
+                                    let fullArea = province + city
+                                    switch province {
+                                    case "北京", "上海", "天津", "重庆":
+                                        try! App.realm.write {
+                                            self.appContactInfo?.area = province
+                                        }
+                                        break
+                                    default:
+                                        try! App.realm.write {
+                                            self.appContactInfo?.area = fullArea
+                                        }
+                                        break
                                     }
-                                    break
-                                default:
-                                    try! App.realm.write {
-                                        self.appContactInfo?.area = fullArea
-                                    }
-                                    break
                                 }
                             }
                         })
@@ -169,10 +174,11 @@ class IncomingCallViewController: UIViewController {
     }
     
     func addCallLog() {
-        let callLog = CallLog()
         callLog.accountId = accountId
-        callLog.contactId = appContactInfo!.identifier
-        callLog.name = nameLabel.text!
+        if appContactInfo != nil {
+            callLog.contactId = appContactInfo!.identifier
+            callLog.area = appContactInfo!.area
+        }
         callLog.phone = phoneNumber
         callLog.callDuration = callDuration
         if isConnected {
@@ -181,7 +187,6 @@ class IncomingCallViewController: UIViewController {
             callLog.callState = CallState.inUnConnected.rawValue
         }
         callLog.callType = CallType.voice.rawValue
-        callLog.area = appContactInfo!.area
         try! App.realm.write {
             App.realm.add(callLog)
         }

@@ -424,9 +424,17 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func pasteToShowNumber(_ menu :UIMenuController)
     {
         let paste = UIPasteboard.general
-        if PhoneUtil.isNumber(paste.string) {
-            numberText.text = paste.string
-            checkNumberArea(paste.string!)
+        if paste.string != nil {
+            let content = PhoneUtil.formatPhoneNumber(paste.string!)
+            if PhoneUtil.isMobileNumber(content) || PhoneUtil.isTelephoneNumber(content) {
+                numberText.text = content
+                checkNumberArea(content)
+            } else {
+                let alertController = UIAlertController(title: nil, message: "复制的内容不是电话号码", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "好的", style: .default, handler: nil)
+                alertController.addAction(okAction)
+                present(alertController, animated: true, completion: nil)
+            }
         }
     }
     

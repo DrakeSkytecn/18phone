@@ -65,7 +65,6 @@ class OutgoingCallViewController: UIViewController {
             let account = GSUserAgent.shared().account
             outCall = GSCall.outgoingCall(toUri: callLog!.accountId + "@" + AppURL.BEYEBE_SIP_DOMAIN, from: account)
             outCall?.addObserver(self, forKeyPath: "status", options: .initial, context: nil)
-//            self.outCall?.begin()
             APIUtil.p2pCall(UserDefaults.standard.string(forKey: "userID")!, BUserID: callLog!.accountId) { verifyCodeInfo in
                 
             }
@@ -83,9 +82,6 @@ class OutgoingCallViewController: UIViewController {
             SwiftEventBus.onMainThread(self, name: "noAnswer") { result in
                 self.areaLabel.text = "暂时无法接通，请稍后再拨"
             }
-//            SwiftEventBus.onMainThread(self, name: "hangup") { result in
-//                self.areaLabel.text = "通话已挂断"
-//            }
             App.ulinkService.sendCallInvite("", toPhone: callLog!.phone, display: UserDefaults.standard.string(forKey: "username")!, attData: "")
         }
     }
@@ -105,7 +101,6 @@ class OutgoingCallViewController: UIViewController {
         var b = true
         Async.background { [weak self] in
             var i = 0
-//            if self != nil {
                 while self != nil && !self!.isHangup {
                     Async.background(after:1.0) {
                         if i == 60 {
@@ -130,7 +125,6 @@ class OutgoingCallViewController: UIViewController {
                         return
                     }
                 }
-//            }
         }
     }
     

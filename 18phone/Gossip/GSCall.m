@@ -240,11 +240,11 @@
     pjsua_vid_win_id wid = 0;
     vid_idx = pjsua_call_get_vid_stream_idx(_callId);
 //    NSLog(@"vid_idx:%d", vid_idx);
-    pjsua_vid_win_id wids[3];
-    unsigned count = 3;
-    pjsua_vid_enum_wins(wids, &count);
-    pjsua_call_info ci;
-    pjsua_call_get_info(_callId, &ci);
+//    pjsua_vid_win_id wids[3];
+//    unsigned count = 3;
+//    pjsua_vid_enum_wins(wids, &count);
+//    pjsua_call_info ci;
+//    pjsua_call_get_info(_callId, &ci);
 //    for (int i=0; i<count; i++) {
 //        wid = ci.media[i].stream.vid.win_in;
 //    }

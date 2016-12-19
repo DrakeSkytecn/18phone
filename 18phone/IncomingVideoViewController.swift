@@ -166,7 +166,10 @@ class IncomingVideoViewController: UIViewController {
     func addCallLog() {
         let callLog = CallLog()
         callLog.accountId = accountId
-        callLog.contactId = appContactInfo!.identifier
+        if appContactInfo != nil {
+            callLog.contactId = appContactInfo!.identifier
+            callLog.area = appContactInfo!.area
+        }
         callLog.name = nameLabel.text!
         callLog.phone = phoneNumber
         callLog.callDuration = callDuration
@@ -176,7 +179,6 @@ class IncomingVideoViewController: UIViewController {
             callLog.callState = CallState.inUnConnected.rawValue
         }
         callLog.callType = CallType.video.rawValue
-        callLog.area = appContactInfo!.area
         try! App.realm.write {
             App.realm.add(callLog)
         }

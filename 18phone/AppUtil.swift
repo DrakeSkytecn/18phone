@@ -19,8 +19,8 @@ struct AppURL {
     static let BAIDU_PHONEAREA_API = "http://apis.baidu.com/apistore/mobilenumber/mobilenumber"
     
     /// 比一比SIP服务器地址
-    static let BEYEBE_SIP_SERVER = "211.149.172.109:5060"
-//            static let BEYEBE_SIP_SERVER = "192.168.10.249:5060"
+//    static let BEYEBE_SIP_SERVER = "211.149.172.109:5060"
+            static let BEYEBE_SIP_SERVER = "192.168.10.249:5060"
     //    static let BEYEBE_SIP_SERVER = "192.168.10.239:5060"
     
     /// 比一比SIP服务器域名
@@ -169,7 +169,6 @@ struct PhoneUtil {
                     
                     return
                 }
-                
                 print(response.text)
                 let phoneAreaInfo = PhoneAreaInfo(JSONDecoder(response.data))
                 if callBack != nil {
@@ -184,7 +183,7 @@ struct PhoneUtil {
     }
     
     static func formatPhoneNumber(_ phoneNumber: String) -> String {
-        return phoneNumber.replacingOccurrences(of: "^\\W+|\\s/g", with: "", options: .regularExpression, range: nil)
+        return phoneNumber.replacingOccurrences(of: "\\D", with: "", options: .regularExpression, range: nil)
     }
     
     static func isMobileNumber(_ phoneNumber: String?) -> Bool {
