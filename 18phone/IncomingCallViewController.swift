@@ -118,6 +118,7 @@ class IncomingCallViewController: UIViewController {
             do {
                 let contact = try store.unifiedContact(withIdentifier: appContactInfo!.identifier, keysToFetch: keysToFetch as! [CNKeyDescriptor])
                 self.nameLabel.text = contact.familyName + contact.givenName
+                self.callLog.name = self.nameLabel.text!
                 for (i, item) in contact.phoneNumbers.enumerated() {
                     if i == 0 {
                         phoneNumber = PhoneUtil.formatPhoneNumber(item.value.stringValue)

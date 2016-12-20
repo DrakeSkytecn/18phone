@@ -23,6 +23,8 @@ class IncomingVideoViewController: UIViewController {
     
     var callDuration = ""
     
+    let callLog = CallLog()
+    
     /// 接通前显示来电信息，接通后显示通话时间
     @IBOutlet weak var nameLabel: UILabel!
     
@@ -56,6 +58,7 @@ class IncomingVideoViewController: UIViewController {
                             if formatNumber == userInfo.userData!.mobile! {
                                 self.phoneNumber = formatNumber
                                 self.nameLabel.text = contact.familyName + contact.givenName
+                                self.callLog.name = self.nameLabel.text!
                                 self.appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contact.identifier)'").first
                                 try! App.realm.write {
                                     self.appContactInfo?.accountId = self.accountId
@@ -98,25 +101,28 @@ class IncomingVideoViewController: UIViewController {
             do {
                 let contact = try store.unifiedContact(withIdentifier: appContactInfo!.identifier, keysToFetch: keysToFetch as! [CNKeyDescriptor])
                 self.nameLabel.text = contact.familyName + contact.givenName
+                self.callLog.name = self.nameLabel.text!
                 for (i, item) in contact.phoneNumbers.enumerated() {
                     if i == 0 {
                         phoneNumber = PhoneUtil.formatPhoneNumber(item.value.stringValue)
                         PhoneUtil.getPhoneAreaInfo(phoneNumber, callBack: { phoneAreaInfo in
                             if phoneAreaInfo.errNum == 0 {
-                                let province = phoneAreaInfo.retData!.province!
-                                let city = phoneAreaInfo.retData!.city!
-                                let fullArea = province + city
-                                switch province {
-                                case "北京", "上海", "天津", "重庆":
-                                    try! App.realm.write {
-                                        self.appContactInfo?.area = province
+                                if phoneAreaInfo.retData!.province != nil {
+                                    let province = phoneAreaInfo.retData!.province!
+                                    let city = phoneAreaInfo.retData!.city!
+                                    let fullArea = province + city
+                                    switch province {
+                                    case "北京", "上海", "天津", "重庆":
+                                        try! App.realm.write {
+                                            self.appContactInfo?.area = province
+                                        }
+                                        break
+                                    default:
+                                        try! App.realm.write {
+                                            self.appContactInfo?.area = fullArea
+                                        }
+                                        break
                                     }
-                                    break
-                                default:
-                                    try! App.realm.write {
-                                        self.appContactInfo?.area = fullArea
-                                    }
-                                    break
                                 }
                             }
                         })
@@ -126,25 +132,18 @@ class IncomingVideoViewController: UIViewController {
                 
             }
         }
-//        inCall?.incomingCallInfo()
         inCall?.addObserver(self, forKeyPath: "status", options: .initial, context: nil)
         App.changeSpeaker(true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
-//        Async.background {
-//            self.inCall?.startPreviewWindow()
-//            }.main { _ in
-//                let previewWindow = self.inCall!.createPreviewWindow(CGRect(x: 0, y: 0, width: self.previewCon.frame.width, height: self.previewCon.frame.height))
-//                self.previewCon.addSubview(previewWindow!)
-//                self.inCall?.orientation()
-//        }
-        
-        inCall?.startPreviewWindow()
-        let previewWindow = inCall!.createPreviewWindow(CGRect(x: 0, y: 0, width: previewCon.frame.width, height: previewCon.frame.height))
-        previewCon.addSubview(previewWindow!)
-        inCall?.orientation()
+        Async.background {
+            self.inCall?.startPreviewWindow()
+            }.main { _ in
+                let previewWindow = self.inCall!.createPreviewWindow(CGRect(x: 0, y: 0, width: 80, height: 120))
+                self.previewCon.addSubview(previewWindow!)
+                self.inCall?.orientation()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -164,7 +163,6 @@ class IncomingVideoViewController: UIViewController {
     }
     
     func addCallLog() {
-        let callLog = CallLog()
         callLog.accountId = accountId
         if appContactInfo != nil {
             callLog.contactId = appContactInfo!.identifier
@@ -237,6 +235,7 @@ class IncomingVideoViewController: UIViewController {
     }
     
     deinit {
+        print("IncomingVideoViewController deinit")
         inCall?.stopPreviewWindow()
         inCall?.removeObserver(self, forKeyPath: "status")
     }

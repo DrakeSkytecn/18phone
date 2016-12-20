@@ -53,18 +53,13 @@ class OutgoingVideoViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        outCall?.startPreviewWindow()
-        let previewWindow = outCall!.createPreviewWindow(CGRect(x: 0, y: 0, width: previewCon.frame.width, height: previewCon.frame.height))
-        previewCon.addSubview(previewWindow!)
-        outCall?.orientation()
-//        Async.background {
-//            self.outCall?.startPreviewWindow()
-//        }.main { _ in
-//            let previewWindow = self.outCall!.createPreviewWindow(CGRect(x: 0, y: 0, width: 40, height: 80))
-//            previewWindow?.backgroundColor = UIColor.blue
-//            self.previewCon.addSubview(previewWindow!)
-//            self.outCall?.orientation()
-//        }
+        Async.background {
+            self.outCall?.startPreviewWindow()
+        }.main { _ in 
+            let previewWindow = self.outCall!.createPreviewWindow(CGRect(x: 0, y: 0, width: 80, height: 120))
+            self.previewCon.addSubview(previewWindow!)
+            self.outCall?.orientation()
+        }
     }
     
     func checkOnline(_ accountId: String) {
@@ -186,6 +181,7 @@ class OutgoingVideoViewController: UIViewController {
     }
     
     deinit {
+        print("OutgoingVideoViewController deinit")
         outCall?.stopPreviewWindow()
         outCall?.removeObserver(self, forKeyPath: "status")
     }
