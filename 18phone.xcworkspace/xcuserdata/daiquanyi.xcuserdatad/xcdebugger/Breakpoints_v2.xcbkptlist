@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "18phone/AppDelegate.swift"
-            timestampString = "503566517.599462"
+            timestampString = "503977376.293615"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "308"
-            endingLineNumber = "308"
+            startingLineNumber = "309"
+            endingLineNumber = "309"
             landmarkName = "uLinkService(_:callReturnNotify:stateCode:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -33,70 +33,6 @@
             endingLineNumber = "80"
             landmarkName = "loadContacts()"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "18phone/IncomingCallViewController.swift"
-            timestampString = "503908590.424702"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "18phone/IncomingCallViewController.swift"
-            timestampString = "503910446.394847"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "_8phone.IncomingCallViewController.viewDidLoad () -&gt; ()"
-                  moduleName = "18phone"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/daiquanyi/Documents/18phone/18phone/IncomingCallViewController.swift"
-                  timestampString = "503920490.730349"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "64"
-                  endingLineNumber = "64"
-                  offsetFromSymbolStart = "2524">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "_8phone.IncomingCallViewController.(viewDidLoad () -&gt; ()).(closure #1)"
-                  moduleName = "18phone"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/daiquanyi/Documents/18phone/18phone/IncomingCallViewController.swift"
-                  timestampString = "503920490.735245"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "65"
-                  endingLineNumber = "65"
-                  offsetFromSymbolStart = "800">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

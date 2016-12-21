@@ -41,18 +41,19 @@ class OutgoingVideoViewController: UIViewController {
             nameLabel.text = callLog!.phone
             areaLabel.text = callLog!.area
         }
+        App.changeSpeaker(true)
         let account = GSUserAgent.shared().account
         outCall = GSCall.outgoingCall(toUri: callLog!.accountId + "@" + AppURL.BEYEBE_SIP_DOMAIN, from: account)
         outCall?.addObserver(self, forKeyPath: "status", options: .initial, context: nil)
 //        outCall?.beginVideo()
-        checkOnline(callLog!.accountId)
+//        checkOnline(callLog!.accountId)
         APIUtil.p2pCall(UserDefaults.standard.string(forKey: "userID")!, BUserID: callLog!.accountId) { verifyCodeInfo in
             
         }
-        App.changeSpeaker(true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        checkOnline(callLog!.accountId)
         Async.background {
             self.outCall?.startPreviewWindow()
         }.main { _ in 

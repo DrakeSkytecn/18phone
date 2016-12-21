@@ -41,6 +41,8 @@ class IncomingVideoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        App.changeSpeaker(true)
+        inCall?.addObserver(self, forKeyPath: "status", options: .initial, context: nil)
         accountId = inCall!.incomingCallInfo()!
         appContactInfo = App.realm.objects(AppContactInfo.self).filter("accountId == '\(accountId)'").first
         if appContactInfo == nil {
@@ -132,8 +134,6 @@ class IncomingVideoViewController: UIViewController {
                 
             }
         }
-        inCall?.addObserver(self, forKeyPath: "status", options: .initial, context: nil)
-        App.changeSpeaker(true)
     }
     
     override func viewDidAppear(_ animated: Bool) {

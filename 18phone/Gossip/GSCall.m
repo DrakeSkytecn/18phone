@@ -314,11 +314,6 @@
 
 - (void)stopPreviewWindow {
     pjsua_vid_preview_stop(PJMEDIA_VID_DEFAULT_CAPTURE_DEV);
-    pjsua_call_vid_strm_op_param param;
-    pjsua_call_vid_strm_op_param_default(&param);
-    param.cap_dev = PJMEDIA_VID_DEFAULT_RENDER_DEV;
-    param.dir = PJMEDIA_DIR_CAPTURE;
-    pjsua_call_set_vid_strm(_callId, PJSUA_CALL_VID_STRM_STOP_TRANSMIT, &param);
 }
 
 -(void)orientation {

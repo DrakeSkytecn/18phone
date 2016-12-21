@@ -66,7 +66,7 @@ class OutgoingCallViewController: UIViewController {
             outCall = GSCall.outgoingCall(toUri: callLog!.accountId + "@" + AppURL.BEYEBE_SIP_DOMAIN, from: account)
             outCall?.addObserver(self, forKeyPath: "status", options: .initial, context: nil)
             APIUtil.p2pCall(UserDefaults.standard.string(forKey: "userID")!, BUserID: callLog!.accountId) { verifyCodeInfo in
-                
+
             }
         } else if dialLine == .direct {
             SwiftEventBus.onMainThread(self, name: "talking") { result in

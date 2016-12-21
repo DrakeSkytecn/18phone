@@ -16,11 +16,10 @@ import RealmSwift
 struct AppURL {
     
     /// 百度提供的查询号码归属地api
-    static let BAIDU_PHONEAREA_API = "http://apis.baidu.com/apistore/mobilenumber/mobilenumber"
+    static let BAIDU_PHONEAREA_API = "https://apis.baidu.com/apistore/mobilenumber/mobilenumber"
     
     /// 比一比SIP服务器地址
-//    static let BEYEBE_SIP_SERVER = "211.149.172.109:5060"
-            static let BEYEBE_SIP_SERVER = "192.168.10.249:5060"
+    static let BEYEBE_SIP_SERVER = "139.199.192.34:5060"
     //    static let BEYEBE_SIP_SERVER = "192.168.10.239:5060"
     
     /// 比一比SIP服务器域名
@@ -28,10 +27,10 @@ struct AppURL {
 //            static let BEYEBE_SIP_DOMAIN = "myvoipapp.com"
     
     /// 18phone接口地址
-    static let BEYEBE_18PHONE_API_BASE = "http://192.168.10.249/Home/"
+    static let BEYEBE_18PHONE_API_BASE = "http://139.199.192.34/Home/"
 //        static let BEYEBE_18PHONE_API_BASE = "http://18phone.beyebe.cn/Home/"
     
-    static let ZHIYU_BASE_URL = "http://www.zypaas.com:9988/V1/Account/"
+    static let ZHIYU_BASE_URL = "https://www.zypaas.com:9988/V1/Account/"
     
     static let ULINK_LOGIN_URL = "https://app.youlianyun.com/mutual/testinfo.php"
 }

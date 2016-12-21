@@ -36,7 +36,7 @@ class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         titleLabel.text = "将二维码对准方块扫描"
         titleLabel.textColor = UIColor.white
         titleLabel.font = UIFont.systemFont(ofSize: 16)
-        titleLabel.frame = CGRect(x: 0, y: 340, width: Screen.width, height: 30)
+        titleLabel.frame = CGRect(x: 0, y: 110 + Screen.width * 0.6, width: Screen.width, height: 30)
         titleLabel.textAlignment = .center
         view.addSubview(titleLabel)
     }

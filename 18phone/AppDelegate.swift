@@ -64,16 +64,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKPushRegistryDelegate, U
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         print("applicationDidEnterBackground")
-        performSelector(onMainThread: #selector(AppDelegate.keepAlive), with: nil, waitUntilDone: true)
-        application.setKeepAliveTimeout(600, handler: {
-            self.performSelector(onMainThread: #selector(AppDelegate.keepAlive), with: nil, waitUntilDone: true)
-        })
+//        performSelector(onMainThread: #selector(AppDelegate.keepAlive), with: nil, waitUntilDone: true)
+//        application.setKeepAliveTimeout(600, handler: {
+//            self.performSelector(onMainThread: #selector(AppDelegate.keepAlive), with: nil, waitUntilDone: true)
+//        })
         App.ulinkService.setBackgroundKeepAlive()
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
         print("applicationWillEnterForeground")
+        keepAlive()
         App.ulinkService.detectLinkAndRelink()
     }
     
