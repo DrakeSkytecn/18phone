@@ -68,6 +68,7 @@ class OutgoingCallViewController: UIViewController {
             APIUtil.p2pCall(UserDefaults.standard.string(forKey: "userID")!, BUserID: callLog!.accountId) { verifyCodeInfo in
 
             }
+//            outCall?.begin()
         } else if dialLine == .direct {
             SwiftEventBus.onMainThread(self, name: "talking") { result in
                 self.isConnected = true

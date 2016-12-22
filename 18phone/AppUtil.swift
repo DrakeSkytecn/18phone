@@ -27,8 +27,7 @@ struct AppURL {
 //            static let BEYEBE_SIP_DOMAIN = "myvoipapp.com"
     
     /// 18phone接口地址
-    static let BEYEBE_18PHONE_API_BASE = "http://139.199.192.34/Home/"
-//        static let BEYEBE_18PHONE_API_BASE = "http://18phone.beyebe.cn/Home/"
+    static let BEYEBE_18PHONE_API_BASE = "https://www.18phone.com.cn/Home/"
     
     static let ZHIYU_BASE_URL = "https://www.zypaas.com:9988/V1/Account/"
     
@@ -66,7 +65,7 @@ struct App {
         accountConfiguration?.proxyServer = AppURL.BEYEBE_SIP_SERVER
         accountConfiguration?.enableRingback = true
         configuration?.account = accountConfiguration
-        configuration?.logLevel = 5
+        configuration?.logLevel = 3
         userAgent?.configure(configuration)
         userAgent?.start()
     }

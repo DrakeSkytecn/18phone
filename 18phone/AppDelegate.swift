@@ -35,7 +35,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PKPushRegistryDelegate, U
         let userDefaults = UserDefaults.standard
         if let userID = userDefaults.string(forKey: "userID") {
             let password = userDefaults.string(forKey: "password")
-            APIUtil.login(userDefaults.string(forKey: "username")!, password: password!, tokenID: userDefaults.string(forKey: "deviceToken")!, callBack: nil)
+            APIUtil.login(userDefaults.string(forKey: "username")!, password: password!, tokenID: userDefaults.string(forKey: "deviceToken")!, callBack: { loginInfo in
+                App.ulinkService.setDevID("7d2f95120cec8f3e2703f58b4826bc6b", appId: "22ca0cb5a77fc6a9329345d4dc117188", clientId: "1664005609346033", clientPwd: "5h56ySCy")
+                App.ulinkService.startLink()
+            })
             App.initUserAgent(userID, password: password!)
             window?.rootViewController = R.storyboard.main.kTabBarController()
         } else {
