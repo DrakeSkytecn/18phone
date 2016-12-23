@@ -46,6 +46,8 @@ struct App {
     static let ZHIYU_APP_ID = "APP1e811237a2674f5c824b512a7916c5a8"
     static let ULINK_ACCOUNT = "13489385888@qq.com"
     static let ULINK_PASSWORD = "a12345678"
+    static let ULINK_DEV_ID = "7d2f95120cec8f3e2703f58b4826bc6b"
+    static let ULINK_APP_ID = "22ca0cb5a77fc6a9329345d4dc117188"
     static let realm = try! Realm()
     static let userAgent = GSUserAgent.shared()
     static let userAgentAccount = GSUserAgent.shared().account
@@ -461,18 +463,14 @@ struct APIUtil {
         }
     }
     
-    static func login(_ phoneNumber: String, password: String, tokenID: String, callBack: ((LoginInfo?) -> ())?) {
+    static func login(_ phoneNumber: String, password: String, tokenID: String, callBack: ((LoginInfo) -> ())?) {
         do {
             let opt = try HTTP.POST(AppURL.BEYEBE_18PHONE_API_BASE + "login", parameters: ["PhoneNumber":phoneNumber, "password":password, "tokenID":tokenID, "phoneType":0])
             opt.start { response in
                 if let error = response.error {
                     print("error: \(error.localizedDescription)")
                     print("error: \(error.code)")
-                    if callBack != nil {
-                        Async.main {
-                            callBack!(nil)
-                        }
-                    }
+                    
                     return
                 }
                 print(response.text)

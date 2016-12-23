@@ -48,9 +48,10 @@ class DetailMenuViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     @IBAction func videoCall(_ sender: UIButton) {
-        if  appContactInfo != nil && !appContactInfo!.accountId.isEmpty {
+        if  appContactInfo != nil && !appContactInfo!.clientNumber.isEmpty {
             let outgoingVideoViewController = R.storyboard.main.outgoingVideoViewController()
             callLog.accountId = appContactInfo!.accountId
+            callLog.clientNumber = appContactInfo!.clientNumber
             callLog.contactId = appContactInfo!.identifier
             callLog.phone = phones!.first!
             callLog.headPhoto = headPhoto
@@ -63,9 +64,10 @@ class DetailMenuViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     @IBAction func voiceCall(_ sender: UIButton) {
-        if  appContactInfo != nil && !appContactInfo!.accountId.isEmpty {
+        if  appContactInfo != nil && !appContactInfo!.clientNumber.isEmpty {
             let outgoingCallViewController = R.storyboard.main.outgoingCallViewController()
             callLog.accountId = appContactInfo!.accountId
+            callLog.clientNumber = appContactInfo!.clientNumber
             callLog.contactId = appContactInfo!.identifier
             callLog.phone = phones!.first!
             callLog.headPhoto = headPhoto
@@ -75,9 +77,10 @@ class DetailMenuViewController: UIViewController, UITableViewDataSource, UITable
             outgoingCallViewController?.callLog = callLog
             present(outgoingCallViewController!, animated: true, completion: nil)
         } else {
-            if false {
+            if true {
                 let outgoingCallViewController = R.storyboard.main.outgoingCallViewController()
                 callLog.accountId = appContactInfo!.accountId
+                callLog.clientNumber = appContactInfo!.clientNumber
                 callLog.contactId = appContactInfo!.identifier
                 callLog.phone = phones!.first!
                 callLog.headPhoto = headPhoto

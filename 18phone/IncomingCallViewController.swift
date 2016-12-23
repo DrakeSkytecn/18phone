@@ -52,13 +52,34 @@ class IncomingCallViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        App.changeSpeaker(true)
+        App.ulinkService.setHandfree(true)
+//        App.changeSpeaker(true)
         /**
          storyboard目前不支持设置CGColor
          */
         dialPlateBtn.layer.borderColor = UIColor.white.cgColor
         speakerBtn.layer.borderColor = UIColor.white.cgColor
-        accountId = inCall!.incomingCallInfo()!
+        SwiftEventBus.onMainThread(self, name: "talking") { result in
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+            self.areaLabel.start()
+            self.isConnected = true
+            self.connectingCon.isHidden = true
+            self.hangupCon.isHidden = false
+            self.dialPlateCon.isHidden = false
+            self.speakerCon.isHidden = false
+        }
+        SwiftEventBus.onMainThread(self, name: "callStop") { result in
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+            self.areaLabel.pause()
+            if self.isConnected && self.callDuration.isEmpty {
+                self.callDuration = self.areaLabel.text!
+            }
+            self.areaLabel.text = "通话已挂断"
+        }
+        SwiftEventBus.onMainThread(self, name: "noAnswer") { result in
+            self.areaLabel.text = "暂时无法接通，请稍后再拨"
+        }
+//        accountId = inCall!.incomingCallInfo()!
         appContactInfo = App.realm.objects(AppContactInfo.self).filter("accountId == '\(accountId)'").first
         if appContactInfo == nil {
             APIUtil.getUserInfo(accountId, callBack: { userInfo in
@@ -150,7 +171,7 @@ class IncomingCallViewController: UIViewController {
             }
         }
         
-        inCall?.addObserver(self, forKeyPath: "status", options: .initial, context: nil)
+//        inCall?.addObserver(self, forKeyPath: "status", options: .initial, context: nil)
 //        inCall?.startRingback()
     }
 
@@ -160,23 +181,28 @@ class IncomingCallViewController: UIViewController {
     }
     
     @IBAction func hangup(_ sender: UIButton) {
-        App.changeSpeaker(false)
-        inCall?.end()
+        App.ulinkService.setHandfree(false)
+//        App.changeSpeaker(false)
+//        inCall?.end()
+        App.ulinkService.sendCallBye()
         addCallLog()
         dismiss(animated: true, completion: nil)
     }
 
     @IBAction func answer(_ sender: UIButton) {
-        inCall?.begin()
+        App.ulinkService.sendCallAnswer()
+//        inCall?.begin()
     }
     
     @IBAction func speakerOnOff(_ sender: UIButton) {
-        App.changeSpeaker(!App.isSpeakerOn)
+        App.ulinkService.setHandfree(!App.ulinkService.getHandfreeValue())
+//        App.changeSpeaker(!App.isSpeakerOn)
     }
     
     func addCallLog() {
         callLog.accountId = accountId
         if appContactInfo != nil {
+            callLog.clientNumber = appContactInfo!.clientNumber
             callLog.contactId = appContactInfo!.identifier
             callLog.area = appContactInfo!.area
         }
@@ -243,7 +269,7 @@ class IncomingCallViewController: UIViewController {
     }
     
     deinit {
-        inCall?.removeObserver(self, forKeyPath: "status")
+//        inCall?.removeObserver(self, forKeyPath: "status")
         print("OutgoingCallViewController deinit")
     }
 

@@ -113,7 +113,7 @@ class CallLogViewController: UITableViewController {
         let callLog = callLogs![indexPath.row]
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: "语音通话", style: .default) { action in
-            if callLog.accountId.isEmpty {
+            if callLog.clientNumber.isEmpty {
                 if PhoneUtil.isMobileNumber(callLog.phone) {
                     if true {
                         let outgoingCallViewController = R.storyboard.main.outgoingCallViewController()
@@ -147,6 +147,7 @@ class CallLogViewController: UITableViewController {
                         if contactIDInfo.codeStatus == 1 {
                             try! App.realm.write {
                                 callLog.accountId = contactIDInfo.userID!
+                                callLog.clientNumber = contactIDInfo.ClientNumber!
                             }
                         }
                     })
@@ -161,11 +162,12 @@ class CallLogViewController: UITableViewController {
             }
             })
         alertController.addAction(UIAlertAction(title: "视频通话", style: .default) { action in
-            if callLog.accountId.isEmpty {
+            if callLog.clientNumber.isEmpty {
                 APIUtil.getContactID(callLog.phone, callBack: { contactIDInfo in
                     if contactIDInfo.codeStatus == 1 {
                         try! App.realm.write {
                             callLog.accountId = contactIDInfo.userID!
+                            callLog.clientNumber = contactIDInfo.ClientNumber!
                         }
                     } else {
                         
@@ -238,6 +240,7 @@ class CallLogViewController: UITableViewController {
         let callLog = callLogs![index]
         newCallLog.contactId = callLog.contactId
         newCallLog.accountId = callLog.accountId
+        newCallLog.clientNumber = callLog.clientNumber
         newCallLog.headPhoto = callLog.headPhoto
         newCallLog.name = callLog.name
         newCallLog.phone = callLog.phone

@@ -104,23 +104,23 @@ class LoginViewController: UIViewController, UITableViewDataSource, UITableViewD
         let userDefaults = UserDefaults.standard
         if let deviceToken = userDefaults.string(forKey: "deviceToken") {
             APIUtil.login(phoneNumber, password: password, tokenID: deviceToken, callBack: { loginInfo in
-                if loginInfo != nil {
-                    if loginInfo!.codeStatus == 1 {
+                    if loginInfo.codeStatus == 1 {
                         if userDefaults.string(forKey: "userID") == nil {
-                            userDefaults.set(loginInfo!.userID, forKey: "userID")
+                            userDefaults.set(loginInfo.userID, forKey: "userID")
                             userDefaults.set(self.phoneNumber, forKey: "username")
                             userDefaults.set(self.password, forKey: "password")
+                            userDefaults.set(loginInfo.ClientNumber, forKey: "clientNumber")
+                            userDefaults.set(loginInfo.ClientPwd, forKey: "clientPwd")
                             userDefaults.synchronize()
                         }
-                        App.initUserAgent((loginInfo!.userID)!, password: self.password)
+                        App.initUserAgent(loginInfo.userID!, password: self.password)
                         self.present(R.storyboard.main.kTabBarController()!, animated: true, completion: {
                             MBProgressHUD.hide(for: self.view, animated: true)
                         })
                     } else {
-                        alertController.message = loginInfo?.codeInfo
+                        alertController.message = loginInfo.codeInfo
                         self.present(alertController, animated: true, completion: nil)
                     }
-                }
             })
         }
     }

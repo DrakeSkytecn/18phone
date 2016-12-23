@@ -67,8 +67,11 @@ class AppContactInfo: Object {
     /// 联系人ID
     dynamic var identifier = ""
     
-    /// 注册后分配的账号ID
+    /// 注册后平台分配的账号ID
     dynamic var accountId = ""
+    
+    /// 注册后有联云分配的账号ID
+    dynamic var clientNumber = ""
     
     /// 该联系人是否是18phone的用户标识
     dynamic var isRegister = false
@@ -89,12 +92,14 @@ class AppContactInfo: Object {
 struct ContactIDInfo: JSONJoy {
     
     let userID: String?
+    let ClientNumber: String?
     let isRegister: Bool?
     let codeStatus: Int?
     let codeinfo: String?
     
     init(_ decoder: JSONDecoder) {
         userID = decoder["UserID"].string
+        ClientNumber = decoder["ClientNumber"].string
         isRegister = decoder["IsRegister"].bool
         codeStatus = decoder["codeStatus"].integer
         codeinfo = decoder["codeInfo"].string

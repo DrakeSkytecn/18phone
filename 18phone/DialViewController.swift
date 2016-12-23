@@ -183,11 +183,12 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
                         print("self.tempName:\(self.tempName)")
                         //                        self.areaText.text = self.tempName
                         self.appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contact.identifier)'").first!
-                        if self.appContactInfo != nil && self.appContactInfo!.accountId.isEmpty {
+                        if self.appContactInfo != nil && self.appContactInfo!.clientNumber.isEmpty {
                             APIUtil.getContactID(phoneNumber, callBack: { contactIDInfo in
                                 if contactIDInfo.codeStatus == 1 {
                                     try! App.realm.write {
                                         self.appContactInfo!.accountId = contactIDInfo.userID!
+                                        self.appContactInfo!.clientNumber = contactIDInfo.ClientNumber!
                                         self.appContactInfo!.isRegister = contactIDInfo.isRegister!
                                     }
                                     self.isRegister = contactIDInfo.isRegister!
@@ -336,10 +337,11 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBAction func call(_ sender: UIButton) {
         if !numberText.text!.isEmpty {
             if PhoneUtil.isMobileNumber(numberText.text) {
-                if  appContactInfo != nil && !appContactInfo!.accountId.isEmpty {
+                if  appContactInfo != nil && !appContactInfo!.clientNumber.isEmpty {
                     let outgoingCallViewController = R.storyboard.main.outgoingCallViewController()
                     let callLog = CallLog()
                     callLog.accountId = appContactInfo!.accountId
+                    callLog.clientNumber = appContactInfo!.clientNumber
                     callLog.contactId = appContactInfo!.identifier
                     callLog.phone = numberText.text!
                     callLog.headPhoto = headPhoto

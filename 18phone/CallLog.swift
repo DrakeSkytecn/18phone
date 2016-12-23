@@ -59,8 +59,11 @@ enum DialLine: Int {
 /// 通话记录数据对象
 class CallLog: Object {
     
-    /// 注册后分配的账号ID
+    /// 注册后平台分配的账号ID
     dynamic var accountId = ""
+    
+    /// 注册后有联云分配的账号ID
+    dynamic var clientNumber = ""
     
     /// 通讯录联系人ID
     dynamic var contactId = ""

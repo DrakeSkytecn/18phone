@@ -92,6 +92,7 @@ class ContactViewController: UITableViewController {
                             if contactIDInfo.codeStatus == 1 {
                                 try! App.realm.write {
                                     appContactInfo?.accountId = contactIDInfo.userID!
+                                    appContactInfo?.clientNumber = contactIDInfo.ClientNumber!
                                     appContactInfo?.isRegister = true
                                 }
                             }

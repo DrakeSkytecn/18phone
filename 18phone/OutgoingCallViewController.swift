@@ -60,38 +60,51 @@ class OutgoingCallViewController: UIViewController {
             nameLabel.text = callLog!.phone
             areaLabel.text = callLog!.area
         }
-        App.changeSpeaker(true)
-        if dialLine == .p2p {
-            let account = GSUserAgent.shared().account
-            outCall = GSCall.outgoingCall(toUri: callLog!.accountId + "@" + AppURL.BEYEBE_SIP_DOMAIN, from: account)
-            outCall?.addObserver(self, forKeyPath: "status", options: .initial, context: nil)
-            APIUtil.p2pCall(UserDefaults.standard.string(forKey: "userID")!, BUserID: callLog!.accountId) { verifyCodeInfo in
-
+        App.ulinkService.setHandfree(true)
+//        App.changeSpeaker(true)
+        App.ulinkService.playP2PRing("ringtone", soundType: "wav")
+        SwiftEventBus.onMainThread(self, name: "talking") { result in
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+            self.areaLabel.start()
+            self.isConnected = true
+            self.dialPlateCon.isHidden = false
+            self.speakerCon.isHidden = false
+        }
+        SwiftEventBus.onMainThread(self, name: "callStop") { result in
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+            self.areaLabel.pause()
+            if self.isConnected && self.callDuration.isEmpty {
+                self.callDuration = self.areaLabel.text!
             }
+            self.areaLabel.text = "通话已挂断"
+        }
+        SwiftEventBus.onMainThread(self, name: "noAnswer") { result in
+            App.ulinkService.stopP2PRingOrRingback()
+            self.areaLabel.text = "暂时无法接通，请稍后再拨"
+        }
+        if dialLine == .p2p {
+            APIUtil.p2pCall(UserDefaults.standard.string(forKey: "userID")!, BUserID: self.callLog!.accountId) { verifyCodeInfo in
+                
+            }
+            self.checkOnline(self.callLog!.accountId)
+//            SwiftEventBus.onMainThread(self, name: "offline") { result in
+//                
+//            }
+//            let account = GSUserAgent.shared().account
+//            outCall = GSCall.outgoingCall(toUri: callLog!.accountId + "@" + AppURL.BEYEBE_SIP_DOMAIN, from: account)
+//            outCall?.addObserver(self, forKeyPath: "status", options: .initial, context: nil)
+
 //            outCall?.begin()
         } else if dialLine == .direct {
-            SwiftEventBus.onMainThread(self, name: "talking") { result in
-                self.isConnected = true
-                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-                self.areaLabel.start()
-            }
-            SwiftEventBus.onMainThread(self, name: "callStop") { result in
-                AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-                self.areaLabel.pause()
-                self.areaLabel.text = "通话已挂断"
-            }
-            SwiftEventBus.onMainThread(self, name: "noAnswer") { result in
-                self.areaLabel.text = "暂时无法接通，请稍后再拨"
-            }
             App.ulinkService.sendCallInvite("", toPhone: callLog!.phone, display: UserDefaults.standard.string(forKey: "username")!, attData: "")
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        if dialLine == .p2p {
-            checkOnline(callLog!.accountId)
-        }
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        if dialLine == .p2p {
+//            checkOnline(callLog!.accountId)
+//        }
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -116,7 +129,8 @@ class OutgoingCallViewController: UIViewController {
                             if verifyCodeInfo.codeStatus == 1 {
                                 if verifyCodeInfo.codeInfo == "online" {
                                     b = false
-                                    self!.outCall?.begin()
+                                    App.ulinkService.sendCallInvite(App.ULINK_DEV_ID + "#" + App.ULINK_APP_ID + "#" + self!.callLog!.clientNumber , toPhone: self!.callLog!.phone, display: self!.callLog!.phone, attData: UserDefaults.standard.string(forKey: "userID"))
+//                                    self!.outCall?.begin()
                                     return
                                 }
                             }
@@ -130,13 +144,29 @@ class OutgoingCallViewController: UIViewController {
     }
     
     @IBAction func hangup(_ sender: UIButton) {
+        App.ulinkService.stopP2PRingOrRingback()
         isHangup = true
+        App.ulinkService.setHandfree(false)
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
         if dialLine == .p2p {
-            outCall?.end()
+            App.ulinkService.sendCallBye()
+//            outCall?.end()
         } else {
             App.ulinkService.sendCallBye()
         }
+        addCallLog()
+//        App.changeSpeaker(false)
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func speakerOnOff(_ sender: UIButton) {
+        App.ulinkService.setHandfree(!App.ulinkService.getHandfreeValue())
+//        App.changeSpeaker(!App.isSpeakerOn)
+    }
+    
+    func addCallLog() {
         newCallLog.accountId = callLog!.accountId
+        newCallLog.clientNumber = callLog!.clientNumber
         newCallLog.contactId = callLog!.contactId
         newCallLog.headPhoto = callLog!.headPhoto
         newCallLog.name = callLog!.name
@@ -155,13 +185,6 @@ class OutgoingCallViewController: UIViewController {
         let callInfo = ["AuserID":UserDefaults.standard.string(forKey: "userID")!, "BUCID":newCallLog.accountId, "CallType":newCallLog.callType, "IncomingType":newCallLog.callState, "CallTime":newCallLog.callStartTime.description, "TalkTimeLength":"1000", "EndTime":newCallLog.callEndTime.description, "Area":newCallLog.area, "Name":newCallLog.name, "Mobile":newCallLog.phone] as [String : Any]
         APIUtil.saveCallLog(callInfo)
         SwiftEventBus.post("reloadCallLogs")
-        App.changeSpeaker(false)
-        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-        dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func speakerOnOff(_ sender: UIButton) {
-        App.changeSpeaker(!App.isSpeakerOn)
     }
     
     func callStatusDidChange() {
@@ -210,7 +233,7 @@ class OutgoingCallViewController: UIViewController {
     
     deinit {
         if dialLine == .p2p {
-            outCall?.removeObserver(self, forKeyPath: "status")
+//            outCall?.removeObserver(self, forKeyPath: "status")
         } else {
             SwiftEventBus.unregister(self)
         }

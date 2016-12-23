@@ -11,11 +11,15 @@ import UIKit
 struct LoginInfo: JSONJoy {
     
     let userID: String?
+    let ClientNumber: String?
+    let ClientPwd: String?
     let codeStatus: Int?
     let codeInfo: String?
     
     init(_ decoder: JSONDecoder) {
         userID = decoder["userID"].string
+        ClientNumber = decoder["ClientNumber"].string
+        ClientPwd = decoder["ClientPwd"].string
         codeStatus = decoder["codeStatus"].integer
         codeInfo = decoder["codeInfo"].string
     }

@@ -162,7 +162,7 @@ class ContactDetailViewController: UIViewController {
         //        alertController.addAction(UIAlertAction(title: "添加黑名单", style: .default) { action in
         //
         //            })
-        if appContactInfo!.accountId.isEmpty {
+        if appContactInfo!.clientNumber.isEmpty {
             alertController.addAction(UIAlertAction(title: "分享", style: .default) { action in
                 let shareParames = NSMutableDictionary()
                 let userID = UserDefaults.standard.string(forKey: "userID")!

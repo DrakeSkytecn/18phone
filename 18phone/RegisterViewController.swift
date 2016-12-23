@@ -138,11 +138,13 @@ class RegisterViewController: UIViewController, UITableViewDataSource, UITableVi
                 userDefaults.set(registerInfo.userID, forKey: "userID")
                 userDefaults.set(self.phoneNumber, forKey: "username")
                 userDefaults.set(self.password, forKey: "password")
+                userDefaults.set(registerInfo.ClientNumber, forKey: "clientNumber")
+                userDefaults.set(registerInfo.ClientPwd, forKey: "clientPwd")
                 userDefaults.synchronize()
                 App.initUserAgent(registerInfo.userID!, password: self.password)
                 self.present(R.storyboard.main.kTabBarController()!, animated: true, completion: nil)
             } else {
-                alertController.message = registerInfo.codeinfo
+                alertController.message = registerInfo.codeInfo
                 self.present(alertController, animated: true, completion: nil)
             }
             MBProgressHUD.hide(for: self.view, animated: true)

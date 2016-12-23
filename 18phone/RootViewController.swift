@@ -232,9 +232,9 @@ class RootViewController: UIViewController, GSAccountDelegate {
         let vid_cnt = callData["vid_cnt"] as! Int
         print("vid_cnt:\(vid_cnt)")
         if vid_cnt == 0 {
-            let incomingCallViewController = R.storyboard.main.incomingCallViewController()
-            incomingCallViewController?.inCall = inCall
-            present(incomingCallViewController!, animated: true, completion: nil)
+//            let incomingCallViewController = R.storyboard.main.incomingCallViewController()
+//            incomingCallViewController?.inCall = inCall
+//            present(incomingCallViewController!, animated: true, completion: nil)
         } else {
             let incomingVideoViewController = R.storyboard.main.incomingVideoViewController()
             incomingVideoViewController!.inCall = inCall
