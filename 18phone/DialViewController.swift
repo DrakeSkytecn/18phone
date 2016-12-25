@@ -175,13 +175,10 @@ class DialViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 for number in contact.phoneNumbers {
                     let phoneNumber = PhoneUtil.formatPhoneNumber((number.value).stringValue)
                     if phoneNumber == temp {
-                        print("phoneNumber:\(phoneNumber)")
                         if contact.imageDataAvailable {
                             self.headPhoto = contact.thumbnailImageData
                         }
                         self.tempName = contact.familyName + contact.givenName
-                        print("self.tempName:\(self.tempName)")
-                        //                        self.areaText.text = self.tempName
                         self.appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contact.identifier)'").first!
                         if self.appContactInfo != nil && self.appContactInfo!.clientNumber.isEmpty {
                             APIUtil.getContactID(phoneNumber, callBack: { contactIDInfo in

@@ -84,50 +84,52 @@ class IncomingCallViewController: UIViewController {
         if appContactInfo == nil {
             APIUtil.getUserInfo(accountId, callBack: { userInfo in
                 if userInfo.codeStatus == 1 {
-                    let store = CNContactStore()
-                    let keysToFetch = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
-                                       CNContactGivenNameKey,
-                                       CNContactFamilyNameKey,
-                                       CNContactPhoneNumbersKey] as [Any]
-                    let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch as! [CNKeyDescriptor])
-                    try! store.enumerateContacts(with: fetchRequest) { contact, stop in
-                        for number in contact.phoneNumbers {
-                            let formatNumber = PhoneUtil.formatPhoneNumber((number.value).stringValue)
-                            if formatNumber == userInfo.userData!.mobile! {
-                                self.phoneNumber = formatNumber
-                                self.nameLabel.text = contact.familyName + contact.givenName
-                                self.callLog.name = self.nameLabel.text!
-                                self.appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contact.identifier)'").first
-                                try! App.realm.write {
-                                    self.appContactInfo?.accountId = self.accountId
-                                    self.appContactInfo?.isRegister = true
+                    self.phoneNumber = userInfo.userData!.mobile!
+                    self.nameLabel.text = self.phoneNumber
+                    PhoneUtil.getPhoneAreaInfo(self.phoneNumber, callBack: { phoneAreaInfo in
+                        if phoneAreaInfo.errNum == 0 {
+                            if phoneAreaInfo.retData!.province != nil {
+                                let province = phoneAreaInfo.retData!.province!
+                                let city = phoneAreaInfo.retData!.city!
+                                let fullArea = province + city
+                                switch province {
+                                case "北京", "上海", "天津", "重庆":
+                                    self.areaLabel.text = province
+                                    self.callLog.area = province
+                                    break
+                                default:
+                                    self.areaLabel.text = fullArea
+                                    self.callLog.area = fullArea
+                                    break
                                 }
-                                PhoneUtil.getPhoneAreaInfo(formatNumber, callBack: { phoneAreaInfo in
-                                    if phoneAreaInfo.errNum == 0 {
-                                        let province = phoneAreaInfo.retData!.province!
-                                        let city = phoneAreaInfo.retData!.city!
-                                        let fullArea = province + city
-                                        switch province {
-                                        case "北京", "上海", "天津", "重庆":
-                                            try! App.realm.write {
-                                                self.appContactInfo?.area = province
-                                            }
-                                            break
-                                        default:
-                                            try! App.realm.write {
-                                                self.appContactInfo?.area = fullArea
-                                            }
-                                            break
-                                        }
-                                    }
-                                })
                             }
                         }
-                    }
-                    if self.nameLabel.text!.isEmpty {
-                        self.nameLabel.text = userInfo.userData?.mobile
-                        self.areaLabel.text = userInfo.userData?.provinceCity
-                    }
+                    })
+//                    let store = CNContactStore()
+//                    let keysToFetch = [CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
+//                                       CNContactGivenNameKey,
+//                                       CNContactFamilyNameKey,
+//                                       CNContactPhoneNumbersKey] as [Any]
+//                    let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch as! [CNKeyDescriptor])
+//                    try! store.enumerateContacts(with: fetchRequest) { contact, stop in
+//                        for number in contact.phoneNumbers {
+//                            let formatNumber = PhoneUtil.formatPhoneNumber((number.value).stringValue)
+//                            if formatNumber == self.phoneNumber {
+//                                self.nameLabel.text = contact.familyName + contact.givenName
+//                                self.callLog.name = self.nameLabel.text!
+//                                self.appContactInfo = App.realm.objects(AppContactInfo.self).filter("identifier == '\(contact.identifier)'").first
+//                                try! App.realm.write {
+//                                    self.appContactInfo?.accountId = self.accountId
+//                                    self.appContactInfo?.isRegister = true
+//                                }
+                    
+//                            }
+//                        }
+//                    }
+//                    if self.nameLabel.text!.isEmpty {
+//                        self.nameLabel.text = userInfo.userData?.mobile
+//                        self.areaLabel.text = userInfo.userData?.provinceCity
+//                    }
                 }
             })
         } else {
